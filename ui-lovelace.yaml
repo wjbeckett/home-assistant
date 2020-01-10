@@ -92,6 +92,8 @@ views:
               mute: true
               icon: true
               power_state: false
+      - type: horizontal-stack
+        cards:
           - entity: media_player.plex_tv_ua55mu7000
             type: custom:mini-media-player
             info: scroll
