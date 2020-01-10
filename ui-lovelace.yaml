@@ -86,9 +86,13 @@ views:
               power_state: false
           - entity: media_player.samsung_tv_remote
             type: custom:mini-media-player
-            info: short
+            info: scroll
             artwork: cover
             hide:
               mute: true
               icon: true
               power_state: false
+          - entity: media_player.plex_tv_ua55mu7000
+            type: custom:mini-media-player
+            info: scroll
+            artwork: full-cover
