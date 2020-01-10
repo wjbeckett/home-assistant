@@ -31,10 +31,20 @@ views:
     id: media
     title: Media
     cards:
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_display
+      - type: custom:mini-media-player
+        entity: media_player.loungeroom_speaker
+      - type: custom:mini-media-player
+        entity: media_player.bedroom_speaker
+      - type: custom:mini-media-player
+        entity: media_player.teddy_s_speaker
+      - type: custom:mini-media-player
+        entity: media_player.ollie_s_speaker
       - type: entities
         entities:
           - type: custom:mini-media-player
-            entity: media_player.multiroom_player
+            entity: media_player.all_speakers
             group: true
             source: icon
             info: short
