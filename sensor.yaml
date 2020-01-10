@@ -6,6 +6,6 @@
       - hourly_summary
       - temperature
       - pollen_level
-      - flu_risk
+      - cold_flu_risk
     scan_interval:
       minutes: 20
