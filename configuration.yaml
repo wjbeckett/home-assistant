@@ -56,6 +56,8 @@ media_player:
     applist: "Plex, YouTube"
     protocol: ctl_qled
 
+sun:
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

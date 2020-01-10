@@ -17,7 +17,7 @@ views:
     title: Weather
     cards:
       - type: custom:weather-card
-        entity: weather.dark_sky
+        entity: weather.darksky
       - type: entities
         title: Weather
         show_header_toggle: false
