@@ -30,6 +30,14 @@ views:
     title: Media
     cards:
       - type: custom:mini-media-player
+        entity: media_player.all_speakers
+        icon: mdi:spotify
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
         entity: media_player.kitchen_display
       - type: custom:mini-media-player
         entity: media_player.lounge_room_speaker
