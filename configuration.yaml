@@ -28,6 +28,11 @@ hacs:
   options:
     experimental: True
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    mode: daily
+
 light:
   - platform: group
     name: Bedroom Lights

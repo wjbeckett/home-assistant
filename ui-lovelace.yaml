@@ -1,10 +1,10 @@
 resources:
-  - url: /local/mini-media-player-bundle.js?v=1.5.2
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
     type: module
   - url: /community_plugin/weather-card/weather-card.js
     type: module
 
-title: ARS Home
+title: Beckett Home
 views:
   - icon: mdi:home-assistant
     id: home
