@@ -31,12 +31,10 @@ views:
     cards:
       - type: custom:mini-media-player
         entity: media_player.all_speakers
-        icon: mdi:spotify
         artwork: cover
         hide:
-          volume: false
           source: true
-          power_state: false
+          power_state: true
       - type: custom:mini-media-player
         entity: media_player.kitchen_display
       - type: custom:mini-media-player
@@ -105,4 +103,4 @@ views:
           - entity: media_player.plex_tv_ua55mu7000
             type: custom:mini-media-player
             info: scroll
-            artwork: full-cover
+            artwork: cover
