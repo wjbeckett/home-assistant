@@ -76,7 +76,7 @@ views:
               mute: true
               icon: true
               power_state: false
-          - entity: media_player.lounge_room_tv
+          - entity: media_player.samsung_tv_remote
             type: custom:mini-media-player
             info: short
             artwork: cover
