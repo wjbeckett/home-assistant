@@ -34,7 +34,7 @@ views:
       - type: custom:mini-media-player
         entity: media_player.kitchen_display
       - type: custom:mini-media-player
-        entity: media_player.loungeroom_speaker
+        entity: media_player.lounge_room_speaker
       - type: custom:mini-media-player
         entity: media_player.bedroom_speaker
       - type: custom:mini-media-player
