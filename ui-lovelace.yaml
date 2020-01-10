@@ -23,8 +23,6 @@ views:
         show_header_toggle: false
         entities:
           - sensor.dark_sky_summary
-          - sensor.pollen_level
-          - sensor.cold_flu_risk
           - sensor.dark_sky_hourly_summary
           - sensor.dark_sky_daily_summary
   - icon: mdi:play-circle-outline
