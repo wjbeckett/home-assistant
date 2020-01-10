@@ -25,8 +25,32 @@ hacs:
   options:
     experimental: True
 
+light:
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - light.55404001dc4f22ac0486
+      - light.55404001dc4f22ac01ca
+  - platform: group
+    name: Kitchen Lights
+    entities:
+      - light.80304313dc4f229a3225
+      - light.pendant_light_left
+      - light.pendant_light_center
+      - light.pendant_light_right
+
+media_player:
+  - platform: samsungtv_custom
+    host: 172.30.1.148
+    port: 8002
+    mac: c0:48:e6:35:1f:40
+    sourcelist: '{"TV": "KEY_TV","Switch": "KEY_HDMI1"}'
+    applist: "Plex, YouTube"
+    protocol: ctl_qled
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 zone: !include zones.yaml
+sensor: !include sensor.yaml

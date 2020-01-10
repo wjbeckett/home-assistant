@@ -1,0 +1,9 @@
+- platform: darksky
+    api_key: !secret darksky_key
+    monitored_conditions:
+      - summary
+      - daily_summary
+      - hourly_summary
+      - temperature
+    scan_interval:
+      minutes: 20

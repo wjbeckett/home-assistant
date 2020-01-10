@@ -1,0 +1,87 @@
+resources:
+  - url: /local/mini-media-player-bundle.js?v=1.5.2
+    type: module
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+
+title: ARS Home
+views:
+  - icon: mdi:home-assistant
+    id: home
+    # Name of the view. Will be used as the tooltip for tab icon
+    title: Home
+    # theme: darkorange
+    cards:
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    cards:
+      - type: "custom:weather-card"
+        entity: weather.dark_sky
+        icons: '/local/icons/weather_icons/animated/'
+      - type: entities
+        title: Weather
+        show_header_toggle: false
+        entities:
+          - sensor.dark_sky_summary
+          - sensor.pollen_level
+          - sensor.cold_flu_risk
+          - sensor.dark_sky_hourly_summary
+          - sensor.dark_sky_daily_summary
+  - icon: mdi:play-circle-outline
+    id: media
+    title: Media
+    cards:
+      - type: entities
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.multiroom_player
+            group: true
+            source: icon
+            info: short
+            hide:
+              volume: true
+              power: true
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.lounge_room_speaker
+            group: true
+            hide:
+              controls: true
+      - type: horizontal-stack
+        cards:
+          - entity: media_player.bedroom_tv
+            type: custom:mini-media-player
+            info: short
+            artwork: cover
+            hide:
+              mute: true
+              icon: true
+              power_state: false
+          - entity: media_player.lounge_room_tv
+            type: custom:mini-media-player
+            info: short
+            artwork: cover
+            hide:
+              mute: true
+              icon: true
+              power_state: false
