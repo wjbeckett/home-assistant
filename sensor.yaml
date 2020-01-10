@@ -5,5 +5,7 @@
       - daily_summary
       - hourly_summary
       - temperature
+      - pollen_level
+      - flu_risk
     scan_interval:
       minutes: 20
