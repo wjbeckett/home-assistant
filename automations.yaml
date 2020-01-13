@@ -61,13 +61,13 @@
     #  to: 'open'
   action:
     service: alarm_control_panel.alarm_trigger
-    entity_id: alarm_control_panel.ha_alarm
+    entity_id: alarm_control_panel.home_alarm
 
 - id: alarm_notify
   alias: 'Send notification when alarm triggered'
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.ha_alarm
+      entity_id: alarm_control_panel.home_alarm
       to: 'triggered'
   action:
     - service: notify.notify
