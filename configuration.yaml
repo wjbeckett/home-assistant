@@ -58,7 +58,6 @@ media_player:
     applist: "Plex, YouTube"
     protocol: ctl_qled
 
-
 # Alarm Panel
 alarm_control_panel:
   - platform: manual
@@ -91,3 +90,4 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 zone: !include zones.yaml
 sensor: !include sensor.yaml
+binary_sensor: !include binary_sensor.yaml
