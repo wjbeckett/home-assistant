@@ -1,0 +1,6 @@
+# Example configuration.yaml entry
+input_boolean:
+  push_notification:
+    name: Send push notificarions
+    initial: off
+    icon: mdi:car

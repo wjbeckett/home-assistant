@@ -33,8 +33,6 @@ views:
   - icon: mdi:play-circle-outline
     id: media
     title: Media
-    badges:
-      - sensor.plex_bms01
     cards:
       - type: custom:mini-media-player
         entity: media_player.all_speakers

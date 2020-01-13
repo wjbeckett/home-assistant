@@ -56,7 +56,17 @@ media_player:
     applist: "Plex, YouTube"
     protocol: ctl_qled
 
+
+# Example configuration.yaml entry
+input_boolean:
+  push_notification:
+    name: Notify when someone arrives home
+    initial: on
+    icon: mdi:bell
+
 sun:
+
+# Includes
 
 group: !include groups.yaml
 automation: !include automations.yaml
