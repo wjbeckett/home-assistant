@@ -47,7 +47,7 @@
   alias: 'Trigger alarm while armed away'
   condition:
     - condition: state
-      entity_id: alarm_control_panel.ha_alarm
+      entity_id: alarm_control_panel.home_alarm
       state: armed_away
   trigger:
     - platform: state
