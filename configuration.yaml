@@ -73,6 +73,23 @@ alarm_control_panel:
       pending_time: 0
       delay_time: 0
 
+# Image Processing
+image_processing: 
+  - platform: deepstack_face
+    ip_address: !secret deepstack_host
+    port: 5000
+    api_key: !secret deepstack_key
+    timeout: 5
+    scan_interval: 20
+    source: 
+      - entity_id: camera.local_file
+        name: face_counter
+
+# Camera
+camera:
+  - platform: local_file
+    file_path: /config/www/images/adele.jpg
+
 # Input Booleans
 input_boolean:
   push_notification:
