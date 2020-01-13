@@ -73,7 +73,7 @@ views:
   - icon: mdi:cctv
     id: cameras
     cards:
-      - type: entities
+      - type: picture-entity
         entity: camera.local_file 
 
   - icon: mdi:play-circle-outline
