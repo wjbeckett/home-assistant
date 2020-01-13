@@ -11,6 +11,11 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 2
 
+whitelist_external_dirs:
+  whitelist_external_dirs:
+    - /config/www
+    - /config/www/facebox
+
 # Text to speech
 tts:
   - platform: google_translate
