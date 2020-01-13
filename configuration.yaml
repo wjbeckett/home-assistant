@@ -33,6 +33,7 @@ weather:
     api_key: !secret darksky_key
     mode: daily
 
+# Lights
 light:
   - platform: group
     name: Bedroom Lights
@@ -47,6 +48,7 @@ light:
       - light.pendant_light_center
       - light.pendant_light_right
 
+# Media Players
 media_player:
   - platform: samsungtv_custom
     host: 172.30.1.148
@@ -57,7 +59,22 @@ media_player:
     protocol: ctl_qled
 
 
-# Example configuration.yaml entry
+# Alarm Panel
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret alarm_code
+    code_arm_required: True
+    pending_time: 30
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      pending_time: 0
+      delay_time: 0
+
+# Input Booleans
 input_boolean:
   push_notification:
     name: Notify when someone arrives home

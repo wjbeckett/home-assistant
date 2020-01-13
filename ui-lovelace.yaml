@@ -17,6 +17,12 @@ views:
       - type: entities
         entities:
           - person.william
+      - type: alarm-panel
+        name: House Alarm
+        entity: alarm_control_panel.home_alarm
+        states:
+          - arm_home
+          - arm_away
   - icon: mdi:weather-cloudy
     id: weather
     title: Weather

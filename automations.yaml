@@ -13,13 +13,10 @@
     - platform: homeassistant
       event: start
   action:
-    - service: notify.mobile_app_pixel4
+    - service: notify.mobile_app_william
       data:
         title: ''
         message: 'Home Assistant Started'
-
-
-
           
 #################################################################
 ## Presence
@@ -39,6 +36,86 @@
     - platform: state
       entity_id: person.william
   action:
-    - service: notify.mobile_app_pixel4
+    - service: notify.mobile_app_william
       data_template:
         message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'home' %}at home{% elif trigger.to_state.state == 'not_home' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}."
+
+#################################################################
+## Home Security
+#################################################################
+- id: alarm_triggered_away
+  alias: 'Trigger alarm while armed away'
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.ha_alarm
+      state: armed_away
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_sensor_motion
+      to: 'on'
+    #- platform: state
+    #  entity_id: sensor.door
+    #  to: 'open'
+    #- platform: state
+    #  entity_id: sensor.window
+    #  to: 'open'
+  action:
+    service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.ha_alarm
+
+- id: alarm_notify
+  alias: 'Send notification when alarm triggered'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.ha_alarm
+      to: 'triggered'
+  action:
+    - service: notify.notify
+      data:
+        message: "ALARM! The alarm has been triggered"
+
+- id: alarm_notify_disarmed
+  alias: 'Send notification when alarm is Disarmed'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'disarmed'
+  action:
+    - service: notify.notify
+      data_template:
+        message: "ALARM! The alarm is Disarmed at {{ states('sensor.date_time') }}"
+
+- id: alarm_notify_pending
+  alias: 'Send notification when alarm is in pending status'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'pending'
+  action:
+    - service: notify.notify
+      data_template:
+        message: "ALARM! The alarm is in pending status at {{ states('sensor.date_time') }}"
+
+- id: alarm_notify_armed_away
+  alias: 'Send notification when alarm is Armed in Away mode'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'armed_away'
+  action:
+    - service: notify.notify
+      data_template:
+        message: "ALARM! The alarm is armed in Away mode {{ states('sensor.date_time') }}"
+
+- id: alarm_notify_armed_home
+  alias: 'Send notification when alarm is Armed in Home mode'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'armed_home'
+  action:
+    - service: notify.notify
+      data_template:
+        # Using multi-line notation allows for easier quoting
+        message: >
+          ALARM! The alarm is armed in Home mode {{ states('sensor.date_time') }}
