@@ -69,6 +69,13 @@ views:
           - sensor.dark_sky_summary
           - sensor.dark_sky_hourly_summary
           - sensor.dark_sky_daily_summary
+  
+  - icon: mdi:cctv
+    id: cameras
+    cards:
+      - type: entities
+        entity: camera.local_file 
+
   - icon: mdi:play-circle-outline
     id: media
     title: Media
@@ -150,6 +157,7 @@ views:
             type: custom:mini-media-player
             info: scroll
             artwork: cover
+
   - icon: mdi:settings
     id: settings
     title: Settings
