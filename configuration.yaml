@@ -85,7 +85,7 @@ image_processing:
 # Camera
 camera:
   - platform: local_file
-    file_path: /www/images/adele.jpg
+    file_path: /config/www/images/adele.jpg
 
 # Input Booleans
 input_boolean:
