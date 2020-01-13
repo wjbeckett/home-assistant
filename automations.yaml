@@ -81,7 +81,7 @@
         entity_id: group.kitchen_lights
         brightness: 255
         rgb_color: [255, 0, 0]
-        flash: short
+        flash: long
 
 - id: alarm_notify_disarmed
   alias: 'Send notification when alarm is Disarmed'
