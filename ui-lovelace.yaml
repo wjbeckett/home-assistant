@@ -23,10 +23,37 @@ views:
         states:
           - arm_home
           - arm_away
-      - type: light_group
-        name: Kitchen
+      - type: entities
+        title: Lights
         entities:
-          - group.kitchen_lights
+          - entity: light.34856070bcddc23658e4
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.55404001dc4f22ac01ca
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.55404001dc4f22ac0486
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.80304313dc4f229a3225
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.pendant_light_left
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.pendant_light_center
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.pendant_light_right
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.ollie_s_lamp
+            type: custom:slider-entity-row
+            toggle: true
+          - entity: light.teddy_s_lamp
+            type: custom:slider-entity-row
+            toggle: true
+
   - icon: mdi:weather-cloudy
     id: weather
     title: Weather
