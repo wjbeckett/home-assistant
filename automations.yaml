@@ -78,7 +78,13 @@
         message: "ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}"
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: 
+          - group.kitchen_lights
+          - light.34856070bcddc23658e4
+          - light.55404001dc4f22ac01ca
+          - light.55404001dc4f22ac0486
+          - light.ollie_s_lamp
+          - light.teddy_s_lamp
         brightness: 255
         rgb_color: [255, 0, 0]
         flash: long
