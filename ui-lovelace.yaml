@@ -23,6 +23,10 @@ views:
         states:
           - arm_home
           - arm_away
+      - type: light_group
+        name: Kitchen
+        entities:
+          - group.kitchen_lights
   - icon: mdi:weather-cloudy
     id: weather
     title: Weather
