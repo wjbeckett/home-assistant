@@ -53,6 +53,9 @@
     - platform: state
       entity_id: binary_sensor.kitchen_sensor_motion
       to: 'on'
+    - platform: state
+      entity_id: 
+      to: 'on'
     #- platform: state
     #  entity_id: sensor.door
     #  to: 'open'
@@ -72,7 +75,13 @@
   action:
     - service: notify.notify
       data:
-        message: "ALARM! The alarm has been triggered"
+        message: "ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}"
+    - service: light.turn_on
+      data:
+        entity_id: group.kitchen_lights
+        brightness: 255
+        rgb_color: [255, 0, 0]
+        flash: short
 
 - id: alarm_notify_disarmed
   alias: 'Send notification when alarm is Disarmed'
