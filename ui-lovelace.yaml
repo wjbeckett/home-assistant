@@ -76,7 +76,8 @@ views:
       - type: picture-entity
         entity: camera.local_file
       - type: entities
-        entity: image_processing.face_counter
+        entities:
+          - image_processing.face_counter
 
   - icon: mdi:play-circle-outline
     id: media
