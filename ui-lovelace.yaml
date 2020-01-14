@@ -15,7 +15,7 @@ views:
     # theme: darkorange
     badges:
       - person.william
-      - sensor.garage_door
+      - binary_sensor.garage_door
     cards:
       - type: entities
         entities:
