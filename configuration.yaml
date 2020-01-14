@@ -87,7 +87,7 @@ image_processing:
       - entity_id: camera.local_file
         name: face_counter
   - platform: deepstack_face
-    ip_addressed: !secret deepstack_host
+    ip_address: !secret deepstack_host
     port: 5000
     api_key: deepstack_key
     timeout: 5
