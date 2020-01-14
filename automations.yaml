@@ -99,8 +99,14 @@
       title: "Person Detected"
       message: "{{ trigger.event.data.object }} with confidence {{ trigger.event.data.confidence }}"
 
-- id: emily_recognised
-  alias: Emily recognised
+- id: face_recognised
+  alias: Face recognised
+  condition:
+    - condition: state
+      entity_id: input_boolean.push_notification
+      state: 'on'
+    - condition: template
+      value_template: "{{ trigger.event.data.confidence|float > 50 }}"
   trigger:
     platform: event
     event_type: image_processing.detect_face
