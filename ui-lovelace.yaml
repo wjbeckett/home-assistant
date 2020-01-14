@@ -75,6 +75,8 @@ views:
     cards:
       - type: picture-entity
         entity: camera.local_file
+      - type: picture-entity
+        entity: camera.deepstack_latest_person
       - type: entities
         entities:
           - image_processing.face_counter
