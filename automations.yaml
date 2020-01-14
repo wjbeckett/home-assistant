@@ -115,7 +115,7 @@
   action:
     service: notify.mobile_app_william
     data_template:
-      message: "{{ trigger.event.data.name }} recognised with probability {{ trigger.event.data.confidence }}"
+      message: "{{ trigger.event.data.name }} is at the front door with probability {{ trigger.event.data.confidence }}"
       title: Door-cam notification
 
 
