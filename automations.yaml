@@ -165,14 +165,12 @@
 - id: 'Notification when face has been learned'
   alias: Face taught
   trigger:
-  - event_data:
-      service: facebox.teach_face
+  - platform: event
     event_type: call_service
-    platform: event
-  condition: []
+    event_data:
+      service: facebox.teach_face
   action:
   - service: notify.mobile_app_william
     data_template:
-      message: '{{ trigger.event.data.service_data.name }} taught
-      with file {{ trigger.event.data.service_data.file_path }}'
-      title: Face taught notification
+      message: '{{ trigger.event.data.service_data.name }} taught with file {{ trigger.event.data.service_data.file_path }}'
+      title: New Face Learned
