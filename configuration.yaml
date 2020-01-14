@@ -86,20 +86,11 @@ image_processing:
     source: 
       - entity_id: camera.local_file
         name: face_counter
-  - platform: deepstack_face
-    ip_address: !secret deepstack_host
-    port: 5000
-    api_key: deepstack_key
-    timeout: 5
-    source:
-      - entity_id: camera.local_file
-        name: deepstack_face_counter
-
 
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/images/emily.jpg
+    file_path: /config/www/images/family.png
 
 # Input Booleans
 input_boolean:

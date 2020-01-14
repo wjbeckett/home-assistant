@@ -78,7 +78,6 @@ views:
       - type: entities
         entities:
           - image_processing.face_counter
-          - image_processing.deepstack_face_counter
 
   - icon: mdi:play-circle-outline
     id: media
