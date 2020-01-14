@@ -10,8 +10,7 @@ http:
   base_url: !secret base_url
   ip_ban_enabled: true
   login_attempts_threshold: 2
-
-whitelist_external_dirs:
+homeassistant:
   whitelist_external_dirs:
     - /config/www
     - /config/www/facebox
