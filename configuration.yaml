@@ -91,8 +91,6 @@ image_processing:
     port: 5000
     api_key: deepstack_key
     timeout: 5
-    save_file_folder: /config/www/
-    save_timestamped_file: True
     source:
       - entity_id: camera.local_file
         name: deepstack_face_counter
