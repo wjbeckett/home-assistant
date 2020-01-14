@@ -96,8 +96,21 @@
   action:
     service: notify.mobile_app_william
     data_template:
-      title: "Object Detected"
+      title: "Person Detected"
       message: "{{ trigger.event.data.object }} with confidence {{ trigger.event.data.confidence }}"
+
+- id: emily_recognised
+  alias: Emily recognised
+  trigger:
+    platform: event
+    event_type: image_processing.detect_face
+    event_data:
+      name: 'Emily'
+  action:
+    service: notify.mobile_app_william
+    data_template:
+      message: Emily recognised with probability {{ trigger.event.data.confidence }}
+      title: Door-cam notification
 
 
 
