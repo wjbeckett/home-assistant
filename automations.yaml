@@ -105,11 +105,11 @@
     platform: event
     event_type: image_processing.detect_face
     event_data:
-      name: 'Emily'
+      entity_id: image_processing.face_counter
   action:
     service: notify.mobile_app_william
     data_template:
-      message: Emily recognised with probability {{ trigger.event.data.confidence }}
+      message: "{{ trigger.event.data.name }} recognised with probability {{ trigger.event.data.confidence }}"
       title: Door-cam notification
 
 

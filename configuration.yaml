@@ -96,20 +96,12 @@ image_processing:
     ip_address: !secret deepstack_host
     port: 5000
     api_key: !secret deepstack_key
-    scan_interval: 30 # Optional, in seconds
+    # scan_interval: 30 # Optional, in seconds
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
       - entity_id: camera.local_file
         name: deepstack_person_detector
-  - platform: deepstack_face
-    ip_address: !secret deepstack_host
-    port: 5000
-    api_key: !secret deepstack_key
-    scan_interval: 30 # Optional, in seconds
-    source:
-      - entity_id: camera.local_file
-        name: deepstack_face_detector
 
 # Camera
 camera:
