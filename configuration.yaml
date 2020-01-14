@@ -38,6 +38,12 @@ weather:
     api_key: !secret darksky_key
     mode: daily
 
+# Hue integration
+hue:
+  bridges:
+    - host: !secret hue_host
+      allow_hue_groups: true
+
 # Lights
 light:
   - platform: group
