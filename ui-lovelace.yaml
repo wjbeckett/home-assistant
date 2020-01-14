@@ -15,11 +15,13 @@ views:
     # theme: darkorange
     badges:
       - person.william
+      - person.emily
       - binary_sensor.garage_door
     cards:
       - type: entities
         entities:
           - person.william
+          - person.emily
       - type: alarm-panel
         name: House Alarm
         entity: alarm_control_panel.home_alarm
