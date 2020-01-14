@@ -78,8 +78,8 @@ views:
       - type: entities
         entities:
           - image_processing.face_counter
-          - deepstack_person_detector
-          - deepstack_face_detector
+          - image_processing.deepstack_person_detector
+          - image_processing.deepstack_face_detector
 
   - icon: mdi:play-circle-outline
     id: media
