@@ -80,6 +80,26 @@
         title: ''
         message: 'Garage door has been open for 10 minutes! Close it!'
 
+- id: object_detection
+  alias: Notify when object detected
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.push_notification
+      state: 'on'
+  trigger:
+    platform: event
+    event_type: image_processing.object_detected
+    event_data:
+      object: person
+  action:
+    service: notify.mobile_app_william
+    data_template:
+      title: "Object Detected"
+      message: "{{ trigger.event.data.object }} with confidence {{ trigger.event.data.confidence }}"
+
+
 
 #################################################################
 ## Home Security

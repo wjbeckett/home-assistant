@@ -119,6 +119,9 @@ camera:
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
 
+# Enable Stream Componenet
+stream:
+
 # Input Booleans
 input_boolean:
   push_notification:
