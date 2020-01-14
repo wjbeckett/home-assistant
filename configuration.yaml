@@ -89,6 +89,7 @@ image_processing:
   - platform: facebox
     ip_address: !secret facebox_host
     port: 8086
+    scan_interval: 10000
     source: 
       - entity_id: camera.local_file
         name: face_counter
