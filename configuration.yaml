@@ -114,7 +114,12 @@ image_processing:
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/images/family.png
+    #file_path: /config/www/images/family.png
+    file_path: /config/www/deepstack/deepstack_object_local_file_latest_person.jpg
+    name: deepstack_latest_person
+#  - platform: local_file
+#    file_path: /config/www/deepstack/deepstack_object_local_file_latest_person.jpg
+#    name: deepstack_latest_person
 
 # Input Booleans
 input_boolean:
