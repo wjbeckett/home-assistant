@@ -36,7 +36,7 @@
     - platform: state
       entity_id: person.william
   action:
-    - service: notify.mobile_app_william, notify.mobile_app_emily
+    - service: notify.notify
       data_template:
         message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'home' %}at home{% elif trigger.to_state.state == 'not_home' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}."
 
@@ -54,7 +54,7 @@
     - platform: state
       entity_id: binary_sensor.garage_door
   action:
-    - service: notify.mobile_app_william, notify.mobile_app_emily
+    - service: notify.notify
       data_template:
         message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'off' %}closed{% else %}open{% endif %}."
 
@@ -75,7 +75,7 @@
       for:
         minutes: 10
   action:
-    - service: notify.mobile_app_william, notify.mobile_app_emily
+    - service: notify.notify
       data:
         title: ''
         message: 'Garage door has been open for 10 minutes! Close it!'
