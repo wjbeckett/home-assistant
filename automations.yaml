@@ -19,7 +19,7 @@
         message: 'Home Assistant Started'
           
 #################################################################
-## Presence
+## Presence detection
 #################################################################
          
 - id: notify_resident
@@ -39,6 +39,47 @@
     - service: notify.mobile_app_william
       data_template:
         message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'home' %}at home{% elif trigger.to_state.state == 'not_home' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}."
+
+- id: notify_garage_door
+  alias: Notify Garage door
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.push_notification
+      state: 'on'
+    - condition: template
+      value_template: "{{ trigger.from_state.state != trigger.to_state.state }}"
+  trigger:
+    - platform: state
+      entity_id: sensor.garage_door
+  action:
+    - service: notify.mobile_app_william
+      data_template:
+        message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'off' %}closed{% else %}open{% endif %}."
+
+- id: notify_garage_open_10_min
+  alias: Notify Garage open for 10 min
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.push_notification
+      state: 'on'
+    - condition: template
+      value_template: "{{ trigger.from_state.state != trigger.to_state.state }}"
+  trigger:
+    - platform: state
+      entity_id: sensor.garage_door
+      to: 'on'
+      for:
+        minutes: 10
+  action:
+    - service: notify.mobile_app_william
+      data:
+        title: ''
+        message: 'Garage door has been open for 10 minutes! Close it!'
+
 
 #################################################################
 ## Home Security
@@ -149,28 +190,6 @@
       code: !secret alarm_code
 
 
-- id: 'notification when face detected'
-  alias: Face recognised
-  trigger:
-    platform: event
-    event_type: image_processing.detect_face
-    event_data:
-      name: 'Emily'
-  action:
-    service: notify.mobile_app_william
-    data_template:
-      message: Emily recognised with probability {{ trigger.event.data.confidence }}
-      title: Door-cam notification
-
-- id: 'Notification when face has been learned'
-  alias: Face taught
-  trigger:
-    platform: event
-    event_type: call_service
-    event_data:
-      service: facebox.teach_face
-  action:
-    service: notify.mobile_app_william
-    data_template:
-      message: '{{ trigger.event.data.service_data.name }} taught with file {{ trigger.event.data.service_data.file_path }}'
-      title: New Face Learned
+#################################################################
+## 
+#################################################################
