@@ -35,6 +35,8 @@
   trigger:
     - platform: state
       entity_id: person.william
+    - platform: state
+      entity_id: person.emily
   action:
     - service: notify.all_devices
       data_template:
@@ -56,7 +58,7 @@
   action:
     - service: notify.all_devices
       data_template:
-        message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'closed' %}closed{% else %}open{% endif %}."
+        message: "{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'off' %}closed{% else %}open{% endif %}."
 
 - id: notify_garage_open_10_min
   alias: Notify Garage open for 10 min
@@ -135,7 +137,7 @@
       to: 'on'
     - platform: state
       entity_id: binary_sensor.garage_door
-      to: 'open'
+      to: 'on'
     #- platform: state
     #  entity_id: sensor.door
     #  to: 'open'
@@ -176,7 +178,7 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'disarmed'
   action:
-    - service: notify.notify
+    - service: notify.mobile_app_william
       data_template:
         message: "ALARM! The alarm is Disarmed at {{ states('sensor.date_time') }}"
 
@@ -187,7 +189,7 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'pending'
   action:
-    - service: notify.notify
+    - service: notify.mobile_app_william
       data_template:
         message: "ALARM! The alarm is in pending status at {{ states('sensor.date_time') }}"
 
@@ -198,7 +200,7 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'armed_away'
   action:
-    - service: notify.notify
+    - service: notify.mobile_app_william
       data_template:
         message: "ALARM! The alarm is armed in Away mode {{ states('sensor.date_time') }}"
 
@@ -209,7 +211,7 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'armed_home'
   action:
-    - service: notify.notify
+    - service: notify.mobile_app_william
       data_template:
         # Using multi-line notation allows for easier quoting
         message: >
