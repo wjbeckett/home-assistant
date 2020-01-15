@@ -158,6 +158,10 @@
     - service: notify.notify
       data:
         message: "ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}"
+    - service: tts.google_translate_say
+      entity_id: "all"
+      data:
+        message: 'Warning. Please leave the premesis. Police have been notified.'
     - service: light.turn_on
       data:
         entity_id: 
@@ -178,6 +182,10 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'disarmed'
   action:
+    - service: tts.google_translate_say
+      entity_id: "all"
+      data:
+        message: 'Alarm is now disarmed.'
     - service: notify.mobile_app_william
       data_template:
         message: "ALARM! The alarm is Disarmed at {{ states('sensor.date_time') }}"
@@ -200,6 +208,10 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'armed_away'
   action:
+    - service: tts.google_translate_say
+      entity_id: "all"
+      data:
+        message: 'Alarm has been armed.'
     - service: notify.mobile_app_william
       data_template:
         message: "ALARM! The alarm is armed in Away mode {{ states('sensor.date_time') }}"
@@ -229,10 +241,14 @@
       from: 'not_home'
       to: 'home'
   action:
-    service: alarm_control_panel.alarm_disarm
-    entity_id: alarm_control_panel.home_alarm
-    data:
-      code: !secret alarm_code
+    - service: tts.google_translate_say
+      entity_id: "all"
+      data:
+        message: 'Disarming Alarm.'
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.home_alarm
+      data:
+        code: !secret alarm_code
 
 
 # ===== PENDING SOUNDS =====
