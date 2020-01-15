@@ -23,6 +23,10 @@ views:
         entities:
           - person.william
           - person.emily
+      - type: entities
+        entities:
+          - binary_sensor.garage_door
+          - sensor.garage_door_sensor
       - type: alarm-panel
         name: House Alarm
         entity: alarm_control_panel.home_alarm
