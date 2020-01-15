@@ -11,6 +11,7 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 2
 homeassistant:
+  customize: !include customize.yaml
   whitelist_external_dirs:
     - /config/www
     - /config/www/facebox
@@ -145,4 +146,4 @@ scene: !include scenes.yaml
 zone: !include zones.yaml
 sensor: !include sensor.yaml
 binary_sensor: !include binary_sensor.yaml
-customize: !include customize.yaml
+
