@@ -29,9 +29,9 @@
           {% endif %}
         icon_template: >-
           {% if states.binary_sensor.garage_door.state == 'off' %}
-            mdi:garage-variant
+            mdi:garage
           {% elif states.binary_sensor.garage_door.state == 'on' %}
-            mdi:garage-open-variant
+            mdi:garage-open
           {% else %}
             mdi:help
           {% endif %}
