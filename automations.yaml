@@ -133,9 +133,9 @@
     - platform: state
       entity_id: binary_sensor.kitchen_sensor_motion
       to: 'on'
-    #- platform: state
-    #  entity_id: 
-    #  to: 'on'
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      to: 'open'
     #- platform: state
     #  entity_id: sensor.door
     #  to: 'open'
