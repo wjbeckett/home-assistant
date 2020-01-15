@@ -20,18 +20,18 @@
     sensors:
       garage_door_sensor:
         value_template: >-
-        {% if states.binary_sensor.garage_door.state == 'off' %}
-          Cloed
-        {% elif states.binary_sensor.garage_door.state == 'on' %}
-          Open
-        {% else %}
-          n/a
-        {% endif %}
-      icon_template: >-
-        {% if states.binary_sensor.garage_door.state == 'off' %}
-          mdi:garage-variant
-        {% elif states.binary_sensor.garage_door.state == 'on' %}
-          mdi:garage-open-variant
-        {% else %}
-          mdi:help
-        {% endif %}
+          {% if states.binary_sensor.garage_door.state == 'off' %}
+            Cloed
+          {% elif states.binary_sensor.garage_door.state == 'on' %}
+            Open
+          {% else %}
+            n/a
+          {% endif %}
+        icon_template: >-
+          {% if states.binary_sensor.garage_door.state == 'off' %}
+            mdi:garage-variant
+          {% elif states.binary_sensor.garage_door.state == 'on' %}
+            mdi:garage-open-variant
+          {% else %}
+            mdi:help
+          {% endif %}
