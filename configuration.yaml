@@ -103,6 +103,14 @@ image_processing:
       - entity_id: camera.local_file
         name: deepstack_person_detector
 
+# Notify
+notify:
+  - name: All_Devices
+    platform: group
+    services:
+      - service: mobile_app_william
+      - service: mobile_app_emily
+
 # Camera
 camera:
   - platform: local_file
