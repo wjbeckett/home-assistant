@@ -145,3 +145,4 @@ scene: !include scenes.yaml
 zone: !include zones.yaml
 sensor: !include sensor.yaml
 binary_sensor: !include binary_sensor.yaml
+customize: !include customize.yaml
