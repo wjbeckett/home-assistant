@@ -17,6 +17,7 @@ views:
       - person.william
       - person.emily
       - binary_sensor.garage_door
+      - sensor.garage_door_sensor
     cards:
       - type: entities
         entities:
