@@ -16,6 +16,8 @@ views:
     badges:
       - person.william
       - person.emily
+      - sensor.garage_door_sensor
+      - binary_sensor.garage_door
     cards:
       - type: entities
         entities:
@@ -23,6 +25,7 @@ views:
           - person.emily
       - type: entities
         entities:
+          - binary_sensor.garage_door
           - sensor.garage_door_sensor
       - type: alarm-panel
         name: House Alarm
