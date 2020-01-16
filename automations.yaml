@@ -301,6 +301,9 @@
     - platform: state
       entity_id: binary_sensor.front_door_motion
       to: 'on'
+  condition:
+    - condition: template
+      value_template: "{% if states.sensor.facebox_detection.state != "unknown" %}"
   action:
     - delay: 00:00:02
     - service: camera.snapshot
@@ -313,7 +316,7 @@
     - delay: 00:00:02
     - service: notify.all_devices
       data_template:
-        message: "{% if states.sensor.facebox_detection.state != "unknown" %} {{ states('sensor.facebox_detection') }} is at the door {% else %} {% endif %}"
+        message: "{{ states('sensor.facebox_detection') }} is at the door"
     #- service_template: '{% if states.sensor.facebox_detection.state != "unknown" %} tts.google_say {% endif %}'
     #  data_template:
     #    entity_id: media_player.bluenano <chromecast>
