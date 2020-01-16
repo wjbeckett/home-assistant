@@ -136,19 +136,16 @@ notify:
 
 # Camera
 camera:
- # - platform: local_file
- #   file_path: /config/www/facebox/tmp/image.jpg
- #   name: Saved Image
+  - platform: local_file
+    file_path: /config/www/facebox/tmp/image.jpg
+    name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
-  - platform: ffmpeg
-    input: -rtsp_transport tcp -i rstp://camera:letmein@172.30.1.114/live
-    name: Front Door
   - platform: generic
     still_image_url: /config/www/images/wyze.png
     stream_source: rtsp://camera:letmein@172.30.1.114/live
-    name: Front Door 2
+    name: Front Door
 
 # Enable Stream Componenet
 stream:

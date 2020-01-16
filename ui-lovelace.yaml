@@ -82,12 +82,6 @@ views:
         camera_view: live
         entities:
           - camera.front_door
-      - type: picture-glance
-        title: Front Door
-        camera_image: camera.front_door_2
-        camera_view: live
-        entities:
-          - camera.front_door_2
       - type: picture-entity
         entity: camera.saved_image
       - type: picture-entity
