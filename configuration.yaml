@@ -143,8 +143,8 @@ ffmpeg:
 
 # Input Booleans
 input_boolean:
-  push_notification:
-    name: Notify when someone arrives home
+  options_notifications_push:
+    name: Send push notifications
     initial: on
     icon: mdi:bell
 

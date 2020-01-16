@@ -183,4 +183,4 @@ views:
         title: Switches
         show_header_toggle: true
         entities:
-          - input_boolean.push_notification
+          - input_boolean.options_notifications_push
