@@ -270,9 +270,6 @@
     - condition: state
       entity_id: input_boolean.options_notifications_push
       state: 'on'
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      to: 'pending'
   trigger:
     - platform: state
       entity_id: person.william
