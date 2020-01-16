@@ -349,7 +349,7 @@
     conditions:
       - condition: template
         value_template: "{{states.sensor.facebox_detection.state != 'unknown' }}"
-        - condition: template
+      - condition: template
         value_template: "{{states.sensor.facebox_detection.state != 'unavailable' }}"
   trigger:
     - platform: state
