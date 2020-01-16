@@ -332,6 +332,35 @@
 #  action:
 #    service: 
 
-
-
+- id: facebox_announcement
+  alias: 'Facebox Announcement'
+  initial_state: on
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{states.sensor.facebox_detection.state != 'unknown' }}"
+      - condition: template
+        value_template: "{{states.sensor.facebox_detection.state != 'unavailable' }}"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_motion
+      to: 'on'
+  action:
+    - delay: 00:00:01
+    - service: camera.snapshot
+      data:
+        entity_id: camera.front_door
+        filename: '/config/www/facebox/tmp/image.jpg' 
+    - delay: 00:00:01
+    - service: image_processing.scan
+      entity_id: image_processing.facebox_saved_image
+    - delay: 00:00:02
+    - service: notify.all_devices
+      data_template:
+        message: "{{ states.('sensor.front_door_detection') }} is at the front door"
+    - service: tts.google_say
+      data_template:
+        entity_id: "media_player.kitchen_display"
+        message: "{{ states.('sensor.front_door_detection') }} is at the door"
       
