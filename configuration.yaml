@@ -97,7 +97,25 @@ image_processing:
     scan_interval: 10000
     source: 
       - entity_id: camera.local_file
-        name: face_counter
+        name: Facebox Saved Image
+  image_processing: 
+  - platform: facebox
+    ip_address: !secret facebox_host
+    port: 8086
+    scan_interval: 10000
+    source: 
+      - entity_id: camera.front_door
+        name: Facebox front door
+  - platform: deepstack_object
+    ip_address: !secret deepstack_host
+    port: 5000
+    api_key: !secret deepstack_key
+    # scan_interval: 30 # Optional, in seconds
+    save_file_folder: /config/www/deepstack
+    save_timestamped_file: True
+    source:
+      - entity_id: camera.front_door
+        name: deepstack_front_door
   - platform: deepstack_object
     ip_address: !secret deepstack_host
     port: 5000
@@ -120,7 +138,8 @@ notify:
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/images/family.png
+    file_path: /config/www/facebox/tmp/image.jpg
+    name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person

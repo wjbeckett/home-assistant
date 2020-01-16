@@ -77,12 +77,12 @@ views:
     id: cameras
     cards:
       - type: picture-entity
-        entity: camera.local_file
+        entity: camera.saved_image
       - type: picture-entity
         entity: camera.deepstack_latest_person
       - type: entities
         entities:
-          - image_processing.face_counter
+          - image_processing.facebox_saved_image
           - image_processing.deepstack_person_detector
 
   - icon: mdi:play-circle-outline
