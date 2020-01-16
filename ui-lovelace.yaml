@@ -76,28 +76,20 @@ views:
   - icon: mdi:cctv
     id: cameras
     cards:
-      #- type: picture-glance
-      #  title: Front Door
-      #  camera_image: camera.front_door
-      #  camera_view: live
-      #  entities:
-      #    - camera.front_door
       - type: picture-glance
         title: Front Door
-        camera_image: camera.front_cam
+        camera_image: camera.front_door
         camera_view: live
         entities:
-         - camera.front_cam
+         - camera.front_door
       - type: picture-entity
         entity: camera.saved_image
       - type: picture-entity
         entity: camera.deepstack_latest_person
       - type: entities
         entities:
-          - image_processing.facebox_front_cam
           - image_processing.facebox_front_door
           - image_processing.facebox_saved_image
-          - image_processing.deepstack_front_door
           - image_processing.deepstack_person_detector
 
   - icon: mdi:play-circle-outline

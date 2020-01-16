@@ -313,7 +313,7 @@
     - delay: 00:00:02
     - service: notify.all_devices
       data:
-        message: '{% if states.sensor.facebox_detection.state != "unknown" %}  {{ states<"sensor.facebox_detection"> }} is at the door {% else %} {% endif %}'
+        message: "{% if states.sensor.facebox_detection.state != "unknown" %} {{ states('sensor.facebox_detection') }} is at the door {% else %} {% endif %}"
     #- service_template: '{% if states.sensor.facebox_detection.state != "unknown" %} tts.google_say {% endif %}'
     #  data_template:
     #    entity_id: media_player.bluenano <chromecast>
