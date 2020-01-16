@@ -159,7 +159,7 @@
       data:
         message: "ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}"
     - service: tts.google_translate_say
-      entity_id: "all"
+      entity_id: "media_player.kitchen_display"
       data:
         message: 'Warning. Please leave the premesis. Police have been notified.'
     - service: light.turn_on
@@ -183,7 +183,7 @@
       to: 'disarmed'
   action:
     - service: tts.google_translate_say
-      entity_id: "all"
+      entity_id: "media_player.kitchen_display"
       data:
         message: 'Alarm is now disarmed.'
     - service: notify.mobile_app_william
@@ -209,7 +209,7 @@
       to: 'armed_away'
   action:
     - service: tts.google_translate_say
-      entity_id: "all"
+      entity_id: "media_player.kitchen_display"
       data:
         message: 'Alarm has been armed.'
     - service: notify.mobile_app_william
@@ -242,7 +242,7 @@
       to: 'home'
   action:
     - service: tts.google_translate_say
-      entity_id: "all"
+      entity_id: "media_player.kitchen_display"
       data:
         message: 'Disarming Alarm.'
     - service: alarm_control_panel.alarm_disarm
