@@ -312,7 +312,7 @@
       entity_id: image_processing.facebox_saved_image
     - delay: 00:00:02
     - service: notify.all_devices
-      data:
+      data_template:
         message: "{% if states.sensor.facebox_detection.state != "unknown" %} {{ states('sensor.facebox_detection') }} is at the door {% else %} {% endif %}"
     #- service_template: '{% if states.sensor.facebox_detection.state != "unknown" %} tts.google_say {% endif %}'
     #  data_template:
