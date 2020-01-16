@@ -110,11 +110,11 @@ image_processing:
     ip_address: !secret deepstack_host
     port: 5000
     api_key: !secret deepstack_key
-    # scan_interval: 30 # Optional, in seconds
+    scan_interval: 20 # Optional, in seconds
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
-      - entity_id: camera.saved_image
+      - entity_id: camera.front_door
         name: deepstack_person_detector
 
 # Notify
