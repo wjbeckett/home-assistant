@@ -88,6 +88,7 @@ views:
         entity: camera.deepstack_latest_person
       - type: entities
         entities:
+          - image_processing.facebox_front_door
           - image_processing.facebox_saved_image
           - image_processing.deepstack_person_detector
 

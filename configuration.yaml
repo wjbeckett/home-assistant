@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - /config/www
-    - /config/www/facebox
+    - /config/www/facebox/tmp
 
 # Text to speech
 tts:
