@@ -106,7 +106,7 @@ image_processing:
     source: 
       - entity_id: camera.front_door
         name: Facebox front door
-   - platform: deepstack_object
+  - platform: deepstack_object
     ip_address: !secret deepstack_host
     port: 5000
     api_key: !secret deepstack_key
