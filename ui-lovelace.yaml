@@ -16,12 +16,12 @@ views:
     badges:
       - person.william
       - person.emily
-      - binary_sensor.garage_door
     cards:
       - type: entities
+        name: Doors
         entities:
-          - person.william
-          - person.emily
+          - binary_sensor.garage_door
+          - binary_sensor.back_door
       - type: alarm-panel
         name: House Alarm
         entity: alarm_control_panel.home_alarm
