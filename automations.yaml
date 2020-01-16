@@ -268,8 +268,8 @@
   alias: 'Alarm disarm when return home'
   condition:
     - condition: state
-      entity_id: input_boolean.options_notifications_push
-      state: 'on'
+      entity_id: alarm_control_panel.home_alarm
+      state: 'pending'
   trigger:
     - platform: state
       entity_id: person.william
