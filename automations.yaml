@@ -297,13 +297,16 @@
 - id: facebox_announcement
   alias: 'Facebox Announcement'
   initial_state: on
+  condition:
+    - condition: state
+      entity_id: input_boolean.push_notification
+      state: 'on'
+    - condition: template
+      value_template: "{{states.sensor.facebox_detection.state != 'unknown' }}"
   trigger:
     - platform: state
       entity_id: binary_sensor.front_door_motion
       to: 'on'
-  condition:
-    - condition: template
-      value_template: "{{states.sensor.facebox_detection.state != "unknown" }}"
   action:
     - delay: 00:00:02
     - service: camera.snapshot
