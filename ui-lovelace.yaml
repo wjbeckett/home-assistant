@@ -76,6 +76,12 @@ views:
   - icon: mdi:cctv
     id: cameras
     cards:
+      - type: picture-glance
+        title: Front Door
+        camera_image: camera.front_door
+        camera_view: live
+        entities:
+          - camera.front_door
       - type: picture-entity
         entity: camera.saved_image
       - type: picture-entity
