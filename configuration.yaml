@@ -143,11 +143,11 @@ camera:
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
   - platform: ffmpeg
-    input: rstp://william:Letmein@172.30.1.114/live
+    input: rstp://camera:letmein@172.30.1.114/live
     name: front_door
 
 # Enable Stream Componenet
-stream:
+# stream:
 ffmpeg:
 
 # Input Booleans
