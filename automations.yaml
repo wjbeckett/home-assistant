@@ -96,7 +96,7 @@
     event_data:
       object: person
   action:
-    service: notify.mobile_app_william
+    service: notify.all_devices
     data_template:
       title: "Person Detected"
       message: "{{ trigger.event.data.object }} with confidence {{ trigger.event.data.confidence }}"
@@ -115,7 +115,7 @@
     event_data:
       entity_id: image_processing.facebox_front_door
   action:
-    service: notify.mobile_app_william
+    service: notify.all_devices
     data_template:
       message: "{{ trigger.event.data.name }} is at the front door with probability {{ trigger.event.data.confidence }}"
       title: Door-cam notification
@@ -319,8 +319,9 @@
     - delay: 00:00:02
     - service: notify.all_devices
       data_template:
-        message: "{{ states('sensor.facebox_detection') }} is at the front door"
+        message: "{{ states.sensor.front_door_detection.state }} is at the front door"
     - service: tts.google_say
       entity_id: "media_player.kitchen_display"
       data_template:
-        message: "{{ states('sensor.facebox_detection') }} is at the door"
+        message: "{{ states.sensor.front_door_detection.state }} is at the door"
+      

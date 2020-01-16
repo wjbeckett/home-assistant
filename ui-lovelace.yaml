@@ -91,6 +91,7 @@ views:
           - image_processing.facebox_front_door
           - image_processing.facebox_saved_image
           - image_processing.deepstack_person_detector
+          - sensor.front_door_detection
 
   - icon: mdi:play-circle-outline
     id: media
