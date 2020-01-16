@@ -148,6 +148,7 @@ camera:
 
 # Enable Stream Componenet
 stream:
+ffmpeg:
 
 # Input Booleans
 input_boolean:
@@ -159,7 +160,6 @@ input_boolean:
 sun:
 
 # Includes
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
