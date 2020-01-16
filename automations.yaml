@@ -82,8 +82,8 @@
         title: ''
         message: 'Garage door has been open for 10 minutes! Close it!'
 
-- id: object_detection
-  alias: Notify when object detected
+- id: person_detection
+  alias: Notify when person detected
   initial_state: 'on'
   hide_entity: True
   condition:
@@ -99,7 +99,26 @@
     service: notify.all_devices
     data_template:
       title: "Person Detected"
-      message: "{{ trigger.event.data.object }} with confidence {{ trigger.event.data.confidence }}"
+      message: "{{ trigger.event.data.object }} detected at the front door. {{ trigger.event.data.confidence }}% confidence"
+
+- id: car_detection
+  alias: Notify when car detected
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.push_notification
+      state: 'on'
+  trigger:
+    platform: event
+    event_type: image_processing.object_detected
+    event_data:
+      object: car
+  action:
+    service: notify.all_devices
+    data_template:
+      title: "Car Detected"
+      message: "{{ trigger.event.data.object }} detected at the front door. {{ trigger.event.data.confidence }}% confidence"
 
 - id: face_recognised
   alias: Face recognised
@@ -117,8 +136,8 @@
   action:
     service: notify.all_devices
     data_template:
-      message: "{{ trigger.event.data.name }} is at the front door with probability {{ trigger.event.data.confidence }}"
-      title: Door-cam notification
+      message: "{{ trigger.event.data.name }} is at the front door. {{ trigger.event.data.confidence }}% confidence"
+      title: Face Detected
 
 
 
@@ -150,6 +169,10 @@
 
 - id: alarm_notify
   alias: 'Send notification when alarm triggered'
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
@@ -177,6 +200,10 @@
 
 - id: alarm_notify_disarmed
   alias: 'Send notification when alarm is Disarmed'
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
@@ -192,6 +219,10 @@
 
 - id: alarm_notify_pending
   alias: 'Send notification when alarm is in pending status'
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
@@ -203,6 +234,10 @@
 
 - id: alarm_notify_armed_away
   alias: 'Send notification when alarm is Armed in Away mode'
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
@@ -231,6 +266,13 @@
 
 - id: alarm_disable_when_arriving
   alias: 'Alarm disarm when return home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'pending'
   trigger:
     - platform: state
       entity_id: person.william
@@ -298,11 +340,17 @@
   alias: 'Facebox Announcement'
   initial_state: on
   condition:
-    - condition: state
-      entity_id: input_boolean.push_notification
-      state: 'on'
-    - condition: template
-      value_template: "{{states.sensor.facebox_detection.state != 'unknown' }}"
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.push_notification
+        state: 'on'
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{states.sensor.facebox_detection.state != 'unknown' }}"
+        - condition: template
+        value_template: "{{states.sensor.facebox_detection.state != 'unavailable' }}"
   trigger:
     - platform: state
       entity_id: binary_sensor.front_door_motion

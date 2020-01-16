@@ -115,7 +115,7 @@ image_processing:
     save_timestamped_file: True
     source:
       - entity_id: camera.front_door
-        name: deepstack_person_detector
+        name: deepstack_detector
 
 # Notify
 notify:
@@ -131,7 +131,7 @@ camera:
     file_path: /config/www/facebox/tmp/image.jpg
     name: Saved Image
   - platform: local_file
-    file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
+    file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
     name: deepstack_latest_person
   - platform: ffmpeg
     name: front_door
