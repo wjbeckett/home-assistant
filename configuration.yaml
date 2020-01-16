@@ -98,7 +98,6 @@ image_processing:
     source: 
       - entity_id: camera.local_file
         name: Facebox Saved Image
-  image_processing: 
   - platform: facebox
     ip_address: !secret facebox_host
     port: 8086
