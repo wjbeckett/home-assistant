@@ -337,11 +337,12 @@
   alias: 'Facebox Announcement'
   initial_state: on
   condition:
-    - condition: state
-      entity_id: input_boolean.push_notification
-      state: 'on'
-    - condition: template
-      value_template: "{{states.sensor.facebox_detection.state != 'unknown' }} or {{states.sensor.facebox_detection.state != 'unavailable' }}"
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{states.sensor.facebox_detection.state != 'unknown' }}"
+      - condition: template
+        value_template: "{{states.sensor.facebox_detection.state != 'unavailable' }}"
   trigger:
     - platform: state
       entity_id: binary_sensor.front_door_motion
