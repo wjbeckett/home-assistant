@@ -94,7 +94,7 @@ image_processing:
   - platform: facebox
     ip_address: !secret facebox_host
     port: 8086
-    scan_interval: 10000
+    # scan_interval: 10000
     source: 
       - entity_id: camera.saved_image
         name: Facebox Saved Image
@@ -108,7 +108,7 @@ image_processing:
   - platform: facebox
     ip_address: !secret facebox_host
     port: 8086
-    scan_interval: 10000
+    # scan_interval: 10000
     source: 
       - entity_id: camera.front_cam
         name: Facebox front cam
@@ -120,7 +120,7 @@ image_processing:
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
-      - entity_id: camera.front_door
+      - entity_id: camera.front_cam
         name: deepstack_front_door
   - platform: deepstack_object
     ip_address: !secret deepstack_host
@@ -130,7 +130,7 @@ image_processing:
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
-      - entity_id: camera.local_file
+      - entity_id: camera.front_cam
         name: deepstack_person_detector
 
 # Notify
@@ -155,7 +155,7 @@ camera:
   #  name: Front Door
   - platform: ffmpeg
     name: front_cam
-    input : rtsp://camera:letmein@172.30.1.2/live
+    input : rtsp://camera:letmein@172.30.1.114/live
 
 # Enable Stream Componenet
 stream:

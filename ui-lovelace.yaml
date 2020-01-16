@@ -97,6 +97,7 @@ views:
           - image_processing.facebox_front_cam
           - image_processing.facebox_front_door
           - image_processing.facebox_saved_image
+          - image_processing.deepstack_front_door
           - image_processing.deepstack_person_detector
 
   - icon: mdi:play-circle-outline
