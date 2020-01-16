@@ -316,12 +316,8 @@
     - delay: 00:00:02
     - service: notify.all_devices
       data_template:
+        message: "{{ states('sensor.facebox_detection') }} is at the front door"
+    - service: tts.google_say
+      entity_id: "media_player.kitchen_display"
+      data_template:
         message: "{{ states('sensor.facebox_detection') }} is at the door"
-    #- service_template: '{% if states.sensor.facebox_detection.state != "unknown" %} tts.google_say {% endif %}'
-    #  data_template:
-    #    entity_id: media_player.bluenano <chromecast>
-    #    message: '{% if states.sensor.facebox_detection.state != "unknown" %}  {{ states<"sensor.facebox_detection"> }} is at the door {% else %} {% endif %}'
-    #- service: media_player.volume_set
-    #  data:
-    #    entity_id: media_player.bluenano
-    #    volume_level: 0.9
