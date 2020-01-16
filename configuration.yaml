@@ -114,7 +114,7 @@ image_processing:
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
-      - entity_id: camera.front_door
+      - entity_id: camera.saved_image
         name: deepstack_person_detector
 
 # Notify
