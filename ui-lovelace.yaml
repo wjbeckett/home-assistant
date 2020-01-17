@@ -86,11 +86,14 @@ views:
         entity: camera.saved_image
       - type: picture-entity
         entity: camera.deepstack_latest_person
+      - type: picture-entity
+        entity: camera.deepstack_latest_car
       - type: entities
         entities:
           - image_processing.facebox_front_door
           - image_processing.facebox_saved_image
-          - image_processing.deepstack_detector
+          - image_processing.deepstack_person_detector
+          - image_processing.deepstack_car_detector
           - sensor.front_door_detection
 
   - icon: mdi:play-circle-outline

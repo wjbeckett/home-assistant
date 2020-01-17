@@ -14,7 +14,8 @@ homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - /config/www
-    - /config/www/facebox/tmp
+    - /config/www/facebox
+    - /config/www/tmp
     - /config/www/deepstack
 
 # Text to speech
@@ -110,12 +111,23 @@ image_processing:
     ip_address: !secret deepstack_host
     port: 5000
     api_key: !secret deepstack_key
-    scan_interval: 20 # Optional, in seconds
+    #scan_interval: 20 # Optional, in seconds
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
-      - entity_id: camera.front_door
-        name: deepstack_detector
+      - entity_id: camera.saved_image
+        name: deepstack_person_detector
+  - platform: deepstack_object
+    ip_address: !secret deepstack_host
+    port: 5000
+    api_key: !secret deepstack_key
+    #scan_interval: 20 # Optional, in seconds
+    save_file_folder: /config/www/deepstack
+    save_timestamped_file: True
+    target: car
+    source:
+      - entity_id: camera.saved_image
+        name: deepstack_car_detector
 
 # Notify
 notify:
@@ -128,11 +140,14 @@ notify:
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/facebox/tmp/image.jpg
+    file_path: /config/www/tmp/image.jpg
     name: Saved Image
   - platform: local_file
-    file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
+    file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
+  - platform: local_file
+    file_path: /config/www/deepstack/deepstack_car_detector_latest_car.jpg
+    name: deepstack_latest_car
   - platform: ffmpeg
     name: front_door
     input : rtsp://camera:letmein@172.30.1.114/live
