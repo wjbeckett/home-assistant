@@ -11,3 +11,4 @@ kitchen_lights:
 
 Household:
   - person.william
+  - person.emily
