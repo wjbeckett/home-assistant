@@ -82,65 +82,6 @@
         title: ''
         message: 'Garage door has been open for 10 minutes! Close it!'
 
-- id: person_detection
-  alias: Notify when person detected
-  initial_state: 'on'
-  hide_entity: True
-  condition:
-    - condition: state
-      entity_id: input_boolean.options_notifications_push
-      state: 'on'
-  trigger:
-    platform: event
-    event_type: image_processing.object_detected
-    event_data:
-      object: person
-  action:
-    service: notify.all_devices
-    data_template:
-      title: "Person Detected"
-      message: "{{ trigger.event.data.object }} detected at the front door. {{ trigger.event.data.confidence }}% confidence"
-
-- id: car_detection
-  alias: Notify when car detected
-  initial_state: 'on'
-  hide_entity: True
-  condition:
-    - condition: state
-      entity_id: input_boolean.options_notifications_push
-      state: 'on'
-  trigger:
-    platform: event
-    event_type: image_processing.object_detected
-    event_data:
-      object: car
-  action:
-    service: notify.all_devices
-    data_template:
-      title: "Car Detected"
-      message: "{{ trigger.event.data.object }} detected at the front door. {{ trigger.event.data.confidence }}% confidence"
-
-- id: face_recognised
-  alias: Face recognised
-  condition:
-    - condition: state
-      entity_id: input_boolean.options_notifications_push
-      state: 'on'
-    - condition: template
-      value_template: "{{ trigger.event.data.confidence|float > 50 }}"
-  trigger:
-    platform: event
-    event_type: image_processing.detect_face
-#    event_data:
-#      entity_id: image_processing.facebox_front_door
-  action:
-    service: notify.all_devices
-    data_template:
-      message: "{{ trigger.event.data.name }} is at the front door. {{ trigger.event.data.confidence }}% confidence"
-      title: Face Detected
-
-
-
 #################################################################
 ## Home Security
 #################################################################
@@ -315,25 +256,11 @@
 #    to: 
 
 #################################################################
-## Cameras
+## Object Detection
 #################################################################
-#- id: motion_detected_capture_photo
-#  alias: Capture Photo when Motion Detected
-#  trigger:
-#    - platform: state
-#      entity_id: binary_sensor.front_door_motion
-#      to: 'on'
-#  condition:
-#    - condition: state
-#      entity_id: input_boolean.options_notifications_push
-#      state: 'on'
-#    - condition: template
-#      value_template: "{{ trigger.from_state.state != trigger.to_state.state }}"
-#  action:
-#    service: 
 
-- id: facebox_announcement
-  alias: 'Facebox Announcement'
+- id: front_door_camera_scan
+  alias: 'Scan still image from from door'
   initial_state: on
   condition:
     - condition: state
@@ -356,12 +283,61 @@
       entity_id: image_processing.deepstack_person_detector
     - service: image_processing.scan
       entity_id: image_processing.deepstack_car_detector
-#    - delay: 00:00:02
-#    - service_template: '{% if states.sensor.facebox_detection.state != "unknown" or states.sensor.facebox_detection.state != "unavailable" %} notify.all_devices {% endif %}'
-#      data_template:
-#        message: "{{ states('sensor.front_door_detection') }} is at the front door"
-#    - service_template: '{% if states.sensor.facebox_detection.state != "unknown" or states.sensor.facebox_detection.state != "unavailable" %} tts.google_say {% endif %}'
-#      data_template:
-#        entity_id: media_player.kitchen_display
-#        message: "{{ states('sensor.front_door_detection') }} is at the front door"
-      
+
+- id: face_recognised
+  alias: Face recognised
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
+    - condition: template
+      value_template: "{{ trigger.event.data.confidence|float > 50 }}"
+  trigger:
+    platform: event
+    event_type: image_processing.detect_face
+  action:
+    - service_template: '{% if states.sensor.facebox_detection.state != "unknown" or states.sensor.facebox_detection.state != "unavailable" %} notify.all_devices {% endif %}'
+      data_template:
+        message: "{{ states('sensor.front_door_detection') }} is at the front door"
+    - service_template: '{% if states.sensor.facebox_detection.state != "unknown" or states.sensor.facebox_detection.state != "unavailable" %} tts.google_say {% endif %}'
+      data_template:
+        entity_id: media_player.kitchen_display
+        message: "{{ states('sensor.front_door_detection') }} is at the front door"     
+
+- id: person_detection
+  alias: Notify when person detected
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
+  trigger:
+    platform: event
+    event_type: image_processing.object_detected
+    event_data:
+      object: person
+  action:
+    service: notify.all_devices
+    data_template:
+      title: "Person Detected"
+      message: "{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence)."
+
+- id: car_detection
+  alias: Notify when car detected
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
+  trigger:
+    platform: event
+    event_type: image_processing.object_detected
+    event_data:
+      object: car
+  action:
+    service: notify.all_devices
+    data_template:
+      title: "Car Detected"
+      message: "{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence)."
