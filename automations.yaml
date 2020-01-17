@@ -321,8 +321,8 @@
   trigger:
     platform: event
     event_type: image_processing.object_detected
-    event_data:
-      object: person
+    #event_data:
+    #  object: person
   action:
     service: notify.all_devices
     data_template:
