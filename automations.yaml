@@ -339,6 +339,8 @@
     - condition: state
       entity_id: input_boolean.options_notifications_push
       state: 'on'
+    - condition: template
+      value_template:  “{{ not is_state('sensor.front_door_detection','unavailable') or not is_state('sensor.front_door_detection','unknown') }}”
   trigger:
     - platform: state
       entity_id: binary_sensor.front_door_motion
@@ -353,11 +355,11 @@
     - service: image_processing.scan
       entity_id: image_processing.facebox_saved_image
     - delay: 00:00:02
-    - service_template: '{% if states.sensor.front_door_detection.state != "unknown" or states.sensor.front_door_detection.state != "unavailable" %} notify.all_devices {% endif %}'
+    - service: notify.all_devices
       data_template:
-        message: '{% if states.sensor.front_door_detection.state != "unknown" or states.sensor.front_door_detection.state != "unavailable" %}  {{ states("sensor.front_door_detection") }} is at the front door {% else %} {% endif %}'
-    - service_template: '{% if states.sensor.front_door_detection.state != "unknown" or states.sensor.front_door_detection.state != "unavailable" %}  tts.google_say {% endif %}'
+        message: '{{ states("sensor.front_door_detection") }} is at the front door'
+    - service: tts.google_say
       data_template:
         entity_id: media_player.kitchen_display
-        message: '{% if states.sensor.front_door_detection.state != "unknown" or states.sensor.front_door_detection.state != "unavailable" %}  {{ states("sensor.front_door_detection") }} is at the front door {% else %} {% endif %}'
+        message: '{{ states("sensor.front_door_detection") }} is at the front door'
       
