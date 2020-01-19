@@ -297,15 +297,15 @@
     event_type: image_processing.detect_face
   action:
     - service_template: >-
-        {% if not is_state('sensor.front_door_detection'),'unavailable' %} 
+        {%- if not is_state('sensor.front_door_detection'),'unavailable' -%} 
         notify.all_devices
-        {% endif %}
+        {%- endif -%}
       data_template:
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
     - service_template: >-
-        {% if not is_state('sensor.front_door_detection'),'unavailable' %}
+        {%- if not is_state('sensor.front_door_detection'),'unavailable' -%}
         tts.google_say
-        {% endif %}
+        {%- endif -%}
       data_template:
         entity_id: media_player.kitchen_display
         message: "{{ states('sensor.front_door_detection') }} is at the front door"     
