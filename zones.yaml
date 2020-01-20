@@ -5,6 +5,12 @@
   radius: 20
   icon: mdi:home
 
+- name: Work
+  latitude: !secret work_lat
+  longitude: !secret work_long
+  radius: 50
+  icon: mdi:briefcase
+
 - name: Ron & Deb
   latitude: !secret ron_lat
   longitude: !secret ron_long
