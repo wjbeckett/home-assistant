@@ -16,7 +16,7 @@ views:
     badges:
       - person.william
       - person.emily
-      - binary_sensor.kitchen_motion_sensor
+      - binary_sensor.kitchen_sensor_motion
       - binary_sensor.front_door_motion
     cards:
       - type: entities
