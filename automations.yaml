@@ -271,11 +271,11 @@
       entity_id: camera.front_door_image
       from: 'recording'
   action:
-    - delay: 00:00:01
-    - service: camera.snapshot
-      data:
-        entity_id: camera.front_door_image
-        filename: '/config/www/tmp/image.jpg' 
+  #  - delay: 00:00:01
+  #  - service: camera.snapshot
+  #    data:
+  #      entity_id: camera.front_door_image
+  #      filename: '/config/www/tmp/image.jpg' 
     - delay: 00:00:01
     - service: image_processing.scan
       entity_id: image_processing.facebox_saved_image
