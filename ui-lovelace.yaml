@@ -85,6 +85,8 @@ views:
         entities:
          - camera.front_door
       - type: picture-entity
+        entity: camera.front_door_push
+      - type: picture-entity
         entity: camera.saved_image
       - type: picture-entity
         entity: camera.deepstack_latest_person

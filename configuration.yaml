@@ -145,6 +145,15 @@ camera:
   - platform: ffmpeg
     name: front_door
     input : rtsp://camera:letmein@172.30.1.114/live
+  - platform: push
+    name: Front Door Push
+    webhook_id: push_camera_image
+
+
+
+
+
+
 
 # Enable Stream Componenet
 stream:
