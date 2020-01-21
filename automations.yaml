@@ -268,8 +268,8 @@
       state: 'on'
   trigger:
     - platform: state
-      entity_id: camera.front_door_image
-      from: 'recording'
+      entity_id: binary_sensor.front_door_motion
+      to: 'on'
   action:
     - delay: 00:00:01
     - service: camera.snapshot
