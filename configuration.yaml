@@ -92,7 +92,7 @@ image_processing:
     port: 8086
     scan_interval: 500000
     source: 
-      - entity_id: camera.front_door_image
+      - entity_id: camera.saved_image
         name: Facebox Saved Image
   - platform: facebox
     ip_address: !secret facebox_host
@@ -109,7 +109,7 @@ image_processing:
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     source:
-      - entity_id: camera.front_door_image
+      - entity_id: camera.saved_image
         name: deepstack_person_detector
   #- platform: deepstack_object
   #  ip_address: !secret deepstack_host
@@ -133,9 +133,9 @@ notify:
 
 # Camera
 camera:
-#  - platform: local_file
-#    file_path: /config/www/tmp/image.jpg
-#    name: Saved Image
+  - platform: local_file
+    file_path: /config/www/tmp/image.jpg
+    name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
@@ -145,9 +145,6 @@ camera:
   - platform: ffmpeg
     name: front_door
     input : rtsp://frontdoor:letmein@172.30.1.114/live
-  - platform: push
-    name: Front Door Image
-    webhook_id: push_camera_image
 
 # Mqtt
 mqtt:
