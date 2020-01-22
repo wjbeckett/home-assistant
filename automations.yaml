@@ -302,6 +302,10 @@
         {% endif %}
       data_template:
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
+        data: 
+        android:
+          notification:
+            image: !secret deepstack_latest_person
     - service_template: >-
         {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
         tts.google_say
@@ -321,10 +325,37 @@
   trigger:
     platform: event
     event_type: image_processing.object_detected
-    #event_data:
-    #  object: person
+    event_data:
+      object: person
   action:
     service: notify.all_devices
     data_template:
       title: "Something Detected"
       message: "{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence)."
+      data: 
+        android:
+          notification:
+            image: !secret deepstack_latest_person
+
+- id: car_detection
+  alias: Notify when car detected
+  initial_state: 'on'
+  hide_entity: True
+  condition:
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
+  trigger:
+    platform: event
+    event_type: image_processing.object_detected
+    event_data:
+      object: car
+  action:
+    service: notify.all_devices
+    data_template:
+      title: "Car Detected"
+      message: "{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence)."
+      data: 
+        android:
+          notification:
+            image: !secret deepstack_latest_car
