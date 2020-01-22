@@ -281,8 +281,8 @@
       entity_id: image_processing.facebox_saved_image
     - service: image_processing.scan
       entity_id: image_processing.deepstack_person_detector
-    #- service: image_processing.scan
-    #  entity_id: image_processing.deepstack_car_detector
+    - service: image_processing.scan
+      entity_id: image_processing.deepstack_car_detector
 
 - id: face_recognised
   alias: Face recognised
