@@ -132,6 +132,14 @@ notify:
       - service: mobile_app_william
       - service: mobile_app_emily
 
+# Zoneminder
+zoneminder:
+  - host: !secret zm_host
+    ssl: true
+    verify_ssl: false
+    username: !secret zm_username
+    password: !secret zm_password
+
 # Camera
 camera:
   - platform: local_file
@@ -146,10 +154,9 @@ camera:
   - platform: ffmpeg
     name: front_door
     input : rtsp://frontdoor:letmein@172.30.1.114/live
-  - platform: push
-    name: front_door_push
-    webhook_id: front_door_push
-
+  - platform: zoneminder
+    name: zm_front_door
+  
 # RestCommand
 rest_command:
   trigger_snapshot_frontdoor:

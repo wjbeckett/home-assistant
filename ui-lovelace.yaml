@@ -191,3 +191,8 @@ views:
         show_header_toggle: true
         entities:
           - input_boolean.options_notifications_push
+      - type: entities
+        title: Zoneminder Latest Alert
+        show_header_toggle: false
+        entities:
+          - sensor.front_door_alerts
