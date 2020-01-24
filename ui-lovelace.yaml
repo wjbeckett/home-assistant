@@ -84,7 +84,6 @@ views:
         camera_view: live
         entities:
          - camera.front_door
-         - camera.zoneminder
       - type: picture-entity
         entity: camera.saved_image
       - type: picture-entity

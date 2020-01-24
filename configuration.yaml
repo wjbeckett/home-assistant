@@ -151,9 +151,6 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_car_detector_latest_car.jpg
     name: deepstack_latest_car
-  - platform: ffmpeg
-    name: front_door
-    input : rtsp://frontdoor:letmein@172.30.1.114/live
   - platform: zoneminder
     name: zm_front_door
   
