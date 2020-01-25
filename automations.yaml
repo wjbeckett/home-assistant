@@ -270,7 +270,7 @@
     - platform: state
       entity_id: camera.front_door
   action:
-    - delay: 00:00:01
+    - delay: 00:00:02
     - service: camera.snapshot
       data:
         entity_id: camera.front_door
