@@ -166,9 +166,13 @@ camera:
 
 # Mqtt
 mqtt:
-  broker: !secret mqtt_host
-  username: !secret mqtt_username
-  password: !secret mqtt_password
+  broker: cloudmqtt_host
+  port: cloudmqtt_port
+  username: clouqmqtt_username
+  password: cloudmqtt_password
+  #  broker: !secret mqtt_host
+#  username: !secret mqtt_username
+#  password: !secret mqtt_password
 
 
 # Enable Stream Componenet
