@@ -18,7 +18,8 @@ homeassistant:
     - /config/www/facebox
     - /config/www/tmp
     - /config/www/deepstack
-
+  auth_mfa_modules:
+    - type: totp
 # Logger
 logger:
   logs:
