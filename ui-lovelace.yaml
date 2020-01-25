@@ -198,4 +198,4 @@ views:
         title: Fail2Ban
         show_header_toggle: false
         entities:
-          - sensor.fail2ban_hassiptables
+          - sensor.fail2ban_hass_iptables
