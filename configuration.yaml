@@ -92,7 +92,7 @@ image_processing:
     port: 8086
     scan_interval: 500000
     source: 
-      - entity_id: camera.front_door_push
+      - entity_id: camera.saved_image
         name: Facebox Saved Image
   - platform: facebox
     ip_address: !secret facebox_host
@@ -110,7 +110,7 @@ image_processing:
     save_timestamped_file: True
     target: person
     source:
-      - entity_id: camera.front_door_push
+      - entity_id: camera.saved_image
         name: deepstack_person_detector
   - platform: deepstack_object
     ip_address: !secret deepstack_host
@@ -121,7 +121,7 @@ image_processing:
     save_timestamped_file: True
     target: car
     source:
-      - entity_id: camera.front_door_push
+      - entity_id: camera.saved_image
         name: deepstack_car_detector
 
 # Notify
@@ -153,12 +153,6 @@ camera:
     name: deepstack_latest_car
   - platform: zoneminder
     name: zm_front_door
-  
-# RestCommand
-rest_command:
-  trigger_snapshot_frontdoor:
-    url: !secret rest_command
-
 
 
 # Mqtt
