@@ -9,7 +9,8 @@ lovelace:
 http:
   base_url: !secret base_url
   ip_ban_enabled: true
-  login_attempts_threshold: 2
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
@@ -17,6 +18,11 @@ homeassistant:
     - /config/www/facebox
     - /config/www/tmp
     - /config/www/deepstack
+
+# Logger
+logger:
+  logs:
+    homeassistant.components.http.ban: warning
 
 # Text to speech
 tts:

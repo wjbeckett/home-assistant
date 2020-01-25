@@ -194,3 +194,8 @@ views:
         show_header_toggle: false
         entities:
           - sensor.front_door_alerts
+      - type: entities
+        title: Fail2Ban
+        show_header_toggle: false
+        entities:
+          - sensor.fail2ban_hassiptables

@@ -26,3 +26,7 @@
   - platform: mqtt
     state_topic: "zoneminder/1"
     name: "Front Door Alerts"
+    - platform: fail2ban
+    jails:
+      - hass-iptables
+    file_path: /fail2ban/fail2ban.log
