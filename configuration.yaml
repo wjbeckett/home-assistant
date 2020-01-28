@@ -96,17 +96,9 @@ image_processing:
   - platform: facebox
     ip_address: !secret facebox_host
     port: 8086
-    scan_interval: 500000
-    source: 
-      - entity_id: camera.saved_image
-        name: Facebox Saved Image
-  - platform: facebox
-    ip_address: !secret facebox_host
-    port: 8086
-    # scan_interval: 10000
+    scan_interval: 10000
     source: 
       - entity_id: camera.front_door
-        name: Facebox front door
   - platform: deepstack_object
     ip_address: !secret deepstack_host
     port: 5000
@@ -116,7 +108,7 @@ image_processing:
     save_timestamped_file: True
     target: person
     source:
-      - entity_id: camera.saved_image
+      - entity_id: camera.front_door
         name: deepstack_person_detector
   - platform: deepstack_object
     ip_address: !secret deepstack_host
@@ -127,8 +119,8 @@ image_processing:
     save_timestamped_file: True
     target: car
     source:
-      - entity_id: camera.saved_image
-        name: deepstack_car_detector
+      - entity_id: camera.front_door
+        name: deepstack_car_detector 
 
 # Notify
 notify:
