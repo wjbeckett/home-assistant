@@ -248,9 +248,9 @@
   #    filename: /config/www/tmp/image.jpg
   #- delay: 00:00:03
   - service: image_processing.scan
-      entity_id: image_processing.facebox_saved_image
+    entity_id: image_processing.facebox_saved_image
   - service: image_processing.scan
-      entity_id: image_processing.deepstack_person_detector
+    entity_id: image_processing.deepstack_person_detector
   - entity_id: image_processing.deepstack_car_detector
     service: image_processing.scan
   - service: notify.mobile_app_william
