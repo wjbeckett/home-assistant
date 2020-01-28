@@ -261,26 +261,32 @@
 - id: face_recognised
   alias: Face recognised
   condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  - condition: template
-    value_template: '{{ trigger.event.data.confidence|float > 50 }}'
+    - condition: state
+      entity_id: input_boolean.options_notifications_push
+      state: 'on'
+    - condition: template
+      value_template: "{{ trigger.event.data.confidence|float > 50 }}"
   trigger:
     platform: event
     event_type: image_processing.detect_face
   action:
-  - service_template: '{% if not is_state(''sensor.front_door_detection'' , ''unavailable'') %}  notify.all_devices {% endif %}'
-    data_template:
-      message: '{{ states(''sensor.front_door_detection'') }} is at the front door'
-      data:
-      android:
-        notification:
-          image: '{{ states.camera.deepstack_latest_person.attributes.entity_picture }}'
-  - service_template: '{% if not is_state(''sensor.front_door_detection'' , ''unavailable'') %} tts.google_say {% endif %}'
-    data_template:
-      entity_id: media_player.kitchen_display
-      message: '{{ states('sensor.front_door_detection') }} is at the front door'
+    - service_template: >-
+        {% if not is_state('sensor.front_door_detection' , 'unavailable') %} 
+        notify.all_devices
+        {% endif %}
+      data_template:
+        message: "{{ states('sensor.front_door_detection') }} is at the front door"
+        data: 
+        android:
+          notification:
+            image: !secret deepstack_latest_person
+    - service_template: >-
+        {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
+        tts.google_say
+        {% endif %}
+      data_template:
+        entity_id: media_player.kitchen_display
+        message: "{{ states('sensor.front_door_detection') }} is at the front door" 
 
 - id: person_detection
   alias: Notify when person detected
