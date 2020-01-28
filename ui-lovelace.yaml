@@ -10,14 +10,11 @@ title: Beckett Home
 views:
   - icon: mdi:home-assistant
     id: home
-    # Name of the view. Will be used as the tooltip for tab icon
     title: Home
-    # theme: darkorange
     badges:
       - person.william
       - person.emily
       - binary_sensor.kitchen_sensor_motion
-      - binary_sensor.front_door_motion
     cards:
       - type: entities
         name: Doors
@@ -85,15 +82,12 @@ views:
         entities:
          - camera.front_door
       - type: picture-entity
-        entity: camera.saved_image
-      - type: picture-entity
         entity: camera.deepstack_latest_person
       - type: picture-entity
         entity: camera.deepstack_latest_car
       - type: entities
         entities:
           - image_processing.facebox_front_door
-          - image_processing.facebox_saved_image
           - image_processing.deepstack_person_detector
           - image_processing.deepstack_car_detector
           - sensor.front_door_detection

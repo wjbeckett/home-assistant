@@ -140,9 +140,9 @@ zoneminder:
 
 # Camera
 camera:
-  - platform: local_file
-    file_path: /config/www/tmp/image.jpg
-    name: Saved Image
+#  - platform: local_file
+#    file_path: /config/www/tmp/image.jpg
+#    name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
