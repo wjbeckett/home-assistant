@@ -3,6 +3,10 @@ default_config:
 lovelace:
   mode: yaml
 
+frontend:
+  themes: !include_dir_merge_named themes
+
+
 http:
   base_url: !secret base_url
   ip_ban_enabled: true
@@ -129,6 +133,10 @@ notify:
     services:
       - service: mobile_app_william
       - service: mobile_app_emily
+  - name: pushover
+    platform: pushover
+    api_key: !secret pushover_api
+    user_key: !secret pushover_user
 
 # Zoneminder
 zoneminder:

@@ -6,6 +6,17 @@ resources:
   - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
     type: module
 
+custom_header:
+  compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
+
+
+
+
+
 title: Beckett Home
 views:
   - icon: mdi:home-assistant
