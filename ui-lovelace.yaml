@@ -35,21 +35,21 @@ views:
               - binary_sensor.garage_door
               - binary_sensor.back_door
           - type: custom:mini-graph-card
-          entities:
-            - entity: binary_sensor.kitchen_sensor_motion
-            - entity: binary_sensor.garage_door
-            - entity: binary_sensor.back_door
-          name: Motion & Doors
-          hours_to_show: 24
-          points_per_hour: 60
-          aggregate_func: max
-          line_width: 2
-          height: 20
-          state_map:
-            - value: "off"
-              label: Clear
-            - value: "on"
-              label: Alert
+            entities:
+              - entity: binary_sensor.kitchen_sensor_motion
+              - entity: binary_sensor.garage_door
+              - entity: binary_sensor.back_door
+            name: Motion & Doors
+            hours_to_show: 24
+            points_per_hour: 60
+            aggregate_func: max
+            line_width: 2
+            height: 20
+            state_map:
+              - value: "off"
+                label: Clear
+              - value: "on"
+                label: Alert
       - type: vertical-stack
         cards:
           - type: alarm-panel
@@ -222,27 +222,27 @@ views:
           - type: custom:mini-graph-card
             entities:
               - speedtestdotnet.ping
-              name: Ping
-              hours_to_show: 24
-              points_per_hour: 20
-              line_width: 2
-              hour24: true
-              height: 180
+            name: Ping
+            hours_to_show: 24
+            points_per_hour: 20
+            line_width: 2
+            hour24: true
+            height: 180
           - type: custom:mini-graph-card
             entities:
               - speedtestdotnet.download
-              name: Download
-              hours_to_show: 24
-              points_per_hour: 20
-              line_width: 2
-              hour24: true
-              height: 180
+            name: Download
+            hours_to_show: 24
+            points_per_hour: 20
+            line_width: 2
+            hour24: true
+            height: 180
           - type: custom:mini-graph-card
             entities:
               - speedtestdotnet.upload
-              name: Upload
-              hours_to_show: 24
-              points_per_hour: 20
-              line_width: 2
-              hour24: true
-              height: 180
+            name: Upload
+            hours_to_show: 24
+            points_per_hour: 20
+            line_width: 2
+            hour24: true
+            height: 180
