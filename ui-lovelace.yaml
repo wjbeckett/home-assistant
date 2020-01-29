@@ -75,12 +75,12 @@ views:
               #- entity: light.55404001dc4f22ac0486
               #  type: custom:slider-entity-row
               #  toggle: true
-              - entity: group.kitchen_lights
+              - entity: light.kitchen_lights
                 type: custom:slider-entity-row
                 toggle: true
-              #- entity: light.80304313dc4f229a3225
-              #  type: custom:slider-entity-row
-              #  toggle: true
+              - entity: light.80304313dc4f229a3225
+                type: custom:slider-entity-row
+                toggle: true
               #- entity: light.pendant_light_left
               #  type: custom:slider-entity-row
               #  toggle: true
@@ -225,6 +225,8 @@ views:
             entities:
               - sensor.speedtest_ping
             name: Ping
+            lower_bound: 0
+            upper_bound: 100
             hours_to_show: 24
             line_width: 2
             height: 180
@@ -232,11 +234,15 @@ views:
             entities:
               - sensor.speedtest_download
             name: Download
+            lower_bound: 0
+            upper_bound: 100
             hours_to_show: 24
             line_width: 2
           - type: custom:mini-graph-card
             entities:
               - sensor.speedtest_upload
             name: Upload
+            lower_bound: 0
+            upper_bound: 100
             hours_to_show: 24
             line_width: 2
