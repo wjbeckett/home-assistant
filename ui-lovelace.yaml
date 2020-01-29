@@ -36,9 +36,9 @@ views:
               - binary_sensor.back_door
           - type: custom:mini-graph-card
             entities:
-              - entity: binary_sensor.kitchen_sensor_motion
-              - entity: binary_sensor.garage_door
-              - entity: binary_sensor.back_door
+              - binary_sensor.kitchen_sensor_motion
+              - binary_sensor.garage_door
+              - binary_sensor.back_door
             name: Motion & Doors
             hours_to_show: 24
             points_per_hour: 60
@@ -127,9 +127,7 @@ views:
                 show_fill: false
             name: Temperature
             hours_to_show: 24
-            points_per_hour: 20
             line_width: 2
-            hour24: true
             height: 180
   
   - icon: mdi:cctv
@@ -203,6 +201,10 @@ views:
       - type: vertical-stack
         cards:
           - type: entities
+            show_header_toggle: false
+            entities:
+              - sensor.wifi_status
+          - type: entities
             title: Switches
             show_header_toggle: true
             entities:
@@ -221,28 +223,20 @@ views:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - speedtestdotnet.ping
+              - sensor.speedtest_ping
             name: Ping
             hours_to_show: 24
-            points_per_hour: 20
             line_width: 2
-            hour24: true
             height: 180
           - type: custom:mini-graph-card
             entities:
-              - speedtestdotnet.download
+              - sensor.speedtest_download
             name: Download
             hours_to_show: 24
-            points_per_hour: 20
             line_width: 2
-            hour24: true
-            height: 180
           - type: custom:mini-graph-card
             entities:
-              - speedtestdotnet.upload
+              - sensor.speedtest_upload
             name: Upload
             hours_to_show: 24
-            points_per_hour: 20
             line_width: 2
-            hour24: true
-            height: 180
