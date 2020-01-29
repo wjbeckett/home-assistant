@@ -30,3 +30,5 @@
     jails:
       - hass-iptables
     file_path: /fail2ban/fail2ban.log
+  - platform: google_wifi
+    name: WiFi

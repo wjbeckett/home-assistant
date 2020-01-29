@@ -169,6 +169,14 @@ mqtt:
   discovery: true
   discovery_prefix: homeassistant
 
+# Speedtest
+speedtestdotnet:
+  manual: true
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
 
 # Enable Stream Componenet
 stream:
