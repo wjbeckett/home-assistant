@@ -22,10 +22,7 @@ views:
   - icon: mdi:home-assistant
     id: home
     title: Home
-    badges:
-      - person.william
-      - person.emily
-      - binary_sensor.kitchen_sensor_motion
+    badges: []
     cards:
       - type: glance
         entities:
