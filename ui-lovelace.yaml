@@ -27,6 +27,10 @@ views:
       - person.emily
       - binary_sensor.kitchen_sensor_motion
     cards:
+      - type: glance
+        entities:
+          - person.william
+          - person.emily
       - type: vertical-stack
         cards:
           - type: entities
@@ -203,17 +207,15 @@ views:
             entities:
               - sensor.fail2ban_hass_iptables
       - type: horizontal-stack
-        title: Internet Speed
         cards:
           - type: custom:mini-graph-card
+            name: Download/Upload
             entities:
-              - sensor.speedtest_ping
-            name: Ping
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.speedtest_download
-            name: Download
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.speedtest_upload
-            name: Upload
+              - entity: sensor.speedtest_download
+                name: Download
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.speedtest_upload
+                name: Upload
+                show_state: true
+                state_adaptive_color: true
