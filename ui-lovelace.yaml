@@ -219,7 +219,9 @@ views:
             show_header_toggle: false
             entities:
               - sensor.fail2ban_hass_iptables
-      - type: vertical-stack
+      - type: horizontal-stack
+        title: Internet Speed
+      - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
             entities:
