@@ -222,30 +222,15 @@ views:
       - type: horizontal-stack
         title: Internet Speed
         cards:
-      - type: horizontal-stack
-        cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.speedtest_ping
             name: Ping
-            lower_bound: 0
-            upper_bound: 100
-            hours_to_show: 24
-            line_width: 2
-            height: 180
           - type: custom:mini-graph-card
             entities:
               - sensor.speedtest_download
             name: Download
-            lower_bound: 0
-            upper_bound: 100
-            hours_to_show: 24
-            line_width: 2
           - type: custom:mini-graph-card
             entities:
               - sensor.speedtest_upload
             name: Upload
-            lower_bound: 0
-            upper_bound: 100
-            hours_to_show: 24
-            line_width: 2
