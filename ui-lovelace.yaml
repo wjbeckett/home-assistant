@@ -34,22 +34,6 @@ views:
             entities:
               - binary_sensor.garage_door
               - binary_sensor.back_door
-          - type: custom:mini-graph-card
-            entities:
-              - binary_sensor.kitchen_sensor_motion
-              - binary_sensor.garage_door
-              - binary_sensor.back_door
-            name: Motion & Doors
-            hours_to_show: 24
-            points_per_hour: 60
-            aggregate_func: max
-            line_width: 2
-            height: 20
-            state_map:
-              - value: "off"
-                label: Clear
-              - value: "on"
-                label: Alert
       - type: vertical-stack
         cards:
           - type: alarm-panel
@@ -190,7 +174,6 @@ views:
             info: scroll
             artwork: cover
             hide:
-              mute: true
               icon: true
               power_state: false
 
