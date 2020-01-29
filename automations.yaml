@@ -308,12 +308,12 @@
         data:
           android:
             notification:
-              image: '{{ states.camera.deepstack_latest_person.attributes.entity_picture }}'
+              image: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
     - service: notify.pushover
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
-          attachment: '{{ states.camera.deepstack_latest_person.attributes.entity_picture }}'
+          attachment: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
 
 - id: car_detection
   alias: Notify when car detected
@@ -335,9 +335,9 @@
         data:
           android:
             notification:
-              image: 'https://hass.burrowflix.com{{ states.camera.deepstack_latest_car.attributes.entity_picture }}'
+              image: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
     - service: notify.pushover
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
-          attachment: 'https://hass.burrowflix.com{{ states.camera.deepstack_latest_car.attributes.entity_picture }}'
+          attachment: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
