@@ -221,6 +221,7 @@ views:
               - sensor.fail2ban_hass_iptables
       - type: horizontal-stack
         title: Internet Speed
+        cards:
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
