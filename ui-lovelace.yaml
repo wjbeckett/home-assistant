@@ -9,7 +9,7 @@ resources:
     type: module
   - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
     type: module
-  - url: /local/fold-entity-row.js
+  - url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
     type: module
 
 custom_header:
@@ -150,37 +150,18 @@ views:
         cards:
           - type: custom:fold-entity-row
             head: media_player.all_speakers
+            group_config:
+              type: custom:mini-media-player
+              icon: mdi:google
+              artwork: cover
+              info: scroll
             entities:
-              - type: custom:mini-media-player
-                entity: media_player.all_speakers
-                icon: mdi:google
-                artwork: cover
-                info: scroll
-              - type: custom:mini-media-player
-                entity: media_player.kitchen_display
-                icon: mdi:google
-                artwork: cover
-                info: scroll
-              - type: custom:mini-media-player
-                entity: media_player.lounge_room_speaker
-                icon: mdi:google
-                artwork: cover
-                info: scroll
-              - type: custom:mini-media-player
-                entity: media_player.bedroom_speaker
-                icon: mdi:google
-                artwork: cover
-                info: scroll
-              - type: custom:mini-media-player
-                entity: media_player.teddy_s_speaker
-                icon: mdi:google
-                artwork: cover
-                info: scroll
-              - type: custom:mini-media-player
-                entity: media_player.ollie_s_speaker
-                icon: mdi:google
-                artwork: cover
-                info: scroll
+              - media_player.all_speakers
+              - media_player.kitchen_display
+              - media_player.lounge_room_speaker
+              - media_player.bedroom_speaker
+              - media_player.teddy_s_speaker
+              - media_player.ollie_s_speaker
       - type: horizontal-stack
         cards:
           - entity: media_player.samsung_tv_remote
