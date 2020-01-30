@@ -146,22 +146,34 @@ views:
     badges:
       - sensor.plex_bms01
     cards:
-      - type: vertical-stack
-        cards:
-          - type: custom:fold-entity-row
-            head: media_player.all_speakers
-            group_config:
-              type: custom:mini-media-player
-              icon: mdi:google
-              artwork: cover
-              info: scroll
-            entities:
-              - media_player.all_speakers
-              - media_player.kitchen_display
-              - media_player.lounge_room_speaker
-              - media_player.bedroom_speaker
-              - media_player.teddy_s_speaker
-              - media_player.ollie_s_speaker
+      - type: entities
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.all_speakers
+            group: true
+            icon: mdi:google
+            artwork: cover
+            info: scroll
+            hide:
+              power: true
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
+            group: true
+          - type: custom:mini-media-player
+            entity: media_player.bathroom_speakers
+            group: true
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            group: true
+          - type: custom:mini-media-player
+            entity: media_player.lounge_room_speaker
+            group: true
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            group: true
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            group: true
       - type: horizontal-stack
         cards:
           - entity: media_player.samsung_tv_remote
