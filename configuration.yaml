@@ -6,7 +6,6 @@ lovelace:
 frontend:
   themes: !include_dir_merge_named themes
 
-
 http:
   base_url: !secret base_url
   ip_ban_enabled: true
@@ -25,8 +24,27 @@ homeassistant:
     - type: totp
 # Logger
 logger:
+  default: warning
   logs:
     homeassistant.components.http.ban: warning
+    homeassistant.components.sensor: fatal
+    homeassistant.components.rest.sensor: fatal
+    homeassistant.components.command_line.sensor: fatal
+    homeassistant.components.braviatv.media_player: fatal
+    homeassistant.components.websocket_api: fatal
+    homeassistant.components.input_number: fatal
+    homeassistant.components.template.sensor: fatal
+
+# Recorder
+recorder:
+  purge_keep_days: 7
+
+# System Health
+system_health:
+
+# influx DB
+influxdb:
+  host: !secret influx_host
 
 # Text to speech
 tts:
