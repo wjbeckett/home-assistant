@@ -45,8 +45,6 @@ views:
                 name: Kitchen Brightness
             smoothing: true
             hours_to_show: 24
-            points_per_hour: 60
-            line_width: 2
       - type: vertical-stack
         cards:
           - type: alarm-panel
