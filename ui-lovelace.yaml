@@ -238,3 +238,11 @@ views:
                 name: Upload
                 show_state: true
                 state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - type: entities
+            name: DaFang Camera
+            entities:
+              - group.dafang
+          - type: picture-entity
+            entity: camera.dafang_motion_snapshot

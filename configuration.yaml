@@ -177,6 +177,9 @@ camera:
     name: deepstack_latest_car
   - platform: zoneminder
     name: zm_front_door
+  - platform: ffmpeg
+    name: DaFang
+    input: -rtsp_transport tcp -i rtsp://dafang:8554/unicast
 
 
 # Mqtt
