@@ -153,7 +153,7 @@ views:
             group: true
             source: icon
             artwork: cover
-            info: scroll
+            info: short
             hide:
               power: true
           - type: custom:mini-media-player
