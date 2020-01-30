@@ -9,6 +9,8 @@ resources:
     type: module
   - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
     type: module
+  - url: /local/fold-entity-row.js
+    type: module
 
 custom_header:
   compact_mode: true
@@ -60,12 +62,15 @@ views:
               #- entity: light.55404001dc4f22ac0486
               #  type: custom:slider-entity-row
               #  toggle: true
-              - entity: light.kitchen_lights
-                type: custom:slider-entity-row
-                toggle: true
-              - entity: light.80304313dc4f229a3225
-                type: custom:slider-entity-row
-                toggle: true
+              - type: custom:fold-entity-row
+                head: light.kitchen_lights
+                entities:
+                  - entity: light.kitchen_lights
+                    type: custom:slider-entity-row
+                    toggle: true
+                  - entity: light.80304313dc4f229a3225
+                    type: custom:slider-entity-row
+                    toggle: true
               #- entity: light.pendant_light_left
               #  type: custom:slider-entity-row
               #  toggle: true
@@ -143,31 +148,39 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - type: custom:mini-media-player
-            entity: media_player.kitchen_display
-            icon: mdi:google
-            artwork: cover
-            info: scroll
-          - type: custom:mini-media-player
-            entity: media_player.lounge_room_speaker
-            icon: mdi:google
-            artwork: cover
-            info: scroll
-          - type: custom:mini-media-player
-            entity: media_player.bedroom_speaker
-            icon: mdi:google
-            artwork: cover
-            info: scroll
-          - type: custom:mini-media-player
-            entity: media_player.teddy_s_speaker
-            icon: mdi:google
-            artwork: cover
-            info: scroll
-          - type: custom:mini-media-player
-            entity: media_player.ollie_s_speaker
-            icon: mdi:google
-            artwork: cover
-            info: scroll
+          - type: custom:fold-entity-row
+            head: media_player.all_speakers
+            entities:
+              - type: custom:mini-media-player
+                entity: media_player.all_speakers
+                icon: mdi:google
+                artwork: cover
+                info: scroll
+              - type: custom:mini-media-player
+                entity: media_player.kitchen_display
+                icon: mdi:google
+                artwork: cover
+                info: scroll
+              - type: custom:mini-media-player
+                entity: media_player.lounge_room_speaker
+                icon: mdi:google
+                artwork: cover
+                info: scroll
+              - type: custom:mini-media-player
+                entity: media_player.bedroom_speaker
+                icon: mdi:google
+                artwork: cover
+                info: scroll
+              - type: custom:mini-media-player
+                entity: media_player.teddy_s_speaker
+                icon: mdi:google
+                artwork: cover
+                info: scroll
+              - type: custom:mini-media-player
+                entity: media_player.ollie_s_speaker
+                icon: mdi:google
+                artwork: cover
+                info: scroll
       - type: horizontal-stack
         cards:
           - entity: media_player.samsung_tv_remote
