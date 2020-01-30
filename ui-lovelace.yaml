@@ -151,7 +151,7 @@ views:
           - type: custom:mini-media-player
             entity: media_player.all_speakers
             group: true
-            icon: mdi:google
+            source: icon
             artwork: cover
             info: scroll
             hide:
@@ -159,30 +159,45 @@ views:
           - type: custom:mini-media-player
             entity: media_player.kitchen_display
             group: true
+            icon: mdi:google
+            hide:
+              controls: true
           - type: custom:mini-media-player
             entity: media_player.bathroom_speakers
             group: true
+            icon: mdi:google
+            hide:
+              controls: true
           - type: custom:mini-media-player
             entity: media_player.bedroom_speaker
             group: true
+            icon: mdi:google
+            hide:
+              controls: true
           - type: custom:mini-media-player
             entity: media_player.lounge_room_speaker
             group: true
+            icon: mdi:google
+            hide:
+              controls: true
           - type: custom:mini-media-player
             entity: media_player.teddy_s_speaker
             group: true
+            icon: mdi:google
+            hide:
+              controls: true
           - type: custom:mini-media-player
             entity: media_player.ollie_s_speaker
             group: true
+            icon: mdi:google
+            hide:
+              controls: true
       - type: horizontal-stack
         cards:
           - entity: media_player.samsung_tv_remote
             type: custom:mini-media-player
             info: scroll
             artwork: cover
-            hide:
-              icon: true
-              power_state: false
 
   - icon: mdi:settings
     id: settings
