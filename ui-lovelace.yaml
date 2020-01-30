@@ -26,11 +26,13 @@ views:
     title: Home
     badges: []
     cards:
-      - type: glance
-        entities:
-          - person.william
-          - person.emily
-      - type: vertical-stack
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            entities:
+              - person.william
+              - person.emily
+      - type: horizontal-stack
         cards:
           - type: entities
             name: Doors
