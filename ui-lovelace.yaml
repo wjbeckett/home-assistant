@@ -146,52 +146,54 @@ views:
     badges:
       - sensor.plex_bms01
     cards:
-      - type: entities
-        entities:
-          - type: custom:mini-media-player
-            entity: media_player.all_speakers
-            group: true
-            source: icon
-            # artwork: cover
-            info: short
-            hide:
-              power: true
-          - type: custom:mini-media-player
-            entity: media_player.kitchen_display
-            group: true
-            icon: mdi:google
-            hide:
-              controls: true
-          - type: custom:mini-media-player
-            entity: media_player.bathroom_speakers
-            group: true
-            icon: mdi:google
-            hide:
-              controls: true
-          - type: custom:mini-media-player
-            entity: media_player.bedroom_speaker
-            group: true
-            icon: mdi:google
-            hide:
-              controls: true
-          - type: custom:mini-media-player
-            entity: media_player.lounge_room_speaker
-            group: true
-            icon: mdi:google
-            hide:
-              controls: true
-          - type: custom:mini-media-player
-            entity: media_player.teddy_s_speaker
-            group: true
-            icon: mdi:google
-            hide:
-              controls: true
-          - type: custom:mini-media-player
-            entity: media_player.ollie_s_speaker
-            group: true
-            icon: mdi:google
-            hide:
-              controls: true
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - type: custom:mini-media-player
+                entity: media_player.all_speakers
+                group: true
+                source: icon
+                # artwork: cover
+                info: short
+                hide:
+                  power: true
+              - type: custom:mini-media-player
+                entity: media_player.kitchen_display
+                group: true
+                icon: mdi:google
+                hide:
+                  controls: true
+              - type: custom:mini-media-player
+                entity: media_player.bathroom_speakers
+                group: true
+                icon: mdi:google
+                hide:
+                  controls: true
+              - type: custom:mini-media-player
+                entity: media_player.bedroom_speaker
+                group: true
+                icon: mdi:google
+                hide:
+                  controls: true
+              - type: custom:mini-media-player
+                entity: media_player.lounge_room_speaker
+                group: true
+                icon: mdi:google
+                hide:
+                  controls: true
+              - type: custom:mini-media-player
+                entity: media_player.teddy_s_speaker
+                group: true
+                icon: mdi:google
+                hide:
+                  controls: true
+              - type: custom:mini-media-player
+                entity: media_player.ollie_s_speaker
+                group: true
+                icon: mdi:google
+                hide:
+                  controls: true
       - type: horizontal-stack
         cards:
           - entity: media_player.samsung_tv_remote
