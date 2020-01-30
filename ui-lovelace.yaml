@@ -151,11 +151,9 @@ views:
           - type: custom:mini-media-player
             entity: media_player.all_speakers
             group: true
-            source: icon
             artwork: cover
             info: scroll
             hide:
-              volume: true
               power: true
           - type: custom:mini-media-player
             entity: media_player.kitchen_display
