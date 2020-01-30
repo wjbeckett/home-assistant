@@ -39,6 +39,15 @@ views:
               - binary_sensor.back_door
       - type: vertical-stack
         cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.kitchen_sensor_light_level
+            smoothing: true
+            hours_to_show: 24
+            points_per_hour: 60
+            line_width: 2
+      - type: vertical-stack
+        cards:
           - type: alarm-panel
             name: House Alarm
             entity: alarm_control_panel.home_alarm
