@@ -152,7 +152,7 @@ views:
             entity: media_player.all_speakers
             group: true
             source: icon
-            artwork: cover
+            # artwork: cover
             info: short
             hide:
               power: true
