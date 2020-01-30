@@ -32,8 +32,6 @@ views:
             entities:
               - person.william
               - person.emily
-      - type: horizontal-stack
-        cards:
           - type: entities
             name: Doors
             entities:
