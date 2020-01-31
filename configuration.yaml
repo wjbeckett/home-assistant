@@ -130,7 +130,7 @@ image_processing:
     save_timestamped_file: True
     target: person
     source:
-      - entity_id: camera.front_door
+      - entity_id: camera.saved_image
         name: deepstack_person_detector
   - platform: deepstack_object
     ip_address: !secret deepstack_host
@@ -141,7 +141,7 @@ image_processing:
     save_timestamped_file: True
     target: car
     source:
-      - entity_id: camera.front_door
+      - entity_id: camera.saved_image
         name: deepstack_car_detector 
 
 # Telegram
@@ -176,9 +176,9 @@ zoneminder:
 
 # Camera
 camera:
-#  - platform: local_file
-#    file_path: /config/www/tmp/image.jpg
-#    name: Saved Image
+  - platform: local_file
+    file_path: /config/www/tmp/image.jpg
+    name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
     name: deepstack_latest_person
