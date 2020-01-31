@@ -36,10 +36,8 @@ views:
             entities:
               - binary_sensor.garage_door
               - binary_sensor.back_door
-          - type: entities
-            entities:
-              - binary_sensor.front_door_motion
-              - binary_sensor.kitchen_sensor_motion
+              - binary_sensor.front_door_motion_sensor
+              - binary_sensor.kitchen_sensor_motion              
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
@@ -144,6 +142,8 @@ views:
             - camera.front_door
           - type: picture-entity
             entity: camera.saved_image
+      - type: vertical-stack
+        cards:
           - type: picture-entity
             entity: camera.deepstack_latest_person
           - type: picture-entity
