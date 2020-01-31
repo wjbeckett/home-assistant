@@ -170,7 +170,7 @@ notify:
 zoneminder:
   - host: !secret zm_host
     ssl: true
-    verify_ssl: false
+    verify_ssl: true
     username: !secret zm_username
     password: !secret zm_password
 
