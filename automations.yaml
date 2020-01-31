@@ -356,13 +356,15 @@
     entity_id: binary_sensor.dafang_motion_sensor
     to: 'on'
   action:
-    - service: notify.pushover
+    - service: notify.telegram
       data_template:
         message: 'Dafang entity_picture'
         data:
-          attachment: '{{ states.camera.dafang_motion_snapshot.attributes.entity_picture }}'
-    - service: notify.pushover
+          photo: 
+            - url: '{{ states.camera.dafang_motion_snapshot.attributes.entity_picture }}'
+    - service: notify.telegram
       data_template:
         message: 'Dafang camera picture'
         data:
-          attachment: "{{ states('camera.dafang_motion_snapshot') }}"
+          photo:
+            - url: "{{ states('camera.dafang_motion_snapshot') }}"

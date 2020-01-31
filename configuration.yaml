@@ -20,7 +20,6 @@ homeassistant:
     - /config/www/facebox
     - /config/www/tmp
     - /config/www/deepstack
-    - /api
   auth_mfa_modules:
     - type: totp
 # Logger
@@ -145,6 +144,13 @@ image_processing:
       - entity_id: camera.front_door
         name: deepstack_car_detector 
 
+# Telegram
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api
+    allowed_chat_ids:
+      - !secret telegram_chat_id
+
 # Notify
 notify:
   - name: All_Devices
@@ -156,6 +162,9 @@ notify:
     platform: pushover
     api_key: !secret pushover_api
     user_key: !secret pushover_user
+  - name: telegram
+    platform: telegram
+    chat_id: !secret telegram_chat_id
 
 # Zoneminder
 zoneminder:
