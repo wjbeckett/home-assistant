@@ -365,4 +365,4 @@
       data_template:
         message: 'Dafang camera picture'
         data:
-          attachment: '{{ camera.dafang_motion_snapshot }}'
+          attachment: "{{ states('camera.dafang_motion_snapshot') }}"
