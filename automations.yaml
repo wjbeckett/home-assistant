@@ -315,7 +315,9 @@
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
-          attachment: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
+          photo: 
+            - file: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
+              caption: Person Detected
 
 - id: car_detection
   alias: Notify when car detected
@@ -343,32 +345,6 @@
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
-          attachment: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
-
-- id: test_dafang_notifications
-  alias: Test notification
-  initial_state: 'on'
-  hide_entity: true
-  condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.dafang_motion_sensor
-    to: 'on'
-  action:
-    - service: camera.snapshot
-      data:
-        entity_id: camera.back_door
-        filename: /config/www/tmp/image.jpg
-    - delay: 00:00:03
-    - service: notify.telegram
-      data_template:
-        title: Here's a message
-        message: "Image from dafang is attached"
-        data:
           photo: 
-            - file: /config/www/tmp/image.jpg
-              caption: Motion detected
-
+            - file: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
+              caption: Car Detected

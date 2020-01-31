@@ -120,7 +120,7 @@ image_processing:
     port: 8087
     scan_interval: 10000
     source: 
-      - entity_id: camera.front_door
+      - entity_id: camera.saved_image
   - platform: deepstack_object
     ip_address: !secret deepstack_host
     port: 5000
