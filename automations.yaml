@@ -363,7 +363,7 @@
     - delay: 00:00:03
       - service: notify.telegram
       data_template:
-        message: 'Dafang image'
+        message: "Dafang image"
         data:
           photo: 
             - file: /config/www/tmp/image.jpg
