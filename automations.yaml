@@ -361,7 +361,7 @@
         entity_id: camera.back_door
         filename: /config/www/tmp/image.jpg
     - delay: 00:00:03
-      - service: notify.telegram
+    - service: notify.telegram
       data_template:
         message: "Dafang image"
         data:
