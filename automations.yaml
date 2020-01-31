@@ -254,9 +254,6 @@
     entity_id: image_processing.deepstack_person_detector
   - service: image_processing.scan
     entity_id: image_processing.deepstack_car_detector
-  - service: notify.telegram
-    data:
-      message: Motion detected at the front door
 
 - id: face_recognised
   alias: Face recognised
@@ -309,7 +306,7 @@
         data:
           android:
             notification:
-              image: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
+              image: !secret deepstack_person_detector_file
     - service: notify.telegram
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
@@ -339,7 +336,7 @@
         data:
           android:
             notification:
-              image: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
+              image: !secret deepstack_car_detector_file
     - service: notify.telegram
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
