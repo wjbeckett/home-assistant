@@ -342,3 +342,27 @@
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
           attachment: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
+
+- id: test_dafang_notifications
+  alias: Test notification
+  initial_state: 'on'
+  hide_entity: true
+  condition:
+  - condition: state
+    entity_id: input_boolean.options_notifications_push
+    state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.dafang_motion_sensor
+    to: 'on'
+  action:
+    - service: notify.pushover
+      data_template:
+        message: 'Dafang entity_picture'
+        data:
+          attachment: '{{ states.camera.dafang_motion_snapshot.attributes.entity_picture }}'
+    - service: notify.pushover
+      data_template:
+        message: 'Dafang camera picture'
+        data:
+          attachment: '{{ camera.dafang_motion_snapshot }}'
