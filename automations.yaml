@@ -253,7 +253,7 @@
     entity_id: image_processing.deepstack_person_detector
   - service: image_processing.scan
     entity_id: image_processing.deepstack_car_detector
-  - service: notify.mobile_app_william
+  - service: notify.telegram
     data:
       message: Motion detected at the front door
 
@@ -309,7 +309,7 @@
           android:
             notification:
               image: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
-    - service: notify.pushover
+    - service: notify.telegram
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
@@ -337,7 +337,7 @@
           android:
             notification:
               image: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
-    - service: notify.pushover
+    - service: notify.telegram
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
@@ -363,8 +363,10 @@
     - delay: 00:00:03
     - service: notify.telegram
       data_template:
-        message: "Dafang image"
+        title: Here's a message
+        message: "Image from dafang is attached"
         data:
           photo: 
             - file: /config/www/tmp/image.jpg
+              caption: Motion detected
 
