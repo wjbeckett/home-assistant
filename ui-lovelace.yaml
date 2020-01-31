@@ -258,7 +258,7 @@ views:
           - type: picture-entity
             entity: camera.dafang_motion_snapshot
           - type: picture-glance
-            title: Front Door
+            title: Back Door
             camera_image: camera.back_door
             camera_view: live
             entities:

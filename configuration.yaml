@@ -176,7 +176,6 @@ camera:
     file_path: /config/www/deepstack/deepstack_car_detector_latest_car.jpg
     name: deepstack_latest_car
   - platform: zoneminder
-    name: zm_front_door
 
 
 # Mqtt
