@@ -361,10 +361,5 @@
         message: 'Dafang entity_picture'
         data:
           photo: 
-            - url: '{{ states.camera.dafang_motion_snapshot.attributes.entity_picture }}'
-    - service: notify.telegram
-      data_template:
-        message: 'Dafang camera picture'
-        data:
-          photo:
-            - url: "{{ states('camera.dafang_motion_snapshot') }}"
+            - url: !secret dafang_entity_picture
+
