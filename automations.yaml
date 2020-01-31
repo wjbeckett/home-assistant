@@ -301,6 +301,7 @@
     event_data:
       object: person
   action:
+    - delay: 00:00:02
     - service: notify.all_devices
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
@@ -328,6 +329,7 @@
     event_data:
       object: car
   action:
+    - delay: 00:00:02
     - service: notify.all_devices
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
