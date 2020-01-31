@@ -235,9 +235,8 @@
 - id: front_door_camera_scan
   alias: Scan still image from from door
   trigger:
-  - entity_id: binary_sensor.front_door_motion_sensor
+  - entity_id: sensor.front_door_alerts
     platform: state
-    to: 'on'
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
