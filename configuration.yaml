@@ -63,8 +63,6 @@ tuya:
 
 hacs:
   token: !secret hacs_token
-  python_script: True
-  theme: True
   options:
     experimental: True
 
