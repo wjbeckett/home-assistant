@@ -359,18 +359,16 @@
   action:
     - service: notify.all_devices
       data_template:
-        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} detected at the front door"
+        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
         data:
           android:
             notification:
               image: !secret zm_alert_image
-    - service: notify.telegram
+    - service: notify.pushover
       data_template:
-        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} detected at the front door"
+        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
         data:
-          photo: 
-            - file: !secret zm_alert_image
-              caption: "{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} Detected"
+          attachment: !secret zm_alert_image
 
 #################################################################
 ## Light Automations
