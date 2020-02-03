@@ -212,7 +212,7 @@ views:
     id: settings
     title: Settings
     cards:
-      - type: vertical-stack
+      - type: horizontal-stack
         cards:
           - type: entities
             show_header_toggle: false
