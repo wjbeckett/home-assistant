@@ -363,8 +363,8 @@
     entity_id: sensor.front_door_alert_id
   action:
     service: notify.mobile_app_william
-    data:
-      message: "test"
+    data_template:
+      message: "test with data_template"
       data:
         android:
           notification:
