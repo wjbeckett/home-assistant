@@ -214,6 +214,10 @@ views:
     cards:
       - type: horizontal-stack
         cards:
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - sensor.wifi_status
           - type: custom:mini-graph-card
             name: Download/Upload
             entities:
@@ -225,26 +229,24 @@ views:
                 name: Upload
                 show_state: true
                 state_adaptive_color: true
-      - type: vertical-stack
+      - type: horizontal-stack
         cards:
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - sensor.wifi_status
-          - type: entities
-            title: Switches
-            show_header_toggle: true
-            entities:
-              - input_boolean.options_notifications_push
-          - type: entities
-            title: Zoneminder Stats
-            show_header_toggle: false
-            entities:
-              - sensor.front_door_alerts
-              - sensor.front_door_alert_id
-              - sensor.front_door_alert_desc
-          - type: entities
-            title: Fail2Ban
-            show_header_toggle: false
-            entities:
-              - sensor.fail2ban_hass_iptables
+          - type: vertical-stack
+            cards:
+              - type: entities
+                title: Switches
+                show_header_toggle: true
+                entities:
+                  - input_boolean.options_notifications_push
+              - type: entities
+                title: Zoneminder Stats
+                show_header_toggle: false
+                entities:
+                  - sensor.front_door_alerts
+                  - sensor.front_door_alert_id
+                  - sensor.front_door_alert_desc
+              - type: entities
+                title: Fail2Ban
+                show_header_toggle: false
+                entities:
+                  - sensor.fail2ban_hass_iptables
