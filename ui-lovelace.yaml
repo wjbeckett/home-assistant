@@ -218,6 +218,21 @@ views:
             show_header_toggle: false
             entities:
               - sensor.wifi_status
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            name: Download/Upload
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.speedtest_upload
+                name: Upload
+                show_state: true
+                state_adaptive_color: true
+      - type: vertical-stack
+        cards:
           - type: entities
             title: Switches
             show_header_toggle: true
@@ -235,16 +250,3 @@ views:
             show_header_toggle: false
             entities:
               - sensor.fail2ban_hass_iptables
-      - type: horizontal-stack
-        cards:
-          - type: custom:mini-graph-card
-            name: Download/Upload
-            entities:
-              - entity: sensor.speedtest_download
-                name: Download
-                show_state: true
-                state_adaptive_color: true
-              - entity: sensor.speedtest_upload
-                name: Upload
-                show_state: true
-                state_adaptive_color: true
