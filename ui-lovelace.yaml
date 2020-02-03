@@ -214,10 +214,6 @@ views:
     cards:
       - type: horizontal-stack
         cards:
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - sensor.wifi_status
           - type: custom:mini-graph-card
             name: Download/Upload
             entities:
@@ -231,6 +227,10 @@ views:
                 state_adaptive_color: true
       - type: vertical-stack
         cards:
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - sensor.wifi_status
           - type: entities
             title: Switches
             show_header_toggle: true
