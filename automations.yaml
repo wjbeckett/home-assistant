@@ -342,5 +342,32 @@
         message: '{{ trigger.event.data.object }} detected at the front door'
         data:
           photo: 
-            - file: '{{ states.camera.deepstack_latest_car.attributes.file_path }}'
+            - file: !secret zm_alert_image
               caption: Car Detected
+
+- id: zm_object_detection
+  alias: Alert when ZM detects object
+  initial_state: 'on'
+  hide_entity: true
+  condition:
+  - condition: state
+    entity_id: input_boolean.options_notifications_push
+    state: 'on'
+  trigger:
+    platform: state
+    entity_id: sensor.front_door_alert_id
+  action:
+    - service: notify.all_devices
+      data_template:
+        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} detected at the front door"
+        data:
+          android:
+            notification:
+              image: !secret zm_alert_image
+    - service: notify.telegram
+      data_template:
+        message: '{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} detected at the front door'
+        data:
+          photo: 
+            - file: !secret zm_alert_image
+              caption: "{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} Detected"

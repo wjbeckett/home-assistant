@@ -229,6 +229,8 @@ views:
             show_header_toggle: false
             entities:
               - sensor.front_door_alerts
+              - sensor.front_door_alert_id
+              - sensor.front_door_alert_desc
           - type: entities
             title: Fail2Ban
             show_header_toggle: false
@@ -247,19 +249,3 @@ views:
                 name: Upload
                 show_state: true
                 state_adaptive_color: true
-      - type: vertical-stack
-        cards:
-          - type: entities
-            entities:
-              - switch.front_door_blue_led
-              - switch.front_door_h264_rtsp_server
-              - switch.front_door_ir_filter
-              - switch.front_door_ir_led
-              - sensor.front_door_light_sensor
-              - switch.front_door_mjpeg_rtsp_server
-              - switch.front_door_motion_detection
-              - binary_sensor.front_door_motion_sensor
-              - switch.front_door_night_mode
-              - switch.front_door_night_mode_auto
-              - switch.front_door_recording
-              - switch.front_door_yellow_led
