@@ -36,7 +36,6 @@ views:
             entities:
               - binary_sensor.garage_door
               - binary_sensor.back_door
-              - binary_sensor.front_door_motion_sensor
               - binary_sensor.kitchen_sensor_motion              
       - type: vertical-stack
         cards:
