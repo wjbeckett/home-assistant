@@ -307,13 +307,6 @@
           android:
             notification:
               image: !secret deepstack_person_detector_file
-    - service: notify.telegram
-      data_template:
-        message: '{{ trigger.event.data.object }} detected at the front door'
-        data:
-          photo: 
-            - file: '{{ states.camera.deepstack_latest_person.attributes.file_path }}'
-              caption: Person Detected
 
 - id: car_detection
   alias: Notify when car detected
@@ -337,13 +330,6 @@
           android:
             notification:
               image: !secret deepstack_car_detector_file
-    - service: notify.telegram
-      data_template:
-        message: '{{ trigger.event.data.object }} detected at the front door'
-        data:
-          photo: 
-            - file: !secret zm_alert_image
-              caption: Car Detected
 
 - id: zm_object_detection
   alias: Alert when ZM detects object
