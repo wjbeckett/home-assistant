@@ -218,8 +218,6 @@ views:
             show_header_toggle: false
             entities:
               - sensor.wifi_status
-      - type: horizontal-stack
-        cards:
           - type: custom:mini-graph-card
             name: Download/Upload
             entities:
