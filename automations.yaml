@@ -371,3 +371,70 @@
           photo: 
             - file: !secret zm_alert_image
               caption: "{{ states.sensor.front_door_alert_desc.state.split(':')[3] }} Detected"
+
+#################################################################
+## Light Automations
+#################################################################
+- id: turn_on_kitchen_lights_when_lumens_low
+  alias: Turn on kitchen lights when lumens are low
+  initial_state: 'on'
+  hide_entity: true
+  condition:
+  - condition: time
+    before: '16:00:00'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.kitchen_sensor_light_level
+    below: 90
+  action:
+    service: light.turn_on
+    entity_id: group.kitchen_lights
+
+- id: light_on_at_sunset
+  alias: Turn on all lights at sunset
+  initial_state: 'on'
+  hide_entity: true
+  condition:
+  - condition: state
+    entity_id: group.household
+    state: home
+  - condition: numeric_state
+    entity_id: sensor.kitchen_sensor_light_level
+    below: 90
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:45:00"
+  action:
+    service: light.turn_on
+    entity_id: group.all_lights
+
+- id: dim_kitchen_lights_when_no_movement
+  alias: Dim kitchen light 10 minutes after last movement
+  condition:
+  - condition: time
+    after: '18:30:00'
+  trigger:
+    platform: state
+    entity_id: sensor.motion_sensor
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    service: scene.turn_on
+    entity_id: scene.kitchen_dim
+
+- id: turn_off_kitchen_lights_when_no_movement
+  alias: Turn off kitchen light 10 minutes after last movement
+  condition:
+  - condition: time
+    after: '19:50:00'
+  trigger:
+    platform: state
+    entity_id: sensor.motion_sensor
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    - service: light.turn_off
+      entity_id: group.kitchen_lights

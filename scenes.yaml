@@ -1,0 +1,6 @@
+- name: kitchen dim
+  entities:
+    light.kitchen_lights:
+      state: on
+      transition: 2
+      brightness_pct: 30
