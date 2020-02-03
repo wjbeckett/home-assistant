@@ -224,7 +224,7 @@ views:
             entities:
               - input_boolean.options_notifications_push
           - type: entities
-            title: Zoneminder Latest Alert
+            title: Zoneminder Stats
             show_header_toggle: false
             entities:
               - sensor.front_door_alerts
