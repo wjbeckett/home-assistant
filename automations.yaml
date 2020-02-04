@@ -235,19 +235,20 @@
 - id: front_door_camera_scan
   alias: Scan still image from from door
   trigger:
-  - entity_id: sensor.front_door_alerts
+  - entity_id: sensor.front_door_motion
     platform: state
+    to: 'on'
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
     state: 'on'
   action:
-  - delay: 00:00:01
+#  - delay: 00:00:01
   - service: camera.snapshot
     data:
       entity_id: camera.front_door
       filename: /config/www/tmp/image.jpg
-  - delay: 00:00:02
+  - delay: 00:00:03
   - service: image_processing.scan
     entity_id: image_processing.facebox_saved_image
   - service: image_processing.scan
@@ -299,7 +300,7 @@
     event_data:
       object: person
   action:
-    - delay: 00:00:02
+    - delay: 00:00:01
     - service: notify.all_devices
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
@@ -322,7 +323,7 @@
     event_data:
       object: car
   action:
-    - delay: 00:00:02
+    - delay: 00:00:01
     - service: notify.all_devices
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
@@ -343,13 +344,29 @@
     platform: state
     entity_id: sensor.front_door_alert_id
   action:
-    - service: notify.all_devices
+    - service: notify.mobile_app_william
       data_template:
-        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
+        message: "ZoneMinder detected motion at the front door"
         data:
           android:
             notification:
               image: !secret zm_alert_image
+
+- id: motioneye_detection
+  alias: Alert when MotionEye detects motion
+  initial_state: 'on'
+  hide_entity: true
+  condition:
+  - condition: state
+    entity_id: input_boolean.options_notifications_push
+    state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.front_door_motion
+  action:
+    - service: notify.mobile_app_william
+      data:
+        message: "MotionEye detected motion at the front door"
 
 #################################################################
 ## Light Automations
