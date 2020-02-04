@@ -202,6 +202,14 @@ speedtestdotnet:
     - download
     - upload
 
+# Input Number
+input_number:
+  zm_notify_throttle:
+    min: 30
+    max: 3600
+    step: 1
+    name: Zoneminder Notification Throttle
+    mode: box
 
 # Enable Stream Componenet
 stream:
