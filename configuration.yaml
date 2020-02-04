@@ -160,6 +160,9 @@ notify:
     platform: pushover
     api_key: !secret pushover_api
     user_key: !secret pushover_user
+  - name: telegram
+    platform: telegram
+    chat_id: !secret telegram_chat_id
 
 # Zoneminder
 zoneminder:

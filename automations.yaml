@@ -355,6 +355,13 @@
         message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
         data:
           attachment: !secret zm_alert_image
+    - service: notify.telegram
+      data_template:
+        title: "Detection"
+        message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
+        data:
+          photo:
+            - url: !secret zm_test_image
 
 #################################################################
 ## Light Automations
