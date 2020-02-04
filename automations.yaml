@@ -343,32 +343,18 @@
     platform: state
     entity_id: sensor.front_door_alert_id
   action:
-    - service: notify.all_devices
+    - service: notify.mobile_app_william
       data_template:
         message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
         data:
           android:
             notification:
-              image: !secret zm_alert_image
+              image: https://i.pinimg.com/originals/0f/7b/fa/0f7bfa4e6775b5977694a6036fc85b48.png
     - service: notify.pushover
       data_template:
         message: "{{ states.sensor.front_door_alert_desc.state.split(':')[2] }} detected at the front door"
         data:
           attachment: !secret zm_alert_image
-
-- id: test_alert
-  alias: test Alert
-  trigger: 
-    platform: state
-    entity_id: sensor.front_door_alert_id
-  action:
-    service: notify.mobile_app_william
-    data_template:
-      message: "test with data_template"
-      data:
-        android:
-          notification:
-            image: https://i.pinimg.com/originals/0f/7b/fa/0f7bfa4e6775b5977694a6036fc85b48.png
 
 #################################################################
 ## Light Automations
