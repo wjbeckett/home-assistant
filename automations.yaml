@@ -235,7 +235,7 @@
 - id: front_door_camera_scan
   alias: Scan still image from from door
   trigger:
-  - entity_id: sensor.front_door_motion
+  - entity_id: binary_sensor.front_door_motion
     platform: state
     to: 'on'
   condition:
@@ -363,10 +363,15 @@
   trigger:
     platform: state
     entity_id: binary_sensor.front_door_motion
+    to: 'on'
   action:
     - service: notify.mobile_app_william
-      data:
+      data_template:
         message: "MotionEye detected motion at the front door"
+        data:
+          android:
+            notification:
+              image: !secret motioneye_image
 
 #################################################################
 ## Light Automations

@@ -5,3 +5,5 @@
     state_topic: "home/frontdoor/camera/motion"
     name: Front Door Motion
     device_class: motion
+
+
