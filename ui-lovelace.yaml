@@ -242,10 +242,6 @@ views:
                 entities:
                   - input_boolean.options_notifications_push
               - type: entities
-                title: MotionEye Info
-                entities:
-                  - sensor.front_door_image
-              - type: entities
                 title: Zoneminder Stats
                 show_header_toggle: false
                 entities:

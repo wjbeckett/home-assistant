@@ -40,6 +40,3 @@
     file_path: /fail2ban/fail2ban.log
   - platform: google_wifi
     name: WiFi
-  - platform: mqtt
-    state_topic: "home/frontdoor/filename"
-    name: front door image

@@ -250,9 +250,9 @@
       filename: /config/www/tmp/image.jpg
   - delay: 00:00:03
   - service: image_processing.scan
-    entity_id: image_processing.facebox_saved_image
-  - service: image_processing.scan
     entity_id: image_processing.deepstack_person_detector
+  - service: image_processing.scan
+    entity_id: image_processing.facebox_saved_image
   - service: image_processing.scan
     entity_id: image_processing.deepstack_car_detector
 
@@ -263,7 +263,7 @@
       entity_id: input_boolean.options_notifications_push
       state: 'on'
     - condition: template
-      value_template: "{{ trigger.event.data.confidence|float > 50 }}"
+      value_template: "{{ trigger.event.data.confidence|float > 20 }}"
   trigger:
     platform: event
     event_type: image_processing.detect_face
@@ -331,26 +331,6 @@
           android:
             notification:
               image: !secret deepstack_car_detector_file
-
-- id: zm_object_detection
-  alias: Alert when ZM detects object
-  initial_state: 'on'
-  hide_entity: true
-  condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  trigger:
-    platform: state
-    entity_id: sensor.front_door_alert_id
-  action:
-    - service: notify.mobile_app_william
-      data_template:
-        message: "ZoneMinder detected motion at the front door"
-        data:
-          android:
-            notification:
-              image: !secret zm_alert_image
 
 - id: motioneye_detection
   alias: Alert when MotionEye detects motion
