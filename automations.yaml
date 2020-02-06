@@ -243,7 +243,6 @@
     entity_id: input_boolean.options_notifications_push
     state: 'on'
   action:
-#  - delay: 00:00:01
   - service: camera.snapshot
     data:
       entity_id: camera.front_door
@@ -300,7 +299,6 @@
     event_data:
       object: person
   action:
-    - delay: 00:00:01
     - service: notify.all_devices
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
@@ -323,7 +321,6 @@
     event_data:
       object: car
   action:
-    - delay: 00:00:01
     - service: notify.all_devices
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
@@ -331,27 +328,6 @@
           android:
             notification:
               image: !secret deepstack_car_detector_file
-
-- id: motioneye_detection
-  alias: Alert when MotionEye detects motion
-  initial_state: 'on'
-  hide_entity: true
-  condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.front_door_motion
-    to: 'on'
-  action:
-    - service: notify.mobile_app_william
-      data_template:
-        message: "MotionEye detected motion at the front door"
-        data:
-          android:
-            notification:
-              image: !secret motioneye_image
 
 #################################################################
 ## Light Automations
