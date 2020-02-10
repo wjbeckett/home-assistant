@@ -4,7 +4,6 @@
 - id: hass_start_notification
   alias: NOTIFY (START) Home Assistant
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -24,7 +23,6 @@
 - id: notify_resident
   alias: NOTIFY (Location) Resident
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -47,7 +45,6 @@
 - id: notify_garage_door
   alias: Notify Garage door
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -65,7 +62,6 @@
 - id: notify_garage_open_10_min
   alias: Notify Garage open for 10 min
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -324,7 +320,6 @@
 - id: person_detection
   alias: Notify when person detected
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -344,7 +339,6 @@
 - id: car_detection
   alias: Notify when car detected
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -367,7 +361,6 @@
 - id: turn_on_kitchen_lights_when_lumens_low
   alias: Turn on kitchen lights when lumens are low
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: time
     before: '16:00:00'
@@ -382,7 +375,6 @@
 - id: light_on_at_sunset
   alias: Turn on all lights at sunset
   initial_state: 'on'
-  hide_entity: true
   condition:
   - condition: state
     entity_id: group.household
