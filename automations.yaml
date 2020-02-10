@@ -40,6 +40,9 @@
   - service: notify.all_devices
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}.'
+      actions:
+        - action: arm_alarm
+          title: Arm Alarm
 
 - id: notify_garage_door
   alias: Notify Garage door
@@ -229,15 +232,24 @@
     data:
       code: !secret alarm_code
 
+- id: mobile_action_arm_alarm
+  alias: Arm Alarm from Notificaiton Action
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: arm_alarm
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.home_alarm
 #################################################################
 ## Object Detection
 #################################################################
 - id: front_door_camera_scan
   alias: Scan still image from from door
   trigger:
-  - entity_id: binary_sensor.front_door_motion
+  - entity_id: sensor.front_door_alert_id
     platform: state
-    to: 'on'
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
@@ -303,9 +315,7 @@
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
         data:
-          android:
-            notification:
-              image: !secret deepstack_person_detector_file
+          image: !secret deepstack_person_detector_file
 
 - id: car_detection
   alias: Notify when car detected
@@ -325,26 +335,7 @@
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
         data:
-          android:
-            notification:
-              image: !secret deepstack_car_detector_file
-
-
-- id: zm_object_detection
-  alias: Alert when ZM detects object
-  initial_state: 'on'
-  hide_entity: true
-  condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  trigger:
-    platform: state
-    entity_id: sensor.front_door_alert_id
-  action:
-    - service: notify.mobile_app_william
-      data_template:
-        message: "ZoneMinder detected motion at the front door"
+          image: !secret deepstack_car_detector_file
 
 #################################################################
 ## Light Automations
