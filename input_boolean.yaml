@@ -4,3 +4,9 @@ input_boolean:
     name: Send push notificarions
     initial: off
     icon: mdi:car
+
+input_boolean:
+  location_update:
+    name: Request Location Update
+    initial: off
+    icon: mdi:map-marker

@@ -83,6 +83,30 @@
     data:
       message: Garage door has been open for 10 minutes! Close it!
 
+
+- id: request_location_update
+  alias: Request Location Update
+  trigger:
+    - platform: state
+      entity_id: input_boolean.locaion_update
+      to: 'on'
+  action:
+    service: notify.all_devices
+    data:
+      message: request_locaiton_update
+
+- id: reset_location_update
+  alias: Reset Location Update
+  trigger:
+    - platform: time
+      entity_id: input_boolean.locaion_update
+      to: 'on'
+      for:
+        seconds: 5
+  action:
+    service: homeassistant.turn_off
+    entity_id: input_boolean.locaion_update
+
 #################################################################
 ## Home Security
 #################################################################
