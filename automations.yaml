@@ -104,7 +104,7 @@
       for:
         seconds: 5
   action:
-    service: homeassistant.turn_off
+    service: input_boolean.turn_off
     entity_id: input_boolean.locaion_update
 
 #################################################################
