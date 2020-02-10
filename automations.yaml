@@ -98,11 +98,11 @@
 - id: reset_location_update
   alias: Reset Location Update
   trigger:
-    - platform: time
-      entity_id: input_boolean.locaion_update
-      to: 'on'
-      for:
-        seconds: 5
+  - platform: state
+    entity_id: input_boolean.locaion_update
+    to: 'on'
+    for:
+      seconds: 5
   action:
     service: input_boolean.turn_off
     entity_id: input_boolean.locaion_update
