@@ -241,6 +241,7 @@ views:
                 show_header_toggle: true
                 entities:
                   - input_boolean.options_notifications_push
+                  - input_boolean.location_update
               - type: entities
                 title: Zoneminder Stats
                 show_header_toggle: false

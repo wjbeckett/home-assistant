@@ -38,9 +38,10 @@
   - service: notify.all_devices
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}.'
-      actions:
-        - action: arm_alarm
-          title: Arm Alarm
+      data:
+        actions:
+          - action: "arm_alarm"
+            title: "Arm Alarm"
 
 - id: notify_garage_door
   alias: Notify Garage door
@@ -87,7 +88,7 @@
       entity_id: input_boolean.locaion_update
       to: 'on'
   action:
-    service: notify.all_devices
+  - service: notify.all_devices
     data:
       message: request_locaiton_update
 
@@ -100,7 +101,7 @@
     for:
       seconds: 5
   action:
-    service: input_boolean.turn_off
+  - service: input_boolean.turn_off
     entity_id: input_boolean.locaion_update
 
 #################################################################
@@ -260,8 +261,8 @@
       event_data:
         action: arm_alarm
   action:
-    - service: alarm_control_panel.alarm_arm_away
-      entity_id: alarm_control_panel.home_alarm
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.home_alarm
 #################################################################
 ## Object Detection
 #################################################################
