@@ -216,11 +216,11 @@ stream:
 ffmpeg:
 
 # Input Booleans
-input_boolean:
-  options_notifications_push:
-    name: Send push notifications
-    initial: on
-    icon: mdi:bell
+#input_boolean:
+#  options_notifications_push:
+#    name: Send push notifications
+#    initial: on
+#    icon: mdi:bell
 
 sun:
 
@@ -232,3 +232,4 @@ scene: !include scenes.yaml
 zone: !include zones.yaml
 sensor: !include sensor.yaml
 binary_sensor: !include binary_sensor.yaml
+input_boolean: !include input_boolean.yaml
