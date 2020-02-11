@@ -1,9 +1,9 @@
-- push_notification:
+  push_notification:
     name: Send push notificarions
     initial: off
     icon: mdi:car
 
-- location_update:
+  location_update:
     name: Request Location Update
     initial: off
     icon: mdi:map-marker
