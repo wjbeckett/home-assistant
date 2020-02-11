@@ -1,7 +1,7 @@
-  push_notification:
+  options_notifications_push:
     name: Send push notificarions
     initial: off
-    icon: mdi:car
+    icon: mdi:bell
 
   location_update:
     name: Request Location Update
