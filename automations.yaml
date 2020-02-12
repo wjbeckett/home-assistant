@@ -287,6 +287,11 @@
     entity_id: image_processing.facebox_saved_image
   - service: image_processing.scan
     entity_id: image_processing.deepstack_car_detector
+  - service: notify.all_devices
+    data_template:
+      message: '{{ sensor.front_door_detection }} detected at the front door.'
+      data:
+        image: !secret zm_alert_image
 
 - id: face_recognised
   alias: Face recognised
@@ -306,10 +311,8 @@
         {% endif %}
       data_template:
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
-        data: 
-        android:
-          notification:
-            image: !secret deepstack_latest_person
+        data:
+          image: !secret deepstack_latest_person
     - service_template: >-
         {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
         tts.google_say
@@ -355,6 +358,8 @@
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
         data:
           image: !secret deepstack_car_detector_file
+
+
 
 #################################################################
 ## Light Automations
