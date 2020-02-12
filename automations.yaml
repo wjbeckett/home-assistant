@@ -289,7 +289,7 @@
     entity_id: image_processing.deepstack_car_detector
   - service: notify.all_devices
     data_template:
-      message: '{{ states('sensor.front_door_object') }} detected at the front door.'
+      message: "{{ states('sensor.front_door_object') }} detected at the front door."
       data:
         image: !secret zm_alert_image
 
