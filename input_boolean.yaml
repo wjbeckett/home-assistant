@@ -1,6 +1,6 @@
   options_notifications_push:
     name: Send push notificarions
-    initial: off
+    initial: on
     icon: mdi:bell
 
   location_update:
