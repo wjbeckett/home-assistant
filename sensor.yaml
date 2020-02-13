@@ -37,7 +37,7 @@
   - platform: mqtt
     name: "front door object"
     state_topic: "zoneminder/1"
-    value_template: "{{ value_json.detection }}"
+    value_template: "{{ value_json.detection[0].label }}"
   - platform: fail2ban
     jails:
       - hass-iptables
