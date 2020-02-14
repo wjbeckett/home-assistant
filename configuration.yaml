@@ -15,9 +15,9 @@ http:
     - !secret trusted_proxies
 homeassistant:
   customize: !include customize.yaml
-  whiteist_external_dirs:
-    - /config/www
-    - /config/www/tmp
+  #whiteist_external_dirs:
+  #  - /config/www
+  #  - /config/www/tmp
   auth_mfa_modules:
     - type: totp
 # Logger
