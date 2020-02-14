@@ -286,10 +286,9 @@
           - action: "URI"
             title: Live Stream
             uri: !secret zm_live_stream
-          - action: "URI"
-            title: View Image
-            uri: !secret zm_alert_image  
-
+          #- action: "URI"
+          #  title: View Image
+          
 #################################################################
 ## Light Automations
 #################################################################
