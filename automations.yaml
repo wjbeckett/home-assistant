@@ -319,7 +319,7 @@
       data_template:
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
         data:
-          image: !secret deepstack_latest_person
+          image: !secret deepstack_person_detector_file
     - service_template: >-
         {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
         tts.google_say
