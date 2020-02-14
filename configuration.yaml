@@ -15,7 +15,7 @@ http:
     - !secret trusted_proxies
 homeassistant:
   customize: !include customize.yaml
-  whitelist_external_dirs:
+  whifist_external_dirs:
     - /config/www
     - /config/www/facebox
     - /config/www/tmp
@@ -136,6 +136,7 @@ camera:
   - platform: local_file
     file_path: !secret zm_alert_image
     name: Latest Alert
+  - platform: zoneminder
 
 # Mqtt
 mqtt:
