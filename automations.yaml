@@ -292,6 +292,13 @@
       message: "{{ states('sensor.front_door_object') }} detected at the front door."
       data:
         image: !secret zm_alert_image
+        actions:
+          - action: "URI"
+            title: Live Stream
+            uri: !secret zm_live_stream
+          - action: "URI"
+            title: View Image
+            uri: !secret zm_alert_image
 
 - id: face_recognised
   alias: Face recognised
