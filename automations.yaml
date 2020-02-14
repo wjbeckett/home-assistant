@@ -280,13 +280,6 @@
     data:
       entity_id: camera.front_door
       filename: /config/www/tmp/image.jpg
-  - delay: 00:00:02
-  - service: image_processing.scan
-    entity_id: image_processing.deepstack_person_detector
-  - service: image_processing.scan
-    entity_id: image_processing.facebox_saved_image
-  - service: image_processing.scan
-    entity_id: image_processing.deepstack_car_detector
   - service: notify.mobile_app_william
     data_template:
       message: "{{ states('sensor.front_door_object') }} detected at the front door."
@@ -299,6 +292,14 @@
           - action: "URI"
             title: View Image
             uri: !secret zm_alert_image
+  - delay: 00:00:02
+  - service: image_processing.scan
+    entity_id: image_processing.deepstack_person_detector
+  - service: image_processing.scan
+    entity_id: image_processing.facebox_saved_image
+  - service: image_processing.scan
+    entity_id: image_processing.deepstack_car_detector
+  
 
 - id: face_recognised
   alias: Face recognised
