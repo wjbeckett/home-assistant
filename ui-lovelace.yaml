@@ -37,7 +37,6 @@ views:
               - binary_sensor.garage_door
               - binary_sensor.back_door
               - binary_sensor.kitchen_sensor_motion
-              - binary_sensor.front_door_motion
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
@@ -235,7 +234,6 @@ views:
                 title: Zoneminder Stats
                 show_header_toggle: false
                 entities:
-                  - sensor.front_door_alerts
                   - sensor.front_door_alert_id
                   - sensor.front_door_object
               - type: entities

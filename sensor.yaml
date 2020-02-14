@@ -19,9 +19,6 @@
   - platform: zoneminder
     include_archived: false
   - platform: mqtt
-    state_topic: "zoneminder/1"
-    name: "Front Door Alerts"
-  - platform: mqtt
     name: "front door alert id"
     state_topic: "zoneminder/1"
     value_template: "{{ value_json.eventid }}"

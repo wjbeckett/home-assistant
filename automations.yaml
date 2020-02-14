@@ -263,6 +263,7 @@
   action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
+
 #################################################################
 ## Object Detection
 #################################################################
