@@ -140,22 +140,11 @@ views:
             camera_view: live
             entities:
             - camera.front_door
-          - type: picture-entity
-            entity: camera.saved_image
       - type: vertical-stack
         cards:
           - type: picture-entity
-            entity: camera.deepstack_latest_person
-          - type: picture-entity
-            entity: camera.deepstack_latest_car
-      - type: vertical-stack
-        cards:
-          - type: entities
-            entities:
-              - image_processing.facebox_saved_image
-              - image_processing.deepstack_person_detector
-              - image_processing.deepstack_car_detector
-              - sensor.front_door_detection
+            title: Last Alert Image
+            entity_id: camera.latest_alert
 
   - icon: mdi:play-circle-outline
     id: media

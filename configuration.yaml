@@ -111,44 +111,6 @@ alarm_control_panel:
       pending_time: 0
       delay_time: 0
 
-# Image Processing
-image_processing: 
-  - platform: facebox
-    ip_address: !secret facebox_host
-    port: 8087
-    scan_interval: 10000
-    source: 
-      - entity_id: camera.saved_image
-  - platform: deepstack_object
-    ip_address: !secret deepstack_host
-    port: 5000
-    api_key: !secret deepstack_key
-    #scan_interval: 20 # Optional, in seconds
-    save_file_folder: /config/www/deepstack
-    save_timestamped_file: True
-    target: person
-    source:
-      - entity_id: camera.saved_image
-        name: deepstack_person_detector
-  - platform: deepstack_object
-    ip_address: !secret deepstack_host
-    port: 5000
-    api_key: !secret deepstack_key
-    #scan_interval: 20 # Optional, in seconds
-    save_file_folder: /config/www/deepstack
-    save_timestamped_file: True
-    target: car
-    source:
-      - entity_id: camera.saved_image
-        name: deepstack_car_detector 
-
-# Telegram
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram_api
-    allowed_chat_ids:
-      - !secret telegram_chat_id
-
 # Notify
 notify:
   - name: All_Devices
@@ -175,16 +137,8 @@ zoneminder:
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/tmp/image.jpg
-    name: Saved Image
-  - platform: local_file
-    file_path: /config/www/deepstack/deepstack_person_detector_latest_person.jpg
-    name: deepstack_latest_person
-  - platform: local_file
-    file_path: /config/www/deepstack/deepstack_car_detector_latest_car.jpg
-    name: deepstack_latest_car
-  - platform: zoneminder
-
+    file_path: !secret zm_alert_image
+    name: Latest Alert
 
 # Mqtt
 mqtt:
