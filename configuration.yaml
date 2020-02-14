@@ -15,11 +15,9 @@ http:
     - !secret trusted_proxies
 homeassistant:
   customize: !include customize.yaml
-  whifist_external_dirs:
+  whiteist_external_dirs:
     - /config/www
-    - /config/www/facebox
     - /config/www/tmp
-    - /config/www/deepstack
   auth_mfa_modules:
     - type: totp
 # Logger
