@@ -237,9 +237,7 @@ views:
                 entities:
                   - sensor.front_door_alerts
                   - sensor.front_door_alert_id
-                  - sensor.front_door_alert_desc
                   - sensor.front_door_object
-                  - input_number.zm_notify_throttle
               - type: entities
                 title: Fail2Ban
                 show_header_toggle: false
