@@ -141,9 +141,9 @@ views:
             - camera.front_door
       - type: vertical-stack
         cards:
-          - type: picture-entity
+          - type: picture
             title: Last Alert Image
-            entity_id: camera.latest_alert
+            image: !secret zm_alert_image
 
   - icon: mdi:play-circle-outline
     id: media
