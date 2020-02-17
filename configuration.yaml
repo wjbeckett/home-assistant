@@ -142,10 +142,6 @@ camera:
 #    file_path: /config/www/deepstack/deepstack_detector_latest_car.jpg
 #    name: deepstack_latest_car
   - platform: zoneminder
-  - platform: generic
-    name: Test Generic Camera
-    still_image_url: "null"
-    stream_source: rtsp://frontdoor:letmein@172.30.1.114/live
 
 # Image Processing
 image_processing: 
@@ -164,7 +160,7 @@ image_processing:
     save_timestamped_file: True
     target: car
     source:
-      - entity_id: camera.test_generic_camera
+      - entity_id: camera.front_door
         name: deepstack_detector
 
 # Mqtt

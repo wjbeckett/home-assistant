@@ -141,9 +141,6 @@ views:
             camera_view: live
             entities:
             - camera.front_door
-          - type: picture-entity
-            entity: camera.test_generic_camera
-            camera_view: live
       - type: vertical-stack
         cards:
           - type: entities
