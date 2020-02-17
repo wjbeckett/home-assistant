@@ -15,7 +15,7 @@ http:
     - !secret trusted_proxies
 homeassistant:
   customize: !include customize.yaml
-  whiteist_external_dirs:
+  whitelist_external_dirs:
     - /config/www
     - /config/www/tmp
     - /config/www/deepstack
