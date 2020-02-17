@@ -316,6 +316,11 @@
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
         data:
           image: !secret temp_image
+          clickAction: !secret zm_live_stream
+          actions:
+            - action: "URI"
+              title: View Image
+              uri: !secret temp_image
     - service_template: >-
         {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
         tts.google_say
