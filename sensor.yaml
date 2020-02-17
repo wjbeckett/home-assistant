@@ -37,3 +37,9 @@
       front_door_detection:
         friendly_name: 'Front Door Detection'
         value_template: '{{ states.image_processing.facebox_front_door.attributes.faces[0]["name"].title()}}'
+  - platform: mqtt
+    name: Zigbee2mqtt Networkmap
+    state_topic: zigbee2mqtt/bridge/networkmap/raw
+    value_template: >-
+      {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+    json_attributes_topic: zigbee2mqtt/bridge/networkmap/raw

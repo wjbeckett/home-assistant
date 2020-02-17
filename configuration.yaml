@@ -15,9 +15,10 @@ http:
     - !secret trusted_proxies
 homeassistant:
   customize: !include customize.yaml
-  #whiteist_external_dirs:
-  #  - /config/www
-  #  - /config/www/tmp
+  whiteist_external_dirs:
+    - /config/www
+    - /config/www/tmp
+    - /config/www/deepstack
   auth_mfa_modules:
     - type: totp
 # Logger
@@ -132,12 +133,19 @@ zoneminder:
 # Camera
 camera:
   - platform: local_file
-    file_path: !secret zm_alert_image
-    name: Latest Alert
-  - platform: local_file
     file_path: /config/www/tmp/image.jpg
     name: Saved Image
+  - platform: local_file
+    file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
+    name: deepstack_latest_person
+  - platform: local_file
+    file_path: /config/www/deepstack/deepstack_detector_latest_car.jpg
+    name: deepstack_latest_car
   - platform: zoneminder
+  - platform: generic
+    name: Test Generic Camera
+    still_image_url: "null"
+    stream_source: rtsp://frontdoor:letmein@172.30.1.114/live
 
 # Image Processing
 image_processing: 
@@ -147,6 +155,19 @@ image_processing:
     scan_interval: 10000
     source: 
       - entity_id: camera.saved_image
+  - platform: deepstack_object
+    ip_address: !secret deepstack_host
+    port: 5000
+    api_key: !secret deepstack_key
+    #scan_interval: 20 # Optional, in seconds
+    save_file_folder: /config/www/deepstack
+    save_timestamped_file: True
+    target:
+      - person
+      - car
+    source:
+      - entity_id: camera.saved_image
+        name: deepstack_detector
 
 # Mqtt
 mqtt:
