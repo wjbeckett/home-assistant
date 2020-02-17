@@ -389,7 +389,7 @@
       data_template:
         message: '{{ trigger.event.data.object }} detected in the driveway.'
         data:
-          image: !secret deepstack_latest_object
+          image: !secret deepstack_latest_car
           clickAction: !secret zm_live_stream
           actions:
             - action: "URI"
