@@ -278,27 +278,6 @@
 #################################################################
 ## Object Detection
 #################################################################
-- id: front_door_camera_detection
-  alias: Detect motion at front door
-  trigger:
-  - entity_id: sensor.front_door_alert_id
-    platform: state
-  condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  action:
-  - service: notify.all_devices
-    data_template:
-      message: "{{ states('sensor.front_door_object') | title }} detected at the front door."
-      data:
-        clickAction: !secret zm_live_stream 
-        image: !secret zm_alert_image
-        actions:
-          - action: "URI"
-            title: View Image
-            uri: !secret zm_alert_image
-
 - id: front_door_object_detection
   alias: Detect Object at the front door
   trigger:
