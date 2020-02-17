@@ -138,9 +138,9 @@ camera:
 #  - platform: local_file
 #    file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
 #    name: deepstack_latest_person
-#  - platform: local_file
-#    file_path: /config/www/deepstack/deepstack_detector_latest_car.jpg
-#    name: deepstack_latest_car
+  - platform: local_file
+    file_path: /config/www/deepstack/deepstack_detector_latest_car.jpg
+    name: deepstack_latest_car
   - platform: zoneminder
 
 # Image Processing

@@ -356,13 +356,13 @@
     state: 'on'
   trigger:
     platform: event
-    event_type: image_processing.object_detected
+    event_type: deepstack.object_detected
     event_data:
       object: person
   action:
     - service: notify.mobile_app_william
       data_template:
-        message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
+        message: 'Person detected at the front door.'
         data:
           image: !secret deepstack_latest_person
           clickAction: !secret zm_live_stream
@@ -370,8 +370,7 @@
             - action: "URI"
               title: View Image
               uri: !secret deepstack_latest_person
-
-      
+ 
 - id: car_detection
   alias: Notify when car detected
   initial_state: 'on'
@@ -381,13 +380,13 @@
     state: 'on'
   trigger:
     platform: event
-    event_type: image_processing.object_detected
+    event_type: deepstack.object_detected
     event_data:
       object: car
   action:
     - service: notify.mobile_app_william
       data_template:
-        message: '{{ trigger.event.data.object }} detected in the driveway.'
+        message: 'Car detected in the driveway.'
         data:
           image: !secret deepstack_latest_car
           clickAction: !secret zm_live_stream
