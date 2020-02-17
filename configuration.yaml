@@ -135,12 +135,12 @@ camera:
   - platform: local_file
     file_path: /config/www/tmp/image.jpg
     name: Saved Image
-  - platform: local_file
-    file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
-    name: deepstack_latest_person
-  - platform: local_file
-    file_path: /config/www/deepstack/deepstack_detector_latest_car.jpg
-    name: deepstack_latest_car
+#  - platform: local_file
+#    file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
+#    name: deepstack_latest_person
+#  - platform: local_file
+#    file_path: /config/www/deepstack/deepstack_detector_latest_car.jpg
+#    name: deepstack_latest_car
   - platform: zoneminder
   - platform: generic
     name: Test Generic Camera
@@ -162,11 +162,9 @@ image_processing:
     #scan_interval: 20 # Optional, in seconds
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
-    target:
-      - person
-      - car
+    target: car
     source:
-      - entity_id: camera.saved_image
+      - entity_id: camera.test_generic_camera
         name: deepstack_detector
 
 # Mqtt
