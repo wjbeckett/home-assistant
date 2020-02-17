@@ -158,9 +158,11 @@ image_processing:
     #scan_interval: 20 # Optional, in seconds
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
-    target: car
+    target:
+      - person
+      - car
     source:
-      - entity_id: camera.front_door
+      - entity_id: camera.saved_image
         name: deepstack_detector
 
 # Mqtt
