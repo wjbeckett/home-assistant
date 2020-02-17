@@ -20,7 +20,24 @@
 #################################################################
 ## Presence detection
 #################################################################
-- id: notify_resident
+- id: notify_resident_emily
+  alias: NOTIFY (Location) Resident
+  initial_state: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.options_notifications_push
+    state: 'on'
+  - condition: template
+    value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+  trigger:
+  - platform: state
+    entity_id: person.emily
+  action:
+  - service: notify.mobile_app_william
+    data_template:
+      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}.'
+
+- id: notify_resident_william
   alias: NOTIFY (Location) Resident
   initial_state: 'on'
   condition:
@@ -32,16 +49,10 @@
   trigger:
   - platform: state
     entity_id: person.william
-  - platform: state
-    entity_id: person.emily
   action:
-  - service: notify.all_devices
+  - service: notify.mobile_app_emily
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{% else %}at {{ trigger.to_state.state }}{% endif %}.'
-      data:
-        actions:
-          - action: "arm_alarm"
-            title: "Arm Alarm"
 
 - id: notify_garage_door
   alias: Notify Garage door
@@ -277,7 +288,7 @@
     entity_id: input_boolean.options_notifications_push
     state: 'on'
   action:
-  - service: notify.mobile_app_william
+  - service: notify.all_devices
     data_template:
       message: "{{ states('sensor.front_door_object') | title }} detected at the front door."
       data:

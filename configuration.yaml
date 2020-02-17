@@ -155,6 +155,12 @@ mqtt:
   password: !secret mqtt_password
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 # Speedtest
 speedtestdotnet:
