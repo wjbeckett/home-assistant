@@ -141,9 +141,10 @@ views:
             - camera.front_door
       - type: vertical-stack
         cards:
-          - type: picture
-            title: Last Alert Image
-            image: !secret zm_alert_image
+          - type: entities
+            entities:
+              - image_processing.facebox_saved_image
+              - sensor.front_door_detection
 
   - icon: mdi:play-circle-outline
     id: media

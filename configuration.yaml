@@ -134,7 +134,19 @@ camera:
   - platform: local_file
     file_path: !secret zm_alert_image
     name: Latest Alert
+  - platform: local_file
+    file_path: /config/www/tmp/image.jpg
+    name: Saved Image
   - platform: zoneminder
+
+# Image Processing
+image_processing: 
+  - platform: facebox
+    ip_address: !secret facebox_host
+    port: 8087
+    scan_interval: 10000
+    source: 
+      - entity_id: camera.saved_image
 
 # Mqtt
 mqtt:
