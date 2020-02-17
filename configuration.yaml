@@ -204,12 +204,6 @@ input_number:
 stream:
 ffmpeg:
 
-# Input Booleans
-#input_boolean:
-#  options_notifications_push:
-#    name: Send push notifications
-#    initial: on
-#    icon: mdi:bell
 
 sun:
 
