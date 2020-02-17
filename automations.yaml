@@ -304,8 +304,6 @@
     - condition: state
       entity_id: input_boolean.options_notifications_push
       state: 'on'
-    - condition: template
-      value_template: "{{ trigger.event.data.confidence|float > 20 }}"
   trigger:
     platform: event
     event_type: image_processing.detect_face
@@ -316,8 +314,8 @@
         {% endif %}
       data_template:
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
-        #data:
-        #  image: !secret deepstack_person_detector_file
+        data:
+          image: !secret temp_image
     - service_template: >-
         {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
         tts.google_say
