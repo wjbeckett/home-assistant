@@ -360,7 +360,7 @@
     event_data:
       object: person
   action:
-    - service: notify.all_devices
+    - service: notify.mobile_app_william
       data_template:
         message: '{{ trigger.event.data.object }} detected at the front door ({{ trigger.event.data.confidence }}% confidence).'
         data:
@@ -385,7 +385,7 @@
     event_data:
       object: car
   action:
-    - service: notify.all_devices
+    - service: notify.mobile_app_william
       data_template:
         message: '{{ trigger.event.data.object }} detected in the driveway.'
         data:
