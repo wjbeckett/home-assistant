@@ -337,45 +337,49 @@
     entity_id: input_boolean.options_notifications_push
     state: 'on'
   trigger:
-    platform: event
-    event_type: deepstack.object_detected
-    event_data:
-      object: person
+    - platform: event
+      event_type: deepstack.object_detected
+      event_data:
+        object: person
+    - platform: event
+      event_type: deepstack.object_detected
+      event_data:
+        object: car
   action:
     - service: notify.mobile_app_william
       data_template:
-        message: 'Person detected at the front door.'
+        message: '{{ trigger.event.data.object | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
         data:
           image: !secret deepstack_latest_person
-          clickAction: !secret zm_live_stream
+          clickAction: !secret motioneye_stream
           actions:
             - action: "URI"
               title: View Image
               uri: !secret deepstack_latest_person
  
-- id: car_detection
-  alias: Notify when car detected
-  initial_state: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.options_notifications_push
-    state: 'on'
-  trigger:
-    platform: event
-    event_type: deepstack.object_detected
-    event_data:
-      object: car
-  action:
-    - service: notify.mobile_app_william
-      data_template:
-        message: 'Car detected in the driveway.'
-        data:
-          image: !secret deepstack_latest_car
-          clickAction: !secret zm_live_stream
-          actions:
-            - action: "URI"
-              title: View Image
-              uri: !secret deepstack_latest_car
+#- id: car_detection
+#  alias: Notify when car detected
+#  initial_state: 'on'
+#  condition:
+#  - condition: state
+#    entity_id: input_boolean.options_notifications_push
+#    state: 'on'
+#  trigger:
+#    platform: event
+#    event_type: deepstack.object_detected
+#    event_data:
+#      object: car
+#  action:
+#    - service: notify.mobile_app_william
+#      data_template:
+#        message: '{{ trigger.event.data.object }} detected in the driveway.'
+#        data:
+#          image: !secret deepstack_latest_person
+#          clickAction: !secret motioneye_stream
+#          actions:
+#            - action: "URI"
+#              title: View Image
+#              uri: !secret deepstack_latest_person
 
 #################################################################
 ## Light Automations
