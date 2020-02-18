@@ -189,7 +189,7 @@
       message: Alarm is now disarmed.
   - service: notify.all_devices
     data_template:
-      message: ALARM! The alarm is Disarmed at {{ states('sensor.date_time') }}
+      message: The alarm is now Disarmed. {{ states('sensor.date_time') }}
 
 - id: alarm_notify_pending
   alias: Send notification when alarm is in pending status
@@ -204,7 +204,7 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: ALARM! The alarm is in pending status at {{ states('sensor.date_time') }}
+      message: The alarm is in pending status. {{ states('sensor.date_time') }}
 
 - id: alarm_notify_armed_away
   alias: Send notification when alarm is Armed in Away mode
@@ -223,7 +223,7 @@
       message: Alarm has been armed.
   - service: notify.all_devices
     data_template:
-      message: ALARM! The alarm is armed in Away mode {{ states('sensor.date_time') }}
+      message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
 
 - id: alarm_notify_armed_home
   alias: Send notification when alarm is Armed in Home mode
@@ -234,7 +234,7 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: 'ALARM! The alarm is armed in Home mode {{ states(''sensor.date_time'') }}'
+      message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
 
 - id: alarm_disable_when_arriving
   alias: Alarm disarm when return home
@@ -292,7 +292,7 @@
     data:
       entity_id: camera.front_door
       filename: /config/www/tmp/image.jpg
-  - delay: 00:00:02
+  - delay: 00:00:03
   - service: image_processing.scan
     entity_id: image_processing.deepstack_detector
   - service: image_processing.scan
