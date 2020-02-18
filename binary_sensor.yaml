@@ -1,4 +1,8 @@
   - platform: wyzesense
     device: "/dev/hidraw0"
+  - platform: mqtt
+    state_topic: "home/frontdoor/camera/motion"
+    name: Front Door Motion
+    device_class: motion
 
 
