@@ -288,11 +288,27 @@
       entity_id: input_boolean.options_notifications_push
       state: 'on'
   action:
-  - service: camera.snapshot
-    data:
-      entity_id: camera.front_door
-      filename: /config/www/tmp/image.jpg
-  - delay: 00:00:03
+  - service: downloader.download_file
+    data_template:
+      url: !secret zm_alert_image
+      filename: "zmalert.jpg"
+      overwrite: true
+  #- service: camera.snapshot
+  #  data:
+  #    entity_id: camera.front_door
+  #    filename: /config/www/tmp/image.jpg
+  #- delay: 00:00:03
+  #- service: image_processing.scan
+  #  entity_id: image_processing.deepstack_detector
+  #- service: image_processing.scan
+  #  entity_id: image_processing.facebox_saved_image
+
+- id: scan_downloaded_zm_image
+  alias: Scan ZM Alert Image
+  trigger:
+    platform: event
+    event_type: downloader_download_complete
+  action:
   - service: image_processing.scan
     entity_id: image_processing.deepstack_detector
   - service: image_processing.scan
@@ -351,7 +367,7 @@
         message: '{{ trigger.event.data.object | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
         data:
           image: !secret deepstack_latest_person
-          clickAction: !secret motioneye_stream
+          clickAction: !secret zm_live_stream
           actions:
             - action: "URI"
               title: View Image

@@ -130,10 +130,13 @@ zoneminder:
     username: !secret zm_username
     password: !secret zm_password
 
+downloader:
+  download_dir: /config/www/tmp/
+
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/tmp/image.jpg
+    file_path: /config/www/tmp/zmalert.jpg
     name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
