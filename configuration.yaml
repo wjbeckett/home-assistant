@@ -141,7 +141,9 @@ camera:
   - platform: push
     name: MotionEye Front Door
     webhook_id: front_door_image
-
+  - platform: mjpeg
+    mjpeg_url: https://motioneye.burrowflix.com:8091
+    name: motioneye_fd
   - platform: zoneminder
 
 # Image Processing
