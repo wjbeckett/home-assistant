@@ -136,7 +136,7 @@ downloader:
 # Camera
 camera:
   - platform: local_file
-    file_path: /config/www/tmp/zmalert.jpg
+    file_path: /config/www/tmp/image.jpg
     name: Saved Image
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
