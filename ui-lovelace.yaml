@@ -143,9 +143,9 @@ views:
             entities:
             - camera.front_door
           - type: picture-entity
-            entity: camera.me_image
+            entity: camera.motioneye_front_door
           - type: picture-entity
-            entity: camera.deepstack_latest_person
+            entity: camera.deepstack_latest_image
             title: Latest Detection
       - type: vertical-stack
         cards:
