@@ -141,12 +141,7 @@ views:
             camera_image: camera.front_door
             camera_view: live
             entities:
-            - camera.front_door
-          - type: picture-glance
-            entity: camera.motioneye_fd
-            camera_image: camera.motioneye_fd
-            camera_view: live
-          
+            - camera.front_door          
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection

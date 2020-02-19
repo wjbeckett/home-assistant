@@ -141,12 +141,7 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
     name: deepstack_latest_image
-  - platform: push
-    name: MotionEye Front Door
     webhook_id: front_door_image
-  - platform: mjpeg
-    mjpeg_url: https://motioneye.burrowflix.com:8091
-    name: motioneye_fd
   - platform: zoneminder
 
 # Image Processing
