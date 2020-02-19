@@ -141,7 +141,6 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
     name: deepstack_latest_image
-    webhook_id: front_door_image
   - platform: zoneminder
 
 # Image Processing
