@@ -26,12 +26,12 @@ homeassistant:
 logbook:
   exclude:
     entities:
-      - automation.ac_living_room_fan_speed_receive
-      - automation.ac_living_room_fan_speed_send
-      - automation.ac_living_room_mode_receive
-      - automation.ac_living_room_mode_send
-      - automation.ac_living_room_temp_receive
-      - automation.ac_living_room_temp_send
+      - automation.ac_bedroomroom_fan_speed_receive
+      - automation.ac_bedroomroom_fan_speed_send
+      - automation.ac_bedroom_mode_receive
+      - automation.ac_bedroom_mode_send
+      - automation.ac_bedroom_temp_receive
+      - automation.ac_bedroom_temp_send
 
 # Logger
 logger:
@@ -210,4 +210,5 @@ sensor: !include sensor.yaml
 binary_sensor: !include binary_sensor.yaml
 input_boolean: !include input_boolean.yaml
 input_select: !include input_select.yaml
+input_number: !include input_number.yaml
 switch: !include switches.yaml
