@@ -141,10 +141,9 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
     name: deepstack_latest_image
-  - platform: generic
+  - platform: ffmpeg
     name: Generic Camera
-    still_image_url: !secret front_door_still_url
-    stream_source: !secret front_door_cam_feed
+    input: !secret front_door_cam_feed
   - platform: zoneminder
 
 # Image Processing
