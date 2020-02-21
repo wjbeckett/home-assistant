@@ -131,13 +131,13 @@ views:
             line_width: 2
             height: 180
   
-  - icon: mdi:fan
-    id: AirConditioning
+  - icon: mdi:air-conditioner
+    id: AC
+    title: Air Conditioning
     cards:
       - type: entities
         title: Bedroom AC
         show_header_toggle: false
-        theme: default
         entities:
           - entity: switch.bedroom_ac_power
             icon: 'mdi:power'
