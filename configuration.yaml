@@ -143,8 +143,8 @@ camera:
     name: deepstack_latest_image
   - platform: generic
     name: Generic Camera
-    still_image_url: https://motioneye.burrowflix.com/picture/1/current/
-    stream_source: https://motioneye.burrowflix.com:8091
+    still_image_url: !secret front_door_still_url
+    stream_source: !secret front_door_cam_feed
   - platform: zoneminder
 
 # Image Processing

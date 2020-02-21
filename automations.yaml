@@ -317,7 +317,7 @@
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
         data:
           image: !secret temp_image
-          clickAction: !secret zm_live_stream
+          clickAction: !secret motioneye_stream
           actions:
             - action: "URI"
               title: View Image
