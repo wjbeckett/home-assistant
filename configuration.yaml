@@ -141,6 +141,10 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
     name: deepstack_latest_image
+  - platform: generic
+    name: Generic Camera
+    still_image_url: https://motioneye.burrowflix.com/picture/1/current/
+    stream_source: https://motioneye.burrowflix.com:8091
   - platform: zoneminder
 
 # Image Processing
