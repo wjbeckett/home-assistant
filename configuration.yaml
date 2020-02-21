@@ -136,6 +136,7 @@ camera:
   - platform: ffmpeg
     name: Front Door
     input: !secret front_door_cam_feed
+    extra_arguments: '-preset faster -vf "scale=1280:720"'
 
 # Image Processing
 image_processing: 
