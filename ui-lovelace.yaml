@@ -142,12 +142,6 @@ views:
             camera_view: live
             entities:
             - camera.front_door
-          - type: picture-glance
-            title: Generic Camera
-            camera_image: camera.generic_camera
-            camera_view: live
-            entities:
-            - camera.generic_camera
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection
