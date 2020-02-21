@@ -200,7 +200,6 @@ input_number:
     mode: box
 
 # Enable Stream Componenet
-stream:
 ffmpeg:
 
 
