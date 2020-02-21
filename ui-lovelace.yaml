@@ -131,6 +131,21 @@ views:
             line_width: 2
             height: 180
   
+  - icon: mdi:fan
+    id: AirConditioning
+    cards:
+      - type: entities
+        title: Bedroom AC
+        show_header_toggle: false
+        theme: default
+        entities:
+          - entity: switch.bedroom_ac_power
+            icon: 'mdi:power'
+            name: Power
+          - entity: input_select.acbedroom_mode
+          - entity: input_number.acbedroom_temp
+          - entity: input_select.acbedroom_fanspeed
+      
   - icon: mdi:cctv
     id: cameras
     cards:

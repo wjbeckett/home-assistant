@@ -1,0 +1,17 @@
+  acbedroom_mode:
+    name: Mode
+    options:
+      - Auto
+      - Cooling
+      - Heating
+      - Dry
+      - Fan
+    icon: "mdi:animation-outline"
+  acbedroom_fanspeed:
+    name: Fan speed
+    options:
+      - Auto
+      - Low
+      - Mid
+      - High
+    icon: "mdi:weather-windy"

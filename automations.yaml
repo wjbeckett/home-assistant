@@ -446,3 +446,102 @@
   action:
     - service: light.turn_off
       entity_id: group.kitchen_lights
+
+#################################################################
+## AC Automations
+#################################################################
+- id: ac_bedroom_mode_send
+  alias: AC Bedroom mode send
+  description: ''
+  trigger:
+  - entity_id: input_select.acbedroom_mode
+    platform: state
+  condition: []
+  action:
+  - data:
+      payload_template: '{{ states.input_select.acbedroom_mode.state }}'
+      topic: /aircon/34ea344df92e/mode/set
+    service: mqtt.publish
+
+- id: ac_bedroom_mode_receive
+  alias: AC bedroom mode receive
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: /aircon/34ea344df92e/mode/value
+  condition: []
+  action:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.ac_bedroom_mode_send
+  - service: input_select.select_option
+    data_template:
+      option: '{{ trigger.payload|title }}'
+      entity_id: input_select.acbedroom_mode
+  - service: automation.turn_on
+    data:
+      entity_id: automation.ac_bedroom_mode_send
+
+- id: ac-bedroom-fanspeed-send
+  alias: AC bedroom Fan Speed Send
+  description: ''
+  trigger:
+  - entity_id: input_select.acbedroom_fanspeed
+    platform: state
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      payload_template: '{{ states.input_select.acbedroom_fanspeed.state }}'
+      topic: /aircon/34ea344df92e/fanspeed/set
+
+- id: ac-bedroom-fanspeed-receive
+  alias: AC bedroom Fan Speed receive
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: /aircon/34ea344df92e/fanspeed/value
+  condition: []
+  action:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.ac-bedroom-fanspeed-send
+  - service: input_select.select_option
+    data_template:
+      option: '{{ trigger.payload|title }}'
+      entity_id: input_select.acbedroom_fanspeed
+  - service: automation.turn_on
+    data:
+      entity_id: automation.ac-bedroom-fanspeed-send
+
+- id: ac-bedroom-temp-receive
+  alias: AC bedroom Temp receive
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: /aircon/34ea344df92e/temp/value
+  condition: []
+  action:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.ac-bedroom-temp-send
+  - service: input_number.set_value
+    data_template:
+      value: '{{ trigger.payload }}'
+      entity_id: input_number.acbedroom_temp
+  - service: automation.turn_on
+    data:
+      entity_id: automation.ac-bedroom-temp-send
+
+- id: ac-bedroom-temp-send
+  alias: AC bedroom Temp send
+  description: ''
+  trigger:
+  - entity_id: input_number.acbedroom_temp
+    platform: state
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      payload_template: '{{ states.input_number.acbedroom_temp.state }}'
+      topic: /aircon/34ea344df92e/temp/set

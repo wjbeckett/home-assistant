@@ -1,0 +1,7 @@
+#################################################################
+## Switches
+#################################################################
+  - platform: mqtt
+    name: "Bedroom AC Power"
+    state_topic: "/aircon/34ea344df92e/power/value"
+    command_topic: "/aircon/34ea344df92e/power/set"
