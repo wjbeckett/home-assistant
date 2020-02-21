@@ -122,14 +122,6 @@ notify:
     api_key: !secret pushover_api
     user_key: !secret pushover_user
 
-# Zoneminder
-zoneminder:
-  - host: !secret zm_host
-    ssl: true
-    verify_ssl: true
-    username: !secret zm_username
-    password: !secret zm_password
-
 downloader:
   download_dir: /config/www/tmp/
 
@@ -142,9 +134,8 @@ camera:
     file_path: /config/www/deepstack/deepstack_detector_latest_person.jpg
     name: deepstack_latest_image
   - platform: ffmpeg
-    name: Generic Camera
+    name: Front Door
     input: !secret front_door_cam_feed
-  - platform: zoneminder
 
 # Image Processing
 image_processing: 
@@ -189,15 +180,6 @@ speedtestdotnet:
     - ping
     - download
     - upload
-
-# Input Number
-input_number:
-  zm_notify_throttle:
-    min: 30
-    max: 3600
-    step: 1
-    name: Zoneminder Notification Throttle
-    mode: box
 
 # Enable Stream Componenet
 ffmpeg:

@@ -245,12 +245,6 @@ views:
                   - input_boolean.options_notifications_push
                   - input_boolean.location_update
               - type: entities
-                title: Zoneminder Stats
-                show_header_toggle: false
-                entities:
-                  - sensor.front_door_alert_id
-                  - sensor.front_door_object
-              - type: entities
                 title: Fail2Ban
                 show_header_toggle: false
                 entities:
