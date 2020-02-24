@@ -100,14 +100,12 @@ light:
 
 # Media Players
 media_player:
-  - platform: samsungtv_tizen
+  - platform: samsungtv_custom
     host: !secret samsungtv_host
     port: 8002
     mac: c0:48:e6:35:1f:40
-    source_list: '{"TV": "KEY_TV", "HDMI": "KEY_HDMI"}'
-    app_list: '{"Plex": "3201512006963", "YouTube": "111299001912"}'
-    api_key: !secret smartthings_api
-    device_id: !secret samsung_device_id
+    sourcelist: '{"TV": "KEY_TV", "Switch": "KEY_HDMI"}'
+    applist: "Plex, YouTube"
 
 # Alarm Panel
 alarm_control_panel:
