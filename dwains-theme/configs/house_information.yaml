@@ -8,8 +8,12 @@ house_information:
     - entity: binary_sensor.back_door
       icon_on: fas:door-open
       icon_off: fas:door-closed
-    - entity: sensor.kitchen_sensor_motion
+    - entity: binary_sensor.kitchen_sensor_motion
+      icon_on: mdi:motion-binary_sensor
+      icon_off: mdi:walk
     - entity: binary_sensor.front_door_motion
+      icon_on: mdi:motion-binary_sensor
+      icon_off: mdi:walk
 
   calendar:
     - calendar.trash

@@ -1,9 +1,6 @@
 # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/rooms.html
 
 rooms:
-  - name: Front Door
-    icon: fas:key
-    motion: binary_sensor.front_door_motion
   - name: Bedroom
     icon: fas:bed
     light: group.bedroom_lights
@@ -12,7 +9,7 @@ rooms:
     icon: fas:utensils
     light: group.kitchen_lights
     temperature: sensor.kitchen_sensor_temperature
-    motion: sensor.kitchen_sensor_motion
+    motion: binary_sensor.kitchen_sensor_motion
     door: binary_sensor.back_door
     media_player: media_player.kitchen_display
   - name: Ollie Room
@@ -20,13 +17,10 @@ rooms:
     light: group.ollie_lights
     media_player: media_player.ollie_s_speaker
   - name: Teddy Room
-    icon: fas:fort-awesome
+    icon: mdi:pokeball
     light: group.teddy_lights
     media_player: media_player.teddy_s_speaker
   - name: Lounge Room
     icon: fas:couch
     light: group.lounge_room_lights
     media_player: group.lounge_room_media_players
-  - name: Garage
-    icon: fas:garage
-    door: binary_sensor.garage_door
