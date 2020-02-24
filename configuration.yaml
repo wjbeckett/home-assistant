@@ -1,10 +1,10 @@
 default_config:
 
-lovelace:
-  mode: yaml
+#lovelace:
+#  mode: yaml
 
-frontend:
-  themes: !include_dir_merge_named themes
+#frontend:
+#  themes: !include_dir_merge_named themes
 
 http:
   base_url: !secret base_url
@@ -14,6 +14,7 @@ http:
   trusted_proxies:
     - !secret trusted_proxies
 homeassistant:
+  packages: !include_dir_named packages/
   customize: !include customize.yaml
   whitelist_external_dirs:
     - /config/www
@@ -99,13 +100,14 @@ light:
 
 # Media Players
 media_player:
-  - platform: samsungtv_custom
+  - platform: samsungtv_tizen
     host: !secret samsungtv_host
     port: 8002
     mac: c0:48:e6:35:1f:40
-    sourcelist: '{"TV": "KEY_TV","Switch": "KEY_HDMI1"}'
-    applist: "Plex, YouTube"
-    protocol: ctl_qled
+    source_list: '{"TV": "KEY_TV", "HDMI": "KEY_HDMI"}'
+    applist: '{"Plex": "3201512006963", "YouTube": "111299001912"}'
+    api_key: !secret smartthings_api
+    device_id: !secret samsung_device_id
 
 # Alarm Panel
 alarm_control_panel:

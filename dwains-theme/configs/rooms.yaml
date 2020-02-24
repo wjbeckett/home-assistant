@@ -1,0 +1,84 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/rooms.html
+
+ rooms:
+   - name: Front Door
+     icon: fas:key
+     #light: light.hallway
+     #temperature: sensor.hallway_temperature
+     #climate: climate.hallway_climate
+     #humidity: sensor.halway_humidity
+     motion: binary_sensor.front_door_motion
+     #door: binary_sensor.hallway_door_contact
+     #window: binary_sensor.hallway_window_contact
+     #vacuum: 
+     #  entity: vacuum.rockrobo
+     #  camera: camera.rockrobo_map
+     #plant: plant.hallway_plant
+     #media_player: media_player.awesome_hallway_tv
+   - name: Bedroom
+     icon: fas:garage
+     light: group.bedroom_lights
+     #temperature:
+     #climate:
+     #humidity:
+     #motion:
+     #door: group.garage_doors
+     #window:
+     media_player: group.bedroom_media_players
+     #addons:
+     #  - name: Hello room
+     #    icon: fas:puzzle-piece
+     #    path: 'dwains-theme/addons/rooms/hello-room/page.yaml'
+     #    data:
+     #      some_data: 'This is some data parsed.'
+     #      some_other_data: 'and some other data.
+   - name: Kitchen
+     icon: fas:garage
+     light: group.kitchen_lights
+     temperature: sensor.kitchen_sensor_temperature
+     #climate:
+     #humidity:
+     motion: sensor.kitchen_sensor_motion
+     door: binary_sensor.back_door
+     #window:
+     media_player: media_player.kitchen_display
+   - name: Ollie's Room
+     icon: fas:garage
+     light: group.ollie_lights
+     #temperature:
+     #climate:
+     #humidity:
+     #motion:
+     #door: group.garage_doors
+     #window:
+     media_player: media_player.ollie_s_speaker
+   - name: Teddy's Room
+     icon: fas:garage
+     light: group.teddy_lights
+     #temperature:
+     #climate:
+     #humidity:
+     #motion:
+     #door: group.garage_doors
+     #window:
+     media_player: media_player.teddy_s_speaker
+   - name: Lounge Room
+     icon: fas:garage
+     light: group.lounge_room_lights
+     #temperature:
+     #climate:
+     #humidity:
+     #motion:
+     #door: group.garage_doors
+     #window:
+     media_player: group.lounge_room_media_players
+   - name: Garage
+     icon: fas:garage
+     #light: group.lounge_room_lights
+     #temperature:
+     #climate:
+     #humidity:
+     #motion:
+     door: binary_sensor.garage_door
+     #window:
+     #media_player: group.lounge_room_media_players

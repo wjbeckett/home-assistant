@@ -1,6 +1,26 @@
-- name: kitchen dim
+- id: kitchen_dim
+  name: kitchen dim
   entities:
     light.kitchen_lights:
       state: on
       transition: 2
       brightness_pct: 30
+- id: bedroom_night_light
+  name: Bedroom Night Light
+  entities:
+    light.55404001dc4f22ac01ca:
+      brightness: 10
+      color_temp: 1000
+      friendly_name: Bedroom lamp right
+      max_mireds: 1000
+      min_mireds: 100
+      state: 'on'
+      supported_features: 3
+    light.55404001dc4f22ac0486:
+      brightness: 10
+      color_temp: 1000
+      friendly_name: Bedroom Lamp Left
+      max_mireds: 1000
+      min_mireds: 100
+      state: 'on'
+      supported_features: 3

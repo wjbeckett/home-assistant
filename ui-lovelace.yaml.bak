@@ -1,0 +1,286 @@
+resources:
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+    type: module
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+    type: module
+  - url: /community_plugin/custom-header/custom-header.js
+    type: module
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+    type: module
+  - url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
+    type: module
+  - url: /community_plugin/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
+    type: module
+
+custom_header:
+  compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
+
+title: Beckett Home
+views:
+  - icon: mdi:home-assistant
+    id: home
+    title: Home
+    badges: []
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            entities:
+              - person.william
+              - person.emily
+          - type: entities
+            entities:
+              - binary_sensor.garage_door
+              - binary_sensor.back_door
+              - binary_sensor.kitchen_sensor_motion
+              - binary_sensor.front_door_motion
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_light_level
+                name: Kitchen Brightness
+            smoothing: true
+            hours_to_show: 24
+      - type: vertical-stack
+        cards:
+          - type: alarm-panel
+            name: House Alarm
+            entity: alarm_control_panel.home_alarm
+            states:
+              - arm_home
+              - arm_away
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Lights
+            entities:
+              - entity: light.34856070bcddc23658e4
+                type: custom:slider-entity-row
+                toggle: true
+              - entity: light.bedroom_lights
+                type: custom:slider-entity-row
+                toggle: true
+                #- entity: light.55404001dc4f22ac01ca
+              #  type: custom:slider-entity-row
+              #  toggle: true
+              #- entity: light.55404001dc4f22ac0486
+              #  type: custom:slider-entity-row
+              #  toggle: true
+              - type: custom:fold-entity-row
+                head: light.kitchen_lights
+                entities:
+                  - entity: light.kitchen_lights
+                    type: custom:slider-entity-row
+                    toggle: true
+                  - entity: light.80304313dc4f229a3225
+                    type: custom:slider-entity-row
+                    toggle: true
+              #- entity: light.pendant_light_left
+              #  type: custom:slider-entity-row
+              #  toggle: true
+              #- entity: light.pendant_light_center
+              #  type: custom:slider-entity-row
+              #  toggle: true
+              #- entity: light.pendant_light_right
+              #  type: custom:slider-entity-row
+              #  toggle: true
+              - entity: light.ollie_s_lamp
+                type: custom:slider-entity-row
+                toggle: true
+              - entity: light.teddy_s_lamp
+                type: custom:slider-entity-row
+                toggle: true
+
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:weather-card
+            entity: weather.dark_sky
+          - type: entities
+            title: Weather
+            show_header_toggle: false
+            entities:
+              - sensor.dark_sky_summary
+              - sensor.dark_sky_hourly_summary
+              - sensor.dark_sky_daily_summary
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_temperature
+                name: Kitchen
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.dark_sky_temperature
+                name: Outside
+                show_state: false
+                state_adaptive_color: true
+                show_fill: false
+            name: Temperature
+            hours_to_show: 24
+            line_width: 2
+            height: 180
+  
+  - icon: mdi:air-conditioner
+    id: AC
+    title: Air Conditioning
+    cards:
+      - type: entities
+        title: Bedroom AC
+        show_header_toggle: false
+        entities:
+          - entity: switch.bedroom_ac_power
+            icon: 'mdi:power'
+            name: Power
+          - entity: input_select.acbedroom_mode
+          - entity: input_number.acbedroom_temp
+          - entity: input_select.acbedroom_fanspeed
+      
+  - icon: mdi:cctv
+    id: cameras
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: picture-glance
+            title: Front Door
+            camera_image: camera.front_door
+            camera_view: live
+            entities:
+            - camera.front_door
+          - type: picture-entity
+            entity: camera.deepstack_latest_image
+            title: Latest Detection
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - image_processing.facebox_saved_image
+              - image_processing.deepstack_detector
+              - sensor.front_door_detection
+
+  - icon: mdi:play-circle-outline
+    id: media
+    title: Media
+    badges:
+      - sensor.plex_bms01
+    cards:
+      - type: entities
+        entities:
+          - type: custom:mini-media-player
+            entity: media_player.all_speakers
+            group: true
+            artwork: cover
+            info: scroll
+            hide:
+              power: true
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.bathroom_speakers
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.lounge_room_speaker
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            group: true
+            hide:
+              controls: true
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            group: true
+            hide:
+              controls: true
+      - type: horizontal-stack
+        cards:
+          - entity: media_player.samsung_tv_remote
+            type: custom:mini-media-player
+            info: scroll
+            artwork: cover
+
+  - icon: mdi:settings
+    id: settings
+    title: Settings
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - sensor.wifi_status
+              - type: custom:mini-graph-card
+                name: Download/Upload
+                entities:
+                  - entity: sensor.speedtest_download
+                    name: Download
+                    show_state: true
+                    state_adaptive_color: true
+                  - entity: sensor.speedtest_upload
+                    name: Upload
+                    show_state: true
+                    state_adaptive_color: true
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: entities
+                title: Switches
+                show_header_toggle: true
+                entities:
+                  - input_boolean.options_notifications_push
+                  - input_boolean.location_update
+              - type: entities
+                title: Fail2Ban
+                show_header_toggle: false
+                entities:
+                  - sensor.fail2ban_hass_iptables
+#  - icon: mdi:zigbee
+#    id: zigbee
+#    title: Zigbee Network
+#    panel: true
+#    cards:
+#      - type: custom:zigbee2mqtt-networkmap
+#        entity: sensor.zigbee2mqtt_networkmap
+#        mqtt_base_topic: zigbee2mqtt
+#        force: 3000 
+#        node_size: 16
+#        font_size: 12
+#        link_width: 2
+#        height: 400 
+#        css: |
+#          :host {
+#            --zigbee2mqtt-networkmap-node-color: rgba(18, 120, 98, .7);
+#            --zigbee2mqtt-networkmap-node-fill-color: #dcfaf3;
+#            --zigbee2mqtt-networkmap-node-pinned-color: rgba(190, 56, 93, .6);
+#            --zigbee2mqtt-networkmap-link-color: rgba(18, 120, 98, .5);
+#            --zigbee2mqtt-networkmap-hover-color: #be385d;
+#            --zigbee2mqtt-networkmap-link-selected-color: rgba(202, 164, 85, .6);
+#            --zigbee2mqtt-networkmap-label-color: #127862;
+#            --zigbee2mqtt-networkmap-arrow-color: rgba(18, 120, 98, 0.7);
+#            --zigbee2mqtt-networkmap-node-coordinator-color: rgba(224, 78, 93, .7);
+#            --zigbee2mqtt-networkmap-node-router-color: rgba(0, 165, 255, .7);
+#          }

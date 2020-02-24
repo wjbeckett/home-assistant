@@ -1,0 +1,9 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/persons.html
+
+persons: 
+  - name: William
+    track: person.william
+    picture_path: 'images/persons/dwain.jpg'
+  - name: Emily
+    track: person.Emily
+    picture_path: 'images/persons/emily.png'

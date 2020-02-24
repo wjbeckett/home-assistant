@@ -9,13 +9,79 @@ kitchen_lights:
     - light.pendant_light_center
     - light.pendant_light_right
 
+kitchen:
+  name: Kitchen
+  entities:
+    - group.kitchen_lights
+    - sensor.kitchen_sensor_temperature
+    - sensor.back_door
+    - media_player.kitchen_display
+
 Household:
   - person.william
   - person.emily
 
-all_lights:
-  - light.80304313dc4f229a3225
-  - light.kitchen_lights
-  - light.ollie_s_lamp
-  - light.teddy_s_lamp
-  - light.bedroom_lights
+ollie_lights:
+  name: Ollie's Lights
+  entities:
+    - light.ollie_s_lamp
+
+teddy_lights:
+  name: Teddy's Lights
+  entities:
+    - light.teddy_s_lamp
+
+ollie_room:
+  name: Ollie's Room
+  entities:
+    - group.ollie_lights
+    - media_player.ollie_s_speaker
+
+teddy_room:
+  name: Teddy's Room
+  entities:
+    - light.teddy_s_lamp
+    - media_player.teddy_s_speaker
+
+bedroom_lights:
+  name: Bedroom Lights
+  entities:
+    - light.55404001dc4f22ac01ca
+    - light.55404001dc4f22ac0486
+
+bedroom_media_players:
+  name: Bedroom Media Players
+  entities:
+    - media_player.bedroom_speaker
+    - media_player.bedroom_tv
+
+Bedroom:
+  Name: Bedroom
+  entities:
+    - group.bedroom_lights
+    - media_player.bedroom_speaker
+    - media_player.bedroom_tv
+
+lounge_room_lights:
+  name: Lounge Room Lights
+  entities:
+    - light.34856070bcddc23658e4
+
+lounge_room_media_players:
+  name: Lounge Room Media Players
+  entities:
+    - media_player.lounge_room_speaker
+    - media_player.samsung_tv_remote
+
+lounge_room:
+  name: Lounge Room
+  entities:
+    - group.lounge_room_lights
+    - media_player.lounge_room_speaker
+    - media_player.samsung_tv_remote
+
+front_door:
+  name: Front Door
+  entities:
+    - camera.front_door
+    - binary_sensor.front_door_motion
