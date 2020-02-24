@@ -136,9 +136,6 @@ notify:
     api_key: !secret pushover_api
     user_key: !secret pushover_user
 
-downloader:
-  download_dir: /config/www/tmp/
-
 # Camera
 camera:
   - platform: local_file
@@ -198,7 +195,6 @@ speedtestdotnet:
 
 # Enable Stream Componenet
 ffmpeg:
-
 
 sun:
 
