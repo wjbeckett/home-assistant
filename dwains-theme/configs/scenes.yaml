@@ -2,10 +2,10 @@
 
 scenes:
   - entity: scene.bedroom_night_light
-    icon: fas:bed
+    icon: mdi:weather-night
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
   - entity: scene.night_light
-    icon: fas:ned
+    icon: mdi:weather-night
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
