@@ -48,8 +48,8 @@ logger:
     homeassistant.components.template.sensor: fatal
 
 # Recorder
-recorder:
-  purge_keep_days: 7
+#recorder:
+#  purge_keep_days: 7
 
 # System Health
 system_health:
@@ -105,7 +105,7 @@ media_player:
     port: 8002
     mac: c0:48:e6:35:1f:40
     source_list: '{"TV": "KEY_TV", "HDMI": "KEY_HDMI"}'
-    applist: '{"Plex": "3201512006963", "YouTube": "111299001912"}'
+    app_list: '{"Plex": "3201512006963", "YouTube": "111299001912"}'
     api_key: !secret smartthings_api
     device_id: !secret samsung_device_id
 
