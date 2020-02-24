@@ -16,7 +16,7 @@
      #plant: plant.hallway_plant
      #media_player: media_player.awesome_hallway_tv
    - name: Bedroom
-     icon: fas:garage
+     icon: fas:bed
      light: group.bedroom_lights
      #temperature:
      #climate:
@@ -33,7 +33,7 @@
      #      some_data: 'This is some data parsed.'
      #      some_other_data: 'and some other data.
    - name: Kitchen
-     icon: fas:garage
+     icon: fas:utensils
      light: group.kitchen_lights
      temperature: sensor.kitchen_sensor_temperature
      #climate:
@@ -43,7 +43,7 @@
      #window:
      media_player: media_player.kitchen_display
    - name: Ollie's Room
-     icon: fas:garage
+     icon: fas:paw
      light: group.ollie_lights
      #temperature:
      #climate:
@@ -53,7 +53,7 @@
      #window:
      media_player: media_player.ollie_s_speaker
    - name: Teddy's Room
-     icon: fas:garage
+     icon: fas:fort-awesome
      light: group.teddy_lights
      #temperature:
      #climate:
@@ -63,7 +63,7 @@
      #window:
      media_player: media_player.teddy_s_speaker
    - name: Lounge Room
-     icon: fas:garage
+     icon: fas:couch
      light: group.lounge_room_lights
      #temperature:
      #climate:
