@@ -55,7 +55,7 @@ bedroom_media_players:
     - media_player.bedroom_speaker
     - media_player.bedroom_tv
 
-Bedroom:
+bedroom:
   Name: Bedroom
   entities:
     - group.bedroom_lights
