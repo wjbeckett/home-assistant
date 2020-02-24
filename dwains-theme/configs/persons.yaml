@@ -3,7 +3,7 @@
 persons: 
   - name: William
     track: person.william
-    picture_path: 'images/persons/dwain.jpg'
+    picture_path: 'images/persons/william.png'
   - name: Emily
-    track: person.Emily
+    track: person.emily
     picture_path: 'images/persons/emily.png'

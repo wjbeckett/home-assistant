@@ -3,11 +3,13 @@
 house_information:
   favorites:
     - entity: binary_sensor.garage_door
-      icon_on: mdi:GarageOpenVariant
-      icon_off: mdi:GarageVariant 
+      icon_on: mdi:garage-open-variant
+      icon_off: mdi:garage-variant 
     - entity: binary_sensor.back_door
       icon_on: fas:door-open
       icon_off: fas:door-closed
+    - entity: sensor.kitchen_sensor_motion
+    - entity: binary_sensor.front_door_motion
 
   calendar:
     - calendar.trash
