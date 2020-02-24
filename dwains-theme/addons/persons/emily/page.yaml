@@ -1,0 +1,3 @@
+- type: entities
+  entities:
+    - sensor.battery_level_emily

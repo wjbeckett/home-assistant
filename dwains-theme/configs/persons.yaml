@@ -4,6 +4,12 @@ persons:
   - name: William
     track: person.william
     picture_path: 'images/persons/william.png'
+    addons:
+      - name: William
+        path: 'dwains-theme/addons/persons/william/page.yaml'
   - name: Emily
     track: person.emily
     picture_path: 'images/persons/emily.png'
+    addons:
+      - name: Emily
+        path: 'dwains-theme/addons/persons/emily/page.yaml'
