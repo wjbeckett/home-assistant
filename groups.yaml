@@ -78,7 +78,7 @@ lounge_room:
   entities:
     - group.lounge_room_lights
     - media_player.lounge_room_speaker
-    - media_player.samsungtv
+    - media_player.samsung_tv_remote
 
 front_door:
   name: Front Door
