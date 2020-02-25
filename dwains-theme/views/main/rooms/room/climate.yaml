@@ -88,6 +88,28 @@
                         - color: '#ffffff'
                       name: 
                         - color: var(--dwains-theme-names)
+
+              - type: custom:button-card
+                template: room_climate
+                entity: {{ room["climate"] }}
+                icon: '{{ _d_t_icons.climate_cool|default('fas:snowflake') }}'
+                name: '{{ _d_t_trans.climate.cool }}'
+                tap_action: 
+                  action: call-service
+                  service: climate.set_hvac_mode
+                  service_data:
+                    entity_id: {{ room["climate"] }}
+                    hvac_mode: 'cool'
+                state:
+                  - value: 'cool'
+                    styles:
+                      img_cell:
+                        - background: var(--dwains-theme-accent)
+                        - border: '1px solid var(--dwains-theme-accent)'
+                      icon:
+                        - color: '#ffffff'
+                      name: 
+                        - color: var(--dwains-theme-names)
         - type: thermostat
           entity: {{ room["climate"] }}
           name: ''
