@@ -191,6 +191,7 @@ climate:
       - auto
       - cool
       - heat
+      - 'off'
     fan_modes:
       - auto
       - high
