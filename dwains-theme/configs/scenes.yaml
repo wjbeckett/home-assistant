@@ -9,3 +9,7 @@ scenes:
     icon: mdi:weather-night
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+  - entity: scene.savanah_sunset
+    icon: mdi:weather-sunset
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #f3daa0 10%, #eabc53 100%)'
