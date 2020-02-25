@@ -551,6 +551,15 @@
   trigger:
     platform: mqtt
     topic: temp/climate/hvac_mode_bedroom
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.payload == 'auto' }}"
+      - condition: template
+        value_template: "{{ trigger.payload == 'heat' }}"
+      - condition: template
+        value_template: "{{ trigger.payload == 'cool' }}"
   action:
     - service: mqtt.publish
       data_template:
