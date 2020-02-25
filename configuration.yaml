@@ -102,11 +102,11 @@ light:
 media_player:
   - platform: samsungtv_custom
     host: !secret samsungtv_host
-    port: 8002
+    port: 8001
     mac: c0:48:e6:35:1f:40
     sourcelist: '{"TV": "KEY_TV", "Switch": "KEY_HDMI"}'
     applist: "Plex, YouTube"
-    protocol: ctl_qled
+    protocol: ws
 
 # Alarm Panel
 alarm_control_panel:
