@@ -10,4 +10,4 @@
     - entity: input_select.acbedroom_fanspeed
 
 - type: thermostat
-  entities: climate.bedroom
+  entity: climate.bedroom
