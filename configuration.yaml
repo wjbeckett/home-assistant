@@ -183,6 +183,34 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
+# Climate
+climate:
+  - platform: mqtt
+    name: Bedroom
+    modes:
+      - Auto
+      - Cooling
+      - Heating
+      - Dry
+      - Fan
+    fan_modes:
+      - auto
+      - high
+      - mid
+      - low
+    power_command_topic: "/aircon/34ea344df92e/power/set"
+    power_state_topic: "/aircon/34ea344df92e/power/value"
+    mode_command_topic: "/aircon/34ea344df92e/mode/set"
+    mode_state_topic: "/aircon/34ea344df92e/mode/value"
+    temperature_command_topic: "/aircon/34ea344df92e/temp/set"
+    temperature_state_topic: "/aircon/34ea344df92e/temp/value"
+    fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"
+    fan_mode_state_topic: "/aircon/34ea344df92e/fanspeed/set"
+    min_temp: 16
+    max_temp: 32
+    temp_step: 0.5
+    precision: 0.5
+
 # Speedtest
 speedtestdotnet:
   scan_interval: 60:00
