@@ -584,5 +584,4 @@
         payload: 'OFF'
     - service: climate.hvac_mode
       entity_id: climate.bedroom
-        data:
-          havc_mode: 'off'
+      havc_mode: 'off'
