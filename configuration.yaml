@@ -189,10 +189,8 @@ climate:
     name: Bedroom
     modes:
       - Auto
-      - Cooling
-      - Heating
-      - Dry
-      - Fan
+      - Cool
+      - Heat
     fan_modes:
       - auto
       - high
@@ -200,8 +198,11 @@ climate:
       - low
     power_command_topic: "/aircon/34ea344df92e/power/set"
     power_state_topic: "/aircon/34ea344df92e/power/value"
-    mode_command_topic: "/aircon/34ea344df92e/mode/set"
+    mode_command_topic: "temp/climate/hvac_mode_bedroom"
     mode_state_topic: "/aircon/34ea344df92e/mode/value"
+    mode_state_template: >-
+      {% set values = { 'AUTO':'Auto', 'HEATING':'Heat',  'COOLING':'Cool' } %}
+      {{ values[value] if value in values.keys() else 'Auto' }}
     temperature_command_topic: "/aircon/34ea344df92e/temp/set"
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
     fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"

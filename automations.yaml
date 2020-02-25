@@ -545,3 +545,16 @@
     data:
       payload_template: '{{ states.input_number.acbedroom_temp.state }}'
       topic: /aircon/34ea344df92e/temp/set
+
+
+- alias: hvac-mode-controller-bedroom
+  trigger:
+    platform: mqtt
+    topic: temp/climate/hvac_mode_bedroom
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: /aircon/34ea344df92e/mode/set
+      payload: >
+        {% set values = { "auto":"AUTO", "heat":"HEATING", "cool":"COOLING"} %}
+        {{ values[trigger.payload] if trigger.payload in values.keys() else "AUTO" }}
