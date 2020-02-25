@@ -557,4 +557,4 @@
       topic: /aircon/34ea344df92e/mode/set
       payload: >
         {% set values = { "auto":"AUTO", "heat":"HEATING", "cool":"COOLING"} %}
-        {{ values[trigger.payload] if trigger.payload in values.keys() else "AUTO" }}
+        {{ values[trigger.payload] if trigger.payload in values.keys() else "auto" }}
