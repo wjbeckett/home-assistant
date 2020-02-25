@@ -4,6 +4,7 @@ rooms:
   - name: Bedroom
     icon: fas:bed
     light: group.bedroom_lights
+    climate: climate.bedroom
     media_player: group.bedroom_media_players
   - name: Kitchen
     icon: fas:utensils
