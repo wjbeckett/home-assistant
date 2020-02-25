@@ -106,7 +106,7 @@ media_player:
     mac: c0:48:e6:35:1f:40
     sourcelist: '{"TV": "KEY_TV", "Switch": "KEY_HDMI"}'
     applist: "Plex, YouTube"
-    protocol: ws
+    protocol: ctl_qled
 
 # Alarm Panel
 alarm_control_panel:
