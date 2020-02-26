@@ -33,7 +33,7 @@
       brightness_pct: 100
       color_temp: 98
 - id: 'night_light'
-  Name: Night Light
+  name: Night Light
   entities:
     light.ollie_s_lamp:
       brightness: 1
