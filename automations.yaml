@@ -502,8 +502,9 @@
     entity_id: sensor.wireless_button_click
     to: 'double'
   action:
-    service: light.turn_off
+  - service: light.turn_off
     entity_id: light.bedroom_lamps
+
 #################################################################
 ## AC Automations
 #################################################################
