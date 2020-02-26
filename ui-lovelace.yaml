@@ -40,8 +40,9 @@ resources:
     url: /community_plugin/atomic_calendar/atomic_calendar.js
 
   #Add here your own resources
-  #- type: module
-  #  url: /to_your_folder/filename.js
+  - type: module
+    url: /community_plugin/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
+    
 
 #########################################################################################
 # Start of the dwains theme ui-lovelace.yaml

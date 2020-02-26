@@ -184,6 +184,21 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
+# Timer
+timer:
+  zigbee_permit_join:
+    name: Time remaining
+    duration: 120
+
+# Input text
+input_text:
+  zigbee2mqtt_old_name:
+    name: Zigbee2mqtt Old Name
+  zigbee2mqtt_new_name:
+    name: Zigbee2mqtt New Name
+  zigbee2mqtt_remove:
+    name: Zigbee2mqtt Remove
+
 # Climate
 climate:
   - platform: mqtt
