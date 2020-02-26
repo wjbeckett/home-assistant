@@ -10,8 +10,8 @@
   entities:
     light.bedroom_lamps:
       state: on
-      brightness_pct: 1
-      color_temp: 1
+      brightness: 10
+      color_temp: 1000
 - id: '1582607583558'
   name: Savanah Sunset
   entities:
