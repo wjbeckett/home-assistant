@@ -5,6 +5,9 @@ more_page:
     - name: AC Units
       icon: mdi:air-conditioner
       path: 'dwains-theme/addons/more_page/ac/page.yaml'
-#       data:
-#         some_data: 'This is some data parsed.'
-#         some_other_data: 'and some other data.'
+    - name: Zigbee2MQTT
+      icon: mdi:zigbee
+      path: 'dwains-theme/addons/more_page/zigbee2mqtt/page.yaml'
+    - name: Zigbee Map
+      icon: mdi:map
+      path: 'dwains-theme/addons/more_page/zigbeeMap/page.yaml'
