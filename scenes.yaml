@@ -56,3 +56,22 @@
       xy_color:
       - 0.388
       - 0.401
+- id: '1582680966162'
+  name: Bedroom Bright
+  entities:
+    light.55404001dc4f22ac01ca:
+      brightness: 1000
+      color_temp: 220
+      friendly_name: Bedroom lamp right
+      max_mireds: 1000
+      min_mireds: 100
+      state: 'on'
+      supported_features: 3
+    light.55404001dc4f22ac0486:
+      brightness: 1000
+      color_temp: 220
+      friendly_name: Bedroom Lamp Left
+      max_mireds: 1000
+      min_mireds: 100
+      state: 'on'
+      supported_features: 3
