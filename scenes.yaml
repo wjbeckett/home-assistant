@@ -21,13 +21,6 @@
       state: 'on'
     light.teddy_s_lamp:
       brightness: 199
-      hs_color:
-      - 51.325
-      - 32.549
-      rgb_color:
-      - 255
-      - 242
-      - 172
       state: 'on'
       xy_color:
       - 0.388
@@ -49,6 +42,6 @@
     light.teddy_s_lamp:
       state: 'on'
       brightness: 1
-      hs_color: 33.767,84.314
-      rgb_color: 255,160,39
-      xy_color: 0.561,0.404
+      xy_color: 
+        - 0.561
+        - 0.404
