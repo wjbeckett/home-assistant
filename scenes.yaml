@@ -2,7 +2,7 @@
   name: kitchen dim
   entities:
     light.kitchen_lights:
-      state: on
+      state: true
       transition: 2
       brightness_pct: 30
 - id: bedroom_night_light
@@ -24,3 +24,35 @@
       min_mireds: 100
       state: 'on'
       supported_features: 3
+- id: '1582607583558'
+  name: Savanah Sunset
+  entities:
+    light.ollie_s_lamp:
+      brightness: 236
+      color_temp: 385
+      friendly_name: Ollie's Lamp
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 43
+    light.teddy_s_lamp:
+      brightness: 199
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Teddy's Lamp
+      hs_color:
+      - 51.325
+      - 32.549
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 242
+      - 172
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.388
+      - 0.401
