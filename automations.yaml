@@ -466,7 +466,7 @@
   alias: Dim kitchen light 10 minutes after last movement
   condition:
   - condition: time
-      before: '19:50:00'
+    before: '19:50:00'
   - condition: time
     after: '18:30:00'
   trigger:
