@@ -2,7 +2,12 @@
     name: Send push notificarions
     initial: on
     icon: mdi:bell
-
+  
+  guest_mode:
+    name: Guest Mode
+    initial: off
+    icon: mdi:account-multiple
+    
   location_update:
     name: Request Location Update
     initial: off

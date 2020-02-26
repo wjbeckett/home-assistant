@@ -1,6 +1,19 @@
 #################################################################
 ## Groups
 #################################################################
+all_lights:
+  name: All Lights
+  entities:
+    - light.80304313dc4f229a3225
+    - light.pendant_light_left
+    - light.pendant_light_center
+    - light.pendant_light_right
+    - light.ollie_s_lamp
+    - light.teddy_s_lamp
+    - light.55404001dc4f22ac01ca
+    - light.55404001dc4f22ac0486
+    - light.34856070bcddc23658e4
+
 kitchen_lights:
   name: Kitchen Lights
   entities:
