@@ -160,7 +160,6 @@ image_processing:
     ip_address: !secret deepstack_host
     port: 5000
     api_key: !secret deepstack_key
-    #scan_interval: 20 # Optional, in seconds
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     target:

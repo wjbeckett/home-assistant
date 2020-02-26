@@ -1,3 +1,6 @@
+#################################################################
+## HASS related
+#################################################################
 - id: hass_start_notification
   alias: NOTIFY (START) Home Assistant
   initial_state: 'on'
@@ -13,6 +16,10 @@
     data:
       title: ''
       message: Home Assistant Started
+
+#################################################################
+## Presence detection
+#################################################################
 - id: notify_resident_emily
   alias: NOTIFY (Location) Resident
   initial_state: 'on'
@@ -28,9 +35,8 @@
   action:
   - service: notify.mobile_app_william
     data_template:
-      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state
-        == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%
-        else %}at {{ trigger.to_state.state }}{% endif %}.'
+      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+
 - id: notify_resident_william
   alias: NOTIFY (Location) Resident
   initial_state: 'on'
@@ -46,9 +52,33 @@
   action:
   - service: notify.mobile_app_emily
     data_template:
-      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state
-        == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%
-        else %}at {{ trigger.to_state.state }}{% endif %}.'
+      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+
+- id: request_location_update
+  alias: Request Location Update
+  trigger:
+  - platform: state
+    entity_id: input_boolean.locaion_update
+    to: 'on'
+  action:
+  - service: notify.all_devices
+    data:
+      message: request_locaiton_update
+
+- id: reset_location_update
+  alias: Reset Location Update
+  trigger:
+  - platform: state
+    entity_id: input_boolean.locaion_update
+    to: 'on'
+    for:
+      seconds: 5
+  action:
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.locaion_update
+#################################################################
+## Door Notifications
+#################################################################
 - id: notify_garage_door
   alias: Notify Garage door
   initial_state: 'on'
@@ -64,8 +94,8 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state
-        == ''off'' %}closed{% else %}open{% endif %}.'
+      message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''off'' %}closed{% else %}open{% endif %}.'
+
 - id: notify_garage_open_10_min
   alias: Notify Garage open for 10 min
   initial_state: 'on'
@@ -85,27 +115,10 @@
   - service: notify.all_devices
     data:
       message: Garage door has been open for 10 minutes! Close it!
-- id: request_location_update
-  alias: Request Location Update
-  trigger:
-  - platform: state
-    entity_id: input_boolean.locaion_update
-    to: 'on'
-  action:
-  - service: notify.all_devices
-    data:
-      message: request_locaiton_update
-- id: reset_location_update
-  alias: Reset Location Update
-  trigger:
-  - platform: state
-    entity_id: input_boolean.locaion_update
-    to: 'on'
-    for:
-      seconds: 5
-  action:
-  - service: homeassistant.turn_off
-    entity_id: input_boolean.locaion_update
+
+#################################################################
+## Home Security
+#################################################################
 - id: alarm_triggered_away
   alias: Trigger alarm while armed away
   condition:
@@ -125,6 +138,7 @@
   action:
     service: alarm_control_panel.alarm_trigger
     entity_id: alarm_control_panel.home_alarm
+
 - id: alarm_notify
   alias: Send notification when alarm triggered
   condition:
@@ -138,8 +152,7 @@
   action:
   - service: notify.all_devices
     data:
-      message: ALARM! The alarm has been triggered at {{ states('sensor.date_time')
-        }}
+      message: ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}
   - service: tts.google_say
     entity_id: media_player.kitchen_display
     data:
@@ -159,6 +172,7 @@
       - 0
       - 0
       flash: long
+
 - id: alarm_notify_disarmed
   alias: Send notification when alarm is Disarmed
   condition:
@@ -177,6 +191,7 @@
   - service: notify.all_devices
     data_template:
       message: The alarm is now Disarmed. {{ states('sensor.date_time') }}
+
 - id: alarm_notify_pending
   alias: Send notification when alarm is in pending status
   condition:
@@ -191,6 +206,7 @@
   - service: notify.all_devices
     data_template:
       message: The alarm is in pending status. {{ states('sensor.date_time') }}
+
 - id: alarm_notify_armed_away
   alias: Send notification when alarm is Armed in Away mode
   condition:
@@ -208,7 +224,8 @@
       message: Alarm has been armed.
   - service: notify.all_devices
     data_template:
-      message: Alarm is now armed. {{ states('sensor.date_time') }}
+      message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+
 - id: alarm_notify_armed_home
   alias: Send notification when alarm is Armed in Home mode
   trigger:
@@ -218,7 +235,8 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: Alarm is now armed. {{ states('sensor.date_time') }}
+      message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+
 - id: alarm_disable_when_arriving
   alias: Alarm disarm when return home
   condition:
@@ -245,7 +263,8 @@
   - service: alarm_control_panel.alarm_disarm
     entity_id: alarm_control_panel.home_alarm
     data:
-      code: 4915
+      code: !secret alarm_code
+
 - id: arm_alarm_when_away
   alias: Arm alarm when away and not armed
   condition:
@@ -261,6 +280,7 @@
   action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
+
 - id: mobile_action_arm_alarm
   alias: Arm Alarm from Notificaiton Action
   trigger:
@@ -271,6 +291,10 @@
   action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
+
+#################################################################
+## Object Detection
+#################################################################
 - id: front_door_object_detection
   alias: Detect Object at the front door
   trigger:
@@ -291,6 +315,7 @@
     entity_id: image_processing.deepstack_detector
   - service: image_processing.scan
     entity_id: image_processing.facebox_saved_image
+
 - id: face_recognised
   alias: Face recognised
   condition:
@@ -301,22 +326,27 @@
     platform: event
     event_type: image_processing.detect_face
   action:
-  - service_template: '{% if not is_state(''sensor.front_door_detection'' , ''unavailable'')
-      %}  notify.all_devices {% endif %}'
-    data_template:
-      message: '{{ states(''sensor.front_door_detection'') }} is at the front door'
-      data:
-        image: https://hass.burrowflix.com/local/tmp/image.jpg
-        clickAction: https://motioneye.burrowflix.com/picture/1/frame/
-        actions:
-        - action: URI
-          title: View Image
-          uri: https://hass.burrowflix.com/local/tmp/image.jpg
-  - service_template: '{% if not is_state(''sensor.front_door_detection'' , ''unavailable'')
-      %} tts.google_say {% endif %}'
-    data_template:
-      entity_id: media_player.kitchen_display
-      message: '{{ states(''sensor.front_door_detection'') }} is at the front door'
+    - service_template: >-
+        {% if not is_state('sensor.front_door_detection' , 'unavailable') %} 
+        notify.all_devices
+        {% endif %}
+      data_template:
+        message: "{{ states('sensor.front_door_detection') }} is at the front door"
+        data:
+          image: !secret temp_image
+          clickAction: !secret motioneye_stream
+          actions:
+            - action: "URI"
+              title: View Image
+              uri: !secret temp_image
+    - service_template: >-
+        {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
+        tts.google_say
+        {% endif %}
+      data_template:
+        entity_id: media_player.kitchen_display
+        message: "{{ states('sensor.front_door_detection') }} is at the front door"
+
 - id: person_detection
   alias: Notify when person detected
   initial_state: 'on'
@@ -336,54 +366,61 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: '{{ trigger.event.data.object | title }} detected {% if trigger.event.data.object
-        == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
+      message: '{{ trigger.event.data.object | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
       data:
-        image: https://hass.burrowflix.com/local/deepstack/deepstack_detector_latest_person.jpg
-        clickAction: https://motioneye.burrowflix.com/picture/1/frame/
+        image: !secret deepstack_latest_person
+        clickAction: !secret motioneye_stream
         actions:
-        - action: URI
+        - action: "URI"
           title: View Image
-          uri: https://hass.burrowflix.com/local/deepstack/deepstack_detector_latest_person.jpg
+          uri: !secret deepstack_latest_person
+
+#################################################################
+## Light Automations
+#################################################################
 - id: turn_on_kitchen_lights_when_motion_detected
   alias: Turn on kitchen lights when lumens are low and motion detected
+  initial_state: 'on'
   trigger:
-  - entity_id: binary_sensor.kitchen_sensor_motion
     platform: state
+    entity_id: binary_sensor.kitchen_sensor_motion
     to: 'on'
   condition:
-  - after: 06:00:00
+  - condition: time
+    after: 06:00:00
     before: '18:30:00'
-    condition: time
-  - below: '18000'
-    condition: numeric_state
+  - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
+    below: '18000'
   action:
-  - data:
+    service: light.turn_on
+    data:
+      entity_id: light.kitchen_lights
       brightness: 208
       color_temp: 1000
-      entity_id: light.kitchen_lights
       transition: 1
-    service: light.turn_on
-  initial_state: 'on'
+    
 - id: turn_off_kitchen_lights_when_lumens_high
   alias: Turn off kitchen lights when lumens are high
-  trigger:
-  - entity_id: binary_sensor.kitchen_sensor_motion
-    for: 0:10:00
-    platform: state
-    to: 'off'
-  condition:
-  - after: 06:00:00
-    before: '18:30:00'
-    condition: time
-  - above: '18000'
-    condition: numeric_state
-    entity_id: sensor.kitchen_sensor_illuminance
-  action:
-  - entity_id: light.kitchen_lights
-    service: light.turn_off
   initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_sensor_motion
+    to: 'off'
+    for: 0:10:00
+    
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: '18:30:00'
+  - condition: numeric_state
+    entity_id: sensor.kitchen_sensor_illuminance
+    above: '18000'
+    
+  action:
+  - service: light.turn_off
+    entity_id: light.kitchen_lights
+    
 - id: light_on_at_sunset
   alias: Turn on all lights at sunset
   initial_state: 'on'
@@ -397,7 +434,7 @@
   trigger:
     platform: sun
     event: sunset
-    offset: -00:45:00
+    offset: "-00:45:00"
   action:
   - service: scene.turn_on
     entity_id: scene.savanah_sunset
@@ -406,22 +443,23 @@
 - id: turn_on_kitchen_lights_when_movement_detected
   alias: Turn on Kitchen Lights when movement is detected
   trigger:
-  - entity_id: binary_sensor.kitchen_sensor_motion
-    platform: state
+  - platform: state
+    entity_id: binary_sensor.kitchen_sensor_motion
     to: 'on'
   condition:
-  - after: '18:30:00'
+  - condition: time
+    after: '18:30:00'
     before: '19:50:00'
-    condition: time
-  - below: '18000'
-    condition: numeric_state
+  - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
+    below: '18000'
   action:
-  - data:
-      brightness: 180
-      entity_id: light.kitchen_lights
-      transition: 1
     service: light.turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 180
+      transition: 1
+    
 - id: dim_kitchen_lights_when_no_movement
   alias: Dim kitchen light 10 minutes after last movement
   condition:
@@ -438,24 +476,38 @@
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_dim
+
 - id: turn_off_kitchen_lights_when_no_movement
   alias: Turn off kitchen light 10 minutes after last movement
   trigger:
-  - entity_id: binary_sensor.kitchen_sensor_motion
-    for: 0:10:00
-    platform: state
+  - platform: state
+    entity_id: binary_sensor.kitchen_sensor_motion
     to: 'off'
+    for: 0:10:00
   condition:
-  - after: '19:50:00'
+  - condition: time
+    after: '19:50:00'
     before: 06:00:00
-    condition: time
   - condition: state
     entity_id: input_boolean.guest_mode
     state: 'off'
   action:
-  - entity_id: light.kitchen_lights
+  - service: light.turn_off
+    entity_id: light.kitchen_lights
+    
+- id: turn_off_bedroom_lights_with_click
+  alias: Turn off bedroom lights with click
+  trigger:
+    platform: state
+    entity_id: sensor.wireless_button_click
+    to: 'double'
+  action:
     service: light.turn_off
-- alias: hvac-mode-controller-bedroom
+    entity_id: light.bedroom_lamps
+#################################################################
+## AC Automations
+#################################################################
+    - alias: hvac-mode-controller-bedroom
   trigger:
     platform: mqtt
     topic: temp/climate/hvac_mode_bedroom
@@ -476,11 +528,10 @@
   - service: mqtt.publish
     data_template:
       topic: /aircon/34ea344df92e/mode/set
-      payload: '{% set values = { "auto":"AUTO", "heat":"HEATING", "cool":"COOLING",
-        "off":"OFF" } %} {{ values[trigger.payload] if trigger.payload in values.keys()
-        else "off" }}
+      payload: >
+          {% set values = { "auto":"AUTO", "heat":"HEATING", "cool":"COOLING", "off":"OFF" } %}
+          {{ values[trigger.payload] if trigger.payload in values.keys() else "off" }}
 
-        '
 - alias: hvac-mode-controller-bedroom-power
   trigger:
     platform: mqtt
@@ -495,6 +546,10 @@
     data:
       entity_id: climate.bedroom
       hvac_mode: 'off'
+
+#################################################################
+## ZigBee Stuff
+#################################################################
 - id: zigbee2mqtt_log_level
   alias: Zigbee2mqtt Log Level
   initial_state: 'on'
