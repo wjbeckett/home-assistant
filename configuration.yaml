@@ -86,7 +86,7 @@ weather:
 # Lights
 light:
   - platform: group
-    name: Bedroom Lights
+    name: Bedroom Lamps
     entities:
       - light.55404001dc4f22ac0486
       - light.55404001dc4f22ac01ca
