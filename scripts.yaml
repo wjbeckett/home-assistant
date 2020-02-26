@@ -1,4 +1,4 @@
-zigbee2mqtt_rename:
+  zigbee2mqtt_rename:
     alias: Zigbee2mqtt Rename
     sequence:
       service: mqtt.publish
