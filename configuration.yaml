@@ -83,6 +83,21 @@ weather:
     api_key: !secret darksky_key
     mode: daily
 
+# Google Assistant
+google_assistant:
+  project_id: !secret google_assistant_id
+  service_account: !include SERVICE_ACCOUNT.JSON
+  secure_devices_pin: !secret alarm_code
+  report_state: true
+  exposed_domains:
+    - switch
+    - light
+    - scene
+    - climate
+    - camera
+    - alarm_control_panel
+
+
 # Lights
 light:
   - platform: group
