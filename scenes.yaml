@@ -10,10 +10,10 @@
   entities:
     light.bedroom_lamps:
       state: on
-      brightness: 10
+      brightness_pct: 2
       color_temp: 98
 - id: '1582607583558'
-  name: Savanah Sunset
+  name: Bright Lights
   entities:
     light.ollie_s_lamp:
       brightness: 236
