@@ -87,7 +87,7 @@ weather:
 google_assistant:
   project_id: !secret google_assistant_id
   service_account: !include service_account.json
-  secure_devices_pin: !secret alarm_code
+  secure_devices_pin: !secret secure_devices_pin
   report_state: true
   exposed_domains:
     - switch
