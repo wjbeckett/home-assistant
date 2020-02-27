@@ -93,7 +93,6 @@ google_assistant:
     - switch
     - light
     - scene
-    - climate
     - camera
     - alarm_control_panel
 
