@@ -398,7 +398,6 @@
       entity_id: light.kitchen_lights
       brightness: 208
       color_temp: 1000
-      transition: 1
     
 - id: turn_off_kitchen_lights_when_lumens_high
   alias: Turn off kitchen lights when lumens are high
@@ -458,7 +457,6 @@
     data:
       entity_id: light.kitchen_lights
       brightness: 180
-      transition: 1
     
 - id: dim_kitchen_lights_when_no_movement
   alias: Dim kitchen light 10 minutes after last movement

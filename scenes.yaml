@@ -19,9 +19,11 @@
       brightness: 236
       color_temp: 385
       state: 'on'
+      transition: 2
     light.teddy_s_lamp:
       brightness: 199
       state: 'on'
+      transition: 2
       xy_color:
       - 0.388
       - 0.401
@@ -30,6 +32,7 @@
   entities:
     light.bedroom_lamps:
       state: on
+      transition: 2
       brightness_pct: 100
       color_temp: 98
 - id: 'night_light'
@@ -42,6 +45,7 @@
     light.teddy_s_lamp:
       state: 'on'
       brightness_pct: 1
+      transition: 2
       xy_color: 
         - 0.561
         - 0.404
