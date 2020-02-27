@@ -5,13 +5,6 @@
       state: on
       transition: 2
       brightness_pct: 20
-- id: bedroom_night_light
-  name: Bedroom Night Light
-  entities:
-    light.bedroom_lamps:
-      state: on
-      brightness_pct: 2
-      color_temp: 98
 - id: '1582607583558'
   name: Bright Lights
   entities:
@@ -27,14 +20,6 @@
       xy_color:
       - 0.388
       - 0.401
-- id: '1582680966162'
-  name: Bedroom Bright
-  entities:
-    light.bedroom_lamps:
-      state: on
-      transition: 2
-      brightness_pct: 100
-      color_temp: 98
 - id: 'night_light'
   name: Night Light
   entities:

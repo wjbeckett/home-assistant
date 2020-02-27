@@ -99,11 +99,6 @@ google_assistant:
 # Lights
 light:
   - platform: group
-    name: Bedroom Lamps
-    entities:
-      - light.55404001dc4f22ac0486
-      - light.55404001dc4f22ac01ca
-  - platform: group
     name: Kitchen Lights
     entities:
       - light.80304313dc4f229a3225
