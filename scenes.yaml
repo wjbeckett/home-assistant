@@ -42,6 +42,7 @@
       brightness_pct: 1
       color_temp: 443
       state: 'on'
+      transition: 2
     light.teddy_s_lamp:
       state: 'on'
       brightness_pct: 1
