@@ -90,7 +90,6 @@ google_assistant:
   secure_devices_pin: !secret secure_devices_pin
   report_state: true
   exposed_domains:
-    - switch
     - light
     - scene
     - camera
