@@ -1,0 +1,6 @@
+# Own resources?
+# Add here your own resources
+#
+
+  - type: module
+    url: /community_plugin/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
