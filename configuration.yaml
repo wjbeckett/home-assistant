@@ -96,15 +96,13 @@ google_assistant:
     - alarm_control_panel
 
 
-# Lights
 light:
-  - platform: group
-    name: Kitchen Lights
-    entities:
-      - light.80304313dc4f229a3225
-      - light.pendant_light_left
-      - light.pendant_light_center
-      - light.pendant_light_right
+  - platform: mqtt
+    schema: json
+    name: kitchen lights
+    command_topic: "zigbee2mqtt/kitchen_lights/set"
+    state_topic: "zigbee2mqtt/kitchen_lights"
+    brightness: true
 
 # Media Players
 #media_player:

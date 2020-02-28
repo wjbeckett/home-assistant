@@ -391,13 +391,32 @@
     before: '18:30:00'
   - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
-    below: '18000'
+    below: '100'
   action:
     service: light.turn_on
     data:
       entity_id: light.kitchen_lights
       brightness: 208
       color_temp: 1000
+
+- id: dim-lights-after-10min
+  alias: Dim lights after 10min
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_sensor_motion
+    to: 'off'
+    for: 0:10:00
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: '19:50:00'
+  - condition: numeric_state
+    entity_id: sensor.kitchen_sensor_illuminance
+    above: '100'
+  action:
+  - service: scene.turn_on
+    entity_id: scene.kitchen_dim
     
 - id: turn_off_kitchen_lights_when_lumens_high
   alias: Turn off kitchen lights when lumens are high
@@ -407,15 +426,13 @@
     entity_id: binary_sensor.kitchen_sensor_motion
     to: 'off'
     for: 0:10:00
-    
   condition:
   - condition: time
     after: 06:00:00
     before: '18:30:00'
   - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
-    above: '18000'
-    
+    above: '100'
   action:
   - service: light.turn_off
     entity_id: light.kitchen_lights
@@ -428,17 +445,18 @@
     entity_id: group.household
     state: home
   - condition: numeric_state
-    entity_id: sensor.kitchen_sensor_light_level
-    below: 100
+    entity_id: sensor.kitchen_sensor_illuminance
+    below: '100'
   trigger:
     platform: sun
     event: sunset
     offset: "-00:45:00"
   action:
   - service: scene.turn_on
-    entity_id: scene.savanah_sunset
+    entity_id: scene.bright_lights
   - service: scene.turn_on
     entity_id: scene.bedroom_bright
+
 - id: turn_on_kitchen_lights_when_movement_detected
   alias: Turn on Kitchen Lights when movement is detected
   trigger:
@@ -451,37 +469,20 @@
     before: '19:50:00'
   - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
-    below: '18000'
+    below: '100'
   action:
     service: light.turn_on
     data:
       entity_id: light.kitchen_lights
-      brightness: 180
+      brightness: 150
     
-- id: dim_kitchen_lights_when_no_movement
-  alias: Dim kitchen light 10 minutes after last movement
-  condition:
-  - condition: time
-    before: '19:50:00'
-  - condition: time
-    after: '18:30:00'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.kitchen_sensor_motion
-    to: 'off'
-    for:
-      minutes: 10
-  action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_dim
-
 - id: turn_off_kitchen_lights_when_no_movement
-  alias: Turn off kitchen light 10 minutes after last movement
+  alias: Turn off kitchen light 15 minutes after last movement
   trigger:
   - platform: state
     entity_id: binary_sensor.kitchen_sensor_motion
     to: 'off'
-    for: 0:10:00
+    for: 0:15:00
   condition:
   - condition: time
     after: '19:50:00'
