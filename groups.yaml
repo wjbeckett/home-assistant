@@ -17,7 +17,7 @@ all_lights:
 kitchen_lights:
   name: Kitchen Lights
   entities:
-    - light.kitchen_lights
+    - light.kitchen_pendant_lights
     - light.80304313dc4f229a3225
     - light.pendant_light_left
     - light.pendant_light_center
