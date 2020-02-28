@@ -99,7 +99,7 @@ google_assistant:
 light:
   - platform: mqtt
     schema: json
-    name: kitchen lights
+    name: kitchen pendant lights
     command_topic: "zigbee2mqtt/kitchen_lights/set"
     state_topic: "zigbee2mqtt/kitchen_lights"
     brightness: true

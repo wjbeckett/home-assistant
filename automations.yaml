@@ -160,7 +160,7 @@
   - service: light.turn_on
     data:
       entity_id:
-      - light.kitchen_lights
+      - light.kitchen_pendant_lights
       - light.34856070bcddc23658e4
       - light.55404001dc4f22ac01ca
       - light.55404001dc4f22ac0486
@@ -378,7 +378,7 @@
 #################################################################
 ## Light Automations
 #################################################################
-- id: turn_on_kitchen_lights_when_motion_detected
+- id: turn_on_kitchen_pendant_lights_when_motion_detected
   alias: Turn on kitchen lights when lumens are low and motion detected
   initial_state: 'on'
   trigger:
@@ -395,7 +395,7 @@
   action:
     service: light.turn_on
     data:
-      entity_id: light.kitchen_lights
+      entity_id: light.kitchen_pendant_lights
       brightness: 208
       color_temp: 1000
 
@@ -412,13 +412,13 @@
     after: 06:00:00
     before: '19:50:00'
   - condition: state
-    entity_id: light.kitchen_lights
+    entity_id: light.kitchen_pendant_lights
     state: 'on'
   action:
   - service: scene.turn_on
     entity_id: scene.kitchen_dim
     
-- id: turn_off_kitchen_lights_when_lumens_high
+- id: turn_off_kitchen_pendant_lights_when_lumens_high
   alias: Turn off kitchen lights when lumens are high
   initial_state: 'on'
   trigger:
@@ -435,7 +435,7 @@
     above: '100'
   action:
   - service: light.turn_off
-    entity_id: light.kitchen_lights
+    entity_id: light.kitchen_pendant_lights
     
 - id: light_on_at_sunset
   alias: Turn on all lights at sunset
@@ -457,7 +457,7 @@
   - service: scene.turn_on
     entity_id: scene.bedroom_bright
 
-- id: turn_on_kitchen_lights_when_movement_detected
+- id: turn_on_kitchen_pendant_lights_when_movement_detected
   alias: Turn on Kitchen Lights when movement is detected
   trigger:
   - platform: state
@@ -470,10 +470,10 @@
   action:
     service: light.turn_on
     data:
-      entity_id: light.kitchen_lights
+      entity_id: light.kitchen_pendant_lights
       brightness: 150
     
-- id: turn_off_kitchen_lights_when_no_movement
+- id: turn_off_kitchen_pendant_lights_when_no_movement
   alias: Turn off kitchen light 15 minutes after last movement
   trigger:
   - platform: state
@@ -489,7 +489,7 @@
     state: 'off'
   action:
   - service: light.turn_off
-    entity_id: light.kitchen_lights
+    entity_id: light.kitchen_pendant_lights
     
 - id: turn_on_off_bedroom_lights_with_click
   alias: Turn on and off bedroom lights with click
