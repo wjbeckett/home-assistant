@@ -411,9 +411,9 @@
   - condition: time
     after: 06:00:00
     before: '19:50:00'
-  - condition: numeric_state
-    entity_id: sensor.kitchen_sensor_illuminance
-    above: '100'
+  - condition: state
+    entity_id: light.kitchen_lights
+    state: 'on'
   action:
   - service: scene.turn_on
     entity_id: scene.kitchen_dim
@@ -467,9 +467,6 @@
   - condition: time
     after: '18:30:00'
     before: '19:50:00'
-  - condition: numeric_state
-    entity_id: sensor.kitchen_sensor_illuminance
-    below: '100'
   action:
     service: light.turn_on
     data:
@@ -503,6 +500,32 @@
   action:
     service: light.toggle
     entity_id: light.bedroom_lamps
+
+- id: light_off_at_sunrise
+  alias: Turn off lights at sunrise
+  initial_state: 'on'
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+  - service: light.turn_off
+    entity_id: light.ollie_s_lamp
+  - service: light.turn_off
+    entity_id: light.teddy_s_lamp
+
+- id: light_on_nightlight
+  alias: Turn on night light
+  initial_state: 'on'
+  condition:
+  - condition: state
+    entity_id: group.household
+    state: home
+  trigger:
+    platform: time
+    after: '19:00:00'
+  action:
+  - service: scene.turn_on
+    entity_id: scene.night_light
 
 #################################################################
 ## AC Automations
