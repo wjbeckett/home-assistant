@@ -160,7 +160,7 @@
   - service: light.turn_on
     data:
       entity_id:
-      - group.kitchen_lights
+      - light.kitchen_lights
       - light.34856070bcddc23658e4
       - light.55404001dc4f22ac01ca
       - light.55404001dc4f22ac0486
