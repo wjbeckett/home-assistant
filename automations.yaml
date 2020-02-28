@@ -522,7 +522,7 @@
     state: home
   trigger:
     platform: time
-    after: '19:00:00'
+    at: '19:00:00'
   action:
   - service: scene.turn_on
     entity_id: scene.night_light
