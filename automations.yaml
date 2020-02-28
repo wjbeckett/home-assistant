@@ -391,7 +391,7 @@
     before: '18:30:00'
   - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
-    below: '100'
+    below: '115'
   action:
     service: light.turn_on
     data:
@@ -424,7 +424,7 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
-    above: '100'
+    above: '115'
     for:
       minutes: 3
   condition:
@@ -442,9 +442,6 @@
   - condition: state
     entity_id: group.household
     state: home
-  - condition: numeric_state
-    entity_id: sensor.kitchen_sensor_illuminance
-    below: '100'
   trigger:
     platform: sun
     event: sunset
