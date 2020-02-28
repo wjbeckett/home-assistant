@@ -422,17 +422,15 @@
   alias: Turn off kitchen lights when lumens are high
   initial_state: 'on'
   trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_sensor_motion
-    to: 'off'
-    for: 0:10:00
-  condition:
-  - condition: time
-    after: 06:00:00
-    before: '18:30:00'
-  - condition: numeric_state
+  - platform: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
     above: '100'
+    for:
+      minutes: 3
+  condition:
+  - condition: time
+    after: '06:00:00'
+    before: '18:30:00'
   action:
   - service: light.turn_off
     entity_id: light.kitchen_pendant_lights
