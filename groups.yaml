@@ -11,7 +11,7 @@ all_lights:
     - light.ollie_s_lamp
     - light.teddy_s_lamp
     - light.55404001dc4f22ac01ca
-    - light.55404001dc4f22ac0486
+    - light.bedroom_lamp_left
     - light.34856070bcddc23658e4
 
 kitchen_lights:
@@ -62,7 +62,7 @@ bedroom_lights:
   entities:
     - light.bedroom_lamps
     - light.55404001dc4f22ac01ca
-    - light.55404001dc4f22ac0486
+    - light.bedroom_lamp_left
 
 bedroom_media_players:
   name: Bedroom Media Players
