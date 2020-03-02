@@ -20,13 +20,13 @@ persons:
     track: person.william
     picture_path: 'images/persons/william.png'
     show_map: 'true' #If you want to show map remove this line
-    more_entities:
+    page_entities:
       entities:
         - entity: sensor.battery_level_william
   - name: Emily
     track: person.emily
     picture_path: 'images/persons/emily.png'
     show_map: 'true' #If you want to show map remove this line
-    more_entities:
+    page_entities:
       entities:
         - entity: sensor.battery_level_emily
