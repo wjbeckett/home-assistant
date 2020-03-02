@@ -7,7 +7,7 @@
       brightness_pct: 20
     light.kitchen_downlight:
       state: on
-      brightness_pct: 40
+      brightness_pct: 30
 - id: '1582607583558'
   name: Bright Lights
   entities:

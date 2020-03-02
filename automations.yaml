@@ -414,7 +414,7 @@
       data:
         entity_id: light.kitchen_downlight
         brightness_pct: 100
-        color_temp: 200
+        color_temp: 460
 
 - id: dim-lights-after-10min
   alias: Dim lights after 10min
@@ -441,7 +441,7 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance
-    above: '250'
+    above: '280'
     for:
       minutes: 3
   condition:
@@ -496,7 +496,7 @@
     - service: light.turn_on
       data:
         entity_id: light.kitchen_downlight
-        brightness: 40
+        brightness_pct: 40
 
     
 - id: turn_off_kitchen_pendant_lights_when_no_movement
