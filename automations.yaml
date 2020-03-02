@@ -26,7 +26,7 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "home/bedroom/bedroom_lamps/cmnd/state"
+        topic: "tasmotas/cmnd/state"
         payload: ""
 
 #################################################################
@@ -405,11 +405,16 @@
     entity_id: sensor.kitchen_sensor_illuminance
     below: '250'
   action:
-    service: light.turn_on
-    data:
-      entity_id: light.kitchen_pendant_lights
-      brightness: 208
-      color_temp: 1000
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_pendant_lights
+        brightness_pct: 100
+        color_temp: 1000
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_downlight
+        brightness_pct: 100
+        color_temp: 200
 
 - id: dim-lights-after-10min
   alias: Dim lights after 10min
@@ -446,6 +451,8 @@
   action:
   - service: light.turn_off
     entity_id: light.kitchen_pendant_lights
+  - service: light.turn_off
+    entity_id: light.kitchen_downlight
     
 - id: light_on_at_sunset
   alias: Turn on all lights at sunset
@@ -475,10 +482,15 @@
     after: '18:30:00'
     before: '19:50:00'
   action:
-    service: light.turn_on
-    data:
-      entity_id: light.kitchen_pendant_lights
-      brightness: 150
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_pendant_lights
+        brightness_pct : 40
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_downlight
+        brightness: 40
+
     
 - id: turn_off_kitchen_pendant_lights_when_no_movement
   alias: Turn off kitchen light 15 minutes after last movement
@@ -498,7 +510,7 @@
   - service: light.turn_off
     entity_id: light.kitchen_pendant_lights
   - service: light.turn_off
-    entity_id: light.80304313dc4f229a3225
+    entity_id: light.kitchen_downlight
     
 - id: turn_on_off_bedroom_lights_with_click
   alias: Turn on and off bedroom lights with click
@@ -507,8 +519,8 @@
     entity_id: sensor.wireless_button_click
     to: 'double'
   action:
-    service: homeassistant.toggle
-    entity_id: group.bedroom_lights
+    service: light.toggle
+    entity_id: light.bedroom_lamps
 
 - id: light_off_at_sunrise
   alias: Turn off lights at sunrise
@@ -521,6 +533,8 @@
     entity_id: light.ollie_s_lamp
   - service: light.turn_off
     entity_id: light.teddy_s_lamp
+  - service: light.turn_off
+    entity_id: light.lounge_room_lamp
 
 - id: light_on_nightlight
   alias: Turn on night light

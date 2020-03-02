@@ -1,9 +1,12 @@
 - id: kitchen_dim
   name: kitchen dim
   entities:
-    light.kitchen_lights:
+    light.kitchen_pendant_lights:
       state: on
       transition: 2
+      brightness_pct: 20
+    light.kitchen_downlight:
+      state: on
       brightness_pct: 20
 - id: '1582607583558'
   name: Bright Lights
@@ -29,6 +32,13 @@
       state: 'on'
       transition: 2
     light.teddy_s_lamp:
+      state: 'on'
+      brightness_pct: 1
+      transition: 2
+      xy_color: 
+        - 0.561
+        - 0.404
+    light.lounge_room_lamp:
       state: 'on'
       brightness_pct: 1
       transition: 2
