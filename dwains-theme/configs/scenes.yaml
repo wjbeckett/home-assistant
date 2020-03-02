@@ -17,3 +17,7 @@ scenes:
     icon: mdi:weather-sunny
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #f3daa0 10%, #eabc53 100%)'
+  - entity: scene.kitchen_dim
+    icon: mdi:weather-night-partly-cloudy
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
