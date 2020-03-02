@@ -103,16 +103,23 @@ light:
     command_topic: "zigbee2mqtt/kitchen_lights/set"
     state_topic: "zigbee2mqtt/kitchen_lights"
     brightness: true
-
-# Media Players
-#media_player:
-#  - platform: samsungtv_custom
-#    host: !secret samsungtv_host
-#    port: 8001
-#    mac: c0:48:e6:35:1f:40
-#    sourcelist: '{"TV": "KEY_TV", "Switch": "KEY_HDMI"}'
-#    applist: "Plex, YouTube"
-#    protocol: ws
+  - platform: mqtt
+    schema: json
+    name: bedroom lamps
+    command_topic: "home/bedroom/bedroom_lamps/cmnd/POWER"
+    state_topic: "home/bedroom/bedroom_lamps/tele/STATE"
+    state_value_template: "{{value_json.POWER}}"
+    brightness_command_topic: "home/bedroom/bedroom_lamps/cmnd/Dimmer"
+    brightness_state_topic: "home/bedroom/bedroom_lamps/tele/STATE"
+    brightness_scale: 100
+    on_command_type: "brightness"
+    brightness_value_template: "{{value_json.Dimmer}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
 
 # Alarm Panel
 alarm_control_panel:
