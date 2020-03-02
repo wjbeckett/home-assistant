@@ -106,11 +106,11 @@ light:
   - platform: mqtt
     name: bedroom lamps
     command_topic: "home/bedroom/bedroom_lamps/cmnd/POWER"
-    state_topic: "home/bedroom/bedroom_lamps"
-    state_value_template: "{{value_json.POWER}}"
+    state_topic: "home/bedroom/bedroom_lamps/cmnd/POWER"
+    state_value_template: "{{value_json}}"
     brightness_command_topic: "home/bedroom/bedroom_lamps/cmnd/Dimmer"
-    brightness_state_topic: "home/bedroom/bedroom_lamps"
-    brightness_value_template: "{{value_json.Dimmer}}"
+    brightness_state_topic: "home/bedroom/bedroom_lamps/cmnd/Dimmer"
+    brightness_value_template: "{{value_json}}"
     brightness_scale: 100
     on_command_type: "brightness"
     payload_on: "ON"
