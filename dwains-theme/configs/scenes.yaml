@@ -5,11 +5,15 @@ scenes:
     icon: mdi:weather-night
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+  - entity: scene.bedroom_lamps_bright
+    icon: mdi:weather-sunny
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
   - entity: scene.night_light
     icon: mdi:weather-night
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
-  - entity: scene.savanah_sunset
-    icon: mdi:weather-sunset
+  - entity: scene.bright_lights
+    icon: mdi:weather-sunny
     icon_color: '#ffffff'
     background: 'linear-gradient( 135deg, #f3daa0 10%, #eabc53 100%)'
