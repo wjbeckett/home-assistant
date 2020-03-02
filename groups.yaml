@@ -19,9 +19,9 @@ kitchen_lights:
   entities:
     - light.kitchen_pendant_lights
     - light.80304313dc4f229a3225
-    - light.pendant_light_left
-    - light.pendant_light_center
-    - light.pendant_light_right
+    #- light.pendant_light_left
+    #- light.pendant_light_center
+    #- light.pendant_light_right
 
 kitchen:
   name: Kitchen
@@ -61,8 +61,8 @@ bedroom_lights:
   name: Bedroom Lights
   entities:
     - light.bedroom_lamps
-    - light.bedroom_lamp_right
-    - light.bedroom_lamp_left
+    #- light.bedroom_lamp_right
+    #- light.bedroom_lamp_left
 
 bedroom_media_players:
   name: Bedroom Media Players
