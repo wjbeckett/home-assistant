@@ -14,6 +14,7 @@ house_information:
     - entity: binary_sensor.front_door_motion
       icon_on: mdi:motion-binary_sensor
       icon_off: mdi:walk
+    - entity: input_boolean.guest_mode
 
   calendar:
     - calendar.trash
