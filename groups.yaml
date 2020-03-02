@@ -60,6 +60,7 @@ teddy_room:
 bedroom_lights:
   name: Bedroom Lights
   entities:
+    - light.bedroom_lamps
     - light.bedroom_lamp_right
     - light.bedroom_lamp_left
 

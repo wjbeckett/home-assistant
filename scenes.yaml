@@ -36,15 +36,28 @@
         - 0.561
         - 0.404
 - id: 'bedroom_night_light'
-  name: Bedroom Light Night
+  name: Bedroom Night Light
   entities:
     light.bedroom_lamp_right:
       brightness_pct: 10
-      color_temp: 443
+      color_temp: 453
       state: 'on'
       transition: 2
     light.bedroom_lamp_left:
         brightness_pct: 10
-        color_temp: 443
+        color_temp: 453
+        state: 'on'
+        transition: 2
+- id: 'bedroom_lamps_bright'
+  name: Bedroom Lamps Bright
+  entities:
+    light.bedroom_lamp_right:
+      brightness_pct: 100
+      color_temp: 453
+      state: 'on'
+      transition: 2
+    light.bedroom_lamp_left:
+        brightness_pct: 100
+        color_temp: 453
         state: 'on'
         transition: 2

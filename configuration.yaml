@@ -103,6 +103,11 @@ light:
     command_topic: "zigbee2mqtt/kitchen_lights/set"
     state_topic: "zigbee2mqtt/kitchen_lights"
     brightness: true
+  - platform: group
+    name: Bedroom Lamps
+    entities:
+      - light.bedroom_lamp_right
+      - light.bedroom_lamp_left
 
 # Alarm Panel
 alarm_control_panel:

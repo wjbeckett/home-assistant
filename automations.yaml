@@ -17,6 +17,18 @@
       title: ''
       message: Home Assistant Started
 
+- id: 'sync_bedroom_lamp_state'
+  alias: "Sync Bedroom Lamps States"
+  initial_state: true
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "home/bedroom/bedroom_lamps/cmnd/state"
+        payload: ""
+
 #################################################################
 ## Presence detection
 #################################################################
@@ -445,12 +457,12 @@
   trigger:
     platform: sun
     event: sunset
-    offset: "-00:45:00"
+    offset: "-02:00:00"
   action:
   - service: scene.turn_on
     entity_id: scene.bright_lights
   - service: scene.turn_on
-    entity_id: scene.bedroom_bright
+    entity_id: scene.bedroom_lamps_bright
 
 - id: turn_on_kitchen_pendant_lights_when_movement_detected
   alias: Turn on Kitchen Lights when movement is detected
