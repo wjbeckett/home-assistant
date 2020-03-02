@@ -495,8 +495,8 @@
     entity_id: sensor.wireless_button_click
     to: 'double'
   action:
-    service: light.toggle
-    entity_id: light.bedroom_lamps
+    service: homeassistant.toggle
+    entity_id: group.bedroom_lights
 
 - id: light_off_at_sunrise
   alias: Turn off lights at sunrise

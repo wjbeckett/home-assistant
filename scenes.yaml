@@ -35,3 +35,16 @@
       xy_color: 
         - 0.561
         - 0.404
+- id: 'bedroom_night_light'
+  name: Bedroom Light Night
+  entities:
+    light.bedroom_lamp_right:
+      brightness_pct: 10
+      color_temp: 443
+      state: 'on'
+      transition: 2
+    light.bedroom_lamp_left:
+        brightness_pct: 10
+        color_temp: 443
+        state: 'on'
+        transition: 2

@@ -60,8 +60,7 @@ teddy_room:
 bedroom_lights:
   name: Bedroom Lights
   entities:
-    - light.bedroom_lamps
-    - light.55404001dc4f22ac01ca
+    - light.bedroom_lamp_right
     - light.bedroom_lamp_left
 
 bedroom_media_players:

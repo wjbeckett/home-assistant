@@ -103,20 +103,6 @@ light:
     command_topic: "zigbee2mqtt/kitchen_lights/set"
     state_topic: "zigbee2mqtt/kitchen_lights"
     brightness: true
-  - platform: mqtt
-    name: bedroom lamps
-    command_topic: "home/bedroom/bedroom_lamps/cmnd/POWER"
-    state_topic: "home/bedroom/bedroom_lamps/cmnd/POWER"
-    state_value_template: "{{value_json}}"
-    brightness_command_topic: "home/bedroom/bedroom_lamps/cmnd/Dimmer"
-    brightness_state_topic: "home/bedroom/bedroom_lamps/cmnd/Dimmer"
-    brightness_value_template: "{{value_json}}"
-    brightness_scale: 100
-    on_command_type: "brightness"
-    payload_on: "ON"
-    payload_off: "OFF"
-    qos: 1
-    retain: false
 
 # Alarm Panel
 alarm_control_panel:
