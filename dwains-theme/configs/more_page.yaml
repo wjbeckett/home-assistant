@@ -2,6 +2,9 @@
 
 more_page:
   addons:
+    - name: Media
+      icon: mdi:play-circle-outline
+      path: 'dwains-theme/addons/more_page/media/page.yaml'
     - name: AC Units
       icon: mdi:air-conditioner
       path: 'dwains-theme/addons/more_page/ac/page.yaml'
