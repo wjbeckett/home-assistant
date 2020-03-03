@@ -11,3 +11,6 @@ more_page:
     - name: Zigbee Map
       icon: mdi:map
       path: 'dwains-theme/addons/more_page/zigbeeMap/page.yaml'
+    - name: Coronavirus
+      icon: mdi:hospital-box-outline
+      path: 'dwains-theme/addons/more_page/coronavirus/page.yaml'

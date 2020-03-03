@@ -1,0 +1,18 @@
+- title: Australia
+  type: horizontal-stack
+  cards:
+    - type: entities
+      entities:
+        - sensor.australia_confirmed
+        - sensor.australia_current
+        - sensor.australia_recovered
+        - sensor.australia_deaths
+- title: Worldwide
+  type: horizontal-stack
+  cards:
+    - type: entities
+      entities:
+        - sensor.worldwide_confirmed
+        - sensor.wordlwide_current
+        - sensor.worldwide_recovered
+        - sensor.worldwide_deaths
