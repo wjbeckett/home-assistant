@@ -529,6 +529,16 @@
     service: light.toggle
     entity_id: light.bedroom_lamps
 
+- id: turn_on_bedroom_night_light_with_click
+  alias: Turn on bedroom night lights with click
+  trigger:
+    platform: state
+    entity_id: sensor.wireless_button_click
+    to: 'single'
+  action:
+    service: scene.turn_on
+    entity_id: scene.bedroom_night_light
+
 - id: light_off_at_sunrise
   alias: Turn off lights at sunrise
   initial_state: 'on'

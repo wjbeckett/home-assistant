@@ -4,7 +4,7 @@
     light.kitchen_pendant_lights:
       state: on
       transition: 2
-      brightness_pct: 20
+      brightness_pct: 30
     light.kitchen_downlight:
       state: on
       brightness_pct: 30
@@ -40,7 +40,7 @@
         - 0.404
     light.lounge_room_lamp:
       state: 'on'
-      brightness_pct: 1
+      brightness_pct: 10
       transition: 2
       xy_color: 
         - 0.561
@@ -49,12 +49,12 @@
   name: Bedroom Night Light
   entities:
     light.bedroom_lamp_right:
-      brightness_pct: 10
+      brightness_pct: 20
       color_temp: 453
       state: 'on'
       transition: 2
     light.bedroom_lamp_left:
-        brightness_pct: 10
+        brightness_pct: 20
         color_temp: 453
         state: 'on'
         transition: 2
