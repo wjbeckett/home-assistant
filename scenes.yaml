@@ -40,11 +40,11 @@
         - 0.404
     light.lounge_room_lamp:
       state: 'on'
-      brightness_pct: 10
+      brightness_pct: 18
       transition: 2
       xy_color: 
         - 0.561
-        - 0.404
+        - 0.418
 - id: 'bedroom_night_light'
   name: Bedroom Night Light
   entities:
