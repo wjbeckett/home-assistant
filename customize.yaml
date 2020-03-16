@@ -1,3 +1,12 @@
 binary_sensor.garage_door:
   friendly_name: Garage Door
   device_class: garage_door
+binary_sensor.morning_meds_taken:
+  friendly_name: Morning meds taken?
+  icon: mdi:pill
+binary_sensor.evening_meds_taken:
+  friendly_name: Evening meds taken?
+  icon: mdi:pill
+binary_sensor.bedtime_meds_taken:
+  friendly_name: Bedtime meds taken?
+  icon: mdi:pill

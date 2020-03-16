@@ -2,7 +2,7 @@
 
 more_page:
   addons:
-    - name: Meds
+    - name: Ollie's Meds
       icon: mdi:pill
       path: 'dwains-theme/addons/more_page/meds/page.yaml'
     - name: Media
