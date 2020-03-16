@@ -2,6 +2,9 @@
 
 more_page:
   addons:
+    - name: Meds
+      icon: mdi:pill
+      path: 'dwains-theme/addons/more_page/meds/page.yaml'
     - name: Media
       icon: mdi:play-circle-outline
       path: 'dwains-theme/addons/more_page/media/page.yaml'

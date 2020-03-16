@@ -12,3 +12,22 @@
     name: Request Location Update
     initial: off
     icon: mdi:map-marker
+
+  morning_meds_taken:
+    name: Morning Meds have been taken
+    initial: 'off'
+    icon: mdi:pill
+    
+  evening_meds_taken:
+    name: Evening Meds have been taken
+    initial: 'off'
+    icon: mdi:pill
+
+  bedtime_meds_taken:
+    name: Bedtime Meds have been taken
+    initial: 'off'
+    icon: mdi:pill  
+
+  meds_reminder:
+    name: Meds reminder enabled
+    initial: 'on'

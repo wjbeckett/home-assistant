@@ -4,5 +4,35 @@
     state_topic: "home/frontdoor/camera/motion"
     name: Front Door Motion
     device_class: motion
-
-
+  - platform: template
+    sensors:
+      morning_meds_taken:
+        friendly_name: Morning Meds Taken
+        value_template: >
+          {% if is_state('input_boolean.morning_meds_taken', 'on') %}
+          Yes
+          {% elif is_state('input_boolean.morning_meds_taken', 'off') %}
+          No
+          {% else %}
+          Unknown
+          {% endif %}
+      evening_meds_taken:
+        friendly_name: Evening Meds Taken
+        value_template: >
+          {% if is_state('input_boolean.evening_meds_taken', 'on') %}
+          Yes
+          {% elif is_state('input_boolean.evening_meds_taken', 'off') %}
+          No
+          {% else %}
+          Unknown
+          {% endif %}
+      bedtime_meds_taken:
+        friendly_name: Bedtime Meds Taken
+        value_template: >
+          {% if is_state('input_boolean.bedtime_meds_taken', 'on') %}
+          Yes
+          {% elif is_state('input_boolean.bedtime_meds_taken', 'off') %}
+          No
+          {% else %}
+          Unknown
+          {% endif %}

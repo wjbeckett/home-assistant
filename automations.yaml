@@ -676,3 +676,103 @@
   - data_template:
       command: "{{ trigger.event.data.command }}"
     service_template: '{{ trigger.event.data.service }}'
+
+#################################################################
+## Medication Reminder
+#################################################################
+- id: 'reset_meds_taken'
+  alias: Reset morning meds taken
+  trigger:
+    platform: time
+    at: 00:00:00
+  action:
+    service: input_boolean.turn_off
+    data:
+      entity_id: 
+        - input_boolean.morning_meds_taken
+        - input_boolean.evening_meds_taken
+        - input_boolean.bedtime_meds_taken
+
+- id: 'mark_morning_meds_taken'
+  alias: Mark morning meds as taken
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: 'confirm_morning_meds'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.morning_meds_taken
+ 
+- id: 'mark_evening_meds_taken'
+  alias: Mark evening meds as taken
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: 'confirm_evening_meds'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.evening_meds_taken
+
+- id: 'mark_bedtime_meds_taken'
+  alias: Mark bedtime meds as taken
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: 'confirm_bedtime_meds'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.bedtime_meds_taken
+
+- id: 'morning_meds_notification'
+  alias: Morning meds Notificaiton
+  trigger:
+    platform: time
+    at: 08:00:00
+  condition:
+    - condition: state
+      entity_id: input_boolean.morning_meds_taken
+      state: 'off'
+  action:
+    service: notify.all_devices
+    data:
+      message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
+        data:
+          action: "confirm_morning_meds"
+          title: "Confirm"
+
+- id: 'evening_meds_notification'
+  alias: Evening meds Notificaiton
+  trigger:
+    platform: time
+    at: 18:00:00
+  condition:
+    - condition: state
+      entity_id: input_boolean.evening_meds_taken
+      state: 'off'
+  action:
+    service: notify.all_devices
+    data:
+      message: "Ollie needs Lisinopril (3ml)"
+        data:
+          action: "confirm_evening_meds"
+          title: "Confirm"
+
+- id: 'bedtime_meds_notification'
+  alias: Bedtime meds Notificaiton
+  trigger:
+    platform: time
+    at: 20:00:00
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedtime_meds_taken
+      state: 'off'
+  action:
+    service: notify.all_devices
+    data:
+      message: "Ollie needs Carvidilol (1.5ml)"
+        data:
+          action: "confirm_bedtime_meds"
+          title: "Confirm"

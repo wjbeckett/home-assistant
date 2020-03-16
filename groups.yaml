@@ -100,3 +100,10 @@ front_door:
   entities:
     - camera.front_door
     - binary_sensor.front_door_motion
+
+meds_reminder:
+  entities:
+    - input_boolean.morning_meds_taken
+    - input_boolean.evening_meds_taken
+    - input_boolean.bedtime_meds_taken
+    - input_boolean.meds_reminder

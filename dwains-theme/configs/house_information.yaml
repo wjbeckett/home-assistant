@@ -15,6 +15,12 @@ house_information:
       icon_on: mdi:motion-binary_sensor
       icon_off: mdi:walk
     - entity: input_boolean.guest_mode
+    - entity: binary_sensor.morning_meds_taken
+      icon: mdi:pill
+    - entity: binary_sensor.evening_meds_taken
+      icon: mdi:pill
+    - entity: binary_sensor.bedtime_meds_taken
+      icon: mdi:pill
 
   calendar:
     - calendar.trash
