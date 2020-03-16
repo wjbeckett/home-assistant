@@ -740,8 +740,9 @@
     data:
       message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
       data:
-        actions: "confirm_morning_meds"
-        title: "Confirm"
+        actions: 
+          - action: "confirm_morning_meds"
+            title: "Confirm"
 
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
@@ -757,8 +758,9 @@
     data:
       message: "Ollie needs Lisinopril (3ml)"
       data:
-        actions: "confirm_evening_meds"
-        title: "Confirm"
+        actions: 
+          - action: "confirm_evening_meds"
+            title: "Confirm"
 
 - id: 'bedtime_meds_notification'
   alias: Bedtime meds Notificaiton
@@ -774,5 +776,6 @@
     data:
       message: "Ollie needs Carvidilol (1.5ml)"
       data:
-        actions: "confirm_bedtime_meds"
-        title: "Confirm"
+        actions:
+          - action: "confirm_bedtime_meds"
+            title: "Confirm"
