@@ -15,9 +15,15 @@ house_information:
       icon_on: mdi:motion-binary_sensor
       icon_off: mdi:walk
     - entity: input_boolean.guest_mode
-    - entity: binary_sensor.morning_meds_taken
-    - entity: binary_sensor.evening_meds_taken
-    - entity: binary_sensor.bedtime_meds_taken
+    - entity: input_boolean.morning_meds_taken
+      icon_on: mdi:check-circle
+      icon_off: mdi:check-circle-outline
+    - entity: input_boolean.evening_meds_taken
+      icon_on: mdi:check-circle
+      icon_off: mdi:check-circle-outline
+    - entity: input_boolean.bedtime_meds_taken
+      icon_on: mdi:check-circle
+      icon_off: mdi:check-circle-outline
 
   calendar:
     - calendar.trash
