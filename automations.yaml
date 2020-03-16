@@ -739,9 +739,9 @@
     service: notify.all_devices
     data:
       message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
-        data:
-          action: "confirm_morning_meds"
-          title: "Confirm"
+      data:
+        actions: "confirm_morning_meds"
+        title: "Confirm"
 
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
@@ -756,9 +756,9 @@
     service: notify.all_devices
     data:
       message: "Ollie needs Lisinopril (3ml)"
-        data:
-          action: "confirm_evening_meds"
-          title: "Confirm"
+      data:
+        actions: "confirm_evening_meds"
+        title: "Confirm"
 
 - id: 'bedtime_meds_notification'
   alias: Bedtime meds Notificaiton
@@ -773,6 +773,6 @@
     service: notify.all_devices
     data:
       message: "Ollie needs Carvidilol (1.5ml)"
-        data:
-          action: "confirm_bedtime_meds"
-          title: "Confirm"
+      data:
+        actions: "confirm_bedtime_meds"
+        title: "Confirm"
