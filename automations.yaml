@@ -703,6 +703,11 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.morning_meds_taken
+    - service: notify.all_devices
+      data:
+        message: clear_notification
+        data:
+          tag: morning_meds
  
 - id: 'mark_evening_meds_taken'
   alias: Mark evening meds as taken
@@ -714,6 +719,11 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.evening_meds_taken
+    - service: notify.all_devices
+      data:
+        message: clear_notification
+        data:
+          tag: evening_meds
 
 - id: 'mark_bedtime_meds_taken'
   alias: Mark bedtime meds as taken
@@ -725,6 +735,11 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.bedtime_meds_taken
+    - service: notify.all_devices
+      data:
+        message: clear_notification
+        data:
+          tag: bedtime_meds
 
 - id: 'morning_meds_notification'
   alias: Morning meds Notificaiton
@@ -742,6 +757,7 @@
       data:
         actions: "confirm_morning_meds"
         title: "Confirm"
+        tag: morning_meds
 
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
@@ -759,6 +775,7 @@
       data:
         actions: "confirm_evening_meds"
         title: "Confirm"
+        tag: evening_meds
 
 - id: 'bedtime_meds_notification'
   alias: Bedtime meds Notificaiton
@@ -776,3 +793,4 @@
       data:
         actions: "confirm_bedtime_meds"
         title: "Confirm"
+        tag: bedtime_meds
