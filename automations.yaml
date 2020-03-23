@@ -758,6 +758,7 @@
         actions: 
           - action: "confirm_morning_meds"
             title: "Confirm"
+        tag: morning_meds
 
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
@@ -776,6 +777,7 @@
         actions: 
           - action: "confirm_evening_meds"
             title: "Confirm"
+        tag: evening_meds
 
 - id: 'bedtime_meds_notification'
   alias: Bedtime meds Notificaiton
@@ -794,3 +796,4 @@
         actions:
           - action: "confirm_bedtime_meds"
             title: "Confirm"
+        tag: bedtime_meds
