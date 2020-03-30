@@ -24,6 +24,7 @@ house_information:
     - entity: input_boolean.bedtime_meds_taken
       icon_on: mdi:check-circle
       icon_off: mdi:check-circle-outline
+    - entity: input_boolean.location_update
 
   calendar:
     - calendar.trash
