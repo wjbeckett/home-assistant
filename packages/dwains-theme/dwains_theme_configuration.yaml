@@ -1,6 +1,14 @@
 #Set lovelace to YAML mode to make frontend completly from yaml files instead from gui editor
 lovelace:
   mode: yaml
+  resources: !include_dir_merge_list ../../dwains-theme/resources/
+  dashboards:
+    dwains-theme:
+      mode: yaml
+      title: Dwains Theme
+      icon: mdi:alpha-d-box
+      show_in_sidebar: true
+      filename: dwains-theme-lovelace.yaml
 
 #Set frontend for themes and Font Awesome Icons (Note that you dont have frontend: in any other file)
 frontend:
@@ -17,22 +25,23 @@ browser_mod:
 #Dwains theme definitions (this is for doing all the jinja2 inside YAML files) 
 #You need to have a folder called dwains-theme/configs with all the configuration files inside
 dwains_theme:
-  information:
-    version: '1.2.1'
+  global:
+    version: '1.3.0'
+  styles:
+    padding-left: '10px'
   translations:
     !include_dir_merge_named ../../dwains-theme/translations/
   configuration:
     !include_dir_merge_named ../../dwains-theme/configs/
-  icons:
-    !include ../../dwains-theme/configs/icons.yaml
 
 #Sensor for latest version
 sensor:
   - platform: scrape
-    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.2.1
+    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.3.0
     name: Dwains Theme Version
     select: ".current-version h1"
     value_template: '{{ value.split(":")[1] }}'
+    scan_interval: 3600
 
 #Input select
 input_select:
@@ -40,9 +49,12 @@ input_select:
   theme_selector:
     name: Theme Selector 
     options:
-      - Auto Mode
+      - Auto Mode (Dark/Light)
       - Dark Mode
       - Light Mode
+      - Auto Mode (Black/White)
+      - Black Mode
+      - White Mode
 
 #Theme automations
 automation:
@@ -60,14 +72,22 @@ automation:
       - service: frontend.set_theme
         data_template:
           name: >
-            {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+            {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Dark/Light)'))  %}
               dwains-theme-light
-            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Dark/Light)'))  %}
               dwains-theme-dark
             {% elif is_state('input_select.theme_selector', 'Dark Mode') %}
               dwains-theme-dark
             {% elif is_state('input_select.theme_selector', 'Light Mode') %}
               dwains-theme-light
+            {% elif (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Black/White)'))  %}
+              dwains-theme-white
+            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Black/White)'))  %}
+              dwains-theme-black
+            {% elif is_state('input_select.theme_selector', 'Black Mode') %}
+              dwains-theme-black
+            {% elif is_state('input_select.theme_selector', 'White Mode') %}
+              dwains-theme-white
             {% else %}
               dwains-theme-light
             {% endif %}
