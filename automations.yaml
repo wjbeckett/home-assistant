@@ -75,7 +75,7 @@
   action:
   - service: notify.all_devices
     data:
-      message: request_locaiton_update
+      message: "request_location_update"
 
 - id: reset_location_update
   alias: Reset Location Update
@@ -87,7 +87,7 @@
       seconds: 5
   action:
   - service: homeassistant.turn_off
-    entity_id: input_boolean.locaion_update
+    entity_id: input_boolean.location_update
 #################################################################
 ## Door Notifications
 #################################################################
@@ -165,6 +165,9 @@
   - service: notify.all_devices
     data:
       message: ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}
+      data:
+        ttl: 0
+        priority: high
   - service: tts.google_say
     entity_id: media_player.kitchen_display
     data:
@@ -325,6 +328,11 @@
   action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
+  - service: notify.all_devices
+    data:
+      message: clear_notification
+      data:
+        tag: alarm_prompt
 
 #################################################################
 ## Object Detection
@@ -764,6 +772,8 @@
           - action: "confirm_morning_meds"
             title: "Confirm"
         tag: morning_meds
+        ttl: 0
+        priority: high
 
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
@@ -783,6 +793,8 @@
           - action: "confirm_evening_meds"
             title: "Confirm"
         tag: evening_meds
+        ttl: 0
+        priority: high
 
 - id: 'bedtime_meds_notification'
   alias: Bedtime meds Notificaiton
@@ -802,3 +814,5 @@
           - action: "confirm_bedtime_meds"
             title: "Confirm"
         tag: bedtime_meds
+        ttl: 0
+        priority: high
