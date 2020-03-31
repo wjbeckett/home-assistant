@@ -89,13 +89,6 @@ google_assistant:
     - camera
     - alarm_control_panel
 
-# Plex Assistant
-plex_assistant:
-  url: !secret plex_url
-  token: !secret plex_token
-  default_cast: 'Bedroom TV'
-  tts_errors: true
-
 light:
   - platform: mqtt
     schema: json
