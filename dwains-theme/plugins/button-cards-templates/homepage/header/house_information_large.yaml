@@ -17,18 +17,16 @@ header_house_information_large:
     card:
       - box-shadow: none
       - padding: 4px
-      - margin-left: 11px
-      - background: '#181818'
+      - background: var(--dwains-theme-header-button-background)
       - border-radius: 15px
       - width: auto
     icon:
-      - color: white
+      - color: var(--dwains-theme-header-button-text)
       - width: 55%
     img_cell:
       - width: 40px
       - height: 40px
-      - background: '#181818'
-      - color: white
+      - color: var(--dwains-theme-header-button-text)
       - border-radius: 100%
       - justify-self: start
     name:

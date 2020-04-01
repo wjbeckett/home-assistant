@@ -4,7 +4,8 @@ header_states_vacuum:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_vacuums
   name: > 
     [[[ 
       return hass.localize('domain.vacuum'); 
@@ -18,7 +19,7 @@ header_states_vacuum:
         {% for room in _d_t_config.rooms %}
           //Do some things for the vacuums
           {% if room["vacuum"] %}
-            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state == 'on') {
+            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked') {
               onVacuums++;
             }
           {% endif %}
@@ -42,7 +43,7 @@ header_states_vacuum:
     img_cell:
       - width: 40px
       - height: 40px
-      - background: '#661fff'
+      - background: var(--dwains-theme-header-button-background)
       - color: white
       - border-radius: 100%
     card:
