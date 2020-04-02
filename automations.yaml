@@ -779,7 +779,7 @@
   alias: Morning meds reminder
   trigger:
     platform: time
-    hour: 0
+    hours: 0
     minutes: '30'
     seconds: 0
   condition:
@@ -826,7 +826,7 @@
   alias: Evening meds reminder
   trigger:
     platform: time
-    hour: 0
+    hours: 0
     minutes: '30'
     seconds: 0
   condition:
@@ -873,7 +873,7 @@
   alias: Bedtime meds reminder
   trigger:
     platform: time
-    hour: 0
+    hours: 0
     minutes: '30'
     seconds: 0
   condition:
