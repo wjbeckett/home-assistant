@@ -28,4 +28,5 @@ house_information:
 
   calendar:
     - calendar.trash
-    - calendar.birthdays
+    - calendar.work
+    - calendar.family
