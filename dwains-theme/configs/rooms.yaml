@@ -25,3 +25,6 @@ rooms:
     icon: fas:couch
     light: group.lounge_room_lights
     media_player: group.lounge_room_media_players
+  - name: Garage
+    icon: mdi:garage-variant
+    door: binary_sensor.garage_door

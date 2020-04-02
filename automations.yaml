@@ -70,7 +70,7 @@
   alias: Request Location Update
   trigger:
   - platform: state
-    entity_id: input_boolean.locaion_update
+    entity_id: input_boolean.location_update
     to: 'on'
   action:
   - service: notify.all_devices
@@ -81,7 +81,7 @@
   alias: Reset Location Update
   trigger:
   - platform: state
-    entity_id: input_boolean.locaion_update
+    entity_id: input_boolean.location_update
     to: 'on'
     for:
       seconds: 5
@@ -775,6 +775,32 @@
         ttl: 0
         priority: high
 
+- id: 'morning_meds_reminder'
+  alias: Morning meds reminder
+  trigger:
+    platform: time
+    hour: 0
+    minutes: '30'
+    seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.morning_meds_taken
+      state: 'off'
+    - condition: time
+      after: '08:00:00'
+      before: '10:00:00'
+  action:
+    service: notify.all_devices
+    data:
+      message: "It looks like Ollie hasn't had his morning meds. Please make sure he has them."
+      data:
+        actions: 
+          - action: "confirm_morning_meds"
+            title: "Confirm"
+        tag: morning_meds
+        ttl: 0
+        priority: high
+
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
   trigger:
@@ -788,6 +814,32 @@
     service: notify.all_devices
     data:
       message: "Ollie needs Lisinopril (3ml)"
+      data:
+        actions: 
+          - action: "confirm_evening_meds"
+            title: "Confirm"
+        tag: evening_meds
+        ttl: 0
+        priority: high
+
+- id: 'evening_meds_reminder'
+  alias: Evening meds reminder
+  trigger:
+    platform: time
+    hour: 0
+    minutes: '30'
+    seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.evening_meds_taken
+      state: 'off'
+    - condition: time
+      after: '18:00:00'
+      before: '20:00:00'
+  action:
+    service: notify.all_devices
+    data:
+      message: "It looks like Ollie hasn't had his evening meds. Please make sure he has them."
       data:
         actions: 
           - action: "confirm_evening_meds"
@@ -811,6 +863,32 @@
       message: "Ollie needs Carvidilol (1.5ml)"
       data:
         actions:
+          - action: "confirm_bedtime_meds"
+            title: "Confirm"
+        tag: bedtime_meds
+        ttl: 0
+        priority: high
+
+- id: 'bedtime_meds_reminder'
+  alias: Bedtime meds reminder
+  trigger:
+    platform: time
+    hour: 0
+    minutes: '30'
+    seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedtime_meds_taken
+      state: 'off'
+    - condition: time
+      after: '19:30:00'
+      before: '21:00:00'
+  action:
+    service: notify.all_devices
+    data:
+      message: "It looks like Ollie hasn't had his bedtime meds. Please make sure he has them."
+      data:
+        actions: 
           - action: "confirm_bedtime_meds"
             title: "Confirm"
         tag: bedtime_meds
