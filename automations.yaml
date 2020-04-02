@@ -778,9 +778,8 @@
 - id: 'morning_meds_reminder'
   alias: Morning meds reminder
   trigger:
-    platform: time
-    minutes: '30'
-    seconds: 0
+    platform: time_pattern
+    minutes: '/30'
   condition:
     - condition: state
       entity_id: input_boolean.morning_meds_taken
@@ -824,9 +823,8 @@
 - id: 'evening_meds_reminder'
   alias: Evening meds reminder
   trigger:
-    platform: time
-    minutes: '30'
-    seconds: 0
+    platform: time_pattern
+    minutes: '/30'
   condition:
     - condition: state
       entity_id: input_boolean.evening_meds_taken
@@ -870,9 +868,8 @@
 - id: 'bedtime_meds_reminder'
   alias: Bedtime meds reminder
   trigger:
-    platform: time
-    minutes: '30'
-    seconds: 0
+    platform: time_pattern
+    minutes: '/30'
   condition:
     - condition: state
       entity_id: input_boolean.bedtime_meds_taken
