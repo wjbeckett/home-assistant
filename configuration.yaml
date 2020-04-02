@@ -89,6 +89,10 @@ google_assistant:
     - camera
     - alarm_control_panel
 
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_secret
+
 light:
   - platform: mqtt
     schema: json
