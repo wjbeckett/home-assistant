@@ -22,7 +22,7 @@ lovelace:
     - type: module
       url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
     - type: module
-      url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.j
+      url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
   dashboards:
     lovelace-generated: # Needs to contain a hyphen (-)
       mode: yaml
