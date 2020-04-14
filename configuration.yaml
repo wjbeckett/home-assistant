@@ -21,6 +21,8 @@ lovelace:
       url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
     - type: module
       url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+    - type: module
+      url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.j
   dashboards:
     lovelace-generated: # Needs to contain a hyphen (-)
       mode: yaml
