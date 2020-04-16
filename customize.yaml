@@ -10,3 +10,7 @@ binary_sensor.evening_meds_taken:
 binary_sensor.bedtime_meds_taken:
   friendly_name: Bedtime meds taken?
   icon: mdi:pill
+person.emily:
+  entity_picture: "/local/images/persons/emily.png"
+person.william:
+  entity_picture: "/local/images/persons/william.png"
