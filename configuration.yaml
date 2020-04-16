@@ -261,6 +261,9 @@ climate:
     temp_step: 0.5
     precision: 0.5
 
+# Browser Mod
+browser_mod:
+
 # Speedtest
 speedtestdotnet:
   scan_interval: 60:00
