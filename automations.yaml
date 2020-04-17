@@ -724,6 +724,9 @@
         message: clear_notification
         data:
           tag: morning_meds
+    - service: dwains_theme.notification_dismiss
+      data:
+        notification_id: morning_meds
  
 - id: 'mark_evening_meds_taken'
   alias: Mark evening meds as taken
@@ -740,6 +743,9 @@
         message: clear_notification
         data:
           tag: evening_meds
+    - service: dwains_theme.notification_dismiss
+      data:
+        notification_id: evening_meds
 
 - id: 'mark_bedtime_meds_taken'
   alias: Mark bedtime meds as taken
@@ -756,6 +762,9 @@
         message: clear_notification
         data:
           tag: bedtime_meds
+    - service: dwains_theme.notification_dismiss
+      data:
+        notification_id: bedtime_meds
 
 - id: 'morning_meds_notification'
   alias: Morning meds Notificaiton
@@ -767,16 +776,20 @@
       entity_id: input_boolean.morning_meds_taken
       state: 'off'
   action:
-    service: notify.all_devices
-    data:
-      message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
+    - service: notify.all_devices
       data:
-        actions: 
-          - action: "confirm_morning_meds"
-            title: "Confirm"
-        tag: morning_meds
-        ttl: 0
-        priority: high
+        message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
+        data:
+          actions: 
+            - action: "confirm_morning_meds"
+              title: "Confirm"
+          tag: morning_meds
+          ttl: 0
+          priority: high
+    - service: dwains_theme.notification_create
+      data:
+        message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
+        notification_id: morning_meds 
 
 - id: 'morning_meds_reminder'
   alias: Morning meds reminder
@@ -812,16 +825,20 @@
       entity_id: input_boolean.evening_meds_taken
       state: 'off'
   action:
-    service: notify.all_devices
-    data:
-      message: "Ollie needs Lisinopril (3ml)"
+    - service: notify.all_devices
       data:
-        actions: 
-          - action: "confirm_evening_meds"
-            title: "Confirm"
-        tag: evening_meds
-        ttl: 0
-        priority: high
+        message: "Ollie needs Lisinopril (3ml)"
+        data:
+          actions: 
+            - action: "confirm_evening_meds"
+              title: "Confirm"
+          tag: evening_meds
+          ttl: 0
+          priority: high
+    - service: dwains_theme.notification_create
+      data:
+        message: "Ollie needs Lisinopril (3ml)"
+        notification_id: evening_meds  
 
 - id: 'evening_meds_reminder'
   alias: Evening meds reminder
@@ -851,22 +868,26 @@
   alias: Bedtime meds Notificaiton
   trigger:
     platform: time
-    at: "20:00:00"
+    at: "19:30:00"
   condition:
     - condition: state
       entity_id: input_boolean.bedtime_meds_taken
       state: 'off'
   action:
-    service: notify.all_devices
-    data:
-      message: "Ollie needs Carvidilol (1.5ml)"
+    - service: notify.all_devices
       data:
-        actions:
-          - action: "confirm_bedtime_meds"
-            title: "Confirm"
-        tag: bedtime_meds
-        ttl: 0
-        priority: high
+        message: "Ollie needs Carvidilol (1.5ml)"
+        data:
+          actions:
+            - action: "confirm_bedtime_meds"
+              title: "Confirm"
+          tag: bedtime_meds
+          ttl: 0
+          priority: high
+    - service: dwains_theme.notification_create
+      data:
+        message: "Ollie needs Carvidilol (1.5ml)"
+        notification_id: bedtime_meds
 
 - id: 'bedtime_meds_reminder'
   alias: Bedtime meds reminder
