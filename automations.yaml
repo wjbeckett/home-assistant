@@ -503,10 +503,11 @@
   - service: light.turn_on
     data:
       entity_id: light.lounge_room_lamp
-      brightness_pct: 100
+      brightness: 255
+      white_value: 255
       xy_color:
-        - 0.388
-        - 0.401
+        - 0.323
+        - 0.329
 
 - id: turn_on_kitchen_pendant_lights_when_movement_detected
   alias: Turn on Kitchen Lights when movement is detected
@@ -603,6 +604,9 @@
   - condition: state
     entity_id: group.household
     state: home
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
   trigger:
     platform: time
     at: '19:00:00'
@@ -610,6 +614,18 @@
   - service: scene.turn_on
     entity_id: scene.night_light
 
+- id: turn_off_lights_at_night
+  alias: Turn off lights when late
+  trigger:
+    platform: time
+    at: "22:00:00"
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.lounge_room_lamp
 #################################################################
 ## AC Automations
 #################################################################
