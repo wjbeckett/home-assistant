@@ -31,5 +31,5 @@ persons:
       entities:
         - entity: sensor.battery_level_emily
   - name: Deb
-    track: person.Deb
+    track: person.deb
     show_map: 'false'
