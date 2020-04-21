@@ -30,3 +30,6 @@ persons:
     page_entities:
       entities:
         - entity: sensor.battery_level_emily
+  - name: Deb
+    track: person.Deb
+    show_map: 'false'
