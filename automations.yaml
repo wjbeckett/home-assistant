@@ -66,6 +66,23 @@
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
 
+- id: notify_guest_deb
+  alias: Notify when Deb has arrived
+  trigger:
+    platform: state
+    entity_id: person.Deb
+    to: 'home'
+  condition:
+  - condition: state
+    entity_id: input_boolean.options_notifications_push
+    state: 'on'
+  - condition: template
+    value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+  action:
+    service: notify.all_devices
+    data:
+      message: 'Deb is here!'
+
 - id: request_location_update
   alias: Request Location Update
   trigger:
@@ -88,6 +105,26 @@
   action:
   - service: homeassistant.turn_off
     entity_id: input_boolean.location_update
+  
+- id: activate_guest_mode_when_guests_arrive
+  alias: activate guest mode when guests are at home
+  trigger:
+    platform: state
+    entity_id: group.guests
+    to: 'home'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.guest_mode
+
+- id: deactivate_guest_mode_when_guests_leave
+  alias: Deactivate guest mode when guests leave
+  trigger:
+    platform: state
+    entity_id: group.guests
+    to: 'not_home'
+  action:
+    platform: input_boolean.turn_off
+    entity_id: input_boolean.guest_mode
 #################################################################
 ## Door Notifications
 #################################################################

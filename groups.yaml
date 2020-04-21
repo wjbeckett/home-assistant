@@ -35,6 +35,9 @@ Household:
   - person.william
   - person.emily
 
+guests:
+  - person.deb
+
 ollie_lights:
   name: Ollie's Lights
   entities:
