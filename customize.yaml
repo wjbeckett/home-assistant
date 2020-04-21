@@ -14,3 +14,5 @@ person.emily:
   entity_picture: "/local/images/persons/emily.png"
 person.william:
   entity_picture: "/local/images/persons/william.png"
+person.deb:
+  entity_picture: "local/images/persons/deb.png"
