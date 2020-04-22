@@ -276,10 +276,15 @@ device_tracker:
       track_new_devices: false
 
 # Samsung TV
-samsungtv_smart:
-  - host: 172.30.1.100
-    name: Lounge Room TV
+media_player:
+  - platform: samsungtv_tizen
+    host: 172.30.1.100
+    port: 8002
+    mac: 64:1c:b0:82:54:91
     api_key: 870e0df3-7475-4fe3-9b2a-29d6e6ceac35
+    device_id: 0815608b-183e-47b3-8e81-d2d2502fcbcb
+    show_channel_number: true
+
 
 # Speedtest
 speedtestdotnet:
