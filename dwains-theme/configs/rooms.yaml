@@ -13,11 +13,11 @@ rooms:
     motion: binary_sensor.kitchen_sensor_motion
     door: binary_sensor.back_door
     media_player: media_player.kitchen_display
-  - name: Ollie 
+  - name: Ollie's Room
     icon: fas:heart
     light: group.ollie_lights
     media_player: media_player.ollie_s_speaker
-  - name: Teddy
+  - name: Teddy's Room
     icon: mdi:pokeball
     light: group.teddy_lights
     media_player: media_player.teddy_s_speaker
