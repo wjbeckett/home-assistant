@@ -277,7 +277,7 @@ device_tracker:
 
 # Samsung TV
 media_player:
-  - platform: samsungtv_tizen
+  - platform: samsungtv_custom
     host: 172.30.1.100
     port: 8002
     mac: 64:1c:b0:82:54:91
