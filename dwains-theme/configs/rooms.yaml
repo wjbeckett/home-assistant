@@ -14,7 +14,7 @@ rooms:
     door: binary_sensor.back_door
     media_player: media_player.kitchen_display
   - name: Ollie 
-    icon: fas:paw
+    icon: fas:heart
     light: group.ollie_lights
     media_player: media_player.ollie_s_speaker
   - name: Teddy
@@ -24,7 +24,10 @@ rooms:
   - name: Lounge Room
     icon: fas:couch
     light: group.lounge_room_lights
-    media_player: group.lounge_room_media_players
+    media_player: media_player.lounge_room_tv
+  - name: Front Room
+    icon: fas:puzzle-piece
+    media_player: media_player.front_room_speaker
   - name: Garage
     icon: mdi:garage-variant
     door: binary_sensor.garage_door

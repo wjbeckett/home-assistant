@@ -88,15 +88,13 @@ lounge_room_lights:
 lounge_room_media_players:
   name: Lounge Room Media Players
   entities:
-    - media_player.lounge_room_speaker
-    - media_player.samsung_tv_remote
+    - media_player.lounge_room_tv
 
 lounge_room:
   name: Lounge Room
   entities:
     - group.lounge_room_lights
-    - media_player.lounge_room_speaker
-    - media_player.samsung_tv_remote
+    - media_player.lounge_room_tv
 
 front_door:
   name: Front Door
