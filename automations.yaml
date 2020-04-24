@@ -679,7 +679,11 @@
         entity_id: light.kitchen_pendant_lights
         brightness: >-
           {%- set kitchenbrightness = (-0.57 * states('sensor.kitchen_sensor_illuminance_lux') | float) + 283 %}
-          {{ kitchenbrightness | round }}
+          {% if states('sensor.kitchen_sensor_illuminance_lux') < '50' %}
+            255
+          {% else %}
+            {{ kitchenbrightness | round }}
+          {% endif %}
 #    - service: light.turn_on
 #      data_template:
 #        entity_id: light.kitchen_downlight
