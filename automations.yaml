@@ -664,21 +664,25 @@
     service: light.turn_off
     entity_id: light.lounge_room_lamp
 
-#- id: dynamically_adjust_kitchen_lights
-#  alias: dynamically adjust kitchen lights
-#  trigger:
-#    platform: state
-#    entity_id: sensor.kitchen_sensor_illuminance_lux
-#  condition:
-#    condition: time
-#    after: "06:00:00"
-#    before: "18:30:00"
-#  action:
-#    service: light.turn_on
-#    data_template:
-#      entity_id: light.kitchen_pendant_lights
-#      brightness: >
-#      -3.36 * state_attr(trigger.entity_id, 'illuminance_lux') + 1196
+- id: dynamically_adjust_kitchen_lights
+  alias: dynamically adjust kitchen lights
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen_sensor_illuminance_lux
+  condition:
+    condition: time
+    after: "06:00:00"
+    before: "18:30:00"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.kitchen_pendant_lights
+        brightness: {{ (-0.57 * states('sensor.kitchen_sensor_illuminance_lux')|int) + 283 | round }}
+    - service: light.turn_on
+      data_template:
+        entity_id: light.kitchen_downlight
+        brightness: {{ (-0.57 * states('sensor.kitchen_sensor_illuminance_lux')|int) + 283 | round }}
+
 #################################################################
 ## AC Automations
 #################################################################
