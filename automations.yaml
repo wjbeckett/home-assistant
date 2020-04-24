@@ -678,7 +678,7 @@
       data_template:
         entity_id: light.kitchen_pendant_lights
         brightness: >-
-        {{ (-0.57 * states('sensor.kitchen_sensor_illuminance_lux') | float) + 283 | round }}
+          {{ (-0.57 * states('sensor.kitchen_sensor_illuminance_lux') | float) + 283 | round(0) }}
 #    - service: light.turn_on
 #      data_template:
 #        entity_id: light.kitchen_downlight
