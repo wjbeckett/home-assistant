@@ -123,6 +123,10 @@ google_assistant:
     - scene
     - camera
     - alarm_control_panel
+  entity_config:
+    media_player.lounge_room_tv:
+      name: Lounge Room TV
+      room: Lounge Room
 
 google:
   client_id: !secret google_client_id
@@ -274,20 +278,6 @@ device_tracker:
       - 172.30.1.2
     new_device_defaults:
       track_new_devices: false
-
-# Samsung TV
-#media_player:
-#  - platform: samsungtv_custom
-#    host: 172.30.1.100
-#    port: 8002
-#    mac: 64:1c:b0:82:54:91
-#    protocol: ctl_qled
-#    sourcelist: '{"TV": "KEY_TV", "Nintendo": "KEY_HDMI1"}'
-#    applist: "Plex, Jellyfin, YouTube"
-    #api_key: 870e0df3-7475-4fe3-9b2a-29d6e6ceac35
-    #device_id: 0815608b-183e-47b3-8e81-d2d2502fcbcb
-    #show_channel_number: true
-
 
 # Speedtest
 speedtestdotnet:
