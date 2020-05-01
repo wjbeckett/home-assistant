@@ -24,7 +24,7 @@ rooms:
   - name: Lounge Room
     icon: fas:couch
     light: group.lounge_room_lights
-    media_player: media_player.samsung_tv_remote
+    #media_player: media_player.samsung_tv_remote
   - name: Front Room
     icon: fas:puzzle-piece
     media_player: media_player.front_room_speaker

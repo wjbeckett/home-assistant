@@ -85,16 +85,15 @@ lounge_room_lights:
   entities:
     - light.lounge_room_lamp
 
-lounge_room_media_players:
-  name: Lounge Room Media Players
-  entities:
-    - media_player.lounge_room_tv
+#lounge_room_media_players:
+#  name: Lounge Room Media Players
+#  entities:
+#    - media_player.lounge_room_tv
 
 lounge_room:
   name: Lounge Room
   entities:
     - group.lounge_room_lights
-    - media_player.lounge_room_tv
 
 front_door:
   name: Front Door
