@@ -70,7 +70,7 @@
   alias: Notify when Deb has arrived
   trigger:
     platform: state
-    entity_id: person.Deb
+    entity_id: person.deb
     to: 'home'
   condition:
   - condition: state
