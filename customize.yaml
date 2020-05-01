@@ -16,5 +16,3 @@ person.william:
   entity_picture: "/local/images/persons/william.png"
 person.deb:
   entity_picture: "local/images/persons/deb.png"
-media_player.samsung_tv_remote:
-  friendly_name: Lounge Room TV
