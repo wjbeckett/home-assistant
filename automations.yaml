@@ -48,6 +48,9 @@
   - service: notify.mobile_app_william
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+      data:
+        channel: Presence
+        color: blue
 
 - id: notify_resident_william
   alias: NOTIFY (Location) Resident
@@ -65,6 +68,9 @@
   - service: notify.mobile_app_emily
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+      data:
+        channel: Presence
+        color: blue
 
 - id: notify_guest_deb
   alias: Notify when Deb has arrived
@@ -82,6 +88,10 @@
     service: notify.all_devices
     data:
       message: 'Deb is here!'
+      data:
+        channel: Presence
+        color: blue
+
 
 - id: request_location_update
   alias: Request Location Update
@@ -209,6 +219,9 @@
     entity_id: media_player.kitchen_display
     data:
       message: Warning. Please leave the premesis. Police have been notified.
+      data:
+        channel: Alarm
+        color: red
   - service: light.turn_on
     data:
       entity_id:
@@ -243,6 +256,10 @@
   - service: notify.all_devices
     data_template:
       message: The alarm is now Disarmed. {{ states('sensor.date_time') }}
+      data:
+        channel: Alarm
+        color: red
+
 
 - id: alarm_notify_pending
   alias: Send notification when alarm is in pending status
@@ -258,6 +275,9 @@
   - service: notify.all_devices
     data_template:
       message: The alarm is in pending status. {{ states('sensor.date_time') }}
+      data:
+        channel: Alarm
+        color: red
 
 - id: alarm_notify_armed_away
   alias: Send notification when alarm is Armed in Away mode
@@ -277,6 +297,9 @@
   - service: notify.all_devices
     data_template:
       message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+      data:
+        channel: Alarm
+        color: red
 
 - id: alarm_notify_armed_home
   alias: Send notification when alarm is Armed in Home mode
@@ -288,6 +311,9 @@
   - service: notify.all_devices
     data_template:
       message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+      data:
+        channel: Alarm
+        color: red
 
 - id: alarm_disable_when_arriving
   alias: Alarm disarm when return home
@@ -453,6 +479,8 @@
         - action: "URI"
           title: View Image
           uri: !secret deepstack_latest_person
+        channel: Persence
+        color: blue
 
 #################################################################
 ## Light Automations
@@ -866,10 +894,12 @@
           tag: morning_meds
           ttl: 0
           priority: high
+          channel: Medication
+          color: purple
     - service: dwains_theme.notification_create
       data:
         message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
-        notification_id: morning_meds 
+        notification_id: morning_meds
 
 - id: 'morning_meds_reminder'
   alias: Morning meds reminder
@@ -894,6 +924,8 @@
         tag: morning_meds
         ttl: 0
         priority: high
+        channel: Medication
+        color: purple
 
 - id: 'evening_meds_notification'
   alias: Evening meds Notificaiton
@@ -915,6 +947,8 @@
           tag: evening_meds
           ttl: 0
           priority: high
+          channel: Medication
+          color: purple
     - service: dwains_theme.notification_create
       data:
         message: "Ollie needs Lisinopril (3ml)"
@@ -943,6 +977,8 @@
         tag: evening_meds
         ttl: 0
         priority: high
+        channel: Medication
+        color: purple
 
 - id: 'bedtime_meds_notification'
   alias: Bedtime meds Notificaiton
@@ -964,6 +1000,8 @@
           tag: bedtime_meds
           ttl: 0
           priority: high
+          channel: Medication
+          color: purple
     - service: dwains_theme.notification_create
       data:
         message: "Ollie needs Carvidilol (1.5ml)"
@@ -992,6 +1030,8 @@
         tag: bedtime_meds
         ttl: 0
         priority: high
+        channel: Medication
+        color: purple
 #################################################################
 ## Shopping List Notification
 #################################################################
