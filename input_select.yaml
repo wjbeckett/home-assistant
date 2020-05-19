@@ -24,7 +24,8 @@
       - error
     initial: info
     icon: mdi:format-list-bulleted
-  input_select.home_mode:
+  
+  home_mode:
     name: Home Mode
     options:
       - Home

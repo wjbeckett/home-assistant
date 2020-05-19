@@ -113,8 +113,8 @@ views:
               - icon: 'mdi:emoticon-sad-outline'
                 value: 'off'
                 color: '#D3D2D0'
-      - cards:
-        type: horizontal-stack
+      - type: horizontal-stack
+        cards:
           - entity: binary_sensor.garage_door
             name: Garage
             show_state: true
