@@ -45,89 +45,183 @@ views:
     id: home
     title: home
     badges: []
-    type: vertical-stack
     cards:
-      - name: Security
-        entity: group.all_doors_and_windows
-        show_icon: false
-        template: header
-        type: 'custom:button-card'
-        state:
-          - value: 'on'
-            styles:
-              card:
-                - background-color: '#EF4F1A'
-              name:
-                - color: white
-                - font-weight: bold
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - entity: alarm_control_panel.home_alarm
-            name: Home Alarm
-            show_state: true
-            state:
-              - styles:
-                  icon:
-                    - color: '#F0DC6E'
-                value: pending
-              - styles:
-                  icon:
-                    - color: '#D3D2D0'
-                value: disarmed
-              - styles:
-                  icon:
-                    - color: '#F9160B'
-                value: armed_away
-              - styles:
-                  icon:
-                    - color: '#16A914'
-                value: armed_home
-            template: standard_button
-            type: 'custom:button-card'
-          - entity: input_select.home_mode
-            name: Home Mode
-            show_state: true
-            state:
-              - styles:
-                  icon:
-                    - color: '#D3D2D0'
-                value: Home
-              - styles:
-                  icon:
-                    - color: '#F9160B'
-                value: Away
-              - styles:
-                  icon:
-                    - color: '#16A914'
-                value: Night
-            template: standard_button
-            type: 'custom:button-card'
-          - entity: input_boolean.vacation_mode
-            name: vacation mode
-            show_state: true
-            template: standard_button
-            type: 'custom:button-card'
-            state:
-              - icon: 'mdi:palm-tree'
-                value: 'on'
-              - icon: 'mdi:emoticon-sad-outline'
-                value: 'off'
-                color: '#D3D2D0'
-      - type: horizontal-stack
+          - name: Weather in Warner
+            template: header
+            type: custom:button-card
+          - type: horizontal-stack
+            cards:
+              - type: custom:simple-weather-card
+                entity: weather.openweathermap
+                name: in current location
+      - type: vertical-stack
         cards:
-          - entity: binary_sensor.garage_door
-            name: Garage
-            show_state: true
-            state:
-              - icon: 'mdi:garage-open-variant'
-                value: open
-                color: '#EF4F1A'
-              - icon: 'mdi:garage-variant'
-                value: closed
-                color: '#00993E'
-            template: standard_button
+          - name: Family Status
+            template: header
+            type: custom:button-card
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                entity: person.william
+                aspect_ratio: 1/1
+                name: William
+                show_entity_picture: true
+                state:
+                  - value: Home
+                    styles:
+                      name:
+                        - color: green
+                    entity_picture: /local/lovelace/memojis/david_home2.jpg
+                  - value: Away
+                    entity_picture: /local/lovelace/memojis/david_away.jpg
+                    styles:
+                      name:
+                        - color: '#EF4F1A'
+                styles:
+                  card:
+                    - border-radius: 0%
+                    - padding: 5%
+                    - color: ivory
+                    - font-size: 12px
+                    - text-shadow: 0px 0px 0px black
+                    - text-transform: capitalize
+                    - justify-self: end
+                    - align-self: middle
+                    - font-family: avenir
+                  grid:
+                    - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
+                    - grid-template-columns: 1fr 1fr
+                    - grid-template-rows: 1fr min-content min-content min-content min-content
+                  name:
+                    - font-size: 16px
+                    - align-self: middle
+                    - justify-self: start
+                    - padding-bottom: 0px
+                  icon:
+                    - width: 100%
+                  custom_fields:
+                    status:
+                      - align-self: start
+                      - justify-self: end
+                      - color: gray
+                    #proximity:
+                    #  - padding-bottom: 0px
+                    #  - align-self: middle
+                    #  - justify-self: start
+                    #  - color: gray
+                    battery:
+                      - padding-bottom: 0px
+                      - align-self: middle
+                      - justify-self: start
+                      - color: gray
+                      - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
+                custom_fields:
+                  status: |
+                    [[[
+                      return `<ha-icon
+                        style="width: 12px; height: 12px; color: black;">
+                        </ha-icon><span>${entity.state}</span>`
+                    ]]]
+                  #proximity: |
+                  #  [[[
+                  #    return `<ha-icon
+                  #      icon="mdi:map-marker-distance"
+                  #      style="width: 12px; height: 12px; color: deepskyblue;">
+                  #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
+                  #  ]]]
+                  battery: |
+                    [[[
+                      return `<ha-icon
+                        icon="mdi:cellphone-android"
+                        style="width: 12px; height: 12px; color: deepskyblue;">
+                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
+                    ]]]
+  
+      - type: vertical-stack
+        cards:
+          - name: Security
+            entity: group.all_doors_and_windows
+            show_icon: false
+            template: header
             type: 'custom:button-card'
-        
+            state:
+              - value: 'on'
+                styles:
+                  card:
+                    - background-color: '#EF4F1A'
+                  name:
+                    - color: white
+                    - font-weight: bold
+          - type: horizontal-stack
+            cards:
+              - entity: alarm_control_panel.home_alarm
+                name: Home Alarm
+                show_state: true
+                state:
+                  - styles:
+                      icon:
+                        - color: '#F0DC6E'
+                    value: pending
+                  - styles:
+                      icon:
+                        - color: '#D3D2D0'
+                    value: disarmed
+                  - styles:
+                      icon:
+                        - color: '#F9160B'
+                    value: armed_away
+                  - styles:
+                      icon:
+                        - color: '#16A914'
+                    value: armed_home
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: input_select.home_mode
+                name: Home Mode
+                show_state: true
+                state:
+                  - styles:
+                      icon:
+                        - color: '#D3D2D0'
+                    value: Home
+                  - styles:
+                      icon:
+                        - color: '#F9160B'
+                    value: Away
+                  - styles:
+                      icon:
+                        - color: '#16A914'
+                    value: Night
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: input_boolean.guest_mode
+                name: guest mode
+                show_state: true
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:account-multiple'
+                    value: 'on'
+                  - icon: 'mdi:account'
+                    value: 'off'
+                    color: '#D3D2D0'
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.garage_door
+                name: Garage
+                show_state: true
+                state:
+                  - icon: 'mdi:garage-open-variant'
+                    value: open
+                    color: '#EF4F1A'
+                  - icon: 'mdi:garage-variant'
+                    value: closed
+                    color: '#00993E'
+                template: standard_button
+                type: 'custom:button-card'
+                  
 
 
 
