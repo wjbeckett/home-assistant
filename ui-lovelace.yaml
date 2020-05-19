@@ -352,7 +352,7 @@ views:
                 name: Bedroom lamps birght
                 show_state: true
                 state:
-                  - icon: 'mdi:lightbulb-on-outline
+                  - icon: 'mdi:lightbulb-on-outline'
                     value: 'on'
                     color: '#EF4F1A'
                   - icon: 'mdi:lightbulb-outline'
