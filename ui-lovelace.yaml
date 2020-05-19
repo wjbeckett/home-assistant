@@ -330,11 +330,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: light.kitchen_pendant_lights
-                show_state: true
-                state:
-                  - icon: 'mdi:lightbulb-on'
-                    value: 'on'
-                template: standard_button
-                type: 'custom:button-card'
+                name: Kitchen Pendant Lights
+                type: light
 
   
