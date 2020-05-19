@@ -332,5 +332,34 @@ views:
               - entity: light.kitchen_pendant_lights
                 name: Kitchen Pendant Lights
                 type: light
+              - entity: light.kitchen_downlight
+                name: Kitchen Downlight
+                type: light
+      - type: vertical-stack
+        cards:
+          - name: Bedroom Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.bedroom_lamps
+                name: Bedroom Lamps
+                type: light
+              - entity: scene.bedroom_lamps_bright
+                name: Bedroom lamps birght
+                show_state: true
+                state:
+                  - icon: 'mdi:lightbulb-on-outline
+                    value: 'on'
+                    color: '#EF4F1A'
+                  - icon: 'mdi:lightbulb-outline'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+
 
   
