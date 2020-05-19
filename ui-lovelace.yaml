@@ -155,9 +155,9 @@ views:
                     styles:
                       name:
                         - color: '#629632'
-                    entity_picture: "/local/images/persons/emily_home.png"
+                    entity_picture: "/local/images/persons/emily_home.jpeg"
                   - value: not_home
-                    entity_picture: "/local/images/persons/emily_away.png"
+                    entity_picture: "/local/images/persons/emily_away.jpeg"
                     styles:
                       name:
                         - color: '#EF4F1A'
