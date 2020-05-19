@@ -21,7 +21,7 @@ button_card_templates:
         - text-transform: capitalize
         - justify-self: start
         - margin-left: 1%
-        - font-family: avenir
+        #- font-family: avenir
   standard_button:
     styles:
       card:
