@@ -61,7 +61,7 @@ views:
           - type: horizontal-stack
             cards:
               - type: custom:simple-weather-card
-                entity: weather.openweathermap
+                entity: weather.darksky
                 name: in current location
       - type: vertical-stack
         cards:
@@ -81,7 +81,7 @@ views:
                       name:
                         - color: '#629632'
                     entity_picture: "/local/images/persons/william_home.png"
-                  - value: away
+                  - value: not_home
                     entity_picture: "/local/images/persons/william_away.png"
                     styles:
                       name:
@@ -155,8 +155,8 @@ views:
                     styles:
                       name:
                         - color: '#629632'
-                    entity_picture: "/local/images/persons/emily.png"
-                  - value: away
+                    entity_picture: "/local/images/persons/emily_home.png"
+                  - value: not_home
                     entity_picture: "/local/images/persons/emily_away.png"
                     styles:
                       name:
