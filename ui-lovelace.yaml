@@ -39,6 +39,13 @@ button_card_templates:
         - color: '#6A7889'
         - font-family: avenir
 
+custom_header:
+  compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
+
 title: Beckett Home
 views:
   - icon: mdi:home-assistant
@@ -427,6 +434,52 @@ views:
                 type: 'custom:button-card'
                 hold_action:
                   action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Meds
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.morning_meds_taken
+                name: Morning Meds
+                show_state: true
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+              - entity: input_boolean.evening_meds_taken
+                name: Evening Meds
+                show_state: true
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+              - entity: input_boolean.bedtime_meds_taken
+                name: Bedtime Meds
+                show_state: true
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
   - icon: mdi:cctv
     id: Cameras
     title: Cameras
@@ -456,14 +509,80 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - name: Media
+          - name: All Speakers
             template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
             layout: name_state
-          - type: media-control
+          - type: custom:mini-media-player
+            entity: media_player.all_speakers
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Lounge Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
             entity: media_player.lounge_room_tv
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Kitchen
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Bedroom
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_tv
+            info: scroll
+            artwork: cover
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Teddy's Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            info: scroll
+            artwork: cover
               
 
   
