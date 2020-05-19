@@ -360,6 +360,7 @@ views:
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
+                tap_action: toggle
 
 
   
