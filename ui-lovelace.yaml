@@ -348,18 +348,19 @@ views:
               - entity: light.bedroom_lamps
                 name: Bedroom Lamps
                 type: light
-              - entity: scene.bedroom_lamps_bright
-                name: Bedroom lamps birght
+              - entity: light.bedroom_lamps
+                name: Bedroom Lamps
                 show_state: true
                 state:
                   - icon: 'mdi:lightbulb-on-outline'
                     value: 'on'
-                    color: '#EF4F1A'
+                    #color: '#EF4F1A'
                   - icon: 'mdi:lightbulb-outline'
                     value: 'off'
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
+                hold-action: more-info
       - type: vertical-stack
         cards:
           - name: Teddy's Room
@@ -380,12 +381,13 @@ views:
                 state:
                   - icon: 'mdi:lightbulb-on-outline'
                     value: 'on'
-                    color: '#EF4F1A'
+                    #color: '#EF4F1A'
                   - icon: 'mdi:lightbulb-outline'
                     value: 'off'
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
+                hold-action: more-info
       - type: vertical-stack
         cards:
           - name: Ollie's Room
