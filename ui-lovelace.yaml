@@ -61,7 +61,7 @@ views:
           - type: horizontal-stack
             cards:
               - type: custom:simple-weather-card
-                entity: weather.darksky
+                entity: weather.dark_sky
                 name: in current location
       - type: vertical-stack
         cards:
