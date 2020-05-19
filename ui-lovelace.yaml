@@ -369,7 +369,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: light.teddy_s_lamp
-                name: Coach Lights
+                name: Teddy's Lamp
                 show_state: true
                 state:
                   - icon: 'mdi:lamp'
