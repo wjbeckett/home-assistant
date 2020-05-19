@@ -73,9 +73,9 @@ views:
                     styles:
                       name:
                         - color: '#629632'
-                    entity_picture: /local/images/persons/william_home.png
+                    entity_picture: "/local/images/persons/william_home.png"
                   - value: Away
-                    entity_picture: /local/images/persons/william_away.png
+                    entity_picture: "/local/images/persons/william_away.png"
                     styles:
                       name:
                         - color: '#EF4F1A'
