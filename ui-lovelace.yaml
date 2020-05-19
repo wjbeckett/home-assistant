@@ -360,7 +360,32 @@ views:
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                tap_action: toggle
-
+      - type: vertical-stack
+        cards:
+          - name: Teddy's Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.teddy_s_lamp
+                name: Teddy's Lamp
+                type: light
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.ollie_s_lamp
+                name: Ollie's Lamp
+                type: light
+              
 
   
