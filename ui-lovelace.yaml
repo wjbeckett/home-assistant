@@ -373,6 +373,19 @@ views:
               - entity: light.teddy_s_lamp
                 name: Teddy's Lamp
                 type: light
+              - entity: light.teddy_s_lamp
+                icon: 'mdi:coach-lamp'
+                name: Coach Lights
+                show_state: true
+                state:
+                  - icon: 'mdi:lightbulb-on-outline'
+                    value: 'on'
+                    color: '#EF4F1A'
+                  - icon: 'mdi:lightbulb-outline'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
       - type: vertical-stack
         cards:
           - name: Ollie's Room
