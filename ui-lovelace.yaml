@@ -142,18 +142,9 @@ views:
       - type: vertical-stack
         cards:
           - name: Security
-            entity: group.all_doors_and_windows
             show_icon: false
             template: header
             type: 'custom:button-card'
-            state:
-              - value: 'on'
-                styles:
-                  card:
-                    - background-color: '#EF4F1A'
-                  name:
-                    - color: white
-                    - font-weight: bold
           - type: horizontal-stack
             cards:
               - entity: alarm_control_panel.home_alarm
@@ -233,7 +224,21 @@ views:
                     color: '#00993E'
                 template: standard_button
                 type: 'custom:button-card'
-                  
+      - type: vertical-stack
+        cards:
+          - name: Open Doors
+            template: header
+            type: 'custom:button-card'
+          - card:
+            entities:
+              - binary_sensor.garage_door
+              - binary_sensor.back_door
+            show_empty: false
+            show_header: false
+            state_filter:
+              - 'on'
+              - open
+            type: entity-filter
 
 
 
