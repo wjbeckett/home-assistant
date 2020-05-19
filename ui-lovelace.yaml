@@ -72,7 +72,7 @@ views:
                   - value: Home
                     styles:
                       name:
-                        - color: green
+                        - color: '#629632'
                     entity_picture: /local/lovelace/memojis/david_home2.jpg
                   - value: Away
                     entity_picture: /local/lovelace/memojis/david_away.jpg
@@ -217,6 +217,18 @@ views:
                     value: open
                     color: '#EF4F1A'
                   - icon: 'mdi:garage-variant'
+                    value: closed
+                    color: '#00993E'
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: binary_sensor.back_door
+                name: Back Door
+                show_state: true
+                state:
+                  - icon: 'mdi:door-open'
+                    value: open
+                    color: '#EF4F1A'
+                  - icon: 'mdi:door-closed'
                     value: closed
                     color: '#00993E'
                 template: standard_button
