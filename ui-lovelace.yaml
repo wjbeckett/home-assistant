@@ -362,7 +362,7 @@ views:
                 type: 'custom:button-card'
       - type: vertical-stack
         cards:
-          - name: Teddy's Lights
+          - name: Teddy's Room
             template: header
             show_icon: false
             show_state: true
@@ -375,7 +375,7 @@ views:
                 type: light
       - type: vertical-stack
         cards:
-          - name: Ollie's Lights
+          - name: Ollie's Room
             template: header
             show_icon: false
             show_state: true
@@ -385,6 +385,19 @@ views:
             cards:
               - entity: light.ollie_s_lamp
                 name: Ollie's Lamp
+                type: light
+      - type: vertical-stack
+        cards:
+          - name: Lounge Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.lounge_room_lamp
+                name: Lounge Room Lamp
                 type: light
               
 
