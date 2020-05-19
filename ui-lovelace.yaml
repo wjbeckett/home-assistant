@@ -329,7 +329,7 @@ views:
             layout: name_state
           - type: horizontal-stack
             cards:
-              - entity: light.kitchen_pendent_lights
+              - entity: light.kitchen_pendant_lights
                 show_state: true
                 state:
                   - icon: 'mdi:lightbulb-on'
