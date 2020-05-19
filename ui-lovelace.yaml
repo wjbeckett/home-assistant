@@ -356,7 +356,7 @@ views:
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                hold-action:
+                hold_action:
                   action: more-info
       - type: vertical-stack
         cards:
@@ -379,7 +379,7 @@ views:
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                hold-action:
+                hold_action:
                   action: more-info
       - type: vertical-stack
         cards:
@@ -402,7 +402,7 @@ views:
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                hold-action:
+                hold_action:
                   action: more-info
       - type: vertical-stack
         cards:
@@ -425,7 +425,7 @@ views:
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                hold-action:
+                hold_action:
                   action: more-info
               
 
