@@ -45,23 +45,23 @@ views:
     id: home
     title: home
     badges: []
-    cards:
     type: vertical-stack
-      name: Security
-      entity: group.all_doors_and_windows
-      show_icon: false
-      template: header
-      type: 'custom:button-card'
-      state:
-        - value: 'on'
-          styles:
-            card:
-              - background-color: '#EF4F1A'
-            name:
-              - color: white
-              - font-weight: bold
-      - cards:
-        type: horizontal-stack
+    cards:
+      - name: Security
+        entity: group.all_doors_and_windows
+        show_icon: false
+        template: header
+        type: 'custom:button-card'
+        state:
+          - value: 'on'
+            styles:
+              card:
+                - background-color: '#EF4F1A'
+              name:
+                - color: white
+                - font-weight: bold
+      - type: horizontal-stack
+        cards:
           - entity: alarm_control_panel.home_alarm
             name: Home Alarm
             show_state: true
