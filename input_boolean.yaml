@@ -31,3 +31,7 @@
   meds_reminder:
     name: Meds reminder enabled
     initial: 'on'
+  
+  vaction_mode:
+    name: Vacation Mode
+    initial: off

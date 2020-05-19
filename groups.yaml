@@ -14,6 +14,12 @@ all_lights:
     - light.bedroom_lamp_left
     - light.lounge_room_lamp
 
+all_doors_and_windows:
+  name: All doors and windows
+  entities:
+    - binary_sensor.garage_door
+    - binary_sensor.back_door
+
 kitchen_lights:
   name: Kitchen Lights
   entities:

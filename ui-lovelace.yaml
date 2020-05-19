@@ -1,0 +1,135 @@
+button_card_templates:
+  header:
+    styles:
+      card:
+        - background-color: '#EBF4FC'
+        - box-shadow: none
+        - border-radius: 0%
+        - padding: 0%
+        - color: ivory
+        - font-size: 10px
+        - text-shadow: 0px 0px 0px black
+        - text-transform: capitalize
+      icon:
+        - width: 15%
+        - margin-top: 0%
+        - margin-left: 0%
+        - color: white
+      name:
+        - font-size: 16px
+        - color: '#253B56'
+        - text-transform: capitalize
+        - justify-self: start
+        - margin-left: 1%
+        - font-family: avenir
+  standard_button:
+    styles:
+      card:
+        - font-size: 10px
+      icon:
+        - width: 30%
+      name:
+        - font-size: 12px
+        - color: '#6A7889'
+        - font-family: avenir
+      state:
+        - justify-self: start
+        - font-size: 10px
+        - padding: 0px 5px
+        - color: '#6A7889'
+        - font-family: avenir
+
+title: Beckett Home
+views:
+  - icon: mdi:home-assistant
+    id: home
+    title: home
+    badges: []
+    cards:
+    type: vertical-stack
+      - cards:
+        name: Security
+        entity: group.all_doors_and_windows
+        show_icon: false
+        template: header
+        type: 'custom:button-card'
+        state:
+          - value: 'on'
+            styles:
+              card:
+                - background-color: '#EF4F1A'
+              name:
+                - color: white
+                - font-weight: bold
+      - cards:
+        type: horizontal-stack
+          - entity: alarm_control_panel.home_alarm
+            name: Home Alarm
+            show_state: true
+            state:
+              - styles:
+                  icon:
+                    - color: '#F0DC6E'
+                value: pending
+              - styles:
+                  icon:
+                    - color: '#D3D2D0'
+                value: disarmed
+              - styles:
+                  icon:
+                    - color: '#F9160B'
+                value: armed_away
+              - styles:
+                  icon:
+                    - color: '#16A914'
+                value: armed_home
+            template: standard_button
+            type: 'custom:button-card'
+          - entity: input_select.home_mode
+            name: Home Mode
+            show_state: true
+            state:
+              - styles:
+                  icon:
+                    - color: '#D3D2D0'
+                value: Home
+              - styles:
+                  icon:
+                    - color: '#F9160B'
+                value: Away
+              - styles:
+                  icon:
+                    - color: '#16A914'
+                value: Night
+            template: standard_button
+            type: 'custom:button-card'
+          - entity: input_boolean.vacation_mode
+            name: vacation mode
+            show_state: true
+            template: standard_button
+            type: 'custom:button-card'
+            state:
+              - icon: 'mdi:palm-tree'
+                value: 'on'
+              - icon: 'mdi:emoticon-sad-outline'
+                value: 'off'
+                color: '#D3D2D0'
+      - cards:
+        type: horizontal-stack
+          - entity: binary_sensor.garage_door
+            name: Garage
+            show_state: true
+            state:
+              - icon: 'mdi:garage-open-variant'
+                value: open
+                color: '#EF4F1A'
+              - icon: 'mdi:garage-variant'
+                value: closed
+                color: '#00993E'
+            template: standard_button
+            type: 'custom:button-card'
+        
+
+
+
+  
