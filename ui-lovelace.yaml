@@ -347,20 +347,17 @@ views:
             cards:
               - entity: light.bedroom_lamps
                 name: Bedroom Lamps
-                type: light
-              - entity: light.bedroom_lamps
-                name: Bedroom Lamps
                 show_state: true
                 state:
-                  - icon: 'mdi:lightbulb-on-outline'
+                  - icon: 'mdi:lamp'
                     value: 'on'
-                    #color: '#EF4F1A'
-                  - icon: 'mdi:lightbulb-outline'
+                  - icon: 'mdi:lamp'
                     value: 'off'
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                hold-action: more-info
+                hold-action:
+                  action: more-info
       - type: vertical-stack
         cards:
           - name: Teddy's Room
@@ -372,22 +369,18 @@ views:
           - type: horizontal-stack
             cards:
               - entity: light.teddy_s_lamp
-                name: Teddy's Lamp
-                type: light
-              - entity: light.teddy_s_lamp
-                icon: 'mdi:coach-lamp'
                 name: Coach Lights
                 show_state: true
                 state:
-                  - icon: 'mdi:lightbulb-on-outline'
+                  - icon: 'mdi:lamp'
                     value: 'on'
-                    #color: '#EF4F1A'
-                  - icon: 'mdi:lightbulb-outline'
+                  - icon: 'mdi:lamp'
                     value: 'off'
                     color: '#D3D2D0'
                 template: standard_button
                 type: 'custom:button-card'
-                hold-action: more-info
+                hold-action:
+                  action: more-info
       - type: vertical-stack
         cards:
           - name: Ollie's Room
@@ -400,7 +393,17 @@ views:
             cards:
               - entity: light.ollie_s_lamp
                 name: Ollie's Lamp
-                type: light
+                show_state: true
+                state:
+                  - icon: 'mdi:lamp'
+                    value: 'on'
+                  - icon: 'mdi:lamp'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold-action:
+                  action: more-info
       - type: vertical-stack
         cards:
           - name: Lounge Room
@@ -413,7 +416,17 @@ views:
             cards:
               - entity: light.lounge_room_lamp
                 name: Lounge Room Lamp
-                type: light
+                show_state: true
+                state:
+                  - icon: 'mdi:floor-lamp'
+                    value: 'on'
+                  - icon: 'mdi:floor-lamp'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold-action:
+                  action: more-info
               
 
   
