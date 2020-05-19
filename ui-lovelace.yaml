@@ -321,6 +321,52 @@ views:
               - 'on'
               - open
             type: entity-filter
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Meds
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.morning_meds_taken
+                name: Morning Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+              - entity: input_boolean.evening_meds_taken
+                name: Evening Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+              - entity: input_boolean.bedtime_meds_taken
+                name: Bedtime Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
   - icon: mdi:lightbulb-outline
     id: lights
     title: Lights
@@ -434,52 +480,6 @@ views:
                 type: 'custom:button-card'
                 hold_action:
                   action: more-info
-      - type: vertical-stack
-        cards:
-          - name: Ollie's Meds
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
-          - type: horizontal-stack
-            cards:
-              - entity: input_boolean.morning_meds_taken
-                name: Morning Meds
-                show_state: true
-                template: standard_button
-                type: 'custom:button-card'
-                state:
-                  - icon: 'mdi:check-circle'
-                    value: 'on'
-                    color: '#00b800'
-                  - icon: 'mdi:pill'
-                    value: 'off'
-                    color: '#D3D2D0'
-              - entity: input_boolean.evening_meds_taken
-                name: Evening Meds
-                show_state: true
-                template: standard_button
-                type: 'custom:button-card'
-                state:
-                  - icon: 'mdi:check-circle'
-                    value: 'on'
-                    color: '#00b800'
-                  - icon: 'mdi:pill'
-                    value: 'off'
-                    color: '#D3D2D0'
-              - entity: input_boolean.bedtime_meds_taken
-                name: Bedtime Meds
-                show_state: true
-                template: standard_button
-                type: 'custom:button-card'
-                state:
-                  - icon: 'mdi:check-circle'
-                    value: 'on'
-                    color: '#00b800'
-                  - icon: 'mdi:pill'
-                    value: 'off'
-                    color: '#D3D2D0'
   - icon: mdi:cctv
     id: Cameras
     title: Cameras

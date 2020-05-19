@@ -108,8 +108,8 @@ hacs:
     experimental: True
 
 weather:
-  - platform: openweathermap
-    api_key: !secret openweathermap_key
+  - platform: darksky
+    api_key: !secret darksky_key
     mode: daily
 
 # Google Assistant
