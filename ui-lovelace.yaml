@@ -314,7 +314,27 @@ views:
               - 'on'
               - open
             type: entity-filter
-
-
+  - icon: mdi:lightbulb-outline
+    id: lights
+    title: Lights
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Kitchen Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.kitchen_pendent_lights
+                show_state: true
+                state:
+                  - icon: 'mdi:lightbulb-on'
+                    value: 'on'
+                template: standard_button
+                type: 'custom:button-card'
 
   
