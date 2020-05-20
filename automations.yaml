@@ -471,7 +471,7 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
+      message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
       data:
         image: !secret deepstack_latest_image
         clickAction: !secret motioneye_stream
