@@ -415,7 +415,7 @@
     data:
       entity_id: camera.front_door
       filename: /config/www/tmp/image.jpg
-  - delay: 00:00:03
+  - delay: 00:00:02
   - service: image_processing.scan
     entity_id: image_processing.deepstack_detector
   - service: image_processing.scan
@@ -471,14 +471,14 @@
   action:
   - service: notify.all_devices
     data_template:
-      message: '{{ trigger.event.data.object | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
+      message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
       data:
-        image: !secret deepstack_latest_person
+        image: !secret deepstack_latest_{{ trigger.event.data.name }}
         clickAction: !secret motioneye_stream
         actions:
         - action: "URI"
           title: View Image
-          uri: !secret deepstack_latest_person
+          uri: !secret deepstack_latest_{{ trigger.event.data.name }}
         channel: Persence
         color: blue
 
