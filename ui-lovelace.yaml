@@ -86,6 +86,11 @@ views:
                     styles:
                       name:
                         - color: '#EF4F1A'
+                  - value: woolies_warner
+                    entity_picture: "/local/images/persons/william_shops.png"
+                    styles:
+                      name:
+                        - color: '#EF4F1A'
                 styles:
                   card:
                     - border-radius: 0%
