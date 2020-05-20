@@ -473,12 +473,12 @@
     data_template:
       message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.object == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
       data:
-        image: !secret deepstack_latest_{{ trigger.event.data.name }}
+        image: !secret deepstack_latest_image
         clickAction: !secret motioneye_stream
         actions:
         - action: "URI"
           title: View Image
-          uri: !secret deepstack_latest_{{ trigger.event.data.name }}
+          uri: !secret deepstack_latest_image
         channel: Persence
         color: blue
 
