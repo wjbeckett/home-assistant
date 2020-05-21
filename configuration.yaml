@@ -183,6 +183,10 @@ camera:
     name: Front Door
     input: !secret front_door_cam_feed
     extra_arguments: '-preset faster -vf "scale=1280:720"'
+  - platform: generic
+    name: front door generic
+    still_image_url: https://motioneye.burrowflix.com/picture/1/current/
+    stream_source: !secret front_door_cam_feed
 
 # Image Processing
 image_processing: 
