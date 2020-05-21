@@ -186,10 +186,7 @@ camera:
   - platform: generic
     name: front door generic
     still_image_url: https://motioneye.burrowflix.com/picture/1/current/
-    stream_source: rtsp://172.30.1.114/live
-    username: frontdoor
-    password: letmein10
-    authentication: digest
+    stream_source: rtsp://frontdoor:letmein@172.30.1.114/live
 
 # Image Processing
 image_processing: 
