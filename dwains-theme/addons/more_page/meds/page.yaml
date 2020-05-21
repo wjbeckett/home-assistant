@@ -1,7 +1,0 @@
-- type: entities
-  title: Ollie's Meds
-  show_header_toggle: false
-  entities:
-    - entity: input_boolean.morning_meds_taken
-    - entity: input_boolean.evening_meds_taken
-    - entity: input_boolean.bedtime_meds_taken

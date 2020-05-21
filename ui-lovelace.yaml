@@ -101,7 +101,6 @@ views:
                     - text-transform: capitalize
                     - justify-self: end
                     - align-self: middle
-                    - font-family: avenir
                   grid:
                     - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
                     - grid-template-columns: 1fr 1fr
@@ -176,7 +175,6 @@ views:
                     - text-transform: capitalize
                     - justify-self: end
                     - align-self: middle
-                    - font-family: avenir
                   grid:
                     - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
                     - grid-template-columns: 1fr 1fr
@@ -589,5 +587,44 @@ views:
             info: scroll
             artwork: cover
               
-
+  - icon: mdi:settings
+    id: settings
+    title: Settings
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Network
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - sensor.wifi_status
+          - type: custom:mini-graph-card
+            name: Download/Upload
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.speedtest_upload
+                name: Upload
+                show_state: true
+                state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - name: Switches
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: true
+            entities:
+              - input_boolean.options_notifications_push
+              - input_boolean.location_update
   

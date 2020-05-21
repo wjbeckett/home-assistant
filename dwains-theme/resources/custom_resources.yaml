@@ -1,9 +1,0 @@
-# Own resources?
-# Add here your own resources
-#
-
-  - type: module
-    url: /community_plugin/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
-  - type: module
-    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
-    
