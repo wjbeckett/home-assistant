@@ -179,12 +179,12 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
-  - platform: ffmpeg
-    name: Front Door
-    input: !secret front_door_cam_feed
-    extra_arguments: '-preset faster -vf "scale=1280:720"'
+  #- platform: ffmpeg
+  #  name: Front Door
+  #  input: !secret front_door_cam_feed
+  #  extra_arguments: '-preset faster -vf "scale=1280:720"'
   - platform: generic
-    name: front door generic
+    name: front door
     still_image_url: https://motioneye.burrowflix.com/picture/1/current/
     stream_source: rtsp://frontdoor:letmein@172.30.1.114/live
 
