@@ -452,13 +452,21 @@
         entity_id: media_player.kitchen_display
         message: "{{ states('sensor.front_door_detection') }} is at the front door"
 
-- id: person_detection
-  alias: Notify when person detected
+- id: object_detection_notification
+  alias: Notify when object is detected
   initial_state: 'on'
   condition:
   - condition: state
     entity_id: input_boolean.options_notifications_push
     state: 'on'
+  - condition: template
+    value_template: >
+      {% if states.automation.object_detection_notification.last_triggered is not none %}
+        {% if as_timestamp(now()) | int - as_timestamp(states.automation.object_detection_notification.attributes.last_triggered) | int > 60 %} true {% else %} false
+        {% endif %}
+      {% else %}
+      false
+      {% endif %}
   trigger:
   - platform: event
     event_type: deepstack.object_detected
