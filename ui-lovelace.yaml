@@ -370,6 +370,25 @@ views:
                   - icon: 'mdi:pill'
                     value: 'off'
                     color: '#D3D2D0'
+      - type: vertical-stack
+        cards:
+          - name: Garbage Collection
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - type: custom:garbage-collection-card
+                entity: sensor.garbage_recycling
+                icon_size: 35px
+                icon_color: green
+                hide_date: true
+              - type: custom:garbage-collection-card
+                entity: sensor.garbage_general
+                hide_before: 4
+                icon_color: '#0561ba'   
   - icon: mdi:lightbulb-outline
     id: lights
     title: Lights
@@ -623,8 +642,9 @@ views:
             type: 'custom:button-card'
             layout: name_state
           - type: entities
-            show_header_toggle: true
+            show_header_toggle: false
             entities:
               - input_boolean.options_notifications_push
               - input_boolean.location_update
+              - input_boolean.meds_reminder
   
