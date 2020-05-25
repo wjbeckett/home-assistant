@@ -41,5 +41,5 @@
     initial: 'off'
   
   garbage_recycling:
-    namge: Recycling Bin
+    name: Recycling Bin
     initial: 'off'
