@@ -460,13 +460,7 @@
     entity_id: input_boolean.options_notifications_push
     state: 'on'
   - condition: template
-    value_template: >
-      {% if states.automation.object_detection_notification.last_triggered is not none %}
-        {% if as_timestamp(now()) | int - as_timestamp(states.automation.object_detection_notification.attributes.last_triggered) | int > 60 %} true {% else %} false
-        {% endif %}
-      {% else %}
-      false
-      {% endif %}
+    value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
   trigger:
   - platform: event
     event_type: deepstack.object_detected
