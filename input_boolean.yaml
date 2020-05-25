@@ -15,17 +15,14 @@
 
   morning_meds_taken:
     name: Morning Meds have been taken
-    initial: 'off'
     icon: mdi:pill
     
   evening_meds_taken:
     name: Evening Meds have been taken
-    initial: 'off'
     icon: mdi:pill
 
   bedtime_meds_taken:
     name: Bedtime Meds have been taken
-    initial: 'off'
     icon: mdi:pill  
 
   meds_reminder:
@@ -38,8 +35,6 @@
 
   garbage_general:
     name: General Bin
-    initial: 'off'
   
   garbage_recycling:
     name: Recycling Bin
-    initial: 'off'
