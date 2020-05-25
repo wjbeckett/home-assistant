@@ -84,8 +84,22 @@ logger:
     homeassistant.components.template.sensor: fatal
 
 # Recorder
-#recorder:
-#  purge_keep_days: 7
+recorder:
+  purge_keep_days: 7
+  exclude:
+    entities:
+      - sun.sun
+      - sensor.last_boot
+      - sensor.date
+    event_types:
+      - call_service
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - input_boolean
+      - input_select
 
 # System Health
 system_health:
