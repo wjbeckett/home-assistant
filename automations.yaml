@@ -1035,6 +1035,151 @@
         channel: Medication
         color: purple
 #################################################################
+## Garbage Collection Notification
+#################################################################
+- id: 'garbage_general_notification'
+  alias: Garbage General Notificaiton
+  trigger:
+    platform: time
+    at: "19:30:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.garbage_general
+      state: 'off'
+    - condition: state
+      entity_id: sensor.garbage_general
+      state: 'tomorrow'
+  action:
+    - service: notify.all_devices
+      data:
+        message: "Take the general bin out"
+        data:
+          actions:
+            - action: "confirm_garbage_general"
+              title: "Confirm"
+          tag: garbage_general
+          ttl: 0
+          priority: high
+          channel: Garbage
+          color: green
+
+- id: 'garbage_general_reminder'
+  alias: Garbage General reminder
+  trigger:
+    platform: time_pattern
+    minutes: '/30'
+  condition:
+    - condition: state
+      entity_id: input_boolean.garbage_general
+      state: 'off'
+    - condition: state
+      entity_id: sensor.garbage_general
+      state: 'tomorrow'
+    - condition: time
+      after: '20:00:00'
+      before: '23:59:00'
+  action:
+    service: notify.all_devices
+    data:
+      message: "It looks like general bin isn't out yet. Don't forget!"
+      data:
+        actions: 
+          - action: "confirm_garbage_general"
+            title: "Confirm"
+        tag: garbage_general
+        ttl: 0
+        priority: high
+        channel: Garbage
+        color: green
+
+- id: 'mark_garbage_general_done'
+  alias: Mark general bin as done
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: 'confirm_garbage_general'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.garbage_general
+    - service: notify.all_devices
+      data:
+        message: clear_notification
+        data:
+          tag: garbage_general
+
+- id: 'garbage_recycling_notification'
+  alias: Garbage Recycling Notificaiton
+  trigger:
+    platform: time
+    at: "19:30:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.garbage_recycling
+      state: 'off'
+    - condition: state
+      entity_id: sensor.garbage_recycling
+      state: 'tomorrow'
+  action:
+    - service: notify.all_devices
+      data:
+        message: "Take the recycling bin out"
+        data:
+          actions:
+            - action: "confirm_garbage_recycling"
+              title: "Confirm"
+          tag: garbage_recycling
+          ttl: 0
+          priority: high
+          channel: Garbage
+          color: green
+
+- id: 'garbage_recycling_reminder'
+  alias: Garbage Recycling reminder
+  trigger:
+    platform: time_pattern
+    minutes: '/30'
+  condition:
+    - condition: state
+      entity_id: input_boolean.garbage_recycling
+      state: 'off'
+    - condition: state
+      entity_id: sensor.garbage_recycling
+      state: 'tomorrow'
+    - condition: time
+      after: '20:00:00'
+      before: '23:59:00'
+  action:
+    service: notify.all_devices
+    data:
+      message: "It looks like recycling bin isn't out yet. Don't forget!"
+      data:
+        actions: 
+          - action: "confirm_garbage_recycling"
+            title: "Confirm"
+        tag: garbage_recycling
+        ttl: 0
+        priority: high
+        channel: Garbage
+        color: green
+
+- id: 'mark_garbage_recycling_done'
+  alias: Mark recycling bin as done
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: 'confirm_garbage_recycling'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.garbage_recycling
+    - service: notify.all_devices
+      data:
+        message: clear_notification
+        data:
+          tag: garbage_recycling
+
+#################################################################
 ## Shopping List Notification
 #################################################################
 #- id: "shopping_list_updated"

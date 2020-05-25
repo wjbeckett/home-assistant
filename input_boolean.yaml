@@ -35,3 +35,11 @@
   vacation_mode:
     name: Vacation Mode
     initial: off
+
+  garbage_general:
+    name: General Bin
+    initial: 'off'
+  
+  garbage_recycling:
+    namge: Recycling Bin
+    initial: 'off'

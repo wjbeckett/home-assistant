@@ -647,4 +647,6 @@ views:
               - input_boolean.options_notifications_push
               - input_boolean.location_update
               - input_boolean.meds_reminder
+              - input_boolean.garbage_general
+              - input_boolean.garbage_recycling
   
