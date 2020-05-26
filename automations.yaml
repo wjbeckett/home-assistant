@@ -496,11 +496,14 @@
     to: 'on'
   condition:
   - condition: time
-    after: 06:00:00
+    after: 07:30:00
     before: '18:30:00'
   - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance_lux
-    below: '320'
+    below: '450'
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
   action:
     - service: light.turn_on
       data:
@@ -511,6 +514,32 @@
       data:
         entity_id: light.kitchen_downlight
         brightness_pct: 100
+        color_temp: 460
+
+- id: turn_on_kitchen_pendant_lights_when_motion_detected_early
+  alias: Turn on kitchen lights dim when its early
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_sensor_motion
+    to: 'on'
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: '07:30:00'
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_pendant_lights
+        brightness_pct: 30
+        color_temp: 1000
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_downlight
+        brightness_pct: 30
         color_temp: 460
 
 - id: dim-lights-after-10min
@@ -528,6 +557,9 @@
   - condition: state
     entity_id: light.kitchen_pendant_lights
     state: 'on'
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
   action:
   - service: scene.turn_on
     entity_id: scene.kitchen_dim
@@ -538,13 +570,16 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance_lux
-    above: '320'
+    above: '450'
     for:
       minutes: 3
   condition:
   - condition: time
-    after: '06:00:00'
+    after: '07:30:00'
     before: '18:30:00'
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
   action:
   - service: light.turn_off
     entity_id: light.kitchen_pendant_lights
@@ -645,7 +680,7 @@
   trigger:
     platform: state
     entity_id: sensor.wireless_button_click
-    to: 'triple'
+    to: 'hold'
   action:
     service: scene.turn_on
     entity_id: scene.bedroom_night_light
