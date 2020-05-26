@@ -555,12 +555,12 @@
     - service: light.turn_on
       data:
         entity_id: light.kitchen_pendant_lights
-        brightness_pct: 30
+        brightness_pct: 10
         color_temp: 1000
     - service: light.turn_on
       data:
         entity_id: light.kitchen_downlight
-        brightness_pct: 30
+        brightness_pct: 10
         color_temp: 460
 
 - id: dim-lights-after-10min
