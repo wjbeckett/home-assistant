@@ -412,6 +412,12 @@ views:
               - entity: light.kitchen_downlight
                 name: Kitchen Downlight
                 type: light
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_illuminance_lux
+                name: Kitchen Brightness
+            smoothing: true
+            hours_to_show: 24
       - type: vertical-stack
         cards:
           - name: Bedroom Lights
