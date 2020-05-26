@@ -382,12 +382,14 @@ views:
             cards:
               - type: custom:garbage-collection-card
                 entity: sensor.garbage_recycling
+                hide_before: 2
                 icon_size: 35px
                 icon_color: green
                 hide_date: true
               - type: custom:garbage-collection-card
                 entity: sensor.garbage_general
-                hide_before: 4
+                hide_before: 2
+                icon_size: 35px
                 icon_color: '#0561ba'   
   - icon: mdi:lightbulb-outline
     id: lights
