@@ -517,7 +517,7 @@
     to: 'on'
   condition:
   - condition: time
-    after: 07:30:00
+    after: 07:00:00
     before: '18:30:00'
   - condition: numeric_state
     entity_id: sensor.kitchen_sensor_illuminance_lux
@@ -547,7 +547,7 @@
   condition:
   - condition: time
     after: 06:00:00
-    before: '07:30:00'
+    before: '07:00:00'
   - condition: state
     entity_id: input_boolean.guest_mode
     state: 'off'
