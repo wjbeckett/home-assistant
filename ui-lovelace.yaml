@@ -1,3 +1,43 @@
+button_card_templates:
+  header:
+    styles:
+      card:
+        #- background-color: '#EBF4FC'
+        - box-shadow: none
+        - border-radius: 0%
+        - padding: 0%
+        #- color: ivory
+        - font-size: 10px
+        - text-shadow: 0px 0px 0px black
+        - text-transform: capitalize
+      icon:
+        - width: 15%
+        - margin-top: 0%
+        - margin-left: 0%
+        #- color: white
+      name:
+        - font-size: 16px
+        #- color: '#253B56'
+        - text-transform: capitalize
+        - justify-self: start
+        - margin-left: 1%
+        #- font-family: avenir
+  standard_button:
+    styles:
+      card:
+        - font-size: 10px
+      icon:
+        - width: 30%
+      name:
+        - font-size: 12px
+        #- color: '#6A7889'
+        #- font-family: avenir
+      state:
+        - justify-self: start
+        - font-size: 10px
+        - padding: 0px 5px
+        #- color: '#6A7889'
+        #- font-family: avenir
 
 custom_header:
   compact_mode: true
@@ -16,6 +56,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Weather in Warner
+            template: header
             type: custom:button-card
           - type: horizontal-stack
             cards:
@@ -25,6 +66,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Family Status
+            template: header
             type: custom:button-card
           - type: horizontal-stack
             cards:
@@ -186,6 +228,7 @@ views:
         cards:
           - name: Security
             show_icon: false
+            template: header
             type: 'custom:button-card'
           - type: horizontal-stack
             cards:
@@ -209,6 +252,7 @@ views:
                       icon:
                         - color: '#16A914'
                     value: armed_home
+                template: standard_button
                 type: 'custom:button-card'
               - entity: input_select.home_mode
                 name: Home Mode
@@ -226,10 +270,12 @@ views:
                       icon:
                         - color: '#16A914'
                     value: Night
+                template: standard_button
                 type: 'custom:button-card'
               - entity: input_boolean.guest_mode
                 name: guest mode
                 show_state: true
+                template: standard_button
                 type: 'custom:button-card'
                 state:
                   - icon: 'mdi:account-multiple'
@@ -249,6 +295,7 @@ views:
                   - icon: 'mdi:garage-variant'
                     value: closed
                     color: '#00993E'
+                template: standard_button
                 type: 'custom:button-card'
               - entity: binary_sensor.back_door
                 name: Back Door
@@ -260,10 +307,12 @@ views:
                   - icon: 'mdi:door-closed'
                     value: closed
                     color: '#00993E'
+                template: standard_button
                 type: 'custom:button-card'
       - type: vertical-stack
         cards:
           - name: Open Doors
+            template: header
             type: 'custom:button-card'
           - card:
             entities:
@@ -278,6 +327,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Ollie's Meds
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -287,6 +337,7 @@ views:
               - entity: input_boolean.morning_meds_taken
                 name: Morning Meds
                 show_state: false
+                template: standard_button
                 type: 'custom:button-card'
                 state:
                   - icon: 'mdi:check-circle'
@@ -298,6 +349,7 @@ views:
               - entity: input_boolean.evening_meds_taken
                 name: Evening Meds
                 show_state: false
+                template: standard_button
                 type: 'custom:button-card'
                 state:
                   - icon: 'mdi:check-circle'
@@ -309,6 +361,7 @@ views:
               - entity: input_boolean.bedtime_meds_taken
                 name: Bedtime Meds
                 show_state: false
+                template: standard_button
                 type: 'custom:button-card'
                 state:
                   - icon: 'mdi:check-circle'
@@ -320,6 +373,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Garbage Collection
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -345,6 +399,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Kitchen Lights
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -366,6 +421,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Bedroom Lights
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -381,12 +437,14 @@ views:
                   - icon: 'mdi:lamp'
                     value: 'off'
                     color: '#D3D2D0'
+                template: standard_button
                 type: 'custom:button-card'
                 hold_action:
                   action: more-info
       - type: vertical-stack
         cards:
           - name: Teddy's Room
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -402,12 +460,14 @@ views:
                   - icon: 'mdi:lamp'
                     value: 'off'
                     color: '#D3D2D0'
+                template: standard_button
                 type: 'custom:button-card'
                 hold_action:
                   action: more-info
       - type: vertical-stack
         cards:
           - name: Ollie's Room
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -423,12 +483,14 @@ views:
                   - icon: 'mdi:lamp'
                     value: 'off'
                     color: '#D3D2D0'
+                template: standard_button
                 type: 'custom:button-card'
                 hold_action:
                   action: more-info
       - type: vertical-stack
         cards:
           - name: Lounge Room
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -444,6 +506,7 @@ views:
                   - icon: 'mdi:floor-lamp'
                     value: 'off'
                     color: '#D3D2D0'
+                template: standard_button
                 type: 'custom:button-card'
                 hold_action:
                   action: more-info
@@ -455,6 +518,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Cameras
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -476,6 +540,7 @@ views:
       - type: vertical-stack
         cards:
           - name: All Speakers
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -487,6 +552,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Lounge Room
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -498,6 +564,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Kitchen
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -509,6 +576,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Bedroom
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -524,6 +592,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Teddy's Room
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -535,6 +604,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Ollie's Room
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -551,6 +621,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Network
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
@@ -573,6 +644,7 @@ views:
       - type: vertical-stack
         cards:
           - name: Switches
+            template: header
             show_icon: false
             show_state: true
             type: 'custom:button-card'
