@@ -93,7 +93,7 @@ views:
                         - color: '#EF4F1A'
                 styles:
                   card:
-                    - border-radius: 0%
+                    #- border-radius: 0%
                     - padding: 5%
                     - color: ivory
                     - font-size: 12px
@@ -167,7 +167,7 @@ views:
                         - color: '#EF4F1A'
                 styles:
                   card:
-                    - border-radius: 0%
+                    #- border-radius: 0%
                     - padding: 5%
                     - color: ivory
                     - font-size: 12px
@@ -398,7 +398,7 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - name: Kitchen Lights
+          - name: Kitchen
             template: header
             show_icon: false
             show_state: true
@@ -420,7 +420,7 @@ views:
             hours_to_show: 24
       - type: vertical-stack
         cards:
-          - name: Bedroom Lights
+          - name: Bedroom
             template: header
             show_icon: false
             show_state: true
