@@ -701,7 +701,7 @@
   trigger:
     platform: state
     entity_id: sensor.wireless_button_click
-    to: 'hold'
+    to: 'long'
   action:
     service: scene.turn_on
     entity_id: scene.bedroom_night_light
