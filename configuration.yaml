@@ -255,6 +255,7 @@ climate:
   - platform: mqtt
     name: Bedroom
     modes:
+      - "off"
       - "cool"
       - "heat"
     fan_modes:
@@ -267,18 +268,12 @@ climate:
     payload_off: "OFF"
     payload_on: "ON"
     current_temperature_topic: "/aircon/34ea344df92e/temp/value"
-    mode_command_topic: "temp/climate/hvac_mode_bedroom"
-    mode_state_topic: "/aircon/34ea344df92e/mode/value"
-    mode_state_template: >-
-      {% set values = { 'HEATING':'heat',  'COOLING':'cool' } %}
-      {{ values[value] if value in values.keys() else 'OFF' }}
+    mode_command_topic: "/aircon/34ea344df92e/homeassist/set"
+    mode_state_topic: "/aircon/34ea344df92e/homeassist/value"
     temperature_command_topic: "/aircon/34ea344df92e/temp/set"
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
     fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"
     fan_mode_state_topic: "/aircon/34ea344df92e/fanspeed/value"
-    fan_mode_state_template: >-
-      {% set values = { 'AUTO':'auto', 'LOW':'low',  'MID':'medium', 'HIGH':'high' } %}
-      {{ values[value] if value in values.keys() else 'OFF' }}
     min_temp: 16
     max_temp: 32
     temp_step: 0.5
