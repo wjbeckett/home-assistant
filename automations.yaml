@@ -797,8 +797,8 @@
     data_template:
       topic: /aircon/34ea344df92e/mode/set
       payload: >
-          {% set values = { "heat:"HEATING", "cool":"COOLING" } %}
-          {{ values[trigger.payload] }}
+          {% set values = { heat":"HEATING", "cool":"COOLING" } %}
+          {{ values[trigger.payload] if trigger.payload in values.keys() else "off" }}
 
 - alias: hvac-mode-controller-bedroom-power
   trigger:
