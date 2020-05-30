@@ -270,7 +270,7 @@ climate:
     mode_command_topic: "temp/climate/hvac_mode_bedroom"
     mode_state_topic: "/aircon/34ea344df92e/mode/value"
     mode_state_template: >-
-      {% set values = { HEATING':'heat',  'COOLING':'cool' } %}
+      {% set values = { 'HEATING':'heat',  'COOLING':'cool' } %}
       {{ values[value] if value in values.keys() else 'OFF' }}
     temperature_command_topic: "/aircon/34ea344df92e/temp/set"
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
