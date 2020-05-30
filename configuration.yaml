@@ -255,10 +255,8 @@ climate:
   - platform: mqtt
     name: Bedroom
     modes:
-      - "auto"
       - "cool"
       - "heat"
-      - "off"
     fan_modes:
       - auto
       - high
@@ -272,8 +270,8 @@ climate:
     mode_command_topic: "temp/climate/hvac_mode_bedroom"
     mode_state_topic: "/aircon/34ea344df92e/mode/value"
     mode_state_template: >-
-      {% set values = { 'AUTO':'auto', 'HEATING':'heat',  'COOLING':'cool', 'OFF':'off' } %}
-      {{ values[value] if value in values.keys() else 'OFF' }}
+      {% set values = { HEATING':'heat',  'COOLING':'cool' } %}
+      {{ values[value] }}
     temperature_command_topic: "/aircon/34ea344df92e/temp/set"
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
     fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"
