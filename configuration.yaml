@@ -314,7 +314,7 @@ climate:
     power_command_topic: "/aircon/34ea345b4f90/power/set"
     power_state_topic: "/aircon/34ea345b4f90/power/value"
     current_temperature_topic: "/aircon/34ea345b4f90/temp/value"
-    mode_command_topic:"/aircon/34ea345b4f90/homeassist/set"
+    mode_command_topic: "/aircon/34ea345b4f90/homeassist/set"
     mode_state_topic: "/aircon/34ea345b4f90/homeassist/value"
     temperature_command_topic: "/aircon/34ea345b4f90/temp/set"
     temperature_state_topic: "/aircon/34ea345b4f90/temp/value"
