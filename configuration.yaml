@@ -259,10 +259,10 @@ climate:
       - "cool"
       - "heat"
     fan_modes:
-      - auto
-      - high
-      - mid
-      - low
+      - "auto"
+      - "high"
+      - "mid"
+      - "low"
     power_command_topic: "/aircon/34ea344df92e/power/set"
     power_state_topic: "/aircon/34ea344df92e/power/value"
     payload_off: "OFF"
@@ -284,10 +284,10 @@ climate:
       - "heat"
       - "off"
     fan_modes:
-      - auto
-      - high
-      - mid
-      - low
+      - "auto"
+      - "high"
+      - "mid"
+      - "low"
     power_command_topic: "/aircon/34ea345aa720/power/set"
     power_state_topic: "/aircon/34ea345aa720/power/value"
     current_temperature_topic: "/aircon/34ea345aa720/temp/value"
