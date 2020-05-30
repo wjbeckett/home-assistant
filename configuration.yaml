@@ -303,7 +303,6 @@ climate:
   - platform: mqtt
     name: Ollie Room
     modes:
-      - "auto"
       - "cool"
       - "heat"
       - "off"
@@ -315,18 +314,12 @@ climate:
     power_command_topic: "/aircon/34ea345b4f90/power/set"
     power_state_topic: "/aircon/34ea345b4f90/power/value"
     current_temperature_topic: "/aircon/34ea345b4f90/temp/value"
-    mode_command_topic: "temp/climate/hvac_mode_ollie"
-    mode_state_topic: "/aircon/34ea345b4f90/mode/value"
-    mode_state_template: >-
-      {% set values = { 'AUTO':'auto', 'HEATING':'heat',  'COOLING':'cool', 'OFF':'off' } %}
-      {{ values[value] if value in values.keys() else 'OFF' }}
+    mode_command_topic:"/aircon/34ea345b4f90/homeassist/set"
+    mode_state_topic: "/aircon/34ea345b4f90/homeassist/value"
     temperature_command_topic: "/aircon/34ea345b4f90/temp/set"
     temperature_state_topic: "/aircon/34ea345b4f90/temp/value"
     fan_mode_command_topic: "/aircon/34ea345b4f90/fanspeed/set"
     fan_mode_state_topic: "/aircon/34ea345b4f90/fanspeed/value"
-    fan_mode_state_template: >-
-      {% set values = { 'AUTO':'auto', 'LOW':'low',  'MID':'medium', 'HIGH':'high' } %}
-      {{ values[value] if value in values.keys() else 'OFF' }}
     min_temp: 16
     max_temp: 32
     temp_step: 0.5
