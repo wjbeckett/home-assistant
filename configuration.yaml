@@ -271,7 +271,7 @@ climate:
     mode_state_topic: "/aircon/34ea344df92e/mode/value"
     mode_state_template: >-
       {% set values = { HEATING':'heat',  'COOLING':'cool' } %}
-      {{ values[value] }}
+      {{ values[value] if value in values.keys() else 'OFF' }}
     temperature_command_topic: "/aircon/34ea344df92e/temp/set"
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
     fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"
