@@ -49,3 +49,15 @@
     value_template: >-
       {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
     json_attributes_topic: zigbee2mqtt/bridge/networkmap/raw
+  - platform: mqtt
+    name: Bedroom Temperature
+    state_topic: "/aircon/34ea344df92e/ambient_temp/value"
+    icon: mdi:temperature-celsius
+  - platform: mqtt
+    name: Teddy's Room Temperature
+    state_topic: "/aircon/34ea345aa720/ambient_temp/value"
+    icon: mdi:temperature-celsius
+  - platform: mqtt
+    name: Ollie's Room Temperature
+    state_topic: "/aircon/34ea345b4f90/ambient_temp/value"
+    icon: mdi:temperature-celsius
