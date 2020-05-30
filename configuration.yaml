@@ -266,6 +266,7 @@ climate:
       - low
     power_command_topic: "/aircon/34ea344df92e/power/set"
     power_state_topic: "/aircon/34ea344df92e/power/value"
+    current_temperature_topic: "/aircon/34ea344df92e/temp/value"
     mode_command_topic: "temp/climate/hvac_mode_bedroom"
     mode_state_topic: "/aircon/34ea344df92e/mode/value"
     mode_state_template: >-
@@ -274,11 +275,65 @@ climate:
     temperature_command_topic: "/aircon/34ea344df92e/temp/set"
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
     fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"
-    fan_mode_state_topic: "/aircon/34ea344df92e/fanspeed/set"
+    fan_mode_state_topic: "/aircon/34ea344df92e/fanspeed/value"
     min_temp: 16
     max_temp: 32
     temp_step: 0.5
-    precision: 0.5
+  - platform: mqtt
+    name: Teddy Room
+    modes:
+      - "auto"
+      - "cool"
+      - "heat"
+      - "off"
+    fan_modes:
+      - auto
+      - high
+      - mid
+      - low
+    power_command_topic: "/aircon/34ea345aa720/power/set"
+    power_state_topic: "/aircon/34ea345aa720/power/value"
+    current_temperature_topic: "/aircon/34ea345aa720/temp/value"
+    mode_command_topic: "temp/climate/hvac_mode_teddy"
+    mode_state_topic: "/aircon/34ea345aa720/mode/value"
+    mode_state_template: >-
+      {% set values = { 'AUTO':'auto', 'HEATING':'heat',  'COOLING':'cool', 'OFF':'off' } %}
+      {{ values[value] if value in values.keys() else 'OFF' }}
+    temperature_command_topic: "/aircon/34ea345aa720/temp/set"
+    temperature_state_topic: "/aircon/34ea345aa720/temp/value"
+    fan_mode_command_topic: "/aircon/34ea345aa720/fanspeed/set"
+    fan_mode_state_topic: "/aircon/34ea345aa720/fanspeed/value"
+    min_temp: 16
+    max_temp: 32
+    temp_step: 0.5
+  - platform: mqtt
+    name: Ollie Room
+    modes:
+      - "auto"
+      - "cool"
+      - "heat"
+      - "off"
+    fan_modes:
+      - auto
+      - high
+      - mid
+      - low
+    power_command_topic: "/aircon/34ea345b4f90/power/set"
+    power_state_topic: "/aircon/34ea345b4f90/power/value"
+    current_temperature_topic: "/aircon/34ea345b4f90/temp/value"
+    mode_command_topic: "temp/climate/hvac_mode_ollie"
+    mode_state_topic: "/aircon/34ea345b4f90/mode/value"
+    mode_state_template: >-
+      {% set values = { 'AUTO':'auto', 'HEATING':'heat',  'COOLING':'cool', 'OFF':'off' } %}
+      {{ values[value] if value in values.keys() else 'OFF' }}
+    temperature_command_topic: "/aircon/34ea345b4f90/temp/set"
+    temperature_state_topic: "/aircon/34ea345b4f90/temp/value"
+    fan_mode_command_topic: "/aircon/34ea345b4f90/fanspeed/set"
+    fan_mode_state_topic: "/aircon/34ea345b4f90/fanspeed/value"
+    min_temp: 16
+    max_temp: 32
+    temp_step: 0.5
+
 
 # Speedtest
 speedtestdotnet:

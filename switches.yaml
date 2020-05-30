@@ -6,11 +6,11 @@
     state_topic: "/aircon/34ea344df92e/power/value"
     command_topic: "/aircon/34ea344df92e/power/set"
   - platform: mqtt
-    name: "Teddy's AC Power"
+    name: "Teddy AC Power"
     state_topic: "/aircon/34ea345aa720/power/value"
     command_topic: "/aircon/34ea345aa720/power/set"
   - platform: mqtt
-    name: "Ollie's AC Power"
+    name: "Ollie AC Power"
     state_topic: "/aircon/34ea345b4f90/power/value"
     command_topic: "/aircon/34ea345b4f90/power/set"  
   - platform: mqtt
