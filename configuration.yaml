@@ -276,6 +276,9 @@ climate:
     temperature_state_topic: "/aircon/34ea344df92e/temp/value"
     fan_mode_command_topic: "/aircon/34ea344df92e/fanspeed/set"
     fan_mode_state_topic: "/aircon/34ea344df92e/fanspeed/value"
+    fan_mode_state_template: >-
+      {% set values = { 'AUTO':'auto', 'LOW':'low',  'MID':'medium', 'HIGH':'high' } %}
+      {{ values[value] if value in values.keys() else 'OFF' }}
     min_temp: 16
     max_temp: 32
     temp_step: 0.5
@@ -303,6 +306,9 @@ climate:
     temperature_state_topic: "/aircon/34ea345aa720/temp/value"
     fan_mode_command_topic: "/aircon/34ea345aa720/fanspeed/set"
     fan_mode_state_topic: "/aircon/34ea345aa720/fanspeed/value"
+    fan_mode_state_template: >-
+      {% set values = { 'AUTO':'auto', 'LOW':'low',  'MID':'medium', 'HIGH':'high' } %}
+      {{ values[value] if value in values.keys() else 'OFF' }}
     min_temp: 16
     max_temp: 32
     temp_step: 0.5
@@ -330,6 +336,9 @@ climate:
     temperature_state_topic: "/aircon/34ea345b4f90/temp/value"
     fan_mode_command_topic: "/aircon/34ea345b4f90/fanspeed/set"
     fan_mode_state_topic: "/aircon/34ea345b4f90/fanspeed/value"
+    fan_mode_state_template: >-
+      {% set values = { 'AUTO':'auto', 'LOW':'low',  'MID':'medium', 'HIGH':'high' } %}
+      {{ values[value] if value in values.keys() else 'OFF' }}
     min_temp: 16
     max_temp: 32
     temp_step: 0.5
