@@ -503,8 +503,8 @@ views:
                 icon: mdi:sleep
                 action: call-service
                 service: scene.turn_on
-                  service_data:
-                    entity_id: scene.bedroom_night_light
+                service_data:
+                  entity_id: scene.bedroom_night_light
                 template: standard_button
                 type: 'custom:button-card'
               - entity: scene.bedroom_lamps_bright
