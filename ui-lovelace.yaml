@@ -229,7 +229,26 @@ views:
                         style="width: 12px; height: 12px; color: deepskyblue;">
                         </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
                     ]]]
-  
+      - type: horizontal-stack
+        cards:
+          - entity: light.bedroom_lamps
+            show_state: false
+            icon: mdi:bed-king-outline
+            size: 30px
+            template: standard_button
+            type: 'custom:button-card'
+          - entity: light.ollie_s_lamp
+            show_state: false
+            icon: mdi:heart-outline
+            size: 30px
+            template: standard_button
+            type: 'custom:button-card'
+          - entity: light.teddy_s_lamp
+            show_state: false
+            icon: mdi:pokeball
+            size: 30px
+            template: standard_button
+            type: 'custom:button-card'
       - type: vertical-stack
         cards:
           - name: Security
@@ -423,6 +442,68 @@ views:
                 hide_before: 2
                 icon_size: 35px
                 icon_color: '#0561ba'   
+  - icon: mdi:bed-king-outline
+    id: bedroom
+    title: Bedroom
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.bedroom_lamps
+            name: Bedroom Lamps
+            show_state: true
+            state:
+              - icon: 'mdi:lamp'
+                value: 'on'
+              - icon: 'mdi:lamp'
+                value: 'off'
+                color: '#D3D2D0'
+            template: standard_button
+            type: 'custom:button-card'
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: scene.bedroom_night_light
+                name: Night Light
+                show_state: false
+                template: standard-button
+                type: 'custom:button-card'
+              - entity: scene.bedroom_lamps_bright
+                name: Lamps Bright
+                show_state: false
+                template: standard-button
+                type: 'custom:button-card'
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_tv
+            info: scroll
+            artwork: cover
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            info: scroll
+            artwork: cover
   - icon: mdi:lightbulb-outline
     id: lights
     title: Lights
