@@ -233,18 +233,21 @@ views:
         cards:
           - entity: light.bedroom_lamps
             show_state: false
+            show_name: false
             icon: mdi:bed-king-outline
             size: 30px
             template: standard_button
             type: 'custom:button-card'
           - entity: light.ollie_s_lamp
             show_state: false
+            show_name: false
             icon: mdi:heart-outline
             size: 30px
             template: standard_button
             type: 'custom:button-card'
           - entity: light.teddy_s_lamp
             show_state: false
+            show_name: false
             icon: mdi:pokeball
             size: 30px
             template: standard_button
@@ -481,16 +484,16 @@ views:
               - entity: scene.bedroom_night_light
                 name: Night Light
                 show_state: false
-                template: standard-button
+                template: standard_button
                 type: 'custom:button-card'
               - entity: scene.bedroom_lamps_bright
                 name: Lamps Bright
                 show_state: false
-                template: standard-button
+                template: standard_button
                 type: 'custom:button-card'
       - type: vertical-stack
         cards:
-          - name: Scenes
+          - name: Media
             template: header
             show_icon: false
             show_state: true
