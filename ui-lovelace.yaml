@@ -538,32 +538,34 @@ views:
             show_state: true
             type: 'custom:button-card'
             layout: name_state
-          - entity: light.kitchen_pendant_lights
-            name: Kitchen Pendant Lights
-            show_state: true
-            state:
-              - icon: 'mdi:ceiling-light'
-                value: 'on'
-              - icon: 'mdi:ceiling-light'
-                value: 'off'
-                color: '#D3D2D0'
-            template: standard_button
-            type: 'custom:button-card'
-            hold_action:
-              action: more-info
-          - entity: light.kitchen_downlight
-            name: Kitchen Down Light
-            show_state: true
-            state:
-              - icon: 'mdi:lightbulb'
-                value: 'on'
-              - icon: 'mdi:lightbulb-outline'
-                value: 'off'
-                color: '#D3D2D0'
-            template: standard_button
-            type: 'custom:button-card'
-            hold_action:
-              action: more-info
+          - type: horizontal-stack
+            cards:
+              - entity: light.kitchen_pendant_lights
+                name: Kitchen Pendant Lights
+                show_state: true
+                state:
+                  - icon: 'mdi:ceiling-light'
+                    value: 'on'
+                  - icon: 'mdi:ceiling-light'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold_action:
+                  action: more-info
+              - entity: light.kitchen_downlight
+                name: Kitchen Down Light
+                show_state: true
+                state:
+                  - icon: 'mdi:lightbulb'
+                    value: 'on'
+                  - icon: 'mdi:lightbulb-outline'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold_action:
+                  action: more-info
       - type: vertical-stack
         cards:
           - name: Scenes
