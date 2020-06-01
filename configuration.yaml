@@ -27,6 +27,9 @@ lovelace:
       url: /hacsfiles/garbage-collection-card/garbage-collection-card.js
     - type: module
       url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
+    - type: css
+      url: https://fonts.googleapis.com/css?family=Comfortaa&display=swap
+  
       
   dashboards:
     lovelace-generated: # Needs to contain a hyphen (-)
