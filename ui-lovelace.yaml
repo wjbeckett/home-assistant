@@ -497,22 +497,24 @@ views:
             layout: name_state
           - type: horizontal-stack
             cards:
-              - entity: scene.bedroom_night_light
-                name: Night Light
+              - name: Night Light
                 show_state: false
                 icon: mdi:sleep
+                icon_height: 30px
                 tap_action: call-service
                 service: scene.turn_on
                 service_data:
                   entity_id: scene.bedroom_night_light
-                template: standard_button
-                type: 'custom:button-card'
-              - entity: scene.bedroom_lamps_bright
-                name: Lamps Bright
+                type: button
+              - name: Lamps Bright
                 show_state: false
                 icon: mdi:white-balance-sunny
-                template: standard_button
-                type: 'custom:button-card'
+                icon_height: 30px
+                tap_action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.bedroom_lamps_bright
+                type: button
       - type: vertical-stack
         cards:
           - name: Media
@@ -580,18 +582,24 @@ views:
             layout: name_state
           - type: horizontal-stack
             cards:
-              - entity: scene.kitchen_dim
-                name: Dim
+              - name: Dim
                 show_state: false
                 icon: mdi:brightness-3
-                template: standard_button
+                icon_height: 30px
+                tap_action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.kitchen_dim
                 type: 'custom:button-card'
-              - entity: scene.kitchen_bright
-                name: Kitchen Bright
+              - name: Kitchen Bright
                 show_state: false
                 icon: mdi:white-balance-sunny
-                template: standard_button
-                type: 'custom:button-card'
+                icon_height: 30px
+                tap_action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.kitchen_bright
+                type: button
       - type: vertical-stack
         cards:
           - name: Media
