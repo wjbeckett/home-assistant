@@ -231,6 +231,22 @@ views:
                     ]]]
       - type: horizontal-stack
         cards:
+          - entity: light.kitchen_pendant_lights
+            show_state: false
+            show_name: false
+            icon: mdi:chef-hat
+            size: 30px
+            template: standard_button
+            type: 'custom:button-card'
+          - entity: light.lounge_room_lamp
+            show_state: false
+            show_name: false
+            icon: mdi:sofa
+            size: 30px
+            template: standard_button
+            type: 'custom:button-card'
+      - type: horizontal-stack
+        cards:
           - entity: light.bedroom_lamps
             show_state: false
             show_name: false
@@ -484,11 +500,13 @@ views:
               - entity: scene.bedroom_night_light
                 name: Night Light
                 show_state: false
+                icon: mdi:sleep
                 template: standard_button
                 type: 'custom:button-card'
               - entity: scene.bedroom_lamps_bright
                 name: Lamps Bright
                 show_state: false
+                icon: mdi:white-balance-sunny
                 template: standard_button
                 type: 'custom:button-card'
       - type: vertical-stack
@@ -505,6 +523,79 @@ views:
             artwork: cover
           - type: custom:mini-media-player
             entity: media_player.bedroom_speaker
+            info: scroll
+            artwork: cover
+  - icon: mdi:chef-hat
+    id: kitchen
+    title: Kitchen
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.kitchen_pendant_lights
+            name: Kitchen Pendant Lights
+            show_state: true
+            state:
+              - icon: 'mdi:ceiling-light'
+                value: 'on'
+              - icon: 'mdi:ceiling-light'
+                value: 'off'
+                color: '#D3D2D0'
+            template: standard_button
+            type: 'custom:button-card'
+            hold_action:
+              action: more-info
+          - entity: light.kitchen_downlight
+            name: Kitchen Down Light
+            show_state: true
+            state:
+              - icon: 'mdi:lightbulb'
+                value: 'on'
+              - icon: 'mdi:lightbulb-outline'
+                value: 'off'
+                color: '#D3D2D0'
+            template: standard_button
+            type: 'custom:button-card'
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: scene.kitchen_dim
+                name: Dim
+                show_state: false
+                icon: mdi:brightness-3
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: scene.kitchen_bright
+                name: Kitchen Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                template: standard_button
+                type: 'custom:button-card'
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
             info: scroll
             artwork: cover
   - icon: mdi:lightbulb-outline

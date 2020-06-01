@@ -8,6 +8,16 @@
     light.kitchen_downlight:
       state: on
       brightness_pct: 30
+- id: kitchen_bright
+  name: Kitchen Bright
+  entities:
+    light.kitchen_pendant_lights:
+      state: on
+      transition: 2
+      brightness_pct: 100
+    light.kitchen_downlight:
+      state: on
+      brightness_pct: 100
 - id: '1582607583558'
   name: Bright Lights
   entities:
