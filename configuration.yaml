@@ -25,6 +25,9 @@ lovelace:
       url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
     - type: module
       url: /hacsfiles/garbage-collection-card/garbage-collection-card.js
+    - type: module
+      url:/hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
+      
   dashboards:
     lovelace-generated: # Needs to contain a hyphen (-)
       mode: yaml
