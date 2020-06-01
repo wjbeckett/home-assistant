@@ -857,9 +857,6 @@
         message: clear_notification
         data:
           tag: morning_meds
-    - service: dwains_theme.notification_dismiss
-      data:
-        notification_id: morning_meds
  
 - id: 'mark_evening_meds_taken'
   alias: Mark evening meds as taken
@@ -876,10 +873,7 @@
         message: clear_notification
         data:
           tag: evening_meds
-    - service: dwains_theme.notification_dismiss
-      data:
-        notification_id: evening_meds
-
+    
 - id: 'mark_bedtime_meds_taken'
   alias: Mark bedtime meds as taken
   trigger:
@@ -895,9 +889,6 @@
         message: clear_notification
         data:
           tag: bedtime_meds
-    - service: dwains_theme.notification_dismiss
-      data:
-        notification_id: bedtime_meds
 
 - id: 'morning_meds_notification'
   alias: Morning meds Notificaiton
@@ -921,10 +912,6 @@
           priority: high
           channel: Medication
           color: purple
-    - service: dwains_theme.notification_create
-      data:
-        message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
-        notification_id: morning_meds
 
 - id: 'morning_meds_reminder'
   alias: Morning meds reminder
@@ -974,10 +961,6 @@
           priority: high
           channel: Medication
           color: purple
-    - service: dwains_theme.notification_create
-      data:
-        message: "Ollie needs Lisinopril (3ml)"
-        notification_id: evening_meds  
 
 - id: 'evening_meds_reminder'
   alias: Evening meds reminder
@@ -1027,10 +1010,6 @@
           priority: high
           channel: Medication
           color: purple
-    - service: dwains_theme.notification_create
-      data:
-        message: "Ollie needs Carvidilol (1.5ml)"
-        notification_id: bedtime_meds
 
 - id: 'bedtime_meds_reminder'
   alias: Bedtime meds reminder
