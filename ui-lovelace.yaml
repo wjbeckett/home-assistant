@@ -501,7 +501,7 @@ views:
                 name: Night Light
                 show_state: false
                 icon: mdi:sleep
-                action: call-service
+                tap_action: call-service
                 service: scene.turn_on
                 service_data:
                   entity_id: scene.bedroom_night_light
