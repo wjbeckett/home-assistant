@@ -12,12 +12,14 @@
   name: Bright Lights
   entities:
     light.ollie_s_lamp:
-      brightness: 236
-      color_temp: 385
+      brightness: 255
+      xy_color:
+        - 0.388
+        - 0.401
       state: 'on'
       transition: 2
     light.teddy_s_lamp:
-      brightness: 199
+      brightness: 255
       state: 'on'
       transition: 2
       xy_color:
