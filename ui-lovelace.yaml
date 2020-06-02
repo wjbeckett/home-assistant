@@ -391,6 +391,7 @@ views:
                 show_state: false
                 template: standard_button
                 type: 'custom:button-card'
+                size: 30px
                 state:
                   - icon: 'mdi:check-circle'
                     value: 'on'
@@ -403,6 +404,7 @@ views:
                 show_state: false
                 template: standard_button
                 type: 'custom:button-card'
+                size: 30px
                 state:
                   - icon: 'mdi:check-circle'
                     value: 'on'
@@ -415,6 +417,7 @@ views:
                 show_state: false
                 template: standard_button
                 type: 'custom:button-card'
+                size: 30px
                 state:
                   - icon: 'mdi:check-circle'
                     value: 'on'
