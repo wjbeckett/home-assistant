@@ -527,6 +527,12 @@ views:
             show_state: true
             type: 'custom:button-card'
             layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.bedroom_temperature
+                name: Bedroom
+                show_state: true
+                state_adaptive_color: true
           - entity: climate.bedroom
             type: thermostat
       - type: vertical-stack
@@ -550,6 +556,20 @@ views:
     title: Kitchen
     badges: []
     cards:
+      - type: vertical-stack
+        cards:
+          - name: Temperature
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_temperature
+                name: Kitchen
+                show_state: true
+                state_adaptive_color: true
       - type: vertical-stack
         cards:
           - name: Lights
@@ -680,6 +700,12 @@ views:
             show_state: true
             type: 'custom:button-card'
             layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.ollie_room_temperature
+                name: Ollie
+                show_state: true
+                state_adaptive_color: true
           - entity: climate.ollie_room
             type: thermostat
       - type: vertical-stack
@@ -754,6 +780,12 @@ views:
             show_state: true
             type: 'custom:button-card'
             layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.teddy_room_temperature
+                name: Teddy
+                show_state: true
+                state_adaptive_color: true
           - entity: climate.teddy_room
             type: thermostat
       - type: vertical-stack
