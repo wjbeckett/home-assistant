@@ -363,21 +363,6 @@ views:
                 type: 'custom:button-card'
       - type: vertical-stack
         cards:
-          - name: Open Doors
-            template: header
-            type: 'custom:button-card'
-          - card:
-            entities:
-              - binary_sensor.garage_door
-              - binary_sensor.back_door
-            show_empty: false
-            show_header: false
-            state_filter:
-              - 'on'
-              - open
-            type: entity-filter
-      - type: vertical-stack
-        cards:
           - name: Ollie's Meds
             template: header
             show_icon: false
