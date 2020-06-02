@@ -54,16 +54,16 @@
     state_topic: "/aircon/34ea344df92e/ambient_temp/value"
     device_class: temperature
     unit_of_measurement: '°C'
-    icon: mdi:temperature-celsius
+    icon: mdi:thermometer
   - platform: mqtt
     name: Teddy Room Temperature
     state_topic: "/aircon/34ea345aa720/ambient_temp/value"
     device_class: temperature
     unit_of_measurement: '°C'
-    icon: mdi:temperature-celsius
+    icon: mdi:thermometer
   - platform: mqtt
     name: Ollie Room Temperature
     state_topic: "/aircon/34ea345b4f90/ambient_temp/value"
     device_class: temperature
     unit_of_measurement: '°C'
-    icon: mdi:temperature-celsius
+    icon: mdi:thermometer
