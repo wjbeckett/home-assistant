@@ -707,7 +707,7 @@ views:
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.ollie_room_temperature
-                name: Ollie
+                name: Ollie's Room
                 show:
                   icon: false
                   name: false
@@ -789,7 +789,7 @@ views:
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.teddy_room_temperature
-                name: Teddy
+                name: Teddy's Room
                 show:
                   icon: false
                   name: false
