@@ -268,7 +268,7 @@ climate:
     fan_modes:
       - "auto"
       - "high"
-      - "mid"
+      - "medium"
       - "low"
     power_command_topic: "/aircon/34ea344df92e/power/set"
     power_state_topic: "/aircon/34ea344df92e/power/value"

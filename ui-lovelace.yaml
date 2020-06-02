@@ -511,6 +511,16 @@ views:
                 type: button
       - type: vertical-stack
         cards:
+          - name: Climate
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: climate.bedroom
+            type: thermostat
+      - type: vertical-stack
+        cards:
           - name: Media
             template: header
             show_icon: false
