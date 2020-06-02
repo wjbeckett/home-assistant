@@ -235,39 +235,43 @@ views:
             show_state: false
             show_name: false
             icon: mdi:chef-hat
-            size: 30px
-            template: standard_button
-            type: 'custom:button-card'
+            icon_height: 30px
+            type: button
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/2/
           - entity: light.lounge_room_lamp
             show_state: false
             show_name: false
+            state_color: true
             icon: mdi:sofa
-            size: 30px
-            template: standard_button
-            type: 'custom:button-card'
+            icon_height: 30px
+            type: button
       - type: horizontal-stack
         cards:
           - entity: light.bedroom_lamps
             show_state: false
             show_name: false
+            state_color: true
             icon: mdi:bed-king-outline
-            size: 30px
-            template: standard_button
-            type: 'custom:button-card'
+            icon_height: 30px
+            type: button
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/1/
           - entity: light.ollie_s_lamp
             show_state: false
             show_name: false
+            state_color: true
             icon: mdi:heart-outline
-            size: 30px
-            template: standard_button
-            type: 'custom:button-card'
+            icon_height: 30px
+            type: button
           - entity: light.teddy_s_lamp
             show_state: false
             show_name: false
             icon: mdi:pokeball
-            size: 30px
-            template: standard_button
-            type: 'custom:button-card'
+            icon_height: 30px
+            type: button
       - type: vertical-stack
         cards:
           - name: Security
