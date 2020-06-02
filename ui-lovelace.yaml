@@ -269,6 +269,7 @@ views:
           - entity: light.teddy_s_lamp
             show_state: false
             show_name: false
+            state_color: true
             icon: mdi:pokeball
             icon_height: 30px
             type: button
