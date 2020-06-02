@@ -234,6 +234,7 @@ views:
           - entity: light.kitchen_pendant_lights
             show_state: false
             show_name: false
+            state_color: true
             icon: mdi:chef-hat
             icon_height: 30px
             type: button
@@ -256,6 +257,8 @@ views:
             icon: mdi:bed-king-outline
             icon_height: 30px
             type: button
+            tap_action:
+              action: toggle
             hold_action:
               action: navigate
               navigation_path: /lovelace/1/
