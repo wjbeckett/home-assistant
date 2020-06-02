@@ -49,7 +49,7 @@ custom_header:
 swipe_nav:
   wrap: false
   animate: swipe
-  prevent_default: true
+  prevent_default: false
   swipe_amount: 15
   
 title: Beckett Home
@@ -269,6 +269,11 @@ views:
             icon: mdi:heart-outline
             icon_height: 30px
             type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/3/
           - entity: light.teddy_s_lamp
             show_state: false
             show_name: false
@@ -276,6 +281,11 @@ views:
             icon: mdi:pokeball
             icon_height: 30px
             type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/4/
       - type: vertical-stack
         cards:
           - name: Security
@@ -698,7 +708,7 @@ views:
             type: 'custom:button-card'
             layout: name_state
           - entity: light.teddy_s_lamp
-            name: Ollie's Lamp
+            name: Teddy's Lamp
             show_state: true
             state_color: true
             icon: mdi:lamp
