@@ -531,8 +531,10 @@ views:
             entities:
               - entity: sensor.bedroom_temperature
                 name: Bedroom
-                show_state: true
-                state_adaptive_color: true
+                show:
+                  icon: false
+                  name: false
+                  state: false
           - entity: climate.bedroom
             type: thermostat
       - type: vertical-stack
@@ -568,8 +570,10 @@ views:
             entities:
               - entity: sensor.kitchen_sensor_temperature
                 name: Kitchen
-                show_state: true
-                state_adaptive_color: true
+                show:
+                  icon: false
+                  name: false
+                  state: false
       - type: vertical-stack
         cards:
           - name: Lights
@@ -704,8 +708,10 @@ views:
             entities:
               - entity: sensor.ollie_room_temperature
                 name: Ollie
-                show_state: true
-                state_adaptive_color: true
+                show:
+                  icon: false
+                  name: false
+                  state: false
           - entity: climate.ollie_room
             type: thermostat
       - type: vertical-stack
@@ -784,8 +790,10 @@ views:
             entities:
               - entity: sensor.teddy_room_temperature
                 name: Teddy
-                show_state: true
-                state_adaptive_color: true
+                show:
+                  icon: false
+                  name: false
+                  state: false
           - entity: climate.teddy_room
             type: thermostat
       - type: vertical-stack
