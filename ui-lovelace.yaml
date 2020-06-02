@@ -527,16 +527,18 @@ views:
             show_state: true
             type: 'custom:button-card'
             layout: name_state
-          - type: custom:mini-graph-card
-            entities:
-              - entity: sensor.bedroom_temperature
-                name: Bedroom
-                show:
-                  icon: false
-                  name: false
-                  state: false
-          - entity: climate.bedroom
-            type: thermostat
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.bedroom_temperature
+                    name: Bedroom
+                    show:
+                      icon: false
+                      name: false
+                      state: false
+              - entity: climate.bedroom
+                type: thermostat
       - type: vertical-stack
         cards:
           - name: Media
