@@ -577,7 +577,7 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.kitchen_dim
-                type: 'custom:button-card'
+                type: button
               - name: Kitchen Bright
                 show_state: false
                 icon: mdi:white-balance-sunny
