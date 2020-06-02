@@ -610,6 +610,154 @@ views:
             entity: media_player.kitchen_display
             info: scroll
             artwork: cover
+  - icon: mdi:heart-outline
+    id: ollie
+    title: Ollie's Room
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.ollie_s_lamp
+            name: Ollie's Lamp
+            show_state: true
+            state_color: true
+            icon: mdi:lamp
+            icon_height: 30px
+            type: light
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - name: Night Light
+                show_state: false
+                icon: mdi:sleep
+                icon_height: 30px
+                tap_action: 
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
+                type: button
+              - name: Lamps Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bright_lights
+                type: button
+      - type: vertical-stack
+        cards:
+          - name: Climate
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: climate.ollie_room
+            type: thermostat
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            info: scroll
+            artwork: cover
+  - icon: mdi:pokeball
+    id: teddy
+    title: Teddy's Room
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.teddy_s_lamp
+            name: Ollie's Lamp
+            show_state: true
+            state_color: true
+            icon: mdi:lamp
+            icon_height: 30px
+            type: light
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - name: Night Light
+                show_state: false
+                icon: mdi:sleep
+                icon_height: 30px
+                tap_action: 
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
+                type: button
+              - name: Lamps Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bright_lights
+                type: button
+      - type: vertical-stack
+        cards:
+          - name: Climate
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: climate.teddy_room
+            type: thermostat
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            info: scroll
+            artwork: cover
   - icon: mdi:lightbulb-outline
     id: lights
     title: Lights
