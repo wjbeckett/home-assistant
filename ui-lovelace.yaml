@@ -488,29 +488,9 @@ views:
             state_color: true
             icon: mdi:lamp
             icon_height: 30px
-            type: button
+            type: light
             hold_action:
               action: more-info
-          - type: horizontal-stack
-            cards:
-              - entity: light.bedroom_lamp_left
-                name: Bedroom Lamp Left
-                show_state: true
-                state_color: true
-                icon: mdi:lamp
-                icon_height: 30px
-                type: button
-                hold_action:
-                  action: more-info
-              - entity: light.bedroom_lamp_right
-                name: Bedroom Lamp Right
-                show_state: true
-                state_color: true
-                icon: mdi:lamp
-                icon_height: 30px
-                type: button
-                hold_action:
-                  action: more-info
       - type: vertical-stack
         cards:
           - name: Scenes
