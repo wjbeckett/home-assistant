@@ -497,7 +497,8 @@ views:
                 show_state: false
                 icon: mdi:sleep
                 icon_height: 30px
-                tap_action: call-service
+                tap_action: 
+                  action: call-service
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.bedroom_night_light
@@ -506,7 +507,8 @@ views:
                 show_state: false
                 icon: mdi:white-balance-sunny
                 icon_height: 30px
-                tap_action: call-service
+                tap_action:
+                  action: call-service
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.bedroom_lamps_bright
@@ -545,27 +547,19 @@ views:
               - entity: light.kitchen_pendant_lights
                 name: Kitchen Pendant Lights
                 show_state: true
-                state:
-                  - icon: 'mdi:ceiling-light'
-                    value: 'on'
-                  - icon: 'mdi:ceiling-light'
-                    value: 'off'
-                    color: '#D3D2D0'
-                template: standard_button
-                type: 'custom:button-card'
+                state_color: true
+                icon: mdi:ceiling-light
+                icon_height: 30px
+                type: button
                 hold_action:
                   action: more-info
               - entity: light.kitchen_downlight
                 name: Kitchen Down Light
                 show_state: true
-                state:
-                  - icon: 'mdi:lightbulb'
-                    value: 'on'
-                  - icon: 'mdi:lightbulb-outline'
-                    value: 'off'
-                    color: '#D3D2D0'
-                template: standard_button
-                type: 'custom:button-card'
+                state_color: true`
+                icon: mdi:lightbulb
+                icon_height: 30px
+                type: button
                 hold_action:
                   action: more-info
       - type: vertical-stack
@@ -582,7 +576,8 @@ views:
                 show_state: false
                 icon: mdi:brightness-3
                 icon_height: 30px
-                tap_action: call-service
+                tap_action:
+                  action: call-service
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.kitchen_dim
@@ -591,7 +586,8 @@ views:
                 show_state: false
                 icon: mdi:white-balance-sunny
                 icon_height: 30px
-                tap_action: call-service
+                tap_action:
+                  action: call-service
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.kitchen_bright
