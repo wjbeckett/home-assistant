@@ -271,11 +271,13 @@ climate:
       - "off"
       - "cool"
       - "heat"
-    #fan_modes:
-    #  - "auto"
-    #  - "high"
-    #  - "mid"
-    #  - "low"
+    fan_modes:
+      - "auto"
+      - "turbo"
+      - "high"
+      - "mid"
+      - "low"
+      - "mute"
     power_command_topic: "/aircon/34ea344df92e/power/set"
     power_state_topic: "/aircon/34ea344df92e/power/value"
     payload_off: "OFF"
