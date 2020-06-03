@@ -39,13 +39,13 @@
               ha-card {
                 margin: 10px;
                 box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') and is_state('light.ollie_s_lamp', 'on') %}
+                  {% if is_state('sun.sun', 'above_horizon') and is_state('light.teddy_s_lamp', 'on') %}
                     inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'above_horizon') and is_state('light.ollie_s_lamp', 'off') %}                      
+                  {% elif is_state('sun.sun', 'above_horizon') and is_state('light.teddy_s_lamp', 'off') %}                      
                     -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.ollie_s_lamp', 'on') %}                      
+                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.teddy_s_lamp', 'on') %}                      
                     inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.ollie_s_lamp', 'off') %}   
+                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.teddy_s_lamp', 'off') %}   
                     -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                   {% endif %}    
               }
@@ -57,7 +57,7 @@
                 - background-color: var(--primary-background-color)
               icon:
                 - color: var(--primary-text-color)
-                
+
       - type: vertical-stack
         cards:
           - type: markdown
