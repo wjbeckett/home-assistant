@@ -68,11 +68,6 @@
                     - align-self: start
                     - justify-self: end
                     - color: gray
-                    #proximity:
-                    #  - padding-bottom: 0px
-                    #  - align-self: middle
-                    #  - justify-self: start
-                    #  - color: gray
                   battery:
                     - padding-bottom: 0px
                     - align-self: middle
@@ -82,20 +77,13 @@
               custom_fields:
                 status: |
                   [[[
-                  return `<ha-icon
+                    return `<ha-icon
                       style="width: 12px; height: 12px; color: black;">
                       </ha-icon><span>${entity.state}</span>`
                   ]]]
-                #proximity: |
-                #  [[[
-                #    return `<ha-icon
-                #      icon="mdi:map-marker-distance"
-                #      style="width: 12px; height: 12px; color: deepskyblue;">
-                #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
-                #  ]]]
                 battery: |
                   [[[
-                  return `<ha-icon
+                    return `<ha-icon
                       icon="mdi:cellphone-android"
                       style="width: 12px; height: 12px; color: deepskyblue;">
                       </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
@@ -142,11 +130,6 @@
                     - align-self: start
                     - justify-self: end
                     - color: gray
-                    #proximity:
-                    #  - padding-bottom: 0px
-                    #  - align-self: middle
-                    #  - justify-self: start
-                    #  - color: gray
                   battery:
                     - padding-bottom: 0px
                     - align-self: middle
@@ -156,20 +139,13 @@
               custom_fields:
                 status: |
                   [[[
-                  return `<ha-icon
+                    return `<ha-icon
                       style="width: 12px; height: 12px; color: black;">
                       </ha-icon><span>${entity.state}</span>`
                   ]]]
-                #proximity: |
-                #  [[[
-                #    return `<ha-icon
-                #      icon="mdi:map-marker-distance"
-                #      style="width: 12px; height: 12px; color: deepskyblue;">
-                #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
-                #  ]]]
                 battery: |
                   [[[
-                  return `<ha-icon
+                    return `<ha-icon
                       icon="mdi:cellphone-android"
                       style="width: 12px; height: 12px; color: deepskyblue;">
                       </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
