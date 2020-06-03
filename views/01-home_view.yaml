@@ -160,20 +160,20 @@
               show_state: true
               state:
                 - styles:
-                  icon:
-                    - color: '#F0DC6E'
+                    icon:
+                      - color: '#F0DC6E'
                   value: pending
                 - styles:
-                  icon:
-                    - color: '#D3D2D0'
+                    icon:
+                      - color: '#D3D2D0'
                   value: disarmed
                 - styles:
-                  icon:
-                    - color: '#F9160B'
+                    icon:
+                      - color: '#F9160B'
                   value: armed_away
                 - styles:
-                  icon:
-                    - color: '#16A914'
+                    icon:
+                      - color: '#16A914'
                   value: armed_home
               template: standard_button
               type: 'custom:button-card'
