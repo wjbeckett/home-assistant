@@ -190,8 +190,6 @@
                 - icon: 'mdi:account'
                   value: 'off'
                   color: '#D3D2D0'
-        - type: horizontal-stack
-          cards:
             - entity: binary_sensor.garage_door
               name: Garage
               show_state: true
