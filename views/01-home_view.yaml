@@ -1,7 +1,7 @@
   - icon: mdi:home-assistant
     id: home
     title: home
-    path: 0
+    path: home
     badges: []
     cards:
     - type: vertical-stack
