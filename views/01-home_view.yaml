@@ -44,9 +44,9 @@
               - light.teddy_s_lamp
             state_filter:
               - "on"
-          card:
-            type: entity
-            title: Lights left on
+            card:
+              type: entity
+              title: Lights left on
     - type: vertical-stack
       cards:
         - name: Family Status
