@@ -33,7 +33,7 @@
             state_filter:
               - "on"
             card:
-              type: 'custom:button-card'
+              type: entity
               title: Lights left on
     - type: vertical-stack
       cards:
