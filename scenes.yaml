@@ -85,3 +85,13 @@
         color_temp: 453
         state: 'on'
         transition: 2
+- id: 'bedroom_tv_time'
+  name: Bedroom TV Time
+  entities:
+    light.bedroom_lamps:
+      brightness_pct: 20
+      color_temp: 453
+      state: 'on'
+      transition: 2
+    media_player.bedroom_tv:
+      state: 'on'
