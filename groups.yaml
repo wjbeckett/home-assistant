@@ -13,6 +13,8 @@ all_lights:
     - light.bedroom_lamp_right
     - light.bedroom_lamp_left
     - light.lounge_room_lamp
+    - light.bedroom_lamps
+    - light.kitchen_lights
 
 all_doors_and_windows:
   name: All doors and windows
