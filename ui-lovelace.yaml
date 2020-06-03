@@ -38,6 +38,25 @@ button_card_templates:
         - padding: 0px 5px
         #- color: '#6A7889'
         #- font-family: avenir
+  soft_button:
+    style: |
+      ha-card {
+        margin: 10px;
+        box-shadow: 
+          {% if is_state('sun.sun', 'above_horizon') %}
+            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') %}
+            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+          {% endif %}    
+      }
+    styles:
+      card:
+        - width: 80px
+        - height: 80px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
 
 custom_header:
   compact_mode: true
