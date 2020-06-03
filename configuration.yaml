@@ -265,6 +265,10 @@ input_text:
   zigbee2mqtt_remove:
     name: Zigbee2mqtt Remove
 
+# Climate
+climate:
+  - platform: mqtt
+
 # Speedtest
 speedtestdotnet:
   scan_interval: 60:00
