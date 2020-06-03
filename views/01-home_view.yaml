@@ -34,19 +34,19 @@
           conditions:
             - entity: group.all_lights
               state: "on"
-            card:
-              type: entity-filter
-              entities:
-                - light.bedroom_lamps
-                - light.lounge_room_lamp
-                - light.kitchen_lights
-                - light.ollie_s_lamp
-                - light.teddy_s_lamp
-              state_filter:
-                - "on"
-              card:
-                type: entity
-                title: Lights left on
+          card:
+            type: entity-filter
+            entities:
+              - light.bedroom_lamps
+              - light.lounge_room_lamp
+              - light.kitchen_lights
+              - light.ollie_s_lamp
+              - light.teddy_s_lamp
+            state_filter:
+              - "on"
+          card:
+            type: entity
+            title: Lights left on
     - type: vertical-stack
       cards:
         - name: Family Status
