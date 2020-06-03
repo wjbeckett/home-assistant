@@ -166,6 +166,12 @@ light:
     entities:
       - light.bedroom_lamp_right
       - light.bedroom_lamp_left
+  - platform: group
+    name: kitchen_lights
+    entities:
+      - light.kitchen_pendant_lights
+      - light.kitchen_downlight
+
 
 # Alarm Panel
 alarm_control_panel:
