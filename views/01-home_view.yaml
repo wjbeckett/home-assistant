@@ -53,7 +53,7 @@
                   - justify-self: end
                   - align-self: middle
                 grid:
-                  - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
+                  - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
                   - grid-template-columns: 1fr 1fr
                   - grid-template-rows: 1fr min-content min-content min-content min-content
                 name:
@@ -77,16 +77,11 @@
               custom_fields:
                 status: |
                   [[[
-                    return `<ha-icon
-                      style="width: 12px; height: 12px; color: black;">
-                      </ha-icon><span>${entity.state}</span>`
+                    return `<ha-icon style="width: 12px; height: 12px; color: black;"></ha-icon><span>${entity.state}</span>`
                   ]]]
                 battery: |
                   [[[
-                    return `<ha-icon
-                      icon="mdi:cellphone-android"
-                      style="width: 12px; height: 12px; color: deepskyblue;">
-                      </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
+                    return `<ha-icon icon="mdi:cellphone-android" style="width: 12px; height: 12px; color: deepskyblue;"> </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
                   ]]]
             - type: 'custom:button-card'
               entity: person.emily
@@ -115,7 +110,7 @@
                   - justify-self: end
                   - align-self: middle
                 grid:
-                  - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
+                  - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
                   - grid-template-columns: 1fr 1fr
                   - grid-template-rows: 1fr min-content min-content min-content min-content
                 name:
