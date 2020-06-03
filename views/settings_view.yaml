@@ -1,0 +1,69 @@
+  - icon: mdi:settings
+    id: settings
+    title: Settings
+    path: settings
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Network
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - sensor.wifi_status
+          - type: custom:mini-graph-card
+            name: Download/Upload
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.speedtest_upload
+                name: Upload
+                show_state: true
+                state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - name: Switches
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - input_boolean.options_notifications_push
+              - input_boolean.location_update
+              - input_boolean.meds_reminder
+              - input_boolean.garbage_general
+              - input_boolean.garbage_recycling
+      - type: vertical-stack
+        cards:
+          - name: Zigbee
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.zigbee2mqtt_bridge_state
+              - entity: sensor.zigbee2mqtt_version
+              - entity: sensor.coordinator_version
+              - entity: input_select.zigbee2mqtt_log_level
+              - type: divider
+              - entity: switch.zigbee2mqtt_main_join
+              - entity: timer.zigbee_permit_join
+              - type: divider
+              - entity: input_text.zigbee2mqtt_old_name
+              - entity: input_text.zigbee2mqtt_new_name
+              - entity: script.zigbee2mqtt_rename
+              - type: divider
+              - entity: input_text.zigbee2mqtt_remove
+              - entity: script.zigbee2mqtt_remove

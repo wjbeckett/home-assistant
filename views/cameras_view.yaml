@@ -1,0 +1,23 @@
+  - icon: mdi:cctv
+    id: Cameras
+    title: Cameras
+    path: cameras
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Cameras
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: picture-glance
+            title: Front Door
+            camera_image: camera.front_door
+            camera_view: live
+            entities:
+            - camera.front_door
+          - type: picture-entity
+            entity: camera.deepstack_latest_image
+            title: Latest Detection
