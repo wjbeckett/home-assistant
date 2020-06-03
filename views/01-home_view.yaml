@@ -29,19 +29,19 @@
               state:
                 - value: home
                   styles:
-                  name:
-                    - color: '#629632'
+                    name:
+                      - color: '#629632'
                   entity_picture: "/local/images/persons/william_home.png"
                 - value: not_home
                   entity_picture: "/local/images/persons/william_away.png"
                   styles:
-                  name:
-                    - color: '#EF4F1A'
+                    name:
+                      - color: '#EF4F1A'
                 - value: woolies_warner
                   entity_picture: "/local/images/persons/william_shops.png"
                   styles:
-                  name:
-                    - color: '#EF4F1A'
+                    name:
+                      - color: '#EF4F1A'
               styles:
                 card:
                   #- border-radius: 0%
@@ -93,14 +93,14 @@
               state:
                 - value: home
                   styles:
-                  name:
-                    - color: '#629632'
+                    name:
+                      - color: '#629632'
                   entity_picture: "/local/images/persons/emily_home.jpeg"
                 - value: not_home
                   entity_picture: "/local/images/persons/emily_away.jpeg"
                   styles:
-                  name:
-                    - color: '#EF4F1A'
+                    name:
+                      - color: '#EF4F1A'
               styles:
                 card:
                   #- border-radius: 0%
@@ -147,66 +147,6 @@
                       style="width: 12px; height: 12px; color: deepskyblue;">
                       </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
                   ]]]
-    - type: horizontal-stack
-      cards:
-        - entity: light.kitchen_pendant_lights
-          show_state: false
-          show_name: false
-          state_color: true
-          icon: mdi:chef-hat
-          icon_height: 30px
-          type: button
-          hold_action:
-          action: navigate
-          navigation_path: /lovelace/kitchen/
-        - entity: light.lounge_room_lamp
-          show_state: false
-          show_name: false
-          state_color: true
-          icon: mdi:sofa
-          icon_height: 30px
-          type: button
-          hold_action:
-            action: navigate
-          navigation_path: /lovelace/lounge_room/
-    - type: horizontal-stack
-      cards:
-        - entity: light.bedroom_lamps
-          show_state: false
-          show_name: false
-          state_color: true
-          icon: mdi:bed-king-outline
-          icon_height: 30px
-          type: button
-          tap_action:
-            action: toggle
-          hold_action:
-            action: navigate
-          navigation_path: /lovelace/bedroom/
-        - entity: light.ollie_s_lamp
-          show_state: false
-          show_name: false
-          state_color: true
-          icon: mdi:heart-outline
-          icon_height: 30px
-          type: button
-          tap_action:
-            action: toggle
-          hold_action:
-            action: navigate
-          navigation_path: /lovelace/ollie_room/
-        - entity: light.teddy_s_lamp
-          show_state: false
-          show_name: false
-          state_color: true
-          icon: mdi:pokeball
-          icon_height: 30px
-          type: button
-          tap_action:
-            action: toggle
-          hold_action:
-            action: navigate
-          navigation_path: /lovelace/teddy_room/
     - type: vertical-stack
       cards:
         - name: Security
