@@ -39,9 +39,10 @@
               - color: var(--primary-text-color)
           tap_action:
             action: toggle
+            haptic: light
           hold_action:
             action: more-info
-          haptic: light
+            haptic: light
     - type: vertical-stack
       cards:
         - type: markdown
