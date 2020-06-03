@@ -6,31 +6,60 @@
     cards:
       - type: vertical-stack
         cards:
-          - name: Lights
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
-          - entity: light.ollie_s_lamp
-            name: Ollie's Lamp
-            show_state: true
-            state_color: true
-            icon: mdi:lamp
-            icon_height: 30px
-            type: light
-            tap_action:
-              action: toggle
-            hold_action:
-              action: more-info
+          - type: markdown
+          content: |
+            # Lights
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
+          - type: 'custom:button-card'
+            icon: 'mdi:lamp'
+            entity: light.ollie_s_lamp
+            show_icon: true
+            show_name: false
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)  '
+                value: 'on'
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') and is_state('light.ollie_s_lamp', 'on') %}
+                    inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'above_horizon') and is_state('light.ollie_s_lamp', 'off') %}                      
+                    -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.ollie_s_lamp', 'on') %}                      
+                    inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.ollie_s_lamp', 'off') %}   
+                    -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}    
+              }
       - type: vertical-stack
         cards:
-          - name: Scenes
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          - type: markdown
+          content: |
+            # Scenes
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
           - type: horizontal-stack
             cards:
               - name: Night Light
@@ -55,12 +84,20 @@
                 type: button
       - type: vertical-stack
         cards:
-          - name: Climate
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          - type: markdown
+          content: |
+            # Climate
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.ollie_room_temperature
@@ -69,17 +106,61 @@
                   icon: false
                   name: false
                   state: false
+                style: |
+                  ha-card {
+                    background-color: var(--primary-background-color);
+                    border-radius: 15px;
+                    margin: 10px;
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                      {% else %}
+                        -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                      {% endif %}   
+                  }
           - entity: climate.ollie_room
             type: thermostat
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% else %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+              }
       - type: vertical-stack
         cards:
-          - name: Media
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          - type: markdown
+          content: |
+            # Media
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
           - type: custom:mini-media-player
             entity: media_player.ollie_s_speaker
             info: scroll
             artwork: cover
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% else %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+              }
