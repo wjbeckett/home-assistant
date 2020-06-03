@@ -77,7 +77,9 @@
               custom_fields:
                 status: |
                   [[[
-                    return `<ha-icon style="width: 12px; height: 12px; color: black;"></ha-icon><span>${entity.state}</span>`
+                    return `<ha-icon
+                      style="width: 12px; height: 12px; color: black;">
+                      </ha-icon><span>${entity.state}</span>`
                   ]]]
                 battery: |
                   [[[

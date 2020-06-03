@@ -20,7 +20,7 @@
           icon_height: 30px
           type: light
           hold_action:
-          action: more-info
+            action: more-info
     - type: vertical-stack
       cards:
         - name: Scenes

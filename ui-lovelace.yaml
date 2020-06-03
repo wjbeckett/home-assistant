@@ -41,13 +41,10 @@ button_card_templates:
 
 custom_header:
   compact_mode: true
-  elements_color: var(--primary-text-color)
-  tab_indicator_color: var(--state-icon-active-color)
-  background: var(--primary-background-color)
-  #background: var(--app-header-background-color)
-  #elements_color: var(--app-header-text-color)
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
   active_tab_color: var(--state-icon-active-color)
-  #tab_indicator_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
   
 swipe_nav:
   wrap: false
@@ -57,4 +54,1052 @@ swipe_nav:
   
 title: Beckett Home
 views:
-  !include_dir_merge_list views/
+  - icon: mdi:home-assistant
+    id: home
+    title: home
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Weather in Warner
+            template: header
+            type: custom:button-card
+          - type: horizontal-stack
+            cards:
+              - type: custom:simple-weather-card
+                entity: weather.dark_sky
+                name: in current location
+      - type: vertical-stack
+        cards:
+          - name: Family Status
+            template: header
+            type: custom:button-card
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                entity: person.william
+                aspect_ratio: 1/1
+                name: William
+                show_entity_picture: true
+                state:
+                  - value: home
+                    styles:
+                      name:
+                        - color: '#629632'
+                    entity_picture: "/local/images/persons/william_home.png"
+                  - value: not_home
+                    entity_picture: "/local/images/persons/william_away.png"
+                    styles:
+                      name:
+                        - color: '#EF4F1A'
+                  - value: woolies_warner
+                    entity_picture: "/local/images/persons/william_shops.png"
+                    styles:
+                      name:
+                        - color: '#EF4F1A'
+                styles:
+                  card:
+                    #- border-radius: 0%
+                    - padding: 5%
+                    - color: ivory
+                    - font-size: 12px
+                    - text-shadow: 0px 0px 0px black
+                    - text-transform: capitalize
+                    - justify-self: end
+                    - align-self: middle
+                  grid:
+                    - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
+                    - grid-template-columns: 1fr 1fr
+                    - grid-template-rows: 1fr min-content min-content min-content min-content
+                  name:
+                    - font-size: 16px
+                    - align-self: middle
+                    - justify-self: start
+                    - padding-bottom: 0px
+                  icon:
+                    - width: 100%
+                  custom_fields:
+                    status:
+                      - align-self: start
+                      - justify-self: end
+                      - color: gray
+                    #proximity:
+                    #  - padding-bottom: 0px
+                    #  - align-self: middle
+                    #  - justify-self: start
+                    #  - color: gray
+                    battery:
+                      - padding-bottom: 0px
+                      - align-self: middle
+                      - justify-self: start
+                      - color: gray
+                      - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
+                custom_fields:
+                  status: |
+                    [[[
+                      return `<ha-icon
+                        style="width: 12px; height: 12px; color: black;">
+                        </ha-icon><span>${entity.state}</span>`
+                    ]]]
+                  #proximity: |
+                  #  [[[
+                  #    return `<ha-icon
+                  #      icon="mdi:map-marker-distance"
+                  #      style="width: 12px; height: 12px; color: deepskyblue;">
+                  #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
+                  #  ]]]
+                  battery: |
+                    [[[
+                      return `<ha-icon
+                        icon="mdi:cellphone-android"
+                        style="width: 12px; height: 12px; color: deepskyblue;">
+                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
+                    ]]]
+              - type: 'custom:button-card'
+                entity: person.emily
+                aspect_ratio: 1/1
+                name: Emily
+                show_entity_picture: true
+                state:
+                  - value: home
+                    styles:
+                      name:
+                        - color: '#629632'
+                    entity_picture: "/local/images/persons/emily_home.jpeg"
+                  - value: not_home
+                    entity_picture: "/local/images/persons/emily_away.jpeg"
+                    styles:
+                      name:
+                        - color: '#EF4F1A'
+                styles:
+                  card:
+                    #- border-radius: 0%
+                    - padding: 5%
+                    - color: ivory
+                    - font-size: 12px
+                    - text-shadow: 0px 0px 0px black
+                    - text-transform: capitalize
+                    - justify-self: end
+                    - align-self: middle
+                  grid:
+                    - grid-template-areas: '"i status" "n n" "proximity proximity" "battery battery" "sd sd"'
+                    - grid-template-columns: 1fr 1fr
+                    - grid-template-rows: 1fr min-content min-content min-content min-content
+                  name:
+                    - font-size: 16px
+                    - align-self: middle
+                    - justify-self: start
+                    - padding-bottom: 0px
+                  icon:
+                    - width: 100%
+                  custom_fields:
+                    status:
+                      - align-self: start
+                      - justify-self: end
+                      - color: gray
+                    #proximity:
+                    #  - padding-bottom: 0px
+                    #  - align-self: middle
+                    #  - justify-self: start
+                    #  - color: gray
+                    battery:
+                      - padding-bottom: 0px
+                      - align-self: middle
+                      - justify-self: start
+                      - color: gray
+                      - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
+                custom_fields:
+                  status: |
+                    [[[
+                      return `<ha-icon
+                        style="width: 12px; height: 12px; color: black;">
+                        </ha-icon><span>${entity.state}</span>`
+                    ]]]
+                  #proximity: |
+                  #  [[[
+                  #    return `<ha-icon
+                  #      icon="mdi:map-marker-distance"
+                  #      style="width: 12px; height: 12px; color: deepskyblue;">
+                  #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
+                  #  ]]]
+                  battery: |
+                    [[[
+                      return `<ha-icon
+                        icon="mdi:cellphone-android"
+                        style="width: 12px; height: 12px; color: deepskyblue;">
+                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
+                    ]]]
+      - type: horizontal-stack
+        cards:
+          - entity: light.kitchen_pendant_lights
+            show_state: false
+            show_name: false
+            state_color: true
+            icon: mdi:chef-hat
+            icon_height: 30px
+            type: button
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/2/
+          - entity: light.lounge_room_lamp
+            show_state: false
+            show_name: false
+            state_color: true
+            icon: mdi:sofa
+            icon_height: 30px
+            type: button
+      - type: horizontal-stack
+        cards:
+          - entity: light.bedroom_lamps
+            show_state: false
+            show_name: false
+            state_color: true
+            icon: mdi:bed-king-outline
+            icon_height: 30px
+            type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/1/
+          - entity: light.ollie_s_lamp
+            show_state: false
+            show_name: false
+            state_color: true
+            icon: mdi:heart-outline
+            icon_height: 30px
+            type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/3/
+          - entity: light.teddy_s_lamp
+            show_state: false
+            show_name: false
+            state_color: true
+            icon: mdi:pokeball
+            icon_height: 30px
+            type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: /lovelace/4/
+      - type: vertical-stack
+        cards:
+          - name: Security
+            show_icon: false
+            template: header
+            type: 'custom:button-card'
+          - type: horizontal-stack
+            cards:
+              - entity: alarm_control_panel.home_alarm
+                name: Home Alarm
+                show_state: true
+                state:
+                  - styles:
+                      icon:
+                        - color: '#F0DC6E'
+                    value: pending
+                  - styles:
+                      icon:
+                        - color: '#D3D2D0'
+                    value: disarmed
+                  - styles:
+                      icon:
+                        - color: '#F9160B'
+                    value: armed_away
+                  - styles:
+                      icon:
+                        - color: '#16A914'
+                    value: armed_home
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: input_select.home_mode
+                name: Home Mode
+                show_state: true
+                state:
+                  - styles:
+                      icon:
+                        - color: '#D3D2D0'
+                    value: Home
+                  - styles:
+                      icon:
+                        - color: '#F9160B'
+                    value: Away
+                  - styles:
+                      icon:
+                        - color: '#16A914'
+                    value: Night
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: input_boolean.guest_mode
+                name: guest mode
+                show_state: true
+                template: standard_button
+                type: 'custom:button-card'
+                state:
+                  - icon: 'mdi:account-multiple'
+                    value: 'on'
+                  - icon: 'mdi:account'
+                    value: 'off'
+                    color: '#D3D2D0'
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.garage_door
+                name: Garage
+                show_state: true
+                state:
+                  - icon: 'mdi:garage-open-variant'
+                    value: open
+                    color: '#EF4F1A'
+                  - icon: 'mdi:garage-variant'
+                    value: closed
+                    color: '#00993E'
+                template: standard_button
+                type: 'custom:button-card'
+              - entity: binary_sensor.back_door
+                name: Back Door
+                show_state: true
+                state:
+                  - icon: 'mdi:door-open'
+                    value: open
+                    color: '#EF4F1A'
+                  - icon: 'mdi:door-closed'
+                    value: closed
+                    color: '#00993E'
+                template: standard_button
+                type: 'custom:button-card'
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Meds
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.morning_meds_taken
+                name: Morning Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+              - entity: input_boolean.evening_meds_taken
+                name: Evening Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+              - entity: input_boolean.bedtime_meds_taken
+                name: Bedtime Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+      - type: vertical-stack
+        cards:
+          - name: Temperatures
+            template: header
+            show_icon: false
+            show_state: false
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_temperature
+                name: Kitchen
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.bedroom_temperature
+                name: Bedroom
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.teddy_room_temperature
+                name: Teddy
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.ollie_room_temperature
+                name: Ollie
+                show_state: true
+                state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - name: Garbage Collection
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - type: custom:garbage-collection-card
+                entity: sensor.garbage_recycling
+                hide_before: 2
+                icon_size: 35px
+                icon_color: green
+                hide_date: true
+              - type: custom:garbage-collection-card
+                entity: sensor.garbage_general
+                hide_before: 2
+                icon_size: 35px
+                icon_color: '#0561ba'   
+  - icon: mdi:bed-king-outline
+    id: bedroom
+    title: Bedroom
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.bedroom_lamps
+            name: Bedroom Lamps
+            show_state: true
+            state_color: true
+            icon: mdi:lamp
+            icon_height: 30px
+            type: light
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - name: Night Light
+                show_state: false
+                icon: mdi:sleep
+                icon_height: 30px
+                tap_action: 
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bedroom_night_light
+                type: button
+              - name: Lamps Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bedroom_lamps_bright
+                type: button
+      - type: vertical-stack
+        cards:
+          - name: Climate
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.bedroom_temperature
+                name: Bedroom
+                show:
+                  icon: false
+                  name: false
+                  state: false
+          - entity: climate.bedroom
+            type: thermostat
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_tv
+            info: scroll
+            artwork: cover
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            info: scroll
+            artwork: cover
+  - icon: mdi:chef-hat
+    id: kitchen
+    title: Kitchen
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Temperature
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_temperature
+                name: Kitchen
+                show:
+                  icon: false
+                  name: false
+                  state: false
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.kitchen_pendant_lights
+                name: Kitchen Pendant Lights
+                show_state: true
+                state_color: true
+                icon: mdi:ceiling-light
+                icon_height: 30px
+                type: button
+                hold_action:
+                  action: more-info
+              - entity: light.kitchen_downlight
+                name: Kitchen Down Light
+                show_state: true
+                state_color: true`
+                icon: mdi:lightbulb
+                icon_height: 30px
+                type: button
+                hold_action:
+                  action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - name: Dim
+                show_state: false
+                icon: mdi:brightness-3
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.kitchen_dim
+                type: button
+              - name: Kitchen Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.kitchen_bright
+                type: button
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
+            info: scroll
+            artwork: cover
+  - icon: mdi:heart-outline
+    id: ollie
+    title: Ollie's Room
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.ollie_s_lamp
+            name: Ollie's Lamp
+            show_state: true
+            state_color: true
+            icon: mdi:lamp
+            icon_height: 30px
+            type: light
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - name: Night Light
+                show_state: false
+                icon: mdi:sleep
+                icon_height: 30px
+                tap_action: 
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
+                type: button
+              - name: Lamps Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bright_lights
+                type: button
+      - type: vertical-stack
+        cards:
+          - name: Climate
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.ollie_room_temperature
+                name: Ollie
+                show:
+                  icon: false
+                  name: false
+                  state: false
+          - entity: climate.ollie_room
+            type: thermostat
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            info: scroll
+            artwork: cover
+  - icon: mdi:pokeball
+    id: teddy
+    title: Teddy's Room
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Lights
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - entity: light.teddy_s_lamp
+            name: Teddy's Lamp
+            show_state: true
+            state_color: true
+            icon: mdi:lamp
+            icon_height: 30px
+            type: light
+            hold_action:
+              action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Scenes
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - name: Night Light
+                show_state: false
+                icon: mdi:sleep
+                icon_height: 30px
+                tap_action: 
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
+                type: button
+              - name: Lamps Bright
+                show_state: false
+                icon: mdi:white-balance-sunny
+                icon_height: 30px
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bright_lights
+                type: button
+      - type: vertical-stack
+        cards:
+          - name: Climate
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.teddy_room_temperature
+                name: Teddy
+                show:
+                  icon: false
+                  name: false
+                  state: false
+          - entity: climate.teddy_room
+            type: thermostat
+      - type: vertical-stack
+        cards:
+          - name: Media
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            info: scroll
+            artwork: cover
+  - icon: mdi:lightbulb-outline
+    id: lights
+    title: Lights
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Kitchen
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.kitchen_pendant_lights
+                name: Kitchen Pendant Lights
+                type: light
+              - entity: light.kitchen_downlight
+                name: Kitchen Downlight
+                type: light
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.kitchen_sensor_illuminance_lux
+                name: Kitchen Brightness
+            smoothing: true
+            hours_to_show: 24
+      - type: vertical-stack
+        cards:
+          - name: Bedroom
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.bedroom_lamps
+                name: Bedroom Lamps
+                show_state: true
+                state:
+                  - icon: 'mdi:lamp'
+                    value: 'on'
+                  - icon: 'mdi:lamp'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold_action:
+                  action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Teddy's Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.teddy_s_lamp
+                name: Teddy's Lamp
+                show_state: true
+                state:
+                  - icon: 'mdi:lamp'
+                    value: 'on'
+                  - icon: 'mdi:lamp'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold_action:
+                  action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.ollie_s_lamp
+                name: Ollie's Lamp
+                show_state: true
+                state:
+                  - icon: 'mdi:lamp'
+                    value: 'on'
+                  - icon: 'mdi:lamp'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold_action:
+                  action: more-info
+      - type: vertical-stack
+        cards:
+          - name: Lounge Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: horizontal-stack
+            cards:
+              - entity: light.lounge_room_lamp
+                name: Lounge Room Lamp
+                show_state: true
+                state:
+                  - icon: 'mdi:floor-lamp'
+                    value: 'on'
+                  - icon: 'mdi:floor-lamp'
+                    value: 'off'
+                    color: '#D3D2D0'
+                template: standard_button
+                type: 'custom:button-card'
+                hold_action:
+                  action: more-info
+  - icon: mdi:cctv
+    id: Cameras
+    title: Cameras
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Cameras
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: picture-glance
+            title: Front Door
+            camera_image: camera.front_door
+            camera_view: live
+            entities:
+            - camera.front_door
+          - type: picture-entity
+            entity: camera.deepstack_latest_image
+            title: Latest Detection
+  - icon: mdi:play-circle
+    id: Media
+    title: Media
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: All Speakers
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.all_speakers
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Lounge Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.lounge_room_tv
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Kitchen
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_display
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Bedroom
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_tv
+            info: scroll
+            artwork: cover
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Teddy's Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.teddy_s_speaker
+            info: scroll
+            artwork: cover
+      - type: vertical-stack
+        cards:
+          - name: Ollie's Room
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: custom:mini-media-player
+            entity: media_player.ollie_s_speaker
+            info: scroll
+            artwork: cover
+              
+  - icon: mdi:settings
+    id: settings
+    title: Settings
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Network
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - sensor.wifi_status
+          - type: custom:mini-graph-card
+            name: Download/Upload
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+                show_state: true
+                state_adaptive_color: true
+              - entity: sensor.speedtest_upload
+                name: Upload
+                show_state: true
+                state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - name: Switches
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - input_boolean.options_notifications_push
+              - input_boolean.location_update
+              - input_boolean.meds_reminder
+              - input_boolean.garbage_general
+              - input_boolean.garbage_recycling
+  - icon: mdi:zigbee
+    id: zigbee
+    title: Zigbee
+    cards:
+      - type: vertical-stack
+        cards:
+          - name: Zigbee
+            template: header
+            show_icon: false
+            show_state: true
+            type: 'custom:button-card'
+            layout: name_state
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.zigbee2mqtt_bridge_state
+              - entity: sensor.zigbee2mqtt_version
+              - entity: sensor.coordinator_version
+              - entity: input_select.zigbee2mqtt_log_level
+              - type: divider
+              - entity: switch.zigbee2mqtt_main_join
+              - entity: timer.zigbee_permit_join
+              - type: divider
+              - entity: input_text.zigbee2mqtt_old_name
+              - entity: input_text.zigbee2mqtt_new_name
+              - entity: script.zigbee2mqtt_rename
+              - type: divider
+              - entity: input_text.zigbee2mqtt_remove
+              - entity: script.zigbee2mqtt_remove
