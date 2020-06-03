@@ -20,9 +20,7 @@
             }
         - type: markdown
           content: |
-            # There are  {% if is_state('sensor.lights_on', '0') %}
-            currently no  {% else %}  {{states('sensor.lights_on')}}  {%
-            endif %} lights on
+            # There are {% if is_state('sensor.lights_on', '0') %}currently no {% else %}{{states('sensor.lights_on')}} {%endif %}lights on
           style: |
             ha-card {
               height: 50px;
