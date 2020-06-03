@@ -1,4 +1,4 @@
-  - icon: mdi:heart-outline
+  - icon: 🐻
     id: ollie
     title: Ollie's Room
     path: ollie_room
@@ -44,6 +44,20 @@
                     -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                   {% endif %}    
               }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+            tap_action:
+              action: toggle
+              haptic: light
+            hold_action:
+              action: more-info
+              haptic: light
       - type: vertical-stack
         cards:
           - type: markdown
