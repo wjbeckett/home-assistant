@@ -14,9 +14,7 @@
               height: 50px;
             }
             h1 {
-              font-size: 10px;
-              font-weight: thin;
-              letter-spacing: '-0.01em';
+              font-size: 8px;
             }
         - type: conditional
           conditions:
