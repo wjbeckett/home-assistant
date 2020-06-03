@@ -6,29 +6,20 @@
     cards:
     - type: vertical-stack
       cards:
-        - type: conditional
-          conditions:
-            - entity: group.all_lights
-              state: "on"
-          card:
-            type: entity-filter
-            entities:
-              - light.bedroom_lamps
-              - light.lounge_room_lamp
-              - light.kitchen_lights
-              - light.ollie_s_lamp
-              - light.teddy_s_lamp
-            state_filter:
-              - "on"
-            card:
-              type: entities
-              title: There are {% if is_state('sensor.lights_on', '0') %}currently no {% else %}{{states('sensor.lights_on')}} {%endif %}lights on
-              show_header_toggle: false
-    - type: vertical-stack
-      cards:
-        - name: Family Status
-          template: header
-          type: custom:button-card
+        - type: markdown
+          content: |
+            # Family Status
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
         - type: horizontal-stack
           cards:
             - type: 'custom:button-card'
@@ -157,12 +148,54 @@
                       style="width: 12px; height: 12px; color: deepskyblue;">
                       </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
                   ]]]
+  - type: vertical-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: group.all_lights
+            state: "on"
+        card:
+          type: entity-filter
+          entities:
+            - light.bedroom_lamps
+            - light.lounge_room_lamp
+            - light.kitchen_lights
+            - light.ollie_s_lamp
+            - light.teddy_s_lamp
+          state_filter:
+            - "on"
+          card:
+            type: entities
+            title: Lights on
+            show_header_toggle: false
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% else %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+              }
     - type: vertical-stack
       cards:
-        - name: Security
-          show_icon: false
-          template: header
-          type: 'custom:button-card'
+        - type: markdown
+          content: |
+            # Security
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
         - type: horizontal-stack
           cards:
             - entity: alarm_control_panel.home_alarm
@@ -228,12 +261,20 @@
               type: 'custom:button-card'
     - type: vertical-stack
       cards:
-        - name: Ollie's Meds
-          template: header
-          show_icon: false
-          show_state: true
-          type: 'custom:button-card'
-          layout: name_state
+        - type: markdown
+          content: |
+            # Ollie's Meds
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
         - type: horizontal-stack
           cards:
             - entity: input_boolean.morning_meds_taken
@@ -277,12 +318,20 @@
                   color: '#D3D2D0'
     - type: vertical-stack
       cards:
-        - name: Garbage Collection
-          template: header
-          show_icon: false
-          show_state: true
-          type: 'custom:button-card'
-          layout: name_state
+        - type: markdown
+          content: |
+            # Garbage Collection
+          style: |
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
         - type: horizontal-stack
           cards:
             - type: custom:garbage-collection-card
