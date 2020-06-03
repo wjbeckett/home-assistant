@@ -1,7 +1,7 @@
   - icon: mdi:home-assistant
     id: home
     title: home
-    path: home
+    path: 0
     badges: []
     cards:
     - type: vertical-stack
@@ -79,13 +79,13 @@
                     - justify-self: start
                     - color: gray
                     - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
-                custom_fields:
+              custom_fields:
                 status: |
-                    [[[
-                    return `<ha-icon
-                        style="width: 12px; height: 12px; color: black;">
-                        </ha-icon><span>${entity.state}</span>`
-                    ]]]
+                  [[[
+                  return `<ha-icon
+                      style="width: 12px; height: 12px; color: black;">
+                      </ha-icon><span>${entity.state}</span>`
+                  ]]]
                 #proximity: |
                 #  [[[
                 #    return `<ha-icon
@@ -94,12 +94,12 @@
                 #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
                 #  ]]]
                 battery: |
-                    [[[
-                    return `<ha-icon
-                        icon="mdi:cellphone-android"
-                        style="width: 12px; height: 12px; color: deepskyblue;">
-                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
-                    ]]]
+                  [[[
+                  return `<ha-icon
+                      icon="mdi:cellphone-android"
+                      style="width: 12px; height: 12px; color: deepskyblue;">
+                      </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
+                  ]]]
             - type: 'custom:button-card'
               entity: person.emily
               aspect_ratio: 1/1
@@ -153,13 +153,13 @@
                     - justify-self: start
                     - color: gray
                     - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
-                custom_fields:
+              custom_fields:
                 status: |
-                    [[[
-                    return `<ha-icon
-                        style="width: 12px; height: 12px; color: black;">
-                        </ha-icon><span>${entity.state}</span>`
-                    ]]]
+                  [[[
+                  return `<ha-icon
+                      style="width: 12px; height: 12px; color: black;">
+                      </ha-icon><span>${entity.state}</span>`
+                  ]]]
                 #proximity: |
                 #  [[[
                 #    return `<ha-icon
@@ -168,12 +168,12 @@
                 #      </ha-icon>  <span>\<span style="color: var(--text-color-sensor);">${states['proximity.david'].state} miles</span></span>`
                 #  ]]]
                 battery: |
-                    [[[
-                    return `<ha-icon
-                        icon="mdi:cellphone-android"
-                        style="width: 12px; height: 12px; color: deepskyblue;">
-                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
-                    ]]]
+                  [[[
+                  return `<ha-icon
+                      icon="mdi:cellphone-android"
+                      style="width: 12px; height: 12px; color: deepskyblue;">
+                      </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
+                  ]]]
     - type: horizontal-stack
       cards:
         - entity: light.kitchen_pendant_lights
