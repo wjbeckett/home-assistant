@@ -6,16 +6,6 @@
     cards:
     - type: vertical-stack
       cards:
-        - type: markdown
-          content: |
-            # There are {% if is_state('sensor.lights_on', '0') %}currently no {% else %}{{states('sensor.lights_on')}} {%endif %}lights on
-          style: |
-            ha-card {
-              height: 50px;
-            }
-            h1 {
-              font-size: 8px;
-            }
         - type: conditional
           conditions:
             - entity: group.all_lights
@@ -32,6 +22,7 @@
               - "on"
             card:
               type: entities
+              title: There are {% if is_state('sensor.lights_on', '0') %}currently no {% else %}{{states('sensor.lights_on')}} {%endif %}lights on
               show_header_toggle: false
     - type: vertical-stack
       cards:
