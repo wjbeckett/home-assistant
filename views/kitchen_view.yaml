@@ -37,6 +37,8 @@
                 icon: mdi:ceiling-light
                 icon_height: 30px
                 type: button
+                tap_action:
+                  action: toggle
                 hold_action:
                   action: more-info
               - entity: light.kitchen_downlight
@@ -46,6 +48,8 @@
                 icon: mdi:lightbulb
                 icon_height: 30px
                 type: button
+                tap_action:
+                  action: toggle
                 hold_action:
                   action: more-info
       - type: vertical-stack

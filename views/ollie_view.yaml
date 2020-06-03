@@ -19,6 +19,8 @@
             icon: mdi:lamp
             icon_height: 30px
             type: light
+            tap_action:
+              action: toggle
             hold_action:
               action: more-info
       - type: vertical-stack

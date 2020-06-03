@@ -5,83 +5,83 @@
     badges: []
     cards:
     - type: vertical-stack
-        cards:
+      cards:
         - name: Lights
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          template: header
+          show_icon: false
+          show_state: true
+          type: 'custom:button-card'
+          layout: name_state
         - entity: light.bedroom_lamps
-            name: Bedroom Lamps
-            show_state: true
-            state_color: true
-            icon: mdi:lamp
-            icon_height: 30px
-            type: light
-            hold_action:
-            action: more-info
+          name: Bedroom Lamps
+          show_state: true
+          state_color: true
+          icon: mdi:lamp
+          icon_height: 30px
+          type: light
+          hold_action:
+          action: more-info
     - type: vertical-stack
-        cards:
+      cards:
         - name: Scenes
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          template: header
+          show_icon: false
+          show_state: true
+          type: 'custom:button-card'
+          layout: name_state
         - type: horizontal-stack
-            cards:
+          cards:
             - name: Night Light
-                show_state: false
-                icon: mdi:sleep
-                icon_height: 30px
-                tap_action: 
+              show_state: false
+              icon: mdi:sleep
+              icon_height: 30px
+              tap_action: 
                 action: call-service
                 service: scene.turn_on
                 service_data:
-                    entity_id: scene.bedroom_night_light
-                type: button
+                  entity_id: scene.bedroom_night_light
+              type: button
             - name: Lamps Bright
-                show_state: false
-                icon: mdi:white-balance-sunny
-                icon_height: 30px
-                tap_action:
+              show_state: false
+              icon: mdi:white-balance-sunny
+              icon_height: 30px
+              tap_action:
                 action: call-service
                 service: scene.turn_on
                 service_data:
-                    entity_id: scene.bedroom_lamps_bright
-                type: button
+                  entity_id: scene.bedroom_lamps_bright
+              type: button
     - type: vertical-stack
-        cards:
+      cards:
         - name: Climate
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          template: header
+          show_icon: false
+          show_state: true
+          type: 'custom:button-card'
+          layout: name_state
         - type: custom:mini-graph-card
-            entities:
+          entities:
             - entity: sensor.bedroom_temperature
-                name: Bedroom
-                show:
+              name: Bedroom
+              show:
                 icon: false
                 name: false
                 state: false
         - entity: climate.bedroom
-            type: thermostat
+          type: thermostat
     - type: vertical-stack
-        cards:
+      cards:
         - name: Media
-            template: header
-            show_icon: false
-            show_state: true
-            type: 'custom:button-card'
-            layout: name_state
+          template: header
+          show_icon: false
+          show_state: true
+          type: 'custom:button-card'
+          layout: name_state
         - type: custom:mini-media-player
-            entity: media_player.bedroom_tv
-            info: scroll
-            artwork: cover
+          entity: media_player.bedroom_tv
+          info: scroll
+          artwork: cover
         - type: custom:mini-media-player
-            entity: media_player.bedroom_speaker
-            info: scroll
-            artwork: cover
+          entity: media_player.bedroom_speaker
+          info: scroll
+          artwork: cover
