@@ -20,27 +20,28 @@
               font-family: Helvetica;
               letter-spacing: '-0.01em';
             }
-        - entity: light.bedroom_lamps
-          name: Bedroom Lamps
-          show_state: true
-          state_color: true
-          icon: mdi:lamp
-          icon_height: 30px
-          type: light
-          hold_action:
-            action: more-info
+        - type: 'custom:button-card'
+          icon: 'mdi:lamp'
+          entity: light.bedroom_lamps
+          show_icon: true
+          show_name: false
           style: |
             ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-             }
+              margin: 10px;
+              }
+          styles:
+            card:
+              - width: 80px
+              - height: 80px
+              - border-radius: 15px
+              - background-color: var(--primary-background-color)
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+          haptic: light
     - type: vertical-stack
       cards:
         - type: markdown
