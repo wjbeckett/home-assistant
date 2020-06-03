@@ -29,14 +29,14 @@
         value_template: '{{ states.image_processing.facebox_saved_image.attributes.faces[0]["name"]|title()}}'
       lights_on:
         value_template: >
-        {% set lights = [
-          states.light.bedroom_lamps,
-          states.light.kitchen_lights,
-          states.light.lounge_room_lamp,
-          states.light.ollie_s_lamp,
-          states.light.teddy_s_lamp,
-          ] %}
-        {{ lights | selectattr('state','eq','on') | list | count }}
+          {% set lights = [
+            states.light.bedroom_lamps,
+            states.light.kitchen_lights,
+            states.light.lounge_room_lamp,
+            states.light.ollie_s_lamp,
+            states.light.teddy_s_lamp,
+            ] %}
+          {{ lights | selectattr('state','eq','on') | list | count }}
   - platform: mqtt
     name: Zigbee2mqtt Bridge state
     state_topic: "zigbee2mqtt/bridge/state"
