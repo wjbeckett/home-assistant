@@ -26,7 +26,7 @@
               entity: person.william
               name: William
               show_entity_picture: true
-              size: 68%
+              size: 70%
               state:
                 - value: home
                   styles:
@@ -75,12 +75,12 @@
                     - color: gray
                     - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
               custom_fields:
-                status: |
-                  [[[
-                    return `<ha-icon
-                      style="width: 12px; height: 12px; color: black;">
-                      </ha-icon><span>${entity.state}</span>`
-                  ]]]
+                #status: |
+                #  [[[
+                #    return `<ha-icon
+                #      style="width: 12px; height: 12px; color: black;">
+                #      </ha-icon><span>${entity.state}</span>`
+                #  ]]]
                 battery: |
                   [[[
                     return `<ha-icon icon="mdi:cellphone-android" style="width: 12px; height: 12px; color: deepskyblue;"> </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
@@ -101,6 +101,7 @@
               entity: person.emily
               name: Emily
               show_entity_picture: true
+              size: 70%
               state:
                 - value: home
                   styles:
@@ -129,8 +130,6 @@
                   - align-self: middle
                   - justify-self: start
                   - padding-bottom: 0px
-                icon:
-                  - width: 100%
                 custom_fields:
                   status:
                     - align-self: start
@@ -143,12 +142,12 @@
                     - color: gray
                     - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
               custom_fields:
-                status: |
-                  [[[
-                    return `<ha-icon
-                      style="width: 12px; height: 12px; color: black;">
-                      </ha-icon><span>${entity.state}</span>`
-                  ]]]
+                #status: |
+                #  [[[
+                #    return `<ha-icon
+                #      style="width: 12px; height: 12px; color: black;">
+                #      </ha-icon><span>${entity.state}</span>`
+                #  ]]]
                 battery: |
                   [[[
                     return `<ha-icon
