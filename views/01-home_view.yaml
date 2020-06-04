@@ -26,6 +26,7 @@
               entity: person.william
               name: William
               show_entity_picture: true
+              size: 80%
               state:
                 - value: home
                   styles:
@@ -61,7 +62,7 @@
                   - justify-self: start
                   - padding-bottom: 0px
                 #icon:
-                #  - width: 100%
+                #  - width: auto
                 custom_fields:
                   status:
                     - align-self: start
