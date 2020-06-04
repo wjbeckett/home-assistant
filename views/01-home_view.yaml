@@ -52,8 +52,8 @@
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
-                  #- justify-self: end
-                  #- align-self: middle
+                  - justify-self: end
+                  - align-self: middle
                 grid:
                   - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
                   - grid-template-columns: 1fr 1fr
@@ -64,7 +64,6 @@
                   - justify-self: start
                   - padding-bottom: 0px
                 icon:
-                  - align_self: middle
                   - width: 100%
                 custom_fields:
                   status:
@@ -125,8 +124,8 @@
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
-                  #- justify-self: end
-                  #- align-self: middle
+                  - justify-self: end
+                  - align-self: middle
                 grid:
                   - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
                   - grid-template-columns: 1fr 1fr
