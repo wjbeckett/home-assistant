@@ -57,7 +57,7 @@
                 grid:
                   - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
                   - grid-template-columns: 1fr 1fr
-                  - grid-template-rows: 1fr min-content min-content min-content min-content
+                  - grid-template-rows: 1fr min-content min-content min-content
                 name:
                   - font-size: 16px
                   - align-self: middle
@@ -129,7 +129,7 @@
                 grid:
                   - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
                   - grid-template-columns: 1fr 1fr
-                  - grid-template-rows: 1fr min-content min-content min-content min-content
+                  - grid-template-rows: 1fr min-content min-content min-content
                 name:
                   - font-size: 16px
                   - align-self: middle
@@ -140,7 +140,7 @@
                 custom_fields:
                   status:
                     - align-self: start
-                    - justify-self: end
+                    - justify-self: center
                     - color: gray
                   battery:
                     - padding-bottom: 0px
