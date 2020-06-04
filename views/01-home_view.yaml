@@ -26,7 +26,7 @@
               entity: person.william
               name: William
               show_entity_picture: true
-              size: 80%
+              size: 60%
               state:
                 - value: home
                   styles:
