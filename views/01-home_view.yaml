@@ -45,15 +45,15 @@
                       - color: '#EF4F1A'
               styles:
                 card:
-                  - width: 180px
-                  - height: 180px
+                  - width: 150px
+                  - height: 150px
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
                   - justify-self: end
                   - align-self: middle
                 grid:
-                  - grid-template-areas: '"i" "n" "s" "battery"'
+                  - grid-template-areas: '"i" "n" "status" "battery"'
                   - grid-template-columns: 1fr
                   - grid-template-rows: 1fr min-content min-content min-content
                 name:
@@ -61,13 +61,11 @@
                   - align-self: middle
                   - justify-self: start
                   - padding-bottom: 0px
-                #icon:
-                #  - width: auto
                 custom_fields:
-                  #status:
-                  #  - align-self: start
-                  #  - justify-self: start
-                  #  - color: gray
+                  status:
+                    - align-self: start
+                    - justify-self: start
+                    - color: gray
                   battery:
                     - padding-bottom: 0px
                     - align-self: middle
@@ -75,12 +73,10 @@
                     - color: gray
                     - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
               custom_fields:
-                #status: |
-                #  [[[
-                #    return `<ha-icon
-                #      style="width: 12px; height: 12px; color: black;">
-                #      </ha-icon><span>${entity.state}</span>`
-                #  ]]]
+                status: |
+                  [[[
+                    return `<span>${entity.state}</span>`
+                  ]]]
                 battery: |
                   [[[
                     return `<ha-icon icon="mdi:cellphone-android" style="width: 12px; height: 12px; color: deepskyblue;"> </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
