@@ -24,7 +24,6 @@
           cards:
             - type: 'custom:button-card'
               entity: person.william
-              #aspect_ratio: 1/1
               name: William
               show_entity_picture: true
               state:
@@ -45,10 +44,7 @@
                       - color: '#EF4F1A'
               styles:
                 card:
-                  #- width: 150px
-                  #- height: 150px
-                  #- padding: 5%
-                  - color: ivory
+                  #- color: ivory
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
@@ -64,7 +60,7 @@
                   - justify-self: start
                   - padding-bottom: 0px
                 icon:
-                  - width: 100%
+                  #- width: 100%
                 custom_fields:
                   status:
                     - align-self: start
@@ -101,7 +97,6 @@
                 }
             - type: 'custom:button-card'
               entity: person.emily
-              #aspect_ratio: 1/1
               name: Emily
               show_entity_picture: true
               state:
@@ -117,10 +112,7 @@
                       - color: '#EF4F1A'
               styles:
                 card:
-                  #- width: 150px
-                  #- height: 150px
-                  #- padding: 5%
-                  - color: ivory
+                  #- color: ivory
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
