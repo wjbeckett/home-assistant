@@ -60,8 +60,8 @@
                   - align-self: middle
                   - justify-self: start
                   - padding-bottom: 0px
-                icon:
-                  - width: 100%
+                #icon:
+                #  - width: 100%
                 custom_fields:
                   status:
                     - align-self: start
