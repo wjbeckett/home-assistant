@@ -348,27 +348,20 @@
             - entity: sensor.garbage_general
               state: "in 2 days"
           card:
-            type: entity-filter
-            entities:
-              - sensor.garbage_general
-              - sensor.garbage_recycling
-            state_filter:
-              - "in 2 days"
-            card:
-              - type: markdown
-                content: |
-                  # Garbage Collection
-                style: |
-                  ha-card {
-                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                      box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
+            type: markdown
+            content: |
+              # Garbage Collection
+            style: |
+              ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+              }
+              h1 {
+                font-size: 20px;
+                font-weight: bold;
+                font-family: Helvetica;
+                letter-spacing: '-0.01em';
+              }
         - type: horizontal-stack
           cards:
             - type: custom:garbage-collection-card
