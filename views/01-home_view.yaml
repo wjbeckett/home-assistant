@@ -291,7 +291,7 @@
               styles:
                 card:
                   - border-radius: 15px
-                  - background-color: var(--primary-background-color)x
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
