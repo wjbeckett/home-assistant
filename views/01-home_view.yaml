@@ -43,6 +43,50 @@
                   styles:
                     name:
                       - color: '#EF4F1A'
+              styles:
+                card:
+                  #- width: 150px
+                  #- height: 150px
+                  #- padding: 5%
+                  - color: ivory
+                  - font-size: 12px
+                  - text-shadow: 0px 0px 0px black
+                  - text-transform: capitalize
+                  #- justify-self: end
+                  #- align-self: middle
+                grid:
+                  - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
+                  - grid-template-columns: 1fr 1fr
+                  - grid-template-rows: 1fr min-content min-content min-content min-content
+                name:
+                  - font-size: 16px
+                  - align-self: middle
+                  - justify-self: start
+                  - padding-bottom: 0px
+                icon:
+                  - width: 100%
+                custom_fields:
+                  status:
+                    - align-self: start
+                    - justify-self: end
+                    - color: gray
+                  battery:
+                    - padding-bottom: 0px
+                    - align-self: middle
+                    - justify-self: start
+                    - color: gray
+                    - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
+              custom_fields:
+                status: |
+                  [[[
+                    return `<ha-icon
+                      style="width: 12px; height: 12px; color: black;">
+                      </ha-icon><span>${entity.state}</span>`
+                  ]]]
+                battery: |
+                  [[[
+                    return `<ha-icon icon="mdi:cellphone-android" style="width: 12px; height: 12px; color: deepskyblue;"> </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
+                  ]]]
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
@@ -71,6 +115,53 @@
                   styles:
                     name:
                       - color: '#EF4F1A'
+              styles:
+                card:
+                  #- width: 150px
+                  #- height: 150px
+                  #- padding: 5%
+                  - color: ivory
+                  - font-size: 12px
+                  - text-shadow: 0px 0px 0px black
+                  - text-transform: capitalize
+                  #- justify-self: end
+                  #- align-self: middle
+                grid:
+                  - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
+                  - grid-template-columns: 1fr 1fr
+                  - grid-template-rows: 1fr min-content min-content min-content min-content
+                name:
+                  - font-size: 16px
+                  - align-self: middle
+                  - justify-self: start
+                  - padding-bottom: 0px
+                icon:
+                  - width: 100%
+                custom_fields:
+                  status:
+                    - align-self: start
+                    - justify-self: end
+                    - color: gray
+                  battery:
+                    - padding-bottom: 0px
+                    - align-self: middle
+                    - justify-self: start
+                    - color: gray
+                    - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
+              custom_fields:
+                status: |
+                  [[[
+                    return `<ha-icon
+                      style="width: 12px; height: 12px; color: black;">
+                      </ha-icon><span>${entity.state}</span>`
+                  ]]]
+                battery: |
+                  [[[
+                    return `<ha-icon
+                      icon="mdi:cellphone-android"
+                      style="width: 12px; height: 12px; color: deepskyblue;">
+                      </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
+                  ]]]
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
