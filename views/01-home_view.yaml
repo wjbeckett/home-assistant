@@ -51,8 +51,8 @@
                   - justify-self: end
                   - align-self: middle
                 grid:
-                  - grid-template-areas: '"i status" "n n" "battery battery" "sd sd"'
-                  - grid-template-columns: 1fr 1fr
+                  - grid-template-areas: 'i' 'n' 's' 'battery'
+                  - grid-template-columns: 1fr
                   - grid-template-rows: 1fr min-content min-content min-content
                 name:
                   - font-size: 16px
@@ -63,7 +63,7 @@
                   - width: 100%
                 custom_fields:
                   status:
-                    - align-self: end
+                    - align-self: middle
                     - justify-self: start
                     - color: gray
                   battery:
