@@ -60,11 +60,11 @@
                   - justify-self: start
                   - padding-bottom: 0px
                 icon:
-                  #- width: 100%
+                  - width: 100%
                 custom_fields:
                   status:
-                    - align-self: start
-                    - justify-self: center
+                    - align-self: middle
+                    - justify-self: start
                     - color: gray
                   battery:
                     - padding-bottom: 0px
