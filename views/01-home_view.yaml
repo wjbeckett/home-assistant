@@ -236,7 +236,9 @@
               size: 30px
               type: 'custom:button-card'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
@@ -260,7 +262,9 @@
                   value: 'off'
                   color: '#D3D2D0'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
@@ -285,7 +289,9 @@
               size: 30px
               type: 'custom:button-card'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)x
               style: |
                 ha-card {
                   margin: 10px;
@@ -310,7 +316,9 @@
               size: 30px
               type: 'custom:button-card'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
@@ -352,7 +360,9 @@
                   value: 'off'
                   color: '#D3D2D0'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
@@ -377,7 +387,9 @@
                   value: 'off'
                   color: '#D3D2D0'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
@@ -402,7 +414,9 @@
                   value: 'off'
                   color: '#D3D2D0'
               styles:
-                - border-radius: 15px
+                card:
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
