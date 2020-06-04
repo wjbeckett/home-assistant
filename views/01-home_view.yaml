@@ -63,7 +63,7 @@
                   - width: 100%
                 custom_fields:
                   status:
-                    - align-self: middle
+                    - align-self: end
                     - justify-self: start
                     - color: gray
                   battery:
