@@ -45,8 +45,8 @@
                       - color: '#EF4F1A'
               styles:
                 card:
-                  - width: 150px
-                  - height: 150px
+                  - width: 160px
+                  - height: 160px
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
@@ -97,7 +97,7 @@
               entity: person.emily
               name: Emily
               show_entity_picture: true
-              size: 70%
+              size: 75%
               state:
                 - value: home
                   styles:
@@ -111,7 +111,8 @@
                       - color: '#EF4F1A'
               styles:
                 card:
-                  - width: 180px
+                  - width: 150px
+                  - height: 150px
                   - font-size: 12px
                   - text-shadow: 0px 0px 0px black
                   - text-transform: capitalize
@@ -138,12 +139,10 @@
                     - color: gray
                     - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
               custom_fields:
-                #status: |
-                #  [[[
-                #    return `<ha-icon
-                #      style="width: 12px; height: 12px; color: black;">
-                #      </ha-icon><span>${entity.state}</span>`
-                #  ]]]
+                status: |
+                  [[[
+                    return `<span>${entity.state}</span>`
+                  ]]]
                 battery: |
                   [[[
                     return `<ha-icon
