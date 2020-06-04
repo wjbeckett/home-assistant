@@ -68,7 +68,7 @@
                 custom_fields:
                   status:
                     - align-self: start
-                    - justify-self: end
+                    - justify-self: center
                     - color: gray
                   battery:
                     - padding-bottom: 0px
