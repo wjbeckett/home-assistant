@@ -64,7 +64,7 @@
                   haptic: light
               - type: 'custom:button-card'
                 icon: 'mdi:lightbulb'
-                entity: light.kitchen_pendant_lights
+                entity: light.downlight
                 show_icon: true
                 show_name: true
                 state:

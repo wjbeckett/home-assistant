@@ -189,6 +189,7 @@
                 type: 'custom:button-card'
                 icon: 'mdi:ceiling-light'
                 entity: light.kitchen_lights
+                name: Kitchen Lights
                 show_icon: true
                 show_name: true
                 state:
