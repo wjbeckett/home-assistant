@@ -29,7 +29,7 @@
             hold_action:
               action: more-info
             show_icon: true
-            show_name: false
+            show_name: true
             state:
               - styles:
                   icon:
@@ -51,10 +51,12 @@
               }
             styles:
               card:
-                - width: 80px
-                - height: 80px
+                - width: 120px
+                - height: 120px
                 - border-radius: 15px
                 - background-color: var(--primary-background-color)
+              name:
+                - font-size: 12px
               icon:
                 - color: var(--primary-text-color)
 
