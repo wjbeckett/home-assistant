@@ -257,7 +257,7 @@
               type: 'custom:button-card'
               state:
                 - icon: 'mdi:account-multiple'
-                    - color: 'var(--paper-item-icon-active-color)'
+                  color: 'var(--paper-item-icon-active-color)'
                   value: 'on'
                 - icon: 'mdi:account'
                   value: 'off'
