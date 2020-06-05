@@ -95,3 +95,13 @@
       transition: 2
     media_player.bedroom_tv:
       state: 'on'
+- id: 'lounge_room_movie_time'
+  name: Lounge Room Movie Time
+  entities:
+    light.lounge_room_lamp:
+      brightness_pct: 20
+      color_temp: 453
+      state: 'on'
+      transition: 2
+    media_player.lounge_room_tv:
+      state: 'on'
