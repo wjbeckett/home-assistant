@@ -75,7 +75,7 @@
               custom_fields:
                 status: |
                   [[[
-                    return `<span>${states.person.william.state}</span>`
+                    return `<span>(states["person.william"])</span>`
                   ]]]
                 battery: |
                   [[[
@@ -141,7 +141,7 @@
               custom_fields:
                 status: |
                   [[[
-                    return `<span>${states.person.emily.state}</span>`
+                    return `<span>${(states["person.william"])}</span>`
                   ]]]
                 battery: |
                   [[[
@@ -190,30 +190,30 @@
                 - entity: light.kitchen_lights
                   state: "on"
               card:
-                - type: 'custom:button-card'
-                  icon: 'mdi:ceiling-light'
-                  entity: light.kitchen_lights
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: 'var(--paper-item-icon-active-color)  '
-                      value: 'on'
-                  style: |
-                    ha-card {
-                      margin: 10px;
-                      box-shadow: 
-                        {% if is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_lights', 'on') %}
-                          inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                        {% elif is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_lights', 'off') %}                      
-                          -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                        {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_lights', 'on') %}                      
-                          inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                        {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_lights', 'off') %}   
-                          -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                        {% endif %}    
-                    }
+                type: 'custom:button-card'
+                icon: 'mdi:ceiling-light'
+                entity: light.kitchen_lights
+                show_icon: true
+                show_name: false
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    margin: 10px;
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_lights', 'on') %}
+                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_lights', 'off') %}                      
+                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_lights', 'on') %}                      
+                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_lights', 'off') %}   
+                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+                      {% endif %}    
+                  }
     - type: vertical-stack
       cards:
         - type: markdown
