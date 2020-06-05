@@ -103,9 +103,9 @@
                     icon:
                         - color: var(--primary-text-color)
                     tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
+                      action: call-service
+                      service: scene.turn_on
+                      service_data:
                         entity_id: scene.night_light
                     haptic: light
                   - type: vertical-stack
@@ -113,7 +113,7 @@
                       - type: markdown
                         content: |
                           # Night Light
-                          style: |
+                        style: |
                           ha-card {
                             height: 20px;                  
                             --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
@@ -166,9 +166,9 @@
                     icon:
                         - color: var(--primary-text-color)
                     tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
+                      action: call-service
+                      service: scene.turn_on
+                      service_data:
                         entity_id: scene.bright_lights
                     haptic: light
                   - type: vertical-stack
