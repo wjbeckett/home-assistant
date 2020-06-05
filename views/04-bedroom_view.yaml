@@ -28,7 +28,7 @@
           state:
             - styles:
                 icon:
-                  - color: 'var(--paper-item-icon-active-color)  '
+                  - color: 'var(--paper-item-icon-active-color)'
               value: 'on'
           style: |
             ha-card {
