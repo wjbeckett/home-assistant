@@ -95,12 +95,12 @@
                           {% endif %}    
                       }
                     styles:
-                    card:
+                      card:
                         - width: 80px
                         - height: 80px
                         - border-radius: 15px
                         - background-color: var(--primary-background-color)
-                    icon:
+                      icon:
                         - color: var(--primary-text-color)
                     tap_action:
                       action: call-service
@@ -158,12 +158,12 @@
                         {% endif %}    
                       }
                     styles:
-                    card:
+                      card:
                         - width: 80px
                         - height: 80px
                         - border-radius: 15px
                         - background-color: var(--primary-background-color)
-                    icon:
+                      icon:
                         - color: var(--primary-text-color)
                     tap_action:
                       action: call-service
