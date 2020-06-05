@@ -46,10 +46,12 @@
               }
             styles:
               card:
-                - width: 100px
-                - height: 100px
+                - width: 150px
+                - height: 150px
                 - border-radius: 15px
                 - background-color: var(--primary-background-color)
+              name:
+                - font-size: 12px
               icon:
                 - color: var(--primary-text-color)
             tap_action:
