@@ -25,6 +25,7 @@
               - type: 'custom:button-card'
                 icon: 'mdi:ceiling-light'
                 entity: light.kitchen_pendant_lights
+                name: Kitchen Pendants
                 show_icon: true
                 show_name: true
                 state:
@@ -64,7 +65,8 @@
                   haptic: light
               - type: 'custom:button-card'
                 icon: 'mdi:lightbulb'
-                entity: light.downlight
+                entity: light.kitchen_downlight
+                name: Kitchen Downlight
                 show_icon: true
                 show_name: true
                 state:
