@@ -434,7 +434,7 @@
                     icon:
                       - color: '#16A914'
                   value: armed_home
-              template: standard_button
+              #template: standard_button
               size: 30px
               type: 'custom:button-card'
               styles:
@@ -454,7 +454,7 @@
             - entity: input_boolean.guest_mode
               name: guest mode
               show_state: true
-              template: standard_button
+              #template: standard_button
               size: 30px
               type: 'custom:button-card'
               state:
