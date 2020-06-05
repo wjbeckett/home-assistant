@@ -60,7 +60,7 @@
               haptic: light
       - type: vertical-stack
         cards:
-        - type: markdown
+          - type: markdown
             content: |
             # Scenes
             style: |
