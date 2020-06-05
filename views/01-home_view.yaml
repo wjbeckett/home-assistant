@@ -141,7 +141,7 @@
               custom_fields:
                 status: |
                   [[[
-                    return `<span>${states("person.emily")}</span>`
+                    <span>states("person.emily")</span>
                   ]]]
                 battery: |
                   [[[
