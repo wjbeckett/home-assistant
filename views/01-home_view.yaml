@@ -257,22 +257,23 @@
               type: 'custom:button-card'
               state:
                 - icon: 'mdi:account-multiple'
+                    - color: 'var(--paper-item-icon-active-color)'
                   value: 'on'
                 - icon: 'mdi:account'
                   value: 'off'
                   color: '#D3D2D0'
-              styles:
-                card:
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
               style: |
                 ha-card {
                   margin: 10px;
                   box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'below_horizon') %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                    {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.guest_mode', 'on') %}
+                      inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+                    {% elif is_state('sun.sun', 'above_horizon') and is_state('input_boolean.guest_mode', 'off') %}                      
+                      -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+                    {% elif is_state('sun.sun', 'below_horizon') and is_state('input_boolean.guest_mode', 'on') %}                      
+                      inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+                    {% elif is_state('sun.sun', 'below_horizon') and is_state('input_boolean.guest_mode', 'off') %}   
+                      -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                     {% endif %}    
                 }
             - type: conditional
@@ -291,7 +292,6 @@
                   - icon: 'mdi:garage-variant'
                     value: closed
                     color: '#00993E'
-                #template: standard_button
                 size: 30px
                 styles:
                   card:
@@ -322,9 +322,7 @@
                   - icon: 'mdi:door-closed'
                     value: closed
                     color: '#00993E'
-                template: standard_button
                 size: 30px
-                
                 styles:
                   card:
                     - border-radius: 15px
