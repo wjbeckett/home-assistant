@@ -60,42 +60,150 @@
               haptic: light
       - type: vertical-stack
         cards:
-          - type: markdown
+        - type: markdown
             content: |
-              # Scenes
+            # Scenes
             style: |
-              ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
+            ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+            h1 {
                 font-size: 20px;
                 font-weight: bold;
                 font-family: Helvetica;
                 letter-spacing: '-0.01em';
-              }
-          - type: horizontal-stack
+            }
+      - type: vertical-stack
+        cards:
+          - type: vertical-stack
             cards:
-              - name: Night Light
-                show_state: false
-                icon: mdi:sleep
-                icon_height: 30px
-                tap_action: 
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.night_light
-                type: button
-              - name: Lamps Bright
-                show_state: false
-                icon: mdi:white-balance-sunny
-                icon_height: 30px
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.bright_lights
-                type: button
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    icon: 'mdi:sleep'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        margin: 10px;
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% elif is_state('sun.sun', 'below_horizon') %}
+                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                          {% endif %}    
+                      }
+                    styles:
+                    card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                    icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    service_data:
+                        entity_id: scene.night_light
+                    haptic: light
+                  - type: vertical-stack
+                    cards:
+                      - type: markdown
+                        content: |
+                          # Night Light
+                          style: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                      - type: markdown
+                        content: |
+                          # Dims the boys lamps for bedtime
+                        style: >
+                          ha-card {
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+    
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                              }
+                          h1 {
+                            font-size: 15px;
+                            font-weight: thin;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    icon: 'mdi:white-balance-sunny'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        margin: 10px;
+                        box-shadow: 
+                        {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                        {% endif %}    
+                      }
+                    styles:
+                    card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                    icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    service_data:
+                        entity_id: scene.bright_lights
+                    haptic: light
+                  - type: vertical-stack
+                    cards:
+                      - type: markdown
+                        content: |
+                          # Bright
+                        style: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                      - type: markdown
+                        content: |
+                          # Sets the boys lamps to max brightness
+                        style: >
+                          ha-card {
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+    
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          h1 {
+                            font-size: 15px;
+                            font-weight: thin;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
       - type: vertical-stack
         cards:
           - type: markdown
@@ -111,26 +219,6 @@
                 font-weight: bold;
                 font-family: Helvetica;
                 letter-spacing: '-0.01em';
-              }
-          - type: custom:mini-graph-card
-            entities:
-              - entity: sensor.ollie_room_temperature
-                name: Ollie's Room
-                show:
-                  icon: false
-                  name: false
-                  state: false
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
               }
           - entity: climate.ollie_room
             type: thermostat
