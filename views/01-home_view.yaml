@@ -218,6 +218,8 @@
                   card:
                     - width: 80px
                     - height: 80px
+                    - justify-self: end
+                    - align-self: middle
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
                   icon:
@@ -261,6 +263,8 @@
                   card:
                     - width: 80px
                     - height: 80px
+                    - justify-self: end
+                    - align-self: middle
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
                   icon:
@@ -304,6 +308,8 @@
                   card:
                     - width: 80px
                     - height: 80px
+                    - justify-self: end
+                    - align-self: middle
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
                   icon:
@@ -347,6 +353,8 @@
                   card:
                     - width: 80px
                     - height: 80px
+                    - justify-self: end
+                    - align-self: middle
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
                   icon:
@@ -390,6 +398,8 @@
                   card:
                     - width: 80px
                     - height: 80px
+                    - justify-self: end
+                    - align-self: middle
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
                   icon:
