@@ -120,18 +120,18 @@
                   icon: false
                   name: false
                   state: false
-                style: |
-                  ha-card {
-                    background-color: var(--primary-background-color);
-                    border-radius: 15px;
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% else %}
-                        -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}   
-                  }
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% else %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+              }
           - entity: climate.ollie_room
             type: thermostat
             style: |
