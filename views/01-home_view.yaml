@@ -138,7 +138,7 @@
                     - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
               custom_fields:
                 status: >
-                  [[[ return `<span>states['person.emily'].state</span>` ]]]
+                  [[[ return `<span>${states['person.emily'].state}</span>` ]]]
                 battery: |
                   [[[
                     return `<ha-icon
