@@ -52,6 +52,9 @@
                   - text-transform: capitalize
                   - justify-self: end
                   - align-self: middle
+                icon:
+                  - justify-self: start
+                  - align-self: start
                 grid:
                   - grid-template-areas: '"i" "n" "status" "battery"'
                   - grid-template-columns: 1fr
