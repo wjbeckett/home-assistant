@@ -52,7 +52,7 @@
                   - text-transform: capitalize
                   - justify-self: end
                   - align-self: middle
-                icon:
+                entity_picture:
                   - justify-self: start
                   - align-self: start
                 grid:
