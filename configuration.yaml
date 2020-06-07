@@ -147,6 +147,7 @@ google_assistant:
     - camera
     - alarm_control_panel
     - climate
+    - media_player
   entity_config:
     media_player.lounge_room_tv:
       name: Lounge Room TV
