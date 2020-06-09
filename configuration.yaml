@@ -218,12 +218,12 @@ camera:
 
 # Image Processing
 image_processing: 
-  - platform: facebox
-    ip_address: !secret facebox_host
-    port: 8087
-    scan_interval: 10000
-    source: 
-      - entity_id: camera.saved_image
+  #- platform: facebox
+  #  ip_address: !secret facebox_host
+  #  port: 8087
+  #  scan_interval: 10000
+  #  source: 
+  #    - entity_id: camera.saved_image
   - platform: deepstack_object
     ip_address: !secret deepstack_host
     port: 5000
