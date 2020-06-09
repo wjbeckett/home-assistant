@@ -148,10 +148,10 @@ google_assistant:
     - alarm_control_panel
     - climate
     - media_player
-  entity_config:
-    media_player.lounge_room_tv:
-      name: Lounge Room TV
-      room: Lounge Room
+  #entity_config:
+  #  media_player.lounge_room_tv:
+  #    name: Lounge Room TV
+  #    room: Lounge Room
 
 google:
   client_id: !secret google_client_id
