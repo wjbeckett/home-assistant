@@ -207,7 +207,7 @@ views:
                       - align-self: middle
                       - justify-self: start
                       - color: gray
-                      - '--text-color-sensor': '[[[ if (states["sensor.battery_level_emily"].state < 50) return "#EF4F1A"; ]]]'
+                      - '--text-color-sensor': '[[[ if (states["sensor.emily_battery_level"].state < 50) return "#EF4F1A"; ]]]'
                 custom_fields:
                   status: |
                     [[[
@@ -227,7 +227,7 @@ views:
                       return `<ha-icon
                         icon="mdi:cellphone-android"
                         style="width: 12px; height: 12px; color: deepskyblue;">
-                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.battery_level_emily'].state}% battery</span></span>`
+                        </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.emily_battery_level'].state}% battery</span></span>`
                     ]]]
   
       - type: vertical-stack
