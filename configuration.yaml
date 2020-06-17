@@ -284,9 +284,13 @@ stream:
 
 sun:
 
+# Managed via UI
+scene: !include scenes.yaml
+automation: !include automations.yaml 
+  
 # Includes
 group: !include groups.yaml
-automation: !include automations.yaml
+automation old: !include automations_old.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 zone: !include zones.yaml
