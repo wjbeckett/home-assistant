@@ -110,7 +110,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.night_light
-                    haptic: light
+                      haptic: light
                   - type: vertical-stack
                     cards:
                       - type: markdown
@@ -173,7 +173,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.bright_lights
-                    haptic: light
+                      haptic: light
                   - type: vertical-stack
                     cards:
                       - type: markdown
