@@ -22,9 +22,9 @@
             }
         - type: horizontal-stack
           cards:
-            - type: picture-glance
-              title: Home
-              entity: binary_sensor.william_presence
+            - type: picture-entity
+              title: William
+              entity: person.william
               state_image:
                 "not_home": "/local/images/persons/william_away.png"
                 "home": "/local/images/persons/william_home.png"
