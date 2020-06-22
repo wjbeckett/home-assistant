@@ -25,6 +25,7 @@
             - type: picture-entity
               title: William
               entity: binary_sensor.william_presence
+              name: William
               state_image:
                 "off": "/local/images/persons/william_away.png"
                 "on": "/local/images/persons/william_home.png"
@@ -34,7 +35,7 @@
                   background-color: var(--primary-background-color);
                   border-radius: 15px;
                   margin: 10px;
-                  width: 130px;
+                  width: 150px;
                   box-shadow: 
                     {% if is_state('sun.sun', 'above_horizon') %}
                       -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
@@ -53,7 +54,7 @@
                   background-color: var(--primary-background-color);
                   border-radius: 15px;
                   margin: 10px;
-                  width: 130px;
+                  width: 150px;
                   box-shadow: 
                     {% if is_state('sun.sun', 'above_horizon') %}
                       -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
