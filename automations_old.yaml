@@ -914,24 +914,3 @@
         message: clear_notification
         data:
           tag: garbage_recycling
-
-#################################################################
-## Shopping List Notification
-#################################################################
-#- id: "shopping_list_updated"
-#  alias: Shopping List Updated
-#  trigger:
-#    platform: event
-#    event_type: shopping_list_updated
-#  condition:
-#    - condition: state
-#      entity_id: input_boolean.options_notifications_push
-#      state: 'on'
-#  action:
-#    service: notify.all_devices
-#    data:
-#      message: "Shopping List Updated"
-#      data:
-#        click_action: !secret shopping_list
-
-
