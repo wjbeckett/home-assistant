@@ -37,7 +37,6 @@
         {% endif %}
 
 - platform: bayesian
-  device_class: presence
   prior: 0.5
   name: 'William Presence'
   probability_threshold: 0.9
@@ -53,7 +52,6 @@
       platform: 'state'
       to_state: 'home'
 - platform: bayesian
-  device_class: presence
   prior: 0.5
   name: 'Emily Presence'
   probability_threshold: 0.9
