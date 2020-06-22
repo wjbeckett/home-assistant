@@ -22,6 +22,13 @@
             }
         - type: horizontal-stack
           cards:
+            - type: picture-glance
+              title: Home
+              entity: binary_sensor.william_presence
+              state_image:
+                "not_home": "/local/images/persons/william_away.png"
+                "home": "/local/images/persons/william_home.png"
+                "woolies_warner": "/local/images/persons/william_shops.png"
             - type: 'custom:button-card'
               entity: binary_sensor.william_presence
               name: William
