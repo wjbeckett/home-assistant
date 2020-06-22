@@ -3,5 +3,5 @@
 - platform: ping
   hosts:
     william_ping: 172.30.1.100
-    emily_ping: 
+    emily_ping: 172.30.1.102
     deb_ping: 172.30.1.110
