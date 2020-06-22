@@ -1,0 +1,63 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
+- platform: darksky
+  api_key: !secret darksky_key
+  monitored_conditions:
+    - summary
+    - daily_summary
+    - hourly_summary
+    - temperature
+  scan_interval:
+    minutes: 20
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'date_time_iso'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'
+- platform: fail2ban
+  jails:
+    - hass-iptables
+  file_path: /fail2ban/fail2ban.log
+- platform: google_wifi
+  name: WiFi
+- platform: template
+  sensors:
+    #front_door_detection:
+    #  friendly_name: 'Front Door Detection'
+    #  value_template: '{{ states.image_processing.facebox_saved_image.attributes.faces[0]["name"]|title()}}'
+    lights_on:
+      value_template: >
+        {% set lights = [
+          states.light.bedroom_lamps,
+          states.light.kitchen_lights,
+          states.light.lounge_room_lamp,
+          states.light.ollie_s_lamp,
+          states.light.teddy_s_lamp,
+          ] %}
+        {{ lights | selectattr('state','eq','on') | list | count }}
+- platform: mqtt
+  name: Zigbee2mqtt Bridge state
+  state_topic: "zigbee2mqtt/bridge/state"
+  icon: mdi:router-wireless
+# Sensor for Showing the Zigbee2mqtt Version
+- platform: mqtt
+  name: Zigbee2mqtt Version
+  state_topic: "zigbee2mqtt/bridge/config"
+  value_template: "{{ value_json.version }}"
+  icon: mdi:zigbee
+# Sensor for Showing the Coordinator Version
+- platform: mqtt
+  name: Coordinator Version
+  state_topic: "zigbee2mqtt/bridge/config"
+  value_template: "{{ value_json.coordinator }}"
+  icon: mdi:chip
+- platform: mqtt
+  name: Zigbee2mqtt Networkmap
+  state_topic: zigbee2mqtt/bridge/networkmap/raw
+  value_template: >-
+    {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+  json_attributes_topic: zigbee2mqtt/bridge/networkmap/raw
