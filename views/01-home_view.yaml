@@ -26,9 +26,9 @@
               title: William
               entity: binary_sensor.william_presence
               state_image:
-                "not_home": "/local/images/persons/william_away.png"
-                "home": "/local/images/persons/william_home.png"
-                "woolies_warner": "/local/images/persons/william_shops.png"
+                "Away": "/local/images/persons/william_away.png"
+                "Home": "/local/images/persons/william_home.png"
+                "Woolies Warner": "/local/images/persons/william_shops.png"
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
