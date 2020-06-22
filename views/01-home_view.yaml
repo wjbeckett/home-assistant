@@ -23,7 +23,7 @@
         - type: horizontal-stack
           cards:
             - type: 'custom:button-card'
-              entity: person.william
+              entity: binary_sensor.william_presence
               name: William
               show_entity_picture: true
               size: 70%
@@ -77,7 +77,7 @@
                     - '--text-color-sensor': '[[[ if (states["sensor.william_battery"].state < 50) return "#EF4F1A"; ]]]'
               custom_fields:
                 status: >
-                  [[[ return `<span>${states['person.william'].state}</span>`]]]
+                  [[[ return `<span>${states['binary_sensor.william_presence'].state}</span>`]]]
                 battery: |
                   [[[
                     return `<ha-icon icon="mdi:cellphone-android" style="width: 12px; height: 12px; color: deepskyblue;"> </ha-icon> <span><span style="color: var(--text-color-sensor);">${states['sensor.william_battery'].state}% battery</span></span>`
