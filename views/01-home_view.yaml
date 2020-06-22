@@ -24,11 +24,11 @@
           cards:
             - type: picture-entity
               title: William
-              entity: binary_sensor.william_presence
+              entity: person.william
               name: William
               state_image:
-                "off": "/local/images/persons/william_away.png"
-                "on": "/local/images/persons/william_home.png"
+                "away": "/local/images/persons/william_away.png"
+                "home": "/local/images/persons/william_home.png"
                 "Woolies Warner": "/local/images/persons/william_shops.png"
               style: |
                 ha-card {
@@ -47,7 +47,7 @@
               title: Emily
               entity: person.emily
               state_image:
-                "not_home": "/local/images/persons/emily_away.jpeg"
+                "away": "/local/images/persons/emily_away.jpeg"
                 "home": "/local/images/persons/emily_home.jpeg"
               style: |
                 ha-card {

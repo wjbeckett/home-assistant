@@ -274,6 +274,7 @@ sun:
 climate: !include includes/climate.yaml
 group: !include includes/groups.yaml
 automation old: !include automations_old.yaml
+scene old: !include scenes_old.yaml
 zone: !include includes/zones.yaml
 sensor: !include includes/sensors.yaml
 binary_sensor: !include includes/binary_sensor.yaml
