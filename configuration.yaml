@@ -165,7 +165,7 @@ light:
     state_topic: "zigbee2mqtt/kitchen_lights"
     brightness: true
     color_temp: true
-    rgb_color: true
+    rgb: true
   - platform: group
     name: Bedroom Lamps
     entities:
