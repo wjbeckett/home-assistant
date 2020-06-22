@@ -1,0 +1,42 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
+options_notifications_push:
+  name: Send push notificarions
+  initial: on
+  icon: mdi:bell
+  
+guest_mode:
+  name: Guest Mode
+  initial: off
+  icon: mdi:account-multiple
+   
+location_update:
+  name: Request Location Update
+  initial: off
+  icon: mdi:map-marker
+
+morning_meds_taken:
+  name: Morning Meds have been taken
+  icon: mdi:pill
+  
+evening_meds_taken:
+  name: Evening Meds have been taken
+  icon: mdi:pill
+
+bedtime_meds_taken:
+  name: Bedtime Meds have been taken
+  icon: mdi:pill  
+
+meds_reminder:
+  name: Meds reminder enabled
+  initial: 'on'
+  
+vacation_mode:
+  name: Vacation Mode
+  initial: off
+
+garbage_general:
+  name: General Bin
+
+garbage_recycling:
+  name: Recycling Bin

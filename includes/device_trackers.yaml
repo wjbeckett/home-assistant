@@ -1,0 +1,7 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
+- platform: ping
+  hosts:
+    william_ping: 172.30.1.100
+    emily_ping: 
+    deb_ping: 172.30.1.110

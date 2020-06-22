@@ -1,6 +1,8 @@
+---
 #################################################################
 ## Groups
 #################################################################
+#- from github.com/wjbeckett/homeassistant-config
 all_lights:
   name: All Lights
   entities:

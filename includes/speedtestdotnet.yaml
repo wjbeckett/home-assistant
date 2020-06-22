@@ -1,0 +1,8 @@
+  
+---
+#- from github.com/wjbeckett/homeassistant-config
+scan_interval:
+    minutes: 120
+monitored_conditions:
+    - download
+    - upload

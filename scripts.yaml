@@ -1,3 +1,5 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
   zigbee2mqtt_rename:
     alias: Zigbee2mqtt Rename
     sequence:

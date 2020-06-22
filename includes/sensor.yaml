@@ -1,3 +1,5 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
   - platform: darksky
     api_key: !secret darksky_key
     monitored_conditions:
