@@ -253,7 +253,7 @@
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'
-                    icon: 'mdi:theatre'
+                    icon: 'mdi:theater'
                     show_icon: true
                     show_name: false
                     style: |
