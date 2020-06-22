@@ -1,0 +1,12 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
+- platform: local_file
+  file_path: /config/www/tmp/image.jpg
+  name: Saved Image
+- platform: local_file
+  file_path: /config/www/deepstack/deepstack_detector_latest.jpg
+  name: deepstack_latest_image
+- platform: generic
+  name: front door
+  still_image_url: !secret front_door_still_url
+  stream_source: !secret front_door_cam_feed

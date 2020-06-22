@@ -1,0 +1,13 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
+broker: !secret mqtt_host
+username: !secret mqtt_username
+password: !secret mqtt_password
+discovery: true
+discovery_prefix: homeassistant
+birth_message:
+  topic: 'hass/status'
+  payload: 'online'
+will_message:
+  topic: 'hass/status'
+  payload: 'offline'

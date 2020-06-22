@@ -1,0 +1,7 @@
+---
+#- from github.com/wjbeckett/homeassistant-config
+- name: All_Devices
+  platform: group
+  services:
+    - service: mobile_app_william
+    - service: mobile_app_emily

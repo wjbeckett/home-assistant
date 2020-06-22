@@ -177,83 +177,6 @@ light:
       - light.kitchen_pendant_lights
       - light.kitchen_downlight
 
-
-# Alarm Panel
-alarm_control_panel:
-  - platform: manual
-    name: Home Alarm
-    code: !secret alarm_code
-    code_arm_required: false
-    arming_time: 20
-    delay_time: 20
-    trigger_time: 30
-    disarmed:
-      trigger_time: 0
-    armed_home:
-      arming_time: 0
-      delay_time: 0
-
-# Notify
-notify:
-  - name: All_Devices
-    platform: group
-    services:
-      - service: mobile_app_william
-      - service: mobile_app_emily
-  - name: pushover
-    platform: pushover
-    api_key: !secret pushover_api
-    user_key: !secret pushover_user
-
-# Camera
-camera:
-  - platform: local_file
-    file_path: /config/www/tmp/image.jpg
-    name: Saved Image
-  - platform: local_file
-    file_path: /config/www/deepstack/deepstack_detector_latest.jpg
-    name: deepstack_latest_image
-  - platform: generic
-    name: front door
-    still_image_url: !secret front_door_still_url
-    stream_source: !secret front_door_cam_feed
-
-# Image Processing
-image_processing: 
-  #- platform: facebox
-  #  ip_address: !secret facebox_host
-  #  port: 8087
-  #  scan_interval: 10000
-  #  source: 
-  #    - entity_id: camera.saved_image
-  - platform: deepstack_object
-    ip_address: !secret deepstack_host
-    port: 5000
-    api_key: !secret deepstack_key
-    save_file_folder: /config/www/deepstack
-    save_timestamped_file: True
-    targets:
-      - person
-      - car
-    source:
-      - entity_id: camera.saved_image
-        name: deepstack_detector
-
-# Mqtt
-mqtt:
-  broker: !secret mqtt_host
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  discovery: true
-  discovery_prefix: homeassistant
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-
-
 # Inputs
 input_boolean: !include includes/input_boolean.yaml
 input_select: !include includes/input_select.yaml
@@ -271,6 +194,11 @@ script: !include scripts.yaml
 ffmpeg:
 stream:
 sun:
+alarm_control_panel: !include includes/alarm_panel.yaml
+notify: !include includes/notify.yaml
+image_processing: !include includes/image_processing.yaml
+mqtt: !include includes/mqtt.yaml
+camera: !include includes/cameras.yaml
 climate: !include includes/climate.yaml
 group: !include includes/groups.yaml
 automation old: !include automations_old.yaml
