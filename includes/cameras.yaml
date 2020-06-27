@@ -6,13 +6,13 @@
 - platform: local_file
   file_path: /config/www/deepstack/deepstack_detector_latest.jpg
   name: deepstack_latest_image
-- platform: generic
-  name: front door
-  still_image_url: !secret front_door_still_url
-  stream_source: !secret front_door_cam_feed
+#- platform: generic
+#  name: front door
+#  still_image_url: !secret front_door_still_url
+#  stream_source: !secret front_door_cam_feed
 - platform: ffmpeg
-  input: !secret front_door_cam_feed2
-  name: "Front Door2"
+  input: !secret front_door_cam_feed
+  name: "Front Door"
   #authentication: basic
   #username: !secret mjpeg_user
   #password: !secret mjpeg_pass
