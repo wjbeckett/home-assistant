@@ -11,7 +11,7 @@
   still_image_url: !secret front_door_still_url
   stream_source: !secret front_door_cam_feed
 - platform: ffmpeg
-  input: !secret front_door_cam_feed2
+  input: !secret front_door_cam_feed
   name: "Front Door2"
   #authentication: basic
   #username: !secret mjpeg_user
