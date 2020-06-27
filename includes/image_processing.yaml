@@ -17,4 +17,4 @@
     - car
   source:
     - entity_id: camera.saved_image
-    name: deepstack_detector
+      name: deepstack_detector
