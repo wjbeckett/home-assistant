@@ -214,6 +214,5 @@ group: !include includes/groups.yaml
 zone: !include includes/zones.yaml
 sensor: !include includes/sensors.yaml
 binary_sensor: !include includes/binary_sensor.yaml
-speedtestdotnet: !include includes/speedtestdotnet.yaml
 switch: !include includes/switches.yaml
 timer: !include includes/timer.yaml
