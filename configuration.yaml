@@ -131,7 +131,7 @@ tts:
     voice: en-AU-Wavenet-C
     encoding: mp3
     profiles:
-      - handset-class-application
+      - handset-class-device
       - medium-bluetooth-speaker-class-device
 
 hacs:
