@@ -210,7 +210,7 @@ mqtt: !include includes/mqtt.yaml
 camera: !include includes/cameras.yaml
 climate: !include includes/climate.yaml
 group: !include includes/groups.yaml
-automation old: !include automations_old.yaml
+#automation old: !include automations_old.yaml
 zone: !include includes/zones.yaml
 sensor: !include includes/sensors.yaml
 binary_sensor: !include includes/binary_sensor.yaml
