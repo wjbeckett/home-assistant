@@ -1,0 +1,321 @@
+- id: '1592803760415'
+  alias: Turn on kitchen lights when movement is detetcted before 630pm
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.kitchen_sensor_motion
+    platform: state
+    to: 'on'
+  condition:
+  - after: 06:30:00
+    before: '18:30:00'
+    condition: time
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - data:
+      transition: 2.5
+    entity_id: scene.kitchen_bright
+    service: scene.turn_on
+- id: '1592803926000'
+  alias: Turn on Kitchen lights when it's early
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.kitchen_sensor_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  - after: 06:00:00
+    before: 06:29:00
+    condition: time
+  action:
+  - data:
+      transition: 2.5
+    entity_id: scene.kitchen_dim
+    service: scene.turn_on
+- id: '1592804217406'
+  alias: Dim kitchen lights after no motion for 5 min
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.kitchen_sensor_motion
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  - condition: state
+    entity_id: light.kitchen_pendant_lights
+    state: 'on'
+  action:
+  - data:
+      transition: 5
+    entity_id: scene.kitchen_dim
+    service: scene.turn_on
+- id: '1592804365507'
+  alias: Turn off Kitchen lights after no motion for 10min
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.kitchen_sensor_motion
+    for: 00:10:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - data:
+      transition: 2.5
+    entity_id: light.kitchen_downlight
+    service: light.turn_off
+  - data:
+      transition: 2.5
+    entity_id: light.kitchen_pendant_lights
+    service: light.turn_off
+- id: '1592804464192'
+  alias: Turn on Kitchen light dim when movement is detected after 630pm
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.kitchen_sensor_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  - after: '18:30:00'
+    before: '19:50:00'
+    condition: time
+  action:
+  - data:
+      entity_id: scene.kitchen_dim
+      transition: 3
+    service: scene.turn_on
+- id: '1592804710966'
+  alias: turn on lights at sunset
+  description: ''
+  trigger:
+  - event: sunset
+    offset: -02:00:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: group.household
+    state: home
+  action:
+  - scene: scene.bright_lights
+  - scene: scene.bedroom_lamps_bright
+  - brightness_pct: 100
+    device_id: 13c7e8ef3a73444484d1ba5f6076b425
+    domain: light
+    entity_id: light.lounge_room_lamp
+    type: turn_on
+- id: '1592804786192'
+  alias: Turn off lights at bed time
+  description: ''
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - device_id: 13c7e8ef3a73444484d1ba5f6076b425
+    domain: light
+    entity_id: light.lounge_room_lamp
+    type: turn_off
+- id: '1592804840487'
+  alias: Turn on night lights
+  description: ''
+  trigger:
+  - at: '19:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - scene: scene.night_light
+- id: '1592804907305'
+  alias: Turn off lamps at sunrise
+  description: ''
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - device_id: fea9c6efb2e4493c90ddd26ad0789137
+    domain: light
+    entity_id: light.teddy_s_lamp
+    type: turn_off
+  - device_id: 32e10d16f2894e6584d045b8040ba7ea
+    domain: light
+    entity_id: light.ollie_s_lamp
+    type: turn_off
+- id: '1592805027019'
+  alias: Toggle Bedroom lamps with a click
+  description: ''
+  trigger:
+  - device_id: ce0bcc6e194e49c6b46835e7fc097e5d
+    discovery_id: 0x00158d00013f707c click_single
+    domain: mqtt
+    platform: device
+    subtype: single
+    type: click
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.bedroom_lamps
+    service: light.toggle
+- id: '1592805067463'
+  alias: Activate Bedroom Bright with click
+  description: ''
+  trigger:
+  - device_id: ce0bcc6e194e49c6b46835e7fc097e5d
+    discovery_id: 0x00158d00013f707c click_double
+    domain: mqtt
+    platform: device
+    subtype: double
+    type: click
+  condition: []
+  action:
+  - data:
+      transition: 2.5
+    entity_id: scene.bedroom_lamps_bright
+    service: scene.turn_on
+- id: '1592805105771'
+  alias: Activate Bedroom Night Light with click
+  description: ''
+  trigger:
+  - device_id: ce0bcc6e194e49c6b46835e7fc097e5d
+    discovery_id: 0x00158d00013f707c click_long
+    domain: mqtt
+    platform: device
+    subtype: long
+    type: click
+  condition: []
+  action:
+  - data:
+      transition: 2.5
+    entity_id: scene.bedroom_night_light
+    service: scene.turn_on
+- id: '1592805608239'
+  alias: turn on Bedroom lamps when motion is detected
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    platform: state
+    to: 'on'
+  condition:
+  - after: 07:30:00
+    before: '20:00:00'
+    condition: time
+  - condition: not
+    conditions:
+    - condition: device
+      device_id: 154ca135cbd14827a3fdc722d10060f4
+      domain: media_player
+      entity_id: media_player.bedroom_tv
+      type: is_playing
+  - condition: state
+    entity_id: light.bedroom_lamps
+    state: 'off'
+  action:
+  - data:
+      transition: 2.5
+    entity_id: scene.bedroom_lamps_bright
+    service: scene.turn_on
+- id: '1592805733176'
+  alias: Turn off bedroom lamps when no motion is detected
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    for: 00:03:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: not
+    conditions:
+    - condition: device
+      device_id: 154ca135cbd14827a3fdc722d10060f4
+      domain: media_player
+      entity_id: media_player.bedroom_tv
+      type: is_playing
+  - before: '20:00:00'
+    condition: time
+  action:
+  - data:
+      transition: 2.5
+    entity_id: light.bedroom_lamps
+    service: light.turn_off
+- id: '1592805822114'
+  alias: Dim the bedroom lamps when the tv is playing
+  description: ''
+  trigger:
+  - entity_id: media_player.bedroom_tv
+    platform: state
+    to: playing
+  condition:
+  - condition: state
+    entity_id: light.bedroom_lamps
+    state: 'on'
+  action:
+  - data:
+      transition: 2.5
+    entity_id: scene.bedroom_night_light
+    service: scene.turn_on
+- id: '1593405189369'
+  alias: Activate Birght Lights when coming home after sunset
+  description: ''
+  trigger:
+  - entity_id: group.household
+    platform: state
+    to: home
+  condition:
+  - condition: device
+    device_id: 32e10d16f2894e6584d045b8040ba7ea
+    domain: light
+    entity_id: light.ollie_s_lamp
+    type: is_off
+  - condition: device
+    device_id: fea9c6efb2e4493c90ddd26ad0789137
+    domain: light
+    entity_id: light.teddy_s_lamp
+    type: is_off
+  - after: sunset
+    condition: sun
+  action:
+  - data: {}
+    entity_id: scene.bright_lights
+    service: scene.turn_on
+- id: '1593405295014'
+  alias: Activate Guest mode when Guest is here
+  description: ''
+  trigger:
+  - entity_id: device_tracker.deb_ping
+    platform: state
+    to: home
+  condition: []
+  action:
+  - data: {}
+    entity_id: input_boolean.guest_mode
+    service: input_boolean.turn_on
+- id: '1593405367977'
+  alias: Turn Off Guest mode when guests leave
+  description: ''
+  trigger:
+  - entity_id: device_tracker.deb_ping
+    for: 00:03:00
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - data: {}
+    entity_id: input_boolean.guest_mode
+    service: input_boolean.turn_off

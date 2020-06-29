@@ -118,12 +118,21 @@ influxdb:
 
 # Text to speech
 tts:
-  - platform: google_translate
-    cache: true
-    cache_dir: /tmp/tts
-    time_memory: 300
-    base_url: !secret base_url
-    service_name: google_say
+  #- platform: google_translate
+  #  cache: true
+  #  cache_dir: /tmp/tts
+  #  time_memory: 300
+  #  base_url: !secret base_url
+  #  service_name: google_say
+  - platform: google_cloud
+    key_file: service_account.json
+    language: en-AU
+    gender: female
+    voice: en-AU-Wavenet-C
+    encoding: mp3
+    profiles:
+      - handset-class-application
+      - medium-bluetooth-speaker-class-device
 
 hacs:
   token: !secret hacs_token
@@ -187,13 +196,13 @@ device_tracker: !include includes/device_trackers.yaml
 
 # Managed via UI
 scene: !include scenes.yaml
-automation: !include automations.yaml
 script: !include scripts.yaml
   
 # Others
 ffmpeg:
 stream:
 sun:
+automation: !include_dir_merge_list automation
 alarm_control_panel: !include includes/alarm_panel.yaml
 notify: !include includes/notify.yaml
 image_processing: !include includes/image_processing.yaml
