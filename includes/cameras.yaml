@@ -13,6 +13,3 @@
 - platform: ffmpeg
   input: !secret front_door_cam_feed
   name: "Front Door"
-  #authentication: basic
-  #username: !secret mjpeg_user
-  #password: !secret mjpeg_pass

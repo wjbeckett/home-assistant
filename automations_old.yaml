@@ -425,7 +425,7 @@
 - id: front_door_object_detection
   alias: Detect Object at the front door
   trigger:
-  - entity_id: binary_sensor.front_door_motion
+  - entity_id: binary_sensor.front_door_camera_motion_sensor
     platform: state
     to: 'on'
   condition:
