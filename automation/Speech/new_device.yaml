@@ -9,7 +9,7 @@
 
   action:
     - wait_template: >-
-        {{ not is_state('media_player.livingroomCC', 'playing') }}
+        {{ not is_state('media_player.kitchen_display', 'playing') }}
     - service: script.speech_engine
       data_template:
         NewDevice: "There has been a new device detected on the network.  Be sure to appropriately assign a name to {{trigger.event.data.host_name}}."

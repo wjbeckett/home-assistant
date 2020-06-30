@@ -7,7 +7,7 @@
   initial_state: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   trigger:
   - platform: homeassistant
@@ -59,7 +59,7 @@
   initial_state: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   - condition: template
     value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
@@ -79,7 +79,7 @@
   initial_state: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   - condition: template
     value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
@@ -102,7 +102,7 @@
     to: 'home'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   - condition: template
     value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
@@ -113,30 +113,6 @@
       data:
         channel: Presence
         color: blue
-
-
-- id: request_location_update
-  alias: Request Location Update
-  trigger:
-  - platform: state
-    entity_id: input_boolean.location_update
-    to: 'on'
-  action:
-  - service: notify.all_devices
-    data:
-      message: "request_location_update"
-
-- id: reset_location_update
-  alias: Reset Location Update
-  trigger:
-  - platform: state
-    entity_id: input_boolean.location_update
-    to: 'on'
-    for:
-      seconds: 5
-  action:
-  - service: homeassistant.turn_off
-    entity_id: input_boolean.location_update
   
 - id: activate_guest_mode_when_guests_arrive
   alias: activate guest mode when guests are at home
@@ -165,7 +141,7 @@
   initial_state: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   - condition: template
     value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
@@ -182,7 +158,7 @@
   initial_state: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   - condition: template
     value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
@@ -224,7 +200,7 @@
   alias: Send notification when alarm triggered
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   trigger:
   - platform: state
@@ -264,7 +240,7 @@
   alias: Send notification when alarm is Disarmed
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   trigger:
   - platform: state
@@ -287,7 +263,7 @@
   alias: Send notification when alarm is in pending status
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   trigger:
   - platform: state
@@ -305,7 +281,7 @@
   alias: Send notification when alarm is Armed in Away mode
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   trigger:
   - platform: state
@@ -373,7 +349,7 @@
     state: 'off'
   trigger:
   - platform: state
-    entity_id: group.household
+    entity_id: group.family
     to: not_home
     for:
       minutes: 15
@@ -430,7 +406,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   action:
   - service: camera.snapshot
@@ -447,7 +423,7 @@
 #  alias: Face recognised
 #  condition:
 #  - condition: state
-#    entity_id: input_boolean.options_notifications_push
+#    entity_id: input_boolean.text_notifications
 #    state: 'on'
 #  trigger:
 #    platform: event
@@ -479,7 +455,7 @@
   initial_state: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.options_notifications_push
+    entity_id: input_boolean.text_notifications
     state: 'on'
   - condition: template
     value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'

@@ -3,6 +3,10 @@
 ## Groups
 #################################################################
 #- from github.com/wjbeckett/homeassistant-config
+arriving:
+  name: Arriving
+  entities: []
+
 all_lights:
   name: All Lights
   entities:
@@ -41,7 +45,7 @@ kitchen:
     - sensor.back_door
     - media_player.kitchen_display
 
-Household:
+Family:
   - person.william
   - person.emily
 

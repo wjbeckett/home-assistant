@@ -6,6 +6,7 @@
     - summary
     - daily_summary
     - hourly_summary
+    - minutely_summary
     - temperature
   scan_interval:
     minutes: 20

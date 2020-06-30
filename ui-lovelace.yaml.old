@@ -1045,7 +1045,7 @@ views:
           - type: entities
             show_header_toggle: false
             entities:
-              - input_boolean.options_notifications_push
+              - input_boolean.text_notifications
               - input_boolean.location_update
               - input_boolean.meds_reminder
               - input_boolean.garbage_general

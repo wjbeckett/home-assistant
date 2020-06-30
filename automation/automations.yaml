@@ -105,7 +105,7 @@
     platform: sun
   condition:
   - condition: state
-    entity_id: group.household
+    entity_id: group.family
     state: home
   action:
   - scene: scene.bright_lights
@@ -274,7 +274,7 @@
   alias: Activate Birght Lights when coming home after sunset
   description: ''
   trigger:
-  - entity_id: group.household
+  - entity_id: group.family
     platform: state
     to: home
   condition:

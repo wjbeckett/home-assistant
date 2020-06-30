@@ -187,7 +187,7 @@ light:
       - light.kitchen_downlight
 
 # Inputs
-input_boolean: !include includes/input_boolean.yaml
+input_boolean: !include_dir_merge_named input_boolean
 input_select: !include includes/input_select.yaml
 input_text: !include includes/input_text.yaml
 
@@ -196,12 +196,13 @@ device_tracker: !include includes/device_trackers.yaml
 
 # Managed via UI
 scene: !include scenes.yaml
-script: !include scripts.yaml
+
   
 # Others
 ffmpeg:
 stream:
 sun:
+script: !include_dir_merge_named script
 automation: !include_dir_merge_list automation
 alarm_control_panel: !include includes/alarm_panel.yaml
 notify: !include includes/notify.yaml
@@ -216,3 +217,4 @@ sensor: !include includes/sensors.yaml
 binary_sensor: !include includes/binary_sensor.yaml
 switch: !include includes/switches.yaml
 timer: !include includes/timer.yaml
+
