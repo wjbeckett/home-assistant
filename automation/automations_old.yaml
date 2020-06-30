@@ -213,7 +213,7 @@
       data:
         ttl: 0
         priority: high
-  - service: tts.google_say
+  - service: tts.google_cloud_say
     entity_id: media_player.kitchen_display
     data:
       message: Warning. Please leave the premesis. Police have been notified.
@@ -247,7 +247,7 @@
     entity_id: alarm_control_panel.home_alarm
     to: disarmed
   action:
-  - service: tts.google_say
+  - service: tts.google_cloud_say
     entity_id: media_player.kitchen_display
     data:
       message: Alarm is now disarmed.
@@ -288,7 +288,7 @@
     entity_id: alarm_control_panel.home_alarm
     to: armed_away
   action:
-  - service: tts.google_say
+  - service: tts.google_cloud_say
     entity_id: media_player.kitchen_display
     data:
       message: Alarm has been armed.
@@ -332,7 +332,7 @@
   - service: notify.all_devices
     data_template:
       message: Disarming the alarm at {{ states('sensor.date_time') }}
-  - service: tts.google_say
+  - service: tts.google_cloud_say
     entity_id: media_player.kitchen_display
     data:
       message: Disarming Alarm.
@@ -444,7 +444,7 @@
 #              uri: !secret temp_image
 #    - service_template: >-
 #        {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
-#        tts.google_say
+#        tts.google_cloud_say
 #        {% endif %}
 #      data_template:
 #        entity_id: media_player.kitchen_display

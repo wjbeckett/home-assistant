@@ -130,9 +130,9 @@ tts:
     gender: female
     voice: en-AU-Wavenet-C
     encoding: mp3
-    profiles:
-      - handset-class-device
-      - medium-bluetooth-speaker-class-device
+    #profiles:
+    #  - handset-class-device
+    #  - medium-bluetooth-speaker-class-device
 
 hacs:
   token: !secret hacs_token
