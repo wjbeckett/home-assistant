@@ -1,6 +1,12 @@
 ---
 #- from github.com/wjbeckett/homeassistant-config
-- name: All_Devices
+- name: parents
+  platform: group
+  services:
+    - service: mobile_app_william
+    - service: mobile_app_emily
+
+- name: family
   platform: group
   services:
     - service: mobile_app_william

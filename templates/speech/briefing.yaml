@@ -22,7 +22,7 @@
     {%- endmacro -%}
   
     {%- macro outside_weather() -%}
-    Outside, it is going to be {{ states('sensor.dark_sky_minutely_summary') }}
+    Outside, it is going to be {{ states('sensor.dark_sky_summary') }}
     {%- endmacro -%}
   
     {%- macro light_check() -%}
@@ -249,7 +249,7 @@
       {% endif %}
   
       {# call a Random fact about the house or inspiration quote #}
-      {{ ([moon, holiday, days_until, outside_weather, outside_weather, inspirational_quote]|random)() }}
+      {{ ([moon, holiday, days_until, inside_weather, outside_weather, inspirational_quote]|random)() }}
   
     {%- endmacro -%}
     {{- cleanup(mother_of_all_macros()) -}}

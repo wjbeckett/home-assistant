@@ -5,3 +5,7 @@ home_stats:
 responsibilities:
   name: responsibilities
   initial: off
+
+test_notification:
+  name: Notificaiton Test
+  initial: off

@@ -890,3 +890,23 @@
         message: clear_notification
         data:
           tag: garbage_recycling
+
+- id: 'test'
+  alias: Test Notification engine
+  trigger:
+    platform: state
+    entity_id: input_boolean.test_notification
+    to: 'on'    
+  action:
+    - service: script.notify_engine
+      data_template:
+        title: 'Test message'
+        value1: 'Helo there,'
+        value1: 'This is value 2'
+        who: 'william'
+        channel: 'test'
+        color: 'red'
+        action1: 'URI'
+        action_1_title: 'test action'
+        action_1_uri: 'https://youtube.com'
+        
