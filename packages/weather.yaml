@@ -6,7 +6,7 @@
 
 sensor:
   - platform: moon
-
+  
   - platform: darksky
     api_key: !secret darksky_key
     monitored_conditions:
