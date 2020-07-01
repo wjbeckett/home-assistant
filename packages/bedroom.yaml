@@ -128,7 +128,7 @@ automation:
       from: "discharging"
     condition:
     - platform: template
-      value_template: "{{ states.sensor.emily_pixel_battery_state.state != "discharging" }}"
+      value_template: "{{ states.sensor.emily_pixel_battery_state.state != 'discharging' }}"
     - platform: state
       entity_id: media_player.bedroom_tv
       state: "playing"
