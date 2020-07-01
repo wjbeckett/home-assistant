@@ -119,3 +119,22 @@ automation:
         transition: 2.5
       entity_id: scene.bedroom_night_light
       service: scene.turn_on
+
+  - alias: Turn off the bedroom lamps when we are going to sleep
+    trigger:
+    - platform: state
+      entity_id:
+        - sensor.william_pixel_battery_state
+      from: "discharging"
+    condition:
+    - platform: template
+      value_template: "{{ states.sensor.emily_pixel_battery_state.state != "discharging" }}"
+    - platform: state
+      entity_id: media_player.bedroom_tv
+      state: "playing"
+    - platform: sun
+      after: sunset
+    action:
+    - service: light.turn_off
+      entity_id: light.bedroom_lamps
+
