@@ -1,16 +1,13 @@
-###############################################################################
-#   @author         :   Mahasri Kalavala
-#   @date           :   10/28/2017
-#   @package        :   Holidays
-#   @description    :   Retrieves the holiday
-###############################################################################
-## Modified for my own fun stuff!
+#-------------------------------------------
+# Weather Related Packages
+# @Backslashh
+# Original Repo : https://github.com/backslashh/homeassistant-config
+#-------------------------------------------
 
 homeassistant:
   customize:
 
     sensor.holiday:
-      hidden: true
       icon: mdi:beach
       friendly_name: Holiday
 
@@ -34,12 +31,65 @@ sensor:
       {% endif %}
       {{ holiday }}
 
+  ################################################################################
+  # Countdown Sesor using WolfRam Alpha Natural language queries
+  ################################################################################
+
+  - platform: rest
+    name: Halloween Countdown
+    resource: !secret wolframalpha_halloween_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+
+  - platform: rest
+    name: Christmas Countdown
+    resource: !secret wolframalpha_xmas_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+
+  - platform: rest
+    name: Easter Countdown
+    resource: !secret wolframalpha_easter_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+
+  - platform: rest
+    name: Em Birthday Countdown
+    resource: !secret wolframalpha_embirthday_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+
+  - platform: rest
+    name: Will Birthday Countdown
+    resource: !secret wolframalpha_willbirthday_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+  
+  - platform: rest
+    name: Teddy Birthday Countdown
+    resource: !secret wolframalpha_teddybirthday_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+
+  - platform: rest
+    name: Ollie Birthday Countdown
+    resource: !secret wolframalpha_olliebirthday_api
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+  
 ###############################################################################
 # Automation that notifies of a Holiday "state" change
 ###############################################################################
 automation:
   - alias: Notify Holiday State Change
-    hide_entity: false
+
     initial_state: true
     trigger:
       - platform: state
@@ -55,3 +105,4 @@ automation:
         data:
           message: 'Today is {{ states.sensor.holiday.state }}.'
           title: '{{ states.sensor.holiday.state }}'
+  
