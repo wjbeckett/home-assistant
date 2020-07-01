@@ -9,3 +9,7 @@ responsibilities:
 test_notification:
   name: Notificaiton Test
   initial: off
+
+ollie_sleeping:
+  name: Ollie Sleeping
+  initial: off
