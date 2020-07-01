@@ -25,7 +25,7 @@ automation:
     description: ''
     trigger:
     - platform: event
-      event_type: deconx_event
+      event_type: deconz_event
       event_data:
         id: wireless_button
         event: 1004
