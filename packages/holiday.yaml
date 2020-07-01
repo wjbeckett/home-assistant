@@ -89,7 +89,6 @@ sensor:
 ###############################################################################
 automation:
   - alias: Notify Holiday State Change
-
     initial_state: true
     trigger:
       - platform: state
