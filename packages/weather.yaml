@@ -1,0 +1,23 @@
+#-------------------------------------------
+# Weather Related Packages
+# @Backslashh
+# Original Repo : https://github.com/backslashh/homeassistant-config
+#-------------------------------------------
+
+sensor:
+  - platform: moon
+  
+  - platform: darksky
+    api_key: !secret darksky_key
+    monitored_conditions:
+      - summary
+      - precip_type
+      - precip_intensity
+      - precip_intensity_max
+      - temperature
+      - wind_speed
+      - cloud_cover
+      - humidity
+      - minutely_summary
+      - sunrise_time
+      - sunset_time

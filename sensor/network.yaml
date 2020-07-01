@@ -1,0 +1,13 @@
+#-------------------------------------------
+# Network Related Sensors
+# @Backslashh
+# Original Repo : https://github.com/backslashh/homeassistant-config
+#-------------------------------------------
+
+- platform: fail2ban
+  jails:
+    - hass-iptables
+  file_path: /fail2ban/fail2ban.log
+
+- platform: google_wifi
+  name: WiFi

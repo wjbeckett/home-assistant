@@ -166,26 +166,6 @@ google:
   client_id: !secret google_client_id
   client_secret: !secret google_secret
 
-light:
-  - platform: mqtt
-    schema: json
-    name: kitchen pendant lights
-    command_topic: "zigbee2mqtt/kitchen_lights/set"
-    state_topic: "zigbee2mqtt/kitchen_lights"
-    brightness: true
-    color_temp: true
-    rgb: true
-  - platform: group
-    name: Bedroom Lamps
-    entities:
-      - light.bedroom_lamp_right
-      - light.bedroom_lamp_left
-  - platform: group
-    name: kitchen_lights
-    entities:
-      - light.kitchen_pendant_lights
-      - light.kitchen_downlight
-
 # Inputs
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include includes/input_select.yaml
@@ -197,11 +177,11 @@ device_tracker: !include includes/device_trackers.yaml
 # Managed via UI
 scene: !include scenes.yaml
 
-  
 # Others
 ffmpeg:
 stream:
 sun:
+light: !include light_groups.yaml
 script: !include_dir_merge_named script
 automation: !include_dir_merge_list automation
 alarm_control_panel: !include includes/alarm_panel.yaml
@@ -213,8 +193,7 @@ climate: !include includes/climate.yaml
 group: !include includes/groups.yaml
 #automation old: !include automations_old.yaml
 zone: !include includes/zones.yaml
-sensor: !include includes/sensors.yaml
+sensor: !include_dir_merge_list sensor
 binary_sensor: !include includes/binary_sensor.yaml
 switch: !include includes/switches.yaml
 timer: !include includes/timer.yaml
-
