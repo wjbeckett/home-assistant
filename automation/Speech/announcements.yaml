@@ -44,7 +44,7 @@
           "Guess who is home?" ~ person ~ is_are ,
           "The wifi just got a little more crowded.  Welcome Home" ~ person,
           person  ~ is_are + " now in the house.",
-          "Welcome Home " ~ person + ".  We have missed you. Or at least Molly did.",
+          "Welcome Home " ~ person + ".  We have missed you.",
           "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
           "Life is like a song, you’re back where you belong. Welcome home " ~ person,
           "Hey there " ~ person + " Welcome Home!",

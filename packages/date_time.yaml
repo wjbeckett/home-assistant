@@ -1,0 +1,11 @@
+#-------------------------------------------
+# Time and Date Related Packages
+# @Backslashh
+# Original Repo : https://github.com/backslashh/homeassistant-config
+#-------------------------------------------
+
+sensor:
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
