@@ -906,7 +906,7 @@
         who: 'william'
         channel: 'test'
         color: 'red'
-        action1: 'URI'
+        action_1: 'URI'
         action_1_title: 'test action'
         action_1_uri: 'https://youtube.com'
-        
+
