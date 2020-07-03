@@ -247,7 +247,7 @@ automation:
     action:
       - service: script.notify_engine
         data_template:
-          title: 'Medication Reminder'
+          title: "Medication Reminder"
           message: 'It looks like Ollie hasn't had his bedtime meds. Please make sure he has them.'
           who: 'parents'
           channel: 'Medication'
