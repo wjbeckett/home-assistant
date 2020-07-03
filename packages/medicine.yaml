@@ -96,9 +96,9 @@ automation:
         entity_id: input_boolean.evening_meds_taken
       - service: script.notify_engine
         data_template:
-          message: 'clear_notification'
-          who: 'parents'
-          tag: 'evening_meds'
+          message: "clear_notification"
+          who: "parents"
+          tag: "evening_meds"
       
   - id: 'mark_bedtime_meds_taken'
     alias: Mark bedtime meds as taken
@@ -106,15 +106,15 @@ automation:
       platform: event
       event_type: mobile_app_notification_action
       event_data:
-        action: 'confirm_bedtime_meds'
+        action: "confirm_bedtime_meds"
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.bedtime_meds_taken
       - service: script.notify_engine
         data_template:
-          message: 'clear_notification'
-          who: 'parents'
-          tag: 'bedtime_meds'
+          message: "clear_notification"
+          who: "parents"
+          tag: "bedtime_meds"
 
   - id: 'morning_meds_notification'
     alias: Morning meds Notificaiton
@@ -128,15 +128,15 @@ automation:
     action:
       - service: script.notify_engine
         data_template:
-          title: 'Medication Reminder'
-          message: 'Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)'
-          who: 'parents'
-          channel: 'Medication'
-          color: 'purple'
-          action_1: 'confirm_morning_meds'
-          action_1_title: 'Confirm'
-          tag: 'morning_meds'
-          priority: 'high'
+          title: "Medication Reminder"
+          message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_morning_meds"
+          action_1_title: "Confirm"
+          tag: "morning_meds"
+          priority: "high"
 
   - id: 'morning_meds_reminder'
     alias: Morning meds reminder
@@ -175,15 +175,15 @@ automation:
     action:
       - service: script.notify_engine
         data_template:
-          title: 'Medication Reminder'
-          message: 'Ollie needs Lisinopril (3ml)'
-          who: 'parents'
-          channel: 'Medication'
-          color: 'purple'
-          action_1: 'confirm_evening_meds'
-          action_1_title: 'Confirm'
-          tag: 'evening_meds'
-          priority: 'high'
+          title: "Medication Reminder"
+          message: "Ollie needs Lisinopril (3ml)"
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_evening_meds"
+          action_1_title: "Confirm"
+          tag: "evening_meds"
+          priority: "high"
 
   - id: 'evening_meds_reminder'
     alias: Evening meds reminder
@@ -222,15 +222,15 @@ automation:
     action:
       - service: script.notify_engine
         data_template:
-          title: 'Medication Reminder'
-          message: 'Ollie needs Carvidilol (1.5ml)'
-          who: 'parents'
-          channel: 'Medication'
-          color: 'purple'
-          action_1: 'confirm_bedtime_meds'
-          action_1_title: 'Confirm'
-          tag: 'bedtime_meds'
-          priority: 'high'
+          title: "Medication Reminder"
+          message: "Ollie needs Carvidilol (1.5ml)"
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_bedtime_meds"
+          action_1_title: "Confirm"
+          tag: "bedtime_meds"
+          priority: "high"
 
   - id: 'bedtime_meds_reminder'
     alias: Bedtime meds reminder
