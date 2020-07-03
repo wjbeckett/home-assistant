@@ -32,7 +32,7 @@ speech_processing:
               conditions:
                 - condition: time
                   after: '08:00:00'
-                  before: '19:00:00'
+                  before: '18:30:00'
             - condition: state
               entity_id: input_boolean.alert_mode
               state: 'on'

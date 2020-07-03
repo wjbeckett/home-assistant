@@ -31,7 +31,6 @@ speech_engine:
         media_player: >-
             {% if media_player | length == 0 %}
               {% set media_player = [
-                'media_player.kitchen_display',
                 'media_player.bedroom_speaker'
               ] %}
             {% endif %}
