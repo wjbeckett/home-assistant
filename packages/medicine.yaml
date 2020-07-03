@@ -153,15 +153,15 @@ automation:
     action:
       service: script.notify_engine
       data_template:
-        title: 'Medication Reminder'
-        message: 'It looks like Ollie hasn't had his morning meds. Please make sure he has them.'
-        who: 'parents'
-        channel: 'Medication'
-        color: 'purple'
-        action_1: 'confirm_morning_meds'
-        action_1_title: 'Confirm'
-        tag: 'morning_meds'
-        priority: 'high'
+        title: "Medication Reminder"
+        message: "It looks like Ollie hasn't had his morning meds. Please make sure he has them."
+        who: "parents"
+        channel: "Medication"
+        color: "purple"
+        action_1: "confirm_morning_meds"
+        action_1_title: "Confirm"
+        tag: "morning_meds"
+        priority: "high"
 
   - id: 'evening_meds_notification'
     alias: Evening meds Notificaiton
