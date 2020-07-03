@@ -4,9 +4,7 @@
     # service: script.notify_engine
     # data_template:
       # title: 'Message Title'
-      # value1: 'Startup: Home Assistant is Up and Running!'
-      # value2: "{{ trigger.to_state.state }}"
-      # value3:
+      # message: 'Startup: Home Assistant is Up and Running!'
       # who: "william | emily | family | parents"
       # image: 'URL to image'
       # channel: "Presence | Security | Medicine"
@@ -14,6 +12,7 @@
       # clickaction: "https://...."
       # tag: ""
       # icon:
+      # priority: 'high'
       # action_1: "URI"
       # action_1_title: "title"
       # action_1_uri: "url here"
@@ -49,7 +48,7 @@ notify_engine:
           {% endif %}
       data_template:
         title: "{{ title }}"
-        message: "{{ value1 }} {{ value2 }} {{ value3 }}"
+        message: "{{ message }}"
         data:
           actions:
           - action: "{{ action_1 }}"
@@ -67,3 +66,4 @@ notify_engine:
           clickAction: "{{ clickaction }}"
           tag: "{{ tag }}"
           icon: "{{ icon }}"
+          priority: "{{ priority }}"

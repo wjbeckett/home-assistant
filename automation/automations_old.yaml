@@ -107,7 +107,7 @@
   - condition: template
     value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
   action:
-    service: notify.all_devices
+    service: notify.parents
     data:
       message: 'Deb is here!'
       data:
@@ -149,7 +149,7 @@
   - platform: state
     entity_id: binary_sensor.garage_door
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''off'' %}closed{% else %}open{% endif %}.'
 
@@ -169,7 +169,7 @@
     for:
       minutes: 10
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data:
       message: Garage door has been open for 10 minutes! Close it!
 
@@ -207,7 +207,7 @@
     entity_id: alarm_control_panel.home_alarm
     to: triggered
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data:
       message: ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}
       data:
@@ -251,7 +251,7 @@
     entity_id: media_player.kitchen_display
     data:
       message: Alarm is now disarmed.
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: The alarm is now Disarmed. {{ states('sensor.date_time') }}
       data:
@@ -270,7 +270,7 @@
     entity_id: alarm_control_panel.home_alarm
     to: pending
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: The alarm is in pending status. {{ states('sensor.date_time') }}
       data:
@@ -292,7 +292,7 @@
     entity_id: media_player.kitchen_display
     data:
       message: Alarm has been armed.
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
       data:
@@ -306,7 +306,7 @@
     entity_id: alarm_control_panel.home_alarm
     to: armed_home
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
       data:
@@ -329,7 +329,7 @@
     from: not_home
     to: home
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: Disarming the alarm at {{ states('sensor.date_time') }}
   - service: tts.google_cloud_say
@@ -354,7 +354,7 @@
     for:
       minutes: 15
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data:
       message: "No one is at home, do you want to arm the alarm?"
       data:
@@ -373,7 +373,7 @@
     event_data:
       action: dismiss_prompt
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data:
       message: clear_notification
       data:
@@ -389,7 +389,7 @@
   action:
   - service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.home_alarm
-  - service: notify.all_devices
+  - service: notify.parents
     data:
       message: clear_notification
       data:
@@ -431,7 +431,7 @@
 #  action:
 #    - service_template: >-
 #        {% if not is_state('sensor.front_door_detection' , 'unavailable') %} 
-#        notify.all_devices
+#        notify.parents
 #        {% endif %}
 #      data_template:
 #        message: "{{ states('sensor.front_door_detection') }} is at the front door"
@@ -469,7 +469,7 @@
     event_data:
       object: car
   action:
-  - service: notify.all_devices
+  - service: notify.parents
     data_template:
       message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
       data:
@@ -553,7 +553,7 @@
       entity_id: sensor.garbage_general
       state: 'tomorrow'
   action:
-    - service: notify.all_devices
+    - service: notify.parents
       data:
         message: "Take the general bin out"
         data:
@@ -582,7 +582,7 @@
       after: '20:00:00'
       before: '23:59:00'
   action:
-    service: notify.all_devices
+    service: notify.parents
     data:
       message: "It looks like general bin isn't out yet. Don't forget!"
       data:
@@ -605,7 +605,7 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.garbage_general
-    - service: notify.all_devices
+    - service: notify.parents
       data:
         message: clear_notification
         data:
@@ -624,7 +624,7 @@
       entity_id: sensor.garbage_recycling
       state: 'tomorrow'
   action:
-    - service: notify.all_devices
+    - service: notify.parents
       data:
         message: "Take the recycling bin out"
         data:
@@ -653,7 +653,7 @@
       after: '20:00:00'
       before: '23:59:00'
   action:
-    service: notify.all_devices
+    service: notify.parents
     data:
       message: "It looks like recycling bin isn't out yet. Don't forget!"
       data:
@@ -676,7 +676,7 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.garbage_recycling
-    - service: notify.all_devices
+    - service: notify.parents
       data:
         message: clear_notification
         data:
