@@ -138,30 +138,30 @@ automation:
           tag: morning_meds
           priority: 'high'
 
-  - id: 'morning_meds_reminder'
-    alias: Morning meds reminder
-    trigger:
-      platform: time_pattern
-      minutes: '/30'
-    condition:
-      - condition: state
-        entity_id: input_boolean.morning_meds_taken
-        state: 'off'
-      - condition: time
-        after: '08:30:00'
-        before: '23:59:00'
-    action:
-      service: script.notify_engine
-      data_template:
-        title: 'Medication Reminder'
-        message: 'It looks like Ollie hasn't had his morning meds. Please make sure he has them.'
-        who: 'parents'
-        channel: 'Medication'
-        color: 'purple'
-        action_1: 'confirm_morning_meds'
-        action_1_title: 'Confirm'
-        tag: morning_meds
-        priority: 'high'
+#  - id: 'morning_meds_reminder'
+#    alias: Morning meds reminder
+#    trigger:
+#      platform: time_pattern
+#      minutes: '/30'
+#    condition:
+#      - condition: state
+ #       entity_id: input_boolean.morning_meds_taken
+#        state: 'off'
+#      - condition: time
+#        after: '08:30:00'
+#        before: '23:59:00'
+#    action:
+#      service: script.notify_engine
+#      data_template:
+#        title: 'Medication Reminder'
+#        message: 'It looks like Ollie hasn't had his morning meds. Please make sure he has them.'
+#        who: 'parents'
+#        channel: 'Medication'
+#        color: 'purple'
+#        action_1: 'confirm_morning_meds'
+#        action_1_title: 'Confirm'
+#        tag: morning_meds
+#        priority: 'high'
 
   - id: 'evening_meds_notification'
     alias: Evening meds Notificaiton
