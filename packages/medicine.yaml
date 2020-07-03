@@ -82,7 +82,7 @@ automation:
         data_template:
           message: 'clear_notification'
           who: 'parents'
-          tag: morning_meds
+          tag: 'morning_meds'
 
   - id: 'mark_evening_meds_taken'
     alias: Mark evening meds as taken
@@ -98,7 +98,7 @@ automation:
         data_template:
           message: 'clear_notification'
           who: 'parents'
-          tag: evening_meds
+          tag: 'evening_meds'
       
   - id: 'mark_bedtime_meds_taken'
     alias: Mark bedtime meds as taken
@@ -114,7 +114,7 @@ automation:
         data_template:
           message: 'clear_notification'
           who: 'parents'
-          tag: bedtime_meds
+          tag: 'bedtime_meds'
 
   - id: 'morning_meds_notification'
     alias: Morning meds Notificaiton
@@ -135,33 +135,33 @@ automation:
           color: 'purple'
           action_1: 'confirm_morning_meds'
           action_1_title: 'Confirm'
-          tag: morning_meds
+          tag: 'morning_meds'
           priority: 'high'
 
-#  - id: 'morning_meds_reminder'
-#    alias: Morning meds reminder
-#    trigger:
-#      platform: time_pattern
-#      minutes: '/30'
-#    condition:
-#      - condition: state
- #       entity_id: input_boolean.morning_meds_taken
-#        state: 'off'
-#      - condition: time
-#        after: '08:30:00'
-#        before: '23:59:00'
-#    action:
-#      service: script.notify_engine
-#      data_template:
-#        title: 'Medication Reminder'
-#        message: 'It looks like Ollie hasn't had his morning meds. Please make sure he has them.'
-#        who: 'parents'
-#        channel: 'Medication'
-#        color: 'purple'
-#        action_1: 'confirm_morning_meds'
-#        action_1_title: 'Confirm'
-#        tag: morning_meds
-#        priority: 'high'
+  - id: 'morning_meds_reminder'
+    alias: Morning meds reminder
+    trigger:
+      platform: time_pattern
+      minutes: '/30'
+    condition:
+      - condition: state
+        entity_id: input_boolean.morning_meds_taken
+        state: 'off'
+      - condition: time
+        after: '08:30:00'
+        before: '23:59:00'
+    action:
+      service: script.notify_engine
+      data_template:
+        title: 'Medication Reminder'
+        message: 'It looks like Ollie hasn't had his morning meds. Please make sure he has them.'
+        who: 'parents'
+        channel: 'Medication'
+        color: 'purple'
+        action_1: 'confirm_morning_meds'
+        action_1_title: 'Confirm'
+        tag: 'morning_meds'
+        priority: 'high'
 
   - id: 'evening_meds_notification'
     alias: Evening meds Notificaiton
@@ -182,7 +182,7 @@ automation:
           color: 'purple'
           action_1: 'confirm_evening_meds'
           action_1_title: 'Confirm'
-          tag: evening_meds
+          tag: 'evening_meds'
           priority: 'high'
 
   - id: 'evening_meds_reminder'
@@ -200,15 +200,15 @@ automation:
     action:
       - service: script.notify_engine
         data_template:
-          title: 'Medication Reminder'
-          message: 'It looks like Ollie hasn't had his evening meds. Please make sure he has them.'
-          who: 'parents'
-          channel: 'Medication'
-          color: 'purple'
-          action_1: 'confirm_evening_meds'
-          action_1_title: 'Confirm'
-          tag: evening_meds
-          priority: 'high'
+          title: "Medication Reminder"
+          message: "It looks like Ollie hasn't had his evening meds. Please make sure he has them."
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_evening_meds"
+          action_1_title: "Confirm"
+          tag: "evening_meds"
+          priority: "high"
 
   - id: 'bedtime_meds_notification'
     alias: Bedtime meds Notificaiton
@@ -229,7 +229,7 @@ automation:
           color: 'purple'
           action_1: 'confirm_bedtime_meds'
           action_1_title: 'Confirm'
-          tag: bedtime_meds
+          tag: 'bedtime_meds'
           priority: 'high'
 
   - id: 'bedtime_meds_reminder'
@@ -254,5 +254,5 @@ automation:
           color: 'purple'
           action_1: 'confirm_bedtime_meds'
           action_1_title: 'Confirm'
-          tag: bedtime_meds
+          tag: 'bedtime_meds'
           priority: 'high'
