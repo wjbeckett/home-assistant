@@ -243,12 +243,11 @@
                           0.00)';
     
                           box-shadow: 2px 2px rgba(0,0,0,0.0);
-                            }
-                          h1 {
-                            font-size: 15px;
-                            font-weight: thin;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
+                            
+                          font-size: 15px;
+                          font-weight: thin;
+                          font-family: Helvetica;
+                          letter-spacing: '-0.01em';
                           }
               - type: horizontal-stack
                 cards:
