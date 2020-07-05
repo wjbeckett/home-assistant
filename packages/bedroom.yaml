@@ -9,11 +9,9 @@ automation:
     alias: Toggle Bedroom lamps with a single click
     description: ''
     trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: wireless_button
-        event: 1000
+    - platform: state
+      entity_id: sensor.wireless_button
+      state: 'click'
     condition: []
     action:
     - data: {}
