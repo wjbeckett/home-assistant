@@ -10,8 +10,8 @@ automation:
     description: ''
     trigger:
     - platform: state
-      entity_id: sensor.wireless_button
-      state: 'click'
+      entity_id: sensor.wireless_button_click
+      to: 'single'
     condition: []
     action:
     - data: {}
@@ -22,11 +22,9 @@ automation:
     alias: Activate Bedroom Bright with double click
     description: ''
     trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: wireless_button
-        event: 1004
+    - platform: state
+      entity_id: sensor.wireless_button_click
+      to: 'double'
     condition: []
     action:
     - data:
@@ -38,11 +36,9 @@ automation:
     alias: Activate Bedroom Night Light with long press
     description: ''
     trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: wireless_button
-        event: 1001
+    - platform: state
+      entity_id: sensor.wireless_button_click
+      to: 'long'
     condition: []
     action:
     - data:
