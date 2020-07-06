@@ -137,6 +137,7 @@ automation:
           action_1_title: "Confirm"
           tag: "morning_meds"
           priority: "high"
+          group: "Medication"
 
   - id: 'morning_meds_reminder'
     alias: Morning meds reminder
@@ -162,6 +163,7 @@ automation:
         action_1_title: "Confirm"
         tag: "morning_meds"
         priority: "high"
+        group: "Medication"
 
   - id: 'evening_meds_notification'
     alias: Evening meds Notificaiton
@@ -184,6 +186,7 @@ automation:
           action_1_title: "Confirm"
           tag: "evening_meds"
           priority: "high"
+          group: "Medication"
 
   - id: 'evening_meds_reminder'
     alias: Evening meds reminder
@@ -209,6 +212,7 @@ automation:
           action_1_title: "Confirm"
           tag: "evening_meds"
           priority: "high"
+          group: "Medication"
 
   - id: 'bedtime_meds_notification'
     alias: Bedtime meds Notificaiton
@@ -231,6 +235,7 @@ automation:
           action_1_title: "Confirm"
           tag: "bedtime_meds"
           priority: "high"
+          group: "Medication"
 
   - id: 'bedtime_meds_reminder'
     alias: Bedtime meds reminder
@@ -256,3 +261,4 @@ automation:
           action_1_title: "Confirm"
           tag: "bedtime_meds"
           priority: "high"
+          group: "Medication"

@@ -12,6 +12,7 @@
       # clickaction: "https://...."
       # tag: ""
       # icon:
+      # group: "Motion"
       # priority: 'high'
       # action_1: "URI"
       # action_1_title: "title"
@@ -67,3 +68,4 @@ notify_engine:
           tag: "{{ tag }}"
           icon: "{{ icon }}"
           priority: "{{ priority }}"
+          group: "{{ group }}"
