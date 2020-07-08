@@ -55,7 +55,7 @@ speech_processing:
 
     - service: tts.google_cloud_say
       data_template:
-        entity_id: media_player.kitchen_display
+        entity_id: media_player.bedroom_speaker
         message: >-
             {{ speech_message }}
         cache: true
