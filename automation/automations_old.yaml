@@ -113,26 +113,6 @@
       data:
         channel: Presence
         color: blue
-  
-- id: activate_guest_mode_when_guests_arrive
-  alias: activate guest mode when guests are at home
-  trigger:
-    platform: state
-    entity_id: group.guests
-    to: 'home'
-  action:
-    service: input_boolean.turn_on
-    entity_id: input_boolean.guest_mode
-
-- id: deactivate_guest_mode_when_guests_leave
-  alias: Deactivate guest mode when guests leave
-  trigger:
-    platform: state
-    entity_id: group.guests
-    to: 'not_home'
-  action:
-    service: input_boolean.turn_off
-    entity_id: input_boolean.guest_mode
 #################################################################
 ## Door Notifications
 #################################################################

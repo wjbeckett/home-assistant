@@ -50,7 +50,10 @@ Family:
   - person.emily
 
 guests:
-  - person.deb
+  - device_tracker.deb_ping
+  - device_tracker.ses_ping
+  - device_tracker.timmy_ping
+  
 
 ollie_lights:
   name: Ollie's Lights

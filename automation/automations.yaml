@@ -89,7 +89,7 @@
   alias: Activate Guest mode when Guest is here
   description: ''
   trigger:
-  - entity_id: device_tracker.deb_ping, device_tracker.ses_ping, device_tracker.timmy_ping
+  - entity_id: group.guests
     platform: state
     to: home
   condition: []
@@ -101,7 +101,7 @@
   alias: Turn Off Guest mode when guests leave
   description: ''
   trigger:
-  - entity_id: device_tracker.deb_ping, device_tracker.ses_ping, device_tracker.timmy_ping
+  - entity_id: group.guests
     for: 00:03:00
     platform: state
     to: not_home
