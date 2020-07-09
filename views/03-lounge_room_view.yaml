@@ -9,17 +9,21 @@
         - type: markdown
           content: |
             # Lights
-          style: |
-            ha-card {
+          style:
+            .: |
+              ha-card {
+                height: 20px;                  
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
         - type: 'custom:button-card'
           icon: 'mdi:floor-lamp'
           entity: light.lounge_room_lamp
@@ -65,17 +69,21 @@
         - type: markdown
           content: |
             # Scenes
-          style: |
-            ha-card {
+          style:
+            .: |
+              ha-card {
+                height: 20px;                  
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
     - type: vertical-stack
       cards:
         - type: vertical-stack
@@ -115,35 +123,38 @@
                     - type: markdown
                       content: |
                         # Night Light
-                      style: |
-                        ha-card {
-                          height: 20px;                  
-                          --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                        h1 {
-                          font-size: 20px;
-                          font-weight: bold;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
+                      style:
+                        .: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
                     - type: markdown
                       content: |
                         # Dims the lounge room lamp
-                      style: >
-                        ha-card {
-
-                        --paper-card-background-color: 'rgba(11, 11, 11,
-                        0.00)';
-
-                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      style:
+                        .: |
+                          ha-card {
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
                             }
-                        h1 {
-                          font-size: 15px;
-                          font-weight: thin;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'
@@ -179,35 +190,38 @@
                     - type: markdown
                       content: |
                         # Bright
-                      style: |
-                        ha-card {
-                          height: 20px;                  
-                          --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                        h1 {
-                          font-size: 20px;
-                          font-weight: bold;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
+                      style:
+                        .: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
                     - type: markdown
                       content: |
                         # Sets lounge room lamp to max brightness
-                      style: >
-                        ha-card {
-
-                        --paper-card-background-color: 'rgba(11, 11, 11,
-                        0.00)';
-
-                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      style:
+                        .: |
+                          ha-card {
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
                             }
-                        h1 {
-                          font-size: 15px;
-                          font-weight: thin;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'
@@ -243,48 +257,58 @@
                     - type: markdown
                       content: |
                         # Movie Time!
-                      style: |
-                        ha-card {
-                          height: 20px;                  
-                          --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                        h1 {
-                          font-size: 20px;
-                          font-weight: bold;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
+                      style:
+                        .: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
                     - type: markdown
                       content: |
                         # Dims the lounge room lamp and turns on the TV
-                      style: |
-                        ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                        h1 {
-                          font-size: 15px;
-                          font-weight: thin;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
+                      style:
+                        .: |
+                          ha-card {
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
     - type: vertical-stack
       cards:
         - type: markdown
           content: |
             # Media
-          style: |
-            ha-card {
+          style:
+            .: |
+              ha-card {
+                height: 20px;                  
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
         - type: custom:mini-media-player
           entity: media_player.lounge_room_tv
           info: scroll
