@@ -13,6 +13,7 @@
   action:
     - service: script.speech_engine
       data_template:
+        media_player: media_player.bedroom_speaker
         value1: >
           {{ [
           "Guest Mode has been enabled for the rest of the day.",
