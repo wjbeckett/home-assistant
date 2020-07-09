@@ -183,7 +183,7 @@
                     action: call-service
                     service: scene.turn_on
                     service_data:
-                      entity_id: scene.bright_lights
+                      entity_id: scene.lounge_room_bright
                     haptic: light
                 - type: vertical-stack
                   cards:

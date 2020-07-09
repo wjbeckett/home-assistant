@@ -190,3 +190,13 @@
       xy_color:
       - 0.301
       - 0.116
+- id: 'lounge_room_bright'
+  name: Lounge Room Bright
+  entities:
+    light.lounge_room_lamp:
+      brightness: 255
+      state: 'on'
+      transition: 2
+      xy_color:
+      - 0.388
+      - 0.401
