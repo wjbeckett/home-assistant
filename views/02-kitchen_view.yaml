@@ -9,17 +9,21 @@
           - type: markdown
             content: |
               # Lights
-            style: |
-              ha-card {
+            style:
+              .: |
+                ha-card {
+                  height: 20px;                  
                   --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                   box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+                }
+              ha-markdown:
+                $: |
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
           - type: horizontal-stack
             cards:
               - type: 'custom:button-card'
@@ -109,17 +113,21 @@
           - type: markdown
             content: |
               # Scenes
-            style: |
-              ha-card {
+            style:
+              .: |
+                ha-card {
+                  height: 20px;                  
                   --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                   box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+                }
+              ha-markdown:
+                $: |
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
       - type: vertical-stack
         cards:
           - type: vertical-stack
@@ -159,34 +167,38 @@
                       - type: markdown
                         content: |
                           # Dim
-                        style: |
-                          ha-card {
-                            height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
-                          }
-                          h1 {
-                            font-size: 20px;
-                            font-weight: bold;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
+                        style:
+                          .: |
+                            ha-card {
+                              height: 20px;                  
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
                       - type: markdown
                         content: |
                           # Dims the kitchen lights
-                        style: >
-                          ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11,
-                          0.00)';
-    
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        style:
+                          .: |
+                            ha-card {
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 15px;
+                                font-weight: thin;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
                               }
-                          h1 {
-                            font-size: 15px;
-                            font-weight: thin;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'
@@ -289,34 +301,38 @@
                       - type: markdown
                         content: |
                           # Cozy
-                        style: |
-                          ha-card {
-                            height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
-                          }
-                          h1 {
-                            font-size: 20px;
-                            font-weight: bold;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
+                        style:
+                          .: |
+                            ha-card {
+                              height: 20px;                  
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
                       - type: markdown
                         content: |
                           # Changes the pendant lights to purple and cayan
-                        style: >
-                          ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11,
-                          0.00)';
-    
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        style:
+                          .: |
+                            ha-card {
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 15px;
+                                font-weight: thin;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
                               }
-                          h1 {
-                            font-size: 15px;
-                            font-weight: thin;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'
@@ -352,34 +368,38 @@
                       - type: markdown
                         content: |
                           # Tropical
-                        style: |
-                          ha-card {
-                            height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
-                          }
-                          h1 {
-                            font-size: 20px;
-                            font-weight: bold;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
+                        style:
+                          .: |
+                            ha-card {
+                              height: 20px;                  
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
                       - type: markdown
                         content: |
                           # Changes the pendant lights to green and pink
-                        style: >
-                          ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11,
-                          0.00)';
-    
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        style:
+                          .: |
+                            ha-card {
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 15px;
+                                font-weight: thin;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
                               }
-                          h1 {
-                            font-size: 15px;
-                            font-weight: thin;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'
@@ -415,50 +435,58 @@
                       - type: markdown
                         content: |
                           # Blippi Mode
-                        style: |
-                          ha-card {
-                            height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
-                          }
-                          h1 {
-                            font-size: 20px;
-                            font-weight: bold;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
+                        style:
+                          .: |
+                            ha-card {
+                              height: 20px;                  
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
                       - type: markdown
                         content: |
                           # Changes the lights to Blippi colours
-                        style: >
-                          ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11,
-                          0.00)';
-    
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        style:
+                          .: |
+                            ha-card {
+                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 15px;
+                                font-weight: thin;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
                               }
-                          h1 {
-                            font-size: 15px;
-                            font-weight: thin;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
       - type: vertical-stack
         cards:
           - type: markdown
             content: |
               # Temperature
-            style: |
-              ha-card {
+            style:
+              .: |
+                ha-card {
+                  height: 20px;                  
                   --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                   box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+                }
+              ha-markdown:
+                $: |
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.kitchen_sensor_temperature
@@ -484,17 +512,21 @@
           - type: markdown
             content: |
               # Media
-            style: |
-              ha-card {
+            style:
+              .: |
+                ha-card {
+                  height: 20px;                  
                   --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                   box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+                }
+              ha-markdown:
+                $: |
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
           - type: custom:mini-media-player
             entity: media_player.kitchen_display
             info: scroll
