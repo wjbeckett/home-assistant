@@ -12,6 +12,11 @@
   stream_source: !secret front_door_cam_feed
   username: !secret front_door_username
   password: !secret front_door_password
+- platform: mjpeg
+  name: front door mjpeg
+  mjpeg_url: !secret front_door_cam_mjpeg
+  username: !secret front_door_username
+  password: !secret front_door_password
 #- platform: ffmpeg
 #  input: !secret front_door_cam_feed
 #  name: "Front Door"
