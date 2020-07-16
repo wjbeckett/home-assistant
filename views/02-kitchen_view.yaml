@@ -20,14 +20,14 @@
                 padding: 0 16px !important;
               }
               h1 {
-                font-size: 30px;
+                font-size: 32px;
                 font-weight: bold;
                 font-family: Helvetica;
                 letter-spacing: '-0.01em';
               }
             content: |
               [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace/home)
-              <h1>{{ title }}</h1>
+              <h1>KITCHEN</h1>
           - type: markdown
             content: |
               # Lights
