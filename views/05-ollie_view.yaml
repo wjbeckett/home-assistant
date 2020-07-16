@@ -27,7 +27,7 @@
               }
             content: |
               [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace/home)
-              <h1>OLLIE'S ROOM</h1>
+              <h1>Ollie's Room</h1>
           - type: markdown
             content: |
               # Lights
