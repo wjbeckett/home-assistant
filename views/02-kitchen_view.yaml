@@ -7,6 +7,32 @@
       - type: vertical-stack
         cards:
           - type: markdown
+            card_size: 2
+            style: >
+              ha-card {
+                box-shadow: none;
+                background: none;
+                padding: 10px 0px;
+                color: var(--primary-text-color);
+                background-color: transparent;
+                border-radius: 0;
+                font-weight: bold;
+                line-height: 24px !important;
+              }
+              ha-card a, p {
+                color: var(--primary-text-color) !important;
+              }
+              ha-markdown {
+                padding: 0 16px !important;
+              }
+              h1 {
+                line-height: 32px !important;
+              }
+            content: |
+              [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace/home)
+              <h3>home</h3>
+              <h1>Kitchen</h1>
+          - type: markdown
             content: |
               # Lights
             style:
