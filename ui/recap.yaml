@@ -1,0 +1,29 @@
+>
+    {% set light_count = states.light | selectattr('state','equalto','on') | list | count %}
+    {%- if light_count == 1 -%}
+      There is one light on.
+    {%- else -%}
+      There are {{light_count}} lights on.
+    {%- endif -%}
+    {% set people = states.person | selectattr('state','equalto','home') | list %}
+    {%- if people | count > 0 -%}
+      {%- for p in people -%}
+        {{- p.attributes.friendly_name.split(" ")[0] -}}
+        {%- if not loop.last -%}
+          {%- if people | count == 1 -%}
+            {{ " " }}
+          {%- elif people | count == 2 -%}
+            {{ " and "}}
+          {%- else -%}
+            {{ ", " }}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if people | count == 1 -%}
+        {{ " " }}is at home
+      {%- else -%}
+      {{ " " }}are at home
+      {%- endif -%}
+    {%- else %}
+      There is nobody at home
+    {%- endif -%}.

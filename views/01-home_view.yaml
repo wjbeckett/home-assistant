@@ -8,7 +8,13 @@
       cards:
         - type: markdown
           content: |
-            # Family Status
+            {% if now().strftime('%H')|int < 12 and now().strftime('%H')|int > 6 %}
+            # Good morning.
+            {% elif now().strftime('%H')|int >= 12 and now().strftime('%H')|int < 17 %}
+            #  Good afternoon.
+            {% else %}
+            #  Good evening.
+            {% endif %}
           style:
             .: |
               ha-card {
@@ -24,47 +30,21 @@
                   font-family: Helvetica;
                   letter-spacing: '-0.01em';
                 }
-        - type: horizontal-stack
-          cards:
-            - type: picture-entity
-              title: William
-              entity: person.william
-              name: William
-              state_image:
-                "away": "/local/images/persons/william_away.png"
-                "home": "/local/images/persons/william_home.png"
-                "Woolies Warner": "/local/images/persons/william_shops.png"
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  border-radius: 15px;
-                  margin: 10px;
-                  width: 150px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}   
-                }
-            - type: picture-entity
-              title: Emily
-              entity: person.emily
-              state_image:
-                "away": "/local/images/persons/emily_away.jpeg"
-                "home": "/local/images/persons/emily_home.jpeg"
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  border-radius: 15px;
-                  margin: 10px;
-                  width: 150px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}   
+        - type: markdown
+          content: !include ../ui/recap.yaml
+          style:
+            .: |
+              ha-card {
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 15px;
+                  font-weight: thin;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
                 }
     - type: vertical-stack
       cards:
