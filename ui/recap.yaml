@@ -5,6 +5,13 @@
     {%- else -%}
       There are currently {{light_count}} lights on.
     {%- endif -%}
+    {{ " " }}
+    {% set door_count = states.binary_sensor | selectattr('state','equalto','on') | list | count %}
+    {%- if door_count == 1 -%}
+      There is currently one door open.
+    {%- else -%}
+      There are currently {{door_count}} doors open.
+    {%- endif -%}
     {{ "\n" }}
     {% set people = states.person | selectattr('state','equalto','home') | list %}
     {%- if people | count > 0 -%}
