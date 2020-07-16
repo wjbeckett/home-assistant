@@ -1,37 +1,37 @@
 >
     {% set light_count = states.light | selectattr('state','equalto','on') | list | count %}
     {%- if light_count == 1 -%}
-      There is currently one light on.
+      # There is currently one light on.
     {%- else -%}
-      There are currently {{light_count}} lights on.
+      # There are currently {{light_count}} lights on.
     {%- endif -%}
     {{ " " }}
     {% set door_count = states.binary_sensor | selectattr('state', 'eq', 'on') | selectattr('attributes.device_class', 'eq', 'door') | list | count %}
     {%- if door_count == 1 -%}
-      There is currently one door open.
+      # There is currently one door open.
     {%- else -%}
-      There are currently {{door_count}} doors open.
+      # There are currently {{door_count}} doors open.
     {%- endif -%}
     {{ "\n" }}
     {% set people = states.person | selectattr('state','equalto','home') | list %}
     {%- if people | count > 0 -%}
       {%- for p in people -%}
-        {{- p.attributes.friendly_name.split(" ")[0] -}}
+        # {{- p.attributes.friendly_name.split(" ")[0] -}}
         {%- if not loop.last -%}
           {%- if people | count == 1 -%}
             {{ " " }}
           {%- elif people | count == 2 -%}
-            {{ " and "}}
+            # {{ " and "}}
           {%- else -%}
-            {{ ", " }}
+            # {{ ", " }}
           {%- endif -%}
         {%- endif -%}
       {%- endfor -%}
       {%- if people | count == 1 -%}
-        {{ " " }}is at home
+        # {{ " " }}is at home
       {%- else -%}
-      {{ " " }}are at home
+      # {{ " " }}are at home
       {%- endif -%}
     {%- else %}
-      There is nobody at home
+      # There is nobody at home
     {%- endif -%}.
