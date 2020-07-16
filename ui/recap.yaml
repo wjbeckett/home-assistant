@@ -1,10 +1,11 @@
 >
     {% set light_count = states.light | selectattr('state','equalto','on') | list | count %}
     {%- if light_count == 1 -%}
-      There is one light on.
+      There is currently one light on.
     {%- else -%}
-      There are {{light_count}} lights on.
+      There are currently {{light_count}} lights on.
     {%- endif -%}
+    {{ " " }}
     {% set people = states.person | selectattr('state','equalto','home') | list %}
     {%- if people | count > 0 -%}
       {%- for p in people -%}
