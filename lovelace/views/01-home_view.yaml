@@ -86,7 +86,7 @@
               card:
                 type: custom:layout-card
                 layout: horizontal
-                min_columns: 3
+                #min_columns: 3
                 justify_content: start
                 cards:
                   - type: custom:decluttering-card
