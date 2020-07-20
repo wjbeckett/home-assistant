@@ -1,8 +1,6 @@
-  # lovelace_gen
-
   - icon: mdi:home-assistant
     id: home
-    title: {{ _global.home.name }}
+    title: Beckett Home
     path: home
     badges: []
     cards:
@@ -82,23 +80,39 @@
                   font-family: Halvetica;
                   letter-spacing: '-0.01em';
                 }
-        #- type: vertical-stack
-        #  cards:
-        #    - type: custom:mod-card
-        #      card:
-        #        type: custom:layout-card
-        #        layout: horizontal
-        #        min_columns: 2
-        #        justify_content: start
-        #        cards:
-                  #{% for room in _global.rooms %}
-        #          - type: custom:decluttering-card
-        #            template: "simple_link"
-        #            variables:
-        #              - path: '{{ room.name | lower | replace(" ", "_") }}'
-        #              - name: {{ room.name }}
-        #              - icon: {{ room.icon }}
-                  #{% endfor %}
+        - type: vertical-stack
+          cards:
+            - type: custom:mod-card
+              card:
+                type: custom:layout-card
+                layout: horizontal
+                min_columns: 2
+                justify_content: start
+                cards:
+                  - type: custom:decluttering-card
+                    template: "simple_link"
+                    variables:
+                      - path: kitchen
+                      - name: Kitchen
+                      - icon: mdi:chef-hat
+                  - type: custom:decluttering-card
+                    template: "simple_link"
+                    variables:
+                      - path: bedroom
+                      - name: Bedroom
+                      - icon: mdi:heart-outline
+                  - type: custom:decluttering-card
+                    template: "simple_link"
+                    variables:
+                      - path: ollie_room
+                      - name: Ollie'e Room
+                      - icon: mdi:paw
+                  - type: custom:decluttering-card
+                    template: "simple_link"
+                    variables:
+                      - path: teddy_room
+                      - name: Teddy's Room
+                      - icon: mdi:pokeball
 
     - type: vertical-stack
       cards:

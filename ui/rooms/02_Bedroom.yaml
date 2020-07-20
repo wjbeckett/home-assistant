@@ -1,8 +1,0 @@
-name: Bedroom
-icon: mdi:heart-outline
-lights:
-  - entity_id: light.bedroom_lamps
-    name: Bedroom Lamps
-media_players:
-  - entity_id: mediaplayer.bedroom_tv
-    name: Bedroom TV
