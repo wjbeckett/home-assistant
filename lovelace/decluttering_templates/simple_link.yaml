@@ -11,6 +11,9 @@ simple_link:
       action: navigate
       navigation_path: "[[path]]"
     styles:
+      card:
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
       grid:
         - grid-template-areas: >
             "i n"
@@ -23,3 +26,13 @@ simple_link:
         - justify-self: start
         - font-weight: bold
         - margin-left: -16px
+     style:  |
+        ha-card {
+          margin: 10px;
+          box-shadow: 
+            {% if is_state('sun.sun', 'above_horizon') %}
+              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+            {% endif %}    
+        }
