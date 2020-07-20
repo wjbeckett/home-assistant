@@ -407,7 +407,7 @@
           cards:
             - type: custom:garbage-collection-card
               entity: sensor.garbage_recycling
-              hide_before: 2
+              hide_before: 1
               icon_size: 35px
               icon_color: green
               hide_date: true
@@ -425,7 +425,7 @@
                 }
             - type: custom:garbage-collection-card
               entity: sensor.garbage_general
-              hide_before: 2
+              hide_before: 1
               icon_size: 35px
               icon_color: '#0561ba'
               style: |
