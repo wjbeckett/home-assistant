@@ -98,7 +98,7 @@
                   - type: custom:decluttering-card
                     template: "simple_link"
                     variables:
-                      - path: lounge_room
+                      - path: loungeroom
                       - name: Lounge Room
                       - icon: mdi:sofa
                       - entity: light.lounge_room_lamp
