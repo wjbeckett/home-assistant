@@ -1,3 +1,5 @@
+  # lovelace_gen
+
   - icon: mdi:home-assistant
     id: home
     title: home
@@ -58,9 +60,47 @@
               position: absolute !important;
               right: 16px !important;
             }
-            
+
     - !include ../ui/recap.yaml
     
+    - type: vertical-stack
+      cards:
+        - type: markdown
+          content: |
+            # Rooms
+          style:
+            .: |
+              ha-card {
+                height: 20px;
+                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                box-shadow: 2px 2px rgba(0,0,0,0.0);
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Halvetica;
+                  letter-spacing: '-0.01em';
+                }
+        - type: vertical-stack
+          cards:
+            - type: custom:mod-card
+              card:
+                type: custom:layout-card
+                layout: horizontal
+                min_columns: 2
+                justify_content: start
+                cards:
+                  # {% for room in _global.home.rooms %}
+                  - type: custom:decluttering-card
+                    template: "simple_link"
+                    variables:
+                      - path: '{{ room.name | lower | replace(" ", "_") }}'
+                      - name: {{ room.name }}
+                      - icon: {{ room.icon }}
+                  # {% endfor %}
+
     - type: vertical-stack
       cards:
         - type: markdown

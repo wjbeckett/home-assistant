@@ -1,0 +1,4 @@
+name: Beckett Home
+weather: weather.dark_sky
+recap: !include recap.yaml
+rooms: !include_dir_list ./rooms
