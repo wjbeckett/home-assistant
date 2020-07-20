@@ -1,2 +1,2 @@
 lovelace_gen:
-  home: !include ../ui/configuration.yaml
+  home: !include /ui/configuration.yaml
