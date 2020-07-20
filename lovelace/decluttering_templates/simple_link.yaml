@@ -27,8 +27,7 @@ simple_link:
       card:
         - border-radius: 15px
         - background-color: var(--primary-background-color)
-      
-    style:  |
+    style: |
       ha-card {
         margin: 10px;
         box-shadow: 
