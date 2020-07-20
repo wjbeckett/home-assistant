@@ -3,13 +3,24 @@ simple_link:
     - aspect_ratio: "3/1"
   card:
     type: custom:button-card
+    entity: "[[entity]]"
     name: "[[name]]"
     icon: "[[icon]]"
     show_state: true
+    state:
+      - icon: "[[icon]]"
+        value: on
+        color: '#EF4F1A'
+      - icon: "[[icon]]"
+        value: off
+        color: '#00993E'
     aspect_ratio: "[[aspect_ratio]]"
     tap_action:
       action: navigate
       navigation_path: "[[path]]"
+    doouble_tap_action:
+      action: toggle
+      haptic: light
     styles:
       card:
         - border-radius: 15px
