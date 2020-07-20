@@ -1,1 +1,4 @@
-lovelace_gen: !include '../ui/configuration.yaml'
+lovelace_gen: 
+  name: Beckett Home
+  
+  #!include '../ui/configuration.yaml'
