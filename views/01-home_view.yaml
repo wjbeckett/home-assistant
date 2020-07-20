@@ -2,7 +2,7 @@
 
   - icon: mdi:home-assistant
     id: home
-    title: {{ _global.name }}
+    title: {{ _global.home.name }}
     path: home
     badges: []
     cards:
