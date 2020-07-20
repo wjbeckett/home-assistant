@@ -80,43 +80,36 @@
                   font-family: Halvetica;
                   letter-spacing: '-0.01em';
                 }
-        - type: vertical-stack
+        - type: horizontal-stack
           cards:
-            - type: custom:mod-card
-              card:
-                type: custom:layout-card
-                layout: horizontal
-                min_columns: 2
-                justify_content: start
-                cards:
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: kitchen
-                      - name: Kitchen
-                      - icon: mdi:chef-hat
-                      - entity: light.kitchen_lights
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: bedroom
-                      - name: Bedroom
-                      - icon: mdi:heart-outline
-                      - entity: light.bedroom_lamps
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: ollie_room
-                      - name: Ollie'e Room
-                      - icon: mdi:paw
-                      - entity: light.ollie_s_lamp
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: teddy_room
-                      - name: Teddy's Room
-                      - icon: mdi:pokeball
-                      - entity: light.teddy_s_lamp
+            - type: custom:decluttering-card
+              template: "simple_link"
+              variables:
+                - path: kitchen
+                - name: Kitchen
+                - icon: mdi:chef-hat
+                - entity: light.kitchen_lights
+            - type: custom:decluttering-card
+              template: "simple_link"
+              variables:
+                - path: bedroom
+                - name: Bedroom
+                - icon: mdi:heart-outline
+                - entity: light.bedroom_lamps
+            - type: custom:decluttering-card
+              template: "simple_link"
+              variables:
+                - path: ollie_room
+                - name: Ollie'e Room
+                - icon: mdi:paw
+                - entity: light.ollie_s_lamp
+            - type: custom:decluttering-card
+              template: "simple_link"
+              variables:
+                - path: teddy_room
+                - name: Teddy's Room
+                - icon: mdi:pokeball
+                - entity: light.teddy_s_lamp
 
     - type: vertical-stack
       cards:
