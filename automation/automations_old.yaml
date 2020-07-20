@@ -673,7 +673,7 @@
       data_template:
         title: 'Test message'
         value1: 'Helo there,'
-        value1: 'This is value 2'
+        value2: 'This is value 2'
         who: 'william'
         channel: 'test'
         color: 'red'
