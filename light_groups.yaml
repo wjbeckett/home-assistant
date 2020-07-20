@@ -4,14 +4,14 @@
 # Original Repo : https://github.com/backslashh/homeassistant-config
 #-------------------------------------------
 
-- platform: mqtt
-  schema: json
-  name: kitchen pendant lights
-  command_topic: "zigbee2mqtt/kitchen_lights/set"
-  state_topic: "zigbee2mqtt/kitchen_lights"
-  brightness: true
-  color_temp: true
-  rgb: true
+#- platform: mqtt
+#  schema: json
+#  name: kitchen pendant lights
+#  command_topic: "zigbee2mqtt/kitchen_lights/set"
+#  state_topic: "zigbee2mqtt/kitchen_lights"
+#  brightness: true
+#  color_temp: true
+#  rgb: true
 
 - platform: group
   name: Bedroom Lamps
