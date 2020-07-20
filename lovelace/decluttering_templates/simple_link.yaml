@@ -27,18 +27,7 @@ simple_link:
       card:
         - border-radius: 15px
         - background-color: var(--primary-background-color)
-      grid:
-        - grid-template-areas: >
-            "i n"
-        - grid-template-columns: min-content 1fr
-        - grid-template-rows: 1fr
-      img_cell:
-        - width: 76px
-        - margin-left: -8px
-      name:
-        - justify-self: start
-        - font-weight: bold
-        - margin-left: -16px
+      
     style:  |
       ha-card {
         margin: 10px;
