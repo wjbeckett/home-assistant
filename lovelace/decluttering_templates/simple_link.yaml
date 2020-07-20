@@ -3,10 +3,11 @@ simple_link:
     - aspect_ratio: "3/1"
   card:
     type: custom:button-card
+    template: standard_button
     entity: "[[entity]]"
     name: "[[name]]"
     icon: "[[icon]]"
-    show_state: true
+    show_state: false
     state:
       - icon: "[[icon]]"
         value: on
@@ -18,7 +19,7 @@ simple_link:
     tap_action:
       action: navigate
       navigation_path: "[[path]]"
-    doouble_tap_action:
+    hold_action:
       action: toggle
       haptic: light
     styles:
