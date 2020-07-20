@@ -9,10 +9,12 @@ content: >
     {%- endif -%}
     {{ " " }}
     {% set door_count = states.binary_sensor | selectattr('state', 'eq', 'on') | selectattr('attributes.device_class', 'eq', 'door') | list | count %}
-    {%- if door_count == 1 -%}
-      There is currently one door open.
-    {%- else -%}
-      There are currently {{door_count}} doors open.
+    {%- if door_count != 0 -%}
+      {%- if door_count == 1 -%}
+        There is currently one door open.
+      {%- else -%}
+        There are currently {{door_count}} doors open.
+      {%- endif -%}
     {%- endif -%}
     {{ "\n" }}
     {% set people = states.person | selectattr('state','equalto','home') | list %}
