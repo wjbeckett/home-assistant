@@ -27,6 +27,8 @@ lovelace:
       url: /local/decluttering-card.js
     - type: module
       url: /hacsfiles/lovelace-card-mod/card-mod.js
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
     - type: css
       url: https://fonts.googleapis.com/css?family=Comfortaa&display=swap
   
