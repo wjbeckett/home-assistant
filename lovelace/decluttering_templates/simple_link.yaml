@@ -8,6 +8,7 @@ simple_link:
     name: "[[name]]"
     icon: "[[icon]]"
     show_state: false
+    size: 30px
     state:
       - icon: "[[icon]]"
         value: on
