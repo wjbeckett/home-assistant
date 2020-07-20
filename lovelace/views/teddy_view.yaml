@@ -2,6 +2,7 @@
     id: teddy
     title: Teddy's Room
     path: teddy_room
+    visible: false
     badges: []
     cards:
       - type: vertical-stack

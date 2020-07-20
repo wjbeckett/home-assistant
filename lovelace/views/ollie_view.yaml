@@ -2,6 +2,7 @@
     id: ollie
     title: Ollie's Room
     path: ollie_room
+    visible: false
     badges: []
     cards:
       - type: vertical-stack

@@ -2,6 +2,7 @@
     id: bedroom
     title: Bedroom
     path: bedroom
+    visible: false
     badges: []
     cards:
     - type: vertical-stack

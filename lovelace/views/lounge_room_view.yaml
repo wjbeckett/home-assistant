@@ -2,6 +2,7 @@
     id: loungeroom
     title: Loungeroom
     path: loungeroom
+    visible: false
     badges: []
     cards:
     - type: vertical-stack

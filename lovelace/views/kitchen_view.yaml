@@ -2,6 +2,7 @@
     id: kitchen
     title: Kitchen
     path: kitchen
+    visible: false
     badges: []
     cards:
       - type: vertical-stack
