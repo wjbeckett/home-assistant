@@ -57,7 +57,7 @@
               right: 16px !important;
             }
 
-    - !include ../ui/recap.yaml
+    - !include ../../ui/recap.yaml
     
     - type: vertical-stack
       cards:
