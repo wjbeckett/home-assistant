@@ -19,14 +19,14 @@
           style:
             .: |
               ha-card {
-                padding: 10px 0px;                
+                height: 24px;             
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
               }
             ha-markdown:
               $: |
                 h1 {
-                  font-size: 32px;
+                  font-size: 30px;
                   font-weight: bold;
                   font-family: Helvetica;
                   letter-spacing: '-0.01em';
@@ -67,6 +67,7 @@
           style:
             .: |
               ha-card {
+                height: 24px;
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
               }
@@ -130,7 +131,8 @@
             # Security
           style:
             .: |
-              ha-card {                 
+              ha-card {
+                height: 24px;                  
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
               }
