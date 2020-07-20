@@ -2,7 +2,7 @@
 
   - icon: mdi:home-assistant
     id: home
-    title: Beckett Home
+    title: {{ _global.name }}
     path: home
     badges: []
     cards:
@@ -28,7 +28,6 @@
               }
             ha-markdown:
               $: |
-                padding: 0 16px !important;
                 h1 {
                   font-size: 20px;
                   font-weight: bold;
