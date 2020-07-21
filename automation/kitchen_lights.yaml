@@ -1,5 +1,5 @@
 - id: '1592803760415'
-  alias: Turn on kitchen lights when movement is detetcted before 630pm
+  alias: Turn on kitchen lights when movement is detetcted before 720pm
   description: ''
   trigger:
   - entity_id: binary_sensor.kitchen_sensor_motion
@@ -7,7 +7,7 @@
     to: 'on'
   condition:
   - after: 06:30:00
-    before: '18:30:00'
+    before: '19:20:00'
     condition: time
   - condition: state
     entity_id: input_boolean.guest_mode
@@ -39,11 +39,11 @@
     service: scene.turn_on
 
 - id: '1592804217406'
-  alias: Dim kitchen lights after no motion for 5 min
+  alias: Dim kitchen lights after no motion for 10 min
   description: ''
   trigger:
   - entity_id: binary_sensor.kitchen_sensor_motion
-    for: 00:05:00
+    for: 00:10:00
     platform: state
     to: 'off'
   condition:
@@ -60,11 +60,11 @@
     service: scene.turn_on
 
 - id: '1592804365507'
-  alias: Turn off Kitchen lights after no motion for 10min
+  alias: Turn off Kitchen lights after no motion for 15min
   description: ''
   trigger:
   - entity_id: binary_sensor.kitchen_sensor_motion
-    for: 00:10:00
+    for: 00:15:00
     platform: state
     to: 'off'
   condition:
@@ -82,7 +82,7 @@
     service: light.turn_off
 
 - id: '1592804464192'
-  alias: Turn on Kitchen light dim when movement is detected after 630pm
+  alias: Turn on Kitchen light dim when movement is detected after 720pm
   description: ''
   trigger:
   - entity_id: binary_sensor.kitchen_sensor_motion
@@ -95,7 +95,7 @@
   - condition: state
     entity_id: input_boolean.ollie_sleeping
     state: 'off'
-  - after: '18:30:00'
+  - after: '19:20:00'
     before: '19:50:00'
     condition: time
   action:
