@@ -11,8 +11,9 @@ automation:
     trigger:
     - platform: event
       event_type: deconz_event
-      event: 1002
-      id: wireless_button
+      event_data:
+        event: 1002
+        id: wireless_button
     #- platform: state
     #  entity_id: sensor.wireless_button_click
     #  to: 'single'
@@ -28,8 +29,9 @@ automation:
     trigger:
     - platform: event
       event_type: deconz_event
-      event: 1004
-      id: wireless_button
+      event_data:
+        event: 1004
+        id: wireless_button
     #- platform: state
     #  entity_id: sensor.wireless_button_click
     #  to: 'double'
@@ -46,8 +48,9 @@ automation:
     trigger:
     - platform: event
       event_type: deconz_event
-      event: 1001
-      id: wireless_button
+      event_data:
+        event: 1001
+        id: wireless_button
     #- platform: state
     #  entity_id: sensor.wireless_button_click
     #  to: 'long'
