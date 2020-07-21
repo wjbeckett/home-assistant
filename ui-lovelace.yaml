@@ -62,6 +62,7 @@ button_card_templates:
 
 custom_header:
   compact_mode: true
+  footer_mode: true
   elements_color: var(--primary-text-color)
   tab_indicator_color: var(--state-icon-active-color)
   background: var(--primary-background-color)
