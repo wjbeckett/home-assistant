@@ -9,9 +9,12 @@ automation:
     alias: Toggle Bedroom lamps with a single click
     description: ''
     trigger:
-    - platform: state
-      entity_id: sensor.wireless_button_click
-      to: 'single'
+    - platform: deconz_event
+      event: 1002
+      id: wireless_button
+    #- platform: state
+    #  entity_id: sensor.wireless_button_click
+    #  to: 'single'
     condition: []
     action:
     - data: {}
@@ -22,9 +25,12 @@ automation:
     alias: Activate Bedroom Bright with double click
     description: ''
     trigger:
-    - platform: state
-      entity_id: sensor.wireless_button_click
-      to: 'double'
+    - platform: deconz_event
+      event: 1004
+      id: wireless_button
+    #- platform: state
+    #  entity_id: sensor.wireless_button_click
+    #  to: 'double'
     condition: []
     action:
     - data:
@@ -36,9 +42,12 @@ automation:
     alias: Activate Bedroom Night Light with long press
     description: ''
     trigger:
-    - platform: state
-      entity_id: sensor.wireless_button_click
-      to: 'long'
+    - platform: deconz_event
+      event: 1001
+      id: wireless_button
+    #- platform: state
+    #  entity_id: sensor.wireless_button_click
+    #  to: 'long'
     condition: []
     action:
     - data:
@@ -122,7 +131,7 @@ automation:
       to: "discharging"
     condition:
     - condition: template
-      value_template: "{{ states.sensor.emily_pixel_battery_state.state != 'discharging' }}"
+      value_template: "{{ states.sensor.emily_battery_state.state != 'discharging' }}"
     - condition: state
       entity_id: media_player.bedroom_tv
       state: 'playing'
