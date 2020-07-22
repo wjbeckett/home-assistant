@@ -37,6 +37,7 @@
           show_forecast: false
           style: |
             ha-card {
+              padding: 7px !important;
               background: none;
               box-shadow: none;
             }
@@ -45,7 +46,7 @@
             }
             .icon-image svg {
               height: 30px;
-              margin-bottom: -10px !important;
+              margin-bottom: -20px !important;
             }
             .info, .temp-attribute, .temp, .icon-image, svg, .content {
               display: inline !important;
@@ -53,7 +54,6 @@
               font-size: 30px;
             }
             .content {
-              margin-top: 12px;
               position: absolute !important;
               right: 16px !important;
             }
