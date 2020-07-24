@@ -381,7 +381,7 @@
 - id: front_door_object_detection
   alias: Detect Object at the front door
   trigger:
-  - entity_id: binary_sensor.front_door_camera_motion_sensor
+  - entity_id: binary_sensor.front_door_motion
     platform: state
     to: 'on'
   condition:
@@ -454,7 +454,7 @@
       message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
       data:
         image: !secret deepstack_latest_image
-        clickAction: !secret motioneye_stream
+        clickAction: !secret front_door_cam_stream
         actions:
         - action: "URI"
           title: View Image

@@ -30,7 +30,9 @@
             aspect_ratio: 0%
             camera_view: live
             entities:
-              - binary_sensor.front_door_camera_motion_sensor
+              - switch.camera_front_door_ir_lights
+              - switch.camera_front_door_motion_detection
+              - binary_sensor.motion_front_door
             style: |
               ha-card {
                 background-color: var(--primary-background-color);

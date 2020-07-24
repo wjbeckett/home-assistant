@@ -122,7 +122,7 @@ alarm_control_panel: !include includes/alarm_panel.yaml
 notify: !include includes/notify.yaml
 image_processing: !include includes/image_processing.yaml
 mqtt: !include includes/mqtt.yaml
-camera: !include includes/cameras.yaml
+#camera: !include includes/cameras.yaml
 climate: !include includes/climate.yaml
 group: !include includes/groups.yaml
 #automation old: !include automations_old.yaml
