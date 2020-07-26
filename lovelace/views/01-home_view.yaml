@@ -16,18 +16,17 @@
             {% else %}
             # Good evening.
             {% endif %}
-          style: >
-              ha-card {
-                height: 24px;             
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 26px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+          style: |
+            ha-card {
+              --ha-card-background: none !important;
+              box-shadow: none !important;
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
                 
         - type: weather-forecast
           entity: weather.dark_sky
@@ -64,8 +63,8 @@
             # Rooms
           style: |
             ha-card {
-              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-              box-shadow: 2px 2px rgba(0,0,0,0.0);
+              --ha-card-background: none !important;
+              box-shadow: none !important;
             }
             h1 {
               font-size: 20px;
@@ -124,18 +123,17 @@
         - type: markdown
           content: |
             # Security
-          style: >
-              ha-card {
-                height: 20px;                  
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+          style: |
+            ha-card {
+              --ha-card-background: none !important;
+              box-shadow: none !important;
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
         - type: horizontal-stack
           cards:
             - entity: alarm_control_panel.home_alarm
@@ -272,18 +270,17 @@
         - type: markdown
           content: |
             # Ollie's Meds
-          style: >
-              ha-card {
-                height: 24px;                  
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+          style: |
+            ha-card {
+              --ha-card-background: none !important;
+              box-shadow: none !important;
+            }
+            h1 {
+              font-size: 20px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
         - type: horizontal-stack
           cards:
             - entity: input_boolean.morning_meds_taken
@@ -377,18 +374,17 @@
             type: markdown
             content: |
               # Garbage Collection
-            style: >
-                ha-card {
-                  height: 24px;                  
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                }
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
+            style: |
+              ha-card {
+                --ha-card-background: none !important;
+              box-shadow: none !important;
+              }
+              h1 {
+                font-size: 20px;
+                font-weight: bold;
+                font-family: Helvetica;
+                letter-spacing: '-0.01em';
+              }
         - type: horizontal-stack
           cards:
             - type: custom:garbage-collection-card

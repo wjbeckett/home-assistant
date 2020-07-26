@@ -190,38 +190,33 @@
                       - type: markdown
                         content: |
                           # Dim
-                        style:
-                          .: |
+                        style: >
                             ha-card {
-                              height: 20px;                  
-                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                              --ha-card-background: none !important;
+                              box-shadow: none !important;
+                              height: 20px; 
+                              margin-top: 15px;
                             }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
                       - type: markdown
                         content: |
                           # Dims the kitchen lights
-                        style:
-                          .: |
+                        style: >
                             ha-card {
-                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                              --ha-card-background: none !important;
+                              box-shadow: none !important;
                             }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'
