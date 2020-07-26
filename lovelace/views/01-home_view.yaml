@@ -127,7 +127,7 @@
             # Security
           style: >
               ha-card {
-                height: 24px;                  
+                height: 20px;                  
                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                 box-shadow: 2px 2px rgba(0,0,0,0.0);
               }
