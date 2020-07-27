@@ -63,7 +63,7 @@ button_card_templates:
 custom_header:
   compact_mode: true
   tab_indicator_color: var(--sidebar-selected-icon-color)
-  background: var(--primary-background-color)
+  background: transparent
   notification_dot_color: var(--sidebar-selected-icon-color)
   elements_color: var(--primary-text-color)
   active_tab_color: var(--sidebar-selected-icon-color)

@@ -11,8 +11,8 @@
           card_size: 2
           style: >
             ha-card {
-              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-              box-shadow: 2px 2px rgba(0,0,0,0.0);
+              --ha-card-background: none !important;
+              box-shadow: none !important;
             }
             ha-card a, p {
               color: var(--primary-text-color) !important;
@@ -36,8 +36,8 @@
             .: |
               ha-card {
                 height: 20px;                  
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
+                --ha-card-background: none !important;
+                box-shadow: none !important;
               }
             ha-markdown:
               $: |
@@ -96,8 +96,8 @@
             .: |
               ha-card {
                 height: 20px;                  
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
+                --ha-card-background: none !important;
+                box-shadow: none !important;
               }
             ha-markdown:
               $: |
@@ -149,9 +149,10 @@
                       style:
                         .: |
                           ha-card {
-                            height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            height: 20px;
+                            margin-top: 15px;         
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
                           }
                         ha-markdown:
                           $: |
@@ -167,8 +168,8 @@
                       style:
                         .: |
                           ha-card {
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
                           }
                         ha-markdown:
                           $: |
@@ -217,8 +218,9 @@
                         .: |
                           ha-card {
                             height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            margin-top: 15px;         
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
                           }
                         ha-markdown:
                           $: |
@@ -234,8 +236,8 @@
                       style:
                         .: |
                           ha-card {
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
                           }
                         ha-markdown:
                           $: |
@@ -284,8 +286,9 @@
                         .: |
                           ha-card {
                             height: 20px;                  
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            margin-top: 15px;         
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
                           }
                         ha-markdown:
                           $: |
@@ -301,8 +304,8 @@
                       style:
                         .: |
                           ha-card {
-                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
                           }
                         ha-markdown:
                           $: |
@@ -321,8 +324,8 @@
             .: |
               ha-card {
                 height: 20px;                  
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
+                --ha-card-background: none !important;
+                box-shadow: none !important;
               }
             ha-markdown:
               $: |
@@ -355,8 +358,8 @@
             .: |
               ha-card {
                 height: 20px;                  
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
+                --ha-card-background: none !important;
+                box-shadow: none !important;
               }
             ha-markdown:
               $: |
