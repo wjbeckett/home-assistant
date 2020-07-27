@@ -24,9 +24,7 @@
   entities:
     light.ollie_s_lamp:
       brightness: 255
-      xy_color:
-        - 0.388
-        - 0.401
+      color_temp: 320
       state: 'on'
       transition: 2
     light.teddy_s_lamp:
@@ -41,21 +39,19 @@
   entities:
     light.ollie_s_lamp:
       brightness: 2
-      xy_color:
-        - 0.561
-        - 0.404
+      color_temp: 453
       state: 'on'
       transition: 2
     light.teddy_s_lamp:
       state: 'on'
-      brightness_pct: 1
+      brightness: 1
       transition: 2
       xy_color: 
         - 0.561
         - 0.404
     light.lounge_room_lamp:
       state: 'on'
-      brightness_pct: 18
+      brightness: 30
       transition: 2
       xy_color: 
         - 0.561
