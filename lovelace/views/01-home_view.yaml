@@ -16,17 +16,20 @@
             {% else %}
             # Good evening.
             {% endif %}
-          style: |
-            ha-card {
-              --ha-card-background: none !important;
-              box-shadow: none !important;
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
                 
         - type: weather-forecast
           entity: weather.dark_sky
@@ -61,17 +64,20 @@
         - type: markdown
           content: |
             # Rooms
-          style: |
-            ha-card {
-              --ha-card-background: none !important;
-              box-shadow: none !important;
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
         - type: vertical-stack
           cards:
             - type: custom:mod-card
@@ -107,7 +113,7 @@
                     template: "simple_link"
                     variables:
                       - path: ollie_room
-                      - name: Ollie'e Room
+                      - name: Ollie's Room
                       - icon: mdi:paw
                       - entity: light.ollie_s_lamp
                   - type: custom:decluttering-card
@@ -123,17 +129,20 @@
         - type: markdown
           content: |
             # Security
-          style: |
-            ha-card {
-              --ha-card-background: none !important;
-              box-shadow: none !important;
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
         - type: horizontal-stack
           cards:
             - entity: alarm_control_panel.home_alarm
@@ -270,17 +279,20 @@
         - type: markdown
           content: |
             # Ollie's Meds
-          style: |
-            ha-card {
-              --ha-card-background: none !important;
-              box-shadow: none !important;
-            }
-            h1 {
-              font-size: 20px;
-              font-weight: bold;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
         - type: horizontal-stack
           cards:
             - entity: input_boolean.morning_meds_taken
@@ -374,17 +386,20 @@
             type: markdown
             content: |
               # Garbage Collection
-            style: |
-              ha-card {
-                --ha-card-background: none !important;
-              box-shadow: none !important;
-              }
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
+            style:
+              .: |
+                ha-card {
+                  --ha-card-background: none !important;
+                  box-shadow: none !important;
+                }
+              ha-markdown:
+                $: |
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
         - type: horizontal-stack
           cards:
             - type: custom:garbage-collection-card
