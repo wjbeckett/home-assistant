@@ -34,8 +34,7 @@
             # Lights
           style:
             .: |
-              ha-card {
-                height: 20px;                  
+              ha-card {                
                 --ha-card-background: none !important;
                 box-shadow: none !important;
               }
@@ -94,8 +93,7 @@
             # Scenes
           style:
             .: |
-              ha-card {
-                height: 20px;                  
+              ha-card {                
                 --ha-card-background: none !important;
                 box-shadow: none !important;
               }
@@ -140,6 +138,7 @@
                     service: scene.turn_on
                     service_data:
                       entity_id: scene.bedroom_night_light
+                      transition: 2
                     haptic: light
                 - type: vertical-stack
                   cards:
@@ -208,6 +207,7 @@
                     service: scene.turn_on
                     service_data:
                       entity_id: scene.bedroom_lamps_bright
+                      transition: 2
                     haptic: light
                 - type: vertical-stack
                   cards:
@@ -276,6 +276,7 @@
                     service: scene.turn_on
                     service_data:
                       entity_id: scene.bedroom_tv_time
+                      transition: 2
                     haptic: light
                 - type: vertical-stack
                   cards:
@@ -322,8 +323,7 @@
             # Climate
           style:
             .: |
-              ha-card {
-                height: 20px;                  
+              ha-card {                
                 --ha-card-background: none !important;
                 box-shadow: none !important;
               }
@@ -356,8 +356,7 @@
             # Media
           style:
             .: |
-              ha-card {
-                height: 20px;                  
+              ha-card {                 
                 --ha-card-background: none !important;
                 box-shadow: none !important;
               }

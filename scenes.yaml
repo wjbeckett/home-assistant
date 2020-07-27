@@ -3,7 +3,6 @@
   entities:
     light.kitchen_pendant_lights:
       state: on
-      transition: 2
       brightness_pct: 30
     light.kitchen_downlight:
       state: on
@@ -13,7 +12,6 @@
   entities:
     light.kitchen_pendant_lights:
       state: on
-      transition: 2
       brightness_pct: 100
       color_temp: 356
     light.kitchen_downlight:
@@ -23,14 +21,12 @@
   name: Bright Lights
   entities:
     light.ollie_s_lamp:
-      brightness: 255
+      brightness: 254
       color_temp: 320
       state: 'on'
-      transition: 2
     light.teddy_s_lamp:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.388
       - 0.401
@@ -41,18 +37,15 @@
       brightness: 2
       color_temp: 453
       state: 'on'
-      transition: 2
     light.teddy_s_lamp:
       state: 'on'
-      brightness: 1
-      transition: 2
+      brightness: 2
       xy_color: 
         - 0.561
         - 0.404
     light.lounge_room_lamp:
       state: 'on'
       brightness: 30
-      transition: 2
       xy_color: 
         - 0.561
         - 0.418
@@ -63,12 +56,10 @@
       brightness_pct: 20
       color_temp: 453
       state: 'on'
-      transition: 2
     light.bedroom_lamp_left:
         brightness_pct: 20
         color_temp: 453
         state: 'on'
-        transition: 2
 - id: 'bedroom_lamps_bright'
   name: Bedroom Lamps Bright
   entities:
@@ -76,12 +67,10 @@
       brightness_pct: 100
       color_temp: 453
       state: 'on'
-      transition: 2
     light.bedroom_lamp_left:
         brightness_pct: 100
         color_temp: 453
         state: 'on'
-        transition: 2
 - id: 'bedroom_tv_time'
   name: Bedroom TV Time
   entities:
@@ -89,7 +78,6 @@
       brightness_pct: 20
       color_temp: 453
       state: 'on'
-      transition: 2
     media_player.bedroom_tv:
       state: 'on'
 - id: 'lounge_room_movie_time'
@@ -99,7 +87,6 @@
       brightness_pct: 20
       color_temp: 453
       state: 'on'
-      transition: 2
     media_player.lounge_room_tv:
       state: 'on'
 - id: '1592801081707'
@@ -111,7 +98,6 @@
       state: 'on'
     light.pendant_light_center:
       state: 'on'
-      transition: 2
       brightness: 255
       xy_color:
       - 0.201
@@ -119,14 +105,12 @@
     light.pendant_light_left:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.393
       - 0.242
     light.pendant_light_right:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.393
       - 0.242
@@ -140,21 +124,18 @@
     light.pendant_light_center:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.139
       - 0.074
     light.pendant_light_left:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.61
       - 0.376
     light.pendant_light_right:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.61
       - 0.376
@@ -168,21 +149,18 @@
     light.pendant_light_center:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.153
       - 0.254
     light.pendant_light_left:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.301
       - 0.116
     light.pendant_light_right:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.301
       - 0.116
@@ -192,7 +170,6 @@
     light.lounge_room_lamp:
       brightness: 255
       state: 'on'
-      transition: 2
       xy_color:
       - 0.388
       - 0.401

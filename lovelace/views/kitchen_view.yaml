@@ -182,6 +182,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.kitchen_dim
+                        transition: 2
                     haptic: light
                   - type: vertical-stack
                     cards:
@@ -250,6 +251,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.kitchen_bright
+                        transition: 2
                     haptic: light
                   - type: vertical-stack
                     cards:
@@ -318,6 +320,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.cozy_kitchen_lights
+                        transition: 2
                     haptic: light
                   - type: vertical-stack
                     cards:
@@ -386,6 +389,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.tropical_punch
+                        transition: 2
                     haptic: light
                   - type: vertical-stack
                     cards:
@@ -454,6 +458,7 @@
                       service: scene.turn_on
                       service_data:
                         entity_id: scene.blippi_mode
+                        transition: 2
                     haptic: light
                   - type: vertical-stack
                     cards:
