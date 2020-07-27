@@ -5,58 +5,61 @@
 #-------------------------------------------
 
 automation:
-
-  - id: 'bedroom switch'
-    description: When pressing the wireless button, do the right thing.
+  - id: '1592805027019'
+    alias: Toggle Bedroom lamps with a single click
+    description: ''
     trigger:
-      - platform: event
-        event_type: deconz_event
-        event_data:
-          event: 1002
-          id: wireless_button
-      - platform: event
-        event_type: deconz_event
-        event_data:
-          event: 1004
-          id: wireless_button
-      - platform: event
-        event_type: deconz_event
-        event_data:
-          event: 1001
-          id: wireless_button
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        event: 1002
+        id: wireless_button
+    #- platform: state
+    #  entity_id: sensor.wireless_button_click
+    #  to: 'single'
+    condition: []
     action:
-      - choose:
-        - conditions:
-          - condition: event
-            event_type: deconz_event
-            event_data:
-              event: 1002
-              id: wireless_button
-          sequence:
-            - service: light.toggle
-              entity_id: light.bedroom_lamps
-        - conditions:
-          - condition: event
-            event_type: deconz_event
-            event_data:
-              event: 1004
-              id: wireless_button
-          sequence:
-            - service: scene.turn_on
-              entity_id: scene.bedroom_lamps_bright
-        - conditions:
-          - condition: event
-            event_type: deconz_event
-            event_data:
-              event: 1001
-              id: wireless_button
-          sequence:
-            - service: scene.turn_on
-              entity_id: scene.bedroom_night_light
-        default:
-          - service: notify.mobile_app_william
-            data:
-              message: Some other unknown button was pressed!
+    - data: {}
+      entity_id: light.bedroom_lamps
+      service: light.toggle
+
+  - id: '1592805067463'
+    alias: Activate Bedroom Bright with double click
+    description: ''
+    trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        event: 1004
+        id: wireless_button
+    #- platform: state
+    #  entity_id: sensor.wireless_button_click
+    #  to: 'double'
+    condition: []
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.bedroom_lamps_bright
+      service: scene.turn_on
+
+  - id: '1592805105771'
+    alias: Activate Bedroom Night Light with long press
+    description: ''
+    trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        event: 1001
+        id: wireless_button
+    #- platform: state
+    #  entity_id: sensor.wireless_button_click
+    #  to: 'long'
+    condition: []
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.bedroom_night_light
+      service: scene.turn_on
 
   - id: '1592805608239'
     alias: turn on Bedroom lamps when motion is detected
