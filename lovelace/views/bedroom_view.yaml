@@ -150,7 +150,7 @@
                         .: |
                           ha-card {
                             height: 20px;
-                            margin-top: 15px;         
+                            margin-top: 15px;
                             --ha-card-background: none !important;
                             box-shadow: none !important;
                           }
