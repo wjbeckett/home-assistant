@@ -24,7 +24,7 @@ camera:
 binary_sensor:
   platform: template
   sensors:
-    front_door_motion:
+    front_door:
       friendly_name: Front Door
       device_class: motion
       entity_id: camera.front_door
