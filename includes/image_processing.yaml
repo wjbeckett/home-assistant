@@ -18,3 +18,8 @@
   source:
     - entity_id: camera.saved_image
       name: deepstack_detector
+- platform: openalpr_cloud
+  api_key: !secret openalpr
+  region: au
+  source:
+    - entity_id: camera.alpr_test

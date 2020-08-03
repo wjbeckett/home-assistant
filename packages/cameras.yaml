@@ -7,6 +7,9 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
+  - platform: local_file
+    file_path: /config/www/tmp/alpr_test.jpg
+    name: alpr_test
   - platform: generic
     name: wyze
     still_image_url: !secret wyze_image
