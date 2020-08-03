@@ -32,7 +32,7 @@
               - switch.camera_front_door_ir_lights
               - switch.camera_front_door_motion_detection
               - binary_sensor.front_door
-              - binary_senson.front_door_motion
+              - binary_sensor.front_door_motion
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
