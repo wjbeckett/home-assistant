@@ -9,13 +9,13 @@
 ######################################################################################################
 
 speech_processing:
+  mode: queued
   sequence:
     - service: mqtt.publish
       data_template:
         topic: 'google/lastmsg'
         payload: "This message is from {{ now().strftime('%-I') }}:{{ now().strftime('%M') }} {{ now().strftime('%p') }}. {{ speech_message | truncate(220)}}"
         retain: true
-
     - condition: and
       conditions:
         - condition: or
