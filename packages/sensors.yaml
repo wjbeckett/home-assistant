@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    front_door_face:
+        value_template: "{{ states('image_processing.face_detection') }}"
+        friendly_name: Front Door Face

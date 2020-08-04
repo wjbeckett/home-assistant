@@ -402,36 +402,36 @@
   - service: image_processing.scan
     entity_id: image_processing.face_detection
 
-#- id: face_recognised
-#  alias: Face recognised
-#  condition:
-#  - condition: state
-#    entity_id: input_boolean.text_notifications
-#    state: 'on'
-#  trigger:
-#    platform: event
-#    event_type: image_processing.detect_face
-#  action:
-#    - service_template: >-
-#        {% if not is_state('sensor.front_door_detection' , 'unavailable') %} 
-#        notify.parents
-#        {% endif %}
-#      data_template:
-#        message: "{{ states('sensor.front_door_detection') }} is at the front door"
-#        data:
-#          image: !secret temp_image
-#          clickAction: !secret motioneye_stream
-#          actions:
-#            - action: "URI"
-#              title: View Image
-#              uri: !secret temp_image
-#    - service_template: >-
-#        {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
-#        tts.google_cloud_say
-#        {% endif %}
-#      data_template:
-#        entity_id: media_player.kitchen_display
-#        message: "{{ states('sensor.front_door_detection') }} is at the front door"
+- id: face_recognised
+  alias: Face recognised
+  condition:
+  - condition: state
+    entity_id: input_boolean.text_notifications
+    state: 'on'
+  trigger:
+    platform: event
+    event_type: image_processing.detect_face
+  action:
+    - service_template: >-
+        {% if not is_state('sensor.front_door_face' , 'unavailable') %} 
+        notify.parents
+        {% endif %}
+      data_template:
+        message: "{{ states('sensor.front_door_face') }} is at the front door"
+        data:
+          image: !secret temp_image
+          clickAction: !secret motioneye_stream
+          actions:
+            - action: "URI"
+              title: View Image
+              uri: !secret temp_image
+    - service_template: >-
+        {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
+        tts.google_cloud_say
+        {% endif %}
+      data_template:
+        entity_id: media_player.kitchen_display
+        message: "{{ states('sensor.front_door_detection') }} is at the front door"
 
 - id: object_detection_notification
   alias: Notify when object is detected
