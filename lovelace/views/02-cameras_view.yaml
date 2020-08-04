@@ -60,9 +60,10 @@
                     -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
                   {% endif %}   
               }
-          - type: sensor
+          - type: glance
             entity: sensor.front_door_face
             name: Face Detection
-            icon: mdi:face-recognition
-            graph: none
+            entities:
+              - entity: sensor.front_door_face
+                icon: mdi:face-recognition
             
