@@ -431,7 +431,7 @@
         {% endif %}
       data_template:
         entity_id: media_player.kitchen_display
-        message: "{{ states('sensor.front_door_detection') }} is at the front door"
+        message: "{{ states('sensor.front_door_face') }} is at the front door"
 
 - id: object_detection_notification
   alias: Notify when object is detected
