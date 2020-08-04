@@ -426,7 +426,7 @@
               title: View Image
               uri: !secret temp_image
     - service_template: >-
-        {% if not is_state('sensor.front_door_detection' , 'unknown') %}
+        {% if not is_state('sensor.front_door_face' , 'unknown') %}
         tts.google_cloud_say
         {% endif %}
       data_template:
