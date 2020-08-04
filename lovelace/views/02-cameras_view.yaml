@@ -66,4 +66,5 @@
             entities:
               - entity: sensor.front_door_face
                 icon: mdi:face-recognition
+                show_state: true
             
