@@ -60,8 +60,9 @@
                     -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
                   {% endif %}   
               }
-          - type: entity
+          - type: sensor
             entity: sensor.front_door_face
             name: Face Detection
             icon: mdi:face-recognition
+            graph: none
             
