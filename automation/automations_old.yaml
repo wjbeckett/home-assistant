@@ -420,7 +420,7 @@
         message: "{{ states('sensor.front_door_face') }} is at the front door"
         data:
           image: !secret temp_image
-          clickAction: !secret motioneye_stream
+          clickAction: !secret front_door_cam_stream
           actions:
             - action: "URI"
               title: View Image
