@@ -413,7 +413,7 @@
     event_type: image_processing.detect_face
   action:
     - service_template: >-
-        {% if not is_state('sensor.front_door_face' , 'unavailable') %} 
+        {% if not is_state('sensor.front_door_face' , 'unknown') %} 
         notify.parents
         {% endif %}
       data_template:
@@ -426,7 +426,7 @@
               title: View Image
               uri: !secret temp_image
     - service_template: >-
-        {% if not is_state('sensor.front_door_detection' , 'unavailable') %}
+        {% if not is_state('sensor.front_door_detection' , 'unknown') %}
         tts.google_cloud_say
         {% endif %}
       data_template:
