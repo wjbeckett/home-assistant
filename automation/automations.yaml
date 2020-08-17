@@ -12,7 +12,7 @@
   action:
   - scene: scene.bright_lights
   - scene: scene.bedroom_lamps_bright
-  - brightness_pct: 100
+  - brightness: 255
     device_id: 13c7e8ef3a73444484d1ba5f6076b425
     domain: light
     entity_id: light.lounge_room_lamp

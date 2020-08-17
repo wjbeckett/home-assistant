@@ -3,20 +3,20 @@
   entities:
     light.kitchen_pendant_lights:
       state: on
-      brightness_pct: 30
+      brightness: 60
     light.kitchen_downlight:
       state: on
-      brightness_pct: 30
+      brightness: 60
 - id: kitchen_bright
   name: Kitchen Bright
   entities:
     light.kitchen_pendant_lights:
       state: on
-      brightness_pct: 100
+      brightness: 254
       color_temp: 356
     light.kitchen_downlight:
       state: on
-      brightness_pct: 100
+      brightness: 254
 - id: '1582607583558'
   name: Bright Lights
   entities:
@@ -53,29 +53,29 @@
   name: Bedroom Night Light
   entities:
     light.bedroom_lamp_right:
-      brightness_pct: 20
+      brightness: 50
       color_temp: 453
       state: 'on'
     light.bedroom_lamp_left:
-        brightness_pct: 20
+        brightness: 50
         color_temp: 453
         state: 'on'
 - id: 'bedroom_lamps_bright'
   name: Bedroom Lamps Bright
   entities:
     light.bedroom_lamp_right:
-      brightness_pct: 100
+      brightness: 255
       color_temp: 453
       state: 'on'
     light.bedroom_lamp_left:
-        brightness_pct: 100
+        brightness: 255
         color_temp: 453
         state: 'on'
 - id: 'bedroom_tv_time'
   name: Bedroom TV Time
   entities:
     light.bedroom_lamps:
-      brightness_pct: 20
+      brightness: 50
       color_temp: 453
       state: 'on'
     media_player.bedroom_tv:
@@ -84,7 +84,7 @@
   name: Lounge Room Movie Time
   entities:
     light.lounge_room_lamp:
-      brightness_pct: 20
+      brightness: 50
       color_temp: 453
       state: 'on'
     media_player.lounge_room_tv:
