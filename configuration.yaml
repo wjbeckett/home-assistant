@@ -63,8 +63,8 @@ tts:
     encoding: linear16
 
 browser_mod:
-  #devices:
+  devices:
   #  918296e3-e2a54976:
   #    name: imac_chrome
-  #  c2080cea-6627150a:
-  #    name: tablet
+    f60e9628-de2bbfff:
+      name: tablet
