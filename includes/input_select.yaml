@@ -1,8 +1,0 @@
----
-#- from github.com/wjbeckett/homeassistant-config
-
-home_mode:
-  name: Home Mode
-  options:
-    - Home
-    - Away

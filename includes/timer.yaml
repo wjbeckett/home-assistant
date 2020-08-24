@@ -1,5 +1,0 @@
----
-#- from github.com/wjbeckett/homeassistant-config
-zigbee_permit_join:
-  name: Time remaining
-  duration: 120
