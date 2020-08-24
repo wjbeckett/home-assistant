@@ -117,7 +117,7 @@ input_select:
   conditional_media:
     initial: Last downloaded
     options:
-      ['Last downloaded', 'Lounge Room TV', 'Kitchen Display', 'Bedroom Speaker', 'Bedroom TV', 'Teddy's Speaker', 'Ollie's Speaker']
+      ['Last downloaded', 'Lounge Room TV', 'Kitchen Display', 'Bedroom Speaker', 'Bedroom TV', 'Teddy Speaker', 'Ollie Speaker']
 
   home_mode:
     name: Home Mode
