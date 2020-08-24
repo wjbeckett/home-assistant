@@ -708,7 +708,7 @@ views:
               left: 80.05%
               width: 10%
             tap_action: *tv_tap_action
-            hold_action: !include popup/sovrum_tv2.yaml
+            hold_action: !include popup/bedroom_tv.yaml
             custom_fields:
               icon_tv: *icon_tv
             styles: *icon_tv_styles
