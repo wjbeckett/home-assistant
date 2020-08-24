@@ -134,3 +134,196 @@ script:
               entity_id: switch.air_purifier
       - delay:
           seconds: 4
+
+
+
+  ######################################################################################################
+  ###Script to send notifications to mobile devices. Call like this:
+    # action:
+      # service: script.notify_engine
+      # data_template:
+        # title: 'Message Title'
+        # message: 'Startup: Home Assistant is Up and Running!'
+        # who: "william | emily | family | parents"
+        # image: 'URL to image'
+        # channel: "Presence | Security | Medicine"
+        # color: "blue"
+        # clickaction: "https://...."
+        # tag: ""
+        # icon:
+        # group: "Motion"
+        # priority: 'high'
+        # action_1: "URI"
+        # action_1_title: "title"
+        # action_1_uri: "url here"
+        # action_2: "URI"
+        # action_2_title: "title"
+        # action_2_uri: "url here"
+        # action_3: "URI"
+        # action_3_title: "title"
+        # action_3_uri: "url here"
+
+
+      # @Backslashh
+      # Original Repo : https://github.com/Backslashh/homeassistant-config
+  ######################################################################################################
+
+  notify_engine:
+    sequence:
+      - condition: state
+        entity_id: input_boolean.text_notifications
+        state: 'on'
+
+      - service_template: >
+            {% if who == 'william' %}
+              notify.mobile_app_william
+            {% elif who == 'emily' %}
+              notify.mobile_app_emily
+            {% elif who == 'parents' %}
+              notify.parents
+            {% elif who == 'family' %}
+              notify.family
+            {% else %}
+              notify.parents
+            {% endif %}
+        data_template:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data:
+            actions:
+            - action: "{{ action_1 }}"
+              title: "{{ action_1_title }}"
+              uri: "{{ action_1_uri }}"
+            - action: "{{ action_2 }}"
+              title: "{{ action_2_title}}"
+              uri: "{{ action_2_uri }}"
+            - action: "{{ action_3 }}"
+              title: "{{ action_3_title }}"
+              uri: "{{ action_3_uri }}"
+            channel: "{{ channel }}"
+            color: "{{ color }}"
+            image: "{{ image }}"
+            clickAction: "{{ clickaction }}"
+            tag: "{{ tag }}"
+            icon: "{{ icon }}"
+            priority: "{{ priority }}"
+            group: "{{ group }}"
+
+  ######################################################################################################
+  ###Script to send notifications to the Google Homess during normal hours and only when we are home! Call like this:
+    # action:
+      # service: script.speech_engine
+      # data:
+      #   call_no_announcement:
+      #   call_dark_outside:
+      #   call_window_check:
+      #   call_garage_check:
+      #   call_responsibilities
+      #   call_light_check
+      #   call_inside_weather
+      #   call_outside_weather
+  # # @backslashh
+  # Original Repo : https://github.com/backslashh/homeassistant-config
+  ######################################################################################################
+
+  speech_engine:
+    mode: queued
+    sequence:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: group.family
+            state: 'home'
+          - condition: state
+            entity_id: input_boolean.guest_mode
+            state: 'on'
+
+      - service: script.speech_processing
+        data_template:
+          media_player: >-
+              {% if media_player | length == 0 %}
+                {% set media_player = [
+                  'media_player.bedroom_speaker'
+                ] %}
+              {% endif %}
+              {% if media_player is not string and media_player is sequence %}
+                {% set media_player = media_player|join(', ') %}
+              {% endif %}
+              {{ media_player }}
+          speech_message: !include ../templates/speech/briefing.yaml
+
+      - service: input_boolean.turn_off
+        data:
+          entity_id:
+            - input_boolean.home_stats
+            - input_boolean.responsibilities
+
+
+  ######################################################################################################
+  ###Script to actually send notifications to the Google Homes during normal hours and only when we are home! Call like this:
+    # action:
+      # service: script.speech_engine
+      # media_player:
+      # speech_message:
+  # # @backslashh
+  # Original Repo : https://github.com/backslashh/homeassistant-config
+  ######################################################################################################
+
+  speech_processing:
+    mode: queued
+    sequence:
+      - service: mqtt.publish
+        data_template:
+          topic: 'google/lastmsg'
+          payload: "This message is from {{ now().strftime('%-I') }}:{{ now().strftime('%M') }} {{ now().strftime('%p') }}. {{ speech_message | truncate(220)}}"
+          retain: true
+      - condition: and
+        conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: group.family
+                state: 'home'
+              - condition: state
+                entity_id: input_boolean.guest_mode
+                state: 'on'
+          - condition: or
+            conditions:
+              - condition: and
+                conditions:
+                  - condition: time
+                    after: '08:00:00'
+                    before: '18:30:00'
+              - condition: state
+                entity_id: input_boolean.alert_mode
+                state: 'on'
+          - condition: state
+            entity_id: input_boolean.speech_notifications
+            state: 'on'
+
+      - service: media_player.volume_set
+        data_template:
+          entity_id: >
+            {{ media_player }}
+          volume_level: >-
+            {% if now().strftime('%H')|int < 12 and now().strftime('%H')|int > 7 %}
+              0.7
+            {% elif now().strftime('%H')|int > 12 and now().strftime('%H')|int < 18 %}
+              0.7
+            {% else %}
+              0.1
+            {% endif %}
+
+      - service: tts.google_cloud_say
+        data_template:
+          entity_id: >
+            {{ media_player }}
+          message: >-
+              {{ speech_message }}
+          cache: true
+
+      - service: input_boolean.turn_off
+        data:
+          entity_id:
+            - input_boolean.alert_mode
+            - input_boolean.lastmsg
