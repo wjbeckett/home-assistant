@@ -11,10 +11,10 @@ image_processing:
     - car
     source:
     - entity_id: camera.saved_image
-        name: deepstack_detector
+      name: deepstack_detector
   - platform: microsoft_face_identify
     group: family
     scan_interval: 10000 
     source:
     - entity_id: camera.saved_image
-        name: Face Detection
+      name: Face Detection
