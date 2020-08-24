@@ -60,7 +60,7 @@
                       content: >
                         <span><ha-icon icon="mdi:home-assistant"></ha-icon> Home Assistant {{ states('sensor.hass_version_installed') }}</span><br>
                         {% if states('sensor.hass_version_installed') == states('sensor.hass_version_latest') %}
-                        <b>No Updates - {{ state_attr('sensor.hass_dev_release', 'friendly_name') }} {{ states('sensor.hass_dev_release') | lower }}</b>
+                        <b>No Updates - </b>
                         {% else %}
                         <b>{{ states('sensor.hass_version_latest') }} Available</b> {{ '\U0001f389' }}
                     

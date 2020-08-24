@@ -274,30 +274,10 @@ sensor:
         entity_id: sensor.hass_version_installed, sensor.hass_version_latest
         icon_template: mdi:home-assistant
         friendly_name_template: >
-          Installerad {{ states('sensor.hass_version_installed') }}
+          Installed {{ states('sensor.hass_version_installed') }}
         value_template: >
-          {{ 'Senaste' if states('sensor.hass_version_installed') == 
+          {{ 'Latest' if states('sensor.hass_version_installed') == 
           states('sensor.hass_version_latest') else states('sensor.hass_version_latest') }}
-
-      hass_dev_release:
-        entity_id: sensor.time, calendar.home_assistant_devs
-        icon_template: mdi:dev-to
-        friendly_name_template: >
-          {% if ((as_timestamp(state_attr('calendar.home_assistant_devs', 
-          'start_time')) - as_timestamp(now())) / 86400) > 20 %}
-            Planerad beta
-          {% else %}
-            {{ state_attr('calendar.home_assistant_devs','message') }}
-          {% endif %}
-        value_template: >
-          {% set dev = ((as_timestamp(state_attr('calendar.home_assistant_devs', 
-          'start_time')) - as_timestamp(now())) / 86400) %}
-          {% if dev < -1 %} Släppt
-          {% elif dev < 0 %} Idag
-          {% elif dev < 1 %} Imorgon
-          {% elif dev > 20 %} Ingen
-          {% else %} {{ dev | int + 1 }} dagar
-          {% endif %}
 
     ####################################################
     #                                                  #

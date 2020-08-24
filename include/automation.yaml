@@ -118,25 +118,6 @@ automation:
           entity_id: >
             {{ trigger.entity_id }}
 
-  - alias: notify_hass_rc
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: sensor.hass_version_latest_beta
-    condition:
-      - condition: state
-        entity_id: sensor.hass_dev_release
-        state:
-          ['Today', 'Released']
-    action:
-      - service: notify.mobile_app_william
-        data_template:
-          title: >
-            RC {{ states(trigger.entity_id) }} available
-          message: Press to read version information
-          data:
-            clickAction: https://rc.home-assistant.io/latest-release-notes/
-
   - alias: notify_hass_update
     initial_state: true
     trigger:
