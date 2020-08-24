@@ -19,6 +19,7 @@ lovelace:
       {url: /hacsfiles/swipe-card/swipe-card.js,                                 type: module},
       {url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js,        type: module},
       {url: /hacsfiles/garbage-collection-card/garbage-collection-card.js,       type: module},
+      {url: /local/decluttering-card.js,                                         type: module},
 
       {url: '/local/custom_icons.js?v=25052001',                                 type: module},
       {url: /local/font.css,                                                     type: css} ]
