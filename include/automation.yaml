@@ -791,7 +791,7 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', 'media_player.ollie_s_speaker', 'media_player.teddy_s_speaker', 
           'media_player.kitchen_display', 'media_player.lounge_room_tv']
         to: playing
     action:
@@ -807,13 +807,13 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', 'media_player.ollie_s_speaker', 'media_player.teddy_s_speaker', 
           'media_player.kitchen_display', 'media_player.lounge_room_tv']
         to:
           ['off', 'idle', 'standby']
       - platform: state
         entity_id:
-          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', 'media_player.ollie_s_speaker', 'media_player.teddy_s_speaker', 
           'media_player.kitchen_display', 'media_player.lounge_room_tv']
         to: paused
         for:
@@ -824,7 +824,7 @@ automation:
           entity_id: input_select.conditional_media
           option: >
             {% set media_players = 
-            ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+            ['media_player.bedroom_tv', 'media_player.bedroom_speaker', 'media_player.ollie_s_speaker', 'media_player.teddy_s_speaker', 
             'media_player.kitchen_display', 'media_player.lounge_room_tv'] %}
             {% if media_players | selectattr('state','eq','playing') | list | count == 0 %}
               {% if media_players | selectattr('state','eq','paused') | list | count == 0 %}

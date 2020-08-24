@@ -33,22 +33,6 @@ recorder:
       ['person.william', 'person.emily','sensor.speedtest_download', 'sensor.speedtest_upload', 
       'sensor.speedtest_ping', 'sensor.kitchen_sensor_temperature']
 
-person:
-  - name: William
-    id: william_2
-    user_id: 5abb0ba255fc44e78abd65c6527a3c2a
-    device_trackers:
-      ['device_tracker.william', 'device_tracker.william_ping']
-
-  - name: Emily
-    id: emily
-    user_id: a6dcbddbf002400a8f64e3c12cb711bc
-    device_trackers:
-      ['device_tracker.emily', 'device_tracker.emily_ping']
-
-#samsungtv:
-#  - host: !secret samsungtv_host
-
 hacs:
   token: !secret hacs_token
   options:
