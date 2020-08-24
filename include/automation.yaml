@@ -1,0 +1,1476 @@
+
+automation:
+
+    ####################################################
+    #                                                  #
+    #                   AUTOMATIONS                    #
+    #                                                  #
+    ####################################################
+
+  - alias: homeassistant_start
+    initial_state: true
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: notify.mobile_app_william
+        data:
+          title: ''
+          message: Home Assistant Started
+      - service: mqtt.publish
+        data:
+          topic: "tasmotas/cmnd/state"
+          payload: ""
+      #- service: browser_mod.close_popup
+      #- delay:
+      #    seconds: 1
+      #- service: browser_mod.lovelace_reload
+      #- choose:
+      #  - conditions:
+      #      - condition: state
+      #        entity_id: light.hall
+      #        state: 'off'
+      #    sequence:
+      #      - service: switch.turn_on
+      #        entity_id: switch.fullykiosk_screensaver
+      #- delay:
+      #    seconds: 4
+      #- service: shell_command.fullykiosk_restart_app
+
+  - alias: lovelace_updated_ignore
+    mode: restart
+    initial_state: true
+    trigger:
+      - platform: event
+        event_type: lovelace_updated
+    action:
+      - service: browser_mod.toast
+        data:
+          duration: 1
+          message: ' '
+
+  - alias: clear_log_filesize
+    initial_state: true
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.home_assistant_log
+        above: 50
+    action:
+      - service: shell_command.clear_logs
+
+  - alias: tv_on_lights
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: media_player.lounge_room_tv
+        from: 'off'
+        to: 'on'
+    action:
+      - service: light.turn_on
+        entity_id: light.lounge_room_lamp
+
+  - alias: hacs_version_grep
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: sensor.hacs
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.hacs_version
+
+  - alias: update_hass_release_notes
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: sensor.hass_version
+    condition:
+      condition: not
+      conditions:
+        - condition: state
+          entity_id: sensor.hass_version
+          state: Senaste
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.hass_release_notes
+
+    ####################################################
+    #                                                  #
+    #                  NOTIFICATIONS                   #
+    #                                                  #
+    ####################################################
+
+  - alias: toast
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id:
+          ['input_boolean.motion_front_door', 'input_boolean.motion_bedroom', 'input_boolean.motion_kitchen']
+        from: 'off'
+        to: 'on'
+    action:
+      - service: browser_mod.toast
+        data_template:
+          duration: 8000
+          message: >
+            Movement detected in {{ trigger.to_state.name }}
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: >
+            {{ trigger.entity_id }}
+
+  - alias: notify_hass_rc
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: sensor.hass_version_latest_beta
+    condition:
+      - condition: state
+        entity_id: sensor.hass_dev_release
+        state:
+          ['Today', 'Released']
+    action:
+      - service: notify.mobile_app_william
+        data_template:
+          title: >
+            RC {{ states(trigger.entity_id) }} available
+          message: Press to read version information
+          data:
+            clickAction: https://rc.home-assistant.io/latest-release-notes/
+
+  - alias: notify_hass_update
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: sensor.hass_version
+    condition:
+      condition: not
+      conditions:
+        - condition: state
+          entity_id: sensor.hass_version
+          state: Latest
+    action:
+      - service: notify.mobile_app_william
+        data_template:
+          title: >
+            {{ states(trigger.entity_id) }} available {{ '\U0001F389' }}
+          message: Tap for release notes
+          data:
+            clickAction: https://www.home-assistant.io/latest-release-notes/
+
+    ####################################################
+    #                                                  #
+    #                     PRESENCE                     #
+    #                                                  #
+    ####################################################
+
+  - id: notify_resident_emily
+    alias: NOTIFY (Location) Resident
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+    trigger:
+    - platform: state
+      entity_id: person.emily
+    action:
+    - service: notify.mobile_app_william
+      data_template:
+        message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+        data:
+          channel: Presence
+          color: blue
+  
+  - id: notify_resident_william
+    alias: NOTIFY (Location) Resident
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+    trigger:
+    - platform: state
+      entity_id: person.william
+    action:
+    - service: notify.mobile_app_emily
+      data_template:
+        message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+        data:
+          channel: Presence
+          color: blue
+  
+  - id: notify_guest_deb
+    alias: Notify when Deb has arrived
+    trigger:
+      platform: state
+      entity_id: person.deb
+      to: 'home'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+    action:
+      service: notify.parents
+      data:
+        message: 'Deb is here!'
+        data:
+          channel: Presence
+          color: blue
+
+  - id: '1593405295014'
+    alias: Activate Guest mode when Guest is here
+    description: ''
+    trigger:
+    - entity_id: group.guests
+      platform: state
+      to: home
+    condition: []
+    action:
+    - data: {}
+      entity_id: input_boolean.guest_mode
+      service: input_boolean.turn_on
+      
+  - id: '1593405367977'
+    alias: Turn Off Guest mode when guests leave
+    description: ''
+    trigger:
+    - entity_id: group.guests
+      for: 00:03:00
+      platform: state
+      to: not_home
+    condition: []
+    action:
+    - data: {}
+      entity_id: input_boolean.guest_mode
+      service: input_boolean.turn_off
+
+    ####################################################
+    #                                                  #
+    #                      DOORS                       #
+    #                                                  #
+    ####################################################
+
+  - id: notify_garage_door
+    alias: Notify Garage door
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_door
+    action:
+    - service: notify.parents
+      data_template:
+        message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''off'' %}closed{% else %}open{% endif %}.'
+  
+  - id: notify_garage_open_10_min
+    alias: Notify Garage open for 10 min
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      to: 'on'
+      for:
+        minutes: 10
+    action:
+    - service: notify.parents
+      data:
+        message: Garage door has been open for 10 minutes! Close it!
+
+
+    ####################################################
+    #                                                  #
+    #                      SECURITY                    #
+    #                                                  #
+    ####################################################
+
+
+  - id: alarm_triggered_away
+    alias: Trigger alarm while armed away
+    condition:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_away
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_sensor_motion
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.back_door
+      to: 'on'
+    action:
+      service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.home_alarm
+  
+  - id: alarm_notify
+    alias: Send notification when alarm triggered
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: triggered
+    action:
+    - service: notify.parents
+      data:
+        message: ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}
+        data:
+          ttl: 0
+          priority: high
+    - service: tts.google_cloud_say
+      entity_id: media_player.kitchen_display
+      data:
+        message: Warning. Please leave the premesis. Police have been notified.
+        data:
+          channel: Alarm
+          color: red
+    - service: light.turn_on
+      data:
+        entity_id:
+        - light.kitchen_pendant_lights
+        - light.lounge_room_lamp
+        - light.55404001dc4f22ac01ca
+        - light.bedroom_lamp_left
+        - light.ollie_s_lamp
+        - light.teddy_s_lamp
+        brightness: 255
+        rgb_color:
+        - 255
+        - 0
+        - 0
+        flash: long
+  
+  - id: alarm_notify_disarmed
+    alias: Send notification when alarm is Disarmed
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: disarmed
+    action:
+    - service: tts.google_cloud_say
+      entity_id: media_player.kitchen_display
+      data:
+        message: Alarm is now disarmed.
+    - service: notify.parents
+      data_template:
+        message: The alarm is now Disarmed. {{ states('sensor.date_time') }}
+        data:
+          channel: Alarm
+          color: red
+  
+  
+  - id: alarm_notify_pending
+    alias: Send notification when alarm is in pending status
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: pending
+    action:
+    - service: notify.parents
+      data_template:
+        message: The alarm is in pending status. {{ states('sensor.date_time') }}
+        data:
+          channel: Alarm
+          color: red
+  
+  - id: alarm_notify_armed_away
+    alias: Send notification when alarm is Armed in Away mode
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: armed_away
+    action:
+    - service: tts.google_cloud_say
+      entity_id: media_player.kitchen_display
+      data:
+        message: Alarm has been armed.
+    - service: notify.parents
+      data_template:
+        message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+        data:
+          channel: Alarm
+          color: red
+  
+  - id: alarm_notify_armed_home
+    alias: Send notification when alarm is Armed in Home mode
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: armed_home
+    action:
+    - service: notify.parents
+      data_template:
+        message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+        data:
+          channel: Alarm
+          color: red
+  
+  - id: alarm_disable_when_arriving
+    alias: Alarm disarm when return home
+    condition:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: pending
+    trigger:
+    - platform: state
+      entity_id: person.william
+      from: not_home
+      to: home
+    - platform: state
+      entity_id: person.emily
+      from: not_home
+      to: home
+    action:
+    - service: notify.parents
+      data_template:
+        message: Disarming the alarm at {{ states('sensor.date_time') }}
+    - service: tts.google_cloud_say
+      entity_id: media_player.kitchen_display
+      data:
+        message: Disarming Alarm.
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.home_alarm
+      data:
+        code: !secret alarm_code
+  
+  - id: arm_alarm_when_away
+    alias: Arm alarm when away and not armed
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    trigger:
+    - platform: state
+      entity_id: group.family
+      to: not_home
+      for:
+        minutes: 15
+    action:
+    - service: notify.parents
+      data:
+        message: "No one is at home, do you want to arm the alarm?"
+        data:
+          actions:
+            - action: "arm_alarm"
+              title: "Arm Alarm"
+            - action: dismiss_prompt
+              title: "No"
+          tag: alarm_prompt
+  
+  - id: mobile_action_dismiss_prompt
+    alias: Dismiss prompt to arm alarm
+    trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: dismiss_prompt
+    action:
+    - service: notify.parents
+      data:
+        message: clear_notification
+        data:
+          tag: alarm_prompt
+  
+  - id: mobile_action_arm_alarm
+    alias: Arm Alarm from Notificaiton Action
+    trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: arm_alarm
+    action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.home_alarm
+    - service: notify.parents
+      data:
+        message: clear_notification
+        data:
+          tag: alarm_prompt
+
+    
+    ####################################################
+    #                                                  #
+    #             OBJECT DETECTION                     #
+    #                                                  #
+    ####################################################
+
+
+  - id: front_door_object_detection
+    alias: Detect Object at the front door
+    trigger:
+    - entity_id: binary_sensor.front_door_motion
+      platform: state
+      to: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    action:
+    - delay: 00:00:01
+    - service: camera.snapshot
+      data:
+        entity_id: camera.front_door
+        filename: /config/www/tmp/image.jpg
+    - delay: 00:00:02
+    - service: image_processing.scan
+      entity_id: image_processing.deepstack_detector
+    - service: image_processing.scan
+      entity_id: image_processing.face_detection
+  
+  - id: face_recognised
+    alias: Face recognised
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    trigger:
+      platform: event
+      event_type: image_processing.detect_face
+    action:
+      - service_template: >-
+          {% if not is_state('sensor.front_door_face' , 'unknown') %} 
+          notify.parents
+          {% endif %}
+        data_template:
+          message: "{{ states('sensor.front_door_face') }} is at the front door"
+          data:
+            image: !secret temp_image
+            clickAction: !secret front_door_cam_stream
+            actions:
+              - action: "URI"
+                title: View Image
+                uri: !secret temp_image
+      - service_template: >-
+          {% if not is_state('sensor.front_door_face' , 'unknown') %}
+          tts.google_cloud_say
+          {% endif %}
+        data_template:
+          entity_id: media_player.kitchen_display
+          message: "{{ states('sensor.front_door_face') }} is at the front door"
+  
+  - id: object_detection_notification
+    alias: Notify when object is detected
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
+    trigger:
+    - platform: event
+      event_type: deepstack.object_detected
+      event_data:
+        object: person
+    - platform: event
+      event_type: deepstack.object_detected
+      event_data:
+        object: car
+    action:
+    - service: notify.parents
+      data_template:
+        message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
+        data:
+          image: !secret deepstack_latest_image
+          clickAction: !secret front_door_cam_stream
+          actions:
+          - action: "URI"
+            title: View Image
+            uri: !secret deepstack_latest_image
+          channel: Persence
+          color: blue
+
+
+
+    ####################################################
+    #                                                  #
+    #                      TABLET                      #
+    #                                                  #
+    ####################################################
+
+  - alias: fullykiosk_brightness_slider
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_number.fullykiosk_brightness_slider
+    action:
+      - service: shell_command.fullykiosk_brightness_slider
+
+  - alias: fullykiosk_close_popup
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: switch.fullykiosk_screensaver
+        from: 'off'
+        to: 'on'
+        for:
+          minutes: 10
+    action:
+      - service: browser_mod.close_popup
+        data:
+          deviceID: tablet
+
+  - alias: fullykiosk_turn_on_screen
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.motion_hall
+        from: 'off'
+        to: 'on'
+    action:
+      - service: switch.turn_off
+        entity_id: switch.fullykiosk_screensaver
+      - service_template: input_number.set_value
+        data_template:
+          entity_id: input_number.fullykiosk_brightness_slider
+          value: >
+            {{ 90 if is_state('sun.sun', 'above_horizon') else 60 }}
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: >
+            {{ trigger.entity_id }}
+
+  - alias: fullykiosk_turn_off_screen
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: light.hall
+        from: 'on'
+        to: 'off'
+    action:
+      - service: switch.turn_on
+        entity_id: switch.fullykiosk_screensaver
+
+    ####################################################
+    #                                                  #
+    #                     LOADING                      #
+    #                                                  #
+    ####################################################
+
+  - alias: turn_off_loading_wheel
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id:
+          ['media_player.lounge_room_tv', 'media_player.bedroom_tv']
+    action:
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: >
+            {{ trigger.entity_id | replace(trigger.entity_id.split('.')[0], 'input_boolean') }}
+
+  - alias: turn_off_loading_wheel_failsafe
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id:
+          ['input_boolean.lounge_room_tv', 'input_boolean.bedroom_tv']
+        to: 'on'
+        for:
+          minutes: 1
+    action:
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: >
+            {{ trigger.entity_id }}
+
+    ####################################################
+    #                                                  #
+    #                    HDMI / TV                     #
+    #                                                  #
+    ####################################################
+
+  - alias: hdmi_input_select
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_select.hdmi
+    action:
+      - service: media_player.select_source
+        data_template:
+          entity_id: media_player.sony_bravia
+          source: >
+            {{ states(trigger.entity_id) }}
+
+  - alias: hdmi2_input_select
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_select.hdmi2
+    action:
+      - service: media_player.select_source
+        data_template:
+          entity_id: media_player.samsung
+          source: >
+            {{ states(trigger.entity_id) }}
+
+  - alias: turn_on_tv_failsafe
+    initial_state: true
+    trigger:
+      - platform: event
+        event_type: call_service
+        event_data:
+          domain: media_player
+          service: turn_on
+          service_data:
+            entity_id: media_player.sony_bravia
+    action:
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.vardagsrum
+      - delay:
+          seconds: 1
+      - service: remote.send_command
+        data:
+          entity_id: remote.vardagsrum
+          command: menu
+
+  - alias: turn_on_tv2_failsafe
+    initial_state: true
+    trigger:
+      - platform: event
+        event_type: call_service
+        event_data:
+          domain: media_player
+          service: turn_on
+          service_data:
+            entity_id: media_player.samsung
+    action:
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.sovrum
+      - delay:
+          seconds: 1
+      - service: remote.send_command
+        data:
+          entity_id: remote.sovrum
+          command: menu
+
+      ####################################################
+      #                                                  #
+      #                CONDITIONAL MEDIA                 #
+      #                                                  #
+      ####################################################
+
+  - alias: conditional_media_playing
+    initial_state: true
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id:
+          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+          'media_player.kitchen_display', 'media_player.lounge_room_tv']
+        to: playing
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.conditional_media
+          option: >
+            {{ trigger.to_state.name }}
+
+  - alias: conditional_media_paused_idle
+    initial_state: true
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id:
+          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+          'media_player.kitchen_display', 'media_player.lounge_room_tv']
+        to:
+          ['off', 'idle', 'standby']
+      - platform: state
+        entity_id:
+          ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+          'media_player.kitchen_display', 'media_player.lounge_room_tv']
+        to: paused
+        for:
+          minutes: 10
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.conditional_media
+          option: >
+            {% set media_players = 
+            ['media_player.bedroom_tv', 'media_player.bedroom_speaker', media_player.ollie_s_speaker', media_player.teddy_s_speaker', 
+            'media_player.kitchen_display', 'media_player.lounge_room_tv'] %}
+            {% if media_players | selectattr('state','eq','playing') | list | count == 0 %}
+              {% if media_players | selectattr('state','eq','paused') | list | count == 0 %}
+              Last downloaded
+              {% else %}
+              {{ media_players | selectattr('state','eq','paused') | map(attribute='name') | max }}
+              {% endif %}
+            {% else %}
+            {{ media_players | selectattr('state','eq','playing') | map(attribute='name') | max }}
+            {% endif %}
+
+  - alias: conditional_media_all_off
+    initial_state: true
+    trigger:
+      - platform: template
+        value_template: >
+          {{ is_state('media_player.bedroom_tv', 'off') and
+          is_state('media_player.bedroom_speaker', 'off') and
+          is_state('media_player.lounge_room_tv', 'off') and
+          is_state('media_player.kitchen_display', 'off') and
+          is_state('media_player.ollie_s_speaker', 'off') and
+          is_state('media_player.teddy_s_speaker', 'off') }}
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.conditional_media
+          option: Last downloaded
+
+    ####################################################
+    #                                                  #
+    #                     UI SOUND                     #
+    #                                                  #
+    ####################################################
+
+  - alias: ui_sound_popup
+    initial_state: true
+    trigger:
+      - platform: event
+        event_type: call_service
+        event_data:
+          domain: browser_mod
+          service: popup
+    condition:
+      - condition: state
+        entity_id: switch.fullykiosk_screensaver
+        state: 'off'
+    action:
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.tablet
+          media_content_id: /local/sound/popup.m4a
+          media_content_type: music
+
+    ####################################################
+    #                                                  #
+    #                     LIGHTS                       #
+    #                                                  #
+    ####################################################
+
+    #### ALL LIGHTS ####
+
+  - id: '1592804710966'
+    alias: turn on lights at sunset
+    description: ''
+    trigger:
+    - event: sunset
+      offset: -02:00:00
+      platform: sun
+    condition:
+    - condition: state
+      entity_id: group.family
+      state: home
+    action:
+    - scene: scene.bright_lights
+    - scene: scene.bedroom_lamps_bright
+    - scene: scene.lounge_room_bright
+  
+  - id: '1592804786192'
+    alias: Turn off lights at bed time
+    description: ''
+    trigger:
+    - at: '22:00:00'
+      platform: time
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    action:
+    - device_id: 13c7e8ef3a73444484d1ba5f6076b425
+      domain: light
+      entity_id: light.lounge_room_lamp
+      type: turn_off
+
+  - id: '1592804840487'
+    alias: Turn on night lights
+    description: ''
+    trigger:
+    - at: '19:00:00'
+      platform: time
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    action:
+    - scene: scene.night_light
+
+  - id: '1592804907305'
+    alias: Turn off lamps at sunrise
+    description: ''
+    trigger:
+    - event: sunrise
+      platform: sun
+    condition: []
+    action:
+    - device_id: fea9c6efb2e4493c90ddd26ad0789137
+      domain: light
+      entity_id: light.teddy_s_lamp
+      type: turn_off
+    - device_id: 32e10d16f2894e6584d045b8040ba7ea
+      domain: light
+      entity_id: light.ollie_s_lamp
+      type: turn_off
+  
+  - id: '1593405189369'
+    alias: Activate Birght Lights when coming home after sunset
+    description: ''
+    trigger:
+    - entity_id: group.family
+      platform: state
+      to: home
+    condition:
+    - condition: device
+      device_id: 32e10d16f2894e6584d045b8040ba7ea
+      domain: light
+      entity_id: light.ollie_s_lamp
+      type: is_off
+    - condition: device
+      device_id: fea9c6efb2e4493c90ddd26ad0789137
+      domain: light
+      entity_id: light.teddy_s_lamp
+      type: is_off
+    - after: sunset
+      condition: sun
+    action:
+    - data: {}
+      entity_id: scene.bright_lights
+      service: scene.turn_on
+
+
+    #### KITCHEN LIGHTS ####
+  - id: '1592803760415'
+    alias: Turn on kitchen lights when movement is detetcted before 720pm
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.kitchen_sensor_motion
+      platform: state
+      to: 'on'
+    condition:
+    - after: 06:30:00
+      before: '19:20:00'
+      condition: time
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.kitchen_bright
+      service: scene.turn_on
+
+  - id: '1592803926000'
+    alias: Turn on Kitchen lights when it's early
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.kitchen_sensor_motion
+      platform: state
+      to: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - after: 06:00:00
+      before: 06:29:00
+      condition: time
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.kitchen_dim
+      service: scene.turn_on
+
+  - id: '1592804217406'
+    alias: Dim kitchen lights after no motion for 10 min
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.kitchen_sensor_motion
+      for: 00:10:00
+      platform: state
+      to: 'off'
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_pendant_lights
+      state: 'on'
+    action:
+    - data:
+        transition: 5
+      entity_id: scene.kitchen_dim
+      service: scene.turn_on
+
+  - id: '1592804365507'
+    alias: Turn off Kitchen lights after no motion for 15min
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.kitchen_sensor_motion
+      for: 00:15:00
+      platform: state
+      to: 'off'
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    action:
+    - data:
+        transition: 2.5
+      entity_id: light.kitchen_downlight
+      service: light.turn_off
+    - data:
+        transition: 2.5
+      entity_id: light.kitchen_pendant_lights
+      service: light.turn_off
+
+  - id: '1592804464192'
+    alias: Turn on Kitchen light dim when movement is detected after 720pm
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.kitchen_sensor_motion
+      platform: state
+      to: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.ollie_sleeping
+      state: 'off'
+    - after: '19:20:00'
+      before: '19:50:00'
+      condition: time
+    action:
+    - data:
+        entity_id: scene.kitchen_dim
+        transition: 3
+      service: scene.turn_on
+
+  - id: 'ollie_is_sleeping'
+    alias: Turn off the kitchen lights if Ollie is going to sleep
+    trigger:
+      platform: state
+      entity_id: media_player.kitchen_display
+      to: 'playing'
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: time
+      after: '18:50:00'
+      before: '20:00:00'
+    action:
+    - service: light.turn_off
+      entity_id: light.kitchen_lights
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.ollie_sleeping
+    - service: scene.turn_on
+      entity_id: scene.night_light
+
+  - id: 'reset_ollie_sleeping'
+    alias: Reset Ollie Sleeping lights
+    trigger:
+      platform: time
+      at: 00:00:00
+    action:
+      service: input_boolean.turn_off
+      data:
+        entity_id: 
+          - input_boolean.ollie_sleeping
+
+    ####################
+    #                  #
+    #      BEDROOM     #
+    #                  #
+    ####################
+
+  - id: '1592805027019'
+    alias: Toggle Bedroom lamps with a single click
+    description: ''
+    trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        event: 1002
+        id: wireless_button
+    condition: []
+    action:
+    - data: {}
+      entity_id: light.bedroom_lamps
+      service: light.toggle
+
+  - id: '1592805067463'
+    alias: Activate Bedroom Bright with double click
+    description: ''
+    trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        event: 1004
+        id: wireless_button
+    condition: []
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.bedroom_lamps_bright
+      service: scene.turn_on
+
+  - id: '1592805105771'
+    alias: Activate Bedroom Night Light with long press
+    description: ''
+    trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        event: 1001
+        id: wireless_button
+    condition: []
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.bedroom_night_light
+      service: scene.turn_on
+
+  - id: '1592805608239'
+    alias: turn on Bedroom lamps when motion is detected
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.bedroom_motion
+      platform: state
+      to: 'on'
+    condition:
+    - after: 07:30:00
+      before: '20:00:00'
+      condition: time
+    - condition: not
+      conditions:
+      - condition: device
+        device_id: 154ca135cbd14827a3fdc722d10060f4
+        domain: media_player
+        entity_id: media_player.bedroom_tv
+        type: is_playing
+    - condition: state
+      entity_id: light.bedroom_lamps
+      state: 'off'
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.bedroom_lamps_bright
+      service: scene.turn_on
+
+  - id: '1592805733176'
+    alias: Turn off bedroom lamps when no motion is detected
+    description: ''
+    trigger:
+    - entity_id: binary_sensor.bedroom_motion
+      for: 00:03:00
+      platform: state
+      to: 'off'
+    condition:
+    - condition: not
+      conditions:
+      - condition: device
+        device_id: 154ca135cbd14827a3fdc722d10060f4
+        domain: media_player
+        entity_id: media_player.bedroom_tv
+        type: is_playing
+    - before: '20:00:00'
+      condition: time
+    action:
+    - data:
+        transition: 2.5
+      entity_id: light.bedroom_lamps
+      service: light.turn_off
+      
+  - id: '1592805822114'
+    alias: Dim the bedroom lamps when the tv is playing
+    description: ''
+    trigger:
+    - entity_id: media_player.bedroom_tv
+      platform: state
+      to: playing
+    condition:
+    - condition: state
+      entity_id: light.bedroom_lamps
+      state: 'on'
+    action:
+    - data:
+        transition: 2.5
+      entity_id: scene.bedroom_night_light
+      service: scene.turn_on
+
+  - alias: Turn off the bedroom lamps when we are going to sleep
+    trigger:
+    - platform: state
+      entity_id:
+        - sensor.william_pixel_battery_state
+      to: "discharging"
+    condition:
+    - condition: template
+      value_template: "{{ states.sensor.emily_battery_state.state != 'discharging' }}"
+    - condition: state
+      entity_id: media_player.bedroom_tv
+      state: 'playing'
+    - condition: sun
+      after: sunset
+    action:
+    - service: light.turn_off
+      entity_id: light.bedroom_lamps
+
+    ####################################################
+    #                                                  #
+    #                  MEDICATION                      #
+    #                                                  #
+    ####################################################
+
+  - id: 'reset_meds_taken'
+    alias: Reset morning meds taken
+    trigger:
+      platform: time
+      at: 00:00:00
+    action:
+      service: input_boolean.turn_off
+      data:
+        entity_id: 
+          - input_boolean.morning_meds_taken
+          - input_boolean.evening_meds_taken
+          - input_boolean.bedtime_meds_taken
+
+  - id: 'mark_morning_meds_taken'
+    alias: Mark morning meds as taken
+    trigger:
+      platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: 'confirm_morning_meds'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.morning_meds_taken
+      - service: script.notify_engine
+        data_template:
+          message: 'clear_notification'
+          who: 'parents'
+          tag: 'morning_meds'
+
+  - id: 'mark_evening_meds_taken'
+    alias: Mark evening meds as taken
+    trigger:
+      platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: 'confirm_evening_meds'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.evening_meds_taken
+      - service: script.notify_engine
+        data_template:
+          message: "clear_notification"
+          who: "parents"
+          tag: "evening_meds"
+      
+  - id: 'mark_bedtime_meds_taken'
+    alias: Mark bedtime meds as taken
+    trigger:
+      platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "confirm_bedtime_meds"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.bedtime_meds_taken
+      - service: script.notify_engine
+        data_template:
+          message: "clear_notification"
+          who: "parents"
+          tag: "bedtime_meds"
+
+  - id: 'morning_meds_notification'
+    alias: Morning meds Notificaiton
+    trigger:
+      platform: time
+      at: "08:00:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.morning_meds_taken
+        state: 'off'
+    action:
+      - service: script.notify_engine
+        data_template:
+          title: "Medication Reminder"
+          message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_morning_meds"
+          action_1_title: "Confirm"
+          tag: "morning_meds"
+          priority: "high"
+          group: "Medication"
+
+  - id: 'morning_meds_reminder'
+    alias: Morning meds reminder
+    trigger:
+      platform: time_pattern
+      minutes: '/30'
+    condition:
+      - condition: state
+        entity_id: input_boolean.morning_meds_taken
+        state: 'off'
+      - condition: time
+        after: '08:30:00'
+        before: '23:59:00'
+    action:
+      service: script.notify_engine
+      data_template:
+        title: "Medication Reminder"
+        message: "It looks like Ollie hasn't had his morning meds. Please make sure he has them."
+        who: "parents"
+        channel: "Medication"
+        color: "purple"
+        action_1: "confirm_morning_meds"
+        action_1_title: "Confirm"
+        tag: "morning_meds"
+        priority: "high"
+        group: "Medication"
+
+  - id: 'evening_meds_notification'
+    alias: Evening meds Notificaiton
+    trigger:
+      platform: time
+      at: "18:00:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.evening_meds_taken
+        state: 'off'
+    action:
+      - service: script.notify_engine
+        data_template:
+          title: "Medication Reminder"
+          message: "Ollie needs Lisinopril (3ml)"
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_evening_meds"
+          action_1_title: "Confirm"
+          tag: "evening_meds"
+          priority: "high"
+          group: "Medication"
+
+  - id: 'evening_meds_reminder'
+    alias: Evening meds reminder
+    trigger:
+      platform: time_pattern
+      minutes: '/30'
+    condition:
+      - condition: state
+        entity_id: input_boolean.evening_meds_taken
+        state: 'off'
+      - condition: time
+        after: '18:30:00'
+        before: '23:59:00'
+    action:
+      - service: script.notify_engine
+        data_template:
+          title: "Medication Reminder"
+          message: "It looks like Ollie hasn't had his evening meds. Please make sure he has them."
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_evening_meds"
+          action_1_title: "Confirm"
+          tag: "evening_meds"
+          priority: "high"
+          group: "Medication"
+
+  - id: 'bedtime_meds_notification'
+    alias: Bedtime meds Notificaiton
+    trigger:
+      platform: time
+      at: "19:30:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.bedtime_meds_taken
+        state: 'off'
+    action:
+      - service: script.notify_engine
+        data_template:
+          title: "Medication Reminder"
+          message: "Ollie needs Carvidilol (1.5ml)"
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_bedtime_meds"
+          action_1_title: "Confirm"
+          tag: "bedtime_meds"
+          priority: "high"
+          group: "Medication"
+
+  - id: 'bedtime_meds_reminder'
+    alias: Bedtime meds reminder
+    trigger:
+      platform: time_pattern
+      minutes: '/30'
+    condition:
+      - condition: state
+        entity_id: input_boolean.bedtime_meds_taken
+        state: 'off'
+      - condition: time
+        after: '20:00:00'
+        before: '23:59:00'
+    action:
+      - service: script.notify_engine
+        data_template:
+          title: "Medication Reminder"
+          message: "It looks like Ollie hasn't had his bedtime meds. Please make sure he has them."
+          who: "parents"
+          channel: "Medication"
+          color: "purple"
+          action_1: "confirm_bedtime_meds"
+          action_1_title: "Confirm"
+          tag: "bedtime_meds"
+          priority: "high"
+          group: "Medication"
+    ####################################################
+    #                                                  #
+    #                       TEST                       #
+    #                                                  #
+    ####################################################
+
+    # ...
+
+    

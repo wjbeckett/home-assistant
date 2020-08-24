@@ -1,0 +1,133 @@
+default_config:
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - !secret trusted_proxies
+homeassistant:
+  packages: !include_dir_named packages/
+  customize: !include customize.yaml
+  allowlist_external_dirs:
+    - /config/www
+    - /config/www/tmp
+    - /config/www/deepstack
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 172.30.1.0/24
+      allow_bypass_login: true
+
+# Logbook
+logbook:
+
+# Logger
+logger:
+  default: warning
+  logs:
+    homeassistant.components.http.ban: warning
+    homeassistant.components.sensor: fatal
+    homeassistant.components.rest.sensor: fatal
+    homeassistant.components.command_line.sensor: fatal
+    homeassistant.components.braviatv.media_player: fatal
+    homeassistant.components.websocket_api: fatal
+    homeassistant.components.input_number: fatal
+    homeassistant.components.template.sensor: fatal
+
+# Recorder
+recorder:
+  purge_keep_days: 7
+  exclude:
+    entities:
+      - sun.sun
+      - sensor.last_boot
+      - sensor.date
+    event_types:
+      - call_service
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - input_boolean
+      - input_select
+
+# System Health
+system_health:
+
+# influx DB
+influxdb:
+  host: !secret influx_host
+
+# Text to speech
+tts:
+  - platform: google_cloud
+    key_file: service_account.json
+    voice: en-AU-Wavenet-C
+    encoding: linear16
+
+hacs:
+  token: !secret hacs_token
+  options:
+    experimental: True
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    mode: daily
+
+# Google Assistant
+google_assistant:
+  project_id: !secret google_assistant_id
+  service_account: !include service_account.json
+  secure_devices_pin: !secret secure_devices_pin
+  report_state: true
+  exposed_domains:
+    - light
+    - scene
+    - camera
+    - alarm_control_panel
+    - climate
+    - media_player
+    - input_boolean
+
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_secret
+
+# Inputs
+input_boolean: !include_dir_merge_named input_boolean
+input_select: !include includes/input_select.yaml
+input_text: !include includes/input_text.yaml
+
+# Logging and History
+device_tracker: !include includes/device_trackers.yaml
+
+# Managed via UI
+scene: !include scenes.yaml
+
+# Others
+ffmpeg:
+stream:
+sun:
+light: !include light_groups.yaml
+script: !include_dir_merge_named script
+automation: !include_dir_merge_list automation
+alarm_control_panel: !include includes/alarm_panel.yaml
+notify: !include includes/notify.yaml
+image_processing: !include includes/image_processing.yaml
+mqtt: !include includes/mqtt.yaml
+#camera: !include includes/cameras.yaml
+climate: !include includes/climate.yaml
+group: !include includes/groups.yaml
+#automation old: !include automations_old.yaml
+zone: !include includes/zones.yaml
+sensor: !include_dir_merge_list sensor
+binary_sensor: !include includes/binary_sensor.yaml
+switch: !include includes/switches.yaml
+timer: !include includes/timer.yaml

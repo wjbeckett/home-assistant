@@ -1,0 +1,446 @@
+
+binary_sensor:
+
+    ####################################################
+    #                                                  #
+    #                      BINARY                      #
+    #                                                  #
+    ####################################################
+
+  - platform: command_line
+    name: plex_availability
+    command: !secret plex_availability
+    scan_interval: 300
+    payload_on: 'on'
+    payload_off: 'off'
+
+  - platform: ping
+    host: 8.8.8.8
+    name: server_internet_access
+  
+  - platform: wyzesense
+    device: "/dev/hidraw0"
+
+  - platform: mqtt
+    name: "Front Door Motion"
+    state_topic: "home/frontdoor/camera/motion"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: motion
+
+  - platform: template
+    sensors:
+      fullykiosk_motion:
+        entity_id: sensor.fullykiosk
+        friendly_name: Camera
+        icon_template: mdi:camera
+        value_template: >
+          {{ not is_state_attr('sensor.fullykiosk', 'motionDetectorState', 0) }}
+
+      front_door:
+        friendly_name: Front Door
+        device_class: motion
+        entity_id: camera.front_door
+        value_template: "{{ is_state('camera.front_door', 'motion') }}"
+        delay_off: 
+            seconds: 30
+
+      morning_meds_taken:
+        friendly_name: Morning Meds Taken
+        entity_id: input_boolean.morning_meds_taken
+        value_template: >-
+          {% if is_state('input_boolean.morning_meds_taken', 'on') %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+
+      evening_meds_taken:
+        friendly_name: Evening Meds Taken
+        entity_id: input_boolean.evening_meds_taken
+        value_template: >-
+          {% if is_state('input_boolean.evening_meds_taken', 'on') %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+
+      bedtime_meds_taken:
+        friendly_name: Bedtime Meds Taken
+        entity_id: input_boolean.bedtime_meds_taken
+        value_template: >-
+          {% if is_state('input_boolean.bedtime_meds_taken', 'on') %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+
+sensor:
+
+    ####################################################
+    #                                                  #
+    #                     SENSORS                      #
+    #                                                  #
+    ####################################################
+
+  - platform: version
+    name: hass_version_installed
+
+  - platform: version
+    name: hass_version_latest
+    source: docker
+
+  - platform: version
+    name: hass_version_latest_beta
+    beta: true
+    source: docker
+
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant_v2.db
+      - /config/home-assistant.log
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: processor_use
+      - type: last_boot
+
+  - platform: uptime
+    unit_of_measurement: minutes
+
+  - platform: time_date
+    display_options:
+      ['time', 'date']
+
+  - platform: google_wifi
+    name: WiFi
+
+  - platform: rest
+    name: hass_release_notes
+    resource: https://api.github.com/repos/home-assistant/core/releases/latest
+    value_template: '{{ value_json.name }}'
+    json_attributes: [body]
+    scan_interval: 21600
+
+  - platform: dnsip
+
+  - platform: darksky
+    api_key: !secret darksky_key
+    language: en
+    monitored_conditions:
+      ['precip_probability', 'temperature', 'apparent_temperature']
+
+  - platform: rest
+    name: fullykiosk
+    json_attributes:
+      ['batteryLevel', 'screenBrightness', 'plugged', 'motionDetectorState', 
+      'lastAppStart', 'internalStorageFreeSpace', 'internalStorageTotalSpace', 
+      'ramFreeMemory', 'ramTotalMemory', 'currentFragment']
+    resource: !secret fullykiosk_rest_resource
+    value_template: '{{ value_json.isScreenOn }}'
+    scan_interval: 10
+
+  - platform: rest
+    name: docker_cpu
+    resource: !secret ha_dockermon_cpu
+    value_template: >
+      {% set cpuDelta = value_json.cpu_stats.cpu_usage.total_usage - value_json.precpu_stats.cpu_usage.total_usage %}
+      {% set systemDelta = value_json.cpu_stats.system_cpu_usage - value_json.precpu_stats.system_cpu_usage %}
+      {{ (cpuDelta / systemDelta * value_json.cpu_stats.cpu_usage.percpu_usage | length * 100) | round(1) }}
+    json_attributes:
+      ['cpu_stats', 'precpu_stats', 'memory_stats']
+
+  - platform: rest
+    name: docker_uptime
+    resource: !secret ha_dockermon_uptime
+    value_template: >
+      {{ value_json.status.split(' ')[1:] | join(' ') }}
+
+  - platform: plex_recently_added
+    token: !secret plex_token
+    host: !secret plex_host
+    port: !secret plex_port
+    max: 1
+    img_dir: '/'
+    image_resolution: 500
+
+  - platform: template
+    sensors:
+      front_door_face:
+          value_template: "{{ states('image_processing.face_detection') }}"
+          friendly_name: Front Door Face
+
+    ####################################################
+    #                                                  #
+    #                   COMMAND LINE                   #
+    #                                                  #
+    ####################################################
+
+  
+
+    ####################################################
+    #                                                  #
+    #                     TEMPLATE                     #
+    #                                                  #
+    ####################################################
+
+  - platform: template
+    sensors:
+      sidebar_greeting:
+        entity_id: sensor.time
+        value_template: >
+          {% set time = now().hour %}
+          {% if time <= 1 %} Good evening {{'\U0001F611'}}
+          {% elif time <= 3 %} Good morning {{'\U0001F62A'}}
+          {% elif time <= 5 %} Good morning {{'\U0001F634'}}
+          {% elif time <= 7 %} Good morning {{'\U0001F4A9'}}
+          {% elif time <= 9 %} Good morning {{'\u2615\uFE0F'}}
+          {% elif time <= 12 %} Good morning {{'\U0001F642'}}
+          {% elif time <= 13 %} Good afternoon {{'\U0001F60A'}}
+          {% elif time <= 15 %} Good afternoon {{'\U0001F60E'}}
+          {% elif time <= 17 %} Good afternoon {{'\U0001F44B\U0001F3FB'}}
+          {% elif time <= 19 %} Good evening {{'\U0001F44B\U0001F3FB'}}
+          {% elif time <= 22 %} Good evening {{'\U0001F60C'}}
+          {% elif time <= 23 %} Good evening {{'\U0001F974'}}
+          {% else %} Good evening {{'\U0001F974'}}
+          {% endif %}
+
+      sidebar_active:
+        value_template: >
+          {% set lights = [states.light.bedroom_lamps, states.light.kitchen_lights, states.light.ollie_s_lamp, states.light.teddy_s_lamp, 
+          states.light.lounge_room_lamp] %}
+          {% set lights_on = lights | selectattr('state','eq','on') | list %}
+          {% set lights_name = lights | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
+
+          {% set switches = [states.media_player.bedroom_tv, states.media_player.lounge_room_tv] %}
+          {% set switches_on = switches | selectattr('state','eq','on') | list %} 
+          {% set switches_name = switches | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
+
+          {% if (lights_on | length == 0 ) and (switches_on | length > 0) %} 
+          {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
+
+          {% elif (lights_on | length == 1) and (switches_on | length == 1) %}
+          {{ lights_name }} and {{switches_name }} are on
+
+          {% elif (lights_on | length == 1) and (switches_on | length > 1) %}
+          {{ lights_name }}, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
+
+          {% elif (lights_on | length > 1) and (switches_on | length == 1) %}
+          {{ lights_on | length }} lights and {{ switches_name }} are on
+
+          {% elif (lights_on | length > 1 ) and (switches_on | length > 1) %}
+          {{ lights_on | length }} lights, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
+
+          {% elif (lights_on | length == 1) and (switches_on | length == 0) %}
+          {{ lights_name }} is on
+
+          {% elif (lights_on | length >1 ) and (switches_on | length == 0) %}
+          {{ lights_on | length}} lights are on
+
+          {% else %} 
+          <font color='#6a7377'>Everything is off</font> 
+          {% endif %}
+
+      sidebar_weather:
+        entity_id: sensor.dark_sky_temperature, sensor.dark_sky_apparent_temperature, sensor.dark_sky_precip_probability
+        value_template: >
+          {% set temperature = states('sensor.dark_sky_temperature') %}
+          {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
+          {% set precip = states('sensor.dark_sky_precip_probability') | round %}
+
+          {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
+              Feels like {{ apparent}}° with 
+              {{ precip }}% chance of rain {{ '\u2614\uFE0F' if precip > 30 }}
+          {% else %}
+            Wnable to load weather information...
+          {% endif %}
+
+      public_ip:
+        value_template: !secret public_ip
+
+      placeholder:
+        value_template: ' '
+
+      dockermon_mem:
+        entity_id: sensor.docker_cpu
+        friendly_name: Minne
+        icon_template: mdi:memory
+        value_template: >
+          {% set entity_id = 'sensor.docker_cpu' %}
+          {{ (state_attr(entity_id, 'memory_stats')['usage'] / 
+          state_attr(entity_id, 'memory_stats')['limit'] * 100) | round(1) | default(0) }}
+
+      hass_version:
+        entity_id: sensor.hass_version_installed, sensor.hass_version_latest
+        icon_template: mdi:home-assistant
+        friendly_name_template: >
+          Installerad {{ states('sensor.hass_version_installed') }}
+        value_template: >
+          {{ 'Senaste' if states('sensor.hass_version_installed') == 
+          states('sensor.hass_version_latest') else states('sensor.hass_version_latest') }}
+
+      hass_dev_release:
+        entity_id: sensor.time, calendar.home_assistant_devs
+        icon_template: mdi:dev-to
+        friendly_name_template: >
+          {% if ((as_timestamp(state_attr('calendar.home_assistant_devs', 
+          'start_time')) - as_timestamp(now())) / 86400) > 20 %}
+            Planerad beta
+          {% else %}
+            {{ state_attr('calendar.home_assistant_devs','message') }}
+          {% endif %}
+        value_template: >
+          {% set dev = ((as_timestamp(state_attr('calendar.home_assistant_devs', 
+          'start_time')) - as_timestamp(now())) / 86400) %}
+          {% if dev < -1 %} Släppt
+          {% elif dev < 0 %} Idag
+          {% elif dev < 1 %} Imorgon
+          {% elif dev > 20 %} Ingen
+          {% else %} {{ dev | int + 1 }} dagar
+          {% endif %}
+
+    ####################################################
+    #                                                  #
+    #                      TABLET                      #
+    #                                                  #
+    ####################################################
+
+      fullykiosk_plugged:
+        entity_id: sensor.fullykiosk
+        friendly_name: Strömsladd ansluten
+        value_template: >
+          {{ 'Ja' if is_state_attr('sensor.fullykiosk', 'plugged', true) else 'Nej' }}
+        icon_template: >
+          mdi:power-plug{{ '-off' if is_state_attr('sensor.fullykiosk', 'plugged', false) }}
+
+      fullykiosk_storage:
+        entity_id: sensor.fullykiosk
+        friendly_name: Storage
+        icon_template: mdi:sd
+        unit_of_measurement: '%'
+        value_template: >
+          {% set entity_id = 'sensor.fullykiosk' %}
+          {% set FreeSpace = state_attr(entity_id, 'internalStorageFreeSpace') %}
+          {% set TotalSpace = state_attr(entity_id, 'internalStorageTotalSpace') %}
+          {% if not (FreeSpace == None or TotalSpace == None) %}
+            {{ 100 - (FreeSpace / TotalSpace * 100) | int }}
+          {% endif %}
+
+      fullykiosk_memory:
+        entity_id: sensor.fullykiosk
+        friendly_name: Memory
+        icon_template: mdi:memory
+        unit_of_measurement: '%'
+        value_template: >
+          {% set entity_id = 'sensor.fullykiosk' %}
+          {% set FreeMemory = state_attr(entity_id, 'ramFreeMemory') %}
+          {% set TotalMemory = state_attr(entity_id, 'ramTotalMemory') %}
+          {% if not (FreeMemory == None or TotalMemory == None) %}
+            {{ 100 - (FreeMemory / TotalMemory * 100) | int }}
+          {% endif %}
+
+      fullykiosk_battery:
+        entity_id: sensor.fullykiosk
+        friendly_name: Battery
+        unit_of_measurement: '%'
+        value_template: >
+          {{ state_attr('sensor.fullykiosk', 'batteryLevel') }}
+        icon_template: >
+          {% set battery = (state_attr('sensor.fullykiosk', 'batteryLevel') | int / 10) | int * 10 | default(0) %}
+            mdi:battery{% if battery == 100 %}{% elif battery > 0 %}-{{ battery }}{% else %}-alert
+          {% endif %}
+
+    ####################################################
+    #                                                  #
+    #                      DATE                        #
+    #                                                  #
+    ####################################################
+
+      sidebar_day:
+        entity_id: sensor.date
+        icon_template: mdi:calendar
+        value_template: >
+          {% set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+          {{ days[now().weekday()] }}
+
+      sidebar_date:
+        entity_id: sensor.date
+        icon_template: mdi:calendar
+        value_template: >
+          {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 
+          'July', 'august', 'September', 'October', 'November', 'December'] %}
+          {{ strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
+
+      hass_uptime:
+        entity_id: sensor.time, sensor.uptime
+        friendly_name: Last Restart
+        icon_template: mdi:update
+        value_template: >
+          {% set uptime = states('sensor.uptime') | float %}
+          {% if uptime < 1 %} {{ (uptime * 60) | int }} seconds ago
+          {% elif uptime | int == 1 %} 1 minute ago
+          {% elif uptime | int > 1 %}
+            {% if uptime | int < 60 %} {{ uptime | int }} minutes ago
+            {% elif uptime | int / 60 == 24 %} {{ (uptime | int / 60 / 24) | int }} day ago
+            {% elif uptime | int / 60 >= 24 %} {{ (uptime | int / 60 / 24) | int }} days ago
+            {% elif uptime | int >= 60 and uptime | int < 120 %} {{ (uptime | int / 60) | int }} an hour ago
+            {% elif uptime | int >= 120 %} {{ (uptime | int / 60) | int }} hours ago
+            {% endif %}
+          {% endif %}
+
+    ####################################################
+    #                                                  #
+    #                       NAS                        #
+    #                                                  #
+    ####################################################
+
+      nas_disk_temp:
+        entity_id: sensor.synology_average_disk_temp_volume_1
+        friendly_name: Disktemperatur
+        unit_of_measurement: '°C'
+        icon_template: mdi:thermometer
+        value_template: >
+          {{ states('sensor.synology_average_disk_temp_volume_1') | round }}
+
+      nas_net_down:
+        entity_id: sensor.synology_network_down
+        value_template: ' '
+        icon_template: mdi:arrow-down-bold
+        friendly_name_template: >
+          {% set down = states('sensor.synology_network_down') | float %}
+          {% if down < 1000 %} {{ down | round(0) }} kb/s
+          {% elif down >= 1000 %} {{ ((down / 1000) | round(2) | string).rstrip('.0') }} Mb/s
+          {% endif %}
+
+      nas_net_up:
+        entity_id: sensor.synology_network_up
+        value_template: ' '
+        icon_template: mdi:arrow-up-bold
+        friendly_name_template: >
+          {% set up = states('sensor.synology_network_up') | float %}
+          {% if up < 1000 %} {{ up | round(0) }} kb/s
+          {% elif up >= 1000 %} {{ ((up / 1000) | round(2) | string).rstrip('.0') }} Mb/s
+          {% endif %}
+
+      nas_status:
+        entity_id: sensor.synology_status_volume_1
+        friendly_name: Systemhälsa
+        icon_template: custom:synology-nas
+        value_template: >
+          {% set entity_id = 'sensor.synology_status_volume_1' %}
+          {% if is_state(entity_id, 'normal') %} Bra
+          {% elif is_state(entity_id, 'background') %} Verifierar
+          {% else %} {{ states(entity_id) }}
+          {% endif %}
+
+      nas_vpn:
+        entity_id: sensor.myip, sensor.public_ip
+        friendly_name: VPN
+        value_template: >
+          {{ 'Ej Ansluten' if states('sensor.myip') == states('sensor.public_ip') else 'Ansluten' }}
+        icon_template: >
+          mdi:shield-{{ 'alert' if states('sensor.myip') == states('sensor.public_ip') else 'check' }}
+

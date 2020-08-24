@@ -1,8 +1,0 @@
----
-#- from github.com/wjbeckett/homeassistant-config
-zigbee2mqtt_old_name:
-  name: Zigbee2mqtt Old Name
-zigbee2mqtt_new_name:
-  name: Zigbee2mqtt New Name
-zigbee2mqtt_remove:
-  name: Zigbee2mqtt Remove

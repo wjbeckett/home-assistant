@@ -1,0 +1,75 @@
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: William
+                deviceID: this
+                card:
+                  type: custom:stack-in-card
+                  cards:
+                    - type: entities
+                      state_color: true
+                      show_header_toggle: false
+                      entities:
+
+                        - entity: person.william
+                          secondary_info: last-changed
+
+                        - type: custom:hui-element
+                          card_type: history-graph
+                          entities: [entity: person.william]
+                          hours_to_show: 24
+                          refresh_interval: 0
+
+                        - type: custom:hui-element
+                          card_type: glance
+                          show_state: false
+                          entities:
+
+                            - entity: sensor.william_wifi_connection
+                              name: Router
+                              icon: mdi:wifi
+
+                            - entity: sensor.william_bluetooth_connection
+                              name: Bluetooth
+                              icon: mdi:bluetooth
+
+                            - entity: device_tracker.william
+                              name: Position
+                              icon: mdi:cellphone-android
+
+                        - type: custom:hui-element
+                          card_type: horizontal-stack
+                          style: |
+                            #root {
+                              justify-content: space-evenly;
+                              margin: -1em 0 0 0;
+                            }
+                          cards:
+
+                          - type: custom:button-card
+                            name: >
+                              <ha-icon icon="mdi:volume-high"></ha-icon> Find my Android
+                            tap_action:
+                              action: call-service
+                              service: notify.mobile_app_william
+                              service_data:
+                                title: Find my Phone
+                                message: Here I am!
+                                data:
+                                  channel: locate
+                                  importance: max
+                            template: name_action
+                            styles:
+                              card:
+                                [background: none, border-radius: none]
+
+                    - type: custom:hui-element
+                      card_type: map
+                      entities: [device_tracker.william]
+                      default_zoom: 15
+                      style: |
+                        ha-card {
+                          height: 24.9em;
+                          border-top: 1px solid #FFFFFF !important;
+                          filter: invert(1) contrast(80%) hue-rotate(250deg);
+                        }

@@ -1,0 +1,122 @@
+
+switch:
+
+    ####################################################
+    #                                                  #
+    #                     SWITCHES                     #
+    #                                                  #
+    ####################################################
+
+
+  - platform: rest
+    name: Watchtower
+    resource: !secret ha_dockermon_watchtower
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: command_line
+    switches:
+      fullykiosk_screen:
+        friendly_name: Display
+        command_on: !secret fullykiosk_screen_on
+        command_off: !secret fullykiosk_screen_off
+        command_state: !secret fullykiosk_screen_state
+        value_template: "{{ value == 'on' }}"
+
+    ####################################################
+    #                                                  #
+    #                     TEMPLATE                     #
+    #                                                  #
+    ####################################################
+
+  - platform: template
+    switches:
+      lounge_room_tv:
+        friendly_name: Tv
+        icon_template: custom:tv
+        value_template: "{{ is_state('media_player.lounge_room_tv', 'on') }}"
+        turn_on:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.lounge_room_tv
+          - service: remote.send_command
+            data:
+              entity_id: remote.lounge_room
+              command: menu
+        turn_off:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.lounge_room_tv
+          - service: media_player.turn_off
+            entity_id: media_player.lounge_room_tv
+
+      bedroom_tv:
+        friendly_name: "Tv\u00B2"
+        icon_template: custom:tv
+        value_template: "{{ is_state('media_player.bedroom_tv', 'on') }}"
+        turn_on:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.bedroom_tv
+          - service: remote.send_command
+            data:
+              entity_id: remote.bedroom
+              command: menu
+        turn_off:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.bedroom_tv
+          - service: media_player.turn_off
+            entity_id: media_player.bedroom_tv
+
+      fullykiosk_screensaver:
+        friendly_name: Screensaver
+        icon_template: mdi:power-sleep
+        value_template: "{{ is_state_attr('sensor.fullykiosk', 'currentFragment', 'screensaver') }}"
+        turn_on:
+          - service: shell_command.fullykiosk_screensaver_on
+        turn_off:
+          - service: shell_command.fullykiosk_screensaver_off
+
+      air_purifier:
+        friendly_name: Luftrenare
+        value_template: "{{ is_state('binary_sensor.gosund_air_purifier', 'on') }}"
+        turn_on:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.air_purifier
+          - service: remote.send_command
+            data:
+              entity_id: remote.broadlink
+              device: air_purifier
+              command: power_1
+          - repeat:
+              count: 20
+              # report state
+              sequence:
+                - condition: state
+                  entity_id: binary_sensor.gosund_air_purifier
+                  state: 'off'
+                - delay:
+                    seconds: 1
+                - service: mqtt.publish
+                  data:
+                    topic: cmnd/gosund2/status
+                    payload: 10
+        turn_off:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.air_purifier
+          - service: remote.send_command
+            data:
+              entity_id: remote.broadlink
+              device: air_purifier
+              command: power_1
+          - repeat:
+              count: 20
+              # report state
+              sequence:
+                - condition: state
+                  entity_id: binary_sensor.gosund_air_purifier
+                  state: 'on'
+                - delay:
+                    seconds: 1
+                - service: mqtt.publish
+                  data:
+                    topic: cmnd/gosund2/status
+                    payload: 10

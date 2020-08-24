@@ -1,0 +1,194 @@
+
+homeassistant:
+  customize:
+
+    ####################################################
+    #                                                  #
+    #                    CUSTOMIZE                     #
+    #                                                  #
+    ####################################################
+
+    #sensor
+    binary_sensor.morning_meds_taken:
+      friendly_name: Morning meds taken?
+      icon: mdi:pill
+
+    binary_sensor.evening_meds_taken:
+      friendly_name: Evening meds taken?
+      icon: mdi:pill
+
+    binary_sensor.bedtime_meds_taken:
+      friendly_name: Bedtime meds taken?
+      icon: mdi:pill
+
+    binary_sensor.nas_internet_access:
+      icon: mdi:web
+
+    binary_sensor.plex_availability:
+      icon: mdi:plex
+
+    binary_sensor.wemo_motion:
+      friendly_name: vardagsrummet
+
+    binary_sensor.monitors_mute_check:
+      icon: mdi:volume-mute
+
+    binary_sensor.garage_door:
+      friendly_name: Garage Door
+      device_class: garage_door
+
+    sensor.hall_temperature:
+      friendly_name: Temperatur
+
+    sensor.processor_use:
+      icon: mdi:chip
+
+    sensor.aktuellt_spotpris:
+      icon: mdi:home-currency-usd
+
+    sensor.fullykiosk:
+      icon: mdi:tablet-dashboard
+
+    sensor.docker_cpu:
+      friendly_name: Processor
+      icon: mdi:chip
+
+    sensor.docker_uptime:
+      friendly_name: Senast omstart
+      icon: mdi:update
+
+    sensor.drifttid:
+      icon: mdi:calendar-clock
+
+    sensor.imac_system_ssd:
+      friendly_name: System SSD
+      icon: custom:imac-ssd
+
+    sensor.imac_macintosh_hd:
+      friendly_name: Macintosh HD
+      icon: mdi:harddisk
+
+    sensor.imac_time_machine:
+      friendly_name: Time Machine
+      icon: mdi:harddisk
+
+    sensor.imac_cpu:
+      friendly_name: Processor
+      icon: mdi:chip
+
+    sensor.imac_mem:
+      friendly_name: Minne
+      icon: mdi:memory
+
+    sensor.monitors_volume:
+      icon: mdi:volume-high
+
+    sensor.home_assistant_v2_db:
+      friendly_name: Databas
+      icon: mdi:database
+
+    sensor.home_assistant_log:
+      friendly_name: Loggfil
+      icon: mdi:file-document
+
+
+    #media_player
+
+    media_player.sony_bravia:
+      friendly_name: Tv
+      device_class: tv
+      source_list: ['HDMI 1', 'HDMI 2/MHL', 'HDMI 3', 'HDMI 4']
+
+    media_player.samsung:
+      friendly_name: "Tv\u00B2"
+      device_class: tv
+      source_list: ['TV', 'HDMI']
+
+
+    #person
+
+    person.william:
+      entity_picture: '/local/william.png'
+
+    person.emily:
+      entity_picture: '/local/emily.jpeg'
+
+
+    #light
+
+    light.fonsterlampa:
+      friendly_name: Skrivbordslampa
+      icon: mdi:lamp
+
+    light.badrum:
+      icon: mdi:toilet
+
+    light.storlampa:
+      friendly_name: Storlampa
+      icon: mdi:silverware-fork-knife
+
+    light.kladkammare_2:
+      friendly_name: Garderob
+      icon: mdi:door
+
+    light.hall:
+      icon: mdi:track-light
+
+    light.taklampor:
+      icon: mdi:track-light
+
+    light.mattias:
+      icon: mdi:floor-lamp
+
+    light.sanja:
+      icon: mdi:floor-lamp
+
+    light.spot_1:
+      friendly_name: Taklampa 1
+
+    light.spot_2:
+      friendly_name: Taklampa 2
+
+
+    #switch
+
+    switch.wemo_monitors:
+      friendly_name: Monitorer
+      icon: custom:studio-monitor
+
+    switch.watchtower:
+      icon: custom:docker-watchtower
+
+    switch.fullykiosk_screen:
+      icon: mdi:tablet
+
+
+    #fan
+
+    fan.studio_wemo:
+      icon: custom:pedestal-fan
+
+    fan.sovrum_anslut:
+      icon: custom:pedestal-fan
+
+
+    #automation
+
+    automation.tv_on_lights:
+      friendly_name: Tänd Tv-lampa
+
+    automation.macos_notification_motion_hall:
+      friendly_name: Mottag notiser
+      icon: mdi:bell
+
+    automation.turn_off_monitors:
+      friendly_name: Stäng av när dator stängs av
+      icon: mdi:power
+
+    automation.eq_calibration:
+      friendly_name: Automatisk kalibrationsprofil
+      icon: custom:eq-calibrate
+
+    automation.sovrum_anslut_turn_on_temp:
+      friendly_name: Slå på om 24 °C överskrids
+      icon: mdi:chart-bell-curve-cumulative

@@ -1,0 +1,128 @@
+
+input_boolean:
+
+  ####################################################
+  #                                                  #
+  #                     BOOLEAN                      #
+  #                                                  #
+  ####################################################
+
+  lounge_room_tv:
+    initial: off
+  bedroom_tv:
+    initial: off
+  kitchen_display:
+    initial: off
+  bedroom_speaker:
+    initial: off
+  teddy_s_speaker:
+    initial: off
+  ollie_s_speaker:
+    initial: off
+
+  climate_bedroom:
+    initial: off
+  climate_teddy:
+    initial: off
+  climate_ollie:
+    initial: off
+
+  home_stats:
+    name: Home Stats
+    initial: off
+    
+  responsibilities:
+    name: responsibilities
+    initial: off
+  
+  test_notification:
+    name: Notificaiton Test
+    initial: off
+  
+  ollie_sleeping:
+    name: Ollie Sleeping
+    initial: off
+
+  motion_kitchen:
+    name: Kitchen
+    initial: off
+  motion_front_door:
+    name: Front Door
+    initial: off
+  motion_bedroom:
+    name: Bedroom
+    initial: off
+
+  alert_mode:
+    name: Alert Mode
+    icon: mdi:alert-octagram
+    initial: off
+  guest_mode:
+    name: Guest Mode
+    icon: mdi:account-alert
+    initial: off
+    
+  speech_notifications:
+    name: Speech Notifications
+    icon: mdi:speaker-wireless
+    initial: on
+  text_notifications:
+    name: Text Notifications
+    icon: mdi:android-messages
+    initial: on
+   
+  morning_meds_taken:
+    name: Morning Meds have been taken
+    icon: mdi:pill  
+  evening_meds_taken:
+    name: Evening Meds have been taken
+    icon: mdi:pill
+  bedtime_meds_taken:
+    name: Bedtime Meds have been taken
+    icon: mdi:pill  
+  meds_reminder:
+    name: Meds reminder enabled
+    initial: 'on'
+    
+  garbage_general:
+    name: General Bin
+  garbage_recycling:
+    name: Recycling Bin
+
+input_number:
+
+  ####################################################
+  #                                                  #
+  #                      NUMBER                      #
+  #                                                  #
+  ####################################################
+
+  fullykiosk_brightness_slider:
+    name: Brightness
+    icon: mdi:brightness-6
+    initial: 20
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: '%'
+
+input_select:
+
+  ####################################################
+  #                                                  #
+  #                      SELECT                      #
+  #                                                  #
+  ####################################################
+
+  conditional_media:
+    initial: Last downloaded
+    options:
+      ['Last downloaded', 'Lounge Room TV', 'Kitchen Display', 'Bedroom Speaker', 'Bedroom TV', 'Teddy's Speaker', 'Ollie's Speaker']
+
+  home_mode:
+    name: Home Mode
+    options:
+      - Home
+      - Away
+
+
