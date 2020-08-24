@@ -46,8 +46,8 @@ person:
     device_trackers:
       ['device_tracker.emily', 'device_tracker.emily_ping']
 
-samsungtv:
-  - host: !secret samsungtv_host
+#samsungtv:
+#  - host: !secret samsungtv_host
 
 hacs:
   token: !secret hacs_token
