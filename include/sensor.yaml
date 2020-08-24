@@ -133,15 +133,15 @@ sensor:
     monitored_conditions:
       ['precip_probability', 'temperature', 'apparent_temperature']
 
-  - platform: rest
-    name: fullykiosk
-    json_attributes:
-      ['batteryLevel', 'screenBrightness', 'plugged', 'motionDetectorState', 
-      'lastAppStart', 'internalStorageFreeSpace', 'internalStorageTotalSpace', 
-      'ramFreeMemory', 'ramTotalMemory', 'currentFragment']
-    resource: !secret fullykiosk_rest_resource
-    value_template: '{{ value_json.isScreenOn }}'
-    scan_interval: 10
+  #- platform: rest
+  #  name: fullykiosk
+  #  json_attributes:
+  #    ['batteryLevel', 'screenBrightness', 'plugged', 'motionDetectorState', 
+  #    'lastAppStart', 'internalStorageFreeSpace', 'internalStorageTotalSpace', 
+  #    'ramFreeMemory', 'ramTotalMemory', 'currentFragment']
+  #  resource: !secret fullykiosk_rest_resource
+  #  value_template: '{{ value_json.isScreenOn }}'
+  #  scan_interval: 10
 
   - platform: rest
     name: docker_cpu
