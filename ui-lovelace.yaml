@@ -10,7 +10,7 @@ custom_header:
     - conditions:
         query_string: kiosk
       config:
-        kiosk_mode: true
+        kiosk_mode: false
 
 preload_cards:
   [map, iframe, markdown]
@@ -283,8 +283,7 @@ button_card_templates:
         else { return 'linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 100%), url(' + entity.attributes.entity_picture + ')'; } ]]]"]
 
   person:
-    state_display: >
-      [[[ return entity.state === 'home' ? 'and' : 'No'; ]]]
+    #state_display: 
     show_entity_picture: true
     state:
       - value: 'home'
@@ -386,6 +385,27 @@ views:
             style: {opacity: 0}
             content: preload
 
+
+          #################################################
+          #                                               #
+          #                   COVID-19                    #
+          #                                               #
+          #################################################
+
+          - type: custom:hui-markdown-card
+            class: coronavirus
+            style:
+              {top: 93.65%, left: 70.2%}
+            content: >
+              {% set break = ' ‍ ‍ ‍ ‍ ‍ ‍<font color="#2f3436">|</font> ‍ ‍ ‍ ‍ ‍ ‍' %}
+              <font color='#6a7377'>
+              <ha-icon icon="mdi:virus"></ha-icon> <b>Coronavirus</b>{{ break -}}
+              <ha-icon icon="mdi:chart-bar"></ha-icon> <b>Blah blah</b>{{ break -}}
+              <ha-icon icon="mdi:emoticon-sad"></ha-icon> <b>blah blah</b> {{ break -}}
+              <ha-icon icon="mdi:grave-stone"></ha-icon> <b>blah blah</b> {{ break -}}
+              <ha-icon icon="mdi:map-marker-radius"></ha-icon> <b>blah blah</b>
+              </font>
+
           ##########################################################################
           #                                                                        #
           #                              * SIDEBAR *                               #
@@ -424,9 +444,7 @@ views:
 
               <font color='#6a7377'>
 
-              {{ states('sensor.sidebar_weather') }}
-
-              [comment]: <>            
+              {{ states('sensor.sidebar_weather') }}       
 
               {% if is_state('binary_sensor.plex_availability', 'off') %}
               {{'\u26A0\uFE0F'}} Plex is offline...{% endif %}
@@ -518,7 +536,7 @@ views:
               custom_fields:
                 icon_hue:
                   [top: 11%, left: 4.5%, width: 3.05vw, position: absolute]
-            template: 'light'
+            template: ['base','light']
 
           #################################################
           #                                               #
