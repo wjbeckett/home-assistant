@@ -1,9 +1,9 @@
 shell_command:  
-    fullykiosk_brightness_slider: !secret fullykiosk_brightness_slider
-    fullykiosk_load_start_url: !secret fullykiosk_load_start_url
-    fullykiosk_restart_app: !secret fullykiosk_restart_app
-    fullykiosk_screensaver_on: !secret fullykiosk_screensaver_on
-    fullykiosk_screensaver_off: !secret fullykiosk_screensaver_off
+    #fullykiosk_brightness_slider: !secret fullykiosk_brightness_slider
+    #fullykiosk_load_start_url: !secret fullykiosk_load_start_url
+    #fullykiosk_restart_app: !secret fullykiosk_restart_app
+    #fullykiosk_screensaver_on: !secret fullykiosk_screensaver_on
+    #fullykiosk_screensaver_off: !secret fullykiosk_screensaver_off
   
     ha_dockermon_restart_container: !secret ha_dockermon_restart_container
     clear_logs: truncate -s 0 /config/home-assistant.log
