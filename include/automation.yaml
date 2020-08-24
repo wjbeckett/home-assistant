@@ -69,15 +69,6 @@ automation:
       - service: light.turn_on
         entity_id: light.lounge_room_lamp
 
-  - alias: hacs_version_grep
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: sensor.hacs
-    action:
-      - service: homeassistant.update_entity
-        entity_id: sensor.hacs_version
-
   - alias: update_hass_release_notes
     initial_state: true
     trigger:

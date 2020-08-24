@@ -85,7 +85,7 @@
                     - type: custom:hui-element
                       card_type: markdown
                       content: >
-                        <span><ha-icon icon="hacs:hacs"></ha-icon> Community Store {{ states('sensor.hacs_version') }}</span><br>
+                        <span><ha-icon icon="hacs:hacs"></ha-icon> Community Store </span><br>
                         {% if is_state('sensor.hacs', '0') or is_state('sensor.hacs', 'unknown') %}
                         <b>No updates</b>
                         {% else %}
