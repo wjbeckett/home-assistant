@@ -258,9 +258,6 @@ sensor:
             Wnable to load weather information...
           {% endif %}
 
-      public_ip:
-        value_template: !secret public_ip
-
       placeholder:
         value_template: ' '
 
