@@ -8,23 +8,12 @@
       cards:
         - type: markdown
           card_size: 2
-          content: >
-            <span>{{ states('sensor.time') }}</span>
+          content: |
+            {{ states('sensor.sidebar_greeting') }}
 
-            <font color='#6a7377'><b>{{ states('sensor.sidebar_day') }}</b><br>
-            <b>{{ states('sensor.sidebar_date') }}</b> </font><br> 
-
-            <b>{{ states('sensor.sidebar_greeting') }}</b>
-
-            <b>{{ states('sensor.sidebar_active') }}</b>
-
-            <font color='#6a7377'>
-
-            {{ states('sensor.sidebar_weather') }}       
-
-            {% if is_state('binary_sensor.plex_availability', 'off') %}
-            {{'\u26A0\uFE0F'}} Plex is offline...{% endif %}
-            </font>
+            <span> It's {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}</span>
+            
+            {{ states('sensor.sidebar_active') }}
           style:
             .: |
               ha-card {
