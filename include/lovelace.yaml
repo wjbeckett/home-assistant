@@ -24,3 +24,16 @@ lovelace:
       {url: '/local/custom_icons.js?v=25052001',                                 type: module},
       {url: /local/font.css,                                                     type: css} ]
   
+  dashboards:
+    old-yaml:
+      mode: yaml
+      title: Home
+      icon: mdi:home
+      show_in_sidebar: true
+      filename: ui-lovelace.yaml
+    home-yaml:
+      mode: yaml
+      title: Home
+      icon: mdi:home-circle-outline
+      show_in_sidebar: true
+      filename: lovelace.yaml
