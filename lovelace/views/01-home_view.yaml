@@ -9,11 +9,10 @@
         - type: markdown
           card_size: 2
           content: |
-            {{ states('sensor.sidebar_greeting') }}
-
-            <span> It's {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}</span>
+            # {{ states('sensor.sidebar_greeting') }}
+            # It's {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
             
-            {{ states('sensor.sidebar_active') }}
+            # Currently, {{ states('sensor.sidebar_active') }}
           style:
             .: |
               ha-card {
