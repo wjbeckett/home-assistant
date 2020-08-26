@@ -803,7 +803,7 @@ views:
           #################################################
 
           - type: custom:button-card
-            entity: media_player.ollie_speaker
+            entity: media_player.ollie_s_speaker
             style:
               top: 82.1%
               left: 55.18%
