@@ -749,7 +749,7 @@ views:
               top: 37.9%
               left: 91.05%
               width: 10%
-            template: ['base', 'media']
+            template: ['base', 'media_small']
 
           
 
