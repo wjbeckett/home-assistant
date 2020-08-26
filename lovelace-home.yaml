@@ -692,6 +692,7 @@ views:
 
           - type: custom:button-card
             entity: climate.bedroom
+            Name: AC
             triggers_update:
               ['climate.bedroom', 'input_boolean.climate_bedroom']
             style:
@@ -809,7 +810,7 @@ views:
               left: 55.18%
               width: 10%
             custom_fields:
-              icon_nest_mini: *icon_nest_mini
+              icon_nest_mini: mdi:google-home
             template: ['base', 'media_small']
 
           ##########################################################################
