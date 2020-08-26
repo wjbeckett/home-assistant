@@ -638,14 +638,14 @@ views:
           #                                               #
           #################################################
 
-          - type: custom:button-card
-            entity: media_player.kitchen_display
-            triggers_update: ['media_player.kitchen_display', 'input_boolean.kitchen_display']
-            style:
-              top: 37.9%
-              left: 55.18%
-              width: 10%
-            template: ['base', 'media_small']
+          #- type: custom:button-card
+          #  entity: media_player.kitchen_display
+          #  triggers_update: ['media_player.kitchen_display', 'input_boolean.kitchen_display']
+          #  style:
+          #    top: 37.9%
+          #    left: 55.18%
+          #    width: 10%
+          #  template: ['base', 'media_small']
 
           ##########################################################################
           #                                                                        #
