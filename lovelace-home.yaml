@@ -744,7 +744,7 @@ views:
             entity: media_player.bedroom_speaker
             triggers_update: ['media_player.bedroom_speaker', 'input_boolean.bedroom_speaker']
             custom_fields:
-              icon: *icon_nest_mini
+              icon: mdi:google-home
             style:
               top: 37.9%
               left: 91.05%
