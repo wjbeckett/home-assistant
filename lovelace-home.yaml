@@ -599,14 +599,15 @@ views:
 
           - type: custom:button-card
             entity: light.kitchen_pendant_lights
+            name: Pendants
             style:
               top: 20.35%
               left: 55.18%
               width: 10%
-              custom_fields:
+            custom_fields:
                 icon_hue: *icon_hue
-              styles: *icon_hue_styles
-              template: ['base', 'light']
+            styles: *icon_hue_styles
+            template: ['base', 'light']
 
           #################################################
           #                                               #
@@ -616,6 +617,7 @@ views:
 
           - type: custom:button-card
             entity: light.kitchen_downlight
+            name: Downlight
             style:
               top: 20.35%
               left: 66.14%
@@ -738,16 +740,16 @@ views:
           #                                               #
           #################################################
 
-        #  - type: custom:button-card
-        #    entity: media_player.bedroom_speaker
-        #    triggers_update: ['media_player.bedroom_speaker', 'input_boolean.bedroom_speaker']
-        #    custom_fields:
-        #      icon: *icon_nest_mini
-        #    style:
-        #      top: 37.9%
-        #      left: 91.05%
-        #      width: 100%
-        #    template: ['base', 'media']
+          - type: custom:button-card
+            entity: media_player.bedroom_speaker
+            triggers_update: ['media_player.bedroom_speaker', 'input_boolean.bedroom_speaker']
+            custom_fields:
+              icon: *icon_nest_mini
+            style:
+              top: 37.9%
+              left: 91.05%
+              width: 100%
+            template: ['base', 'media_small']
 
           
 

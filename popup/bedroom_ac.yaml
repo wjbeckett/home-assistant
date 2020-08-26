@@ -4,5 +4,5 @@
                 title: Bedroom AC
                 deviceID: this
                 card:
-                  - type: thermostat
-                    entity: climate.bedroom
+                  type: thermostat
+                  entity: climate.bedroom

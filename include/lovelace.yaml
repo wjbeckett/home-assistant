@@ -27,7 +27,7 @@ lovelace:
   dashboards:
     old-yaml:
       mode: yaml
-      title: Home
+      title: Old
       icon: mdi:home
       show_in_sidebar: true
       filename: lovelace-old.yaml
@@ -39,13 +39,13 @@ lovelace:
       filename: lovelace-home.yaml
     lovelace-settings-yaml:
       mode: yaml
-      title: Home
+      title: Settings
       icon: mdi:home-circle-outline
       show_in_sidebar: true
       filename: lovelace-settings.yaml
     lovelace-tablet-yaml:
       mode: yaml
-      title: Home
+      title: Tablet
       icon: mdi:home-circle-outline
       show_in_sidebar: true
       filename: lovelace-tablet.yaml
