@@ -30,10 +30,22 @@ lovelace:
       title: Home
       icon: mdi:home
       show_in_sidebar: true
-      filename: ui-lovelace.yaml
-    home-yaml:
+      filename: lovelace-old.yaml
+    lovelace-home-yaml:
       mode: yaml
       title: Home
       icon: mdi:home-circle-outline
       show_in_sidebar: true
-      filename: lovelace.yaml
+      filename: lovelace-home.yaml
+    lovelace-settings-yaml:
+      mode: yaml
+      title: Home
+      icon: mdi:home-circle-outline
+      show_in_sidebar: true
+      filename: lovelace-settings.yaml
+    lovelace-tablet-yaml:
+      mode: yaml
+      title: Home
+      icon: mdi:home-circle-outline
+      show_in_sidebar: true
+      filename: lovelace-tablet.yaml
