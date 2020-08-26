@@ -261,7 +261,6 @@ button_card_templates:
         else return '1px 1px 5px rgba(18, 22, 23, 0.9)' ; ]]]"]
 
   media_small:
-    aspect_ratio: 1/1
     show_state: true
     show_icon: false
     tap_action: *media_tap_action
@@ -277,7 +276,7 @@ button_card_templates:
         background-color: none, background-size: cover,
         background-image: 
         "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') {
-        return 'linear-gradient(0deg, rgba(115, 115, 115, 0.2) 0%, rgba(115, 115, 115, 0.2) 100%)'; }
+        return 'none'; }
         if ((entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby') && (entity.attributes.entity_picture == null)) {
         return 'linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%)'; }
         else { return 'linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 100%), url(' + entity.attributes.entity_picture + ')'; } ]]]"]
@@ -649,7 +648,7 @@ views:
               top: 37.9%
               left: 55.18%
               width: 10%
-            template: ['base', 'media_small']
+            template: ['base', 'media']
 
           ##########################################################################
           #                                                                        #
