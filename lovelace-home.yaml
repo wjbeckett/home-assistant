@@ -275,7 +275,9 @@ button_card_templates:
         [<<: *button_styles_card, color: *media_font_color, text-shadow: *media_text_shadow, 
         background-color: none, background-size: cover,
         background-image: 
-        "[[[ if ((entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby') && (entity.attributes.entity_picture == null)) {
+        "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') {
+        return 'rgba(115, 115, 115, 0.2)'; }
+        if ((entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby') && (entity.attributes.entity_picture == null)) {
         return 'linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%)'; }
         else { return 'linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 100%), url(' + entity.attributes.entity_picture + ')'; } ]]]"]
 
@@ -638,14 +640,16 @@ views:
 
           - type: custom:button-card
             entity: media_player.kitchen_display
+            Name: Hub
             triggers_update: ['media_player.kitchen_display', 'input_boolean.kitchen_display']
             custom_fields:
-              icon: mdi:google-home
+              icon: &icon_nest_mini >
+                <svg viewBox="0 0 50 50"><path d="M49.7 25c0 13.6-11.1 24.7-24.8 24.7C11.3 49.7.3 38.6.3 25S11.4.3 25 .3 49.7 11.4 49.7 25zm-33.9 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3.1 2.3-.9 2.3-2.2h0zm10.8 0c0 1.2.9 2.2 2.2 2.3 1.3 0 2.3-1 2.3-2.2 0-1.3-1-2.3-2.2-2.3-1.3 0-2.3.9-2.3 2.2zm-3.2 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3 0 2.3-.9 2.3-2.2h0zm13 2.2a2.22 2.22 0 0 0 2.2-2.2c0-1.2-1-2.3-2.2-2.3a2.22 2.22 0 0 0-2.2 2.2c0 1.3 1 2.3 2.2 2.3z" /></svg>
             style:
               top: 37.9%
               left: 55.18%
               width: 10%
-            template: ['base', 'media']
+            template: ['base', 'media_small']
 
           ##########################################################################
           #                                                                        #
@@ -668,6 +672,7 @@ views:
 
           - type: custom:button-card
             entity: light.bedroom_lamps
+            Name: Lamps
             style:
               top: 20.35%
               left: 80.05%
@@ -718,6 +723,7 @@ views:
 
           - type: custom:button-card
             entity: media_player.bedroom_tv
+            Name: TV
             triggers_update:
               ['media_player.bedroom_tv', 'input_boolean.bedroom_tv']
             style:
@@ -739,9 +745,8 @@ views:
 
           - type: custom:button-card
             entity: media_player.bedroom_speaker
+            Name: Speaker
             triggers_update: ['media_player.bedroom_speaker', 'input_boolean.bedroom_speaker']
-            custom_fields:
-              icon: mdi:google-home
             style:
               top: 37.9%
               left: 91.05%
@@ -771,6 +776,7 @@ views:
 
           - type: custom:button-card
             entity: light.ollie_s_lamp
+            Name: Lamp
             style:
               top: 64.5%
               left: 55.18%
@@ -788,6 +794,7 @@ views:
 
           - type: custom:button-card
             entity: climate.ollie_room
+            Name: AC
             style:
               top: 64.5%
               left: 66.14%
@@ -805,12 +812,13 @@ views:
 
           - type: custom:button-card
             entity: media_player.ollie_s_speaker
+            Name: Speaker
             style:
               top: 82.1%
               left: 55.18%
               width: 10%
             custom_fields:
-              icon_nest_mini: mdi:google-home
+              icon_nest_mini: *icon_nest_mini
             template: ['base', 'media_small']
 
           ##########################################################################
