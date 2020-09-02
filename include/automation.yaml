@@ -596,20 +596,20 @@ automation:
       event_data:
         object: car
     action:
-    - service: script.notify_engine
-      data_template:
-        message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
-        who: "parents"
-        channel: "Presence"
-        importance: "max"
-        color: "blue"
-        priority: "high"
-        ttl: 0
-        image: !secret deepstack_latest_image
-        clickaction: !secret front_door_cam_stream
-        action_1: "URI"
-        action_1_title: "View Image"
-        action_1_uri: !secret deepstack_latest_image
+      - service: script.notify_engine
+        data_template:
+          message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
+          who: "parents"
+          channel: "Presence"
+          importance: "max"
+          color: "blue"
+          priority: "high"
+          ttl: 0
+          image: !secret deepstack_latest_image
+          clickaction: !secret front_door_cam_stream
+          action_1: "URI"
+          action_1_title: "View Image"
+          action_1_uri: !secret deepstack_latest_image
 
 
     ####################################################

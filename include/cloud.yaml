@@ -1,5 +1,4 @@
 cloud:
-  secure_devices_pin: !secret secure_devices_pin
   google_actions:
     filter:
       include_entities:
