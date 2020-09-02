@@ -319,37 +319,37 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: triggered
     action:
-    - service: script.notify_engine
-      data_template:
-        message: "ALARM! The alarm has been triggered"
-        who: "parents"
-        channel: "Alarm"
-        importance: "max"
-        color: "red"
-        priority: "high"
-        ttl: 0
-    - service: tts.google_cloud_say
-      entity_id: media_player.kitchen_display
-      data:
-        message: Warning. Please leave the premesis. Police have been notified.
+      - service: script.notify_engine
+        data_template:
+          message: "ALARM! The alarm has been triggered"
+          who: "parents"
+          channel: "Alarm"
+          importance: "max"
+          color: "red"
+          priority: "high"
+          ttl: 0
+      - service: tts.google_cloud_say
+        entity_id: media_player.kitchen_display
         data:
-          channel: Alarm
-          color: red
-    - service: light.turn_on
-      data:
-        entity_id:
-        - light.kitchen_pendant_lights
-        - light.lounge_room_lamp
-        - light.55404001dc4f22ac01ca
-        - light.bedroom_lamp_left
-        - light.ollie_s_lamp
-        - light.teddy_s_lamp
-        brightness: 255
-        rgb_color:
-        - 255
-        - 0
-        - 0
-        flash: long
+          message: Warning. Please leave the premesis. Police have been notified.
+          data:
+            channel: Alarm
+            color: red
+      - service: light.turn_on
+        data:
+          entity_id:
+          - light.kitchen_pendant_lights
+          - light.lounge_room_lamp
+          - light.55404001dc4f22ac01ca
+          - light.bedroom_lamp_left
+          - light.ollie_s_lamp
+          - light.teddy_s_lamp
+          brightness: 255
+          rgb_color:
+          - 255
+          - 0
+          - 0
+          flash: long
   
   - id: alarm_notify_disarmed
     alias: Send notification when alarm is Disarmed
@@ -362,20 +362,20 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: disarmed
     action:
-    - service: tts.google_cloud_say
-      entity_id: media_player.kitchen_display
-      data:
-        message: Alarm is now disarmed.
-    - service: script.notify_engine
-      data_template:
-        title: "Alarm"
-        message: "The home alarm is now disarmed."
-        who: "parents"
-        channel: "Alarm"
-        importance: "max"
-        color: "red"
-        priority: "high"
-        ttl: 0  
+      - service: tts.google_cloud_say
+        entity_id: media_player.kitchen_display
+        data:
+          message: Alarm is now disarmed.
+      - service: script.notify_engine
+        data_template:
+          title: "Alarm"
+          message: "The home alarm is now disarmed."
+          who: "parents"
+          channel: "Alarm"
+          importance: "max"
+          color: "red"
+          priority: "high"
+          ttl: 0  
   
   - id: alarm_notify_armed_away
     alias: Send notification when alarm is Armed in Away mode
@@ -388,20 +388,20 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: armed_away
     action:
-    - service: tts.google_cloud_say
-      entity_id: media_player.kitchen_display
-      data:
-        message: Alarm has been armed.
-    - service: script.notify_engine
-      data_template:
-        title: "Alarm"
-        message: "The home alarm is now armed."
-        who: "parents"
-        channel: "Alarm"
-        importance: "max"
-        color: "red"
-        priority: "high"
-        ttl: 0
+      - service: tts.google_cloud_say
+        entity_id: media_player.kitchen_display
+        data:
+          message: Alarm has been armed.
+      - service: script.notify_engine
+        data_template:
+          title: "Alarm"
+          message: "The home alarm is now armed."
+          who: "parents"
+          channel: "Alarm"
+          importance: "max"
+          color: "red"
+          priority: "high"
+          ttl: 0
   
   - id: alarm_notify_armed_home
     alias: Send notification when alarm is Armed in Home mode
@@ -410,12 +410,12 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: armed_home
     action:
-    - service: notify.parents
-      data_template:
-        message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
-        data:
-          channel: Alarm
-          color: red
+      - service: notify.parents
+        data_template:
+          message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
+          data:
+            channel: Alarm
+            color: red
   
   - id: alarm_disable_when_arriving
     alias: Alarm disarm when return home
@@ -433,24 +433,24 @@ automation:
       from: not_home
       to: home
     action:
-    - service: script.notify_engine
-      data_template:
-        title: "Alarm"
-        message: The home alarm is now disarmed.
-        who: "parents"
-        channel: "Alarm"
-        importance: "max"
-        color: "red"
-        priority: "high"
-        ttl: 0
-    - service: tts.google_cloud_say
-      entity_id: media_player.kitchen_display
-      data:
-        message: Disarming Alarm.
-    - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.home_alarm
-      data:
-        code: !secret alarm_code
+      - service: script.notify_engine
+        data_template:
+          title: "Alarm"
+          message: The home alarm is now disarmed.
+          who: "parents"
+          channel: "Alarm"
+          importance: "max"
+          color: "red"
+          priority: "high"
+          ttl: 0
+      - service: tts.google_cloud_say
+        entity_id: media_player.kitchen_display
+        data:
+          message: Disarming Alarm.
+      - service: alarm_control_panel.alarm_disarm
+        entity_id: alarm_control_panel.home_alarm
+        data:
+          code: !secret alarm_code
   
   - id: arm_alarm_when_away
     alias: Arm alarm when away and not armed
@@ -465,21 +465,21 @@ automation:
       for:
         minutes: 15
     action:
-    - service: script.notify_engine
-      data_template:
-        title: Alarm
-        message: "No one is at home, do you want to arm the alarm?"
-        who: "parents"
-        channel: "Alarm"
-        importance: "max"
-        color: "red"
-        priority: "high"
-        ttl: 0
-        tag: "alarm_prompt"
-        action_1: "arm_alarm"
-        action_1_title: "Arm Alarm"
-        action_2: "dismiss_prompt"
-        action_2_title: "No"
+      - service: script.notify_engine
+        data_template:
+          title: Alarm
+          message: "No one is at home, do you want to arm the alarm?"
+          who: "parents"
+          channel: "Alarm"
+          importance: "max"
+          color: "red"
+          priority: "high"
+          ttl: 0
+          tag: "alarm_prompt"
+          action_1: "arm_alarm"
+          action_1_title: "Arm Alarm"
+          action_2: "dismiss_prompt"
+          action_2_title: "No"
   
   - id: mobile_action_dismiss_prompt
     alias: Dismiss prompt to arm alarm
@@ -489,11 +489,11 @@ automation:
       event_data:
         action: dismiss_prompt
     action:
-    - service: notify.parents
-      data:
-        message: clear_notification
+      - service: notify.parents
         data:
-          tag: alarm_prompt
+          message: clear_notification
+          data:
+            tag: alarm_prompt
   
   - id: mobile_action_arm_alarm
     alias: Arm Alarm from Notificaiton Action
@@ -503,18 +503,18 @@ automation:
       event_data:
         action: arm_alarm
     action:
-    - service: alarm_control_panel.alarm_arm_away
-      entity_id: alarm_control_panel.home_alarm
-    - service: script.notify_engine
-      data_template:
-        message: clear_notification
-        who: "parents"
-        channel: "Alarm"
-        importance: "max"
-        color: "red"
-        priority: "high"
-        ttl: 0
-        tag: alarm_prompt
+      - service: alarm_control_panel.alarm_arm_away
+        entity_id: alarm_control_panel.home_alarm
+      - service: script.notify_engine
+        data_template:
+          message: clear_notification
+          who: "parents"
+          channel: "Alarm"
+          importance: "max"
+          color: "red"
+          priority: "high"
+          ttl: 0
+          tag: alarm_prompt
 
     
     ####################################################
@@ -535,16 +535,16 @@ automation:
       entity_id: input_boolean.text_notifications
       state: 'on'
     action:
-    - delay: 00:00:01
-    - service: camera.snapshot
-      data:
-        entity_id: camera.front_door
-        filename: /config/www/tmp/image.jpg
-    - delay: 00:00:02
-    - service: image_processing.scan
-      entity_id: image_processing.deepstack_detector
-    - service: image_processing.scan
-      entity_id: image_processing.face_detection
+      - delay: 00:00:01
+      - service: camera.snapshot
+        data:
+          entity_id: camera.front_door
+          filename: /config/www/tmp/image.jpg
+      - delay: 00:00:02
+      - service: image_processing.scan
+        entity_id: image_processing.deepstack_detector
+      - service: image_processing.scan
+        entity_id: image_processing.face_detection
   
   - id: face_recognised
     alias: Face recognised
@@ -1354,20 +1354,20 @@ automation:
         after: '08:30:00'
         before: '23:59:00'
     action:
-      service: script.notify_engine
-      data_template:
-        title: "Medication Reminder"
-        message: "It looks like Ollie hasn't had his morning meds. Please make sure he has them."
-        who: "parents"
-        channel: "Medication"
-        importance: "max"
-        color: "purple"
-        action_1: "confirm_morning_meds"
-        action_1_title: "Confirm"
-        tag: "morning_meds"
-        priority: "high"
-        ttl: 0
-        group: "Medication"
+      - service: script.notify_engine
+        data_template:
+          title: "Medication Reminder"
+          message: "It looks like Ollie hasn't had his morning meds. Please make sure he has them."
+          who: "parents"
+          channel: "Medication"
+          importance: "max"
+          color: "purple"
+          action_1: "confirm_morning_meds"
+          action_1_title: "Confirm"
+          tag: "morning_meds"
+          priority: "high"
+          ttl: 0
+          group: "Medication"
 
   - id: 'evening_meds_notification'
     alias: Evening meds Notificaiton
