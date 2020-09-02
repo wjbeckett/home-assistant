@@ -156,7 +156,7 @@ automation:
           importance: "high"
           color: "blue"
           priority: "high"
-          ttl: 0
+          ttl: "0"
   
   - id: notify_resident_william
     alias: NOTIFY (Location) Resident
@@ -179,7 +179,7 @@ automation:
           importance: "high"
           color: "blue"
           priority: "high"
-          ttl: 0
+          ttl: "0"
   
   - id: notify_guest_deb
     alias: Notify when Deb has arrived
@@ -202,7 +202,7 @@ automation:
           importance: "high"
           color: "blue"
           priority: "high"
-          ttl: 0
+          ttl: "0"
 
   - id: '1593405295014'
     alias: Activate Guest mode when Guest is here
@@ -255,7 +255,7 @@ automation:
           message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''off'' %}closed{% else %}open{% endif %}.'
           who: "parents"
           priority: "high"
-          ttl: 0
+          ttl: "0"
   
   - id: notify_garage_open_10_min
     alias: Notify Garage open for 10 min
@@ -278,7 +278,7 @@ automation:
           message: Garage door has been open for 10 minutes! Close it!
           who: "parents"
           priority: "high"
-          ttl: 0
+          ttl: "0"
 
 
     ####################################################
@@ -327,7 +327,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          ttl: 0
+          ttl: "0"
       - service: tts.google_cloud_say
         entity_id: media_player.kitchen_display
         data:
@@ -375,7 +375,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          ttl: 0  
+          ttl: "0"  
   
   - id: alarm_notify_armed_away
     alias: Send notification when alarm is Armed in Away mode
@@ -401,7 +401,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          ttl: 0
+          ttl: "0"
   
   - id: alarm_notify_armed_home
     alias: Send notification when alarm is Armed in Home mode
@@ -442,7 +442,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          ttl: 0
+          ttl: "0"
       - service: tts.google_cloud_say
         entity_id: media_player.kitchen_display
         data:
@@ -474,7 +474,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           tag: "alarm_prompt"
           action_1: "arm_alarm"
           action_1_title: "Arm Alarm"
@@ -513,7 +513,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           tag: alarm_prompt
 
     
@@ -604,7 +604,7 @@ automation:
           importance: "max"
           color: "blue"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           image: !secret deepstack_latest_image
           clickaction: !secret front_door_cam_stream
           action_1: "URI"
@@ -1338,7 +1338,7 @@ automation:
           action_1_title: "Confirm"
           tag: "morning_meds"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           group: "Medication"
 
   - id: 'morning_meds_reminder'
@@ -1366,7 +1366,7 @@ automation:
           action_1_title: "Confirm"
           tag: "morning_meds"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           group: "Medication"
 
   - id: 'evening_meds_notification'
@@ -1391,7 +1391,7 @@ automation:
           action_1_title: "Confirm"
           tag: "evening_meds"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           group: "Medication"
 
   - id: 'evening_meds_reminder'
@@ -1419,7 +1419,7 @@ automation:
           action_1_title: "Confirm"
           tag: "evening_meds"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           group: "Medication"
 
   - id: 'bedtime_meds_notification'
@@ -1444,7 +1444,7 @@ automation:
           action_1_title: "Confirm"
           tag: "bedtime_meds"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           group: "Medication"
 
   - id: 'bedtime_meds_reminder'
@@ -1472,7 +1472,7 @@ automation:
           action_1_title: "Confirm"
           tag: "bedtime_meds"
           priority: "high"
-          ttl: 0
+          ttl: "0"
           group: "Medication"
     ####################################################
     #                                                  #
