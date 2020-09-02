@@ -601,9 +601,9 @@ automation:
           message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
           who: "parents"
           channel: "Presence"
-          importance: "max"
+          importance: "low"
           color: "blue"
-          priority: "high"
+          priority: "low"
           #ttl: "0"
           image: !secret deepstack_latest_image
           clickaction: !secret front_door_cam_stream
