@@ -36,34 +36,34 @@ cloud:
         room: Teddy's Room
       climate.bedroom:
         name: Bedroom AC
-        alias:
+        aliases:
           - Bedroom Air
           - Bedroom Air-Con
         room: Bedroom
       climate.teddy_room:
         name: Teddy's AC
-        alias:
+        aliases:
           - Teddy AC
           - Teddy's Air
         room: Teddy's Room
       climate.ollie_room:
         name: Ollie's AC
-        alias:
+        aliases:
           - Ollie's Air
           - Ollie AC
         room: Ollie's Room
       media_player.loungeroom_tv:
         name: Louge Room TV
-        alias:
+        aliases:
           - Lounge Room Samsung
           - TV
         room: Lounge Room
       media_player.bedroom_tv:
         name: Bedroom TV
-        alias:
+        aliases:
           - Nexus Player
         room: Bedroom
       alarm_control_panel.home_alarm:
         name: Home Alarm
-        alias:
+        aliases:
           - Alarm
