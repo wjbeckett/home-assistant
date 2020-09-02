@@ -603,7 +603,7 @@ automation:
           channel: "Presence"
           importance: "low"
           color: "blue"
-          priority: "low"
+          #priority: "low"
           #ttl: "0"
           image: !secret deepstack_latest_image
           clickaction: !secret front_door_cam_stream
