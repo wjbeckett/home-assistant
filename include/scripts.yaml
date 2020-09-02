@@ -147,12 +147,14 @@ script:
         # who: "william | emily | family | parents"
         # image: 'URL to image'
         # channel: "Presence | Security | Medicine"
+        # importance: "max | high | low | min"
         # color: "blue"
         # clickaction: "https://...."
         # tag: ""
         # icon:
         # group: "Motion"
-        # priority: 'high'
+        # priority: "high"
+        # ttl: "0"
         # action_1: "URI"
         # action_1_title: "title"
         # action_1_uri: "url here"
@@ -201,6 +203,7 @@ script:
               title: "{{ action_3_title }}"
               uri: "{{ action_3_uri }}"
             channel: "{{ channel }}"
+            importance: "{{ importance }}"
             color: "{{ color }}"
             image: "{{ image }}"
             clickAction: "{{ clickaction }}"
@@ -208,3 +211,4 @@ script:
             icon: "{{ icon }}"
             priority: "{{ priority }}"
             group: "{{ group }}"
+            ttl: "{{ ttl }}"

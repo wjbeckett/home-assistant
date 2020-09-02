@@ -148,12 +148,15 @@ automation:
     - platform: state
       entity_id: person.emily
     action:
-    - service: notify.mobile_app_william
-      data_template:
-        message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
-        data:
-          channel: Presence
-          color: blue
+      - service: script.notify_engine
+        data_template:
+          message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+          who: "william"
+          channel: "Presence"
+          importance: "high"
+          color: "blue"
+          priority: "high"
+          ttl: 0
   
   - id: notify_resident_william
     alias: NOTIFY (Location) Resident
@@ -168,12 +171,15 @@ automation:
     - platform: state
       entity_id: person.william
     action:
-    - service: notify.mobile_app_emily
-      data_template:
-        message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
-        data:
-          channel: Presence
-          color: blue
+      - service: script.notify_engine
+        data_template:
+          message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''home'' %}at home{% elif trigger.to_state.state == ''not_home'' %}away{%else %}at {{ trigger.to_state.state }}{% endif %}.'
+          who: "emily"
+          channel: "Presence"
+          importance: "high"
+          color: "blue"
+          priority: "high"
+          ttl: 0
   
   - id: notify_guest_deb
     alias: Notify when Deb has arrived
@@ -188,12 +194,15 @@ automation:
     - condition: template
       value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
     action:
-      service: notify.parents
-      data:
-        message: 'Deb is here!'
-        data:
-          channel: Presence
-          color: blue
+      - service: script.notify_engine
+        data_template:
+          message: 'Deb is here!'
+          who: "parents"
+          channel: "Presence"
+          importance: "high"
+          color: "blue"
+          priority: "high"
+          ttl: 0
 
   - id: '1593405295014'
     alias: Activate Guest mode when Guest is here
@@ -241,9 +250,12 @@ automation:
     - platform: state
       entity_id: binary_sensor.garage_door
     action:
-    - service: notify.parents
-      data_template:
-        message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''off'' %}closed{% else %}open{% endif %}.'
+      - service: script.notify_engine
+        data_template:
+          message: '{{ trigger.from_state.attributes.friendly_name }} is {% if trigger.to_state.state == ''off'' %}closed{% else %}open{% endif %}.'
+          who: "parents"
+          priority: "high"
+          ttl: 0
   
   - id: notify_garage_open_10_min
     alias: Notify Garage open for 10 min
@@ -261,9 +273,12 @@ automation:
       for:
         minutes: 10
     action:
-    - service: notify.parents
-      data:
-        message: Garage door has been open for 10 minutes! Close it!
+      - service: script.notify_engine
+        data_template:
+          message: Garage door has been open for 10 minutes! Close it!
+          who: "parents"
+          priority: "high"
+          ttl: 0
 
 
     ####################################################
@@ -304,12 +319,15 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: triggered
     action:
-    - service: notify.parents
-      data:
-        message: ALARM! The alarm has been triggered at {{ states('sensor.date_time') }}
-        data:
-          ttl: 0
-          priority: high
+    - service: script.notify_engine
+      data_template:
+        message: "ALARM! The alarm has been triggered"
+        who: "parents"
+        channel: "Alarm"
+        importance: "max"
+        color: "red"
+        priority: "high"
+        ttl: 0
     - service: tts.google_cloud_say
       entity_id: media_player.kitchen_display
       data:
@@ -348,31 +366,16 @@ automation:
       entity_id: media_player.kitchen_display
       data:
         message: Alarm is now disarmed.
-    - service: notify.parents
+    - service: script.notify_engine
       data_template:
-        message: The alarm is now Disarmed. {{ states('sensor.date_time') }}
-        data:
-          channel: Alarm
-          color: red
-  
-  
-  - id: alarm_notify_pending
-    alias: Send notification when alarm is in pending status
-    condition:
-    - condition: state
-      entity_id: input_boolean.text_notifications
-      state: 'on'
-    trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home_alarm
-      to: pending
-    action:
-    - service: notify.parents
-      data_template:
-        message: The alarm is in pending status. {{ states('sensor.date_time') }}
-        data:
-          channel: Alarm
-          color: red
+        title: "Alarm"
+        message: "The home alarm is now disarmed."
+        who: "parents"
+        channel: "Alarm"
+        importance: "max"
+        color: "red"
+        priority: "high"
+        ttl: 0  
   
   - id: alarm_notify_armed_away
     alias: Send notification when alarm is Armed in Away mode
@@ -389,12 +392,16 @@ automation:
       entity_id: media_player.kitchen_display
       data:
         message: Alarm has been armed.
-    - service: notify.parents
+    - service: script.notify_engine
       data_template:
-        message: 'Alarm is now armed. {{ states(''sensor.date_time'') }}'
-        data:
-          channel: Alarm
-          color: red
+        title: "Alarm"
+        message: "The home alarm is now armed."
+        who: "parents"
+        channel: "Alarm"
+        importance: "max"
+        color: "red"
+        priority: "high"
+        ttl: 0
   
   - id: alarm_notify_armed_home
     alias: Send notification when alarm is Armed in Home mode
@@ -426,9 +433,16 @@ automation:
       from: not_home
       to: home
     action:
-    - service: notify.parents
+    - service: script.notify_engine
       data_template:
-        message: Disarming the alarm at {{ states('sensor.date_time') }}
+        title: "Alarm"
+        message: The home alarm is now disarmed.
+        who: "parents"
+        channel: "Alarm"
+        importance: "max"
+        color: "red"
+        priority: "high"
+        ttl: 0
     - service: tts.google_cloud_say
       entity_id: media_player.kitchen_display
       data:
@@ -451,16 +465,21 @@ automation:
       for:
         minutes: 15
     action:
-    - service: notify.parents
-      data:
+    - service: script.notify_engine
+      data_template:
+        title: Alarm
         message: "No one is at home, do you want to arm the alarm?"
-        data:
-          actions:
-            - action: "arm_alarm"
-              title: "Arm Alarm"
-            - action: dismiss_prompt
-              title: "No"
-          tag: alarm_prompt
+        who: "parents"
+        channel: "Alarm"
+        importance: "max"
+        color: "red"
+        priority: "high"
+        ttl: 0
+        tag: "alarm_prompt"
+        action_1: "arm_alarm"
+        action_1_title: "Arm Alarm"
+        action_2: "dismiss_prompt"
+        action_2_title: "No"
   
   - id: mobile_action_dismiss_prompt
     alias: Dismiss prompt to arm alarm
@@ -486,11 +505,16 @@ automation:
     action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
-    - service: notify.parents
-      data:
+    - service: script.notify_engine
+      data_template:
         message: clear_notification
-        data:
-          tag: alarm_prompt
+        who: "parents"
+        channel: "Alarm"
+        importance: "max"
+        color: "red"
+        priority: "high"
+        ttl: 0
+        tag: alarm_prompt
 
     
     ####################################################
@@ -572,19 +596,20 @@ automation:
       event_data:
         object: car
     action:
-    - service: notify.parents
+    - service: script.notify_engine
       data_template:
         message: '{{ trigger.event.data.name | title }} detected {% if trigger.event.data.name == ''person'' %}at the front door{% else %}in the driveway{% endif %}.'
-        data:
-          image: !secret deepstack_latest_image
-          clickAction: !secret front_door_cam_stream
-          actions:
-          - action: "URI"
-            title: View Image
-            uri: !secret deepstack_latest_image
-          channel: Persence
-          color: blue
-
+        who: "parents"
+        channel: "Presence"
+        importance: "max"
+        color: "blue"
+        priority: "high"
+        ttl: 0
+        image: !secret deepstack_latest_image
+        clickaction: !secret front_door_cam_stream
+        action_1: "URI"
+        action_1_title: "View Image"
+        action_1_uri: !secret deepstack_latest_image
 
 
     ####################################################
@@ -1307,11 +1332,13 @@ automation:
           message: "Ollie needs Carvidilol (1.5ml), Aspirin (1.7ml) and Fruzi (1ml)"
           who: "parents"
           channel: "Medication"
+          importance: "max"
           color: "purple"
           action_1: "confirm_morning_meds"
           action_1_title: "Confirm"
           tag: "morning_meds"
           priority: "high"
+          ttl: 0
           group: "Medication"
 
   - id: 'morning_meds_reminder'
@@ -1333,11 +1360,13 @@ automation:
         message: "It looks like Ollie hasn't had his morning meds. Please make sure he has them."
         who: "parents"
         channel: "Medication"
+        importance: "max"
         color: "purple"
         action_1: "confirm_morning_meds"
         action_1_title: "Confirm"
         tag: "morning_meds"
         priority: "high"
+        ttl: 0
         group: "Medication"
 
   - id: 'evening_meds_notification'
@@ -1356,11 +1385,13 @@ automation:
           message: "Ollie needs Lisinopril (3ml)"
           who: "parents"
           channel: "Medication"
+          importance: "max"
           color: "purple"
           action_1: "confirm_evening_meds"
           action_1_title: "Confirm"
           tag: "evening_meds"
           priority: "high"
+          ttl: 0
           group: "Medication"
 
   - id: 'evening_meds_reminder'
@@ -1382,11 +1413,13 @@ automation:
           message: "It looks like Ollie hasn't had his evening meds. Please make sure he has them."
           who: "parents"
           channel: "Medication"
+          importance: "max"
           color: "purple"
           action_1: "confirm_evening_meds"
           action_1_title: "Confirm"
           tag: "evening_meds"
           priority: "high"
+          ttl: 0
           group: "Medication"
 
   - id: 'bedtime_meds_notification'
@@ -1405,11 +1438,13 @@ automation:
           message: "Ollie needs Carvidilol (1.5ml)"
           who: "parents"
           channel: "Medication"
+          importance: "max"
           color: "purple"
           action_1: "confirm_bedtime_meds"
           action_1_title: "Confirm"
           tag: "bedtime_meds"
           priority: "high"
+          ttl: 0
           group: "Medication"
 
   - id: 'bedtime_meds_reminder'
@@ -1431,11 +1466,13 @@ automation:
           message: "It looks like Ollie hasn't had his bedtime meds. Please make sure he has them."
           who: "parents"
           channel: "Medication"
+          importance: "max"
           color: "purple"
           action_1: "confirm_bedtime_meds"
           action_1_title: "Confirm"
           tag: "bedtime_meds"
           priority: "high"
+          ttl: 0
           group: "Medication"
     ####################################################
     #                                                  #
