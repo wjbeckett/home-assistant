@@ -1,0 +1,70 @@
+cloud:
+  secure_devices_pin: !secret secure_devices_pin
+  google_actions:
+    filter:
+      include_entities:
+        - light.kitchen_downlight
+        - light.kitchen_pendant_lights
+        - light.loungeroom_lamp
+        - light.bedroom_lamps
+        - light.ollie_s_lamp
+        - light.teddy_s_lamp
+        - camera.front_door
+        - media_player.bedroom_tv
+        - media_player.lounge_room_tv
+      include_domains:
+        - climate
+        - alarm_control_panel
+        - scene
+    entity_config:
+      light.kitchen_downlight:
+        name: Kitchen Downlight
+        room: Kitchen
+      light.kitchen_pendant_lights:
+        name: Kitchen Pendants
+        room: Kitchen
+      light.loungeroom_lamp:
+        name: Lounge Room Lamp
+        room: Lounge Room
+      light.bedroom_lamps:
+        name: Bedroom Lamps
+        room: Bedroom
+      light.ollie_s_lamp:
+        name: Ollie's Lamp
+        room: Ollie's Room
+      light.teddy_s_lamp:
+        name: Teddy's Lamp
+        room: Teddy's Room
+      climate.bedroom:
+        name: Bedroom AC
+        alias:
+          - Bedroom Air
+          - Bedroom Air-Con
+        room: Bedroom
+      climate.teddy_room:
+        name: Teddy's AC
+        alias:
+          - Teddy AC
+          - Teddy's Air
+        room: Teddy's Room
+      climate.ollie_room:
+        name: Ollie's AC
+        alias:
+          - Ollie's Air
+          - Ollie AC
+        room: Ollie's Room
+      media_player.loungeroom_tv:
+        name: Louge Room TV
+        alias:
+          - Lounge Room Samsung
+          - TV
+        room: Lounge Room
+      media_player.bedroom_tv:
+        name: Bedroom TV
+        alias:
+          - Nexus Player
+        room: Bedroom
+      alarm_control_panel.home_alarm:
+        name: Home Alarm
+        alias:
+          - Alarm
