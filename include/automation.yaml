@@ -1220,7 +1220,7 @@ automation:
     trigger:
     - entity_id: media_player.bedroom_tv
       platform: state
-      to: playing
+      to: "playing"
     condition:
     - condition: state
       entity_id: light.bedroom_lamps
