@@ -261,26 +261,28 @@ button_card_templates:
         else return '1px 1px 5px rgba(18, 22, 23, 0.9)' ; ]]]"]
 
   media_small:
-    aspect_ratio: 1/1
     show_state: true
     show_icon: false
     tap_action: *media_tap_action
+    hold_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: '[[[ return entity.attributes.friendly_name ]]]'
+        deviceID: this
+        card:
+          type: media-control
+          entity: '[[[ return entity.entity_id ]]]'
     styles:
       custom_fields:
         icon:
-          [opacity: "[[[ return entity.attributes.entity_picture == null ? 1 : 0; ]]]", 
-          top: 11.5%, left: 11.5%, width: 2.9vw, position: absolute, fill: '#9da0a2']
+          [fill:
+          "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') return '#9da0a2'; 
+          else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
+          top: 11.5%, left: 11.5%, width: 2.9vw, position: absolute]
       name: *button_styles_name
       state: *button_styles_state
-      card:
-        [<<: *button_styles_card, color: *media_font_color, text-shadow: *media_text_shadow, 
-        background-color: none, background-size: cover,
-        background-image: 
-        "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') {
-        return 'linear-gradient(0deg, rgba(115, 115, 115, 0.2) 0%, rgba(115, 115, 115, 0.2) 100%)'; }
-        if ((entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby') && (entity.attributes.entity_picture == null)) {
-        return 'linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%)'; }
-        else { return 'linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 100%), url(' + entity.attributes.entity_picture + ')'; } ]]]"]
+      card: *button_styles_card
 
   person:
     #state_display: 
@@ -385,27 +387,6 @@ views:
             style: {opacity: 0}
             content: preload
 
-
-          #################################################
-          #                                               #
-          #                   COVID-19                    #
-          #                                               #
-          #################################################
-
-          - type: custom:hui-markdown-card
-            class: coronavirus
-            style:
-              {top: 93.65%, left: 70.2%}
-            content: >
-              {% set break = ' ‍ ‍ ‍ ‍ ‍ ‍<font color="#2f3436">|</font> ‍ ‍ ‍ ‍ ‍ ‍' %}
-              <font color='#6a7377'>
-              <ha-icon icon="mdi:virus"></ha-icon> <b>Coronavirus</b>{{ break -}}
-              <ha-icon icon="mdi:chart-bar"></ha-icon> <b>Blah blah</b>{{ break -}}
-              <ha-icon icon="mdi:emoticon-sad"></ha-icon> <b>blah blah</b> {{ break -}}
-              <ha-icon icon="mdi:grave-stone"></ha-icon> <b>blah blah</b> {{ break -}}
-              <ha-icon icon="mdi:map-marker-radius"></ha-icon> <b>blah blah</b>
-              </font>
-
           ##########################################################################
           #                                                                        #
           #                              * SIDEBAR *                               #
@@ -428,11 +409,11 @@ views:
           #################################################
 
           - type: custom:hui-markdown-card
-            class: sidebar
+            #class: sidebar
             style:
-              {top: 9%, left: 11.1%}
+              {top: 19%, left: 11.1%, background: none !important}
             content: >
-              <span>{{ states('sensor.time') }}</span>
+              <span style="color:white">{{ states('sensor.time') }}</span>
 
 
               <font color='#6a7377'><b>{{ states('sensor.sidebar_day') }}</b><br>
@@ -599,14 +580,15 @@ views:
 
           - type: custom:button-card
             entity: light.kitchen_pendant_lights
+            name: Pendants
             style:
               top: 20.35%
               left: 55.18%
               width: 10%
-              custom_fields:
+            custom_fields:
                 icon_hue: *icon_hue
-              styles: *icon_hue_styles
-              template: light
+            styles: *icon_hue_styles
+            template: ['base', 'light']
 
           #################################################
           #                                               #
@@ -616,6 +598,7 @@ views:
 
           - type: custom:button-card
             entity: light.kitchen_downlight
+            name: Downlight
             style:
               top: 20.35%
               left: 66.14%
@@ -639,14 +622,15 @@ views:
 
           - type: custom:button-card
             entity: media_player.kitchen_display
+            name: Hub
             triggers_update: ['media_player.kitchen_display', 'input_boolean.kitchen_display']
             custom_fields:
-              icon: &icon_nest_mini >
-                <svg viewBox="0 0 50 50"><path d="M49.7 25c0 13.6-11.1 24.7-24.8 24.7C11.3 49.7.3 38.6.3 25S11.4.3 25 .3 49.7 11.4 49.7 25zm-33.9 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3.1 2.3-.9 2.3-2.2h0zm10.8 0c0 1.2.9 2.2 2.2 2.3 1.3 0 2.3-1 2.3-2.2 0-1.3-1-2.3-2.2-2.3-1.3 0-2.3.9-2.3 2.2zm-3.2 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3 0 2.3-.9 2.3-2.2h0zm13 2.2a2.22 2.22 0 0 0 2.2-2.2c0-1.2-1-2.3-2.2-2.3a2.22 2.22 0 0 0-2.2 2.2c0 1.3 1 2.3 2.2 2.3z" /></svg>
+              icon_tv: *icon_tv
+            styles: *icon_tv_styles
             style:
               top: 37.9%
               left: 55.18%
-              width: 100%
+              width: 10%
             template: ['base', 'media_small']
 
           ##########################################################################
@@ -670,6 +654,7 @@ views:
 
           - type: custom:button-card
             entity: light.bedroom_lamps
+            name: Lamps
             style:
               top: 20.35%
               left: 80.05%
@@ -694,6 +679,7 @@ views:
 
           - type: custom:button-card
             entity: climate.bedroom
+            name: AC
             triggers_update:
               ['climate.bedroom', 'input_boolean.climate_bedroom']
             style:
@@ -703,11 +689,11 @@ views:
             tap_action: !include popup/bedroom_ac.yaml
             custom_fields:
               icon_ac: &icon_ac >
-                <svg viewBox="0 0 50 50"><path d="M36.8 1.2v1.7a5.34 5.34 0 0 1-5.3 5.3H18.4a5.34 5.34 0 0 1-5.3-5.3V1.2c-2.6.4-4.7 2.8-4.7 5.6v36.5c0 3.1 2.6 5.7 5.7 5.7h21.8c3.1 0 5.7-2.6 5.7-5.7V6.8c0-2.8-2.1-5.2-4.8-5.6zm-1.7 35.6c-.2 0-.4 0-.5-.1-.4-.1-1.2-.2-2.4-.6-.5-.2-.8-.3-1.2-.4-.3-.1-.7-.3-1.4-.5-1-.4-1.5-.5-1.9-.6-.5-.1-1.1-.2-1.9-.2s-1.4.2-1.9.4c-1 .3-1.8.7-2.1.9l-.6.3a9.75 9.75 0 0 1-1.4.6c-.3.1-.9.3-1.6.3h-.3c-.4 0-1 0-2-.2-.3-.1-.6-.1-.8-.2v-2.7l1.3.3c.5.1 1.3.2 1.7.2.5 0 .9-.2 1.1-.2.4-.1.6-.2 1-.4.2-.1.4-.2.7-.4.4-.2 1.3-.7 2.5-1 .6-.2 1.4-.4 2.5-.5s2 .1 2.5.2c.6.1 1.2.3 2.2.7l1.5.5c.3.1.6.2 1 .4 1 .3 1.8.5 2.1.5h.1v2.7zm0-6c-.2 0-.4 0-.5-.1-.4-.1-1.2-.2-2.4-.6-.5-.2-.8-.3-1.2-.4-.3-.1-.7-.3-1.4-.5-1-.4-1.5-.5-1.9-.6-.5-.1-1.1-.2-1.9-.2s-1.4.2-1.9.4c-1 .3-1.8.7-2.1.9l-.6.3a9.75 9.75 0 0 1-1.4.6c-.3.1-.9.3-1.6.3h-.3c-.4 0-1 0-2-.2-.3-.1-.6-.1-.8-.2v-2.7l1.3.3c.5.1 1.3.2 1.7.2.5 0 .9-.2 1.1-.2.4-.1.6-.2 1-.4.2-.1.4-.2.7-.4.4-.2 1.3-.7 2.5-1 .6-.2 1.4-.4 2.5-.5s2 .1 2.5.2c.6.1 1.2.3 2.2.7l1.5.5c.3.1.6.2 1 .4 1 .3 1.8.5 2.1.5h.1v2.7zm0-6c-.2 0-.4 0-.5-.1-.4-.1-1.2-.2-2.4-.6-.5-.2-.8-.3-1.2-.4-.3-.1-.7-.3-1.4-.5-1-.4-1.5-.5-1.9-.6-.5-.1-1.1-.2-1.9-.2s-1.4.2-1.9.4c-1 .3-1.8.7-2.1.9l-.6.3c-.4.2-.8.4-1.4.6-.3.1-.9.3-1.6.3h-.3c-.4 0-1 0-2-.2-.3-.1-.6-.1-.8-.2v-2.7l1.3.3c.5.1 1.3.2 1.7.2.5 0 .9-.2 1.1-.2.4-.1.6-.2 1-.4.2-.1.4-.2.7-.4.4-.2 1.3-.7 2.5-1 .6-.2 1.4-.4 2.5-.5s2 .1 2.5.2c.6.1 1.2.3 2.2.7l1.5.5c.3.1.6.2 1 .4 1 .3 1.8.5 2.1.5h.1v2.7zM15.7 1.9v-.8h18.6V3c0 1.5-1.2 2.8-2.8 2.8H18.4c-1.5 0-2.8-1.2-2.8-2.8V1.9z"/></svg>
-            styles: &icon_ac_styles
+                <svg viewBox="0 0 50 50"><path d="M6.59,0.66C8.93,-1.15 11.47,1.06 12.04,4.5C12.47,4.5 12.89,4.62 13.27,4.84C13.79,4.24 14.25,3.42 14.07,2.5C13.65,0.35 16.06,-1.39 18.35,1.58C20.16,3.92 17.95,6.46 14.5,7.03C14.5,7.46 14.39,7.89 14.16,8.27C14.76,8.78 15.58,9.24 16.5,9.06C18.63,8.64 20.38,11.04 17.41,13.34C15.07,15.15 12.53,12.94 11.96,9.5C11.53,9.5 11.11,9.37 10.74,9.15C10.22,9.75 9.75,10.58 9.93,11.5C10.35,13.64 7.94,15.39 5.65,12.42C3.83,10.07 6.05,7.53 9.5,6.97C9.5,6.54 9.63,6.12 9.85,5.74C9.25,5.23 8.43,4.76 7.5,4.94C5.37,5.36 3.62,2.96 6.59,0.66M5,16H7A2,2 0 0,1 9,18V24H7V22H5V24H3V18A2,2 0 0,1 5,16M5,18V20H7V18H5M12.93,16H15L12.07,24H10L12.93,16M18,16H21V18H18V22H21V24H18A2,2 0 0,1 16,22V18A2,2 0 0,1 18,16Z" /></svg>
+            styles: &icon_ac_styles 
               custom_fields:
-                icon_air_purifier:
-                  [top: 11%, left: 6.3%, width: 3.05vw, position: absolute,
+                icon_ac:
+                  [top: 11%, left: 6.3%, width: 6.9vw, position: absolute,
                   fill: "[[[ return entity.state === 'on' ? '#5daeea' : '#9da0a2'; ]]]"]
             template: ['base', 'climate']
 
@@ -719,6 +705,7 @@ views:
 
           - type: custom:button-card
             entity: media_player.bedroom_tv
+            name: TV
             triggers_update:
               ['media_player.bedroom_tv', 'input_boolean.bedroom_tv']
             style:
@@ -740,16 +727,20 @@ views:
 
           - type: custom:button-card
             entity: media_player.bedroom_speaker
+            name: Speaker
+            icon: mdi:google-home
             triggers_update: ['media_player.bedroom_speaker', 'input_boolean.bedroom_speaker']
             custom_fields:
-              icon: *icon_nest_mini
+              icon: &icon_google_home >
+                <svg style="width:128px;height:128px" viewBox="0 0 50 50"><path d="M8.06,7.78C7.5,7.78 7.17,7.73 7.08,7.64L6.66,13.73C7.19,14.05 7.88,14.3 8.72,14.5C9.56,14.71 10.78,14.77 12.38,14.67C13.97,14.58 15.63,14.23 17.34,13.64L16.55,4.22C15.67,5.09 14.38,5.91 12.66,6.66C11.13,7.31 9.81,7.69 8.72,7.78H8.06M7.97,5.34C7.28,5.94 7,6.34 7.13,6.56C7.22,6.78 7.7,6.84 8.58,6.75C9.67,6.66 10.91,6.31 12.28,5.72C13.22,5.31 14.03,4.88 14.72,4.41C15.41,3.94 15.88,3.55 16.13,3.23C16.38,2.92 16.47,2.7 16.41,2.58C16.34,2.42 16.03,2.34 15.47,2.34C14.34,2.34 12.94,2.7 11.25,3.42C9.81,4.05 8.72,4.69 7.97,5.34M17.34,2.2C17.41,2.33 17.44,2.47 17.44,2.63L18.61,17C18.61,18.73 18,20.09 16.83,21.07C15.64,22.05 14.03,22.55 12,22.55C10,22.55 8.4,22.04 7.2,21C6,20 5.39,18.64 5.39,16.92L6.09,6.47C6.09,6.22 6.2,5.94 6.42,5.63C6.64,5.31 6.84,5.06 7.03,4.88L7.36,4.59C8.33,3.78 9.5,3.08 10.88,2.5C11.81,2.08 12.73,1.77 13.62,1.57C14.5,1.37 15.3,1.3 16,1.38C16.71,1.46 17.16,1.73 17.34,2.2Z" /></svg>
+            styles:
+              custom_fields:
+                icon: &icon_google_home_styles
             style:
               top: 37.9%
               left: 91.05%
-              width: 100%
+              width: 10%
             template: ['base', 'media_small']
-
-          
 
           ##########################################################################
           #                                                                        #
@@ -772,6 +763,7 @@ views:
 
           - type: custom:button-card
             entity: light.ollie_s_lamp
+            name: Lamp
             style:
               top: 64.5%
               left: 55.18%
@@ -788,13 +780,15 @@ views:
           #################################################
 
           - type: custom:button-card
-            entity: climate.ollie
+            entity: climate.ollie_room
+            name: AC
+            icon: mdi:air-conditioner
+            custom_fields:
+              icon: *icon_ac
             style:
               top: 64.5%
               left: 66.14%
               width: 10%
-            custom_fields:
-              icon_ac: *icon_ac
             styles: *icon_ac_styles
             template: ['base', 'climate']
 
@@ -805,13 +799,19 @@ views:
           #################################################
 
           - type: custom:button-card
-            entity: media_player.ollie_speaker
+            entity: media_player.ollie_s_speaker
+            name: Speaker
+            custom_fields:
+              icon_nest_mini: &icon_nest_mini >
+                <svg viewBox="0 0 50 50"><path d="M49.7 25c0 13.6-11.1 24.7-24.8 24.7C11.3 49.7.3 38.6.3 25S11.4.3 25 .3 49.7 11.4 49.7 25zm-33.9 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3.1 2.3-.9 2.3-2.2h0zm10.8 0c0 1.2.9 2.2 2.2 2.3 1.3 0 2.3-1 2.3-2.2 0-1.3-1-2.3-2.2-2.3-1.3 0-2.3.9-2.3 2.2zm-3.2 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3 0 2.3-.9 2.3-2.2h0zm13 2.2a2.22 2.22 0 0 0 2.2-2.2c0-1.2-1-2.3-2.2-2.3a2.22 2.22 0 0 0-2.2 2.2c0 1.3 1 2.3 2.2 2.3z" /></svg>
             style:
               top: 82.1%
               left: 55.18%
               width: 10%
-            custom_fields:
-              icon_nest_mini: *icon_nest_mini
+            styles: &icon_nest_mini_styles
+              custom_fields:
+                icon_nest_mini:
+                  [top: 7%, left: 5.35%, width: 3.2vw, position: absolute]
             template: ['base', 'media_small']
 
           ##########################################################################
