@@ -19,7 +19,7 @@ binary_sensor:
     name: server_internet_access
   
   - platform: wyzesense
-    device: "/dev/wyzesense"
+    device: "/dev/hidraw0"
 
   - platform: mqtt
     name: "Front Door Motion"
