@@ -55,19 +55,6 @@
                           entity_row: true
                           entities:
 
-                            - entity: sensor.docker_cpu
-                              tap_action:
-                                action: call-service
-                                service: homeassistant.update_entity
-                                service_data:
-                                  entity_id: sensor.docker_cpu
-
-                            - entity: sensor.dockermon_mem
-                              tap_action:
-                                action: call-service
-                                service: homeassistant.update_entity
-                                service_data:
-                                  entity_id: sensor.dockermon_mem
 
                         - type: custom:hui-element
                           card_type: horizontal-stack

@@ -5,5 +5,4 @@ shell_command:
     #fullykiosk_screensaver_on: !secret fullykiosk_screensaver_on
     #fullykiosk_screensaver_off: !secret fullykiosk_screensaver_off
   
-    ha_dockermon_restart_container: !secret ha_dockermon_restart_container
     clear_logs: truncate -s 0 /config/home-assistant.log

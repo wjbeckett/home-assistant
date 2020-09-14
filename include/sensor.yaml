@@ -19,7 +19,7 @@ binary_sensor:
     name: server_internet_access
   
   - platform: wyzesense
-    device: "/dev/hidraw0"
+    device: "/dev/wyzesense"
 
   - platform: mqtt
     name: "Front Door Motion"
@@ -143,29 +143,6 @@ sensor:
   #  value_template: '{{ value_json.isScreenOn }}'
   #  scan_interval: 10
 
-  - platform: rest
-    name: docker_cpu
-    resource: !secret ha_dockermon_cpu
-    value_template: >
-      {% set cpuDelta = value_json.cpu_stats.cpu_usage.total_usage - value_json.precpu_stats.cpu_usage.total_usage %}
-      {% set systemDelta = value_json.cpu_stats.system_cpu_usage - value_json.precpu_stats.system_cpu_usage %}
-      {{ (cpuDelta / systemDelta * value_json.cpu_stats.cpu_usage.percpu_usage | length * 100) | round(1) }}
-    json_attributes:
-      ['cpu_stats', 'precpu_stats', 'memory_stats']
-
-  - platform: rest
-    name: docker_uptime
-    resource: !secret ha_dockermon_uptime
-    value_template: >
-      {{ value_json.status.split(' ')[1:] | join(' ') }}
-
-  - platform: plex_recently_added
-    token: !secret plex_token
-    host: !secret plex_host
-    port: !secret plex_port
-    max: 1
-    img_dir: '/'
-    image_resolution: 500
 
   - platform: template
     sensors:
@@ -261,14 +238,6 @@ sensor:
       placeholder:
         value_template: ' '
 
-      dockermon_mem:
-        entity_id: sensor.docker_cpu
-        friendly_name: Minne
-        icon_template: mdi:memory
-        value_template: >
-          {% set entity_id = 'sensor.docker_cpu' %}
-          {{ (state_attr(entity_id, 'memory_stats')['usage'] / 
-          state_attr(entity_id, 'memory_stats')['limit'] * 100) | round(1) | default(0) }}
 
       hass_version:
         entity_id: sensor.hass_version_installed, sensor.hass_version_latest
@@ -367,57 +336,3 @@ sensor:
             {% elif uptime | int >= 120 %} {{ (uptime | int / 60) | int }} hours ago
             {% endif %}
           {% endif %}
-
-    ####################################################
-    #                                                  #
-    #                       NAS                        #
-    #                                                  #
-    ####################################################
-
-      nas_disk_temp:
-        entity_id: sensor.synology_average_disk_temp_volume_1
-        friendly_name: Disktemperatur
-        unit_of_measurement: '°C'
-        icon_template: mdi:thermometer
-        value_template: >
-          {{ states('sensor.synology_average_disk_temp_volume_1') | round }}
-
-      nas_net_down:
-        entity_id: sensor.synology_network_down
-        value_template: ' '
-        icon_template: mdi:arrow-down-bold
-        friendly_name_template: >
-          {% set down = states('sensor.synology_network_down') | float %}
-          {% if down < 1000 %} {{ down | round(0) }} kb/s
-          {% elif down >= 1000 %} {{ ((down / 1000) | round(2) | string).rstrip('.0') }} Mb/s
-          {% endif %}
-
-      nas_net_up:
-        entity_id: sensor.synology_network_up
-        value_template: ' '
-        icon_template: mdi:arrow-up-bold
-        friendly_name_template: >
-          {% set up = states('sensor.synology_network_up') | float %}
-          {% if up < 1000 %} {{ up | round(0) }} kb/s
-          {% elif up >= 1000 %} {{ ((up / 1000) | round(2) | string).rstrip('.0') }} Mb/s
-          {% endif %}
-
-      nas_status:
-        entity_id: sensor.synology_status_volume_1
-        friendly_name: Systemhälsa
-        icon_template: custom:synology-nas
-        value_template: >
-          {% set entity_id = 'sensor.synology_status_volume_1' %}
-          {% if is_state(entity_id, 'normal') %} Bra
-          {% elif is_state(entity_id, 'background') %} Verifierar
-          {% else %} {{ states(entity_id) }}
-          {% endif %}
-
-      nas_vpn:
-        entity_id: sensor.myip, sensor.public_ip
-        friendly_name: VPN
-        value_template: >
-          {{ 'Ej Ansluten' if states('sensor.myip') == states('sensor.public_ip') else 'Ansluten' }}
-        icon_template: >
-          mdi:shield-{{ 'alert' if states('sensor.myip') == states('sensor.public_ip') else 'check' }}
-

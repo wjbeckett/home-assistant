@@ -7,13 +7,7 @@ script:
   #                                                  #
   ####################################################
 
-  homeassistant_restart:
-    sequence:
-      - service: browser_mod.toast
-        data:
-          duration: 16000
-          message: Restarting Home Assistant...
-      - service: shell_command.ha_dockermon_restart_container
+
 
   ####################################################
   #                                                  #
