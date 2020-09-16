@@ -606,7 +606,7 @@ automation:
           priority: "high"
           #ttl: 1
           image: !secret deepstack_latest_image
-          clickaction: !secret front_door_cam_stream
+          clickaction: /old-yaml/cameras
           action_1: "URI"
           action_1_title: "View Image"
           action_1_uri: !secret deepstack_latest_image
