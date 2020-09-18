@@ -590,11 +590,11 @@ automation:
     - platform: event
       event_type: deepstack.object_detected
       event_data:
-        object: person
+        name: person
     - platform: event
       event_type: deepstack.object_detected
       event_data:
-        object: car
+        name: car
     action:
       - service: script.notify_engine
         data_template:
