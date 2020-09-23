@@ -88,8 +88,22 @@ views:
                       }
           - type: horizontal-stack
             cards:
-              - type: custom:button-card
+              - type: custom:weather-card
                 entity: weather.home
+                current: true
+                details: false
+                forecast: true
+                hourly_forecast: false
+                number_of_forecasts: 5
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+              - type: custom:simple-weather-card
+                entity: weather.home
+                name: " "
                 style:
                   .: |
                     ha-card {
