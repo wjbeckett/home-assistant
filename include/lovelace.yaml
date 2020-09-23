@@ -53,5 +53,5 @@ lovelace:
       mode: yaml
       title: NEW
       icon: mdi:home-circle-outline
-      shoe_in_sidebar: true
+      show_in_sidebar: true
       filename: lovelace-ui.yaml
