@@ -30,25 +30,42 @@ views:
           - type: vertical-stack
             cards:
               - type: markdown
+                style:
+                    .: |
+                    ha-card {
+                        --ha-card-background: none !important;
+                        box-shadow: none !important;
+                    }
                 content: >
-                  #{{ states('sensor.time') }}
+                  # {{ states('sensor.time') }}
 
-                  {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
+                  ## {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
 
                   {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
 
                   {{ states('sensor.sidebar_active') }}
           - type: vertical-stack
+            style:
+                .: |
+                ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                }
             cards:
               - type: weather-forecast
                 entity: weather.home
           - type: vertical-stack
             cards:
               - type: entities
+                style:
+                    .: |
+                    ha-card {
+                        --ha-card-background: none !important;
+                        box-shadow: none !important;
+                    }
                 entities:
                   - entity: person.william
                     name: William
-                  - person.william
                   - entity: person.emily
                     name: Emily
                 
