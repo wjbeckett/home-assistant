@@ -31,7 +31,7 @@ views:
             cards:
               - type: markdown
                 content: >
-                  {{ states('sensor.time') }}
+                  <span style="color:white">{{ states('sensor.time') }}</span>
 
                   {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
 

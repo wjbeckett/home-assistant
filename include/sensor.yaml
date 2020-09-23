@@ -173,7 +173,7 @@ sensor:
           {% if time <= 1 %} Good evening {{'\U0001F611'}}
           {% elif time <= 3 %} Good morning {{'\U0001F62A'}}
           {% elif time <= 5 %} Good morning {{'\U0001F634'}}
-          {% elif time <= 7 %} Good morning {{'\U0001F4A9'}}
+          {% elif time <= 7 %} Good morning {{'\u2615\uFE0F'}}
           {% elif time <= 9 %} Good morning {{'\u2615\uFE0F'}}
           {% elif time <= 12 %} Good morning {{'\U0001F642'}}
           {% elif time <= 13 %} Good afternoon {{'\U0001F60A'}}
@@ -225,11 +225,12 @@ sensor:
         entity_id: sensor.dark_sky_temperature, sensor.dark_sky_apparent_temperature, sensor.dark_sky_precip_probability
         value_template: >
           {% set temperature = states('sensor.dark_sky_temperature') %}
+          {% set type = states('weather.dark_sky') %}
           {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
           {% set precip = states('sensor.dark_sky_precip_probability') | round %}
 
           {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
-              It feels like {{ apparent}}°
+              It's' {{ apparent}}° and {{ type }}
           {% else %}
             Unable to load weather information...
           {% endif %}
