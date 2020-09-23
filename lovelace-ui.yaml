@@ -11,6 +11,8 @@ custom_header:
         config:
           kiosk_mode: false
 
+decluttering_templates: !include_dir_merge_named lovelace/decluttering_templates          
+
 button_card_templates:
   header:
     styles:
