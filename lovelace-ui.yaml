@@ -63,49 +63,33 @@ views:
           - type: horizontal-stack
             title:
             cards:
-              - type: vertical-stack
-                cards:
-                  - type: markdown
-                    content: >
-                      # {{ states('sensor.time') }}
+              - type: markdown
+                content: >
+                  # {{ states('sensor.time') }}
 
-                      ## {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
+                  ## {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
 
-                      {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
+                  {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
 
-                      {{ states('sensor.sidebar_active') }}
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
-                      ha-markdown:
-                        $: |
-                          h1 {
-                            font-size: 50px;
-                            font-weight: bold;
-                            font-family: Helvetica;
-                            letter-spacing: '-0.01em';
-                          }
-              - type: vertical-stack
+                  {{ states('sensor.sidebar_active') }}
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 50px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+              - type: horizontal-stack
                 cards:
                   - type: weather-forecast
                     entity: weather.home
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
-              - type: vertical-stack
-                cards:
-                  - type: entities
-                    entities:
-                      - entity: person.william
-                        name: William
-                      - entity: person.emily
-                        name: Emily
                     style:
                       .: |
                         ha-card {
