@@ -21,7 +21,8 @@ custom_header:
 
 title: Home
 views:
-  - panel: true
+  - panel: false
+
     path: default_view
     cards:
       - type: horizontal-stack
