@@ -86,16 +86,16 @@ views:
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
                       }
-              - type: horizontal-stack
-                cards:
-                  - type: weather-forecast
-                    entity: weather.home
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
+          - type: horizontal-stack
+            cards:
+              - type: weather-forecast
+                entity: weather.home
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
           - type: horizontal-stack
             cards:
               - type: markdown
