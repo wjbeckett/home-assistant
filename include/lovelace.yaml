@@ -49,3 +49,9 @@ lovelace:
       icon: mdi:home-circle-outline
       show_in_sidebar: true
       filename: lovelace-tablet.yaml
+    lovelace-ui-yaml:
+      mode: yaml
+      title: NEW
+      icon: mdi:home-circle-outline
+      shoe_in_sidebar: true
+      filename: lovelace-ui.yaml
