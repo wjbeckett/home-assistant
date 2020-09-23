@@ -229,10 +229,9 @@ sensor:
           {% set precip = states('sensor.dark_sky_precip_probability') | round %}
 
           {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
-              Feels like {{ apparent}}° with 
-              {{ precip }}% chance of rain {{ '\u2614\uFE0F' if precip > 30 }}
+              It feels like {{ apparent}}°
           {% else %}
-            Wnable to load weather information...
+            Unable to load weather information...
           {% endif %}
 
       placeholder:
@@ -308,9 +307,7 @@ sensor:
       sidebar_day:
         entity_id: sensor.date
         icon_template: mdi:calendar
-        value_template: >
-          {% set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
-          {{ days[now().weekday()] }}
+        value_template: "{{ ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] }}"
 
       sidebar_date:
         entity_id: sensor.date

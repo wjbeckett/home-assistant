@@ -1,0 +1,40 @@
+##########################################################################
+#                                                                        #
+#                              * SETTINGS *                              #
+#                                                                        #
+##########################################################################
+
+custom_header:
+    exceptions:
+      - conditions:
+          query_string: kiosk
+        config:
+          kiosk_mode: false
+
+
+
+##########################################################################
+#                                                                        #
+#                              * LOVELACE *                              #
+#                                                                        #
+##########################################################################
+
+title: Home
+views:
+  - panel: true
+    path: default_view
+    cards:
+      - type: horizontal-stack
+        title:
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: markdown
+                content: >
+                  {{ states('sensor.time') }}
+
+                  {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
+
+                  {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
+
+                  {{ states('sensor.sidebar_active') }}
