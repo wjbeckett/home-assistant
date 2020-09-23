@@ -38,3 +38,17 @@ views:
                   {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
 
                   {{ states('sensor.sidebar_active') }}
+          - type: vertical-stack
+            cards:
+              - type: weather-forecast
+                entity_id: weather.home
+          - type: vertical-stack
+            cards:
+              - type: entities
+                entities:
+                  - entity: person.william
+                    name: William
+                  - person.william
+                  - entity: person.emily
+                    name: Emily
+                
