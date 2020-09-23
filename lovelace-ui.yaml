@@ -31,7 +31,7 @@ views:
             cards:
               - type: markdown
                 content: >
-                  <span style="color:white">{{ states('sensor.time') }}</span>
+                  #{{ states('sensor.time') }}
 
                   {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
 
@@ -41,7 +41,7 @@ views:
           - type: vertical-stack
             cards:
               - type: weather-forecast
-                entity_id: weather.home
+                entity: weather.home
           - type: vertical-stack
             cards:
               - type: entities
