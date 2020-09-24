@@ -305,7 +305,7 @@ views:
                         name: Scenes
                         style:
                           width: 10%
-                        template: ['base','scenes']
+                        template: ['base']
 
                   - type: horizontal-stack
                     cards:
