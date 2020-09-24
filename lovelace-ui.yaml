@@ -313,6 +313,22 @@ views:
 
                   - type: horizontal-stack
                     cards:
+                      - type: custom:mini-graph-card
+                        entities:
+                          - entity: sensor.kitchen_sensor_temperature
+                            name: Kitchen
+                            show:
+                              icon: false
+                              name: false
+                              state: false
+                        style: |
+                          ha-card {
+                            background-color: var(--primary-background-color);
+                            border-radius: 15px;
+                      - type: custom:gap-card
+
+                  - type: horizontal-stack
+                    cards:
                       - type: custom:mini-media-player
                         entity: media_player.kitchen_display
                         info: scroll
@@ -343,7 +359,7 @@ views:
                     cards:
                       - type: custom:button-card
                         entity: light.lounge_room_lamp
-                        name: Kitchen Lights
+                        name: Lamp
                         icon: mdi:floor-lamp
                         template: ['base','light']
                       - type: custom:button-card
