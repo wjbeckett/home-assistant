@@ -305,9 +305,9 @@ views:
                         name: Scenes
                         style:
                           width: 10%
-                        template: ['base','light']
+                        template: ['base','scenes']
 
-                  - type: horiontal-stack
+                  - type: horizontal-stack
                     cards:
                       - type: custom:mini-media-player
                         entity: media_player.kitchen_display
