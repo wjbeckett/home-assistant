@@ -309,13 +309,9 @@ views:
                       - type: custom:button-card
                         entity: light.kitchen_lights
                         name: Kitchen Lights
-                        style:
-                          width: 5%
                         template: ['base','light']
                       - type: custom:button-card
                         name: Scenes
-                        style:
-                          width: 8%
                         template: ['base']
 
                   - type: horizontal-stack
@@ -352,13 +348,9 @@ views:
                         entity: light.lounge_room_lamp
                         name: Kitchen Lights
                         icon: mdi:floor-lamp
-                        style:
-                          width: 10%
                         template: ['base','light']
                       - type: custom:button-card
                         name: Scenes
-                        style:
-                          width: 10%
                         template: ['base']
                   
                   - type: horizontal-stack
