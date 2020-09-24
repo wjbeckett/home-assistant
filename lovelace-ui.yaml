@@ -51,8 +51,8 @@ button_card_templates:
     show_icon: true
     styles:
       card:
-        - width: 185px
-        - height: 185px
+#        - width: 185px
+#        - height: 185px
         - font-size: 10px
         - border-radius: 15px
         - background-color: var(--primary-background-color)
