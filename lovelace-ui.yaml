@@ -72,7 +72,7 @@ button_card_templates:
         [top: 74%, left: 11%, position: absolute, line-height: 2vw]
       custom_fields:
         info: &circle_pos
-          [top: 8.5%, left: 5%, width: 50px, position: absolute, letter-spacing: 0.03vw]
+          [top: 8.5%, right: 5%, width: 50px, position: absolute, letter-spacing: 0.03vw]
       card: &button_styles_card
         [font-family: Sf Display, letter-spacing: 0.05vw, text-rendering: optimizeLegibility, font-weight: 400, color: 'rgba(255, 255, 255, 0.3)', font-size: 1.34vw, 
         background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 0.8vw, box-shadow: none, transition: none]
