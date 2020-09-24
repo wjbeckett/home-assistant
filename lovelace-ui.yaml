@@ -47,18 +47,19 @@ button_card_templates:
 
   base:
     aspect_ratio: 1/1
-    show_state: true
+    show_state: false
     show_icon: true
-    size: 30px
     styles:
       card:
+        - width: 185px
+        - height: 185px
         - font-size: 10px
         - border-radius: 15px
         - background-color: var(--primary-background-color)
       icon:
-        - width: 30%
+        - width: 60%
       name:
-        - font-size: 12px
+        - font-size: 16px
       state:
         - justify-self: start
         - font-size: 10px
@@ -80,10 +81,6 @@ button_card_templates:
         transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference - brightness / 100 * circumference};" />
         <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan></text></svg>`; } ]]]
     styles:
-      name: &button_styles_name
-        [top: 57.7%, left: 11%, position: absolute, line-height: 2vw]
-      state: &button_styles_state
-        [top: 74%, left: 11%, position: absolute, line-height: 2vw]
       custom_fields:
         info: &circle_pos
           [top: 8.5%, right: 5%, width: 50px, position: absolute, letter-spacing: 0.03vw]
