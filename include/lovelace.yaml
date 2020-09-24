@@ -45,7 +45,7 @@ lovelace:
     - url: '/local/custom_icons.js?v=25052001'
       type: module
     - url: /local/font.css
-      type: css} ]
+      type: css
   
   dashboards:
     old-yaml:
