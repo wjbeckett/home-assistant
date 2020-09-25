@@ -64,4 +64,15 @@
               - entity: sensor.front_door_face
                 icon: mdi:face-recognition
                 show_state: true
+          - type: glance
+            name: Viseron Detection
+            entities:
+              - entity: binary_sensor.viseron_front_door_motion_detected
+                show_state: true
+              - entity: binary_sensor.viseron_front_door_object_detected
+                show_state: true
+              - entity: binary_sensor.viseron_front_door_object_detected_car
+                show_state: true
+              - entity: binary_sensor.viseron_front_door_object_detected_person
+                show_state: true
             

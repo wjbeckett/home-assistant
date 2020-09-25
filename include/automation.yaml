@@ -612,6 +612,51 @@ automation:
           action_1_uri: !secret deepstack_latest_image
 
 
+  - id: viseron_person_detected
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
+    trigger:
+    - entity_id: binary_sensor.viseron_front_door_object_detected_person
+      from: 'off'
+      to: 'on'
+    action:
+      - service: script.notify_engine
+        data_template:
+          message: 'person detected at the front door. (Viseron)'
+          who: "parents"
+          channel: "Presence"
+          importance: "max"
+          color: "blue"
+          priority: "high"
+
+  - id: viseron_car_detected
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.text_notifications
+      state: 'on'
+    - condition: template
+      value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
+    trigger:
+    - entity_id: binary_sensor.viseron_front_door_object_detected_car
+      from: 'off'
+      to: 'on'
+    action:
+      - service: script.notify_engine
+        data_template:
+          message: 'car detected in the driveway. (Viseron)'
+          who: "parents"
+          channel: "Presence"
+          importance: "max"
+          color: "blue"
+          priority: "high"
+      
+
     ####################################################
     #                                                  #
     #                      TABLET                      #
