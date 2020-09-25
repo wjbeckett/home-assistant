@@ -621,7 +621,8 @@ automation:
     - condition: template
       value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
     trigger:
-    - entity_id: binary_sensor.viseron_front_door_object_detected_person
+    - platform: state
+      entity_id: binary_sensor.viseron_front_door_object_detected_person
       from: 'off'
       to: 'on'
     action:
@@ -643,7 +644,8 @@ automation:
     - condition: template
       value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
     trigger:
-    - entity_id: binary_sensor.viseron_front_door_object_detected_car
+    - platform: state
+      entity_id: binary_sensor.viseron_front_door_object_detected_car
       from: 'off'
       to: 'on'
     action:
