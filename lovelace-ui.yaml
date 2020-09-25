@@ -369,7 +369,7 @@ views:
                   - type: horizontal-stack
                     cards:
                       - type: custom:mini-media-player
-                        entity: media_player.kitchen_display
+                        entity: media_player.lounge_room_tv
                         info: scroll
                         artwork: cover
             
