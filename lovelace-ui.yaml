@@ -5,11 +5,23 @@
 ##########################################################################
 
 custom_header:
-    exceptions:
-      - conditions:
-          query_string: kiosk
-        config:
-          kiosk_mode: false
+  compact_mode: true
+  tab_indicator_color: var(--sidebar-selected-icon-color)
+  background: transparent
+  notification_dot_color: var(--sidebar-selected-icon-color)
+  elements_color: var(--primary-text-color)
+  active_tab_color: var(--sidebar-selected-icon-color)
+  exceptions:
+    - conditions:
+        user_agent: Mobile
+      config:
+        chevrons: false
+        indicator_top: true
+        all_tabs_css: "width: calc(25vw - 9px) !important; padding: 0px !important;"
+        header_css: 'padding-left: 0px !important; padding-right: 0px !important;'
+        view_css: 'padding-top: 104px !important;
+                  padding-left: 8px !important;
+                  padding-right: 8px !important;'
 
 decluttering_templates: !include_dir_merge_named lovelace/decluttering_templates          
 
@@ -275,103 +287,99 @@ views:
                   - icon: mdi:pokeball
                   - entity: light.teddy_s_lamp
           
-          - type: custom:swipe-card
-            card_width: '185px'
-            start_card: 1
+          - type: vertical-stack
             cards:
-              - type: vertical-stack
+              - type: horizontal-stack
                 cards:
-                  - type: horizontal-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Kitchen
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                  - type: markdown
+                    content: |
+                      # Kitchen
+                    style:
+                      .: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      ha-markdown:
+                        $: |
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
 
-                  - type: horizontal-stack
-                    cards:
-                      - type: custom:button-card
-                        entity: light.kitchen_lights
-                        name: Kitchen Lights
-                        template: ['base','light']
-                      - type: custom:button-card
-                        name: Scenes
-                        template: ['base']
-
-                  - type: horizontal-stack
-                    cards:
-                      - type: custom:mini-graph-card
-                        entities:
-                          - entity: sensor.kitchen_sensor_temperature
-                            name: Kitchen
-                            show:
-                              icon: false
-                              name: false
-                              state: false
-                        style: |
-                          ha-card {
-                            background-color: var(--primary-background-color);
-                            border-radius: 15px;
-                      - type: custom:gap-card
-
-                  - type: horizontal-stack
-                    cards:
-                      - type: custom:mini-media-player
-                        entity: media_player.kitchen_display
-                        info: scroll
-                        artwork: cover
-              - type: vertical-stack
+              - type: horizontal-stack
                 cards:
-                  - type: horizontal-stack
-                    cards:
-                      - type: markdown
-                        content: | 
-                          # Lounge Room
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                  - type: custom:button-card
+                    entity: light.kitchen_lights
+                    name: Kitchen Lights
+                    template: ['base','light']
+                  - type: custom:button-card
+                    name: Scenes
+                    template: ['base']
 
-                  - type: horizontal-stack
-                    cards:
-                      - type: custom:button-card
-                        entity: light.lounge_room_lamp
-                        name: Lamp
-                        icon: mdi:floor-lamp
-                        template: ['base','light']
-                      - type: custom:button-card
-                        name: Scenes
-                        template: ['base']
-                  
-                  - type: horizontal-stack
-                    cards:
-                      - type: custom:mini-media-player
-                        entity: media_player.lounge_room_tv
-                        info: scroll
-                        artwork: cover
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    entities:
+                      - entity: sensor.kitchen_sensor_temperature
+                        name: Kitchen
+                        show:
+                          icon: false
+                          name: false
+                          state: false
+                    style: |
+                      ha-card {
+                        background-color: var(--primary-background-color);
+                        border-radius: 15px;
+                  - type: custom:gap-card
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-media-player
+                    entity: media_player.kitchen_display
+                    info: scroll
+                    artwork: cover
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: markdown
+                    content: | 
+                      # Lounge Room
+                    style:
+                      .: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      ha-markdown:
+                        $: |
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.lounge_room_lamp
+                    name: Lamp
+                    icon: mdi:floor-lamp
+                    template: ['base','light']
+                  - type: custom:button-card
+                    name: Scenes
+                    template: ['base']
+              
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-media-player
+                    entity: media_player.lounge_room_tv
+                    info: scroll
+                    artwork: cover
 
           - type: horizontal-stack
             cards:
