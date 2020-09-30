@@ -239,7 +239,7 @@ views:
             cards:
               - type: markdown
                 content: >
-                  {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
+                  {{ states('sensor.sidebar_greeting') }}
 
                   {{ states('sensor.sidebar_active') }}
                 style:
