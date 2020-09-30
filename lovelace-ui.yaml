@@ -281,7 +281,7 @@ button_card_templates:
         entity_id: '[[[ return entity.entity_id ]]]'
     styles:
       card:
-        [color: "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') { return 'rgba(255, 255, 255, 0.3)'; }
+        [background-color: "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') { return 'rgba(255, 255, 255, 0.3)'; }
         if ((entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby') && (entity.attributes.entity_picture == null)) {
         return 'rgba(0, 0, 0, 0.6)'; } else { return '#efefef'; } ]]]", 
         text-shadow: "[[[ if (entity.attributes.entity_picture == null) return 'none'; 
@@ -289,19 +289,6 @@ button_card_templates:
 
   conditional_media:
     template: ['base', 'shared_media']
-    state:
-      - value: >
-          [[[ if (entity.state === 'playing' || entity.state === 'paused') { return 'playing'; } ]]]
-        styles:
-          card:
-            - background-color: rgba(255, 255, 255, 0.8)
-          name:
-            - color: rgba(0, 0, 0, 0.6)
-          state:
-            - color: rgba(0, 0, 0, 0.6)
-          custom_fields:
-            info:
-              - color: '#959698'
     state_display: >
       [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Nothing is playing'; }
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
