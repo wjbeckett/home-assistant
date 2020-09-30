@@ -277,8 +277,8 @@ button_card_templates:
   conditional_media:
     template: ['base', 'shared_media']
     state_display: >
-      [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Inget spelas'; }
-      if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'Ingen titel'; }
+      [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Nothing is playing'; }
+      if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
       else { return entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
@@ -313,15 +313,10 @@ button_card_templates:
           [filter: 
           "[[[ return entity.attributes.entity_picture == null ? 'none' : 'drop-shadow(0 0 1.3vw rgba(0,0,0,0.7))'; ]]]", 
           fill: '#dedede', top: 0, right: 0, bottom: 0, left: 0, margin: auto, width: 21%, height: 21%, position: absolute]
-        icon:
-          [fill:
-          "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') return '#9da0a2'; 
-          else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
-          top: 5.35%, left: 5.35%, width: 2.95vw, position: absolute]
       name:
-        [top: 79.8%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10]
+        [top: 79.8%, left: 5.3%, position: absolute, z-index: 10]
       state:
-        [top: 87.5%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10, 
+        [top: 87.5%, left: 5.3%, position: absolute, z-index: 10, 
         white-space: nowrap, overflow: hidden, text-overflow: ellipsis, max-width: 90%]
 
 ##########################################################################
@@ -487,10 +482,6 @@ views:
                     custom_fields:
                       icon: &icon_nest_mini >
                         <svg viewBox="0 0 50 50"><path d="M49.7 25c0 13.6-11.1 24.7-24.8 24.7C11.3 49.7.3 38.6.3 25S11.4.3 25 .3 49.7 11.4 49.7 25zm-33.9 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3.1 2.3-.9 2.3-2.2h0zm10.8 0c0 1.2.9 2.2 2.2 2.3 1.3 0 2.3-1 2.3-2.2 0-1.3-1-2.3-2.2-2.3-1.3 0-2.3.9-2.3 2.2zm-3.2 0a2.22 2.22 0 0 0-2.2-2.2c-1.2 0-2.3 1-2.3 2.2a2.22 2.22 0 0 0 2.2 2.2c1.3 0 2.3-.9 2.3-2.2h0zm13 2.2a2.22 2.22 0 0 0 2.2-2.2c0-1.2-1-2.3-2.2-2.3a2.22 2.22 0 0 0-2.2 2.2c0 1.3 1 2.3 2.2 2.3z" /></svg>
-                    style:
-                      top: 50%
-                      left: 50%
-                      width: 100%
                     template: conditional_media
                   #- type: custom:button-card
                   #  entity: media_player.kitchen_display
