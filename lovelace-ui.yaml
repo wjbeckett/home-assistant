@@ -64,8 +64,8 @@ button_card_templates:
     show_icon: true
     styles:
       card:
-#        - width: 185px
-#        - height: 185px
+        - width: 185px
+        - height: 185px
         - font-size: 10px
         - border-radius: 15px
         - background-color: var(--primary-background-color)
@@ -213,7 +213,7 @@ button_card_templates:
               - color: '#959698'
     styles:
       entity_picture:
-          [clip-path: circle(50% at center), top: 7.5%, left: 11.2%, width: 3vw, position: absolute]
+          [top: 7.5%, left: 11.2%, position: absolute]
       custom_fields:
         last_changed: *circle_pos
     custom_fields:
@@ -307,8 +307,6 @@ views:
                 entity: person.william
                 triggers_update:
                   ['person.william', 'sensor.time']
-                style:
-                  width: 10%
                 tap_action: !include popup/home_william.yaml
                 hold_action: !include popup/home_william.yaml
                 template: ['base', 'switch', 'person']     
@@ -317,8 +315,6 @@ views:
                 entity: person.emily
                 triggers_update:
                   ['person.emily', 'sensor.time']
-                style:
-                  width: 10%
                 tap_action: !include popup/home_emily.yaml
                 hold_action: !include popup/home_emily.yaml
                 template: ['base', 'switch', 'person']
