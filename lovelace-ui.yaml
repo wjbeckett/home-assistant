@@ -245,7 +245,18 @@ button_card_templates:
   climate:
     template: ['base']
     state:
-      - value: ['cool', 'heat']
+      - value: 'cool'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          custom_fields:
+            info:
+              - color: '#959698'
+      - value: 'heat'
         styles:
           card:
             - background-color: rgba(255, 255, 255, 0.8)
@@ -575,7 +586,6 @@ views:
                       card: [background-color: 'rgba(255, 255, 255, 0.8)']
                     template: ['base']
                   - type: custom:gap-card
-                  - type: custom:gap-card
           
           - type: vertical-stack
             cards:
@@ -619,7 +629,6 @@ views:
 
               - type: horizontal-stack
                 cards:
-                  - type: custom:gap-card
                   - type: custom:button-card
                     entity: climate.ollie_room
                     name: AC
@@ -628,6 +637,7 @@ views:
                       ['climate.teddy']
                     tap_action: !include popup/teddy_ac.yaml
                     template: ['climate']
+                  - type: custom:gap-card
                   - type: custom:gap-card
           
           - type: vertical-stack
@@ -672,7 +682,6 @@ views:
 
               - type: horizontal-stack
                 cards:
-                  - type: custom:gap-card
                   - type: custom:button-card
                     entity: climate.ollie_room
                     name: AC
@@ -681,6 +690,7 @@ views:
                       ['climate.ollie']
                     tap_action: !include popup/ollie_ac.yaml
                     template: ['climate']
+                  - type: custom:gap-card
                   - type: custom:gap-card
 
           - type: horizontal-stack
