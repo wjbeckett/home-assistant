@@ -253,7 +253,7 @@ views:
                   ha-markdown:
                     $: |
                       h1 {
-                        font-size: 30px;
+                        font-size: 25px;
                         font-weight: bold;
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
