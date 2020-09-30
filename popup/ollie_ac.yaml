@@ -5,4 +5,4 @@
                 deviceID: this
                 card:
                   - type: thermostat
-                    entity: climate.ollie
+                    entity: climate.ollie_room
