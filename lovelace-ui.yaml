@@ -244,7 +244,18 @@ button_card_templates:
 
   climate:
     template: ['base']
-    state: *button_state
+    state:
+      - value: ['cool', 'heat']
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          custom_fields:
+            info:
+              - color: '#959698'
     styles:
       card: *button_styles_card
     tap_action:
@@ -278,6 +289,18 @@ button_card_templates:
 
   conditional_media:
     template: ['base', 'shared_media']
+    state:
+      - value: ['playing', 'paused']
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          custom_fields:
+            info:
+              - color: '#959698'
     state_display: >
       [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Nothing is playing'; }
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
@@ -323,11 +346,6 @@ button_card_templates:
           "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') return '#9da0a2'; 
           else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
           top: 5.35%, left: 5.35%, width: 2.95vw, position: absolute]
-      name:
-        [top: 79.8%, left: 5.3%, position: absolute, z-index: 10]
-      state:
-        [top: 87.5%, left: 5.3%, position: absolute, z-index: 10, 
-        white-space: nowrap, overflow: hidden, text-overflow: ellipsis, max-width: 90%]
 
 ##########################################################################
 #                                                                        #
