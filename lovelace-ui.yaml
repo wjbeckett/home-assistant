@@ -197,9 +197,12 @@ views:
             cards:
               - type: markdown
                 content: >
-                  # {{ states('sensor.time') }}
+                 # {{ states('sensor.sidebar_greeting') }}
 
-                  ### {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
+                 ## {{ states('sensor.sidebar_active') }}
+                #  # {{ states('sensor.time') }}
+
+                #  ### {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
                 style:
                   .: |
                     ha-card {
@@ -231,22 +234,22 @@ views:
                       position: absolute !important;
                       right: 16px !important;
                     }
-          - type: horizontal-stack
-            cards:
-              - type: markdown
-                content: >
-                  ## {{ states('sensor.sidebar_greeting') }}
-
-                  ### {{ states('sensor.sidebar_active') }}
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                    }
-                    ha-markdown.no-header {
-                      padding-top: 1px !important;
-                    }
+          #- type: horizontal-stack
+          #  cards:
+          #    - type: markdown
+          #      content: >
+          #        ## {{ states('sensor.sidebar_greeting') }}
+          #
+          #        ### {{ states('sensor.sidebar_active') }}
+          #      style:
+          #        .: |
+          #          ha-card {
+          #            --ha-card-background: none !important;
+          #            box-shadow: none !important;
+          #          }
+          #          ha-markdown.no-header {
+          #            padding-top: 1px !important;
+          #          }
 
           - type: horizontal-stack
             cards:
