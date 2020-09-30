@@ -17,6 +17,7 @@ custom_header:
       config:
         chevrons: false
         indicator_top: true
+        hide_header: true
         all_tabs_css: "width: calc(25vw - 9px) !important; padding: 0px !important;"
         header_css: 'padding-left: 0px !important; padding-right: 0px !important;'
         view_css: 'padding-top: 104px !important;
@@ -198,7 +199,7 @@ views:
                 content: >
                   # {{ states('sensor.time') }}
 
-                  ## {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
+                  ### {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
                 style:
                   .: |
                     ha-card {
@@ -234,9 +235,9 @@ views:
             cards:
               - type: markdown
                 content: >
-                  ### {{ states('sensor.sidebar_greeting') }}
+                  ## {{ states('sensor.sidebar_greeting') }}
 
-                  #### {{ states('sensor.sidebar_active') }}
+                  ### {{ states('sensor.sidebar_active') }}
                 style:
                   .: |
                     ha-card {
