@@ -94,9 +94,16 @@ button_card_templates:
         transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference - brightness / 100 * circumference};" />
         <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan></text></svg>`; } ]]]
     styles:
+      name: &button_styles_name
+        [top: 57.7%, left: 11%, position: absolute, line-height: 2vw]
+      state: &button_styles_state
+        [top: 74%, left: 11%, position: absolute, line-height: 2vw]
       custom_fields:
         info: &circle_pos
           [top: 8.5%, right: 5%, width: 50px, position: absolute, letter-spacing: 0.03vw]
+      card: &button_styles_card
+        [font-family: Sf Display, letter-spacing: 0.05vw, text-rendering: optimizeLegibility, font-weight: 400, color: 'rgba(255, 255, 255, 0.3)', font-size: 1.34vw, 
+        background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 0.8vw, box-shadow: none, transition: none]
     tap_action:
       ui_sound: &ui_sound |
         [[[ if (entity.state === 'off' && states['switch.fullykiosk_screensaver'].state === 'off') {
