@@ -279,7 +279,7 @@ button_card_templates:
     state_display: >
       [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Nothing is playing'; }
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
-      else { return entity.attributes.media_title; } ]]]
+      else { return entity.attributes.media_artist - entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
         <svg viewBox="0 0 50 50" />
@@ -304,11 +304,11 @@ button_card_templates:
         blur:
           [background-image:
           "[[[ return entity.attributes.entity_picture == null ? 'none' : 'url(' + entity.attributes.entity_picture + ')'; ]]]", 
-          background-size: cover, top: 0%, left: 0%, width: 100%, filter: blur(4px), clip-path: inset(16vw 0 0 0), position: absolute]
+          background-size: cover, top: 0%, left: 0%, width: 100%, filter: blur(4px), position: absolute]
         overlay:
           [background:
           "[[[ return entity.attributes.entity_picture == null ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.4)'; ]]]", 
-          background-size: cover, z-index: 0, top: 16vw, left: 0%, width: 100%, opacity: 1, position: absolute]
+          background-size: cover, z-index: 0, left: 0%, width: 100%, opacity: 1, position: absolute]
         play_pause:
           [filter: 
           "[[[ return entity.attributes.entity_picture == null ? 'none' : 'drop-shadow(0 0 1.3vw rgba(0,0,0,0.7))'; ]]]", 
