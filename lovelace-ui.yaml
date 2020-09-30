@@ -235,6 +235,7 @@ views:
               - type: markdown
                 content: >
                   ## {{ states('sensor.sidebar_greeting') }}
+
                   ### {{ states('sensor.sidebar_active') }}
                 style:
                   .: |
@@ -242,6 +243,10 @@ views:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
+                ha-markdown:
+                  $: |
+                    padding-top: 0px;
+                    
           - type: horizontal-stack
             cards:
               - type: markdown
