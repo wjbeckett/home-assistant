@@ -78,49 +78,6 @@ button_card_templates:
         - font-size: 10px
         - padding: 0px 5px
   
-  switch:
-    state: *button_state
-    styles:
-      name: *button_styles_name
-      state: *button_styles_state
-      card: *button_styles_card
-    tap_action:
-      ui_sound: *ui_sound
-      haptic: light
-
-  person:
-    #state_display: 
-    show_entity_picture: true
-    state:
-      - value: 'home'
-        styles:
-          card:
-            - background-color: rgba(255, 255, 255, 0.8)
-          name:
-            - color: rgba(0, 0, 0, 0.6)
-          state:
-            - color: rgba(0, 0, 0, 0.6)
-          custom_fields:
-            info:
-              - color: '#959698'
-    styles:
-      entity_picture:
-          [clip-path: circle(50% at center), top: 7.5%, left: 11.2%, width: 3vw, position: absolute]
-      custom_fields:
-        last_changed: *circle_pos
-    custom_fields:
-      last_changed: >
-        [[[ function time(c) {
-        var s = (c / 1000); var m = (c / (1000 * 60)); var h = (c / (1000 * 60 * 60)); var d = (c / (1000 * 60 * 60 * 24));
-        if (s < 60) { return parseInt(s) + 's'; } else if (m < 60) { return parseInt(m) + 'm'; }
-        else if (h < 24) { return parseInt(h) + 'h'; } else { return parseInt(d) + 'd'; }
-        }
-        const last_changed = time(Date.now() - Date.parse(states[entity.entity_id].last_changed));
-        const stroke_color = entity.state === 'home' ? '#b2b2b2' : '#313638'; 
-        const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
-        return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
-        <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
-
   light:
     state: &button_state
       - value: 'on'
@@ -222,6 +179,49 @@ button_card_templates:
                           smooth_color_wheel: true
                           consolidate_entities: true
 
+  switch:
+    state: *button_state
+    styles:
+      name: *button_styles_name
+      state: *button_styles_state
+      card: *button_styles_card
+    tap_action:
+      ui_sound: *ui_sound
+      haptic: light
+
+  person:
+    #state_display: 
+    show_entity_picture: true
+    state:
+      - value: 'home'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          custom_fields:
+            info:
+              - color: '#959698'
+    styles:
+      entity_picture:
+          [clip-path: circle(50% at center), top: 7.5%, left: 11.2%, width: 3vw, position: absolute]
+      custom_fields:
+        last_changed: *circle_pos
+    custom_fields:
+      last_changed: >
+        [[[ function time(c) {
+        var s = (c / 1000); var m = (c / (1000 * 60)); var h = (c / (1000 * 60 * 60)); var d = (c / (1000 * 60 * 60 * 24));
+        if (s < 60) { return parseInt(s) + 's'; } else if (m < 60) { return parseInt(m) + 'm'; }
+        else if (h < 24) { return parseInt(h) + 'h'; } else { return parseInt(d) + 'd'; }
+        }
+        const last_changed = time(Date.now() - Date.parse(states[entity.entity_id].last_changed));
+        const stroke_color = entity.state === 'home' ? '#b2b2b2' : '#313638'; 
+        const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
+        return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
+        <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
+
 ##########################################################################
 #                                                                        #
 #                              * LOVELACE *                              #
@@ -315,7 +315,7 @@ views:
                 tap_action: !include popup/home_emily.yaml
                 hold_action: !include popup/home_emily.yaml
                 template: ['base', 'switch', 'person']
-                
+
           - type: horizontal-stack
             cards:
               - type: custom:decluttering-card
