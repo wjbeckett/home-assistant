@@ -267,7 +267,6 @@ button_card_templates:
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
       if (entity.attributes.media_content_type === 'tvshow') { return entity.attributes.media_series_title + ' - ' + entity.attributes.media_title; }
       if (entity.attributes.media_content_type === 'movie') { return entity.attributes.media_title; }
-   #   if (entity.state === idle) { return 'Nothing is playing'; }
       else { return entity.attributes.media_artist + ' - ' + entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
