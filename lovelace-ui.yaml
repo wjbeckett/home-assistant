@@ -279,7 +279,7 @@ button_card_templates:
     state_display: >
       [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Nothing is playing'; }
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
-      else { return 'entity.attributes.media_artist' ' - ' 'entity.attributes.media_title'; } ]]]
+      else { return entity.attributes.media_artist + entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
         <svg viewBox="0 0 50 50" />
