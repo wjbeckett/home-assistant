@@ -628,11 +628,11 @@ views:
               - type: horizontal-stack
                 cards:
                   - type: custom:button-card
-                    entity: climate.ollie_room
+                    entity: climate.teddy_room
                     name: AC
                     icon: mdi:air-conditioner
                     triggers_update:
-                      ['climate.teddy']
+                      ['climate.teddy_room']
                     tap_action: !include popup/teddy_ac.yaml
                     template: ['climate']
                   - type: custom:gap-card
@@ -685,7 +685,7 @@ views:
                     name: AC
                     icon: mdi:air-conditioner
                     triggers_update:
-                      ['climate.ollie']
+                      ['climate.ollie_room']
                     tap_action: !include popup/ollie_ac.yaml
                     template: ['climate']
                   - type: custom:gap-card
