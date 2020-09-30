@@ -345,6 +345,11 @@ button_card_templates:
           "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') return '#9da0a2'; 
           else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
           top: 5.35%, left: 5.35%, width: 2.95vw, position: absolute]
+        name:
+        [top: 79.8%, left: 5.3%, position: absolute, z-index: 10]
+        state:
+          [top: 87.5%, left: 5.3%, position: absolute, z-index: 10, 
+          white-space: nowrap, overflow: hidden, text-overflow: ellipsis, max-width: 90%]
 
 ##########################################################################
 #                                                                        #
