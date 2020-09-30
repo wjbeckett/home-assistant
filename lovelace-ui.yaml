@@ -481,9 +481,9 @@ views:
                       ha-card {
                         background-color: var(--primary-background-color);
                         border-radius: 15px;
-                        
+
                   - type: custom:button-card
-                    entity: media_player.google_nest_mini
+                    entity: media_player.kitchen_display
                     name: Nest Mini
                     custom_fields:
                       icon_nest_mini: &icon_nest_mini >
