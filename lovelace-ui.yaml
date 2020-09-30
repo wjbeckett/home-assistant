@@ -224,12 +224,7 @@ views:
                       box-shadow: none !important;
                     }
                     .icon-image svg {
-                      height: 60px;
                       margin-bottom: -20px !important;
-                    }
-                    .info, .temp-attribute, .temp, .icon-image, svg, .content {
-                      display: inline !important;
-                      text-align: right;
                     }
                     .content {
                       position: absolute !important;
