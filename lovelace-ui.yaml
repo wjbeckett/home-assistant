@@ -283,6 +283,7 @@ button_card_templates:
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
       if (entity.attributes.media_content_type === 'tvshow') { return entity.attributes.media_series_title + ' - ' + entity.attributes.media_title; }
       if (entity.attributes.media_content_type === 'movie') { return entity.attributes.media_title; }
+      if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') { return 'Nothing is playing'; }
       else { return entity.attributes.media_artist + ' - ' + entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
@@ -317,6 +318,11 @@ button_card_templates:
           [filter: 
           "[[[ return entity.attributes.entity_picture == null ? 'none' : 'drop-shadow(0 0 1.3vw rgba(0,0,0,0.7))'; ]]]", 
           fill: '#dedede', top: 0, right: 0, bottom: 0, left: 0, margin: auto, width: 21%, height: 21%, position: absolute]
+        icon:
+          [fill:
+          "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') return '#9da0a2'; 
+          else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
+          top: 5.35%, left: 5.35%, width: 2.95vw, position: absolute]
       name:
         [top: 79.8%, left: 5.3%, position: absolute, z-index: 10]
       state:
