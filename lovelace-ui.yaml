@@ -15,6 +15,7 @@ custom_header:
     - conditions:
         user_agent: Mobile
       config:
+        header_text: '{{ time }} | {{ date }}'
         chevrons: false
         indicator_top: true
         all_tabs_css: "width: calc(25vw - 9px) !important; padding: 0px !important;"
