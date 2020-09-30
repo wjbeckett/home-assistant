@@ -197,6 +197,8 @@ views:
               - type: markdown
                 content: >
                   # {{ states('sensor.time') }}
+
+                  ## {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
                 style:
                   .: |
                     ha-card {
@@ -220,12 +222,26 @@ views:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
+                    .name-state {
+                      display: none !important;
+                    }
+                    .icon-image svg {
+                      height: 50px;
+                      margin-bottom: -20px !important;
+                    }
+                    .info, .temp-attribute, .temp, .icon-image, svg, .content {
+                      display: inline !important;
+                      text-align: right;
+                      font-size: 30px;
+                    }
+                    .content {
+                      position: absolute !important;
+                      right: 16px !important;
+                    }
           - type: horizontal-stack
             cards:
               - type: markdown
                 content: >
-                  ## {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
-
                   {{ states('sensor.sidebar_greeting') }} {{ states('sensor.sidebar_weather') }} 
 
                   {{ states('sensor.sidebar_active') }}
