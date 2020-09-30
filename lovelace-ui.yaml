@@ -506,8 +506,7 @@ views:
                     name: Scenes
                     icon: mdi:movie-roll
                     styles:
-                      card:
-                        background-color: 'rgba(255, 255, 255, 0.8)'
+                      card: [background-color: 'rgba(255, 255, 255, 0.8)']
                     template: ['base']
 
           - type: horizontal-stack
