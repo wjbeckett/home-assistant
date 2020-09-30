@@ -267,6 +267,7 @@ button_card_templates:
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
       if (entity.attributes.media_content_type === 'tvshow') { return entity.attributes.media_series_title + ' - ' + entity.attributes.media_title; }
       if (entity.attributes.media_content_type === 'movie') { return entity.attributes.media_title; }
+      if (entity.state === idle) { return 'Nothing is playing'; }
       else { return entity.attributes.media_artist + ' - ' + entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
@@ -401,23 +402,6 @@ views:
 
               - type: custom:gap-card
 
-          - type: horizontal-stack
-            cards:
-              - type: custom:decluttering-card
-                template: "simple_link"
-                variables:
-                  - path: ollie_room
-                  - name: Ollie's Room
-                  - icon: mdi:paw
-                  - entity: light.ollie_s_lamp
-              - type: custom:decluttering-card
-                template: "simple_link"
-                variables:
-                  - path: teddy_room
-                  - name: Teddy's Room
-                  - icon: mdi:pokeball
-                  - entity: light.teddy_s_lamp
-          
           - type: vertical-stack
             cards:
               - type: horizontal-stack
