@@ -234,25 +234,17 @@ views:
             cards:
               - type: markdown
                 content: >
-                  ## {{ states('sensor.sidebar_greeting') }}
+                  ### {{ states('sensor.sidebar_greeting') }}
 
-                  ### {{ states('sensor.sidebar_active') }}
+                  #### {{ states('sensor.sidebar_active') }}
                 style:
                   .: |
                     ha-card {
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
-                ha-markdown:
-                  $: |
-                    no-header {
+                    ha-markdown {
                       padding-top: 1px;
-                    }
-                    h1 {
-                      font-size: 20px;
-                      font-weight: bold;
-                      font-family: Helvetica;
-                      letter-spacing: '-0.01em';
                     }
 
           - type: horizontal-stack
