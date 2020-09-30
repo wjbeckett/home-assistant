@@ -245,8 +245,10 @@ views:
                     }
                 ha-markdown:
                   $: |
-                    padding-top: 0px;
-                    
+                    no-header {
+                      padding-top: 1px;
+                    }
+
           - type: horizontal-stack
             cards:
               - type: markdown
