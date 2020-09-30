@@ -64,8 +64,8 @@ button_card_templates:
     show_icon: true
     styles:
       card:
-        - width: 185px
-        - height: 185px
+#        - width: 185px
+#        - height: 185px
         - font-size: 10px
         - border-radius: 15px
         - background-color: var(--primary-background-color)
@@ -103,7 +103,7 @@ button_card_templates:
           [top: 8.5%, right: 5%, width: 50px, position: absolute, letter-spacing: 0.03vw]
       card: &button_styles_card
         [font-family: Sf Display, letter-spacing: 0.05vw, text-rendering: optimizeLegibility, font-weight: 400, color: 'rgba(255, 255, 255, 0.3)', font-size: 1.34vw, 
-        background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 0.8vw, box-shadow: none, transition: none]
+        background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 15px, box-shadow: none, transition: none]
     tap_action:
       ui_sound: &ui_sound |
         [[[ if (entity.state === 'off' && states['switch.fullykiosk_screensaver'].state === 'off') {
