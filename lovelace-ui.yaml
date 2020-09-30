@@ -288,6 +288,8 @@ button_card_templates:
       service: media_player.media_play_pause
       service_data:
         entity_id: '[[[ return entity.entity_id ]]]'
+    hold_action:
+      action: more-info
     styles:
       card:
         [background-color: "[[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby' || entity.state === 'unavailable') { return 'rgba(255, 255, 255, 0.3)'; }

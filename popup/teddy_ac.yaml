@@ -1,7 +1,7 @@
               action: call-service
               service: browser_mod.popup
               service_data:
-                title: Bedroom AC
+                title: Teddy's AC
                 deviceID: this
                 card:
                   type: thermostat
