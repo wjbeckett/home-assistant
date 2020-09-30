@@ -248,6 +248,12 @@ views:
                     no-header {
                       padding-top: 1px;
                     }
+                    h1 {
+                      font-size: 20px;
+                      font-weight: bold;
+                      font-family: Helvetica;
+                      letter-spacing: '-0.01em';
+                    }
 
           - type: horizontal-stack
             cards:
