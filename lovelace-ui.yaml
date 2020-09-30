@@ -265,6 +265,8 @@ button_card_templates:
     state_display: >
       [[[ if (entity.attributes.media_title === 'Nothing playing' || entity.attributes.media_title === 'No title' && entity.state === 'paused' ) { return 'Nothing is playing'; }
       if (entity.attributes.media_title === 'No title' && entity.state === 'playing') { return 'No title'; }
+      if (entity.attributes.media_content_type === 'tvshow') { return entity.attributes.media_series_title + ' - ' + entity.attributes.media_title; }
+      if (entity.attributes.media_content_type === 'movie') { return entity.attributes.media_title; }
       else { return entity.attributes.media_artist + ' - ' + entity.attributes.media_title; } ]]]
     custom_fields:
       media_image: >
@@ -498,15 +500,15 @@ views:
                     icon: mdi:floor-lamp
                     template: ['base','light']
                   - type: custom:button-card
-                    name: Scenes
-                    template: ['base']
-                  - type: custom:gap-card
-              
-              - type: horizontal-stack
-                cards:
-                  - type: custom:button-card
                     entity: media_player.plex_lounge_room_tv
                     template: conditional_media
+                  - type: custom:button-card
+                    name: Scenes
+                    icon: mdi:movie-roll
+                    styles:
+                      card:
+                        background-color: 'rgba(255, 255, 255, 0.8)'
+                    template: ['base']
 
           - type: horizontal-stack
             cards:
@@ -527,70 +529,70 @@ views:
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
                       }
-              - type: horizontal-stack
-                cards:
-                  - entity: input_boolean.morning_meds_taken
-                    name: Morning Meds
-                    show_state: false
-                    template: standard_button
-                    type: 'custom:button-card'
-                    size: 30px
-                    state:
-                      - icon: 'mdi:check-circle'
-                        value: 'on'
-                        color: '#00b800'
-                      - icon: 'mdi:pill'
-                        value: 'off'
-                        color: '#D3D2D0'
-                    styles:
-                      card:
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                    style: |
-                      ha-card {
-                        margin: 10px; 
-                      }
-                  - entity: input_boolean.evening_meds_taken
-                    name: Evening Meds
-                    show_state: false
-                    template: standard_button
-                    type: 'custom:button-card'
-                    size: 30px
-                    state:
-                      - icon: 'mdi:check-circle'
-                        value: 'on'
-                        color: '#00b800'
-                      - icon: 'mdi:pill'
-                        value: 'off'
-                        color: '#D3D2D0'
-                    styles:
-                      card:
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                    style: |
-                      ha-card {
-                        margin: 10px; 
-                      }
-                  - entity: input_boolean.bedtime_meds_taken
-                    name: Bedtime Meds
-                    show_state: false
-                    template: standard_button
-                    type: 'custom:button-card'
-                    size: 30px
-                    state:
-                      - icon: 'mdi:check-circle'
-                        value: 'on'
-                        color: '#00b800'
-                      - icon: 'mdi:pill'
-                        value: 'off'
-                        color: '#D3D2D0'
-                    styles:
-                      card:
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                    style: |
-                      ha-card {
-                        margin: 10px;   
-                      }
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.morning_meds_taken
+                name: Morning Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+                styles:
+                  card:
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                style: |
+                  ha-card {
+                    margin: 10px; 
+                  }
+              - entity: input_boolean.evening_meds_taken
+                name: Evening Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+                styles:
+                  card:
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                style: |
+                  ha-card {
+                    margin: 10px; 
+                  }
+              - entity: input_boolean.bedtime_meds_taken
+                name: Bedtime Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#D3D2D0'
+                styles:
+                  card:
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                style: |
+                  ha-card {
+                    margin: 10px;   
+                  }
             
                 
