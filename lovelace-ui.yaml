@@ -17,7 +17,6 @@ custom_header:
       config:
         chevrons: false
         indicator_top: true
-        hide_header: true
         all_tabs_css: "width: calc(25vw - 9px) !important; padding: 0px !important;"
         header_css: 'padding-left: 0px !important; padding-right: 0px !important;'
         view_css: 'padding-top: 104px !important;
@@ -185,7 +184,7 @@ button_card_templates:
 #                                                                        #
 ##########################################################################
 
-title: Home
+title:
 views:
   - panel: true
     path: default_view
