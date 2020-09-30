@@ -60,7 +60,7 @@ button_card_templates:
 
   base:
     aspect_ratio: 1/1
-    show_state: false
+    show_state: true
     show_icon: true
     styles:
       card:
