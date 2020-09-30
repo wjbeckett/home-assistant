@@ -187,8 +187,6 @@ button_card_templates:
   switch:
     state: *button_state
     styles:
-      #name: *button_styles_name
-      #state: *button_styles_state
       card: *button_styles_card
     tap_action:
       ui_sound: *ui_sound
@@ -243,6 +241,24 @@ button_card_templates:
         const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
         return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
         <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
+
+  climate:
+    template: ['base']
+    state: *button_state
+    styles:
+      card: *button_styles_card
+    tap_action:
+      ui_sound: *ui_sound
+      haptic: light
+    hold_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: '[[[ return entity.attributes.friendly_name ]]]'
+        deviceID: this
+        card:
+          type: thermostat
+          entity: '[[[ return entity.entity_id ]]]'
 
   shared_media:
     tap_action:
@@ -484,6 +500,7 @@ views:
                     template: ['base','light']
                   - type: custom:button-card
                     entity: media_player.plex_lounge_room_tv
+                    name: TV
                     template: conditional_media
                   - type: custom:button-card
                     name: Scenes
@@ -491,6 +508,160 @@ views:
                     styles:
                       card: [background-color: 'rgba(255, 255, 255, 0.8)']
                     template: ['base']
+
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: markdown
+                    content: | 
+                      # Bedroom
+                    style:
+                      .: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      ha-markdown:
+                        $: |
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.bedroom_lamps
+                    name: Lamp
+                    icon: mdi:lamp
+                    template: ['base','light']
+                  - type: custom:button-card
+                    entity: media_player.plex_bedroom_tv
+                    name: TV
+                    template: conditional_media
+                  - type: custom:button-card
+                    entity: media_player.bedroom_speaker
+                    name: Speaker
+                    template: conditional_media
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    name: Scenes
+                    icon: mdi:movie-roll
+                    styles:
+                      card: [background-color: 'rgba(255, 255, 255, 0.8)']
+                    template: ['base']
+                  - type: custom:gap-card
+                  - type: custom:gap-card
+          
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: markdown
+                    content: | 
+                      # Teddy's Room
+                    style:
+                      .: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      ha-markdown:
+                        $: |
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.teddy_s_lamp
+                    name: Lamp
+                    icon: mdi:lamp
+                    template: ['base','light']
+                  - type: custom:button-card
+                    entity: media_player.teddy_s_speaker
+                    name: Speaker
+                    template: conditional_media
+                  - type: custom:button-card
+                    name: Scenes
+                    icon: mdi:movie-roll
+                    styles:
+                      card: [background-color: 'rgba(255, 255, 255, 0.8)']
+                    template: ['base']
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:gap-card
+                  - type: custom:button-card
+                    entity: climate.ollie_room
+                    name: AC
+                    icon: mdi:air-conditioner
+                    custom_fields:
+                      icon: *icon_ac
+                    styles: *icon_ac_styles
+                    template: ['climate']
+                  - type: custom:gap-card
+          
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: markdown
+                    content: | 
+                      # Ollie's Room
+                    style:
+                      .: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      ha-markdown:
+                        $: |
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.ollie_s_lamp
+                    name: Lamp
+                    icon: mdi:lamp
+                    template: ['base','light']
+                  - type: custom:button-card
+                    entity: media_player.ollie_s_speaker
+                    name: Speaker
+                    template: conditional_media
+                  - type: custom:button-card
+                    name: Scenes
+                    icon: mdi:movie-roll
+                    styles:
+                      card: [background-color: 'rgba(255, 255, 255, 0.8)']
+                    template: ['base']
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:gap-card
+                  - type: custom:button-card
+                    entity: climate.ollie_room
+                    name: AC
+                    icon: mdi:air-conditioner
+                    custom_fields:
+                      icon: *icon_ac
+                    styles: *icon_ac_styles
+                    template: ['climate']
+                  - type: custom:gap-card
 
           - type: horizontal-stack
             cards:
