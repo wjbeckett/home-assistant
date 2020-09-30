@@ -222,9 +222,6 @@ views:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
-                    .name-state {
-                      display: none !important;
-                    }
                     .icon-image svg {
                       height: 50px;
                       margin-bottom: -20px !important;
