@@ -217,6 +217,16 @@ views:
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
                       }
+              - type: weather-forecast
+                entity: weather.home
+                show_forecast: false
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+
           - type: horizontal-stack
             cards:
               - type: custom:simple-weather-card
