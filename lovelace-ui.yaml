@@ -243,6 +243,9 @@ views:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
+                    ha-markdown.no-header {
+                      padding-top: 1px;
+                    }
                 ha-markdown:
                   $: |
                     no-header {
