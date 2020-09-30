@@ -290,7 +290,8 @@ button_card_templates:
   conditional_media:
     template: ['base', 'shared_media']
     state:
-      - value: ['playing', 'paused']
+      - value: >
+          [[[ if (entity.state === 'playing' || entity.state === 'paused') { return 'playing'; } ]]]
         styles:
           card:
             - background-color: rgba(255, 255, 255, 0.8)
