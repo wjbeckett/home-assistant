@@ -115,7 +115,7 @@
                     tap_action:
                       action: navigate
                       navigation_path: kitchen
-                    hold_action:
+                    double_tap_action:
                       action: toggle
                       haptic: light
                     template: ['base', 'room_nav']
@@ -127,7 +127,7 @@
                     tap_action:
                       action: navigate
                       navigation_path: loungeroom
-                    hold_action:
+                    double_tap_action:
                       action: toggle
                       haptic: light
                     template: ['base', 'room_nav']
@@ -142,7 +142,7 @@
                     tap_action:
                       action: navigate
                       navigation_path: bedroom
-                    hold_action:
+                    double_tap_action:
                       action: toggle
                       haptic: light
                     template: ['base', 'room_nav']
@@ -154,7 +154,7 @@
                     tap_action:
                       action: navigate
                       navigation_path: ollie_room
-                    hold_action:
+                    double_tap_action:
                       action: toggle
                       haptic: light
                     template: ['base', 'room_nav']
@@ -166,10 +166,10 @@
                     tap_action:
                       action: navigate
                       navigation_path: teddy_room
-                    hold_action:
+                    double_tap_action:
                       action: toggle
                       haptic: light
-                    template: ['base', 'light']
+                    template: ['base', 'room_nav']
 
           - type: horizontal-stack
             cards:
