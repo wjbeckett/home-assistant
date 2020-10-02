@@ -1,0 +1,353 @@
+  - icon: mdi:sofa
+    id: loungeroom
+    title: Loungeroom
+    path: loungeroom
+    visible: false
+    badges: []
+    cards:
+    - type: vertical-stack
+      cards:
+        - type: markdown
+          card_size: 2
+          style: >
+            ha-card {
+              --ha-card-background: none !important;
+                box-shadow: none !important;
+            }
+            ha-card a, p {
+              color: var(--primary-text-color) !important;
+            }
+            ha-markdown {
+              padding: 0 16px !important;
+            }
+            h1 {
+              font-size: 32px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
+          content: |
+            [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace/home)
+            <h1>Lounge Room</h1>
+        - type: markdown
+          content: |
+            # Lights
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
+        - type: 'custom:button-card'
+          icon: 'mdi:floor-lamp'
+          entity: light.lounge_room_lamp
+          show_icon: true
+          show_name: true
+          state:
+            - styles:
+                icon:
+                  - color: 'var(--paper-item-icon-active-color)'
+              value: 'on'
+          style: |
+            ha-card {
+              margin: 10px;
+              box-shadow: 
+                {% if is_state('sun.sun', 'above_horizon') and is_state('light.lounge_room_lamp', 'on') %}
+                  inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+                {% elif is_state('sun.sun', 'above_horizon') and is_state('light.lounge_room_lamp', 'off') %}                      
+                  -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+                {% elif is_state('sun.sun', 'below_horizon') and is_state('light.lounge_room_lamp', 'on') %}                      
+                  inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+                {% elif is_state('sun.sun', 'below_horizon') and is_state('light.lounge_room_lamp', 'off') %}   
+                  -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+                {% endif %}    
+            }
+          styles:
+            card:
+              - width: 120px
+              - height: 120px
+              - border-radius: 15px
+              - background-color: var(--primary-background-color)
+            name:
+              - font-size: 12px
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: toggle
+            haptic: light
+          hold_action:
+            action: more-info
+            haptic: light
+    - type: vertical-stack
+      cards:
+        - type: markdown
+          content: |
+            # Scenes
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
+    - type: vertical-stack
+      cards:
+        - type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'
+                  icon: 'mdi:sleep'
+                  show_icon: true
+                  show_name: false
+                  style: |
+                    ha-card {
+                      margin: 10px;
+                      box-shadow: 
+                        {% if is_state('sun.sun', 'above_horizon') %}
+                          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                        {% endif %}    
+                    }
+                  styles:
+                    card:
+                      - width: 80px
+                      - height: 80px
+                      - border-radius: 15px
+                      - background-color: var(--primary-background-color)
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    service_data:
+                      entity_id: scene.night_light
+                      transition: 2
+                    haptic: light
+                - type: vertical-stack
+                  cards:
+                    - type: markdown
+                      content: |
+                        # Night Light
+                      style:
+                        .: |
+                          ha-card {
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
+                            height: 20px; 
+                            margin-top: 15px;
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
+                    - type: markdown
+                      content: |
+                        # Dims the lounge room lamp
+                      style:
+                        .: |
+                          ha-card {
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
+            - type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'
+                  icon: 'mdi:white-balance-sunny'
+                  show_icon: true
+                  show_name: false
+                  style: |
+                    ha-card {
+                      margin: 10px;
+                      box-shadow: 
+                        {% if is_state('sun.sun', 'above_horizon') %}
+                          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                        {% endif %}    
+                    }
+                  styles:
+                    card:
+                      - width: 80px
+                      - height: 80px
+                      - border-radius: 15px
+                      - background-color: var(--primary-background-color)
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    service_data:
+                      entity_id: scene.lounge_room_bright
+                      transition: 2
+                    haptic: light
+                - type: vertical-stack
+                  cards:
+                    - type: markdown
+                      content: |
+                        # Bright
+                      style:
+                        .: |
+                          ha-card {
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
+                            height: 20px; 
+                            margin-top: 15px;
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
+                    - type: markdown
+                      content: |
+                        # Sets lounge room lamp to max brightness
+                      style:
+                        .: |
+                          ha-card {
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
+            - type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'
+                  icon: 'mdi:movie-open'
+                  show_icon: true
+                  show_name: false
+                  style: |
+                    ha-card {
+                      margin: 10px;
+                      box-shadow: 
+                        {% if is_state('sun.sun', 'above_horizon') %}
+                          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                        {% endif %}    
+                    }
+                  styles:
+                    card:
+                      - width: 80px
+                      - height: 80px
+                      - border-radius: 15px
+                      - background-color: var(--primary-background-color)
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    service_data:
+                      entity_id: scene.lounge_room_movie_time
+                      transition: 2
+                    haptic: light
+                - type: vertical-stack
+                  cards:
+                    - type: markdown
+                      content: |
+                        # Movie Time!
+                      style:
+                        .: |
+                          ha-card {
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
+                            height: 20px; 
+                            margin-top: 15px;
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 20px;
+                              font-weight: bold;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
+                    - type: markdown
+                      content: |
+                        # Dims the lounge room lamp and turns on the TV
+                      style:
+                        .: |
+                          ha-card {
+                            --ha-card-background: none !important;
+                            box-shadow: none !important;
+                          }
+                        ha-markdown:
+                          $: |
+                            h1 {
+                              font-size: 15px;
+                              font-weight: thin;
+                              font-family: Helvetica;
+                              letter-spacing: '-0.01em';
+                            }
+    - type: vertical-stack
+      cards:
+        - type: markdown
+          content: |
+            # Media
+          style:
+            .: |
+              ha-card {
+                --ha-card-background: none !important;
+                box-shadow: none !important;
+              }
+            ha-markdown:
+              $: |
+                h1 {
+                  font-size: 20px;
+                  font-weight: bold;
+                  font-family: Helvetica;
+                  letter-spacing: '-0.01em';
+                }
+        - type: custom:mini-media-player
+          entity: media_player.lounge_room_tv
+          info: scroll
+          artwork: cover
+          style: |
+            ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% else %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+             }

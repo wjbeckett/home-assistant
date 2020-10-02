@@ -359,6 +359,7 @@ button_card_templates:
 
 title:
 views:
+  !include_dir_merge_list lovelace/views2/
   - panel: true
     path: default_view
     cards:
