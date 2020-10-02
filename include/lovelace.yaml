@@ -72,9 +72,9 @@ lovelace:
       icon: mdi:home-circle-outline
       show_in_sidebar: true
       filename: lovelace-tablet.yaml
-    lovelace-ui-yaml:
+    lovelace-mobile-yaml:
       mode: yaml
-      title: NEW
+      title: Mobile
       icon: mdi:home-circle-outline
       show_in_sidebar: true
-      filename: lovelace-ui.yaml
+      filename: lovelace-mobile.yaml
