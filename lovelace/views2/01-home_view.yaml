@@ -70,16 +70,16 @@
                 entity: person.william
                 triggers_update:
                   ['person.william', 'sensor.time']
-                tap_action: !include popup/home_william.yaml
-                hold_action: !include popup/home_william.yaml
+                tap_action: !include ../popup/home_william.yaml
+                hold_action: !include ../popup/home_william.yaml
                 template: ['base', 'switch', 'person']
 
               - type: custom:button-card
                 entity: person.emily
                 triggers_update:
                   ['person.emily', 'sensor.time']
-                tap_action: !include popup/home_emily.yaml
-                hold_action: !include popup/home_emily.yaml
+                tap_action: !include ../popup/home_emily.yaml
+                hold_action: !include ../popup/home_emily.yaml
                 template: ['base', 'switch', 'person']
 
               - type: custom:gap-card
