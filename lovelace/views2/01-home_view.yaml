@@ -118,7 +118,7 @@
                     hold_action:
                       action: toggle
                       haptic: light
-                    template: ['base', 'light']
+                    template: ['base', 'room_nav']
                   - type: custom:button-card
                     name: Lounge Room
                     icon: mdi:sofa
@@ -130,7 +130,7 @@
                     hold_action:
                       action: toggle
                       haptic: light
-                    template: ['base', 'light']
+                    template: ['base', 'room_nav']
                   - type: custom:gap-card
               - type: horizontal-stack
                 cards:
@@ -145,7 +145,7 @@
                     hold_action:
                       action: toggle
                       haptic: light
-                    template: ['base', 'light']
+                    template: ['base', 'room_nav']
                   - type: custom:button-card
                     name: Ollie's Room
                     icon: mdi:paw
@@ -157,7 +157,7 @@
                     hold_action:
                       action: toggle
                       haptic: light
-                    template: ['base', 'light']
+                    template: ['base', 'room_nav']
                   - type: custom:button-card
                     name: Teddy's Room
                     icon: mdi:pokeball
