@@ -27,7 +27,7 @@
               letter-spacing: '-0.01em';
             }
           content: |
-            [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace/home)
+            [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
             <h1>Lounge Room</h1>
         - type: markdown
           content: |
