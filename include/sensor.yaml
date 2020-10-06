@@ -169,7 +169,7 @@ sensor:
       sidebar_greeting:
         entity_id: sensor.time
         value_template: >
-          {% set time = now().hour %}
+          {% set time = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if time <= 1 %} Good evening {{'\U0001F611'}}
           {% elif time <= 3 %} Good morning {{'\U0001F62A'}}
           {% elif time <= 5 %} Good morning {{'\U0001F634'}}
