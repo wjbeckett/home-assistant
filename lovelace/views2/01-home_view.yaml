@@ -4,7 +4,7 @@
       - type: vertical-stack
         cards:
           - type: horizontal-stack
-            title:
+            title: Home
             cards:
               - type: markdown
                 content: >
