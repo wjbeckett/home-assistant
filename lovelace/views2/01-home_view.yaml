@@ -1,10 +1,13 @@
-  - panel: true
+  - icon: mdi:home
+    id: Home
+    title: Home
+    panel: true
     path: default_view
     cards:
       - type: vertical-stack
         cards:
           - type: horizontal-stack
-            title: Home
+            title:
             cards:
               - type: markdown
                 content: >
