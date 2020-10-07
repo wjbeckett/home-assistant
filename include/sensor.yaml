@@ -273,7 +273,7 @@ sensor:
           The {{ lights_name }} is on and {{ speakers_on | length }} speakers playing.
 
           {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
-          There are {{ lights_on | length}} lights on, and {{ switches_name }} TV's on.
+          There are {{ lights_on | length}} lights on, and {{ switches_name }} is on.
 
 
           {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) %}
