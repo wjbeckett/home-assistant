@@ -246,10 +246,13 @@ sensor:
           {{ lights_name }} is on and the {{ speakers_name }} is playing.
 
           {% elif (lights_on | length == 0) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
-          {{ lights_name }} is on and the {{ doors_name }} is open.
+          The {{ speakers_name }} is playing and the {{ doors_name }} is open.
 
           {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
           {{ lights_name }} is on, the {{ doors_on }} is open, and the {{ speakers_name }} is playing.
+
+          {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          There are {{ lights_on | length}} lights on, the {{ doors_on }} is open, and the {{ speakers_name }} is playing.
 
           {% elif (lights_on | length == 0) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
           The {{ doors_name }} is open and the {{ speakers_name }} is playing.
