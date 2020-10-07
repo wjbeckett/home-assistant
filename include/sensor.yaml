@@ -202,29 +202,39 @@ sensor:
           {% set speakers_on = speakers | selectattr('state','eq','on') | list %} 
           {% set speakers_name = speakers | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-          {% if (lights_on | length == 0 ) and (speakers_on | length == 0 ) (switches_on | length > 0) %} 
-          {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
+          {% set doors = [states.binary_sensor.back_door, states.binary_sensor.garage_door] %}
+          {% set doors_on = doors | selectattr('state','eq','on') | list %} 
+          {% set doors_name = doors | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-          {% elif (lights_on | length == 0) and (switches_on | length == 0) and (speakers_on | length == 1)%}
-          {{ speakers_name }} is playing
+          {% if (lights_on | length == 0 ) and (speakers_on | length == 0 ) and (doors_on | length == 0) and (switches_on | length > 0) %} 
+          The {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
 
-          {% elif (lights_on | length == 1) and (switches_on | length == 1) and (speakers_on | length == 1) %}
-          {{ lights_name }} and {{switches_name }} are on. {{ speakers_name }} is playing
+          {% elif (lights_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) and (speakers_on | length == 1)%}
+          The {{ speakers_name }} is playing
 
-          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length > 1) %}
-          {{ lights_name }}, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on. {{ speakers_name }} is playing.
+          {% elif (lights_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) and (speakers_on | length == 0)%}
+          The {{ doors_name }} is open
 
-          {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 1) %}
-          {{ lights_on | length }} lights and {{ switches_name }} are on. {{ speakers_name }} is playing.
+          {% elif (lights_on | length == 1) and (switches_on | length == 1) and (speakers_on | length == 1) and (doors_on | length == 1) %}
+          The {{ lights_name }} and {{switches_name }} are on. The {{ doors_name }} is open. The{{ speakers_name }} is playing
 
-          {% elif (lights_on | length > 1 ) and (speakers_on | length > 1) and (switches_on | length > 1) %}
-          {{ lights_on | length }} lights, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on. {{ speakers_on | length}} speakers are playing.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (doors_on | length == 1) and (switches_on | length > 1) %}
+          The {{ lights_name }}, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on. The {{ doors_name }} is open. The{{ speakers_name }} is playing.
 
-          {% elif (lights_on | length == 1) and (speakers_on | length == 0) and (switches_on | length == 0) %}
-          {{ lights_name }} is on
+          {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 1) and (doors_on | length == 1) %}
+          There are {{ lights_on | length }} lights and the {{ switches_name }} are on. The {{ doors_name }} is open. The {{ speakers_name }} is playing.
+
+          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (doors_on | length > 1) and (switches_on | length == 1) %}
+          The {{ lights_name }} and {{ switches_name }} are on. The {{ doors_name | regex_replace(',([^,]*)$',' and\\1') }} are open. The {{ speakers_name }} is playing.
+
+          {% elif (lights_on | length > 1 ) and (speakers_on | length > 1) and (switches_on | length > 1) and (doors_on | length > 1) %}
+          There are {{ lights_on | length }} lights on, the {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on, {{ doors_on | length }} doors open, and there are {{ speakers_on | length}} speakers playing.
+
+          {% elif (lights_on | length == 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          {{ lights_name }} is on.
 
           {% elif (lights_on | length >1 ) and (speakers_on | length == 0) and (switches_on | length == 0) %}
-          {{ lights_on | length}} lights are on
+          There are {{ lights_on | length}} lights on.
 
           {% else %} 
           <font color='#6a7377'>Everything is off</font> 
