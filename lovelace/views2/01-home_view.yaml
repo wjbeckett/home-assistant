@@ -90,7 +90,7 @@
                 entity: alarm_control_panel.home_alarm
                 icon: mdi:shield-home
                 tap_action: !include popup/alarm_panel.yaml
-                #template: ['base', 'alarm_panel']
+                template: ['base']
 
           - type: vertical-stack
             cards:
