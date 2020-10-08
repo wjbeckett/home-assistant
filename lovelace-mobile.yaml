@@ -202,15 +202,16 @@ button_card_templates:
     template: ['base']
     state:
       - value: 'armed_away'
+        icon: mdi:shield-lock-outline
         styles:
-          icon: mdi:shield-lock-outline
+          icon:
             - color: '#d63a2d'
           card: [background-color: 'rgba(255, 255, 255, 0.8)']
           name: [color: 'rgba(0, 0, 0, 0.6)']
           state: [color: 'rgba(0, 0, 0, 0.6)']
       - value: 'disarmed'
+        icon: mdi:shield-home
         styles:
-          icon: mdi:shield-home
           #color: '#0ab73f'
 
   person:
