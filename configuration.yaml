@@ -38,20 +38,6 @@ hacs:
   options:
     experimental: True
 
-google_assistant:
-  project_id: !secret google_assistant_id
-  service_account: !include service_account.json
-  secure_devices_pin: !secret secure_devices_pin
-  report_state: true
-  exposed_domains:
-    - light
-    - scene
-    - camera
-    - alarm_control_panel
-    - climate
-    - media_player
-    - input_boolean
-
 google:
   client_id: !secret google_client_id
   client_secret: !secret google_secret
@@ -64,7 +50,5 @@ tts:
 
 browser_mod:
   devices:
-  #  918296e3-e2a54976:
-  #    name: imac_chrome
     7a0a300c-b4cf495f:
       name: tablet
