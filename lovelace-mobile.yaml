@@ -199,7 +199,6 @@ button_card_templates:
     style: '#name > ha-icon {width: 1.4em; margin-right: 0.3em; }'
   
   alarm_panel:
-    #template: ['base']
     styles:
       card: *button_styles_card
     tap_action:
@@ -214,10 +213,6 @@ button_card_templates:
           card: [background-color: 'rgba(255, 255, 255, 0.8)']
           name: [color: 'rgba(0, 0, 0, 0.6)']
           state: [color: 'rgba(0, 0, 0, 0.6)']
-      - value: 'disarmed'
-        icon: mdi:shield-home
-        styles:
-          #color: '#0ab73f'
 
   person:
     show_entity_picture: true
