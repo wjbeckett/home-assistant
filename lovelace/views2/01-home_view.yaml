@@ -85,7 +85,11 @@
                 hold_action: !include popup/home_emily.yaml
                 template: ['base', 'switch', 'person']
 
-              - type: custom:gap-card
+              - type: custom:button-card
+                entity: alarm_control_panel.home_alarm
+                icon: mdi:shield-home
+                tap_action: !include popup/alarm_panel.yaml
+                template: ['base', 'alarm_panel']
 
           - type: vertical-stack
             cards:
