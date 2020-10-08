@@ -213,6 +213,10 @@ button_card_templates:
           card: [background-color: 'rgba(255, 255, 255, 0.8)']
           name: [color: 'rgba(0, 0, 0, 0.6)']
           state: [color: 'rgba(0, 0, 0, 0.6)']
+      - value: 'disarmed'
+        styles:
+          icon:
+            - color: '#6a6b74'
 
   person:
     show_entity_picture: true
