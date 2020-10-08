@@ -212,6 +212,10 @@ button_card_templates:
       - value: 'disarmed'
         icon: mdi:shield-home
         styles:
+          card:
+            - font-size: 10px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
           #color: '#0ab73f'
 
   person:
