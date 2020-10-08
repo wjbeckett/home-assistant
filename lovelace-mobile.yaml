@@ -214,6 +214,7 @@ button_card_templates:
           name: [color: 'rgba(0, 0, 0, 0.6)']
           state: [color: 'rgba(0, 0, 0, 0.6)']
       - value: 'disarmed'
+        icon: mdi:shield-home-outline
         styles:
           icon:
             - color: '#6a6b74'
