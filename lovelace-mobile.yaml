@@ -4,26 +4,6 @@
 #                                                                        #
 ##########################################################################
 
-custom_header:
-  compact_mode: true
-  tab_indicator_color: var(--sidebar-selected-icon-color)
-  background: transparent
-  notification_dot_color: var(--sidebar-selected-icon-color)
-  elements_color: var(--primary-text-color)
-  active_tab_color: var(--sidebar-selected-icon-color)
-  exceptions:
-    - conditions:
-        user_agent: Mobile
-      config:
-        header_text: ''
-        chevrons: false
-        indicator_top: true
-        all_tabs_css: "width: calc(25vw - 9px) !important; padding: 0px !important;"
-        header_css: 'padding-left: 0px !important; padding-right: 0px !important;'
-        view_css: 'padding-top: 104px !important;
-                  padding-left: 8px !important;
-                  padding-right: 8px !important;'
-
 decluttering_templates: !include_dir_merge_named lovelace/decluttering_templates          
 
 button_card_templates:
