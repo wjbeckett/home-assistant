@@ -908,7 +908,6 @@ views:
               width: 10%
             tap_action:
               action: toggle
-            hold_action: !include popup/hemma_data_kwh.yaml
             custom_fields:
               icon_home: >
                 [[[ const state = entity.state === 'on' ? 'animate' : null;
