@@ -86,6 +86,7 @@
                 template: ['base', 'switch', 'person']
 
               - type: custom:button-card
+                name: Alarm 
                 entity: alarm_control_panel.home_alarm
                 icon: mdi:shield-home
                 tap_action: !include popup/alarm_panel.yaml
