@@ -200,6 +200,11 @@ button_card_templates:
   
   alarm_panel:
     #template: ['base']
+    styles:
+      card: *button_styles_card
+    tap_action:
+      ui_sound: *ui_sound
+      haptic: light
     state:
       - value: 'armed_away'
         icon: mdi:shield-lock-outline
