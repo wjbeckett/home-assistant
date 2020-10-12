@@ -68,7 +68,7 @@
                       entities: 
                         - device_tracker.emily
                         - zone.home
-                      default_zoom: 10
+                      default_zoom: 13
                       style: |
                         ha-card {
                           height: 24.9em;
