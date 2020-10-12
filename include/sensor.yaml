@@ -25,7 +25,6 @@ binary_sensor:
   - platform: template
     sensors:
       fullykiosk_motion:
-        entity_id: sensor.fullykiosk
         friendly_name: Camera
         icon_template: mdi:camera
         value_template: >
@@ -34,7 +33,6 @@ binary_sensor:
       front_door:
         friendly_name: Front Door
         device_class: motion
-        entity_id: camera.front_door
         value_template: "{{ is_state('camera.front_door', 'motion') }}"
         delay_off: 
             seconds: 15
