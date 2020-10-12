@@ -177,9 +177,9 @@ sensor:
           {% set lights_on = lights | selectattr('state','eq','on') | list %}
           {% set lights_name = lights | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-          {% set switches = [states.media_player.plex_bedroom_tv, states.media_player.lounge_room_tv] %}
-          {% set switches_on = switches | selectattr('state','eq','playing') | list %} 
-          {% set switches_name = switches | selectattr('state','eq','playing') | map(attribute='name') | join(', ') %}
+          {% set switches = [states.media_player.bedroom_tv, states.media_player.lounge_room_tv] %}
+          {% set switches_on = switches | selectattr('state','eq','on') | list %} 
+          {% set switches_name = switches | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
           {% set speakers = [states.media_player.bedroom_speaker, states.media_player.kitchen_display, states.media_player.teddy_s_speaker,
           states.media_player.ollie_s_speaker] %}
