@@ -29,7 +29,7 @@
                               name: Router
                               icon: mdi:wifi
 
-                            - entity: sensor.william_bluetooth_connection
+                            - entity: sensor.pixel_4_xl_bluetooth_connection
                               name: Bluetooth
                               icon: mdi:bluetooth
 
@@ -65,8 +65,10 @@
 
                     - type: custom:hui-element
                       card_type: map
-                      entities: [device_tracker.william]
-                      default_zoom: 15
+                      entities: 
+                        - device_tracker.william
+                        - zone.home
+                      default_zoom: 10
                       style: |
                         ha-card {
                           height: 24.9em;

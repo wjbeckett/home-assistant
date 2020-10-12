@@ -65,8 +65,10 @@
 
                     - type: custom:hui-element
                       card_type: map
-                      entities: [device_tracker.william]
-                      default_zoom: 15
+                      entities: 
+                        - device_tracker.emily
+                        - zone.home
+                      default_zoom: 10
                       style: |
                         ha-card {
                           height: 24.9em;
