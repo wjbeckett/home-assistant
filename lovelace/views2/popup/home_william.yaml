@@ -68,7 +68,7 @@
                       entities: 
                         - device_tracker.william
                         - zone.home
-                      default_zoom: 13
+                      default_zoom: 14
                       style: |
                         ha-card {
                           height: 24.9em;
