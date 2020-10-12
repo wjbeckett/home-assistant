@@ -30,13 +30,7 @@
               ha-card {
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                margin: 10px;   
               }
           - type: custom:mini-graph-card
             name: Download/Upload
@@ -53,13 +47,7 @@
               ha-card {
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                margin: 10px;  
               }
       - type: vertical-stack
         cards:
@@ -85,18 +73,12 @@
             entities:
               - binary_sensor.kitchen_sensor_motion
               - binary_sensor.bedroom_motion
-              - binary_sensor.front_door_motion
+              - binary_sensor.front_door
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                margin: 10px;  
               }
       - type: vertical-stack
         cards:
@@ -122,19 +104,10 @@
             entities:
               - input_boolean.alert_mode
               - input_boolean.text_notifications
-              - input_boolean.speech_notifications
               - input_boolean.meds_reminder
-              - input_boolean.garbage_general
-              - input_boolean.garbage_recycling
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                margin: 10px; 
               }
