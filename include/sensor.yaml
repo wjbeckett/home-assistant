@@ -7,12 +7,6 @@ binary_sensor:
     #                                                  #
     ####################################################
 
-  - platform: command_line
-    name: plex_availability
-    command: !secret plex_availability
-    scan_interval: 300
-    payload_on: 'on'
-    payload_off: 'off'
 
   - platform: ping
     host: 8.8.8.8
@@ -144,11 +138,6 @@ sensor:
   #  scan_interval: 10
 
 
-  - platform: template
-    sensors:
-      front_door_face:
-          value_template: "{{ states('image_processing.face_detection') }}"
-          friendly_name: Front Door Face
 
     ####################################################
     #                                                  #
@@ -274,7 +263,6 @@ sensor:
 
           {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
           There are {{ lights_on | length}} lights on, and {{ switches_name }} is on.
-
 
           {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) %}
           There are {{ lights_on | length}} lights on and the {{ doors_on }} is open.
