@@ -29,7 +29,7 @@
                               name: Router
                               icon: mdi:wifi
 
-                            - entity: sensor.william_bluetooth_connection
+                            - entity: sensor.pixel_4_xl_bluetooth_connection
                               name: Bluetooth
                               icon: mdi:bluetooth
 
