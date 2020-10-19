@@ -1,30 +1,20 @@
 ---
 magic_areas:
   lounge_room:
-    automatic_lights:
-      - light.lounge_room_lamp
     include_entities:
       - media_player.lounge_room_tv
   kitchen:
-    automatic_lights:
-      - light.kitchen_pendant_lights
-      - light.kitchen_downlight
     include_entities:
       - binary_sensor.kitchen_sensor_motion
       - media_player.kitchen_display
       - sensor.kitchen_sensor_lux
       - sensor.kitchen_sensor_temperature
   bedroom:
-    automatic_lights:
-      - light.bedroom_lamp_left
-      - light.bedroom_lamp_right
   ollie_s_room:
-    automatic_lights:
-      - light.ollie_s_lamp
   teddy_s_room:
     automatic_lights:
       - light.teddy_s_lamp
   front_door:
-    exterior: True
+    exterior: true
     include_entities:
       - binary_sensor.front_door
