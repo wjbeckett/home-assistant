@@ -13,7 +13,8 @@ magic_areas:
   ollie_s_room:
   teddy_s_room:
     automatic_lights:
-      - light.teddy_s_lamp
+      entities:
+        - light.teddy_s_lamp
   front_door:
     exterior: true
     include_entities:
