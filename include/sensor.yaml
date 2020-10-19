@@ -33,7 +33,7 @@ binary_sensor:
       nightmode:
         friendly_name: Night Mode
         value_template: >
-          {{ if is_state('input_boolean.nightmode', 'on') }}
+          {{ is_state('input_boolean.nightmode', 'on') }}
 
       front_door:
         friendly_name: Front Door
