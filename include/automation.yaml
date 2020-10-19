@@ -1128,16 +1128,16 @@ automation:
   - id: 'turn_off_lights_when_going_for_a_drive_at_night'
     alias: Turn off the Kitchen lights and disable them from being turned on again at night
     trigger:
-      - time:
-        after: '19:50:00'
-        before: '06:00:00'
+      - platform: time
+        at: '19:50:00'
     condition:
       - condition: state
         entity_id: input_boolean.guest_mode
         state: 'off'
-      - condition: state
-        entity_id: binary_sensor.kitchen_sensor_motion
-        state: 'off'
+      - entity_id: binary_sensor.kitchen_sensor_motion
+        for: 00:15:00
+        platform: state
+        to: 'off'
     action:
       service: input_boolean.turn_on
       entity_id: input_boolean.night_mode
