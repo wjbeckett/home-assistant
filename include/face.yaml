@@ -1,4 +1,0 @@
----
-microsoft_face:
-  api_key: !secret microsoft_face_api
-  azure_region: australiaeast
