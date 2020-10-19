@@ -9,7 +9,8 @@ magic_areas:
       - media_player.kitchen_display
       - sensor.kitchen_sensor_lux
       - sensor.kitchen_sensor_temperature
-    disable_entity: input_boolean.night_mode
+    automatic_lights:
+      disable_entity: input_boolean.night_mode
   bedroom:
     control_climate: false
   ollie_s_room:
