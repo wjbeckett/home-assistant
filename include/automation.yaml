@@ -216,6 +216,9 @@ automation:
     - data: {}
       entity_id: input_boolean.guest_mode
       service: input_boolean.turn_on
+    - service: switch.turn_on
+      data:
+        entity_id: switch.area_presence_hold_kitchen
       
   - id: '1593405367977'
     alias: Turn Off Guest mode when guests leave
@@ -230,6 +233,9 @@ automation:
     - data: {}
       entity_id: input_boolean.guest_mode
       service: input_boolean.turn_off
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_kitchen
 
     ####################################################
     #                                                  #
