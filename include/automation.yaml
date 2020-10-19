@@ -219,6 +219,9 @@ automation:
     - service: switch.turn_on
       data:
         entity_id: switch.area_presence_hold_kitchen
+    - service: switch.turn_on
+      data:
+        entity_id: switch.area_presence_hold_lounge_room
       
   - id: '1593405367977'
     alias: Turn Off Guest mode when guests leave
@@ -236,6 +239,9 @@ automation:
     - service: switch.turn_off
       data:
         entity_id: switch.area_presence_hold_kitchen
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_lounge_room
 
     ####################################################
     #                                                  #
@@ -997,6 +1003,14 @@ automation:
       domain: light
       entity_id: light.ollie_s_lamp
       type: turn_off
+    - service: input_boolean.turn_off
+        entity_id: input_boolean.night_mode
+    - service: switch.turn_off
+      data:
+        entity_id: switch.adaptive_lighting_sleep_mode_ollie_s_room
+    - service: switch.turn_off
+      data:
+        entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
   
   - id: '1593405189369'
     alias: Activate Birght Lights when coming home after sunset
@@ -1144,21 +1158,14 @@ automation:
       entity_id: binary_sensor.kitchen_sensor_motion
       state: 'off'
     action:
-      service: input_boolean.turn_on
-      entity_id: input_boolean.night_mode
-
-  - id: 'reset_night_mode_switch'
-    alias: 'reset night mode input boolean'
-    trigger:
-      - platform: time
-        at: '05:59:00'
-    condition:
-    - condition: state
-      entity_id: input_boolean.guest_mode
-      state: 'off'
-    action:
-      - service: input_boolean.turn_off
+      - service: input_boolean.turn_on
         entity_id: input_boolean.night_mode
+      - service: switch.turn_on
+        data:
+          entity_id: switch.adaptive_lighting_sleep_mode_ollie_s_room
+      - service: switch.turn_on
+        data:
+          entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
 
   - id: 'ollie_is_sleeping'
     alias: Turn off the kitchen lights if Ollie is going to sleep
