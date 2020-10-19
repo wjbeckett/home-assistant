@@ -3,6 +3,7 @@ magic_areas:
   lounge_room:
     control_climate: false
   kitchen:
+    clear_timeout: 300
     include_entities:
       - binary_sensor.kitchen_sensor_motion
       - media_player.kitchen_display
