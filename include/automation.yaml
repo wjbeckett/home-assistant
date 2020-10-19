@@ -1004,7 +1004,7 @@ automation:
       entity_id: light.ollie_s_lamp
       type: turn_off
     - service: input_boolean.turn_off
-        entity_id: input_boolean.night_mode
+      entity_id: input_boolean.night_mode
     - service: switch.turn_off
       data:
         entity_id: switch.adaptive_lighting_sleep_mode_ollie_s_room
