@@ -974,18 +974,18 @@ automation:
       entity_id: light.lounge_room_lamp
       type: turn_off
 
-  - id: '1592804840487'
-    alias: Turn on night lights
-    description: ''
-    trigger:
-    - at: '19:00:00'
-      platform: time
-    condition:
-    - condition: state
-      entity_id: input_boolean.guest_mode
-      state: 'off'
-    action:
-    - scene: scene.night_light
+  #- id: '1592804840487'
+  #  alias: Turn on night lights
+  #  description: ''
+  #  trigger:
+  #  - at: '19:00:00'
+  #    platform: time
+  #  condition:
+  #  - condition: state
+  #    entity_id: input_boolean.guest_mode
+  #    state: 'off'
+  #  action:
+  #  - scene: scene.night_light
 
   - id: '1592804907305'
     alias: Turn off lamps at sunrise
