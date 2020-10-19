@@ -31,6 +31,29 @@
               # Kitchen
           - type: markdown
             content: |
+              # Sensors
+            style:
+              .: |
+                ha-card {
+                  --ha-card-background: none !important;
+                  box-shadow: none !important;
+                }
+              ha-markdown:
+                $: |
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                entities: 
+                  - binary_sensor.area_kitchen
+                  - binary_sensor.area_motion_kitchen
+          - type: markdown
+            content: |
               # Lights
             style:
               .: |
@@ -61,17 +84,7 @@
                     value: 'on'
                 style: |
                   ha-card {
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_pendant_lights', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_pendant_lights', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_pendant_lights', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_pendant_lights', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}    
+                    margin: 10px;  
                   }
                 styles:
                   card:
@@ -102,17 +115,7 @@
                     value: 'on'
                 style: |
                   ha-card {
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_downlight', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_downlight', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_downlight', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_downlight', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}    
+                    margin: 10px;  
                   }
                 styles:
                   card:
@@ -161,13 +164,7 @@
                     show_name: false
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;  
                       }
                     styles:
                       card:
@@ -230,13 +227,7 @@
                     show_name: false
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                        {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                        {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                        {% endif %}    
+                        margin: 10px; 
                       }
                     styles:
                       card:
@@ -299,13 +290,7 @@
                     show_name: false
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;   
                       }
                     styles:
                       card:
@@ -368,13 +353,7 @@
                     show_name: false
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;   
                       }
                     styles:
                       card:
@@ -437,13 +416,7 @@
                     show_name: false
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;   
                       }
                     styles:
                       card:
@@ -529,13 +502,7 @@
               ha-card {
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                margin: 10px; 
               }
       - type: vertical-stack
         cards:
@@ -565,10 +532,4 @@
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
                 margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
               }

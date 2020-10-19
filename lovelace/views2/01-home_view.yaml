@@ -47,7 +47,23 @@
                       right: 16px !important;
                     }
                     verynarrow !important;
-
+          - type: horizontal-stack
+            cards:
+              type: entity-filter
+              show_empty: false
+              entities:
+                - binary_sensor.area_front_door
+                - binary_sensor.area_bedroom
+                - binary_sensor.area_kitchen
+                - binary_sensor.area_lounge_room
+                - binary_sensor.area_ollie_s_room
+                - binary_sensor.area_teddy_s_room
+              state_filter:
+                - "on"
+              card:
+                type: glance
+                title: Sensors
+                show_header_toggle: false
           - type: horizontal-stack
             cards:
               - type: markdown
