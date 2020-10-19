@@ -9,8 +9,7 @@ magic_areas:
   kitchen:
     automatic_lights:
       entities:
-        - light.kitchen_pendant_lights
-        - light.kitchen_downlight
+        - light.kitchen_lights
     include_entities:
       - binary_sensor.kitchen_sensor_motion
       - media_player.kitchen_display
@@ -19,8 +18,7 @@ magic_areas:
   bedroom:
     automatic_lights:
       entities:
-        - light.bedroom_lamp_left
-        - light.bedroom_lamp_right
+        - light.bedroom_lamps
   ollie_s_room:
     automatic_lights:
       entities:
