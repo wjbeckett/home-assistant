@@ -12,8 +12,16 @@ magic_areas:
     control_climate: false
   ollie_s_room:
     control_climate: false
+    automatic_lights:
+      sleep_entity: switch.adaptive_lighting_sleep_mode_ollie_s_room
+      sleep_lights:
+        - light.ollie_s_lamp
   teddy_s_room:
     control_climate: false
+    automatic_lights:
+      sleep_entity: switch.adaptive_lighting_sleep_mode_teddy_s_room
+      sleep_lights:
+        - light.teddy_s_lamp
   front_door:
     exterior: true
     include_entities:

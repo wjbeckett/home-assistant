@@ -30,10 +30,11 @@ binary_sensor:
         value_template: >
           {{ not is_state_attr('sensor.fullykiosk', 'motionDetectorState', 0) }}
 
-      nightmode:
+      night_mode:
         friendly_name: Night Mode
-        value_template: >
-          {{ is_state('input_boolean.nightmode', 'on') }}
+        value_template: >-
+          {{ is_state('switch.adaptive_lighting_sleep_mode_teddy_s_room', 'on') 
+            or is_state('switch.adaptive_lighting_sleep_mode_ollie_s_room', 'on') }}
 
       front_door:
         friendly_name: Front Door

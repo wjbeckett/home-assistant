@@ -105,6 +105,14 @@
               - input_boolean.alert_mode
               - input_boolean.text_notifications
               - input_boolean.meds_reminder
+              - switch.adaptive_lighting_kitchen
+              - switch.adaptive_lighting_bedroom
+              - switch.adaptive_lighting_ollie_s_room
+              - switch.adaptive_lighting_teddy_s_room
+              - switch.adaptive_lighting_sleep_mode_bedroom
+              - switch.adaptive_lighting_sleep_mode_kitchen
+              - switch.adaptive_lighting_sleep_mode_ollie_s_room
+              - switch.adaptive_lighting_sleep_mode_teddy_s_room
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
