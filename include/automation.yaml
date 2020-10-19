@@ -954,25 +954,23 @@ automation:
       entity_id: group.family
       state: home
     action:
-    - scene: scene.bright_lights
-    - scene: scene.bedroom_lamps_bright
-    - scene: scene.lounge_room_bright
-  
-  - id: '1592804786192'
-    alias: Turn off lights at bed time
-    description: ''
-    trigger:
-    - at: '22:00:00'
-      platform: time
-    condition:
-    - condition: state
-      entity_id: input_boolean.guest_mode
-      state: 'off'
-    action:
-    - device_id: 13c7e8ef3a73444484d1ba5f6076b425
-      domain: light
+    - service: light.turn_on
+      entity_id: light.bedroom_lamps
+    - service: light.turn_on
       entity_id: light.lounge_room_lamp
-      type: turn_off
+    - service: light.turn_on
+      entity_id: light.ollie_s_lamp
+    - service: light.turn_on
+      entity_id: light.teddy_s_lamp
+    - service: switch.turn_on
+      data:
+        entity_id: switch.area_presence_hold_lounge_room
+    - service: switch.turn_on
+      data:
+        entity_id: switch.area_presence_hold_ollies_s_room
+    - service: switch.turn_on
+      data:
+        entity_id: switch.area_presence_hold_teddy_s_room
 
   #- id: '1592804840487'
   #  alias: Turn on night lights
@@ -1011,6 +1009,12 @@ automation:
     - service: switch.turn_off
       data:
         entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_ollie_s_room
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_teddy_s_room
   
   - id: '1593405189369'
     alias: Activate Birght Lights when coming home after sunset
@@ -1166,6 +1170,9 @@ automation:
       - service: switch.turn_on
         data:
           entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
+      - service: switch.turn_off
+        data:
+          entity_id: switch.area_presence_hold_lounge_room
 
   - id: 'ollie_is_sleeping'
     alias: Turn off the kitchen lights if Ollie is going to sleep

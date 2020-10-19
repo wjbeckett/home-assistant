@@ -232,6 +232,9 @@ sensor:
           {% elif (lights_on | length > 1 ) and (speakers_on | length == 1) and (switches_on | length == 1) and (doors_on | length == 0) %}
           There are {{ lights_on | length}} lights on, and the {{ switches_name }} is on. The {{ speakers_name }} is playing.
 
+          {% elif (lights_on | length == 1 ) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
+          {{ lights_name }} is on, and the {{ switches_name }} is on.
+
           {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
           {{ lights_name }} is on and the {{ speakers_name }} is playing.
 
