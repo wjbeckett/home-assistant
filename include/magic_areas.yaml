@@ -2,6 +2,9 @@
 magic_areas:
   lounge_room:
     control_climate: false
+    automatic_lights:
+      sleep_entity: switch.adaptive_lighting_sleep_mode_lounge_room
+      sleep_lights: light.lounge_room_lamp
   kitchen:
     clear_timeout: 300
     include_entities:
