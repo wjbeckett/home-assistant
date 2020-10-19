@@ -31,6 +31,10 @@ input_boolean:
     name: Home Stats
     initial: off
     
+  nightmode:
+    name: Night Mode
+    initial: off
+
   responsibilities:
     name: responsibilities
     initial: off
