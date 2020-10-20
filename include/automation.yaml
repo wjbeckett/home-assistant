@@ -967,7 +967,7 @@ automation:
         entity_id: switch.area_presence_hold_lounge_room
     - service: switch.turn_on
       data:
-        entity_id: switch.area_presence_hold_ollies_s_room
+        entity_id: switch.area_presence_hold_ollie_s_room
     - service: switch.turn_on
       data:
         entity_id: switch.area_presence_hold_teddy_s_room
@@ -1164,15 +1164,37 @@ automation:
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.night_mode
+
+  - id: 'dim_boys_lights_at_730pm'
+    alias: Dim the boys lights at 7:30pm
+    trigger:
+      - platform: time
+        at: '19:30:00'
+    condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    action:
       - service: switch.turn_on
         data:
           entity_id: switch.adaptive_lighting_sleep_mode_ollie_s_room
       - service: switch.turn_on
         data:
           entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
-      - service: switch.turn_off
-        data:
-          entity_id: switch.area_presence_hold_lounge_room
+
+  - id: 'turn_off_lounge_room_lamp_late'
+    alias: Turn off Lounge Room lamp late at night
+    trigger:
+      platform: time
+      at: '22:00:00'
+    condition:
+    - conditoin: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_lounge_room
 
   - id: 'ollie_is_sleeping'
     alias: Turn off the kitchen lights if Ollie is going to sleep
