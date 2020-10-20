@@ -9,6 +9,7 @@ magic_areas:
     clear_timeout: 300
     include_entities:
       - binary_sensor.kitchen_sensor_motion
+      - media_player.kitchen_display
       - sensor.kitchen_sensor_temperature
     automatic_lights:
       disable_entity: input_boolean.night_mode
