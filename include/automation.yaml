@@ -1188,7 +1188,7 @@ automation:
       platform: time
       at: '22:00:00'
     condition:
-    - conditoin: state
+    - condition: state
       entity_id: input_boolean.guest_mode
       state: 'off'
     action:
