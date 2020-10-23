@@ -128,3 +128,12 @@
                 border-radius: 15px;
                 margin: 10px; 
               }
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - action_name: Broadcast
+                name: test broadcast
+                service: rest_command.assistant_broadcast
+                type: call-service
+                service_data:
+                  command: hello, this is a test broadcast
