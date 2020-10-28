@@ -3,4 +3,4 @@ rest_command:
     url: http://172.30.1.2:3000/assistant
     method: POST
     content_type: 'application/json'
-    payload: '{"command":"{{ command }}", "user":"william", "broadcast":true}'
+    payload: '{"command":"{{ command }}", "user":"Gloria", "broadcast":true, "device":"Bedroom Speaker"}'
