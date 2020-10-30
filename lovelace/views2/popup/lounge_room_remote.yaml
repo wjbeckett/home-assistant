@@ -32,9 +32,10 @@
                           tap_action: # Please change this to a service you call to toggle the TV/device
                             action: call-service
                             service: media_player.play_media
-                            entity_id: media_player.lounge_room_tv
-                            media_content_type: send_key
-                            media_content_id: KEY_POWER
+                            service_data:
+                              entity_id: media_player.lounge_room_tv
+                              media_content_type: send_key
+                              media_content_id: KEY_POWER
                     - type: 'custom:hui-horizontal-stack-card'
                       show_header_toggle: false
                       cards:
@@ -85,7 +86,7 @@
                                     service_data:
                                       entity_id: media_player.lounge_room_tv
                                       media_content_type: send_key
-                                      media_content_id: KET_LEFT
+                                      media_content_id: KEY_LEFT
                                 - type: 'custom:button-card'
                                   name: OK
                                   show_icon: false
@@ -277,3 +278,24 @@
                               entity_id: media_player.lounge_room_tv
                               media_content_type: send_key
                               media_content_id: KEY_HOME
+                        - type: 'custom:button-card'
+                          icon: 'mdi:volume-off' # The second button in the bottom, you can change the icon here. In my case it is 'return'
+                          show_icon: true
+                          show_name: false
+                          styles:
+                            card:
+                              - margin-top: 10px
+                              - margin-left: 8px
+                              - width: 60px
+                              - height: 60px
+                              - border-radius: 15px
+                              - background-color: var(--primary-background-color)
+                            icon:
+                              - color: var(--primary-text-color)
+                          tap_action: # Please change this to a service you want to call on the second button
+                            action: call-service
+                            service: media_player.play_media
+                            service_data:
+                              entity_id: media_player.lounge_room_tv
+                              media_content_type: send_key
+                              media_content_id: KEY_MUTE

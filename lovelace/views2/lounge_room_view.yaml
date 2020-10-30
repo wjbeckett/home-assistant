@@ -3,7 +3,8 @@
     title: Loungeroom
     path: loungeroom
     visible: false
-    badges: []
+    badges:
+      - binary_sensor.area_lounge_room
     cards:
     - type: vertical-stack
       cards:
@@ -29,45 +30,6 @@
           content: |
             [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
             <h1>Lounge Room</h1>
-        - type: markdown
-          content: |
-            # Sensors
-          style:
-            .: |
-              ha-card {
-                --ha-card-background: none !important;
-                box-shadow: none !important;
-              }
-            ha-markdown:
-              $: |
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
-        - type: horizontal-stack
-          cards:
-            - type: glance
-              entities: 
-                - binary_sensor.area_lounge_room
-        - type: markdown
-          content: |
-            # Lights
-          style:
-            .: |
-              ha-card {
-                --ha-card-background: none !important;
-                box-shadow: none !important;
-              }
-            ha-markdown:
-              $: |
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
         - type: 'custom:button-card'
           icon: 'mdi:floor-lamp'
           entity: light.lounge_room_lamp
@@ -81,17 +43,6 @@
           style: |
             ha-card {
               margin: 10px;
-              box-shadow: 
-                {% if is_state('sun.sun', 'above_horizon') and is_state('light.lounge_room_lamp', 'on') %}
-                  inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                {% elif is_state('sun.sun', 'above_horizon') and is_state('light.lounge_room_lamp', 'off') %}                      
-                  -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                {% elif is_state('sun.sun', 'below_horizon') and is_state('light.lounge_room_lamp', 'on') %}                      
-                  inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                {% elif is_state('sun.sun', 'below_horizon') and is_state('light.lounge_room_lamp', 'off') %}   
-                  -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                {% endif %}    
-            }
           styles:
             card:
               - width: 120px
@@ -108,6 +59,26 @@
           hold_action:
             action: more-info
             haptic: light
+        - type: custom:button-card
+          icon: mdi:television
+          entity: media_player.lounge_room_tv
+          triggers_update:
+            - media_player.lounge_room_tv
+          style:
+            width: 10%
+          styles:
+            card:
+              - width: 120px
+              - height: 120px
+              - border-radius: 15px
+              - background-color: var(--primary-background-color)
+          tap_action:
+            services: |
+              [[[ if (entity.state === 'off') {
+              hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+              if (entity.state === 'on') {
+              hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+          hold_action: !include popup/lounge_room_remote.yaml
     - type: vertical-stack
       cards:
         - type: markdown
@@ -357,20 +328,6 @@
                   font-family: Helvetica;
                   letter-spacing: '-0.01em';
                 }
-        - type: custom:button-card
-          icon: mdi:television
-          entity: media_player.lounge_room_tv
-          triggers_update:
-            - media_player.lounge_room_tv
-          style:
-            width: 10%
-          tap_action:
-            services: |
-              [[[ if (entity.state === 'off') {
-              hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
-              if (entity.state === 'on') {
-              hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
-          hold_action: !include popup/lounge_room_remote.yaml
         - type: custom:mini-media-player
           entity: media_player.lounge_room_tv
           info: scroll
