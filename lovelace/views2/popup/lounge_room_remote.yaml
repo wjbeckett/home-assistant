@@ -1,0 +1,279 @@
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: Lounge Room Tv
+                deviceID: this
+                card:
+                  type: entities
+                  state_color: true
+                  show_header_toggle: false
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      width: 250px;
+                      border-radius: 10px;
+                      margin: 10px auto;
+                  entities:
+                    - type: 'custom:hui-horizontal-stack-card'
+                      cards:
+                        - type: 'custom:button-card'
+                          icon: 'mdi:power'
+                          show_icon: true
+                          show_name: false
+                          styles:
+                            card:
+                              - width: 60px
+                              - height: 60px
+                              - margin: 10px 10px 10px 155px
+                              - border-radius: 100px
+                              - background-color: var(--primary-background-color)
+                            icon:
+                              - color: var(--primary-text-color)
+                          tap_action: # Please change this to a service you call to toggle the TV/device
+                            action: call-service
+                            service: media_player.play_media
+                            entity_id: media_player.lounge_room_tv
+                            media_content_type: send_key
+                            media_content_id: KEY_POWER
+                    - type: 'custom:hui-horizontal-stack-card'
+                      show_header_toggle: false
+                      cards:
+                        - type: 'custom:hui-entities-card'
+                          entities:
+                            - type: 'custom:hui-horizontal-stack-card'
+                              cards:
+                                - type: 'custom:button-card'
+                                  icon: 'mdi:menu-up'
+                                  show_icon: true
+                                  show_name: false
+                                  size: 100%
+                                  styles:
+                                    card:
+                                      - margin-left: 69px
+                                      - box-shadow: none
+                                      - width: 50px
+                                      - height: 50px
+                                      - background-color: var(--primary-background-color)
+                                    icon:
+                                      - color: var(--primary-text-color)
+                                  tap_action: # Please change this to a service you call to go 'up' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KEY_UP
+                            - type: 'custom:hui-horizontal-stack-card'
+                              cards:
+                                - type: 'custom:button-card'
+                                  icon: 'mdi:menu-left'
+                                  show_icon: true
+                                  show_name: false
+                                  size: 100%
+                                  styles:
+                                    card:
+                                      - margin-left: 11px
+                                      - box-shadow: none
+                                      - width: 50px
+                                      - height: 50px
+                                      - background-color: var(--primary-background-color)
+                                    icon:
+                                      - color: var(--primary-text-color)
+                                  tap_action: # Please change this to a service you call to go 'left' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KET_LEFT
+                                - type: 'custom:button-card'
+                                  name: OK
+                                  show_icon: false
+                                  show_name: true
+                                  styles:
+                                    card:
+                                      - width: 50px
+                                      - height: 50px
+                                      - border-radius: 100px
+                                      - background-color: var(--primary-background-color)
+                                    name:
+                                      - font-size: 20px
+                                      - font-weight: bold
+                                      - font-family: Helvetica
+                                      - letter-spacing: '-0.01em'
+                                  tap_action: # Please change this to a service you call to 'enter' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KEY_ENTER
+                                - type: 'custom:button-card'
+                                  icon: 'mdi:menu-right'
+                                  show_icon: true
+                                  show_name: false
+                                  size: 100%
+                                  styles:
+                                    card:
+                                      - box-shadow: none
+                                      - width: 50px
+                                      - height: 50px
+                                      - background-color: var(--primary-background-color)
+                                    icon:
+                                      - color: var(--primary-text-color)
+                                  tap_action: # Please change this to a service you call to go 'right' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KEY_RIGHT
+                            - type: 'custom:hui-horizontal-stack-card'
+                              cards:
+                                - type: 'custom:button-card'
+                                  icon: 'mdi:menu-down'
+                                  show_icon: true
+                                  show_name: false
+                                  size: 100%
+                                  styles:
+                                    card:
+                                      - margin-left: 69px
+                                      - box-shadow: none
+                                      - width: 50px
+                                      - height: 50px
+                                      - background-color: var(--primary-background-color)
+                                    icon:
+                                      - color: var(--primary-text-color)
+                                  tap_action: # Please change this to a service you call to go 'down' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KEY_DOWN
+                    - type: 'custom:button-card'
+                      show_icon: false
+                      show_name: false
+                      style: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      styles:
+                        card:
+                          - width: 10px
+                          - height: 10px
+                    - type: 'custom:hui-horizontal-stack-card'
+                      cards:
+                        - show_header_toggle: false
+                          style: |
+                            ha-card {
+                              background-color: var(--primary-background-color);
+                              border-radius: 15px;
+                          type: 'custom:hui-entities-card'
+                          entities:
+                            - type: 'custom:hui-horizontal-stack-card'
+                              cards:
+                                - type: 'custom:button-card'
+                                  icon: 'mdi:minus'
+                                  show_icon: true
+                                  show_name: false
+                                  size: 100%
+                                  styles:
+                                    card:
+                                      - margin-left: 30px
+                                      - box-shadow: none
+                                      - width: 30px
+                                      - height: 30px
+                                      - background-color: var(--primary-background-color)
+                                    icon:
+                                      - color: var(--primary-text-color)
+                                  tap_action: # Please change this to a service you call to 'volume down' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KEY_VOLDOWN
+                                - type: 'custom:button-card'
+                                  name: VOL
+                                  show_icon: false
+                                  show_name: true
+                                  styles:
+                                    card:
+                                      - margin-left: 10px
+                                      - box-shadow: none
+                                      - width: 30px
+                                      - height: 30px
+                                      - border-radius: 100px
+                                      - background-color: var(--primary-background-color)
+                                    name:
+                                      - font-size: 13px
+                                      - font-weight: bold
+                                      - font-family: Helvetica
+                                      - letter-spacing: '-0.01em'
+                                - type: 'custom:button-card'
+                                  icon: 'mdi:plus'
+                                  show_icon: true
+                                  show_name: false
+                                  size: 100%
+                                  styles:
+                                    card:
+                                      - margin-left: 10px
+                                      - box-shadow: none
+                                      - width: 30px
+                                      - height: 30px
+                                      - background-color: var(--primary-background-color)
+                                    icon:
+                                      - color: var(--primary-text-color)
+                                  tap_action: # Please change this to a service you call to 'volume up' on the TV/device
+                                    action: call-service
+                                    service: media_player.play_media
+                                    service_data:
+                                      entity_id: media_player.lounge_room_tv
+                                      media_content_type: send_key
+                                      media_content_id: KEY_VOLUP
+                      - type: 'custom:hui-horizontal-stack-card'
+                        cards:
+                          - type: 'custom:button-card'
+                            icon: 'mdi:keyboard-return' # The first button in the bottom, you can change the icon here. In my case it is 'home'
+                            show_icon: true
+                            show_name: false
+                            styles:
+                              card:
+                                - margin-top: 10px
+                                - margin-left: 5px
+                                - width: 60px
+                                - height: 60px
+                                - border-radius: 15px
+                                - background-color: var(--primary-background-color)
+                              icon:
+                                - color: var(--primary-text-color)
+                            tap_action: # Please change this to a service you want to call on the first button
+                              action: call-service
+                              service: media_player.play_media
+                              service_data:
+                                entity_id: media_player.lounge_room_tv
+                                media_content_type: send_key
+                                media_content_id: KEY_RETURN
+                          - type: 'custom:button-card'
+                            icon: 'mdi:home' # The second button in the bottom, you can change the icon here. In my case it is 'return'
+                            show_icon: true
+                            show_name: false
+                            styles:
+                              card:
+                                - margin-top: 10px
+                                - margin-left: 8px
+                                - width: 60px
+                                - height: 60px
+                                - border-radius: 15px
+                                - background-color: var(--primary-background-color)
+                              icon:
+                                - color: var(--primary-text-color)
+                            tap_action: # Please change this to a service you want to call on the second button
+                              action: call-service
+                              service: media_player.play_media
+                              service_data:
+                                entity_id: media_player.lounge_room_tv
+                                media_content_type: send_key
+                                media_content_id: KEY_HOME

@@ -357,6 +357,20 @@
                   font-family: Helvetica;
                   letter-spacing: '-0.01em';
                 }
+        - type: custom:button-card
+          icon: mdi:television
+          entity: media_player.lounge_room_tv
+          triggers_update:
+            - media_player.lounge_room_tv
+          style:
+            width: 10%
+          tap_action:
+            services: |
+              [[[ if (entity.state === 'off') {
+              hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+              if (entity.state === 'on') {
+              hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+          hold_action: !include popup/lounge_room_remote.yaml
         - type: custom:mini-media-player
           entity: media_player.lounge_room_tv
           info: scroll
@@ -366,10 +380,3 @@
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
                 margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-             }
