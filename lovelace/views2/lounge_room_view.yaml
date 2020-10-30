@@ -61,6 +61,7 @@
             haptic: light
         - type: custom:button-card
           icon: mdi:television
+          name: TV
           entity: media_player.lounge_room_tv
           triggers_update:
             - media_player.lounge_room_tv
