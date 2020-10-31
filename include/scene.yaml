@@ -211,4 +211,34 @@ scene:
         xy_color:
         - 0.388
         - 0.401
-      
+  - id: 'halloween'
+    name: Halloween
+    entities:
+      light.kitchen_downlight:
+        state: 'off'
+      input_boolean.guest_mode:
+        state: 'on'
+      light.pendant_light_center:
+        state: 'on'
+        brightness: 255
+        xy_color:
+        - 0.219
+        - 0.081
+      light.pendant_light_left:
+        brightness: 255
+        state: 'on'
+        xy_color:
+        - 0.606
+        - 0.372
+      light.pendant_light_right:
+        brightness: 255
+        state: 'on'
+        xy_color:
+        - 0.606
+        - 0.372
+      light.go_lamp:
+        brightness: 255
+        state: 'on'
+        xy_color:
+          - 0.219
+          - 0.081
