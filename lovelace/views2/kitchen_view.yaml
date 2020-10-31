@@ -132,7 +132,38 @@
                   haptic: light
                 hold_action:
                   action: more-info
-                  haptic: light                
+                  haptic: light
+              - type: 'custom:button-card'
+                icon: 'mdi:wall-sconce-round-variant'
+                entity: light.go_lamp
+                name: Go Lamp
+                show_icon: true
+                show_name: true
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    margin: 10px;  
+                  }
+                styles:
+                  card:
+                    - width: 120px
+                    - height: 120px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  name:
+                    - font-size: 12px
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: toggle
+                  haptic: light
+                hold_action:
+                  action: more-info
+                  haptic: light              
       - type: vertical-stack
         cards:
           - type: markdown
