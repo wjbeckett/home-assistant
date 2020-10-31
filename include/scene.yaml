@@ -3,9 +3,26 @@ scene:
   - id: '1580746000987'
     name: Party
     entities:
-      light.kitchen_pendant_lights:
+      light.pendant_light_left:
         state: 'on'
         brightness: 255
+        xy_color: 
+          - 0.158
+          - 0.05
+        effect: colorloop
+      light.pendant_light_center:
+        state: 'on'
+        brightness: 255
+        xy_color: 
+          - 0.689
+          - 0.309
+        effect: colorloop
+      light.pendant_light_right:
+        state: 'on'
+        brightness: 255
+        xy_color: 
+          - 0.17
+          - 0.7
         effect: colorloop
       light.kitchen_downlight:
         state: 'on'
@@ -14,6 +31,9 @@ scene:
       light.go_lamp:
         state: 'on'
         brightness: 255
+        xy_color:
+          - 0.432
+          - 0.503
         effect: colorloop
 
   - id: kitchen_dim
