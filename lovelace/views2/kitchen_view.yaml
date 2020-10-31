@@ -258,6 +258,29 @@
                         entity_id: scene.cozy_kitchen_lights
                         transition: 2
                     haptic: light
+                  - type: 'custom:button-card'
+                    icon: 'mdi:party-popper'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        margin: 10px;   
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      service: scene.turn_on
+                      service_data:
+                        entity_id: scene.party
+                        transition: 1
+                    haptic: light
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'

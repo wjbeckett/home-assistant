@@ -6,29 +6,15 @@ scene:
       light.kitchen_pendant_lights:
         state: 'on'
         brightness: 255
-        effect: colourloop
+        effect: colorloop
       light.kitchen_downlight:
         state: 'on'
         brightness: 255
         color_temp: 453
-      light.teddy_s_lamp:
+      light.go_lamp:
         state: 'on'
         brightness: 255
-        effect: colourloop
-      light.ollies_s_lamp:
-        state: 'on'
-        brightness: 255
-        color_temp: 320
-      light.lounge_room_lamp:
-        state: 'on'
-        brightness: 255
-        xy_color:
-          - 0.388
-          - 0.401
-      light.bedroom_lamps:
-        state: 'on'
-        brightness: 255
-        color_temp: 453
+        effect: colorloop
 
   - id: kitchen_dim
     name: kitchen dim
