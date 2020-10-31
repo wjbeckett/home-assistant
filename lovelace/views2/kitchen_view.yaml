@@ -227,6 +227,8 @@
                         entity_id: scene.cozy_kitchen_lights
                         transition: 2
                     haptic: light
+              - type: horizontal-stack
+                cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:palm-tree'
                     show_icon: true
