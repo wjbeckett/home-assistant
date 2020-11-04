@@ -34,12 +34,10 @@
                 border-radius: 15px;
                 margin: 10px;
               }
-          - type: picture-glance
+          - type: picture-entity
             title: Front Door Mjpeg
             entity: camera.front_door_mjpeg
             camera_view: live
-            entities:
-              - binary_sensor.front_door_motion
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
