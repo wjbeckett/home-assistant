@@ -16,7 +16,3 @@ camera:
     stream: sub
     protocol: rtmp
     scan_interval: 5
-
-  - platform: ffmpeg
-    name: Front Door FFMPEG
-    input: !secret front_door_cam_ffmpeg
