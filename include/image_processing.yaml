@@ -2,7 +2,7 @@
 image_processing:  
   - platform: deepstack_object
     ip_address: !secret deepstack_host
-    port: 5000
+    port: 5001
     api_key: !secret deepstack_key
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
