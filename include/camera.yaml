@@ -27,4 +27,4 @@ camera:
 
   - platform: ffmpeg
     name: Front Door FFMPEG
-    input: !secret front_foor_cam_ffmpeg
+    input: !secret front_door_cam_ffmpeg
