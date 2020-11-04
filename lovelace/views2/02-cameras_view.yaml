@@ -36,7 +36,7 @@
               }
           - type: picture-glance
             title: Front Door Mjpeg
-            camera_image: camera.front_door_mjpeg
+            entity: camera.front_door_mjpeg
             camera_view: live
             entities:
               - binary_sensor.front_door_motion
