@@ -16,3 +16,11 @@ camera:
     stream: main
     protocol: rtmp
     scan_interval: 5
+
+  - platform: mjpeg
+    name: Front Door Mjpeg
+    mjpeg_url: !secret front_door_mjpeg_url
+    still_image_url: !secret front_door_cam_image
+    username: !secret mjpeg_user
+    password: !secret mjpeg_pass
+    authentication: basic

@@ -34,6 +34,18 @@
                 border-radius: 15px;
                 margin: 10px;
               }
+          - type: picture-glance
+            title: Front Door Mjpeg
+            camera_image: camera.front_door_mjpeg
+            camera_view: live
+            entities:
+              - binary_sensor.front_door_motion
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+              }
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection
