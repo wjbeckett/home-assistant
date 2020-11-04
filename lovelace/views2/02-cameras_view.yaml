@@ -35,8 +35,8 @@
           #      margin: 10px;
           #    }
           - type: picture-glance
-            title: Front Door Mjpeg
-            camera_image: camera.front_door_mjpeg
+            title: Front Door FFMPEG
+            camera_image: camera.front_door_ffmpeg
             camera_view: live
             entities:
               - binary_sensor.front_door_motion
