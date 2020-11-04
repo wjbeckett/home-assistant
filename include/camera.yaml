@@ -13,17 +13,10 @@ camera:
     username: !secret front_door_cam_user
     password: !secret front_door_cam_password
     name: Front Door
-    stream: main
+    stream: sub
     protocol: rtmp
     scan_interval: 5
 
   - platform: ffmpeg
     name: Front Door FFMPEG
     input: !secret front_door_cam_ffmpeg
-
-  - platform: onvif
-    host: 172.30.1.120
-    port: 8000
-    name: Front Door ONVIF
-    username: !secret front_door_cam_user
-    password: !secret front_door_cam_password
