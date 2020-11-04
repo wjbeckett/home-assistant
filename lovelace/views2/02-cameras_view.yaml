@@ -23,17 +23,17 @@
                     font-family: Helvetica;
                     letter-spacing: '-0.01em';
                   }
-          - type: picture-glance
-            title: Front Door
-            camera_image: camera.front_door
-            entities:
-              - binary_sensor.front_door
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-              }
+          #- type: picture-glance
+          #  title: Front Door
+          #  camera_image: camera.front_door
+          #  entities:
+          #    - binary_sensor.front_door
+          #  style: |
+          #    ha-card {
+          #      background-color: var(--primary-background-color);
+          #      border-radius: 15px;
+          #      margin: 10px;
+          #    }
           - type: picture-glance
             title: Front Door Mjpeg
             camera_image: camera.front_door_mjpeg

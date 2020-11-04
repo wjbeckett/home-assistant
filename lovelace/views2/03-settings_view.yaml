@@ -73,7 +73,7 @@
             entities:
               - binary_sensor.kitchen_sensor_motion
               - binary_sensor.bedroom_motion
-              - binary_sensor.front_door
+              - binary_sensor.front_door_motion
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
