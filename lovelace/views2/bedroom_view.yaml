@@ -129,20 +129,20 @@
     - type: vertical-stack
       cards:
         - type: custom:button-card
-            entity: climate.bedroom
-            name: AC
-            triggers_update:
-              ['climate.bedroom', 'input_boolean.climate_bedroom']
-            style: |
-              ha-card {
-              margin: 10px;
-            styles:
-              card:
-                - width: 120px
-                - height: 120px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-            tap_action: !include popup/bedroom_ac.yaml
+          entity: climate.bedroom
+          name: AC
+          triggers_update:
+            ['climate.bedroom', 'input_boolean.climate_bedroom']
+          style: |
+            ha-card {
+            margin: 10px;
+          styles:
+            card:
+              - width: 120px
+              - height: 120px
+              - border-radius: 15px
+              - background-color: var(--primary-background-color)
+          tap_action: !include popup/bedroom_ac.yaml
     - type: vertical-stack
       cards:
         - type: markdown
