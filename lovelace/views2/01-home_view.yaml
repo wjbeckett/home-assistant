@@ -146,7 +146,7 @@
                   - type: custom:button-card
                     name: Lounge Room
                     icon: mdi:sofa
-                    #entity: light.lounge_room_lamp
+                    entity: light.bedroom_lamps
                     show_state: false
                     tap_action:
                       action: navigate

@@ -111,15 +111,16 @@
           cards:
             - type: 'custom:button-card'
               icon: 'mdi:sleep'
+              name: Night light
               show_icon: true
-              show_name: false
+              show_name: true
               style: |
                 ha-card {
                   margin: 10px;
               styles:
                 card:
-                  - width: 80px
-                  - height: 80px
+                  - width: 120px
+                  - height: 120px
                   - border-radius: 15px
                   - background-color: var(--primary-background-color)
                 icon:
@@ -133,15 +134,16 @@
                 haptic: light
             - type: 'custom:button-card'
               icon: 'mdi:white-balance-sunny'
+              name: Bright
               show_icon: true
-              show_name: false
+              show_name: true`
               style: |
                 ha-card {
                   margin: 10px;
               styles:
                 card:
-                  - width: 80px
-                  - height: 80px
+                  - width: 120px
+                  - height: 120px
                   - border-radius: 15px
                   - background-color: var(--primary-background-color)
                 icon:
@@ -155,8 +157,9 @@
                 haptic: light
             - type: 'custom:button-card'
               icon: 'mdi:movie-open'
+              name: Movie Time!
               show_icon: true
-              show_name: false
+              show_name: true
               style: |
                 ha-card {
                   margin: 10px;

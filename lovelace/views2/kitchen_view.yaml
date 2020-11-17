@@ -166,8 +166,9 @@
                 cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:brightness-3'
+                    name: Dim
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px;  
@@ -189,8 +190,9 @@
                     haptic: light
                   - type: 'custom:button-card'
                     icon: 'mdi:white-balance-sunny'
+                    name": Bright
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px; 
@@ -212,8 +214,9 @@
                     haptic: light
                   - type: 'custom:button-card'
                     icon: 'mdi:theater'
+                    name: Cozy
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px;   
@@ -235,8 +238,9 @@
                     haptic: light
                   - type: 'custom:button-card'
                     icon: 'mdi:party-popper'
+                    name: Party!
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px;   
@@ -260,8 +264,9 @@
                 cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:palm-tree'
+                    name: Tropical
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px;   
@@ -283,8 +288,9 @@
                     haptic: light
                   - type: 'custom:button-card'
                     icon: 'mdi:glasses'
+                    name: Blippi
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px;   
@@ -306,8 +312,9 @@
                     haptic: light
                   - type: 'custom:button-card'
                     icon: 'mdi:halloween'
+                    name: Spooky
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
                         margin: 10px;   
