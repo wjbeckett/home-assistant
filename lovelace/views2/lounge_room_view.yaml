@@ -34,7 +34,7 @@
           cards:
             - type: 'custom:button-card'
               icon: 'mdi:floor-lamp'
-              entity: light.lounge_room_lamp
+              #entity: light.lounge_room_lamp
               show_icon: true
               show_name: true
               state:
