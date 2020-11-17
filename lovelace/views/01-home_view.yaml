@@ -237,6 +237,7 @@
                   ha-card {
                     margin: 10px; 
                   }
+                template: ['base', 'switch']
               - entity: input_boolean.evening_meds_taken
                 name: Evening Meds
                 show_state: false
@@ -258,6 +259,7 @@
                   ha-card {
                     margin: 10px; 
                   }
+                template: ['base', 'switch']
               - entity: input_boolean.bedtime_meds_taken
                 name: Bedtime Meds
                 show_state: false
@@ -279,3 +281,4 @@
                   ha-card {
                     margin: 10px;   
                   }
+                template: ['base', 'switch']
