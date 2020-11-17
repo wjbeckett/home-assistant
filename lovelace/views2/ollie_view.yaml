@@ -86,6 +86,8 @@
           - type: custom:button-card
             entity: climate.ollie_room
             name: AC
+            show_name: false
+            show_state: true
             icon: mdi:air-conditioner
             triggers_update:
               ['climate.ollie_room', 'input_boolean.climate_ollie']

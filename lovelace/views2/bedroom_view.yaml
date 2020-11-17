@@ -131,6 +131,7 @@
         - type: custom:button-card
           entity: climate.bedroom
           name: AC
+          show_name: false
           show_state: true
           icon: mdi:air-conditioner
           triggers_update:
