@@ -88,6 +88,11 @@
           entity: media_player.bedroom_speaker
           triggers_update:
             - media_player.bedroom_speaker
+          state:
+            - styles:
+                icon:
+                  - color: 'var(--paper-item-icon-active-color)'
+              value: 'playing'
           style: |
             ha-card {
               margin: 10px;
@@ -110,6 +115,11 @@
           entity: media_player.bedroom_tv
           triggers_update:
             - media_player.bedroom_tv
+          state:
+            - styles:
+                icon:
+                  - color: 'var(--paper-item-icon-active-color)'
+              value: 'playing'
           style: |
             ha-card {
               margin: 10px;
@@ -136,6 +146,15 @@
           icon: mdi:air-conditioner
           triggers_update:
             ['climate.bedroom', 'input_boolean.climate_bedroom']
+          state:
+            - styles:
+                icon:
+                  - color: 'var(--paper-item-icon-active-color)'
+              value: 'cool'
+            - value: 'heat'
+              styles:
+                icon:
+                  - color: 'red'
           style: |
             ha-card {
             margin: 10px;

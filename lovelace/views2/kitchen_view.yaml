@@ -122,6 +122,11 @@
                 entity: media_player.kitchen_display
                 triggers_update:
                   - media_player.kitchen_display
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)'
+                    value: 'playing'
                 style: |
                   ha-card {
                     margin: 10px;

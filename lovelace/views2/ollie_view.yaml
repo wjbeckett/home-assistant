@@ -67,6 +67,11 @@
             entity: media_player.ollie_s_speaker
             triggers_update:
               - media_player.ollie_s_speaker
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)'
+                value: 'playing'
             style: |
               ha-card {
                 margin: 10px;
@@ -91,6 +96,11 @@
             icon: mdi:air-conditioner
             triggers_update:
               ['climate.ollie_room', 'input_boolean.climate_ollie']
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)'
+                value: 'cool'
             style: |
               ha-card {
               margin: 10px;

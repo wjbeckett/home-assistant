@@ -67,6 +67,11 @@
               entity: media_player.lounge_room_tv
               triggers_update:
                 - media_player.lounge_room_tv
+              state:
+                - styles:
+                    icon:
+                      - color: 'var(--paper-item-icon-active-color)'
+                  value: 'playing'
               style: |
                 ha-card {
                   margin: 10px;
