@@ -190,7 +190,7 @@
                     haptic: light
                   - type: 'custom:button-card'
                     icon: 'mdi:white-balance-sunny'
-                    name": Bright
+                    name: Bright
                     show_icon: true
                     show_name: true
                     style: |
