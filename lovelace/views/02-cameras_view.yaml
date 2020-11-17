@@ -29,6 +29,7 @@
             camera_view: live
             entities:
               - binary_sensor.front_door
+              - binary_sensor.front_door_motion
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
