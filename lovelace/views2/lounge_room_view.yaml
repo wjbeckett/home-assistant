@@ -104,191 +104,71 @@
                 }
     - type: vertical-stack
       cards:
-        - type: vertical-stack
+        - type: horizontal-stack
           cards:
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:sleep'
-                  show_icon: true
-                  show_name: false
-                  style: |
-                    ha-card {
-                      margin: 10px;
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.night_light
-                      transition: 2
-                    haptic: light
-                - type: vertical-stack
-                  cards:
-                    - type: markdown
-                      content: |
-                        # Night Light
-                      style:
-                        .: |
-                          ha-card {
-                            --ha-card-background: none !important;
-                            box-shadow: none !important;
-                            height: 20px; 
-                            margin-top: 15px;
-                          }
-                        ha-markdown:
-                          $: |
-                            h1 {
-                              font-size: 20px;
-                              font-weight: bold;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
-                    - type: markdown
-                      content: |
-                        # Dims the lounge room lamp
-                      style:
-                        .: |
-                          ha-card {
-                            --ha-card-background: none !important;
-                            box-shadow: none !important;
-                          }
-                        ha-markdown:
-                          $: |
-                            h1 {
-                              font-size: 15px;
-                              font-weight: thin;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:white-balance-sunny'
-                  show_icon: true
-                  show_name: false
-                  style: |
-                    ha-card {
-                      margin: 10px;
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.lounge_room_bright
-                      transition: 2
-                    haptic: light
-                - type: vertical-stack
-                  cards:
-                    - type: markdown
-                      content: |
-                        # Bright
-                      style:
-                        .: |
-                          ha-card {
-                            --ha-card-background: none !important;
-                            box-shadow: none !important;
-                            height: 20px; 
-                            margin-top: 15px;
-                          }
-                        ha-markdown:
-                          $: |
-                            h1 {
-                              font-size: 20px;
-                              font-weight: bold;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
-                    - type: markdown
-                      content: |
-                        # Sets lounge room lamp to max brightness
-                      style:
-                        .: |
-                          ha-card {
-                            --ha-card-background: none !important;
-                            box-shadow: none !important;
-                          }
-                        ha-markdown:
-                          $: |
-                            h1 {
-                              font-size: 15px;
-                              font-weight: thin;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:movie-open'
-                  show_icon: true
-                  show_name: false
-                  style: |
-                    ha-card {
-                      margin: 10px;
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.lounge_room_movie_time
-                      transition: 2
-                    haptic: light
-                - type: vertical-stack
-                  cards:
-                    - type: markdown
-                      content: |
-                        # Movie Time!
-                      style:
-                        .: |
-                          ha-card {
-                            --ha-card-background: none !important;
-                            box-shadow: none !important;
-                            height: 20px; 
-                            margin-top: 15px;
-                          }
-                        ha-markdown:
-                          $: |
-                            h1 {
-                              font-size: 20px;
-                              font-weight: bold;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
-                    - type: markdown
-                      content: |
-                        # Dims the lounge room lamp and turns on the TV
-                      style:
-                        .: |
-                          ha-card {
-                            --ha-card-background: none !important;
-                            box-shadow: none !important;
-                          }
-                        ha-markdown:
-                          $: |
-                            h1 {
-                              font-size: 15px;
-                              font-weight: thin;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
+            - type: 'custom:button-card'
+              icon: 'mdi:sleep'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  margin: 10px;
+              styles:
+                card:
+                  - width: 80px
+                  - height: 80px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.night_light
+                  transition: 2
+                haptic: light
+            - type: 'custom:button-card'
+              icon: 'mdi:white-balance-sunny'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  margin: 10px;
+              styles:
+                card:
+                  - width: 80px
+                  - height: 80px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.lounge_room_bright
+                  transition: 2
+                haptic: light
+            - type: 'custom:button-card'
+              icon: 'mdi:movie-open'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  margin: 10px;
+              styles:
+                card:
+                  - width: 80px
+                  - height: 80px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: scene.lounge_room_movie_time
+                  transition: 2
+                haptic: light

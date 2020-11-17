@@ -52,23 +52,6 @@
                 entities: 
                   - binary_sensor.area_kitchen
                   - binary_sensor.area_motion_kitchen
-          - type: markdown
-            content: |
-              # Lights
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
           - type: horizontal-stack
             cards:
               - type: 'custom:button-card'
@@ -132,38 +115,29 @@
                   haptic: light
                 hold_action:
                   action: more-info
-                  haptic: light
-              - type: 'custom:button-card'
-                icon: 'mdi:wall-sconce-round-variant'
-                entity: light.go_lamp
-                name: Go Lamp
-                show_icon: true
-                show_name: true
-                state:
-                  - styles:
-                      icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
-                    value: 'on'
+                  haptic: light 
+              - type: custom:button-card
+                icon: mdi:television
+                name: Speaker
+                entity: media_player.kitchen_display
+                triggers_update:
+                  - media_player.kitchen_display
                 style: |
                   ha-card {
-                    margin: 10px;  
-                  }
+                    margin: 10px;
                 styles:
                   card:
                     - width: 120px
                     - height: 120px
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
-                  name:
-                    - font-size: 12px
-                  icon:
-                    - color: var(--primary-text-color)
                 tap_action:
-                  action: toggle
-                  haptic: light
-                hold_action:
-                  action: more-info
-                  haptic: light              
+                  services: |
+                    [[[ if (entity.state === 'off') {
+                    hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                    if (entity.state === 'on') {
+                    hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+                hold_action: more-info       
       - type: vertical-stack
         cards:
           - type: markdown
@@ -367,33 +341,4 @@
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
                 margin: 10px; 
-              }
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: |
-              # Media
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-          - type: custom:mini-media-player
-            entity: media_player.kitchen_display
-            info: scroll
-            artwork: cover
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
               }

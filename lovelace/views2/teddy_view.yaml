@@ -29,47 +29,8 @@
             content: |
               [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
               <h1>Teddy's Room</h1>
-          - type: markdown
-            content: |
-              # Sensors
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-          - type: horizontal-stack
-            cards:
-              - type: glance
-                entities: 
-                  - binary_sensor.area_teddy_s_room
-          - type: markdown
-            content: |
-              # Lights
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
           - type: 'custom:button-card'
-            icon: 'mdi:lamp'
+            icon: 'mdi:wall-sconce-round-variant'
             entity: light.teddy_s_lamp
             name: Teddy's Lamp
             show_icon: true
@@ -82,17 +43,6 @@
             style: |
               ha-card {
                 margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') and is_state('light.teddy_s_lamp', 'on') %}
-                    inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'above_horizon') and is_state('light.teddy_s_lamp', 'off') %}                      
-                    -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.teddy_s_lamp', 'on') %}                      
-                    inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                  {% elif is_state('sun.sun', 'below_horizon') and is_state('light.teddy_s_lamp', 'off') %}   
-                    -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}    
-              }
             styles:
               card:
                 - width: 120px
@@ -109,6 +59,43 @@
             hold_action:
               action: more-info
               haptic: light
+          - type: custom:button-card
+              icon: mdi:google-home
+              name: Speaker
+              entity: media_player.teddy_s_speaker
+              triggers_update:
+                - media_player.teddy_s_speaker
+              style: |
+                ha-card {
+                  margin: 10px;
+              styles:
+                card:
+                  - width: 120px
+                  - height: 120px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+              tap_action:
+                services: |
+                  [[[ if (entity.state === 'off') {
+                  hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                  if (entity.state === 'on') {
+                  hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+              hold_action: more-info
+          - type: custom:button-card
+            entity: climate.teddy_room
+            name: AC
+            triggers_update:
+              ['climate.teddy_room', 'input_boolean.climate_teddy']
+            style: |
+              ha-card {
+              margin: 10px;
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+            tap_action: !include popup/teddy_ac.yaml
       - type: vertical-stack
         cards:
           - type: markdown
@@ -130,146 +117,52 @@
                   }
       - type: vertical-stack
         cards:
-          - type: vertical-stack
+          - type: horizontal-stack
             cards:
-              - type: horizontal-stack
-                cards:
-                  - type: 'custom:button-card'
-                    icon: 'mdi:sleep'
-                    show_icon: true
-                    show_name: false
-                    style: |
-                      ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
-                      }
-                    styles:
-                      card:
-                        - width: 80px
-                        - height: 80px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                      icon:
-                        - color: var(--primary-text-color)
-                    tap_action:
-                      action: call-service
-                      service: scene.turn_on
-                      service_data:
-                        entity_id: scene.night_light
-                        transition: 2
-                      haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Night Light
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Dims the boys lamps for bedtime
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-              - type: horizontal-stack
-                cards:
-                  - type: 'custom:button-card'
-                    icon: 'mdi:white-balance-sunny'
-                    show_icon: true
-                    show_name: false
-                    style: |
-                      ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                        {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                        {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                        {% endif %}    
-                      }
-                    styles:
-                      card:
-                        - width: 80px
-                        - height: 80px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                      icon:
-                        - color: var(--primary-text-color)
-                    tap_action:
-                      action: call-service
-                      service: scene.turn_on
-                      service_data:
-                        entity_id: scene.bright_lights
-                        transition: 2
-                      haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Bright
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Sets the boys lamps to max brightness
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+              - type: 'custom:button-card'
+                icon: 'mdi:sleep'
+                show_icon: true
+                show_name: false
+                style: |
+                  ha-card {
+                    margin: 10px;
+                styles:
+                  card:
+                    - width: 120px
+                    - height: 120px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
+                    transition: 2
+                  haptic: light
+              - type: 'custom:button-card'
+                icon: 'mdi:white-balance-sunny'
+                show_icon: true
+                show_name: false
+                style: |
+                  ha-card {
+                    margin: 10px;
+                styles:
+                  card:
+                    - width: 120px
+                    - height: 120px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bright_lights
+                    transition: 2
+                  haptic: light
       - type: vertical-stack
         cards:
           - type: markdown
@@ -296,45 +189,3 @@
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
                 margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-              }
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: |
-              # Media
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-          - type: custom:mini-media-player
-            entity: media_player.teddy_s_speaker
-            info: scroll
-            artwork: cover
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-              }
