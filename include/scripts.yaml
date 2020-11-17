@@ -145,7 +145,7 @@ script:
         # color: "blue"
         # clickaction: "https://...."
         # tag: ""
-        # icon:
+        # icon: mdi:pill
         # group: "Motion"
         # priority: "high"
         # ttl: "0"

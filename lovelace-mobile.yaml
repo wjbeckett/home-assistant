@@ -374,6 +374,6 @@ button_card_templates:
 
 title:
 views:
-  !include_dir_merge_list lovelace/views2/
+  !include_dir_merge_list lovelace/views/
             
                 

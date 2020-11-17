@@ -1,434 +1,281 @@
-  - icon: mdi:home-assistant
-    id: home
-    title: Beckett Home
-    path: home
-    badges: []
+  - icon: mdi:home
+    id: Home
+    title: Home
+    panel: true
+    path: default_view
     cards:
-    - type: horizontal-stack
-      cards:
-        - type: markdown
-          card_size: 2
-          content: |
-            # {{ states('sensor.sidebar_greeting') }}
-            # It's {{ states('sensor.sidebar_day') }}, {{ states('sensor.sidebar_date') }}
-            
-            # Currently, {{ states('sensor.sidebar_active') }}
-          style:
-            .: |
-              ha-card {
-                --ha-card-background: none !important;
-                box-shadow: none !important;
-              }
-            ha-markdown:
-              $: |
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
-                
-        - type: weather-forecast
-          entity: weather.dark_sky
-          show_forecast: false
-          style: |
-            ha-card {
-              padding: 7px !important;
-              background: none;
-              box-shadow: none;
-            }
-            .name-state {
-              display: none !important;
-            }
-            .icon-image svg {
-              height: 50px;
-              margin-bottom: -20px !important;
-            }
-            .info, .temp-attribute, .temp, .icon-image, svg, .content {
-              display: inline !important;
-              text-align: right;
-              font-size: 30px;
-            }
-            .content {
-              position: absolute !important;
-              right: 16px !important;
-            }
-    
-    - type: vertical-stack
-      cards:
-        - type: markdown
-          content: |
-            # Rooms
-          style:
-            .: |
-              ha-card {
-                --ha-card-background: none !important;
-                box-shadow: none !important;
-              }
-            ha-markdown:
-              $: |
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
-        - type: vertical-stack
-          cards:
-            - type: custom:mod-card
-              card:
-                type: custom:layout-card
-                layout: horizontal
-                #min_columns: 2
-                column_width: 50%
-                justify_content: start
-                cards:
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: kitchen
-                      - name: Kitchen
-                      - icon: mdi:chef-hat
-                      - entity: light.kitchen_lights
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: loungeroom
-                      - name: Lounge Room
-                      - icon: mdi:sofa
-                      - entity: light.lounge_room_lamp
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: bedroom
-                      - name: Bedroom
-                      - icon: mdi:heart-outline
-                      - entity: light.bedroom_lamps
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: ollie_room
-                      - name: Ollie's Room
-                      - icon: mdi:paw
-                      - entity: light.ollie_s_lamp
-                  - type: custom:decluttering-card
-                    template: "simple_link"
-                    variables:
-                      - path: teddy_room
-                      - name: Teddy's Room
-                      - icon: mdi:pokeball
-                      - entity: light.teddy_s_lamp
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            title:
+            cards:
+              - type: markdown
+                content: >
+                 # {{ states('sensor.sidebar_greeting') }}
 
-    - type: vertical-stack
-      cards:
-        - type: markdown
-          content: |
-            # Security
-          style:
-            .: |
-              ha-card {
-                --ha-card-background: none !important;
-                box-shadow: none !important;
-              }
-            ha-markdown:
-              $: |
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
-        - type: horizontal-stack
-          cards:
-            - entity: alarm_control_panel.home_alarm
-              name: Home Alarm
-              show_state: true
-              state:
-                - styles:
-                    icon:
-                      - color: '#F0DC6E'
-                  value: pending
-                - styles:
-                    icon:
-                      - color: '#D3D2D0'
-                  value: disarmed
-                - styles:
-                    icon:
-                      - color: '#F9160B'
-                  value: armed_away
-                - styles:
-                    icon:
-                      - color: '#16A914'
-                  value: armed_home
-              template: standard_button
-              size: 30px
-              type: 'custom:button-card'
-              styles:
+                 ## {{ states('sensor.sidebar_active') }}
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                      margin-right: -100px;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 25px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+              - type: weather-forecast
+                entity: weather.home
+                show_forecast: false
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+                    .icon-image svg {
+                      margin-bottom: -20px !important;
+                      margin-top: -11px !important;
+                    }
+                    .content {
+                      position: absolute !important;
+                      right: 16px !important;
+                    }
+                    verynarrow !important;
+          - type: horizontal-stack
+            cards:
+              - type: entity-filter
+                show_empty: false
+                entities:
+                  - binary_sensor.area_front_door
+                  - binary_sensor.area_bedroom
+                  - binary_sensor.area_kitchen
+                  - binary_sensor.area_lounge_room
+                  - binary_sensor.area_ollie_s_room
+                  - binary_sensor.area_teddy_s_room
+                state_filter:
+                  - "on"
                 card:
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-              style: |
-                ha-card {
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'below_horizon') %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}    
-                }
-            - entity: input_boolean.guest_mode
-              name: guest mode
-              show_state: true
-              template: standard_button
-              size: 30px
-              type: 'custom:button-card'
-              state:
-                - icon: 'mdi:account-multiple'
-                  value: 'on'
-                  color: 'var(--paper-item-icon-active-color)'
-                - icon: 'mdi:account'
-                  value: 'off'
-              styles:
-                card:
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-              style: |
-                ha-card {
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.guest_mode', 'on') %}
-                      inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'above_horizon') and is_state('input_boolean.guest_mode', 'off') %}                      
-                      -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'below_horizon') and is_state('input_boolean.guest_mode', 'on') %}                      
-                      inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                    {% elif is_state('sun.sun', 'below_horizon') and is_state('input_boolean.guest_mode', 'off') %}   
-                      -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}    
-                }
-            - type: conditional
-              conditions:
-                - entity: binary_sensor.garage_door
-                  state: "on"
-              card:
-                type: 'custom:button-card'
-                entity: binary_sensor.garage_door
-                name: Back Door
-                show_state: true
+                  type: glance
+                  title: Sensors
+                  show_header_toggle: false
+          - type: horizontal-stack
+            cards:
+              - type: markdown
+                content: |
+                  # Home
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: person.william
+                triggers_update:
+                  ['person.william', 'sensor.time']
+                tap_action: !include popup/home_william.yaml
+                hold_action: !include popup/home_william.yaml
+                template: ['base', 'switch', 'person']
+
+              - type: custom:button-card
+                entity: person.emily
+                triggers_update:
+                  ['person.emily', 'sensor.time']
+                tap_action: !include popup/home_emily.yaml
+                hold_action: !include popup/home_emily.yaml
+                template: ['base', 'switch', 'person']
+
+              - type: custom:button-card
+                name: Alarm 
+                entity: alarm_control_panel.home_alarm
+                icon: mdi:shield-home
+                tap_action: !include popup/alarm_panel.yaml
+                template: ['base', 'alarm_panel']
+
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: markdown
+                    content: |
+                      # Rooms
+                    style:
+                      .: |
+                        ha-card {
+                          --ha-card-background: none !important;
+                          box-shadow: none !important;
+                        }
+                      ha-markdown:
+                        $: |
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    name: Kitchen
+                    icon: mdi:chef-hat
+                    entity: light.kitchen_lights
+                    show_state: false
+                    tap_action:
+                      action: navigate
+                      navigation_path: kitchen
+                    double_tap_action:
+                      action: toggle
+                      haptic: light
+                    template: ['base', 'room_nav']
+                  - type: custom:button-card
+                    name: Lounge Room
+                    icon: mdi:sofa
+                    entity: light.bedroom_lamps
+                    show_state: false
+                    tap_action:
+                      action: navigate
+                      navigation_path: loungeroom
+                    double_tap_action:
+                      action: toggle
+                      haptic: light
+                    template: ['base', 'room_nav']
+                  - type: custom:gap-card
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    name: Bedroom
+                    icon: mdi:heart-outline
+                    entity: light.bedroom_lamps
+                    show_state: false
+                    tap_action:
+                      action: navigate
+                      navigation_path: bedroom
+                    double_tap_action:
+                      action: toggle
+                      haptic: light
+                    template: ['base', 'room_nav']
+                  - type: custom:button-card
+                    name: Ollie's Room
+                    icon: mdi:paw
+                    entity: light.ollie_s_lamp
+                    show_state: false
+                    tap_action:
+                      action: navigate
+                      navigation_path: ollie_room
+                    double_tap_action:
+                      action: toggle
+                      haptic: light
+                    template: ['base', 'room_nav']
+                  - type: custom:button-card
+                    name: Teddy's Room
+                    icon: mdi:pokeball
+                    entity: light.teddy_s_lamp
+                    show_state: false
+                    tap_action:
+                      action: navigate
+                      navigation_path: teddy_room
+                    double_tap_action:
+                      action: toggle
+                      haptic: light
+                    template: ['base', 'room_nav']
+
+          - type: horizontal-stack
+            cards:
+              - type: markdown
+                content: |
+                  # Ollie's Meds
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.morning_meds_taken
+                name: Morning Meds
+                show_state: false
                 template: standard_button
-                state:
-                  - icon: 'mdi:garage-open-variant'
-                    value: open
-                    color: '#EF4F1A'
-                  - icon: 'mdi:garage-variant'
-                    value: closed
-                    color: '#00993E'
+                type: 'custom:button-card'
                 size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#6a6b74'
                 styles:
                   card:
                     - border-radius: 15px
                     - background-color: var(--primary-background-color)
                 style: |
                   ha-card {
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') %}
-                        -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}
-            - type: conditional
-              conditions:
-                - entity: binary_sensor.back_door
-                  state: "on"
-              card:
-                type: 'custom:button-card'
-                entity: binary_sensor.back_door
-                name: Back Door
-                show_state: true
-                template: standard_button
-                state:
-                  - icon: 'mdi:door-open'
-                    value: open
-                    color: '#EF4F1A'
-                  - icon: 'mdi:door-closed'
-                    value: closed
-                    color: '#00993E'
-                size: 30px
-                styles:
-                  card:
-                    - border-radius: 15px
-                    - background-color: var(--primary-background-color)
-                style: |
-                  ha-card {
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') %}
-                        -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}
-    - type: vertical-stack
-      cards:
-        - type: markdown
-          content: |
-            # Ollie's Meds
-          style:
-            .: |
-              ha-card {
-                --ha-card-background: none !important;
-                box-shadow: none !important;
-              }
-            ha-markdown:
-              $: |
-                h1 {
-                  font-size: 20px;
-                  font-weight: bold;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
-        - type: horizontal-stack
-          cards:
-            - entity: input_boolean.morning_meds_taken
-              name: Morning Meds
-              show_state: false
-              template: standard_button
-              type: 'custom:button-card'
-              size: 30px
-              state:
-                - icon: 'mdi:check-circle'
-                  value: 'on'
-                  color: '#00b800'
-                - icon: 'mdi:pill'
-                  value: 'off'
-                  color: '#D3D2D0'
-              styles:
-                card:
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-              style: |
-                ha-card {
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'below_horizon') %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}    
-                }
-            - entity: input_boolean.evening_meds_taken
-              name: Evening Meds
-              show_state: false
-              template: standard_button
-              type: 'custom:button-card'
-              size: 30px
-              state:
-                - icon: 'mdi:check-circle'
-                  value: 'on'
-                  color: '#00b800'
-                - icon: 'mdi:pill'
-                  value: 'off'
-                  color: '#D3D2D0'
-              styles:
-                card:
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-              style: |
-                ha-card {
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'below_horizon') %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}    
-                }
-            - entity: input_boolean.bedtime_meds_taken
-              name: Bedtime Meds
-              show_state: false
-              template: standard_button
-              type: 'custom:button-card'
-              size: 30px
-              state:
-                - icon: 'mdi:check-circle'
-                  value: 'on'
-                  color: '#00b800'
-                - icon: 'mdi:pill'
-                  value: 'off'
-                  color: '#D3D2D0'
-              styles:
-                card:
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-              style: |
-                ha-card {
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% elif is_state('sun.sun', 'below_horizon') %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}    
-                }
-    - type: vertical-stack
-      cards:        
-        - type: conditional
-          conditions:
-            - entity: sensor.garbage_general
-              state: "tomorrow"
-          card:
-            type: markdown
-            content: |
-              # Garbage Collection
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
+                    margin: 10px; 
                   }
-        - type: horizontal-stack
-          cards:
-            - type: custom:garbage-collection-card
-              entity: sensor.garbage_recycling
-              hide_before: 1
-              icon_size: 35px
-              icon_color: green
-              hide_date: true
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  border-radius: 15px;
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}   
-                }
-            - type: custom:garbage-collection-card
-              entity: sensor.garbage_general
-              hide_before: 1
-              icon_size: 35px
-              icon_color: '#0561ba'
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  border-radius: 15px;
-                  margin: 10px;
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                    {% endif %}   
-                }
+              - entity: input_boolean.evening_meds_taken
+                name: Evening Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#6a6b74'
+                styles:
+                  card:
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                style: |
+                  ha-card {
+                    margin: 10px; 
+                  }
+              - entity: input_boolean.bedtime_meds_taken
+                name: Bedtime Meds
+                show_state: false
+                template: standard_button
+                type: 'custom:button-card'
+                size: 30px
+                state:
+                  - icon: 'mdi:check-circle'
+                    value: 'on'
+                    color: '#00b800'
+                  - icon: 'mdi:pill'
+                    value: 'off'
+                    color: '#6a6b74'
+                styles:
+                  card:
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                style: |
+                  ha-card {
+                    margin: 10px;   
+                  }

@@ -27,11 +27,11 @@
                 letter-spacing: '-0.01em';
               }
             content: |
-              [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace/home)
+              [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
               # Kitchen
           - type: markdown
             content: |
-              # Lights
+              # Sensors
             style:
               .: |
                 ha-card {
@@ -48,6 +48,12 @@
                   }
           - type: horizontal-stack
             cards:
+              - type: glance
+                entities: 
+                  - binary_sensor.area_kitchen
+                  - binary_sensor.area_motion_kitchen
+          - type: horizontal-stack
+            cards:
               - type: 'custom:button-card'
                 icon: 'mdi:ceiling-light'
                 entity: light.kitchen_pendant_lights
@@ -61,17 +67,7 @@
                     value: 'on'
                 style: |
                   ha-card {
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_pendant_lights', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_pendant_lights', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_pendant_lights', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_pendant_lights', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}    
+                    margin: 10px;  
                   }
                 styles:
                   card:
@@ -81,8 +77,6 @@
                     - background-color: var(--primary-background-color)
                   name:
                     - font-size: 12px
-                  icon:
-                    - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
@@ -102,17 +96,7 @@
                     value: 'on'
                 style: |
                   ha-card {
-                    margin: 10px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_downlight', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.kitchen_downlight', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_downlight', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.kitchen_downlight', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}    
+                    margin: 10px;  
                   }
                 styles:
                   card:
@@ -122,14 +106,39 @@
                     - background-color: var(--primary-background-color)
                   name:
                     - font-size: 12px
-                  icon:
-                    - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
                 hold_action:
                   action: more-info
-                  haptic: light                
+                  haptic: light 
+              - type: custom:button-card
+                icon: mdi:television
+                name: Display
+                entity: media_player.kitchen_display
+                triggers_update:
+                  - media_player.kitchen_display
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)'
+                    value: 'playing'
+                style: |
+                  ha-card {
+                    margin: 10px;
+                styles:
+                  card:
+                    - width: 120px
+                    - height: 120px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                tap_action:
+                  services: |
+                    [[[ if (entity.state === 'off') {
+                    hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                    if (entity.state === 'on') {
+                    hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+                hold_action: more-info       
       - type: vertical-stack
         cards:
           - type: markdown
@@ -157,17 +166,12 @@
                 cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:brightness-3'
+                    name: Dim
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;  
                       }
                     styles:
                       card:
@@ -184,59 +188,14 @@
                         entity_id: scene.kitchen_dim
                         transition: 2
                     haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Dim
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Dims the kitchen lights
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-              - type: horizontal-stack
-                cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:white-balance-sunny'
+                    name: Bright
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                        {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                        {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                        {% endif %}    
+                        margin: 10px; 
                       }
                     styles:
                       card:
@@ -253,59 +212,14 @@
                         entity_id: scene.kitchen_bright
                         transition: 2
                     haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Bright
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Sets the kitchen lights to max brightness
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-              - type: horizontal-stack
-                cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:theater'
+                    name: Cozy
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;   
                       }
                     styles:
                       card:
@@ -322,59 +236,40 @@
                         entity_id: scene.cozy_kitchen_lights
                         transition: 2
                     haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Cozy
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Changes the pendant lights to purple and cayan
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                  - type: 'custom:button-card'
+                    icon: 'mdi:party-popper'
+                    name: Party!
+                    show_icon: true
+                    show_name: true
+                    style: |
+                      ha-card {
+                        margin: 10px;   
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      service: scene.turn_on
+                      service_data:
+                        entity_id: scene.party
+                        transition: 1
+                    haptic: light
               - type: horizontal-stack
                 cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:palm-tree'
+                    name: Tropical
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;   
                       }
                     styles:
                       card:
@@ -391,59 +286,14 @@
                         entity_id: scene.tropical_punch
                         transition: 2
                     haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Tropical
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Changes the pendant lights to green and pink
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-              - type: horizontal-stack
-                cards:
                   - type: 'custom:button-card'
                     icon: 'mdi:glasses'
+                    name: Blippi
                     show_icon: true
-                    show_name: false
+                    show_name: true
                     style: |
                       ha-card {
-                        margin: 10px;
-                        box-shadow: 
-                          {% if is_state('sun.sun', 'above_horizon') %}
-                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                          {% elif is_state('sun.sun', 'below_horizon') %}
-                            -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                          {% endif %}    
+                        margin: 10px;   
                       }
                     styles:
                       card:
@@ -460,63 +310,32 @@
                         entity_id: scene.blippi_mode
                         transition: 2
                     haptic: light
-                  - type: vertical-stack
-                    cards:
-                      - type: markdown
-                        content: |
-                          # Blippi Mode
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                              height: 20px; 
-                              margin-top: 15px;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
-                      - type: markdown
-                        content: |
-                          # Changes the lights to Blippi colours
-                        style:
-                          .: |
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                          ha-markdown:
-                            $: |
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                  - type: 'custom:button-card'
+                    icon: 'mdi:halloween'
+                    name: Spooky
+                    show_icon: true
+                    show_name: true
+                    style: |
+                      ha-card {
+                        margin: 10px;   
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      service: scene.turn_on
+                      service_data:
+                        entity_id: scene.halloween
+                        transition: 2
+                    haptic: light
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: |
-              # Temperature
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.kitchen_sensor_temperature
@@ -529,46 +348,5 @@
               ha-card {
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-              }
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: |
-              # Media
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown:
-                $: |
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-          - type: custom:mini-media-player
-            entity: media_player.kitchen_display
-            info: scroll
-            artwork: cover
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                margin: 10px; 
               }
