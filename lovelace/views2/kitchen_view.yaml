@@ -118,7 +118,7 @@
                   haptic: light 
               - type: custom:button-card
                 icon: mdi:television
-                name: Speaker
+                name: Display
                 entity: media_player.kitchen_display
                 triggers_update:
                   - media_player.kitchen_display
