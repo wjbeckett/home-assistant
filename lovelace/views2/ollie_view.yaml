@@ -60,27 +60,27 @@
               action: more-info
               haptic: light
           - type: custom:button-card
-              icon: mdi:google-home
-              name: Speaker
-              entity: media_player.ollie_s_speaker
-              triggers_update:
-                - media_player.ollie_s_speaker
-              style: |
-                ha-card {
-                  margin: 10px;
-              styles:
-                card:
-                  - width: 120px
-                  - height: 120px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-              tap_action:
-                services: |
-                  [[[ if (entity.state === 'off') {
-                  hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
-                  if (entity.state === 'on') {
-                  hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
-              hold_action: more-info
+            icon: mdi:google-home
+            name: Speaker
+            entity: media_player.ollie_s_speaker
+            triggers_update:
+              - media_player.ollie_s_speaker
+            style: |
+              ha-card {
+                margin: 10px;
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+            tap_action:
+              services: |
+                [[[ if (entity.state === 'off') {
+                hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                if (entity.state === 'on') {
+                hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+            hold_action: more-info
           - type: custom:button-card
             entity: climate.ollie_room
             name: AC
