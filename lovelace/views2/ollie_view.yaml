@@ -29,6 +29,8 @@
             content: |
               [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
               <h1>Ollie's Room</h1>
+      - type: horizontal-stack
+        cards:
           - type: 'custom:button-card'
             icon: 'mdi:lamp'
             entity: light.ollie_s_lamp
@@ -84,6 +86,7 @@
           - type: custom:button-card
             entity: climate.ollie_room
             name: AC
+            icon: mdi:air-conditioner
             triggers_update:
               ['climate.ollie_room', 'input_boolean.climate_ollie']
             style: |
@@ -122,7 +125,8 @@
               - type: 'custom:button-card'
                 icon: 'mdi:sleep'
                 show_icon: true
-                show_name: false
+                show_name: true
+                name: Night Light
                 style: |
                   ha-card {
                     margin: 10px;
@@ -144,7 +148,8 @@
               - type: 'custom:button-card'
                 icon: 'mdi:white-balance-sunny'
                 show_icon: true
-                show_name: false
+                show_name: true
+                name: Bright
                 style: |
                   ha-card {
                     margin: 10px;

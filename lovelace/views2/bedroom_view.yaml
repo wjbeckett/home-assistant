@@ -51,7 +51,7 @@
             - type: glance
               entities: 
                 - binary_sensor.area_bedroom
-    - type: vertical-stack
+    - type: horizontal-stack
       cards:
         - type: 'custom:button-card'
           icon: 'mdi:lamp'
@@ -106,7 +106,7 @@
           hold_action: more-info
         - type: custom:button-card
           icon: mdi:television
-          name: Speaker
+          name: TV
           entity: media_player.bedroom_tv
           triggers_update:
             - media_player.bedroom_tv
@@ -131,6 +131,8 @@
         - type: custom:button-card
           entity: climate.bedroom
           name: AC
+          show_state: true
+          icon: mdi:air-conditioner
           triggers_update:
             ['climate.bedroom', 'input_boolean.climate_bedroom']
           style: |
@@ -169,14 +171,15 @@
             - type: 'custom:button-card'
               icon: 'mdi:sleep'
               show_icon: true
-              show_name: false
+              show_name: true
+              name: Night Light
               style: |
                 ha-card {
                   margin: 10px;
               styles:
                 card:
-                  - width: 80px
-                  - height: 80px
+                  - width: 120px
+                  - height: 120px
                   - border-radius: 15px
                   - background-color: var(--primary-background-color)
                 icon:
@@ -191,14 +194,15 @@
             - type: 'custom:button-card'
               icon: 'mdi:white-balance-sunny'
               show_icon: true
-              show_name: false
+              show_name: true
+              name: Bright
               style: |
                 ha-card {
                   margin: 10px;
               styles:
                 card:
-                  - width: 80px
-                  - height: 80px
+                  - width: 120px
+                  - height: 120px
                   - border-radius: 15px
                   - background-color: var(--primary-background-color)
                 icon:
@@ -213,14 +217,15 @@
             - type: 'custom:button-card'
               icon: 'mdi:television'
               show_icon: true
-              show_name: false
+              show_name: true
+              name: TV Time!
               style: |
                 ha-card {
                   margin: 10px;
               styles:
                 card:
-                  - width: 80px
-                  - height: 80px
+                  - width: 120px
+                  - height: 120px
                   - border-radius: 15px
                   - background-color: var(--primary-background-color)
                 icon:

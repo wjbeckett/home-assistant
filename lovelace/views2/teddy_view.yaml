@@ -29,6 +29,8 @@
             content: |
               [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
               <h1>Teddy's Room</h1>
+      - type: horiontal-stack
+        cards:
           - type: 'custom:button-card'
             icon: 'mdi:wall-sconce-round-variant'
             entity: light.teddy_s_lamp
@@ -84,6 +86,7 @@
           - type: custom:button-card
             entity: climate.teddy_room
             name: AC
+            icon: mdi:air-conditioner
             triggers_update:
               ['climate.teddy_room', 'input_boolean.climate_teddy']
             style: |
@@ -122,7 +125,8 @@
               - type: 'custom:button-card'
                 icon: 'mdi:sleep'
                 show_icon: true
-                show_name: false
+                show_name: true
+                name: Night Light
                 style: |
                   ha-card {
                     margin: 10px;
@@ -144,7 +148,8 @@
               - type: 'custom:button-card'
                 icon: 'mdi:white-balance-sunny'
                 show_icon: true
-                show_name: false
+                show_name: true
+                name: Bright
                 style: |
                   ha-card {
                     margin: 10px;
