@@ -74,8 +74,6 @@
               - background-color: var(--primary-background-color)
             name:
               - font-size: 12px
-            icon:
-              - color: var(--primary-text-color)
           tap_action:
             action: toggle
             haptic: light
