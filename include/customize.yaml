@@ -91,6 +91,11 @@ homeassistant:
       friendly_name: Loggfil
       icon: mdi:file-document
 
+    sensor.outside_temp:
+      friendly_name: Outside Temperature
+      icon: mdi:thermometer
+      device_class: temperature
+
 
     #media_player
 
