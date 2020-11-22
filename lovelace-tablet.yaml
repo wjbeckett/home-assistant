@@ -25,11 +25,9 @@ views:
           }
         elements:
           - prefix: Lounge Room
-            <<: *title
             style:
               top: 9.15%
               left: 25.4%
-              <<: *title-style
               
           - type: 'custom:button-card'
             icon: 'mdi:floor-lamp'
