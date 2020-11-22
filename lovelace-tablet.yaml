@@ -618,6 +618,12 @@ views:
             #  Mini Media Player Card:
             #  https://github.com/kalkih/mini-media-player
 
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                icon: 'mdi:floor-lamp'
+                entity: light.bedroom_lamps
+                
           - conditions:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
