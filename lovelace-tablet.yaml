@@ -628,6 +628,9 @@ views:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
             elements:
+              - type: 'custom:button-card'
+                icon: 'mdi:floor-lamp'
+                entity: light.bedroom_lamps
               - artwork: full-cover
                 entity: media_player.kitchen_display
                 hide:
