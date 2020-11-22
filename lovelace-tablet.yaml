@@ -349,11 +349,11 @@ views:
             
           - color_thresholds:
               - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
                 value: 15
-              - color: '#ff1a1a'
+              - color: '#ffa31a'
                 value: 20
+              - color: '#ff1a1a'
+                value: 30
             entities:
               - sensor.kitchen_sensor_temperature
               - sensor.outside_temp
@@ -383,6 +383,7 @@ views:
               ha-card {
                 background: none  !important;
                 padding: 0 !important;
+                box-shadow: none !important;
               }
               .icon > ha-icon {
                 width:1.8vw !important;
@@ -1691,4 +1692,16 @@ views:
             - value: "off"
               label: Clear
             - value: "on"
-              label: Detected 
+              label: Detected
+      - type: 'custom:mini-graph-card'
+        color_thresholds:
+          - color: '#4dd2ff'
+            value: 15
+          - color: '#ffa31a'
+            value: 20
+          - color: '#ff1a1a'
+            value: 30
+        entities:
+          - sensor.kitchen_sensor_temperature
+          - sensor.outside_temp
+        icon: 'mdi:home-thermometer-outline'
