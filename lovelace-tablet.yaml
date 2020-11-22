@@ -24,14 +24,15 @@ views:
             background: rgba(42, 46, 48, 1)
           }
         elements:
-      
             #################################################################
             #                                                               #
             #                     Homekit Styled Card:                      #
             #         https://github.com/DBuit/Homekit-panel-card           #
             #                                                               #
-            #################################################################
-            
+            #################################################################  
+          - type: custom:button-card
+            icon: mdi:floor-lamp
+            entity: light.bedroom_lamps
           - type: grid
             title: Lounge Room
             square: false
