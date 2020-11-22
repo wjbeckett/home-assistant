@@ -36,8 +36,8 @@ views:
                 value: 'on'
             style: |
               :host {
-                left: 46% !important;
-                top: 39.8% !important;
+                top: 20.35%
+                left: 30.31%
               }
               ha-card {
                 margin: 10px;
