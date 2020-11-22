@@ -24,162 +24,153 @@ views:
             background: rgba(42, 46, 48, 1)
           }
         elements:
-          - type: horizontal-stack
-            cards:
-              - type: grid
-                title: Lounge Room
-                square: false
-                columns: 3
-                style: |
-                  :host {
-                    left: 46% !important;
-                    top: 39.8% !important;
-                  }
-                cards:
-                  - type: 'custom:button-card'
-                    icon: 'mdi:floor-lamp'
-                    #entity: light.lounge_room_lamp
-                    show_icon: true
-                    show_name: true
-                    state:
-                      - styles:
-                          icon:
-                            - color: 'var(--paper-item-icon-active-color)'
-                        value: 'on'
-                    style: |
-                      ha-card {
-                        margin: 10px;
-                    styles:
-                      card:
-                        - width: 120px
-                        - height: 120px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                      name:
-                        - font-size: 12px
-                    tap_action:
-                      action: toggle
-                      haptic: light
-                    hold_action:
-                      action: more-info
-                      haptic: light
-                  - type: custom:button-card
-                    icon: mdi:television
-                    name: TV
-                    entity: media_player.lounge_room_tv
-                    triggers_update:
-                      - media_player.lounge_room_tv
-                    state:
-                      - styles:
-                          icon:
-                            - color: 'var(--paper-item-icon-active-color)'
-                        value: 'playing'
-                    style: |
-                      ha-card {
-                        margin: 10px;
-                    styles:
-                      card:
-                        - width: 120px
-                        - height: 120px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                    tap_action:
-                      services: |
-                        [[[ if (entity.state === 'off') {
-                        hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
-                        if (entity.state === 'on') {
-                        hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
-                    hold_action: !include lovelace/views/popup/lounge_room_remote.yaml
-              - type: grid
-                title: Kitchen
-                square: false
-                columns: 3
-                cards:
-                  - type: 'custom:button-card'
-                    icon: 'mdi:ceiling-light'
-                    entity: light.kitchen_pendant_lights
-                    name: Kitchen Pendants
-                    show_icon: true
-                    show_name: true
-                    state:
-                      - styles:
-                          icon:
-                            - color: 'var(--paper-item-icon-active-color)  '
-                        value: 'on'
-                    style: |
-                      ha-card {
-                        margin: 10px;  
-                      }
-                    styles:
-                      card:
-                        - width: 120px
-                        - height: 120px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                      name:
-                        - font-size: 12px
-                    tap_action:
-                      action: toggle
-                      haptic: light
-                    hold_action:
-                      action: more-info
-                      haptic: light
-                  - type: 'custom:button-card'
-                    icon: 'mdi:lightbulb'
-                    entity: light.kitchen_downlight
-                    name: Kitchen Downlight
-                    show_icon: true
-                    show_name: true
-                    state:
-                      - styles:
-                          icon:
-                            - color: 'var(--paper-item-icon-active-color)  '
-                        value: 'on'
-                    style: |
-                      ha-card {
-                        margin: 10px;  
-                      }
-                    styles:
-                      card:
-                        - width: 120px
-                        - height: 120px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                      name:
-                        - font-size: 12px
-                    tap_action:
-                      action: toggle
-                      haptic: light
-                    hold_action:
-                      action: more-info
-                      haptic: light 
-                  - type: custom:button-card
-                    icon: mdi:television
-                    name: Display
-                    entity: media_player.kitchen_display
-                    triggers_update:
-                      - media_player.kitchen_display
-                    state:
-                      - styles:
-                          icon:
-                            - color: 'var(--paper-item-icon-active-color)'
-                        value: 'playing'
-                    style: |
-                      ha-card {
-                        margin: 10px;
-                    styles:
-                      card:
-                        - width: 120px
-                        - height: 120px
-                        - border-radius: 15px
-                        - background-color: var(--primary-background-color)
-                    tap_action:
-                      services: |
-                        [[[ if (entity.state === 'off') {
-                        hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
-                        if (entity.state === 'on') {
-                        hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
-                    hold_action: more-info
+          - prefix: Lounge Room
+            <<: *title
+            style:
+              top: 9.15%
+              left: 25.4%
+              <<: *title-style
+              
+          - type: 'custom:button-card'
+            icon: 'mdi:floor-lamp'
+            #entity: light.lounge_room_lamp
+            show_icon: true
+            show_name: true
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)'
+                value: 'on'
+            style: |
+              ha-card {
+                margin: 10px;
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              name:
+                - font-size: 12px
+            tap_action:
+              action: toggle
+              haptic: light
+            hold_action:
+              action: more-info
+              haptic: light
+          - type: custom:button-card
+            icon: mdi:television
+            name: TV
+            entity: media_player.lounge_room_tv
+            triggers_update:
+              - media_player.lounge_room_tv
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)'
+                value: 'playing'
+            style: |
+              ha-card {
+                margin: 10px;
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+            tap_action:
+              services: |
+                [[[ if (entity.state === 'off') {
+                hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                if (entity.state === 'on') {
+                hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+            hold_action: !include lovelace/views/popup/lounge_room_remote.yaml
+
+          - type: 'custom:button-card'
+            icon: 'mdi:ceiling-light'
+            entity: light.kitchen_pendant_lights
+            name: Kitchen Pendants
+            show_icon: true
+            show_name: true
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)  '
+                value: 'on'
+            style: |
+              ha-card {
+                margin: 10px;  
+              }
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              name:
+                - font-size: 12px
+            tap_action:
+              action: toggle
+              haptic: light
+            hold_action:
+              action: more-info
+              haptic: light
+          - type: 'custom:button-card'
+            icon: 'mdi:lightbulb'
+            entity: light.kitchen_downlight
+            name: Kitchen Downlight
+            show_icon: true
+            show_name: true
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)  '
+                value: 'on'
+            style: |
+              ha-card {
+                margin: 10px;  
+              }
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              name:
+                - font-size: 12px
+            tap_action:
+              action: toggle
+              haptic: light
+            hold_action:
+              action: more-info
+              haptic: light 
+          - type: custom:button-card
+            icon: mdi:television
+            name: Display
+            entity: media_player.kitchen_display
+            triggers_update:
+              - media_player.kitchen_display
+            state:
+              - styles:
+                  icon:
+                    - color: 'var(--paper-item-icon-active-color)'
+                value: 'playing'
+            style: |
+              ha-card {
+                margin: 10px;
+            styles:
+              card:
+                - width: 120px
+                - height: 120px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+            tap_action:
+              services: |
+                [[[ if (entity.state === 'off') {
+                hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                if (entity.state === 'on') {
+                hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+            hold_action: more-info
             
             #################################################################
             #                                                               #
