@@ -1,8 +1,0 @@
-              action: call-service
-              service: browser_mod.popup
-              service_data:
-                title: Teddy's AC
-                deviceID: this
-                card:
-                  type: thermostat
-                  entity: climate.teddy_room

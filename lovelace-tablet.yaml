@@ -92,7 +92,7 @@ views:
                         hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
                         if (entity.state === 'on') {
                         hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
-                    hold_action: !include popup/lounge_room_remote.yaml
+                    hold_action: !include views/popup/lounge_room_remote.yaml
               - type: grid
                 title: Kitchen
                 square: false
