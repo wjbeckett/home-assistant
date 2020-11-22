@@ -1,25 +1,10 @@
-custom_header:
-  compact_mode: true
-  editor_warnings: false
-  exceptions:
-    - conditions:
-        user_agent: Lenovo
-      config:
-        disable_sidebar: true
-        hide_header: true
-        kiosk_mode: true
-    - conditions:
-        user: tablet
-      config:
-        disable_sidebar: true
-        kiosk_mode: true
-    - conditions:
-        device_id: e98effc3-b940ce40
-      config:
-        disable_sidebar: true
-        kiosk_mode: true
+kiosk_mode:
+  user_settings:
+    - users:
+        - "tablet"
+      kiosk: true
   
-title: Lust & Freud
+title: Beckett Home
 views:
 
     #############################################################################################################################################
