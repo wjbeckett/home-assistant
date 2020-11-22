@@ -31,7 +31,8 @@ recorder:
   include:
     entities:
       ['person.william', 'person.emily','sensor.speedtest_download', 'sensor.speedtest_upload', 
-      'sensor.speedtest_ping', 'sensor.kitchen_sensor_temperature', 'binary_sensor.front_door_motion', 'binary_sensor.front_door',]
+      'sensor.speedtest_ping', 'sensor.kitchen_sensor_temperature', 'binary_sensor.front_door_motion', 'binary_sensor.front_door',
+      'sensor.outside_temp',]
 
 hacs:
   token: !secret hacs_token
