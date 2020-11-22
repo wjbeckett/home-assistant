@@ -70,6 +70,24 @@ binary_sensor:
             No
           {% endif %}
 
+      day:
+        value_template: >
+          {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+          {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
+          {{ days[now().weekday()] }}
+      month:
+        value_template: >
+          {% set months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+          {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
+          {{ months[now().month-1] }}
+      date_string:
+        friendly_name: "Full Date"
+        value_template: "{{ states('sensor.day') }}, {{ states('sensor.month') }} {{ now().year }}"
+
+      outside_temp:
+        friendly_name: "Outside Temp"
+        value_template: "{{ state_attr('weather.home','temperature') }}"
+
 sensor:
 
     ####################################################
@@ -137,6 +155,22 @@ sensor:
   #  resource: !secret fullykiosk_rest_resource
   #  value_template: '{{ value_json.isScreenOn }}'
   #  scan_interval: 10
+
+  - platform: plex_recently_added
+    name: Recently Added Movies # will create sensor.recently_added_movies
+    token: !secret plex_token
+    host: !secret plex_host
+    port: 32400
+    section_types:
+    - movie
+
+  - platform: plex_recently_added
+    name: Recently Added TV  # will create sensor.recently_added_tv
+    token: !secret plex_token
+    host: !secret plex_host
+    port: 32400
+    section_types:
+    - show
 
 
 

@@ -9,11 +9,11 @@ views:
 
     #############################################################################################################################################
     #                                                                                                                                           #
-    #                                                   All Devices (Entities) Homekit Style View                                               #
+    #                                                   Device Control                                                                          #
     #                                                                                                                                           #
     #############################################################################################################################################
 
-  - title: Tasks        
+  - title: Control        
     icon: 'mdi:home'
     panel: true
     cards:
@@ -32,96 +32,158 @@ views:
             #                                                               #
             #################################################################
             
-          - enableColumns: true
-            popup:
-              brightnessHeight: 350px
-              brightnessWidth: 130px
-              scenesInARow: 2
-              switchHeight: 300px
-              switchWidth: 110px
-              type: 'custom:light-popup-card'
-            rows:
-              - columns:
-                  - column: 1
-                    entities:
-                      - entities:
-                          - entity: light.table
-                            icon: 'mdi:ceiling-light'
-                          - entity: light.couch
-                          - entity: light.cabinet
-                            icon: 'mdi:lamp'
-                        title: Living Room
-                    tileOnRow: 2
-                  - column: 3
-                    entities:
-                      - entities:
-                          - entity: light.bed
-                            icon: 'mdi:desk-lamp'
-                          - entity: light.bedroom_roof
-                            icon: 'mdi:ceiling-light'
-                        title: Bedroom
-                    tileOnRow: 1
-                  - column: 3
-                    entities:
-                      - entities:
-                          - entity: light.study
-                            icon: 'mdi:ceiling-light'
-                          - entity: light.balcony
-                            icon: 'mdi:coach-lamp'
-                        title: Study
-                    tileOnRow: 1
-                  - column: 4
-                    entities:
-                      - entities:
-                          - entity: light.stairs
-                            icon: 'mdi:track-light'
-                          - entity: light.door
-                            icon: 'mdi:track-light'
-                        title: Stairs
-                    tileOnRow: 1
-                row: 1
-              - columns:
-                  - column: 1
-                    entities:
-                      - entities:
-                          - entity: light.kitchen_1
-                          - entity: light.kitchen_2
-                          - entity: light.kitchen_3
-                          - entity: light.kitchen_4
-                        title: Kitchen
-                    tileOnRow: 2
-                  - column: 2
-                    entities:
-                      - entities:
-                          - entity: light.roof_garden
-                            icon: 'mdi:lava-lamp'
-                          - entity: light.roof_plants
-                            icon: 'mdi:lava-lamp'
-                        title: Roof
-                    tileOnRow: 1
-                  - column: 3
-                    entities:
-                      - entities:
-                          - entity: binary_sensor.stairs_detector_motion
-                            icon: 'mdi:walk'
-                        title: Motion
-                    tileOnRow: 1
-                  - column: 4
-                    entities:
-                      - entities:
-                          - entity: group.all_lights
-                            icon: 'mdi:home'
-                        title: All Lights
-                    tileOnRow: 1
-                row: 2
-            statePositionTop: true
-            style:
-              height: 87%
-              left: 62%
-              top: 50%
-              width: 68%
-            type: 'custom:homekit-card'
-
+          - type: horizontal-stack
+            cards:
+              - type: grid
+                title: Lounge Room
+                square: false
+                columns: 3
+                cards:
+                  - type: 'custom:button-card'
+                    icon: 'mdi:floor-lamp'
+                    #entity: light.lounge_room_lamp
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - styles:
+                          icon:
+                            - color: 'var(--paper-item-icon-active-color)'
+                        value: 'on'
+                    style: |
+                      ha-card {
+                        margin: 10px;
+                    styles:
+                      card:
+                        - width: 120px
+                        - height: 120px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      name:
+                        - font-size: 12px
+                    tap_action:
+                      action: toggle
+                      haptic: light
+                    hold_action:
+                      action: more-info
+                      haptic: light
+                  - type: custom:button-card
+                    icon: mdi:television
+                    name: TV
+                    entity: media_player.lounge_room_tv
+                    triggers_update:
+                      - media_player.lounge_room_tv
+                    state:
+                      - styles:
+                          icon:
+                            - color: 'var(--paper-item-icon-active-color)'
+                        value: 'playing'
+                    style: |
+                      ha-card {
+                        margin: 10px;
+                    styles:
+                      card:
+                        - width: 120px
+                        - height: 120px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                    tap_action:
+                      services: |
+                        [[[ if (entity.state === 'off') {
+                        hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                        if (entity.state === 'on') {
+                        hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+                    hold_action: !include popup/lounge_room_remote.yaml
+              - type: grid
+                title: Kitchen
+                square: false
+                columns: 3
+                cards:
+                  - type: 'custom:button-card'
+                    icon: 'mdi:ceiling-light'
+                    entity: light.kitchen_pendant_lights
+                    name: Kitchen Pendants
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - styles:
+                          icon:
+                            - color: 'var(--paper-item-icon-active-color)  '
+                        value: 'on'
+                    style: |
+                      ha-card {
+                        margin: 10px;  
+                      }
+                    styles:
+                      card:
+                        - width: 120px
+                        - height: 120px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      name:
+                        - font-size: 12px
+                    tap_action:
+                      action: toggle
+                      haptic: light
+                    hold_action:
+                      action: more-info
+                      haptic: light
+                  - type: 'custom:button-card'
+                    icon: 'mdi:lightbulb'
+                    entity: light.kitchen_downlight
+                    name: Kitchen Downlight
+                    show_icon: true
+                    show_name: true
+                    state:
+                      - styles:
+                          icon:
+                            - color: 'var(--paper-item-icon-active-color)  '
+                        value: 'on'
+                    style: |
+                      ha-card {
+                        margin: 10px;  
+                      }
+                    styles:
+                      card:
+                        - width: 120px
+                        - height: 120px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      name:
+                        - font-size: 12px
+                    tap_action:
+                      action: toggle
+                      haptic: light
+                    hold_action:
+                      action: more-info
+                      haptic: light 
+                  - type: custom:button-card
+                    icon: mdi:television
+                    name: Display
+                    entity: media_player.kitchen_display
+                    triggers_update:
+                      - media_player.kitchen_display
+                    state:
+                      - styles:
+                          icon:
+                            - color: 'var(--paper-item-icon-active-color)'
+                        value: 'playing'
+                    style: |
+                      ha-card {
+                        margin: 10px;
+                    styles:
+                      card:
+                        - width: 120px
+                        - height: 120px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                    tap_action:
+                      services: |
+                        [[[ if (entity.state === 'off') {
+                        hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                        if (entity.state === 'on') {
+                        hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+                    hold_action: more-info
+            
             #################################################################
             #                                                               #
             #                     SIDEBAR : ALL DEVICES                     #
@@ -245,7 +307,7 @@ views:
             type: 'custom:text-element'
             
           - action: none
-            entity: person.luke_vink
+            entity: person.william
             state_image:
               home: /local/people/luke.png
               not_home: /local/people/lukeGone.png
@@ -259,7 +321,7 @@ views:
             tap_action: none
             type: image
           - action: none
-            entity: person.santa_stibe
+            entity: person.emily
             state_image:
               home: /local/people/santa.png
               not_home: /local/people/santaGone.png
@@ -307,8 +369,8 @@ views:
               - color: '#ff1a1a'
                 value: 20
             entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
+              - sensor.kitchen_sensor_temperature
+              - sensor.outside_temp
             icon: 'mdi:home-thermometer-outline'
             show:
               icon: true
@@ -359,7 +421,7 @@ views:
             
             #########################    WEATHER SIDEBAR CARD    #########################
           - backdrop: false
-            entity: weather.buienweather
+            entity: weather.home
             name: ' '
             style: |
               :host {
@@ -423,7 +485,7 @@ views:
             
             #########################    NOW PLAYING SPOTIFY MENU BUTTON    #########################
             
-          - entity: media_player.spotify_luke_vink
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -552,79 +614,7 @@ views:
     panel: true
     badges: []
     cards:
-      - elements:
-      
-            #########################    SPEAKER CONTROL BAR    #########################
-            # controls an IR blaster to control my 'not connected' surround sound speakers
-            
-          - action: none
-            entity: switch.speakers
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_PowerOff.png
-              'on': /local/ui/btns/speakers_PowerOn.png
-            style:
-              left: 31.7%
-              top: 86.3%
-              width: 12.578125%
-            tap_action:
-              action: toggle
-            type: image
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/btns/speakers_volumeBG.png
-            style:
-              left: 81.5%
-              top: 86%
-              width: 25.820312499999996%
-            tap_action:
-              action: none
-            type: image
-          - action: none
-            entity: switch.speakers_up
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_volumeUp.png
-              'on': /local/ui/btns/speakers_volumeUp.png
-            style:
-              left: 87.8%
-              top: 86%
-              width: 15%
-            tap_action:
-              action: toggle
-            type: image
-          - action: none
-            entity: switch.speakers_down
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_volumeDown.png
-              'on': /local/ui/btns/speakers_volumeDown.png
-            style:
-              left: 75.3%
-              top: 86%
-              width: 15%
-            tap_action:
-              action: toggle
-            type: image
-          - action: none
-            entity: switch.projector_audio
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_bluetooth.png
-              'on': /local/ui/btns/speakers_projector.png
-            style:
-              left: 51.5%
-              top: 86%
-              width: 27.890625%
-            tap_action:
-              action: toggle
-            type: image
-            
+      - elements:            
             ###########################################################################
             #                                                                         #
             #                 IF PROJECTOR NOT ON, SHOW SPOTIFY:                      #
@@ -633,13 +623,13 @@ views:
 
             #  Mini Media Player Card:
             #  https://github.com/kalkih/mini-media-player
-            
+
           - conditions:
-              - entity: device_tracker.projector
-                state: not_home
+              - entity: media_player.plex_lounge_room_tv
+                state_not: playing
             elements:
               - artwork: full-cover
-                entity: media_player.spotify_luke_vink
+                entity: media_player.kitchen_display
                 hide:
                   power: true
                   progress: false
@@ -665,45 +655,45 @@ views:
             
             # Spotify Playlists Card:
             # https://github.com/custom-cards/spotify-card
-          - type: conditional
-            conditions:
-            - entity: device_tracker.projector
-              state: not_home
-            elements:
-                - type: 'custom:spotify-card'
-                  limit: 10
-                  always_play_random_song: true   
-                  name:
-                  style: | 
-                    :host {
-                        left: 79.5%; 
-                        top: 39.8%;
-                        width: 31%;
-                        height: 62.3%;
-                        border-radius: 1vw;
-                    }
-                    #header{
-                        display:none !important;
-                    }
-                    #content{
-                        border:none !important;
-                    }
-                    .playback-controls{
-                        display:none !important;    
-                    }
-                    #header-track{
-                        display:none;
-                    }
-                    .list-item > p{
-                        white-space: nowrap; 
-                            overflow: hidden;
-                    }
-                    .list-item{
-                        border-radius: 0.2vw;
-                        overflow:hidden;
-                        border:none !important;
-                        margin-bottom:2px;
-                    }
+          #- type: conditional
+          #  conditions:
+          #  - entity: device_tracker.projector
+          #    state: not_home
+          ##  elements:
+          #      - type: 'custom:spotify-card'
+          ##        limit: 10
+          #        always_play_random_song: true   
+          ##        name:
+          #        style: | 
+          #          :host {
+          #              left: 79.5%; 
+          #              top: 39.8%;
+          #              width: 31%;
+          #              height: 62.3%;
+          #              border-radius: 1vw;
+          #          }
+          #          #header{
+          #              display:none !important;
+          #          }
+          #          #content{
+          #              border:none !important;
+          ##          }
+          #          .playback-controls{
+          #              display:none !important;    
+          #          }
+          #          #header-track{
+          #              display:none;
+          #          }
+          #          .list-item > p{
+          #              white-space: nowrap; 
+          #                  overflow: hidden;
+          #          }
+          #          .list-item{
+          #              border-radius: 0.2vw;
+          #              overflow:hidden;
+          #              border:none !important;
+          #              margin-bottom:2px;
+          #          }
             
             ###########################################################################
             #                                                                         #
@@ -715,13 +705,13 @@ views:
             # https://github.com/kalkih/mini-media-player            
             
           - conditions:
-              - entity: device_tracker.projector
-                state_not: not_home
+              - entity: media_player.plex_lounge_room_tv
+                state: playing
               - entity: media_player.spotify_luke_vink
                 state_not: playing
             elements:
               - artwork: cover
-                entity: media_player.plex_projector
+                entity: media_player.plex_lounge_room_tv
                 hide:
                   icon: true
                   mute: false
@@ -754,9 +744,9 @@ views:
             # https://github.com/custom-components/sensor.plex_recently_added
             
           - conditions:
-              - entity: device_tracker.projector
-                state_not: not_home
-              - entity: media_player.spotify_luke_vink
+              - entity: media_player.plex_lounge_room_tv
+                state: playing
+              - entity: media_player.kitchen_display
                 state_not: playing
             elements:
               - entity: sensor.recently_added_tv
@@ -768,9 +758,9 @@ views:
                 type: 'custom:upcoming-media-card'
             type: conditional
           - conditions:
-              - entity: device_tracker.projector
-                state_not: not_home
-              - entity: media_player.spotify_luke_vink
+              - entity: media_player.plex_lounge_room_tv
+                state: playing
+              - entity: media_player.kitchen_display
                 state_not: playing
             elements:
               - entity: sensor.recently_added_movies
@@ -784,7 +774,7 @@ views:
             
             #################################################################
             #                                                               #
-            #                             SIDEBAR                           #
+            #                             SIDEBAR: Media View               #
             #                                                               #
             #################################################################            
             
@@ -897,7 +887,7 @@ views:
             type: 'custom:text-element'
             
           - action: none
-            entity: person.luke_vink
+            entity: person.william
             state_image:
               home: /local/people/luke.png
               not_home: /local/people/lukeGone.png
@@ -911,7 +901,7 @@ views:
             tap_action: none
             type: image
           - action: none
-            entity: person.santa_stibe
+            entity: person.emily
             state_image:
               home: /local/people/santa.png
               not_home: /local/people/santaGone.png
@@ -956,8 +946,8 @@ views:
               - color: '#ff1a1a'
                 value: 20
             entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
+              - sensor.kitchen_sensor_temperature
+              - sensor.outside_temp
             icon: 'mdi:home-thermometer-outline'
             show:
               icon: true
@@ -1006,7 +996,7 @@ views:
               navigation_path: /lovelace/4
             type: 'custom:mini-graph-card'
           - backdrop: false
-            entity: weather.buienweather
+            entity: weather.home
             name: ' '
             style: |
               :host {
@@ -1064,7 +1054,7 @@ views:
               top: 50%
               width: 1.2109375%
             type: image
-          - entity: media_player.spotify_luke_vink
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1234,43 +1224,9 @@ views:
     badges: []
     cards:
       - elements:
-          - fillColor: 'rgba(89, 160, 238, 0.2)'
-            lat: 53.361455
-            lineColor: 'rgba(89, 160, 238, 1)'
-            update_interval: 20
-            long: 6.866892
-            style: |
-              :host {
-                left: 60.5%;
-                top:  80%;
-                width: 68%;
-                overflow: hidden;
-                height: 28%;
-                background: none !important;
-                box-shadow: none !important;
-              }
-              ha-card {
-                height: 100%;
-                background: none  !important;
-                box-shadow: none !important;
-                border-radius: 1vw;
-                position: relative;
-                font-size: 1vw !important;
-              }
-              .chart-container {
-                  height:100%;
-                  width:100%
-              }
-              #container {
-                  height:100%;
-                  width:100%;
-                  padding: 0 !important;
-                  margin: 0 !important;
-              }
-            type: 'custom:buien-rain-forecast'
           - current: true
             details: true
-            entity: weather.buienweather
+            entity: weather.home
             forecast: true
             name: Weather
             style: |
@@ -1415,7 +1371,7 @@ views:
             type: 'custom:text-element'
             
           - action: none
-            entity: person.luke_vink
+            entity: person.william
             state_image:
               home: /local/people/luke.png
               not_home: /local/people/lukeGone.png
@@ -1429,7 +1385,7 @@ views:
             tap_action: none
             type: image
           - action: none
-            entity: person.santa_stibe
+            entity: person.emily
             state_image:
               home: /local/people/santa.png
               not_home: /local/people/santaGone.png
@@ -1474,8 +1430,8 @@ views:
               - color: '#ff1a1a'
                 value: 20
             entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
+              - sensor.kitchen_sensor_temperature
+              - sensor.outside_temp
             icon: 'mdi:home-thermometer-outline'
             show:
               icon: true
@@ -1524,7 +1480,7 @@ views:
               navigation_path: /lovelace/4
             type: 'custom:mini-graph-card'
           - backdrop: false
-            entity: weather.buienweather
+            entity: weather.home
             name: ' '
             style: |
               :host {
@@ -1582,7 +1538,7 @@ views:
               top: 50%
               width: 1.2109375%
             type: image
-          - entity: media_player.spotify_luke_vink
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1716,10 +1672,10 @@ views:
 
       - type: 'custom:mini-graph-card'
         entities:
-          - entity: binary_sensor.roof_motion
-            name: Stairs motion sensor
+          - entity: binary_sensor.kitchen_sensor_motion
+            name: Kitchen motion sensor
             color: '#FF4FD6'         
-        name: STAIRS MOTION
+        name: KITCHEN MOTION
         hours_to_show: 0.16
         points_per_hour: 1800
         update_interval: 1
@@ -1733,47 +1689,10 @@ views:
               label: Detected
       - type: 'custom:mini-graph-card'
         entities:
-          - entity: binary_sensor.roof_motion
-            name: Roof motion sensor
+          - entity: binary_sensor.front_door_motion
+            name: Front Door motion sensor
             color: '#FF4FD6'         
-        name: ROOF MOTION
-        hours_to_show: 0.16
-        points_per_hour: 1800
-        update_interval: 1
-        aggregate_func: max
-        line_width: 2
-        smoothing: false
-        state_map:
-            - value: "off"
-              label: Clear
-            - value: "on"
-              label: Detected  
-      - type: 'custom:mini-graph-card'
-        entities:
-          - entity: binary_sensor.toilet
-            name: Toilet motion sensor
-            color: '#12B6FA'          
-        name: TOILET MOTION
-        hours_to_show: 0.16
-        points_per_hour: 1800
-        update_interval: 1
-        aggregate_func: max
-        line_width: 2
-        smoothing: false
-        state_map:
-            - value: "off"
-              label: Clear
-            - value: "on"
-              label: Detected  
-      - type: 'custom:mini-graph-card'
-        entities:
-          - entity: binary_sensor.toilet_in_use
-            name: Toilet Distance Sensor
-            color: '#12B6FA' 
-          - entity: binary_sensor.toilet_motion
-            name: Toilet Motion Sensor
-            color: '#FF0000' 
-        name: TOILET OCCUPIED
+        name: FRONT DOOR MOTION
         hours_to_show: 0.16
         points_per_hour: 1800
         update_interval: 1
@@ -1785,36 +1704,3 @@ views:
               label: Clear
             - value: "on"
               label: Detected 
-
-      - type: 'custom:mini-graph-card'
-        entities:
-          - entity: sensor.roof_door_ypos
-            name: Roof Door Pos
-            color: '#FF4FD6'         
-        name: ROOF DOOR Angle
-        hours_to_show: 0.16
-        points_per_hour: 1800
-        update_interval: 1
-        aggregate_func: max
-        line_width: 2
-        smoothing: false
-              
-      - type: glance
-        title: Roof
-        entities:
-          - counter.people_on_roof
-          - binary_sensor.roof_door_open     
-          - light.roof_garden  
-
-      - type: 'custom:spotify-card'
-        limit: 8
-        always_play_random_song: true    
-      - type: 'custom:mini-graph-card'
-        entities:
-          - entity: sensor.roof_illuminance
-            name: Toilet Distance Sensor.
-            color: '#FF4FD6'        
-        name: ROOF Luminence
-        hours_to_show: 24
-        points_per_hour: 50
-        update_interval: 1
