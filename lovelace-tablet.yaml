@@ -230,7 +230,7 @@ views:
             style:
               box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
-              top: 42%
+              top: 26%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -240,7 +240,7 @@ views:
             image: /local/ui/sidebar/media_off.png
             style:
               left: 11.7%
-              top: 50%
+              top: 34%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -250,7 +250,7 @@ views:
             image: /local/ui/sidebar/weather_off.png
             style:
               left: 11.7%
-              top: 58%
+              top: 42%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -790,7 +790,7 @@ views:
             image: /local/ui/sidebar/all_off.png
             style:
               left: 11.7%
-              top: 42%
+              top: 26%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -801,7 +801,7 @@ views:
             style:
               box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
-              top: 50%
+              top: 34%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -811,7 +811,7 @@ views:
             image: /local/ui/sidebar/weather_off.png
             style:
               left: 11.7%
-              top: 58%
+              top: 42%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -1255,7 +1255,7 @@ views:
             image: /local/ui/sidebar/all_off.png
             style:
               left: 11.7%
-              top: 42%
+              top: 26%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -1265,7 +1265,7 @@ views:
             image: /local/ui/sidebar/media_off.png
             style:
               left: 11.7%
-              top: 50%
+              top: 34%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -1275,7 +1275,7 @@ views:
             image: /local/ui/sidebar/weather_on.png
             style:
               left: 11.7%
-              top: 58%
+              top: 42%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -1291,7 +1291,7 @@ views:
               font-weight: 300
               left: 8.8%
               opacity: 0
-              top: 66%
+              top: 50%
               width: 10%
             text: 'People at home:'
             type: 'custom:text-element'
@@ -1306,7 +1306,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 5.8%
-              top: 72%
+              top: 56%
               width: 4.5vw
             tap_action: none
             type: image
@@ -1320,7 +1320,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 10.8%
-              top: 72%
+              top: 56%
               width: 4.5vw
             tap_action: none
             type: image
@@ -1332,7 +1332,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 15.9%
-              top: 72.2%
+              top: 56.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -1344,7 +1344,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 21.1%
-              top: 72.2%
+              top: 56.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -1366,7 +1366,7 @@ views:
             style: |
               :host {
                 left: 11.6%;
-                top:  92.9%;
+                top:  86.9%;
                 width: 23.5%;
                 overflow: hidden;
                 height: 15%;
