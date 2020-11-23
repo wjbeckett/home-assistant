@@ -281,7 +281,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 5.8%
-              top: 62%
+              top: 52%
               width: 4.5vw
             tap_action: none
             type: image
@@ -295,7 +295,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 10.8%
-              top: 62%
+              top: 52%
               width: 4.5vw
             tap_action: none
             type: image
@@ -307,7 +307,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 15.9%
-              top: 62.2%
+              top: 52.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -319,7 +319,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 21.1%
-              top: 62.2%
+              top: 52.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -344,7 +344,7 @@ views:
             style: |
               :host {
                 left: 11.6%;
-                top:  80.9%;
+                top:  70.9%;
                 width: 23.5%;
                 overflow: hidden;
                 height: 15%;
@@ -392,7 +392,7 @@ views:
             style: |
               :host {
                 left: 11.4%;
-                top:  72.5%;
+                top:  62.5%;
                 width: 17%;
                 height: 7% !important;
                 overflow: hidden;
