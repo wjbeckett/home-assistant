@@ -815,7 +815,7 @@ views:
               width: 20.5078125%
             tap_action:
               action: navigate
-              navigation_path: /lovelace-tablet-yaml/media
+              navigation_path: /lovelace-tablet-yaml/weather
             type: image             
             
             #########################    PEOPLE    #########################
