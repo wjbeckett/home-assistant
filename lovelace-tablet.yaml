@@ -266,7 +266,7 @@ views:
               font-weight: 300
               left: 8.8%
               opacity: 0
-              top: 66%
+              top: 60%
               width: 10%
             text: 'People at home:'
             type: 'custom:text-element'
@@ -281,7 +281,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 5.8%
-              top: 72%
+              top: 62%
               width: 4.5vw
             tap_action: none
             type: image
@@ -295,7 +295,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 10.8%
-              top: 72%
+              top: 62%
               width: 4.5vw
             tap_action: none
             type: image
@@ -307,7 +307,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 15.9%
-              top: 72.2%
+              top: 62.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -319,7 +319,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 21.1%
-              top: 72.2%
+              top: 62.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -344,7 +344,7 @@ views:
             style: |
               :host {
                 left: 11.6%;
-                top:  92.9%;
+                top:  80.9%;
                 width: 23.5%;
                 overflow: hidden;
                 height: 15%;
@@ -392,7 +392,7 @@ views:
             style: |
               :host {
                 left: 11.4%;
-                top:  85.5%;
+                top:  72.5%;
                 width: 17%;
                 height: 7% !important;
                 overflow: hidden;
@@ -467,7 +467,7 @@ views:
             style: |
               :host {
                 left: 11.7%;
-                top:  49.5%;
+                top:  34.5%;
                 width: 20.5078125%;
                 border-radius: 5vw;
                 overflow: hidden;
