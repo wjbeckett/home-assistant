@@ -382,7 +382,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/weather
+              navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:mini-graph-card'
             
             #########################    WEATHER SIDEBAR CARD    #########################
@@ -425,7 +425,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/weather
+              navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:simple-weather-card'
             
             #########################    VISUAL SHADOW OVERLAYS    #########################
@@ -568,7 +568,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/3
+              navigation_path: /lovelace-tablet-yaml/media
             type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
@@ -939,7 +939,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/4
+              navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:mini-graph-card'
           - backdrop: false
             entity: weather.home
@@ -980,7 +980,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/4
+              navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:simple-weather-card'
           - action: none
             image: /local/ui/sidebar/sideShadow.png
@@ -1272,7 +1272,7 @@ views:
               navigation_path: /lovelace-tablet-yaml/media
             type: image
           - action: none
-            image: /local/ui/sidebar/weather_off.png
+            image: /local/ui/sidebar/weather_on.png
             style:
               left: 11.7%
               top: 58%
@@ -1403,7 +1403,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/4
+              navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:mini-graph-card'
           - backdrop: false
             entity: weather.home
@@ -1444,7 +1444,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/4
+              navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:simple-weather-card'
           - action: none
             image: /local/ui/sidebar/sideShadow.png
@@ -1581,7 +1581,7 @@ views:
               }
             tap_action:
               action: navigate
-              navigation_path: /lovelace/3
+              navigation_path: /lovelace-tablet-yaml/media
             type: 'custom:mini-media-player'
         image: /local/ui/floorplan/blurredFloorplan.png
         style: |
