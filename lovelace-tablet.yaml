@@ -388,7 +388,7 @@ views:
             
             #########################    TIME & DATE    #########################
 
-          - entity: sensor.12hr_time
+          - entity: sensor.time
             hold_action:
               action: none
             style:
@@ -994,14 +994,14 @@ views:
             
             #########################    TIME & DATE    #########################
 
-          - entity: sensor.12hr_time
+          - entity: sensor.time
             hold_action:
               action: none
             style:
               color: 'rgba(255, 255, 255, 0.7)'
               font-size: 5.41vw
               font-weight: 200
-              left: 2.7%
+              left: 0.1%
               letter-spacing: '-0.05vw'
               max-width: 1px
               top: 10%
@@ -1015,7 +1015,7 @@ views:
               color: 'rgba(255, 255, 255, 0.3)'
               font-size: 1.3vw
               font-weight: 300
-              left: 18.1%
+              left: 16.1%
               letter-spacing: '-0.05vw'
               text-align: left
               top: 17%
@@ -1448,7 +1448,7 @@ views:
             
             #########################    TIME & DATE    #########################
 
-          - entity: sensor.12hr_time
+          - entity: sensor.time
             hold_action:
               action: none
             style:
