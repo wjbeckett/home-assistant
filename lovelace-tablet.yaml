@@ -633,9 +633,9 @@ views:
                 type: 'custom:upcoming-media-card'
             type: conditional
             
-                        #################################################################
+            #################################################################
             #                                                               #
-            #                     SIDEBAR : ALL DEVICES                     #
+            #                     SIDEBAR : Media                           #
             #                                                               #
             #################################################################
             
@@ -702,6 +702,7 @@ views:
           - action: none
             image: /local/ui/sidebar/media_on.png
             style:
+              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 34%
               width: 20.5078125%
@@ -941,7 +942,7 @@ views:
                 border-radius: 5vw;
                 overflow: hidden !important;
                 box-shadow: none !important;
-                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
               }
               ha-card.--inactive .mmp-player{
                 opacity: 0 !important;
@@ -958,7 +959,7 @@ views:
                 display: inline-block !important;
               }
               div.mmp__bg{
-                background: #1E2022;
+                background: #2B2E30;
               }
               ha-card.--inactive div.mmp__bg{
                 background: none;
@@ -991,7 +992,6 @@ views:
                 margin:0 !important;
                 display: inline-block !important;
               }
-
               .mmp-player__core {
                 height: auto;
                 width: 100% !important;
@@ -1000,7 +1000,6 @@ views:
                 position: absolute !important;
                 bottom: 0;
               }
-
               .entity__info__media{
                 max-height: 20vw !important;
               }
@@ -1030,8 +1029,7 @@ views:
                 margin: 0.2vw 1vw 0 0 !important;
               }
             tap_action:
-              action: navigate
-              navigation_path: /lovelace-tablet-yaml/media
+              action: null
             type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
