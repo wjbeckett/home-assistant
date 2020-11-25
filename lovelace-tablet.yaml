@@ -581,7 +581,45 @@ views:
     panel: true
     badges: []
     cards:
-      - elements:            
+      - type: picture-elements
+        image: /local/ui/floorplan/blurredFloorplan.png
+        style: |
+          ha-card {
+            background: rgba(42, 46, 48, 1)
+          }
+          upcoming-media-card ha-card{
+                  background: none;
+                  box-shadow: none !important;
+                }
+                upcoming-media-card ha-card div:nth-child(2) {
+                  padding:0 !important;
+                }
+                .rece_poster{
+                  width: 31% !important;
+                  display: inline-block !important;
+                  margin: 0% 0.2% !important;
+                }
+                .rece_svg_poster{
+                  position: absolute !important;
+                  bottom:-5%;
+                  left:0;
+                  width: 100% !important;
+                }
+                .rece_container_poster{
+                  width:100% !important;
+                  outline: none !important;
+                  margin: 1% 1% !important;
+                  overflow: hidden;
+                }
+
+                .rece_svg_poster > rect{
+                  fill:none !important;
+                }
+                .card-header{
+                  font-size: 1vw;
+                  padding: 0;
+                }
+        elements:            
             ###########################################################################
             #                                                                         #
             #                 IF PROJECTOR NOT ON, SHOW SPOTIFY:                      #
@@ -739,11 +777,13 @@ views:
                 type: 'custom:upcoming-media-card'
             type: conditional
             
+                        #################################################################
+            #                                                               #
+            #                     SIDEBAR : ALL DEVICES                     #
+            #                                                               #
             #################################################################
-            #                                                               #
-            #                             SIDEBAR: Media View               #
-            #                                                               #
-            #################################################################            
+            
+            #########################    BACKGROUND    #########################
             
           - action: none
             hold_action:
@@ -757,6 +797,9 @@ views:
             tap_action:
               action: none
             type: image
+            
+            #########################    TIME & DATE    #########################
+
           - entity: sensor.time
             hold_action:
               action: none
@@ -786,9 +829,13 @@ views:
             tap_action:
               action: none
             type: state-label
+            
+            #########################    MENU BUTTONS    #########################
+
           - action: none
             image: /local/ui/sidebar/all_off.png
             style:
+              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 26%
               width: 20.5078125%
@@ -799,7 +846,6 @@ views:
           - action: none
             image: /local/ui/sidebar/media_on.png
             style:
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 34%
               width: 20.5078125%
@@ -816,18 +862,18 @@ views:
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/weather
-            type: image             
+            type: image 
             
             #########################    PEOPLE    #########################
             
-            # optional label for people (currently hidden, to show, change to opacity:1)            
+            # optional label for people (currently hidden, to show, change to opacity:1)
           - style:
               color: white
               font-size: 1vw
               font-weight: 300
               left: 8.8%
               opacity: 0
-              top: 66%
+              top: 60%
               width: 10%
             text: 'People at home:'
             type: 'custom:text-element'
@@ -842,7 +888,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 5.8%
-              top: 72%
+              top: 52%
               width: 4.5vw
             tap_action: none
             type: image
@@ -856,7 +902,7 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 10.8%
-              top: 72%
+              top: 52%
               width: 4.5vw
             tap_action: none
             type: image
@@ -868,7 +914,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 15.9%
-              top: 72.2%
+              top: 52.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -880,17 +926,20 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 21.1%
-              top: 72.2%
+              top: 52.2%
               width: 4.2vw
             tap_action: none
             type: image
+            
+            #########################    TEMPERATURE GRAPH (INSIDE vs OUTSIDE)    #########################
+            
           - color_thresholds:
               - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
                 value: 15
-              - color: '#ff1a1a'
+              - color: '#ffa31a'
                 value: 20
+              - color: '#ff1a1a'
+                value: 30
             entities:
               - sensor.kitchen_sensor_temperature
               - sensor.outside_temp
@@ -902,7 +951,7 @@ views:
             style: |
               :host {
                 left: 11.6%;
-                top:  92.9%;
+                top:  70.9%;
                 width: 23.5%;
                 overflow: hidden;
                 height: 15%;
@@ -920,6 +969,7 @@ views:
               ha-card {
                 background: none  !important;
                 padding: 0 !important;
+                box-shadow: none !important;
               }
               .icon > ha-icon {
                 width:1.8vw !important;
@@ -941,13 +991,15 @@ views:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:mini-graph-card'
+            
+            #########################    WEATHER SIDEBAR CARD    #########################
           - backdrop: false
             entity: weather.home
             name: ' '
             style: |
               :host {
                 left: 11.4%;
-                top:  85.5%;
+                top:  62.5%;
                 width: 17%;
                 height: 7% !important;
                 overflow: hidden;
@@ -982,6 +1034,9 @@ views:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:simple-weather-card'
+            
+            #########################    VISUAL SHADOW OVERLAYS    #########################
+            
           - action: none
             image: /local/ui/sidebar/sideShadow.png
             style:
@@ -1000,470 +1055,9 @@ views:
               top: 50%
               width: 1.2109375%
             type: image
-          - entity: media_player.kitchen_display
-            hide:
-              controls: true
-              name: true
-              power: true
-              source: true
-              volume: true
-              progress: true
-            idle_view:
-              after: 0.1
-              when_idle: true
-              when_paused: true
-              when_standby: true
-            show_progress: true
-            style: |
-              :host {
-                left: 11.7%;
-                top:  49.5%;
-                width: 20.5078125%;
-                border-radius: 5vw;
-                overflow: hidden;
-                height: 3.8vw;
-                box-shadow: none !important;
-              }
-              ha-card {
-                border-radius: 5vw;
-                overflow: hidden !important;
-                box-shadow: none !important;
-                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
-              }
-              ha-card.--inactive .mmp-player{
-                opacity: 0 !important;
-              }
-              #primaryProgress{
-                background: #474A52 !important; 
-              }              
-              .entity__info{
-                height: 2.6vw;
-                width: 65% !important;
-                max-height: 20vw !important;
-                font-size: 0.9vw !important;
-                margin:0 0 0 1.04vw !important;
-                display: inline-block !important;
-              }
-              div.mmp__bg{
-                background: #2B2E30;
-              }
-              ha-card.--inactive div.mmp__bg{
-                background: none;
-              }
-              div.mmp-player {
-                padding: 0vw;
-                height: 100%;
-              }
-              ha-card {
-                height: 100%;
-              }
-              mmp-powerstrip {
-                width: 100%;
-                display: block;
-                padding:0;
-              }
-              ha-icon{
-                display: block !important;
-                height: 2vw !important;
-                width: 2vw !important;
-                margin: 0.3vw 1.5vw 0 0vw !important;
-              }
-              .entity__icon{
-                float:right;
-                padding: 0.1vw;
-                width: 3vw !important;
-                height: 3vw !important;
-                min-width: 0 !important;
-                min-height: 0 !important;
-                margin:0 !important;
-                display: inline-block !important;
-              }
-
-              .mmp-player__core {
-                height: auto;
-                width: 100% !important;
-                margin-bottom: 0.1vw;
-                display: block !important;
-                position: absolute !important;
-                bottom: 0;
-              }
-
-              .entity__info__media{
-                max-height: 20vw !important;
-              }
-              .entity__info__media span::before{
-                content: none !important
-              }
-              .attr__media_title{
-                display:block;
-                color: white;
-                font-weight: 300;
-                font-size: 1.2vw !important;
-              }
-              .attr__media_artist{
-                font-size: 0.8vw !important;
-                font-weight: 200;
-                color: white;
-              }
-              .entity__artwork{
-                display:inline-block;
-                float: right;
-                margin-right: 0 !important;
-                display: inline-block;
-                float: right;
-                width: 2.2vw !important;
-                height: 2.2vw !important;
-                min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
-              }
-            tap_action:
-              action: null
-            type: 'custom:mini-media-player'
-        image: /local/ui/floorplan/blurredFloorplan.png
-        style: |
-          ha-card {
-            background: rgba(42, 46, 48, 1)
-          }
-          upcoming-media-card ha-card{
-                  background: none;
-                  box-shadow: none !important;
-                }
-                upcoming-media-card ha-card div:nth-child(2) {
-                  padding:0 !important;
-                }
-                .rece_poster{
-                  width: 31% !important;
-                  display: inline-block !important;
-                  margin: 0% 0.2% !important;
-                }
-                .rece_svg_poster{
-                  position: absolute !important;
-                  bottom:-5%;
-                  left:0;
-                  width: 100% !important;
-                }
-                .rece_container_poster{
-                  width:100% !important;
-                  outline: none !important;
-                  margin: 1% 1% !important;
-                  overflow: hidden;
-                }
-
-                .rece_svg_poster > rect{
-                  fill:none !important;
-                }
-                .card-header{
-                  font-size: 1vw;
-                  padding: 0;
-                }
-        type: picture-elements
-    
-    #############################################################################################################################################
-    #                                                                                                                                           #
-    #                                                               Weather View                                                                #
-    #                                                                                                                                           #
-    #############################################################################################################################################
-
-  - title: Weather
-    icon: 'mdi:white-balance-sunny'
-    panel: true
-    path: weather
-    badges: []
-    cards:
-      - elements:
-          - current: true
-            details: true
-            entity: weather.home
-            forecast: true
-            name: Weather
-            style: |
-              :host {
-                left: 61.5%;
-                top:  38%;
-                width: 70%;
-                overflow: hidden;
-                height: 63%;
-                background: none !important;
-                box-shadow: none !important;
-              }
-              .current {
-                margin-bottom: 7vw;
-              }
-              .variations {
-                margin-bottom: 4vw;
-              }
-              ha-card {
-                height: 100%;
-                background: none  !important;
-                box-shadow: none !important;
-                border-radius: 1vw;
-                font-size: 1.2vw !important;
-              }
-              .forecast{
-                padding: 0 2.5%;
-                width: 95%;
-              }
-              .forecast .day:first-child{
-                border-left: 0.1em solid #d9d9d9;
-              }
-              .forecast .day:last-child{
-                border-right: 0.1em solid #d9d9d9;
-              }
-            type: 'custom:weather-card'
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/sidebar/sidebarBG2.png
-            style:
-              height: 100%
-              left: 11.73828125%
-              top: 50%
-              width: 23.4765625%
-            tap_action:
-              action: none
-            type: image
-          - entity: sensor.time
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.41vw
-              font-weight: 200
-              left: 2.7%
-              letter-spacing: '-0.05vw'
-              max-width: 1px
-              top: 10%
-            tap_action:
-              action: none
-            type: state-label
-          - entity: sensor.date_string
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.3)'
-              font-size: 1.3vw
-              font-weight: 300
-              left: 18.1%
-              letter-spacing: '-0.05vw'
-              text-align: left
-              top: 17%
-              width: 30%
-            tap_action:
-              action: none
-            type: state-label
-          - action: none
-            image: /local/ui/sidebar/all_off.png
-            style:
-              left: 11.7%
-              top: 26%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace-tablet-yaml/0
-            type: image
-          - action: none
-            image: /local/ui/sidebar/media_off.png
-            style:
-              left: 11.7%
-              top: 34%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace-tablet-yaml/media
-            type: image
-          - action: none
-            image: /local/ui/sidebar/weather_on.png
-            style:
-              left: 11.7%
-              top: 42%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace-tablet-yaml/weather
-            type: image             
             
-            #########################    PEOPLE    #########################
+            #########################    NOW PLAYING SPOTIFY MENU BUTTON    #########################
             
-            # optional label for people (currently hidden, to show, change to opacity:1)               
-          - style:
-              color: white
-              font-size: 1vw
-              font-weight: 300
-              left: 8.8%
-              opacity: 0
-              top: 50%
-              width: 10%
-            text: 'People at home:'
-            type: 'custom:text-element'
-            
-          - action: none
-            entity: person.william
-            state_image:
-              home: /local/people/luke.png
-              not_home: /local/people/lukeGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 5.8%
-              top: 56%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            entity: person.emily
-            state_image:
-              home: /local/people/santa.png
-              not_home: /local/people/santaGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 10.8%
-              top: 56%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 15.9%
-              top: 56.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 21.1%
-              top: 56.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - color_thresholds:
-              - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
-                value: 15
-              - color: '#ff1a1a'
-                value: 20
-            entities:
-              - sensor.kitchen_sensor_temperature
-              - sensor.outside_temp
-            icon: 'mdi:home-thermometer-outline'
-            show:
-              icon: true
-              legend: false
-              name: false
-            style: |
-              :host {
-                left: 11.6%;
-                top:  86.9%;
-                width: 23.5%;
-                overflow: hidden;
-                height: 15%;
-                background: none  !important;
-                box-shadow: none !important;
-              }
-              .header {
-                font-size: 1vw;
-                position: absolute !important;
-                width: 5% !important;
-                padding: 0 !important;
-                right: 20% !important;
-                top: 15% !important;
-              }
-              ha-card {
-                background: none  !important;
-                padding: 0 !important;
-              }
-              .icon > ha-icon {
-                width:1.8vw !important;
-                height:1.8vw !important;
-              }
-              .state__time{
-                font-size:0.9vw !important;
-                margin-top: 0.2vw;
-                font-weight: 300 !important;
-                opacity: 0.4 !important;
-              }
-              .states {
-                font-size: 0.5vw !important;
-                padding: 1vw 0vw 0vw 0vw  !important;
-                margin: auto !important;
-                width: 68%;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace-tablet-yaml/weather
-            type: 'custom:mini-graph-card'
-          - backdrop: false
-            entity: weather.home
-            name: ' '
-            style: |
-              :host {
-                left: 11.4%;
-                top:  85.5%;
-                width: 17%;
-                height: 7% !important;
-                overflow: hidden;
-                height: 8.5vw;
-                background: none  !important;
-                box-shadow: none !important;
-                font-size: 1vw !important;
-              }
-              ha-card {
-                background: none  !important;
-                box-shadow: none !important;
-                flex-flow: row-reverse !important;
-                padding: 0 !important;
-              }
-              .weather__info--add{
-                display : none !important;
-              }
-              .weather__info{
-                flex-grow: 1;
-                min-height: 0 !important;
-                height: 2.4vw;
-                margin-left: 0.6vw;
-              }
-              .weather__icon{
-                margin-right:0.5% !important;
-                margin-top: -3%;
-                width: 2vw !important;
-                height: 2vw !important;
-                flex: 0 0 2vw !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace-tablet-yaml/weather
-            type: 'custom:simple-weather-card'
-          - action: none
-            image: /local/ui/sidebar/sideShadow.png
-            style:
-              height: 35%
-              left: 18.45%
-              pointer-events: none
-              top: 83%
-              width: 10%
-            type: image
-          - action: none
-            image: /local/ui/sidebar/sidebarInnerShadow.png
-            style:
-              left: 22.83%
-              opacity: 0.7
-              pointer-events: none
-              top: 50%
-              width: 1.2109375%
-            type: image
           - entity: media_player.kitchen_display
             hide:
               controls: true
@@ -1480,7 +1074,7 @@ views:
             style: |
               :host {
                 left: 11.7%;
-                top: 49.5%;
+                top:  34.5%;
                 width: 20.5078125%;
                 border-radius: 5vw;
                 overflow: hidden;
@@ -1583,19 +1177,474 @@ views:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
             type: 'custom:mini-media-player'
+    #############################################################################################################################################
+    #                                                                                                                                           #
+    #                                                               Weather View                                                                #
+    #                                                                                                                                           #
+    #############################################################################################################################################
+
+  - title: Weather
+    icon: 'mdi:white-balance-sunny'
+    panel: true
+    path: weather
+    badges: []
+    cards:
+      - type: picture-elements
         image: /local/ui/floorplan/blurredFloorplan.png
         style: |
           ha-card {
             background: rgba(42, 46, 48, 1)
           }
-        type: picture-elements
-        
+        elements:
+          - current: true
+            details: true
+            entity: weather.home
+            forecast: true
+            name: Weather
+            style: |
+              :host {
+                left: 61.5%;
+                top:  38%;
+                width: 70%;
+                overflow: hidden;
+                height: 63%;
+                background: none !important;
+                box-shadow: none !important;
+              }
+              .current {
+                margin-bottom: 7vw;
+              }
+              .variations {
+                margin-bottom: 4vw;
+              }
+              ha-card {
+                height: 100%;
+                background: none  !important;
+                box-shadow: none !important;
+                border-radius: 1vw;
+                font-size: 1.2vw !important;
+              }
+              .forecast{
+                padding: 0 2.5%;
+                width: 95%;
+              }
+              .forecast .day:first-child{
+                border-left: 0.1em solid #d9d9d9;
+              }
+              .forecast .day:last-child{
+                border-right: 0.1em solid #d9d9d9;
+              }
+            type: 'custom:weather-card'
+                        #################################################################
+            #                                                               #
+            #                     SIDEBAR : ALL DEVICES                     #
+            #                                                               #
+            #################################################################
+            
+            #########################    BACKGROUND    #########################
+            
+          - action: none
+            hold_action:
+              action: none
+            image: /local/ui/sidebar/sidebarBG2.png
+            style:
+              height: 100%
+              left: 11.73828125%
+              top: 50%
+              width: 23.4765625%
+            tap_action:
+              action: none
+            type: image
+            
+            #########################    TIME & DATE    #########################
+
+          - entity: sensor.time
+            hold_action:
+              action: none
+            style:
+              color: 'rgba(255, 255, 255, 0.7)'
+              font-size: 5.41vw
+              font-weight: 200
+              left: 2.7%
+              letter-spacing: '-0.05vw'
+              max-width: 1px
+              top: 10%
+            tap_action:
+              action: none
+            type: state-label
+          - entity: sensor.date_string
+            hold_action:
+              action: none
+            style:
+              color: 'rgba(255, 255, 255, 0.3)'
+              font-size: 1.3vw
+              font-weight: 300
+              left: 18.1%
+              letter-spacing: '-0.05vw'
+              text-align: left
+              top: 17%
+              width: 30%
+            tap_action:
+              action: none
+            type: state-label
+            
+            #########################    MENU BUTTONS    #########################
+
+          - action: none
+            image: /local/ui/sidebar/all_off.png
+            style:
+              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
+              left: 11.7%
+              top: 26%
+              width: 20.5078125%
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-tablet-yaml/0
+            type: image
+          - action: none
+            image: /local/ui/sidebar/media_off.png
+            style:
+              left: 11.7%
+              top: 34%
+              width: 20.5078125%
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-tablet-yaml/media
+            type: image
+          - action: none
+            image: /local/ui/sidebar/weather_on.png
+            style:
+              left: 11.7%
+              top: 42%
+              width: 20.5078125%
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-tablet-yaml/weather
+            type: image 
+            
+            #########################    PEOPLE    #########################
+            
+            # optional label for people (currently hidden, to show, change to opacity:1)
+          - style:
+              color: white
+              font-size: 1vw
+              font-weight: 300
+              left: 8.8%
+              opacity: 0
+              top: 60%
+              width: 10%
+            text: 'People at home:'
+            type: 'custom:text-element'
+            
+          - action: none
+            entity: person.william
+            state_image:
+              home: /local/people/luke.png
+              not_home: /local/people/lukeGone.png
+            style:
+              background-color: 'rgba(255, 255, 255, 0.0)'
+              border-radius: 10vw
+              height: 4.5vw
+              left: 5.8%
+              top: 52%
+              width: 4.5vw
+            tap_action: none
+            type: image
+          - action: none
+            entity: person.emily
+            state_image:
+              home: /local/people/santa.png
+              not_home: /local/people/santaGone.png
+            style:
+              background-color: 'rgba(255, 255, 255, 0.0)'
+              border-radius: 10vw
+              height: 4.5vw
+              left: 10.8%
+              top: 52%
+              width: 4.5vw
+            tap_action: none
+            type: image
+          - action: none
+            image: /local/transparent.png
+            style:
+              background-color: 'rgba(255, 255, 255, 0.0)'
+              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
+              border-radius: 10vw
+              height: 4.2vw
+              left: 15.9%
+              top: 52.2%
+              width: 4.2vw
+            tap_action: none
+            type: image
+          - action: none
+            image: /local/transparent.png
+            style:
+              background-color: 'rgba(255, 255, 255, 0.0)'
+              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
+              border-radius: 10vw
+              height: 4.2vw
+              left: 21.1%
+              top: 52.2%
+              width: 4.2vw
+            tap_action: none
+            type: image
+            
+            #########################    TEMPERATURE GRAPH (INSIDE vs OUTSIDE)    #########################
+            
+          - color_thresholds:
+              - color: '#4dd2ff'
+                value: 15
+              - color: '#ffa31a'
+                value: 20
+              - color: '#ff1a1a'
+                value: 30
+            entities:
+              - sensor.kitchen_sensor_temperature
+              - sensor.outside_temp
+            icon: 'mdi:home-thermometer-outline'
+            show:
+              icon: true
+              legend: false
+              name: false
+            style: |
+              :host {
+                left: 11.6%;
+                top:  70.9%;
+                width: 23.5%;
+                overflow: hidden;
+                height: 15%;
+                background: none  !important;
+                box-shadow: none !important;
+              }
+              .header {
+                font-size: 1vw;
+                position: absolute !important;
+                width: 5% !important;
+                padding: 0 !important;
+                right: 20% !important;
+                top: 15% !important;
+              }
+              ha-card {
+                background: none  !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+              }
+              .icon > ha-icon {
+                width:1.8vw !important;
+                height:1.8vw !important;
+              }
+              .state__time{
+                font-size:0.9vw !important;
+                margin-top: 0.2vw;
+                font-weight: 300 !important;
+                opacity: 0.4 !important;
+              }
+              .states {
+                font-size: 0.5vw !important;
+                padding: 1vw 0vw 0vw 0vw  !important;
+                margin: auto !important;
+                width: 68%;
+              }
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-tablet-yaml/weather
+            type: 'custom:mini-graph-card'
+            
+            #########################    WEATHER SIDEBAR CARD    #########################
+          - backdrop: false
+            entity: weather.home
+            name: ' '
+            style: |
+              :host {
+                left: 11.4%;
+                top:  62.5%;
+                width: 17%;
+                height: 7% !important;
+                overflow: hidden;
+                height: 8.5vw;
+                background: none  !important;
+                box-shadow: none !important;
+                font-size: 1vw !important;
+              }
+              ha-card {
+                background: none  !important;
+                box-shadow: none !important;
+                flex-flow: row-reverse !important;
+                padding: 0 !important;
+              }
+              .weather__info--add{
+                display : none !important;
+              }
+              .weather__info{
+                flex-grow: 1;
+                min-height: 0 !important;
+                height: 2.4vw;
+                margin-left: 0.6vw;
+              }
+              .weather__icon{
+                margin-right:0.5% !important;
+                margin-top: -3%;
+                width: 2vw !important;
+                height: 2vw !important;
+                flex: 0 0 2vw !important;
+              }
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-tablet-yaml/weather
+            type: 'custom:simple-weather-card'
+            
+            #########################    VISUAL SHADOW OVERLAYS    #########################
+            
+          - action: none
+            image: /local/ui/sidebar/sideShadow.png
+            style:
+              height: 35%
+              left: 18.45%
+              pointer-events: none
+              top: 83%
+              width: 10%
+            type: image
+          - action: none
+            image: /local/ui/sidebar/sidebarInnerShadow.png
+            style:
+              left: 22.83%
+              opacity: 0.7
+              pointer-events: none
+              top: 50%
+              width: 1.2109375%
+            type: image
+            
+            #########################    NOW PLAYING SPOTIFY MENU BUTTON    #########################
+            
+          - entity: media_player.kitchen_display
+            hide:
+              controls: true
+              name: true
+              power: true
+              source: true
+              volume: true
+              progress: true
+            idle_view:
+              after: 0.1
+              when_idle: true
+              when_paused: true
+              when_standby: true
+            style: |
+              :host {
+                left: 11.7%;
+                top:  34.5%;
+                width: 20.5078125%;
+                border-radius: 5vw;
+                overflow: hidden;
+                height: 3.8vw;
+                box-shadow: none !important;
+              }
+              ha-card {
+                border-radius: 5vw;
+                overflow: hidden !important;
+                box-shadow: none !important;
+                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+              }
+              ha-card.--inactive .mmp-player{
+                opacity: 0 !important;
+              }
+              #primaryProgress{
+                background: #474A52 !important; 
+              }              
+              .entity__info{
+                height: 2.6vw;
+                width: 65% !important;
+                max-height: 20vw !important;
+                font-size: 0.9vw !important;
+                margin:0 0 0 1.04vw !important;
+                display: inline-block !important;
+              }
+              div.mmp__bg{
+                background: #1E2022;
+              }
+              ha-card.--inactive div.mmp__bg{
+                background: none;
+              }
+              div.mmp-player {
+                padding: 0vw;
+                height: 100%;
+              }
+              ha-card {
+                height: 100%;
+              }
+              mmp-powerstrip {
+                width: 100%;
+                display: block;
+                padding:0;
+              }
+              ha-icon{
+                display: block !important;
+                height: 2vw !important;
+                width: 2vw !important;
+                margin: 0.3vw 1.5vw 0 0vw !important;
+              }
+              .entity__icon{
+                float:right;
+                padding: 0.1vw;
+                width: 3vw !important;
+                height: 3vw !important;
+                min-width: 0 !important;
+                min-height: 0 !important;
+                margin:0 !important;
+                display: inline-block !important;
+              }
+
+              .mmp-player__core {
+                height: auto;
+                width: 100% !important;
+                margin-bottom: 0.1vw;
+                display: block !important;
+                position: absolute !important;
+                bottom: 0;
+              }
+
+              .entity__info__media{
+                max-height: 20vw !important;
+              }
+              .entity__info__media span::before{
+                content: none !important
+              }
+              .attr__media_title{
+                display:block;
+                color: white;
+                font-weight: 300;
+                font-size: 1.2vw !important;
+              }
+              .attr__media_artist{
+                font-size: 0.8vw !important;
+                font-weight: 200;
+                color: white;
+              }
+              .entity__artwork{
+                display:inline-block;
+                float: right;
+                margin-right: 0 !important;
+                display: inline-block;
+                float: right;
+                width: 2.2vw !important;
+                height: 2.2vw !important;
+                min-width: 0 !important;
+                margin: 0.2vw 1vw 0 0 !important;
+              }
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-tablet-yaml/media
+            type: 'custom:mini-media-player'
+    #############################################################################################################################################
+    #                                                                                                                                           #
+    #                                                               Testing View                                                                #
+    #                                                                                                                                           #
+    #############################################################################################################################################
   - title: Testing
     icon: 'mdi:view-dashboard'
     panel: false
     badges: []
     cards:
-
       - type: 'custom:mini-graph-card'
         entities:
           - entity: binary_sensor.kitchen_sensor_motion
