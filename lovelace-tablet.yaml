@@ -40,7 +40,7 @@ views:
               custom_fields:
                 icon_hue:
                   [top: 11%, left: 4.5%, width: 3.05vw, position: absolute]
-            template: ['base','light']     
+            #template: ['base','light']     
           
             
             #################################################################
