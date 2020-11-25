@@ -388,7 +388,7 @@ views:
             
             #########################    TIME & DATE    #########################
 
-          - entity: sensor.time
+          - entity: sensor.12hr_time
             hold_action:
               action: none
             style:
@@ -994,7 +994,7 @@ views:
             
             #########################    TIME & DATE    #########################
 
-          - entity: sensor.time
+          - entity: sensor.12hr_time
             hold_action:
               action: none
             style:
@@ -1448,7 +1448,7 @@ views:
             
             #########################    TIME & DATE    #########################
 
-          - entity: sensor.time
+          - entity: sensor.12hr_time
             hold_action:
               action: none
             style:

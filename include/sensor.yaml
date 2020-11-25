@@ -322,6 +322,13 @@ sensor:
         friendly_name: "Full Date"
         value_template: "{{ states('sensor.day') }}, {{ states('sensor.month') }} {{ now().year }}"
 
+      12hr_time:
+        friendly_name: '12hr Time'
+        value_template: >
+          {% set time = states('sensor.time') %}
+          {% set hour = time[:2]|int %}
+          {{ '{:02d}:{} {}'.format(hour if hour == 12 else hour % 12, time[3:5], 'PM' if hour>11 else 'AM') }}
+
       outside_temp:
         friendly_name: "Outside Temp"
         value_template: "{{ state_attr('weather.home','temperature') }}"
