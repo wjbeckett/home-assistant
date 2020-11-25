@@ -478,7 +478,7 @@ views:
               left: 5.8%
               top: 52%
               width: 4.5vw
-            tap_action: none
+            tap_action: !include lovelace/views/popup/home_william.yaml
             type: image
           - action: none
             entity: person.emily
@@ -492,7 +492,7 @@ views:
               left: 10.8%
               top: 52%
               width: 4.5vw
-            tap_action: none
+            tap_action: !include lovelace/views/popup/home_emily.yaml
             type: image
           - action: none
             image: /local/transparent.png
@@ -1084,7 +1084,7 @@ views:
               left: 5.8%
               top: 52%
               width: 4.5vw
-            tap_action: none
+            tap_action: !include lovelace/views/popup/home_william.yaml
             type: image
           - action: none
             entity: person.emily
@@ -1098,7 +1098,7 @@ views:
               left: 10.8%
               top: 52%
               width: 4.5vw
-            tap_action: none
+            tap_action: !include lovelace/views/popup/home_emily.yaml
             type: image
           - action: none
             image: /local/transparent.png
@@ -1538,7 +1538,7 @@ views:
               left: 5.8%
               top: 52%
               width: 4.5vw
-            tap_action: none
+            tap_action: !include lovelace/views/popup/home_william.yaml
             type: image
           - action: none
             entity: person.emily
@@ -1552,7 +1552,7 @@ views:
               left: 10.8%
               top: 52%
               width: 4.5vw
-            tap_action: none
+            tap_action: !include lovelace/views/popup/home_emily.yaml
             type: image
           - action: none
             image: /local/transparent.png
