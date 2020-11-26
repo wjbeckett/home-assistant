@@ -367,12 +367,11 @@ views:
             
             #################################################################
             #                                                               #
-            #                     SIDEBAR : ALL DEVICES                     #
+            #                             SIDEBAR                           #
             #                                                               #
             #################################################################
-            
-            #########################    BACKGROUND    #########################
-            
+
+            #########################    BG IMAGE    #########################
           - action: none
             hold_action:
               action: none
@@ -386,14 +385,13 @@ views:
               action: none
             type: image
             
-            #########################    TIME & DATE    #########################
-
-          - entity: sensor.12hr_time
+            #########################    TIME AND DATE    #########################
+          - entity: sensor.time
             hold_action:
               action: none
             style:
               color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.01vw
+              font-size: 5.41vw
               font-weight: 200
               left: 2.7%
               letter-spacing: '-0.05vw'
@@ -421,11 +419,32 @@ views:
             #########################    MENU BUTTONS    #########################
 
           - action: none
-            image: /local/ui/sidebar/all_on.png
+            image: /local/ui/sidebar/rooms_on.png
             style:
+              border-radius: 5vw
               box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 26%
+              width: 20.5078125%
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/0
+            type: image
+          - action: none
+            image: /local/ui/sidebar/cleanUp_off.png
+            style:
+              left: 11.7%
+              top: 34%
+              width: 20.5078125%
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/1
+            type: image
+          - action: none
+            image: /local/ui/sidebar/all_off.png
+            style:
+              left: 11.7%
+              top: 42%
               width: 20.5078125%
             tap_action:
               action: navigate
@@ -435,33 +454,33 @@ views:
             image: /local/ui/sidebar/media_off.png
             style:
               left: 11.7%
-              top: 34%
+              top: 50%
               width: 20.5078125%
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
             type: image
           - action: none
-            image: /local/ui/sidebar/weather_off.png
+            image: /local/ui/sidebar/health_off.png
             style:
               left: 11.7%
-              top: 42%
+              top: 58%
               width: 20.5078125%
             tap_action:
               action: navigate
-              navigation_path: /lovelace-tablet-yaml/weather
-            type: image 
+              navigation_path: /lovelace/5
+            type: image  
+
+            #########################    People at home    #########################
             
-            #########################    PEOPLE    #########################
-            
-            # optional label for people (currently hidden, to show, change to opacity:1)
+            #Optional label for people at Home (currently hidden with opacity: 0)
           - style:
               color: white
               font-size: 1vw
               font-weight: 300
               left: 8.8%
-              opacity: 0
-              top: 60%
+              #opacity: 0
+              top: 66%
               width: 10%
             text: 'People at home:'
             type: 'custom:text-element'
@@ -476,10 +495,11 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 5.8%
-              top: 52%
+              top: 72%
               width: 4.5vw
-            tap_action: !include lovelace/views/popup/home_william.yaml
+            tap_action: none
             type: image
+              
           - action: none
             entity: person.emily
             state_image:
@@ -490,10 +510,11 @@ views:
               border-radius: 10vw
               height: 4.5vw
               left: 10.8%
-              top: 52%
+              top: 72%
               width: 4.5vw
-            tap_action: !include lovelace/views/popup/home_emily.yaml
+            tap_action: none
             type: image
+            
           - action: none
             image: /local/transparent.png
             style:
@@ -502,7 +523,7 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 15.9%
-              top: 52.2%
+              top: 72.2%
               width: 4.2vw
             tap_action: none
             type: image
@@ -514,23 +535,23 @@ views:
               border-radius: 10vw
               height: 4.2vw
               left: 21.1%
-              top: 52.2%
+              top: 72.2%
               width: 4.2vw
             tap_action: none
             type: image
             
-            #########################    TEMPERATURE GRAPH (INSIDE vs OUTSIDE)    #########################
-            
+            #########################    Minigraph to show temperature inside and out    #########################
+
           - color_thresholds:
               - color: '#4dd2ff'
                 value: 15
               - color: '#ffa31a'
-                value: 20
-              - color: '#ff1a1a'
                 value: 30
+              - color: '#ff1a1a'
+                value: 40
             entities:
               - sensor.kitchen_sensor_temperature
-              - sensor.outside_temp
+              - sensor.outsiude_temp
             icon: 'mdi:home-thermometer-outline'
             show:
               icon: true
@@ -539,7 +560,7 @@ views:
             style: |
               :host {
                 left: 11.6%;
-                top:  70.9%;
+                top:  92.9%;
                 width: 23.5%;
                 overflow: hidden;
                 height: 15%;
@@ -557,7 +578,6 @@ views:
               ha-card {
                 background: none  !important;
                 padding: 0 !important;
-                box-shadow: none !important;
               }
               .icon > ha-icon {
                 width:1.8vw !important;
@@ -580,14 +600,15 @@ views:
               navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:mini-graph-card'
             
-            #########################    WEATHER SIDEBAR CARD    #########################
+            #########################    Mini Weather card    #########################
+            
           - backdrop: false
             entity: weather.home
             name: ' '
             style: |
               :host {
                 left: 11.4%;
-                top:  62.5%;
+                top:  85.5%;
                 width: 17%;
                 height: 7% !important;
                 overflow: hidden;
@@ -623,7 +644,7 @@ views:
               navigation_path: /lovelace-tablet-yaml/weather
             type: 'custom:simple-weather-card'
             
-            #########################    VISUAL SHADOW OVERLAYS    #########################
+            #########################    Overlay shadow images    #########################
             
           - action: none
             image: /local/ui/sidebar/sideShadow.png
@@ -644,9 +665,11 @@ views:
               width: 1.2109375%
             type: image
             
-            #########################    NOW PLAYING SPOTIFY MENU BUTTON    #########################
+            #########################   Styled now playing Media Player    #########################
             
-          - entity: media_player.kitchen_display
+            # when the media player is playing, this overlaps the "Media" menu button
+
+          - entity: media_player.kitchen_dispay
             hide:
               controls: true
               name: true
@@ -662,7 +685,7 @@ views:
             style: |
               :host {
                 left: 11.7%;
-                top: 33.345%;
+                top:  49.5%;
                 width: 20.5078125%;
                 border-radius: 5vw;
                 overflow: hidden;
@@ -679,9 +702,10 @@ views:
                 opacity: 0 !important;
               }
               #primaryProgress{
-                background: #474A52 !important; 
-              }              
+                  background: #474A52 !important; 
+              }
               .entity__info{
+                height: 2.6vw;
                 width: 65% !important;
                 max-height: 20vw !important;
                 font-size: 0.9vw !important;
@@ -722,7 +746,6 @@ views:
                 margin:0 !important;
                 display: inline-block !important;
               }
-
               .mmp-player__core {
                 height: auto;
                 width: 100% !important;
@@ -731,7 +754,6 @@ views:
                 position: absolute !important;
                 bottom: 0;
               }
-
               .entity__info__media{
                 max-height: 20vw !important;
               }
@@ -758,7 +780,7 @@ views:
                 width: 2.2vw !important;
                 height: 2.2vw !important;
                 min-width: 0 !important;
-                margin: -0.1vw 1vw 0 0 !important;
+                margin: 0.2vw 1vw 0 0 !important;
               }
             tap_action:
               action: navigate
