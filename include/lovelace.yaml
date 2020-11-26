@@ -41,7 +41,9 @@ lovelace:
       type: module
     - url: /hacsfiles/kiosk-mode/kiosk-mode.js
       type: module
-
+    - url: /hacsfiles/text-element/text-element.js
+      type: module
+      
     - url: '/local/custom_icons.js?v=25052001'
       type: module
     - url: /local/font.css
