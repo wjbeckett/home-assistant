@@ -65,7 +65,7 @@ button_card_templates:
         hass.callService('media_player', 'play_media', {entity_id: 'media_player.tablet', media_content_id: '/local/sound/off.m4a', media_content_type: 'music'}); } ]]]
       action: toggle
       haptic: light
-    hold_action:
+    hold_action: &light_action
       action: call-service
       service: browser_mod.popup
       service_data:
