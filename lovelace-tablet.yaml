@@ -511,7 +511,7 @@ views:
             entity: alarm_control_panel.home_alarm
             show_state: false
             show_icon: true
-            tap_action: !include /lovelace/views/popup/alarm_panel.yaml
+            tap_action: !include lovelace/views/popup/alarm_panel.yaml
             style:
               top: 23.35%
               left: 40.31%
