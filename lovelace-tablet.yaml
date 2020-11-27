@@ -347,7 +347,7 @@ views:
             background: rgba(42, 46, 48, 1)
           }
         elements:
-          - !include /lovelace/views/sidebar-rooms.yaml
+          - !include lovelace/views/sidebar-rooms.yaml
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                   Device Control                                                                          #
