@@ -496,15 +496,21 @@ views:
             background: rgba(42, 46, 48, 1)
           }
         elements:
+          - type: 'custom:text-element'
+            text: 'Rooms'
+            style:
+              color: white
+              font-size: 5vw
+              font-weight: 800
+              left: 50%
+              top: 15%
+              width: 10%            
           - type: custom:button-card
             name: Kitchen
             icon: mdi:chef-hat
             entity: light.kitchen_lights
             show_state: false
             tap_action:
-              action: navigate
-              navigation_path: kitchen
-            double_tap_action:
               action: toggle
               haptic: light
             style:
