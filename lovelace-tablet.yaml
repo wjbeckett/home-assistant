@@ -496,26 +496,40 @@ views:
             background: rgba(42, 46, 48, 1)
           }
         elements:
-          - type: 'custom:text-element'
-            text: 'Rooms'
+          #- type: 'custom:text-element'
+          #  text: 'Rooms'
+          #  style:
+          #    color: white
+          #    font-size: 4vw
+          #    font-weight: 500
+          #    left: 60%
+          #    top: 10%
+          #    width: 10%            
+          - type: custom:button-card
+            name: Alarm
+            icon: mdi:shield-home
+            entity: alarm_control_panel.home_alarm
+            show_state: false
+            show_icon: true
+            tap_action: !include /lovelace/views/popup/alarm_panel.yaml
+                template: ['base', 'alarm_panel']
             style:
-              color: white
-              font-size: 5vw
-              font-weight: 800
-              left: 50%
-              top: 15%
-              width: 10%            
+              top: 23.35%
+              left: 40.31%
+              width: 10%
+            template: ['base', 'room_nav']
           - type: custom:button-card
             name: Kitchen
             icon: mdi:chef-hat
             entity: light.kitchen_lights
             show_state: false
+            show_icon: true
             tap_action:
               action: toggle
               haptic: light
             style:
-              top: 20.35%
-              left: 30.31%
+              top: 23.35%
+              left: 52.31%
               width: 10%
             template: ['base', 'room_nav']
           - type: custom:button-card
@@ -523,12 +537,55 @@ views:
             icon: mdi:sofa
             entity: light.bedroom_lamps
             show_state: false
+            show_icon: true
             tap_action:
               action: toggle
               haptic: light
             style:
-              top: 20.35%
-              left: 50.31%
+              top: 23.35%
+              left: 64.31%
+              width: 10%
+            template: ['base', 'room_nav']
+          - type: custom:button-card
+            name: Bedroom
+            icon: mdi:heart-outline
+            entity: light.bedroom_lamps
+            show_state: false
+            show_icon: true
+            tap_action:
+              action: toggle
+              haptic: light
+            style:
+              top: 43.35%
+              left: 40.31%
+              width: 10%
+            template: ['base', 'room_nav']
+          - type: custom:button-card
+            name: Teddy's Room
+            icon: mdi:pokeball
+            entity: light.teddy_s_lamp
+            show_state: false
+            show_icon: true
+            tap_action:
+              action: toggle
+              haptic: light
+            style:
+              top: 43.35%
+              left: 52.31%
+              width: 10%
+            template: ['base', 'room_nav']
+          - type: custom:button-card
+            name: Ollie's Room
+            icon: mdi:paw
+            entity: light.ollie_s_lamp
+            show_state: false
+            show_icon: true
+            tap_action:
+              action: toggle
+              haptic: light
+            style:
+              top: 43.35%
+              left: 64.31%
               width: 10%
             template: ['base', 'room_nav']
 
