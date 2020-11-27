@@ -340,8 +340,14 @@ views:
     panel: true
     badges: []    
     cards:
-      
-      include: /views/sidebar-rooms.yaml
+      - type: picture-elements    
+        image: /local/ui/floorplan/blurredFloorplan.png
+        style: |
+          ha-card {
+            background: rgba(42, 46, 48, 1)
+          }
+        elements:
+          include: /views/sidebar-rooms.yaml
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                   Device Control                                                                          #
