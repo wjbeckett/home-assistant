@@ -512,12 +512,11 @@ views:
             show_state: false
             show_icon: true
             tap_action: !include /lovelace/views/popup/alarm_panel.yaml
-                template: ['base', 'alarm_panel']
             style:
               top: 23.35%
               left: 40.31%
               width: 10%
-            template: ['base', 'room_nav']
+            template: ['base', 'alarm_panel']
           - type: custom:button-card
             name: Kitchen
             icon: mdi:chef-hat
