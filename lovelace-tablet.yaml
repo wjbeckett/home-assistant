@@ -1048,7 +1048,7 @@ views:
               width: 20.5078125%
             tap_action:
               action: navigate
-              navigation_path: /lovelace/0
+              navigation_path: /lovelace-tablet-yaml/rooms
             type: image
           - action: none
             image: /local/ui/sidebar/cleanUp_off.png
