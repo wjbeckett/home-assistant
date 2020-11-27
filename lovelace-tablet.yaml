@@ -331,7 +331,7 @@ views:
 
     #############################################################################################################################################
     #                                                                                                                                           #
-    #                                                              Floorplan View                                                               #
+    #                                                              Room View                                                                    #
     #                                                                                                                                           #
     #############################################################################################################################################
     
@@ -341,7 +341,7 @@ views:
     badges: []    
     cards:
       
-      include: views/sidebar-rooms.yaml
+      !include: /views/sidebar-rooms.yaml
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                   Device Control                                                                          #
@@ -432,10 +432,8 @@ views:
             #########################    MENU BUTTONS    #########################
 
           - action: none
-            image: /local/ui/sidebar/rooms_on.png
+            image: /local/ui/sidebar/rooms_off.png
             style:
-              border-radius: 5vw
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 26%
               width: 20.5078125%
@@ -454,8 +452,10 @@ views:
               navigation_path: /lovelace/1
             type: image
           - action: none
-            image: /local/ui/sidebar/all_off.png
+            image: /local/ui/sidebar/all_on.png
             style:
+              border-radius: 5vw
+              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 42%
               width: 20.5078125%
