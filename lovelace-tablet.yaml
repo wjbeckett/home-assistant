@@ -341,7 +341,7 @@ views:
     badges: []    
     cards:
       
-      !include: /views/sidebar-rooms.yaml
+      include: /views/sidebar-rooms.yaml
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                   Device Control                                                                          #
