@@ -641,7 +641,7 @@ automation:
       - service: script.notify_engine
         data_template:
           message: 'Motion detected at the front door (Shinobi)'
-          who: "mobile_app_william"
+          who: "william"
           channel: "Presence"
           importance: "max"
           color: "blue"

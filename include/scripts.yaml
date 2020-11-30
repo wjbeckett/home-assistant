@@ -145,7 +145,7 @@ script:
         # color: "blue"
         # clickaction: "https://...."
         # tag: ""
-        # icon: mdi:pill
+        # icon_url: 
         # group: "Motion"
         # priority: "high"
         # ttl: "0"
@@ -202,7 +202,7 @@ script:
             image: "{{ image }}"
             clickAction: "{{ clickaction }}"
             tag: "{{ tag }}"
-            icon: "{{ icon }}"
+            icon_url: "{{ icon_url }}"
             priority: "{{ priority }}"
             group: "{{ group }}"
             ttl: "{{ ttl }}"
