@@ -55,6 +55,9 @@ input_boolean:
   motion_bedroom:
     name: Bedroom
     initial: off
+  shinobi_fd_motion:
+    name: Shinobi Front Door
+    initial: off
 
   alert_mode:
     name: Alert Mode

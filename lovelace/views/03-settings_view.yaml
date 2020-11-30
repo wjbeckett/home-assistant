@@ -74,6 +74,7 @@
               - binary_sensor.kitchen_sensor_motion
               - binary_sensor.bedroom_motion
               - binary_sensor.front_door
+              - binary_sensor.shinobi_fd_motion
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
@@ -107,6 +108,7 @@
               - input_boolean.meds_reminder
               - input_boolean.night_mode
               - input_boolean.guest_mode
+              - input_boolean.shinobi_fd_motion
               - switch.adaptive_lighting_kitchen
               - switch.adaptive_lighting_bedroom
               - switch.adaptive_lighting_lounge_room

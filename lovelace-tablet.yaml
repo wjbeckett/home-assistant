@@ -893,7 +893,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - entity: media_player.kitchen_dispay
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1352,7 +1352,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - entity: media_player.kitchen_dispay
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1981,7 +1981,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - entity: media_player.kitchen_dispay
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -2459,7 +2459,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - entity: media_player.kitchen_dispay
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
