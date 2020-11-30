@@ -2092,7 +2092,7 @@ views:
                 width: 2.2vw !important;
                 height: 2.2vw !important;
                 min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
+                margin: 0 1vw 0 0 !important;
               }
             tap_action:
               action: navigate
