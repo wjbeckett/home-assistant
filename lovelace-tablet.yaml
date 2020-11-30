@@ -1373,7 +1373,6 @@ views:
                 border-radius: 5vw;
                 overflow: hidden;
                 height: 3.8vw;
-                box-shadow: none !important;
               }
               ha-card {
                 border-radius: 5vw;
