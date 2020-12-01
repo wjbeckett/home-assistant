@@ -1555,6 +1555,8 @@ views:
                     background: #474A52 !important; 
                   }
                 type: 'custom:mini-media-player'
+              - type: 'custom:media_player-popup-card'
+                entity: media_player.kitchen_display
             type: conditional
             
             # Spotify Playlists Card:
