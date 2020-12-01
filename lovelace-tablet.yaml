@@ -1557,6 +1557,13 @@ views:
                 type: 'custom:mini-media-player'
               - type: 'custom:media_player-popup-card'
                 entity: media_player.kitchen_display
+                style: |
+                  :host {
+                    left: 56% !important;
+                    top: 39.8% !important;
+                    width: 33% !important;
+                    height: 62.3% !important;
+                  }
             type: conditional
             
             # Spotify Playlists Card:
