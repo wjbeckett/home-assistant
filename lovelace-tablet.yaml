@@ -1538,7 +1538,8 @@ views:
                   power: true
                   progress: false
                   runtime: false
-                  volume: false
+                  volume: true
+                  controls: true
                 style: |
                   :host {
                     left: 46% !important;
