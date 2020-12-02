@@ -1556,23 +1556,14 @@ views:
                     background: #474A52 !important; 
                   }
                 type: 'custom:mini-media-player'
-              - type: 'custom:media_player-popup-card'
-                entity: media_player.kitchen_display
-                style: |
-                  :host {
-                    left: 56% !important;
-                    top: 39.8% !important;
-                    width: 33% !important;
-                    height: 62.3% !important;
-                  }
             type: conditional
             
             # Spotify Playlists Card:
             # https://github.com/custom-cards/spotify-card
           - type: conditional
             conditions:
-            - entity: device_tracker.projector
-              state: not_home
+              - entity: media_player.plex_lounge_room_tv
+                state_not: playing
             elements:
               - type: entities
                 entities:
@@ -1611,13 +1602,13 @@ views:
                     hide:
                       controls: true
                 style: | 
-                    :host {
-                        left: 79.5%; 
-                        top: 39.8%;
-                        width: 31%;
-                        height: 62.3%;
-                        border-radius: 1vw;
-                    }
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                  }
                 #- type: 'custom:spotify-card'
                 #  limit: 10
                 #  always_play_random_song: true   
