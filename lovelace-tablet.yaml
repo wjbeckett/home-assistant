@@ -1566,7 +1566,6 @@ views:
                 state_not: playing
             elements:
               - type: custom:stack-in-card
-                title: 
                 mode: vertical
                 style: | 
                   :host {
