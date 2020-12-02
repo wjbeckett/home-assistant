@@ -43,8 +43,6 @@ lovelace:
       type: module
     - url: /hacsfiles/text-element/text-element.js
       type: module
-    - url: /hacsfiles/media_player-popup-card/media_player-popup-card.js
-      type: module
       
     - url: '/local/custom_icons.js?v=25052001'
       type: module
@@ -52,6 +50,8 @@ lovelace:
       type: css
     - type: module
       url: /local/js/now-playing-card.js
+    - type: module
+      url: /local/media_player-popup-card.js
   
   dashboards:
     old-yaml:
