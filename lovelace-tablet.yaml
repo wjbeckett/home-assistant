@@ -2641,3 +2641,5 @@ views:
           - sensor.kitchen_sensor_temperature
           - sensor.outside_temp
         icon: 'mdi:home-thermometer-outline'
+      - type: 'custom:media_player-popup-card'
+        entity: media_player.kitchen_display
