@@ -1569,15 +1569,15 @@ views:
                 title: 
                 mode: vertical
                 style: | 
-                      :host {
-                          left: 79.5%; 
-                          top: 39.8%;
-                          width: 31%;
-                          height: 62.3%;
-                          border-radius: 1vw;
-                          background: none !important;
-                          box-shadow: none !important;
-                      }
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                      background: none !important;
+                      box-shadow: none !important;
+                  }
                 cards:
                   - type: custom:mini-media-player
                     entity: media_player.all_speakers
