@@ -2643,3 +2643,4 @@ views:
         icon: 'mdi:home-thermometer-outline'
       - type: 'custom:media_player-popup-card'
         entity: media_player.kitchen_display
+        fullscreen: false

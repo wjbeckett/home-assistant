@@ -51,7 +51,7 @@ lovelace:
     - type: module
       url: /local/js/now-playing-card.js
     - type: module
-      url: /local/media_player-popup-card.js
+      url: /local/js/media_player-popup-card.js
   
   dashboards:
     old-yaml:
