@@ -43,7 +43,7 @@ lovelace:
       type: module
     - url: /hacsfiles/text-element/text-element.js
       type: module
-    - url: /community_plugin/media_player-popup-card/media_player-popup-card.js
+    - url: /hacsfiles/media_player-popup-card/media_player-popup-card.js
       type: module
       
     - url: '/local/custom_icons.js?v=25052001'
