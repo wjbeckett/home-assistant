@@ -1584,6 +1584,7 @@ views:
                   - type: custom:mini-media-player
                     entity: media_player.all_speakers
                     group: true
+                    icon: mdi:speaker-multiple
                     hide:
                       controls: true
                       volume: false
@@ -1593,30 +1594,35 @@ views:
                   - type: custom:mini-media-player
                     entity: media_player.kitchen_display
                     group: true
+                    icon: mdi:television
                     hide:
                       volume: false
                       controls: true
                   - type: custom:mini-media-player
                     entity: media_player.bedroom_speaker
                     group: true
+                    icon: mdi:google-home
                     hide:
                       volume: false
                       controls: true
                   - type: custom:mini-media-player
                     entity: media_player.teddy_s_speaker
                     group: true
+                    icon: mdi:speaker
                     hide:
                       controls: true
                       volume: false
                   - type: custom:mini-media-player
                     entity: media_player.ollie_s_speaker
                     group: true
+                    icon: mdi:speaker
                     hide:
                       controls: true
                       volume: false
                   - type: custom:mini-media-player
                     entity: media_player.front_room_speaker
                     group: true
+                    icon: mdi:speaker
                     hide:
                       controls: true
                       volume: false
