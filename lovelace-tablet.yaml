@@ -1575,6 +1575,8 @@ views:
                           width: 31%;
                           height: 62.3%;
                           border-radius: 1vw;
+                          background: none !important;
+                          box-shadow: none !important;
                       }
                 cards:
                   - type: custom:mini-media-player
@@ -1582,33 +1584,40 @@ views:
                     group: true
                     hide:
                       controls: true
-                      volume: true
+                      volume: false
                       power: true
+                      progress: true
+                      runtime: true
                   - type: custom:mini-media-player
                     entity: media_player.kitchen_display
                     group: true
                     hide:
+                      volume: false
                       controls: true
                   - type: custom:mini-media-player
                     entity: media_player.bedroom_speaker
                     group: true
                     hide:
+                      volume: false
                       controls: true
                   - type: custom:mini-media-player
                     entity: media_player.teddy_s_speaker
                     group: true
                     hide:
                       controls: true
+                      volume: false
                   - type: custom:mini-media-player
                     entity: media_player.ollie_s_speaker
                     group: true
                     hide:
                       controls: true
+                      volume: false
                   - type: custom:mini-media-player
                     entity: media_player.front_room_speaker
                     group: true
                     hide:
                       controls: true
+                      volume: false
             
                 #- type: 'custom:spotify-card'
                 #  limit: 10
