@@ -1538,7 +1538,7 @@ views:
                   power: true
                   progress: false
                   runtime: false
-                  volume: true
+                  volume: false
                 style: |
                   :host {
                     left: 46% !important;
@@ -2641,6 +2641,3 @@ views:
           - sensor.kitchen_sensor_temperature
           - sensor.outside_temp
         icon: 'mdi:home-thermometer-outline'
-      - type: 'custom:media_player-popup-card'
-        entity: media_player.kitchen_display
-        fullscreen: false
