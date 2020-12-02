@@ -1565,42 +1565,15 @@ views:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
             elements:
-              - type: entities
-                entities:
-                  - type: custom:mini-media-player
-                    entity: media_player.all_speakers
-                    group: true
-                    source: icon
-                    info: short
-                    hide:
-                      controls: true
-                      volume: true
-                      power: true
-                  - type: custom:mini-media-player
-                    entity: media_player.kitchen_display
-                    group: true
-                    hide:
-                      controls: true
-                  - type: custom:mini-media-player
-                    entity: media_player.bedroom_speaker
-                    group: true
-                    hide:
-                      controls: true
-                  - type: custom:mini-media-player
-                    entity: media_player.teddy_s_speaker
-                    group: true
-                    hide:
-                      controls: true
-                  - type: custom:mini-media-player
-                    entity: media_player.ollie_s_speaker
-                    group: true
-                    hide:
-                      controls: true
-                  - type: custom:mini-media-player
-                    entity: media_player.front_room_speaker
-                    group: true
-                    hide:
-                      controls: true
+              - type: custom:mini-media-player
+                entity: media_player.all_speakers
+                group: true
+                source: icon
+                info: short
+                hide:
+                  controls: true
+                  volume: true
+                  power: true
                 style: | 
                   :host {
                       left: 79.5%; 
@@ -1609,6 +1582,72 @@ views:
                       height: 62.3%;
                       border-radius: 1vw;
                   }
+              - type: custom:mini-media-player
+                entity: media_player.kitchen_display
+                group: true
+                hide:
+                  controls: true
+                style: | 
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                  }
+              - type: custom:mini-media-player
+                entity: media_player.bedroom_speaker
+                group: true
+                hide:
+                  controls: true
+                style: | 
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                  }
+              - type: custom:mini-media-player
+                entity: media_player.teddy_s_speaker
+                group: true
+                hide:
+                  controls: true
+                style: | 
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                  }
+              - type: custom:mini-media-player
+                entity: media_player.ollie_s_speaker
+                group: true
+                hide:
+                  controls: true
+                style: | 
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                  }
+              - type: custom:mini-media-player
+                entity: media_player.front_room_speaker
+                group: true
+                hide:
+                  controls: true
+                style: | 
+                  :host {
+                      left: 79.5%; 
+                      top: 39.8%;
+                      width: 31%;
+                      height: 62.3%;
+                      border-radius: 1vw;
+                  }
+            
                 #- type: 'custom:spotify-card'
                 #  limit: 10
                 #  always_play_random_song: true   
