@@ -622,31 +622,6 @@ automation:
           action_1: "URI"
           action_1_title: "View Image"
           action_1_uri: !secret deepstack_latest_image
-
-
-  - id: viseron_person_detected
-    initial_state: 'on'
-    condition:
-    - condition: state
-      entity_id: input_boolean.text_notifications
-      state: 'on'
-    - condition: template
-      value_template: '{{ as_timestamp(now()) - (as_timestamp(state_attr("automation.notify_when_object_is_detected", "last_triggered")) or 0) > 60 }}'
-    trigger:
-    - platform: state
-      entity_id: binary_sensor.shinobi_fd_motion
-      from: 'off'
-      to: 'on'
-    action:
-      - service: script.notify_engine
-        data_template:
-          message: 'Motion detected at the front door (Shinobi)'
-          who: "william"
-          channel: "Presence"
-          importance: "max"
-          color: "blue"
-          priority: "high"
-          icon: 'mdi:motion-sensor'
       
 
     ####################################################
