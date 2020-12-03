@@ -1589,7 +1589,7 @@ views:
                       volume: false
                       power: true
                       progress: true
-                      runtime: true
+                      runtime: false
                       info: true
                   - type: custom:mini-media-player
                     entity: media_player.kitchen_display
@@ -1600,7 +1600,7 @@ views:
                       volume: false
                       power: true
                       progress: true
-                      runtime: true
+                      runtime: false
                       info: true
                   - type: custom:mini-media-player
                     entity: media_player.bedroom_speaker
