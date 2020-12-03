@@ -1590,6 +1590,7 @@ views:
                       power: true
                       progress: true
                       runtime: true
+                      info: true
                   - type: custom:mini-media-player
                     entity: media_player.kitchen_display
                     group: true
@@ -1600,6 +1601,7 @@ views:
                       power: true
                       progress: true
                       runtime: true
+                      info: true
                   - type: custom:mini-media-player
                     entity: media_player.bedroom_speaker
                     group: true
@@ -1610,6 +1612,7 @@ views:
                       power: true
                       progress: true
                       runtime: true
+                      info: true
                   - type: custom:mini-media-player
                     entity: media_player.teddy_s_speaker
                     group: true
@@ -1620,6 +1623,7 @@ views:
                       power: true
                       progress: true
                       runtime: true
+                      info: true
                   - type: custom:mini-media-player
                     entity: media_player.ollie_s_speaker
                     group: true
@@ -1630,6 +1634,7 @@ views:
                       power: true
                       progress: true
                       runtime: true
+                      info: true
                   - type: custom:mini-media-player
                     entity: media_player.front_room_speaker
                     group: true
@@ -1640,6 +1645,7 @@ views:
                       power: true
                       progress: true
                       runtime: true
+                      info: true
             
                 #- type: 'custom:spotify-card'
                 #  limit: 10
