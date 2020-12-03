@@ -1595,15 +1595,21 @@ views:
                     group: true
                     icon: mdi:television
                     hide:
-                      volume: false
                       controls: true
+                      volume: false
+                      power: true
+                      progress: true
+                      runtime: true
                   - type: custom:mini-media-player
                     entity: media_player.bedroom_speaker
                     group: true
                     icon: mdi:google-home
                     hide:
-                      volume: false
                       controls: true
+                      volume: false
+                      power: true
+                      progress: true
+                      runtime: true
                   - type: custom:mini-media-player
                     entity: media_player.teddy_s_speaker
                     group: true
@@ -1611,6 +1617,9 @@ views:
                     hide:
                       controls: true
                       volume: false
+                      power: true
+                      progress: true
+                      runtime: true
                   - type: custom:mini-media-player
                     entity: media_player.ollie_s_speaker
                     group: true
@@ -1618,6 +1627,9 @@ views:
                     hide:
                       controls: true
                       volume: false
+                      power: true
+                      progress: true
+                      runtime: true
                   - type: custom:mini-media-player
                     entity: media_player.front_room_speaker
                     group: true
@@ -1625,6 +1637,9 @@ views:
                     hide:
                       controls: true
                       volume: false
+                      power: true
+                      progress: true
+                      runtime: true
             
                 #- type: 'custom:spotify-card'
                 #  limit: 10
