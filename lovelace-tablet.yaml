@@ -1602,7 +1602,6 @@ views:
                       progress: true
                       runtime: false
                       info: true
-                      icon: true
                   - type: custom:mini-media-player
                     entity: media_player.bedroom_speaker
                     group: true
