@@ -38,7 +38,6 @@
               }
           - type: iframe
             url: http://172.30.1.2:8081
-            aspect_ratio: 50%
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection
