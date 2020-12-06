@@ -2657,7 +2657,7 @@ views:
           - type: custom:bom-weather-card
             title: BOM Weather
             entity_current_conditions: sensor.warner_icon_descriptor_0
-            entity_temperature: sensor.gosford_temp
+            entity_temperature: sensor.warner_temp
             entity_forecast_high_temp_1: sensor.warner_temp_max_1
             entity_forecast_high_temp_2: sensor.warner_temp_max_2
             entity_forecast_high_temp_3: sensor.warner_temp_max_3
@@ -2689,45 +2689,7 @@ views:
                 background: none !important;
                 box-shadow: none !important;
               }
-          - current: true
-            details: true
-            entity: weather.home
-            forecast: true
-            name: Weather
-            style: |
-              :host {
-                left: 61.5%;
-                top:  38%;
-                width: 70%;
-                overflow: hidden;
-                height: 63%;
-                background: none !important;
-                box-shadow: none !important;
-              }
-              .current {
-                margin-bottom: 7vw;
-              }
-              .variations {
-                margin-bottom: 4vw;
-              }
-              ha-card {
-                height: 100%;
-                background: none  !important;
-                box-shadow: none !important;
-                border-radius: 1vw;
-                font-size: 1.2vw !important;
-              }
-              .forecast{
-                padding: 0 2.5%;
-                width: 95%;
-              }
-              .forecast .day:first-child{
-                border-left: 0.1em solid #d9d9d9;
-              }
-              .forecast .day:last-child{
-                border-right: 0.1em solid #d9d9d9;
-              }
-            type: 'custom:weather-card'
+
             #################################################################
             #                                                               #
             #                             SIDEBAR                           #
