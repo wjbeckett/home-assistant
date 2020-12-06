@@ -2679,16 +2679,7 @@ views:
             entity_summary_4: sensor.warner_short_text_4
             entity_summary_5: sensor.warner_short_text_5
             entity_sun: sun.sun
-            style: |
-              :host {
-                left: 61.5%;
-                top:  38%;
-                width: 70%;
-                overflow: hidden;
-                height: 63%;
-                background: none !important;
-                box-shadow: none !important;
-              }
+
 
             #################################################################
             #                                                               #
