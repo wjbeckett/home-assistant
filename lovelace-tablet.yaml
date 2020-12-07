@@ -2667,6 +2667,10 @@ views:
                 background: none !important;
                 box-shadow: none !important;
               }
+              .icon-bigger {
+                width: 20em;
+                height: 20em;
+              }
             cards:
               - type: custom:bom-weather-card
                 title: "BOM Weather"
