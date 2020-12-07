@@ -2663,6 +2663,12 @@ views:
                 border-radius: 20px;
                 overflow: hidden;
                 box-shadow: none !important;
+                background: none !important;
+                border-shadow: none !important;
+              }
+              ha-card {
+                background: none !important;
+                border-shadow: none !important;
               }
             cards:
               - type: custom:bom-weather-card
