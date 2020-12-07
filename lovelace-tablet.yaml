@@ -2705,15 +2705,14 @@ views:
             entity_fire_danger_summary: sensor.warner_fire_danger_0
             entity_uv_alert_summary: sensor.warner_uv_category_0
             style: |
-              :host {
+              element.style {
                   left: 61.5%;
                   top:  38%;
                   width: 70%;
-                  overflow: hidden;
                   height: 63%;
                   background: none !important;
                   box-shadow: none !important;
-                }
+              }
 
 
 
