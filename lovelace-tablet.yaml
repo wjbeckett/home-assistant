@@ -2657,15 +2657,15 @@ views:
           - type: custom:stack-in-card
             style: |
               :host {
-                  left: 61.5%;
+                  left: 60%;
                   top:  38%;
                   width: 70%;
                   height: 63%;
-                  background: none !important;
-                  box-shadow: none !important;
+                  
               }
               ha-card {
-                
+                background: none !important;
+                box-shadow: none !important;
               }
             cards:
               - type: custom:bom-weather-card
