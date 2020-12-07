@@ -2679,6 +2679,14 @@ views:
             entity_summary_4: sensor.warner_short_text_4
             entity_summary_5: sensor.warner_short_text_5
             entity_sun: sun.sun
+            style: |
+              element.style {
+                left: 25%;
+                top: 20%;
+                width: 70%;
+                box-shadow: none !important;
+              }
+
 
 
             #################################################################
