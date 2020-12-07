@@ -2698,9 +2698,9 @@ views:
                 entity_humidity: sensor.warner_humidity
                 entity_apparent_temp: sensor.warner_temp_feels_like
                 entity_daily_summary: sensor.warner_extended_text_0
-                #entity_pop: sensor.warner_rain_chance_0
-                #entity_pop_intensity: sensor.warner_rain_since_9am
-                #entity_possible_today: sensor.warner_rain_amount_range_0
+                entity_pop: sensor.warner_rain_chance_0
+                entity_pop_intensity: sensor.warner_rain_since_9am
+                entity_possible_today: sensor.warner_rain_amount_range_0
                 #entity_pos_1: sensor.warner_rain_amount_range_1
                 #entity_pos_2: sensor.warner_rain_amount_range_2
                 #entity_pos_3: sensor.warner_rain_amount_range_3
