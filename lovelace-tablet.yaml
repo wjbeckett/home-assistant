@@ -827,7 +827,7 @@ views:
             #########################    Mini Weather card    #########################
             
           - backdrop: false
-            entity: weather.home
+            entity: weather.warner
             name: ' '
             style: |
               :host {
@@ -1281,7 +1281,7 @@ views:
             #########################    Mini Weather card    #########################
             
           - backdrop: false
-            entity: weather.home
+            entity: weather.warner
             name: ' '
             style: |
               :host {
@@ -1740,7 +1740,7 @@ views:
             #########################    Mini Weather card    #########################
             
           - backdrop: false
-            entity: weather.home
+            entity: weather.warner
             name: ' '
             style: |
               :host {
@@ -2452,7 +2452,7 @@ views:
             #########################    Mini Weather card    #########################
             
           - backdrop: false
-            entity: weather.home
+            entity: weather.warner
             name: ' '
             style: |
               :host {
@@ -2962,7 +2962,7 @@ views:
             #########################    Mini Weather card    #########################
             
           - backdrop: false
-            entity: weather.home
+            entity: weather.warner
             name: ' '
             style: |
               :host {
