@@ -2779,11 +2779,11 @@ views:
                   .forecast .day:last-child {
                     border-right: 0.1em solid #d9d9d9;
                   }
-                  .icon {
-                    width: 100px;
-                    height: 100px;
+                  .day .icon {
+                    width: 100px !important;
+                    height: 100px !important;
                   }
-                  .icon.bigger {
+                  .current .icon.bigger {
                     width: 10em !important;
                     height: 10em !important;
                   }
