@@ -2749,7 +2749,7 @@ views:
                   .day {
                     color: #d2d7de !important;
                   }
-                  .lowtemp {
+                  .lowTemp {
                     color: #d2d7de !important;
                   }
                   .precipitation {
@@ -2759,6 +2759,7 @@ views:
                     margin-bottom: 7vw !important;
                   }
                   .variations {
+                    color: #d2d7de !important;
                     margin-bottom: 4vw !important;
                   }
                   ha-card {
