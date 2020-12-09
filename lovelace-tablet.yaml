@@ -1116,7 +1116,7 @@ views:
               navigation_path: /lovelace-tablet-yaml/security
             type: image
           - action: none
-            image: /local/ui/sidebar/all_on.png
+            image: /local/ui/sidebar/all_off.png
             style:
               border-radius: 5vw
               box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
@@ -1806,8 +1806,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1834,16 +1833,16 @@ views:
                 border-radius: 5vw;
                 overflow: hidden !important;
                 box-shadow: none !important;
-                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
               }
               ha-card.--inactive .mmp-player{
                 opacity: 0 !important;
               }
               #primaryProgress{
-                background: #474A52 !important; 
-              }              
+                  background: #474A52 !important; 
+              }
               .entity__info{
-                height: 2.2vw;
+                height: 2.6vw;
                 width: 65% !important;
                 max-height: 20vw !important;
                 font-size: 0.9vw !important;
@@ -1851,7 +1850,7 @@ views:
                 display: inline-block !important;
               }
               div.mmp__bg{
-                background: #2B2E30;
+                background: #1E2022;
               }
               ha-card.--inactive div.mmp__bg{
                 background: none;
@@ -1918,11 +1917,12 @@ views:
                 width: 2.2vw !important;
                 height: 2.2vw !important;
                 min-width: 0 !important;
-                margin: -4px 1vw 0 0 !important;
+                margin: 0.2vw 1vw 0 0 !important;
               }
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
+            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                            Media View                                                                     #
