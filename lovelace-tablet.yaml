@@ -2738,28 +2738,28 @@ views:
                     box-shadow: none !important;
                   }
                   .title {
-                    color: #d2d7de;
+                    color: #d2d7de !important;
                   }
                   .temp {
-                    color: #d2d7de;
+                    color: #d2d7de !important;
                   }
                   .tempc {
-                    color: #d2d7de;
+                    color: #d2d7de !important;
                   }
                   .day {
-                    color: #d2d7de;
+                    color: #d2d7de !important;
                   }
                   .lowtemp {
-                    color: #d2d7de;
+                    color: #d2d7de !important;
                   }
                   .precipitation {
-                    color: #d2d7de;
+                    color: #d2d7de !important;
                   }
                   .current {
-                    margin-bottom: 7vw;
+                    margin-bottom: 7vw !important;
                   }
                   .variations {
-                    margin-bottom: 4vw;
+                    margin-bottom: 4vw !important;
                   }
                   ha-card {
                     height: 100%;
