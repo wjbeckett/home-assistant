@@ -2672,56 +2672,95 @@ views:
                 height: 20em;
               }
             cards:
-              - type: custom:bom-weather-card
-                title: "BOM Weather"
-                entity_current_conditions: sensor.warner_icon_descriptor_0
-                entity_temperature: sensor.warner_temp
-                entity_forecast_high_temp_1: sensor.warner_temp_max_1
-                entity_forecast_high_temp_2: sensor.warner_temp_max_2
-                entity_forecast_high_temp_3: sensor.warner_temp_max_3
-                entity_forecast_high_temp_4: sensor.warner_temp_max_4
-                entity_forecast_high_temp_5: sensor.warner_temp_max_5
-                entity_forecast_icon_1: sensor.warner_icon_descriptor_1
-                entity_forecast_icon_2: sensor.warner_icon_descriptor_2
-                entity_forecast_icon_3: sensor.warner_icon_descriptor_3
-                entity_forecast_icon_4: sensor.warner_icon_descriptor_4
-                entity_forecast_icon_5: sensor.warner_icon_descriptor_5
-                entity_forecast_low_temp_1: sensor.warner_temp_min_1
-                entity_forecast_low_temp_2: sensor.warner_temp_min_2
-                entity_forecast_low_temp_3: sensor.warner_temp_min_3
-                entity_forecast_low_temp_4: sensor.warner_temp_min_4
-                entity_forecast_low_temp_5: sensor.warner_temp_min_5
-                entity_summary_1: sensor.warner_short_text_1
-                entity_summary_2: sensor.warner_short_text_2
-                entity_summary_3: sensor.warner_short_text_3
-                entity_summary_4: sensor.warner_short_text_4
-                entity_summary_5: sensor.warner_short_text_5
-                entity_sun: sun.sun
-                entity_daytime_high: sensor.warner_temp_max_0
-                entity_daytime_low: sensor.warner_temp_min_0
-                entity_wind_bearing: sensor.warner_wind_direction
-                entity_wind_speed: sensor.warner_wind_speed_kilometre
-                entity_wind_gust: sensor.warner_wind_speed_kilometre
-                #entity_wind_speed_kt: sensor.warner_wind_speed_knot
-                #entity_wind_gust_kt: sensor.warner_gust_speed_knot
-                entity_humidity: sensor.warner_humidity
-                entity_apparent_temp: sensor.warner_temp_feels_like
-                entity_daily_summary: sensor.warner_extended_text_0
-                entity_pop: sensor.warner_rain_chance_0
-                entity_pop_intensity: sensor.warner_rain_since_9am
-                entity_possible_today: sensor.warner_rain_amount_range_0
-                entity_pos_1: sensor.warner_rain_amount_range_1
-                entity_pos_2: sensor.warner_rain_amount_range_2
-                entity_pos_3: sensor.warner_rain_amount_range_3
-                entity_pos_4: sensor.warner_rain_amount_range_4
-                entity_pos_5: sensor.warner_rain_amount_range_5
-                entity_pop_1: sensor.warner_rain_chance_1
-                entity_pop_2: sensor.warner_rain_chance_2
-                entity_pop_3: sensor.warner_rain_chance_3
-                entity_pop_4: sensor.warner_rain_chance_4
-                entity_pop_5: sensor.warner_rain_chance_5
-                entity_fire_danger_summary: sensor.warner_fire_danger_0
-                entity_uv_alert_summary: sensor.warner_uv_category_0
+              #- type: custom:bom-weather-card
+                #title: "BOM Weather"
+                #entity_current_conditions: sensor.warner_icon_descriptor_0
+                #entity_temperature: sensor.warner_temp
+                #entity_forecast_high_temp_1: sensor.warner_temp_max_1
+                #entity_forecast_high_temp_2: sensor.warner_temp_max_2
+                #entity_forecast_high_temp_3: sensor.warner_temp_max_3
+                #entity_forecast_high_temp_4: sensor.warner_temp_max_4
+                #entity_forecast_high_temp_5: sensor.warner_temp_max_5
+                #entity_forecast_icon_1: sensor.warner_icon_descriptor_1
+                #entity_forecast_icon_2: sensor.warner_icon_descriptor_2
+                #entity_forecast_icon_3: sensor.warner_icon_descriptor_3
+                #entity_forecast_icon_4: sensor.warner_icon_descriptor_4
+                #entity_forecast_icon_5: sensor.warner_icon_descriptor_5
+                #entity_forecast_low_temp_1: sensor.warner_temp_min_1
+                #entity_forecast_low_temp_2: sensor.warner_temp_min_2
+                #entity_forecast_low_temp_3: sensor.warner_temp_min_3
+                #entity_forecast_low_temp_4: sensor.warner_temp_min_4
+                #entity_forecast_low_temp_5: sensor.warner_temp_min_5
+                #entity_summary_1: sensor.warner_short_text_1
+                #entity_summary_2: sensor.warner_short_text_2
+                #entity_summary_3: sensor.warner_short_text_3
+                #entity_summary_4: sensor.warner_short_text_4
+                #entity_summary_5: sensor.warner_short_text_5
+                #entity_sun: sun.sun
+                #entity_daytime_high: sensor.warner_temp_max_0
+                #entity_daytime_low: sensor.warner_temp_min_0
+                #entity_wind_bearing: sensor.warner_wind_direction
+                #entity_wind_speed: sensor.warner_wind_speed_kilometre
+                #entity_wind_gust: sensor.warner_wind_speed_kilometre
+                #entity_humidity: sensor.warner_humidity
+                #entity_apparent_temp: sensor.warner_temp_feels_like
+                #entity_daily_summary: sensor.warner_extended_text_0
+                #entity_pop: sensor.warner_rain_chance_0
+                #entity_pop_intensity: sensor.warner_rain_since_9am
+                #entity_possible_today: sensor.warner_rain_amount_range_0
+                #entity_pos_1: sensor.warner_rain_amount_range_1
+                #entity_pos_2: sensor.warner_rain_amount_range_2
+                #entity_pos_3: sensor.warner_rain_amount_range_3
+                #entity_pos_4: sensor.warner_rain_amount_range_4
+                #entity_pos_5: sensor.warner_rain_amount_range_5
+                #entity_pop_1: sensor.warner_rain_chance_1
+                #entity_pop_2: sensor.warner_rain_chance_2
+                #entity_pop_3: sensor.warner_rain_chance_3
+                #entity_pop_4: sensor.warner_rain_chance_4
+                #entity_pop_5: sensor.warner_rain_chance_5
+                #entity_fire_danger_summary: sensor.warner_fire_danger_0
+                #entity_uv_alert_summary: sensor.warner_uv_category_0
+              - type: 'custom:weather-card'
+                name: Weather
+                entity: weather.warner
+                current: true
+                details: true
+                forecast: true
+                hourly_forecast: false
+                number_of_forecasts: 5
+                style: |
+                  :host {
+                    left: 61.5%;
+                    top:  38%;
+                    width: 70%;
+                    overflow: hidden;
+                    height: 63%;
+                    background: none !important;
+                    box-shadow: none !important;
+                  }
+                  .current {
+                    margin-bottom: 7vw;
+                  }
+                  .variations {
+                    margin-bottom: 4vw;
+                  }
+                  ha-card {
+                    height: 100%;
+                    background: none  !important;
+                    box-shadow: none !important;
+                    border-radius: 1vw;
+                    font-size: 1.2vw !important;
+                  }
+                  .forecast{
+                    padding: 0 2.5%;
+                    width: 95%;
+                  }
+                  .forecast .day:first-child{
+                    border-left: 0.1em solid #d9d9d9;
+                  }
+                  .forecast .day:last-child{
+                    border-right: 0.1em solid #d9d9d9;
+                  }
 
 
 
