@@ -2783,6 +2783,10 @@ views:
                     width: 100px;
                     height: 100px;
                   }
+                  .icon.bigger {
+                    width: 10em !important;
+                    height: 10em !important;
+                  }
 
 
 
