@@ -2721,7 +2721,7 @@ views:
                 #entity_fire_danger_summary: sensor.warner_fire_danger_0
                 #entity_uv_alert_summary: sensor.warner_uv_category_0
               - type: 'custom:weather-card'
-                name: Weather
+                name: Warner
                 entity: weather.warner
                 current: true
                 details: true
@@ -2732,9 +2732,7 @@ views:
                   :host {
                     left: 61.5%;
                     top:  38%;
-                    width: 70%;
                     overflow: hidden;
-                    height: 63%;
                     background: none !important;
                     box-shadow: none !important;
                   }
