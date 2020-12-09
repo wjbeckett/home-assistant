@@ -921,14 +921,14 @@ views:
                 border-radius: 5vw;
                 overflow: hidden !important;
                 box-shadow: none !important;
-                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
               }
               ha-card.--inactive .mmp-player{
                 opacity: 0 !important;
               }
               #primaryProgress{
-                background: #474A52 !important; 
-              }              
+                  background: #474A52 !important; 
+              }
               .entity__info{
                 height: 2.2vw;
                 width: 65% !important;
@@ -938,7 +938,7 @@ views:
                 display: inline-block !important;
               }
               div.mmp__bg{
-                background: #2B2E30;
+                background: #1E2022;
               }
               ha-card.--inactive div.mmp__bg{
                 background: none;
@@ -1375,14 +1375,14 @@ views:
                 border-radius: 5vw;
                 overflow: hidden !important;
                 box-shadow: none !important;
-                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
               }
               ha-card.--inactive .mmp-player{
                 opacity: 0 !important;
               }
               #primaryProgress{
-                background: #474A52 !important; 
-              }              
+                  background: #474A52 !important; 
+              }
               .entity__info{
                 height: 2.2vw;
                 width: 65% !important;
@@ -1392,7 +1392,7 @@ views:
                 display: inline-block !important;
               }
               div.mmp__bg{
-                background: #2B2E30;
+                background: #1E2022;
               }
               ha-card.--inactive div.mmp__bg{
                 background: none;
@@ -3122,14 +3122,14 @@ views:
                 border-radius: 5vw;
                 overflow: hidden !important;
                 box-shadow: none !important;
-                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
               }
               ha-card.--inactive .mmp-player{
                 opacity: 0 !important;
               }
               #primaryProgress{
-                background: #474A52 !important; 
-              }              
+                  background: #474A52 !important; 
+              }
               .entity__info{
                 height: 2.2vw;
                 width: 65% !important;
@@ -3139,7 +3139,7 @@ views:
                 display: inline-block !important;
               }
               div.mmp__bg{
-                background: #2B2E30;
+                background: #1E2022;
               }
               ha-card.--inactive div.mmp__bg{
                 background: none;
