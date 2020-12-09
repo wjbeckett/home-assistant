@@ -2737,7 +2737,22 @@ views:
                     background: none !important;
                     box-shadow: none !important;
                   }
-                  .title .temp .tempc .day .lowtemp .precipitation {
+                  .title {
+                    color: #d2d7de;
+                  }
+                  .temp {
+                    color: #d2d7de;
+                  }
+                  .tempc {
+                    color: #d2d7de;
+                  }
+                  .day {
+                    color: #d2d7de;
+                  }
+                  .lowtemp {
+                    color: #d2d7de;
+                  }
+                  .precipitation {
                     color: #d2d7de;
                   }
                   .current {
@@ -2753,7 +2768,7 @@ views:
                     border-radius: 1vw;
                     font-size: 1.2vw !important;
                   }
-                  .forecast{
+                  .forecast {
                     padding: 0 2.5%;
                     width: 95%;
                   }
