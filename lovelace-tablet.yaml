@@ -1806,7 +1806,8 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - entity: media_player.kitchen_display
+          - type: 'custom:mini-media-player'
+            entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1842,7 +1843,7 @@ views:
                   background: #474A52 !important; 
               }
               .entity__info{
-                height: 2.6vw;
+                height: 2.2vw;
                 width: 65% !important;
                 max-height: 20vw !important;
                 font-size: 0.9vw !important;
@@ -1917,12 +1918,11 @@ views:
                 width: 2.2vw !important;
                 height: 2.2vw !important;
                 min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
+                margin: -4px 1vw 0 0 !important;
               }
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
-            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                            Media View                                                                     #
