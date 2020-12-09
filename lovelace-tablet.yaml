@@ -2737,6 +2737,9 @@ views:
                     background: none !important;
                     box-shadow: none !important;
                   }
+                  .title .temp .tempc .day .lowtemp .precipitation {
+                    color: #d2d7de;
+                  }
                   .current {
                     margin-bottom: 7vw;
                   }
@@ -2754,11 +2757,15 @@ views:
                     padding: 0 2.5%;
                     width: 95%;
                   }
-                  .forecast .day:first-child{
+                  .forecast .day:first-child {
                     border-left: 0.1em solid #d9d9d9;
                   }
-                  .forecast .day:last-child{
+                  .forecast .day:last-child {
                     border-right: 0.1em solid #d9d9d9;
+                  }
+                  .icon {
+                    width: 100px;
+                    height: 100px;
                   }
 
 
