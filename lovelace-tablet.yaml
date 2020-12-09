@@ -2728,6 +2728,7 @@ views:
                 forecast: true
                 hourly_forecast: false
                 number_of_forecasts: 5
+                icons: "/local/icons/weather/"
                 style: |
                   :host {
                     left: 61.5%;
