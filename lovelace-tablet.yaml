@@ -893,8 +893,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1010,6 +1009,7 @@ views:
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
+            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                   Security                                                                                #
@@ -1347,8 +1347,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1464,7 +1463,7 @@ views:
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
-            
+            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                   Device Control                                                                          #
@@ -1807,8 +1806,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -1924,6 +1922,7 @@ views:
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
+            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                            Media View                                                                     #
@@ -2519,8 +2518,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -2547,16 +2545,16 @@ views:
                 border-radius: 5vw;
                 overflow: hidden !important;
                 box-shadow: none !important;
-                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
+                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
               }
               ha-card.--inactive .mmp-player{
                 opacity: 0 !important;
               }
               #primaryProgress{
-                  background: #474A52 !important; 
-              }
+                background: #474A52 !important; 
+              }              
               .entity__info{
-                height: 2.6vw;
+                height: 2.2vw;
                 width: 65% !important;
                 max-height: 20vw !important;
                 font-size: 0.9vw !important;
@@ -2564,7 +2562,7 @@ views:
                 display: inline-block !important;
               }
               div.mmp__bg{
-                background: #1E2022;
+                background: #2B2E30;
               }
               ha-card.--inactive div.mmp__bg{
                 background: none;
@@ -2631,11 +2629,12 @@ views:
                 width: 2.2vw !important;
                 height: 2.2vw !important;
                 min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
+                margin: 0 1vw 0 0 !important;
               }
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
+            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                               Weather View                                                                #
@@ -3094,8 +3093,7 @@ views:
             
             # when the media player is playing, this overlaps the "Media" menu button
 
-          - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+          - entity: media_player.kitchen_display
             hide:
               controls: true
               name: true
@@ -3211,6 +3209,7 @@ views:
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/media
+            type: 'custom:mini-media-player'
     #############################################################################################################################################
     #                                                                                                                                           #
     #                                                               Testing View                                                                #
