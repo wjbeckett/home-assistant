@@ -2721,108 +2721,108 @@ views:
                 #entity_pop_5: sensor.warner_rain_chance_5
                 #entity_fire_danger_summary: sensor.warner_fire_danger_0
                 #entity_uv_alert_summary: sensor.warner_uv_category_0
-              - type: 'custom:buien-rain-forecast'
-                fillColor: 'rgba(89, 160, 238, 0.2)'
-                lat: "-27.311890"
-                lineColor: 'rgba(89, 160, 238, 1)'
-                update_interval: 20
-                long: "152.959274"
-                style: |
-                  :host {
-                    left: 60.5%;
-                    top:  80%;
-                    width: 68%;
-                    overflow: hidden;
-                    height: 28%;
-                    background: none !important;
-                    box-shadow: none !important;
-                  }
-                  ha-card {
-                    height: 100%;
-                    background: none  !important;
-                    box-shadow: none !important;
-                    border-radius: 1vw;
-                    position: relative;
-                    font-size: 1vw !important;
-                  }
-                  .chart-container {
-                      height:100%;
-                      width:100%
-                  }
-                  #container {
-                      height:100%;
-                      width:100%;
-                      padding: 0 !important;
-                      margin: 0 !important;
-                  }
-            
-              - type: 'custom:weather-card'
-                name: Warner
-                entity: weather.home
-                current: true
-                details: true
-                forecast: true
-                hourly_forecast: false
-                number_of_forecasts: 5
-                icons: "/local/icons/weather/"
-                style: |
-                  :host {
-                    left: 61.5%;
-                    top:  38%;
-                    overflow: hidden;
-                    background: none !important;
-                    box-shadow: none !important;
-                  }
-                  .title {
-                    color: #d2d7de !important;
-                  }
-                  .temp {
-                    color: #d2d7de !important;
-                  }
-                  .tempc {
-                    color: #d2d7de !important;
-                  }
-                  .day {
-                    color: #d2d7de !important;
-                  }
-                  .lowTemp {
-                    color: #d2d7de !important;
-                  }
-                  .precipitation {
-                    color: #d2d7de !important;
-                  }
-                  .current {
-                    margin-bottom: 7vw !important;
-                  }
-                  .variations {
-                    color: #d2d7de !important;
-                    margin-bottom: 4vw !important;
-                  }
-                  ha-card {
-                    height: 100%;
-                    background: none  !important;
-                    box-shadow: none !important;
-                    border-radius: 1vw;
-                    font-size: 1.2vw !important;
-                  }
-                  .forecast {
-                    padding: 0 2.5%;
-                    width: 95%;
-                  }
-                  .forecast .day:first-child {
-                    border-left: 0.1em solid #d9d9d9;
-                  }
-                  .forecast .day:last-child {
-                    border-right: 0.1em solid #d9d9d9;
-                  }
-                  .day .icon {
-                    width: 100px !important;
-                    height: 100px !important;
-                  }
-                  .current .icon.bigger {
-                    width: 10em !important;
-                    height: 10em !important;
-                  }
+          - type: 'custom:buien-rain-forecast'
+            fillColor: 'rgba(89, 160, 238, 0.2)'
+            lat: -27.311890
+            lineColor: 'rgba(89, 160, 238, 1)'
+            update_interval: 20
+            long: 152.959274
+            style: |
+              :host {
+                left: 60.5%;
+                top:  80%;
+                width: 68%;
+                overflow: hidden;
+                height: 28%;
+                background: none !important;
+                box-shadow: none !important;
+              }
+              ha-card {
+                height: 100%;
+                background: none  !important;
+                box-shadow: none !important;
+                border-radius: 1vw;
+                position: relative;
+                font-size: 1vw !important;
+              }
+              .chart-container {
+                  height:100%;
+                  width:100%
+              }
+              #container {
+                  height:100%;
+                  width:100%;
+                  padding: 0 !important;
+                  margin: 0 !important;
+              }
+        
+          - type: 'custom:weather-card'
+            name: Warner
+            entity: weather.home
+            current: true
+            details: true
+            forecast: true
+            hourly_forecast: false
+            number_of_forecasts: 5
+            icons: "/local/icons/weather/"
+            style: |
+              :host {
+                left: 61.5%;
+                top:  38%;
+                overflow: hidden;
+                background: none !important;
+                box-shadow: none !important;
+              }
+              .title {
+                color: #d2d7de !important;
+              }
+              .temp {
+                color: #d2d7de !important;
+              }
+              .tempc {
+                color: #d2d7de !important;
+              }
+              .day {
+                color: #d2d7de !important;
+              }
+              .lowTemp {
+                color: #d2d7de !important;
+              }
+              .precipitation {
+                color: #d2d7de !important;
+              }
+              .current {
+                margin-bottom: 7vw !important;
+              }
+              .variations {
+                color: #d2d7de !important;
+                margin-bottom: 4vw !important;
+              }
+              ha-card {
+                height: 100%;
+                background: none  !important;
+                box-shadow: none !important;
+                border-radius: 1vw;
+                font-size: 1.2vw !important;
+              }
+              .forecast {
+                padding: 0 2.5%;
+                width: 95%;
+              }
+              .forecast .day:first-child {
+                border-left: 0.1em solid #d9d9d9;
+              }
+              .forecast .day:last-child {
+                border-right: 0.1em solid #d9d9d9;
+              }
+              .day .icon {
+                width: 100px !important;
+                height: 100px !important;
+              }
+              .current .icon.bigger {
+                width: 10em !important;
+                height: 10em !important;
+              }
 
 
 
