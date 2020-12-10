@@ -1,6 +1,2 @@
 ---
 weather:
-  - platform: buienradar
-    latitude: "-27.311890"
-    longitude: "152.959274"
-    forecast: true
