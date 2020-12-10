@@ -2723,7 +2723,7 @@ views:
                 #entity_uv_alert_summary: sensor.warner_uv_category_0
               - type: 'custom:weather-card'
                 name: Warner
-                entity: weather.home2
+                entity: weather.warner
                 current: true
                 details: true
                 forecast: true
