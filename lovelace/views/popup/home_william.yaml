@@ -10,7 +10,6 @@
                       state_color: true
                       show_header_toggle: false
                       entities:
-
                         - entity: person.william
                           secondary_info: last-changed
 
