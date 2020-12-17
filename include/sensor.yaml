@@ -36,13 +36,6 @@ binary_sensor:
           {{ is_state('switch.adaptive_lighting_sleep_mode_teddy_s_room', 'on') 
             or is_state('switch.adaptive_lighting_sleep_mode_ollie_s_room', 'on') }}
 
-      front_door:
-        friendly_name: Front Door
-        device_class: motion
-        value_template: "{{ is_state('camera.front_door', 'motion') }}"
-        delay_off: 
-            seconds: 10
-
       morning_meds_taken:
         friendly_name: Morning Meds Taken
         value_template: >-
