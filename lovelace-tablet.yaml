@@ -139,7 +139,34 @@ button_card_templates:
                           smooth_color_wheel: true
                           consolidate_entities: true
   climate:
-    state: *button_state
+    template: ['base']
+    state:
+      - value: 'cool'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          icon:
+            - color: var(--paper-item-icon-active-color)
+          custom_fields:
+            info:
+              - color: '#959698'
+      - value: 'heat'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          icon:
+            - color: '#ef0000'
+          custom_fields:
+            info:
+              - color: '#959698'
     styles:
       name: *button_styles_name
       state: *button_styles_state
@@ -423,50 +450,6 @@ button_card_templates:
         loader:
           [filter: "[[[ return entity.state === 'off' ? 'invert(1)' : 'none'; ]]]", 
           top: 3%, left: 60%, width: 3.7vw, position: absolute, opacity: 0.6]
-  
-  climate:
-    template: ['base']
-    state:
-      - value: 'cool'
-        styles:
-          card:
-            - background-color: rgba(255, 255, 255, 0.8)
-          name:
-            - color: rgba(0, 0, 0, 0.6)
-          state:
-            - color: rgba(0, 0, 0, 0.6)
-          icon:
-            - color: var(--paper-item-icon-active-color)
-          custom_fields:
-            info:
-              - color: '#959698'
-      - value: 'heat'
-        styles:
-          card:
-            - background-color: rgba(255, 255, 255, 0.8)
-          name:
-            - color: rgba(0, 0, 0, 0.6)
-          state:
-            - color: rgba(0, 0, 0, 0.6)
-          icon:
-            - color: '#ef0000'
-          custom_fields:
-            info:
-              - color: '#959698'
-    styles:
-      card: *button_styles_card
-    tap_action:
-      ui_sound: *ui_sound
-      haptic: light
-    hold_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
-        title: '[[[ return entity.attributes.friendly_name ]]]'
-        deviceID: this
-        card:
-          type: thermostat
-          entity: '[[[ return entity.entity_id ]]]'
 
 kiosk_mode:
   user_settings:
