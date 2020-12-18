@@ -7,3 +7,12 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
+  
+  - platform: reolink_dev
+    host: !secret front_door_cam_IP
+    username: !secret front_door_cam_user
+    password: !secret front_door_cam_password
+    name: Front Door
+    stream: sub
+    protocol: rtmp
+    scan_interval: 5
