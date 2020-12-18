@@ -15,4 +15,4 @@ camera:
     name: Front Door
     stream: sub
     protocol: rtmp
-    scan_interval: 5
+    scan_interval: 4
