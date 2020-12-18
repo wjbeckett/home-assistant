@@ -108,10 +108,10 @@ homeassistant:
     #person
 
     person.william:
-      entity_picture: '/local/william.png'
+      entity_picture: '/local/people/william.png'
 
     person.emily:
-      entity_picture: '/local/emily.jpeg'
+      entity_picture: '/local/people/emily.jpeg'
 
 
     #light
