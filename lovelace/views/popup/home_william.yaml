@@ -10,6 +10,7 @@
                       state_color: true
                       show_header_toggle: false
                       entities:
+                        - entity: binary_sensor.front_door_motion
                         - entity: person.william
                           secondary_info: last-changed
 
