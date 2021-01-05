@@ -7,7 +7,7 @@ homeassistant:
   packages: !include_dir_named include
   allowlist_external_dirs: [/config/]
   media_dirs:
-    - deepstack: /config/www/deepstack/
+    deepstack: /config/www/deepstack/
 
 #default_config:
 history:
