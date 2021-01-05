@@ -7,3 +7,11 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
+
+  - platform: mqtt
+    name: Front Door Last Person
+    topic: frigate/front_door/person/snapshot
+
+  - platform: mqtt
+    name: Front Door Last Car
+    topic: frigate/front_door/car/snapshot
