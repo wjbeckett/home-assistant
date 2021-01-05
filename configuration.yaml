@@ -6,6 +6,8 @@ homeassistant:
   time_zone: Australia/Brisbane
   packages: !include_dir_named include
   allowlist_external_dirs: [/config/]
+  media_dirs:
+    - deepstack: /config/www/deepstack/
 
 #default_config:
 history:
@@ -15,6 +17,7 @@ system_health:
 cast:
 ffmpeg:
 stream:
+media_source:
 
 logger:
   default: warning
