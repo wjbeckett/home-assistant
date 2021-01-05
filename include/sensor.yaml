@@ -22,17 +22,6 @@ binary_sensor:
     payload_off: "OFF"
     device_class: motion
 
-  - platform: mqtt
-    name: Front Door Person
-    state_topic: "frigate/front_door/person"
-    device_class: motion
-    availability_topic: "frigate/available"
-
-  - platform: mqtt
-    name: Front Door Car
-    state_topic: "frigate/front_door/car"
-    device_class: motion
-    availability_topic: "frigate/available"
 
   - platform: template
     sensors:
@@ -165,16 +154,6 @@ sensor:
     port: 32400
     section_types:
     - show
-
-  - platform: rest
-    name: Frigate Debug
-    resource: http://172.30.1.2:5000/debug/stats
-    scan_interval: 5
-    json_attributes:
-      - front_door
-      - detection_fps
-      - detectors
-    value_template: 'OK'
 
 
     ####################################################
@@ -356,19 +335,6 @@ sensor:
 
       placeholder:
         value_template: ' '
-
-      front_door_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["<camera_name>"]["camera_fps"] }}'
-        unit_of_measurement: 'FPS'
-      front_door_skipped_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["<camera_name>"]["skipped_fps"] }}'
-        unit_of_measurement: 'FPS'
-      front_door_detection_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["<camera_name>"]["detection_fps"] }}'
-        unit_of_measurement: 'FPS'
-      frigate_detection_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["detection_fps"] }}'
-        unit_of_measurement: 'FPS'
 
       hass_version:
         #entity_id: sensor.hass_version_installed, sensor.hass_version_latest

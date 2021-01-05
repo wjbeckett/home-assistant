@@ -36,27 +36,9 @@
                 border-radius: 15px;
                 margin: 10px;
               }
-          #- type: picture-entity
-          #  entity: camera.deepstack_latest_image
-          #  title: Latest Detection
-          #  style: |
-          #    ha-card {
-          #      background-color: var(--primary-background-color);
-          #      border-radius: 15px;
-          #      margin: 10px;
-          #    }
           - type: picture-entity
-            entity: camera.front_door_last_person
-            title: Latest Person Detected
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-              }
-          - type: picture-entity
-            entity: camera.front_door_last_car
-            title: Latest Car Detected
+            entity: camera.deepstack_latest_image
+            title: Latest Detection
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
