@@ -555,8 +555,6 @@ automation:
       - delay: 00:00:02
       - service: image_processing.scan
         entity_id: image_processing.deepstack_detector
-      - service: image_processing.scan
-        entity_id: image_processing.face_detection
   
   - id: face_recognised
     alias: Face recognised
