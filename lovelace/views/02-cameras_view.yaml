@@ -28,7 +28,18 @@
             camera_image: camera.front_door
             camera_view: live
             entities:
-              - binary_sensor.front_door
+              - binary_sensor.front_door_motion
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+              }
+          - type: picture-glance
+            title: Motioneye Stream
+            camera_image: camera.motioneye_stream
+            camera_view: live
+            entities:
               - binary_sensor.front_door_motion
             style: |
               ha-card {

@@ -7,3 +7,13 @@ camera:
   - platform: local_file
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
+
+  - platform: generic
+    name: Motioneye Stream
+    still_image_url: !secret motioneye_still
+    stream_source: !secret motioneye_stream
+    username: !secret mjpeg_user
+    password: !secret mjpeg_pass
+    authentication: basic
+    verify_ssl: false
+    
