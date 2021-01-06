@@ -10,7 +10,6 @@ camera:
 
   - platform: generic
     name: Motioneye Stream
-    still_image_url: !secret motioneye_still
-    stream_source: !secret motioneye_stream
+    still_image_url: !secret front_door_cam_image
+    stream_source: !secret front_door_cam_rtmp
     verify_ssl: false
-    
