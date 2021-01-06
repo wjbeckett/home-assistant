@@ -8,8 +8,13 @@ camera:
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
 
-  - platform: generic
+  - platform: ffmpeg
     name: Motioneye Stream
-    still_image_url: !secret front_door_cam_image
-    stream_source: !secret front_door_cam_rtmp
-    verify_ssl: false
+    input: !secret motioneye_stream
+    #still_image_url: !secret front_door_cam_image
+    #stream_source: !secret front_door_cam_rtmp
+    #verify_ssl: false
+
+  - platform: ffmpeg
+    name: ffmpeg Camera Stream
+    input: !secret front_door_cam_rtmp
