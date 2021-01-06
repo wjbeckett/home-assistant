@@ -12,8 +12,5 @@ camera:
     name: Motioneye Stream
     still_image_url: !secret motioneye_still
     stream_source: !secret motioneye_stream
-    username: !secret mjpeg_user
-    password: !secret mjpeg_pass
-    authentication: basic
     verify_ssl: false
     
