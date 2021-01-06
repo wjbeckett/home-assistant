@@ -17,4 +17,4 @@ camera:
 
   - platform: ffmpeg
     name: ffmpeg Camera Stream
-    input: !secret front_door_cam_rtmp
+    input: !secret front_door_cam_ffmpeg
