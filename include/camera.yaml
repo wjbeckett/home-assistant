@@ -8,6 +8,6 @@ camera:
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
 
-  - platform: ffmpeg
-    name: Front Door
-    input: !secret front_door_cam_proxy
+  #- platform: ffmpeg
+  #  name: Front Door
+  #  input: !secret front_door_cam_proxy

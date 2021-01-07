@@ -113,7 +113,7 @@ group:
   front_door:
     name: Front Door
     entities:
-      - camera.front_door
+      - camera.front_door_stream
       - binary_sensor.front_door_motion
   
   meds_reminder:

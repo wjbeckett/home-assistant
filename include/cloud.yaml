@@ -8,7 +8,7 @@ cloud:
         - light.bedroom_lamps
         - light.ollie_s_lamp
         - light.teddy_s_lamp
-        - camera.front_door
+        - camera.front_door_stream
         - media_player.bedroom_tv
         - media_player.lounge_room_tv
       include_domains:
