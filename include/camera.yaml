@@ -11,7 +11,7 @@ camera:
   - platform: generic
     name: Motioneye Stream
     still_image_url: !secret front_door_cam_image
-    stream_source: 172.30.1.2:8081
+    stream_source: http://172.30.1.2:8081
     #verify_ssl: false
 
   - platform: generic
