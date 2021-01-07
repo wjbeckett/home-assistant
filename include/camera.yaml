@@ -10,5 +10,4 @@ camera:
 
   - platform: ffmpeg
     name: Front Door
-    still_image_url: !secret front_door_cam_image
-    stream_source: !secret front_door_cam_proxy
+    input: !secret front_door_cam_proxy
