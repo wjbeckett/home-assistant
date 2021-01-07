@@ -48,8 +48,8 @@
                 margin: 10px;
               }
           - type: picture-glance
-            title: FFMPEG Stream
-            camera_image: camera.ffmpeg_camera_stream
+            title: Generic Camera
+            camera_image: camera.generic_camera
             camera_view: live
             entities:
               - binary_sensor.front_door_motion

@@ -536,6 +536,26 @@ automation:
     ####################################################
 
 
+  #- id: front_door_object_detection
+  #  alias: Detect Object at the front door
+  #  trigger:
+  #  - entity_id: binary_sensor.front_door_motion
+  #    platform: state
+  #    to: 'on'
+  #  condition:
+  #  - condition: state
+  #    entity_id: input_boolean.text_notifications
+  #    state: 'on'
+  #  action:
+  #    - delay: 00:00:01
+  #    - service: camera.snapshot
+  #      data:
+  #        entity_id: camera.front_door
+  #        filename: /config/www/tmp/image.jpg
+  #    - delay: 00:00:02
+  #    - service: image_processing.scan
+  #      entity_id: image_processing.deepstack_detector
+  
   - id: front_door_object_detection
     alias: Detect Object at the front door
     trigger:
@@ -548,14 +568,9 @@ automation:
       state: 'on'
     action:
       - delay: 00:00:01
-      - service: camera.snapshot
-        data:
-          entity_id: camera.front_door
-          filename: /config/www/tmp/image.jpg
-      - delay: 00:00:02
       - service: image_processing.scan
         entity_id: image_processing.deepstack_detector
-  
+
   - id: face_recognised
     alias: Face recognised
     condition:

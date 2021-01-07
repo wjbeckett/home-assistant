@@ -8,13 +8,13 @@ camera:
     file_path: /config/www/deepstack/deepstack_detector_latest.jpg
     name: deepstack_latest_image
 
-  - platform: mjpeg
+  - platform: generic
     name: Motioneye Stream
     mjpeg_url: !secret motioneye_stream
-    #still_image_url: !secret front_door_cam_image
-    #stream_source: !secret front_door_cam_rtmp
+    stream_source: 172.30.1.2:8081
     #verify_ssl: false
 
-  - platform: ffmpeg
-    name: ffmpeg Camera Stream
-    input: !secret front_door_cam_ffmpeg
+  - platform: generic
+    name: generic camera
+    still_image_url: "http://172.30.1.120/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=hass&amp;password=Letmein10!"
+    stream_source: "rtsp://hass:Letmein10!@172.30.1.120:554/h264Preview_01_sub"
