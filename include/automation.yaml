@@ -1298,40 +1298,38 @@ automation:
       entity_id: light.bedroom_lamps
       service: light.turn_off
       
-  - id: '1592805822114'
-    alias: Dim the bedroom lamps when the tv is playing
-    description: ''
-    trigger:
-    - entity_id: media_player.bedroom_tv
-      platform: state
-      to: "playing"
-    condition:
-    - condition: state
-      entity_id: light.bedroom_lamps
-      state: 'on'
-    action:
-    - data:
-        transition: 2.5
-      entity_id: scene.bedroom_night_light
-      service: scene.turn_on
+  #- id: '1592805822114'
+  #  alias: Dim the bedroom lamps when the tv is playing
+  #  description: ''
+  #  trigger:
+  #  - entity_id: media_player.bedroom_tv
+  #    platform: state
+  #    to: "playing"
+  #  condition:
+  #  - condition: state
+  #    entity_id: light.bedroom_lamps
+  #    state: 'on'
+  #  action:
+  #  - data:
+  #      transition: 2.5
+  #    entity_id: scene.bedroom_night_light
+  #    service: scene.turn_on
 
-  - alias: Turn off the bedroom lamps when we are going to sleep
+  - id: 'sleep_mode_when_phones_charging'
+    alias: activate sleep mode when we are going to sleep
     trigger:
     - platform: state
       entity_id:
-        - sensor.william_pixel_battery_state
-      to: "discharging"
+        - sensor.emily_charger_type
+      from: "none"
     condition:
     - condition: template
-      value_template: "{{ states.sensor.emily_battery_state.state != 'discharging' }}"
-    - condition: state
-      entity_id: media_player.bedroom_tv
-      state: 'playing'
+      value_template: "{{ states.sensor.william_charger_type != 'none' }}"
     - condition: sun
       after: sunset
     action:
-    - service: light.turn_off
-      entity_id: light.bedroom_lamps
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.sleep_mode
 
     ####################################################
     #                                                  #

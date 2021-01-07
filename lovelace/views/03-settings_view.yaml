@@ -106,6 +106,7 @@
               - input_boolean.text_notifications
               - input_boolean.meds_reminder
               - input_boolean.night_mode
+              - input_boolean.sleep_mode
               - input_boolean.guest_mode
               - switch.adaptive_lighting_kitchen
               - switch.adaptive_lighting_bedroom

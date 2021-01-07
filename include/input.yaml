@@ -34,6 +34,9 @@ input_boolean:
   night_mode:
     name: Night Mode
 
+  sleep_mode:
+    name: Sleep Mode
+
   responsibilities:
     name: responsibilities
     initial: off
