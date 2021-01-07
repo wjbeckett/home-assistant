@@ -16,7 +16,7 @@ sun:
 system_health:
 cast:
 ffmpeg:
-stream:
+#stream:
 media_source:
 
 logger:
