@@ -9,12 +9,6 @@ camera:
     name: deepstack_latest_image
 
   - platform: generic
-    name: Motioneye Stream
-    still_image_url: !secret front_door_cam_image
-    stream_source: !secret front_door_cam_proxy
-    #verify_ssl: false
-
-  - platform: generic
     name: Front Door
     still_image_url: !secret front_door_cam_image
-    stream_source: !secret front_door_cam_ffmpeg
+    stream_source: !secret front_door_cam_proxy
