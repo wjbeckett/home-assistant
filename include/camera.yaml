@@ -15,6 +15,6 @@ camera:
     #verify_ssl: false
 
   - platform: generic
-    name: generic camera
-    still_image_url: "http://172.30.1.120/cgi-bin/api.cgi?cmd=Snap&amp;channel=0&amp;rs=wuuPhkmUCeI9WG7C&amp;user=hass&amp;password=Letmein10!"
-    stream_source: "rtsp://hass:Letmein10!@172.30.1.120:554/h264Preview_01_sub"
+    name: Front Door
+    still_image_url: !secret front_door_cam_image
+    stream_source: !secret front_door_cam_ffmpeg
