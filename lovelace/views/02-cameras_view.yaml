@@ -36,8 +36,8 @@
                 margin: 10px;
               }
           - type: picture-glance
-            title: Motioneye Stream
-            camera_image: camera.motioneye_stream
+            title: ONVIF
+            camera_image: camera.front_door_onvif_sub
             camera_view: live
             entities:
               - binary_sensor.front_door_motion
