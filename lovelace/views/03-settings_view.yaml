@@ -22,16 +22,6 @@
                     font-family: Helvetica;
                     letter-spacing: '-0.01em';
                   }
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - sensor.wifi_status
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;   
-              }
           - type: custom:mini-graph-card
             name: Download/Upload
             entities:
