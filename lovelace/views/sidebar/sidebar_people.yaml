@@ -10,7 +10,7 @@
               left: 5.8%
               top: 72%
               width: 4.5vw
-            tap_action: !include lovelace/views/popup/home_william.yaml
+            #tap_action: !include lovelace/views/popup/home_william.yaml
             type: image
               
           - action: none
@@ -25,5 +25,5 @@
               left: 10.8%
               top: 72%
               width: 4.5vw
-            tap_action: !include lovelace/views/popup/home_emily.yaml
+            #tap_action: !include lovelace/views/popup/home_emily.yaml
             type: image
