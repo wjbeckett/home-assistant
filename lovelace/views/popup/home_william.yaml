@@ -5,7 +5,14 @@
                 deviceID: this
                 card:
                   type: custom:stack-in-card
+                  mode: vertical
                   cards:
+                    - type: custom:button-card
+                      name: Alarm
+                      icon: mdi:shield-home
+                      entity: alarm_control_panel.home_alarm
+                      show_state: false
+                      show_icon: true
                     - type: entities
                       state_color: true
                       show_header_toggle: false
