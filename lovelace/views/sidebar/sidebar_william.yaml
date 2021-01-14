@@ -10,5 +10,5 @@
             left: 5.8%
             top: 72%
             width: 4.5vw
-          tap_action: !include ../popup/home_william2.yaml
+          tap_action: !include ../popup/home_william.yaml
           type: image
