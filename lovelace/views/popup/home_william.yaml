@@ -6,8 +6,6 @@
                 card:
                   type: custom:stack-in-card
                   cards:
-                    - type: custom:button-card
-                      name: testing
                     - type: entities
                       state_color: true
                       show_header_toggle: false
@@ -22,4 +20,32 @@
                           hours_to_show: 24
                           refresh_interval: 0
 
-                  
+                        - type: custom:hui-element
+                          card_type: glance
+                          show_state: false
+                          entities:
+
+                            - entity: sensor.william_wifi_connection
+                              name: Router
+                              icon: mdi:wifi
+
+                            - entity: sensor.pixel_4_xl_bluetooth_connection
+                              name: Bluetooth
+                              icon: mdi:bluetooth
+
+                            - entity: device_tracker.william
+                              name: Position
+                              icon: mdi:cellphone-android
+
+                    - type: custom:hui-element
+                      card_type: map
+                      entities: 
+                        - device_tracker.william
+                        - zone.home
+                      default_zoom: 14
+                      style: |
+                        ha-card {
+                          height: 24.9em;
+                          border-top: 1px solid #FFFFFF !important;
+                          filter: invert(1) contrast(80%) hue-rotate(250deg);
+                        }

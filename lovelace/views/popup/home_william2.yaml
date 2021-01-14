@@ -1,0 +1,77 @@
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: William
+                deviceID: this
+                style:
+                  .: |
+                    :host .content {
+                      height: 675px;
+                    }
+                card:
+                  type: custom:stack-in-card
+                  cards:
+                    - type: entities
+                      state_color: true
+                      show_header_toggle: false
+                      entities:
+
+                        - entity: person.william
+                          secondary_info: last-changed
+
+                        - type: custom:hui-element
+                          card_type: history-graph
+                          entities: [entity: person.william]
+                          hours_to_show: 24
+                          refresh_interval: 0
+
+                        - type: custom:hui-element
+                          card_type: glance
+                          show_state: false
+                          style:
+                            .: |
+                              ha-card {
+                                background: none;
+                                box-shadow: none;
+                              }
+                            "ha-card>div>div:nth-child(1)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: {{ '#3182b7' if is_state('device_tracker.william_ping', 'home') else '#FFFFFF20' }};
+                                    }
+                            "ha-card>div>div:nth-child(2)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: {{ '#3182b7' if is_state('binary_sensor.william_bluetooth_state', 'on') else '#FFFFFF20' }};
+                                    }
+                            "ha-card>div>div:nth-child(3)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: {{ '#3182b7' if is_state('device_tracker.william', 'home') else '#FFFFFF20' }};
+                                    }
+                          entities:
+
+                            - entity: device_tracker.william_ping
+                              name: Router
+                              icon: mdi:wifi
+
+                            - entity: binary_sensor.william_bluetooth_state
+                              name: Bluetooth
+                              icon: mdi:bluetooth
+
+                            - entity: device_tracker.william
+                              name: Position
+                              icon: custom:iphone-modern
+
+                    - type: custom:hui-element
+                      card_type: map
+                      class: map
+                      entities: [device_tracker.iphone]
+                      default_zoom: 15
+
