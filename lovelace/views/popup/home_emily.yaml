@@ -4,74 +4,72 @@
                 title: Emily
                 deviceID: this
                 card:
-                  type: custom:stack-in-card
-                  cards:
-                    - type: entities
-                      state_color: true
-                      show_header_toggle: false
-                      entities:
+                  - type: entities
+                    state_color: true
+                    show_header_toggle: false
+                    entities:
 
-                        - entity: person.emily
-                          secondary_info: last-changed
+                      - entity: person.emily
+                        secondary_info: last-changed
 
-                        - type: custom:hui-element
-                          card_type: history-graph
-                          entities: [entity: person.emily]
-                          hours_to_show: 24
-                          refresh_interval: 0
+                      - type: custom:hui-element
+                        card_type: history-graph
+                        entities: [entity: person.emily]
+                        hours_to_show: 24
+                        refresh_interval: 0
 
-                        - type: custom:hui-element
-                          card_type: glance
-                          show_state: false
-                          entities:
+                      - type: custom:hui-element
+                        card_type: glance
+                        show_state: false
+                        entities:
 
-                            - entity: sensor.emily_wifi_connection
-                              name: Router
-                              icon: mdi:wifi
+                          - entity: sensor.emily_wifi_connection
+                            name: Router
+                            icon: mdi:wifi
 
-                            - entity: sensor.emily_bluetooth_connection
-                              name: Bluetooth
-                              icon: mdi:bluetooth
+                          - entity: sensor.emily_bluetooth_connection
+                            name: Bluetooth
+                            icon: mdi:bluetooth
 
-                            - entity: device_tracker.emily
-                              name: Position
-                              icon: mdi:cellphone-android
+                          - entity: device_tracker.emily
+                            name: Position
+                            icon: mdi:cellphone-android
 
-                        - type: custom:hui-element
-                          card_type: horizontal-stack
-                          style: |
-                            #root {
-                              justify-content: space-evenly;
-                              margin: -0.5em 0 2em 0;
-                            }
-                          cards:
+                      - type: custom:hui-element
+                        card_type: horizontal-stack
+                        style: |
+                          #root {
+                            justify-content: space-evenly;
+                            margin: -0.5em 0 2em 0;
+                          }
+                        cards:
 
-                          - type: custom:button-card
-                            name: >
-                              <ha-icon icon="mdi:volume-high"></ha-icon> Find my Android
-                            tap_action:
-                              action: call-service
-                              service: notify.mobile_app_emily
-                              service_data:
-                                title: Find my Phone
-                                message: Here I am!
-                                data:
-                                  channel: locate
-                                  importance: max
-                            template: name_action
-                            styles:
-                              card:
-                                [background: none, border-radius: none]
+                        - type: custom:button-card
+                          name: >
+                            <ha-icon icon="mdi:volume-high"></ha-icon> Find my Android
+                          tap_action:
+                            action: call-service
+                            service: notify.mobile_app_emily
+                            service_data:
+                              title: Find my Phone
+                              message: Here I am!
+                              data:
+                                channel: locate
+                                importance: max
+                          template: name_action
+                          styles:
+                            card:
+                              [background: none, border-radius: none]
 
-                    - type: custom:hui-element
-                      card_type: map
-                      entities: 
-                        - device_tracker.emily
-                        - zone.home
-                      default_zoom: 14
-                      style: |
-                        ha-card {
-                          height: 24.9em;
-                          border-top: 1px solid #FFFFFF !important;
-                          filter: invert(1) contrast(80%) hue-rotate(250deg);
-                        }
+                  - type: custom:hui-element
+                    card_type: map
+                    entities: 
+                      - device_tracker.emily
+                      - zone.home
+                    default_zoom: 14
+                    style: |
+                      ha-card {
+                        height: 24.9em;
+                        border-top: 1px solid #FFFFFF !important;
+                        filter: invert(1) contrast(80%) hue-rotate(250deg);
+                      }
