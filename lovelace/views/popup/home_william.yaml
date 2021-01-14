@@ -4,7 +4,7 @@
                 title: William
                 deviceID: this
                 card:
-                  type: custom:stack-in-card
+                  type: vertical-stack
                   cards:
                     - type: entities
                       state_color: true
