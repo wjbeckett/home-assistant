@@ -4,8 +4,10 @@
                 title: William
                 deviceID: this
                 card:
-                - type: vertical-stack
+                  type: vertical-stack
                   cards:
+                    - type: custom:button-card
+                      name: testing
                     - type: entities
                       state_color: true
                       show_header_toggle: false
