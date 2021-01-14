@@ -2863,7 +2863,8 @@ views:
             text: 'People at home:'
             type: 'custom:text-element'
             
-          - !include lovelace/views/sidebar/sidebar_people.yaml
+          - !include lovelace/views/sidebar/sidebar_william.yaml
+          - !include lovelace/views/sidebar/sidebar_emily.yaml
           #- action: none
           #  entity: person.william
           #  state_image:

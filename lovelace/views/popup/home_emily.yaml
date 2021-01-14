@@ -11,8 +11,6 @@
                       state_color: true
                       show_header_toggle: false
                       entities:
-                        - entity: input_boolean.
-
                         - entity: person.emily
                           secondary_info: last-changed
 
