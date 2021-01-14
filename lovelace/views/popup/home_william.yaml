@@ -4,7 +4,7 @@
                 title: William
                 deviceID: this
                 card:
-                  type: vertical-stack
+                  type: custom:stack-in-card
                   cards:
                     - type: custom:button-card
                       name: testing
