@@ -52,7 +52,7 @@ lovelace:
       url: /local/js/weather-card.js
     - type: module
       url: /local/js/buien-rain-card.js
-    - tyoe: module
+    - type: module
       url: /local/stack-in-card.js
     
   
