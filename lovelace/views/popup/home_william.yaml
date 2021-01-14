@@ -4,20 +4,20 @@
                 title: William
                 deviceID: this
                 card:
-                  - type: vertical-stack
-                    cards:
-                      - type: entities
-                        state_color: true
-                        show_header_toggle: false
-                        entities:
-                          - entity: binary_sensor.front_door_motion
-                          - entity: person.william
-                            secondary_info: last-changed
+                - type: vertical-stack
+                  cards:
+                    - type: entities
+                      state_color: true
+                      show_header_toggle: false
+                      entities:
+                        - entity: binary_sensor.front_door_motion
+                        - entity: person.william
+                          secondary_info: last-changed
 
-                          - type: custom:hui-element
-                            card_type: history-graph
-                            entities: [entity: person.william]
-                            hours_to_show: 24
-                            refresh_interval: 0
+                        - type: custom:hui-element
+                          card_type: history-graph
+                          entities: [entity: person.william]
+                          hours_to_show: 24
+                          refresh_interval: 0
 
                   
