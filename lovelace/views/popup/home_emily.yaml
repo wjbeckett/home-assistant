@@ -62,16 +62,3 @@
                             styles:
                               card:
                                 [background: none, border-radius: none]
-
-                    - type: custom:hui-element
-                      card_type: map
-                      entities: 
-                        - device_tracker.emily
-                        - zone.home
-                      default_zoom: 14
-                      style: |
-                        ha-card {
-                          height: 24.9em;
-                          border-top: 1px solid #FFFFFF !important;
-                          filter: invert(1) contrast(80%) hue-rotate(250deg);
-                        }
