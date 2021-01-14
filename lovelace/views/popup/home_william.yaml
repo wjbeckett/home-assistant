@@ -3,6 +3,11 @@
               service_data:
                 title: William
                 deviceID: this
+                style:
+                  .: |
+                    :host .content {
+                      height: 675px;
+                    }
                 card:
                   type: vertical-stack
                   cards:
@@ -10,7 +15,7 @@
                       state_color: true
                       show_header_toggle: false
                       entities:
-                        - entity: binary_sensor.front_door_motion
+
                         - entity: person.william
                           secondary_info: last-changed
 
@@ -23,29 +28,87 @@
                         - type: custom:hui-element
                           card_type: glance
                           show_state: false
+                          style:
+                            .: |
+                              ha-card {
+                                background: none;
+                                box-shadow: none;
+                              }
+                            "ha-card>div>div:nth-child(1)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: {{ '#3182b7' if is_state('device_tracker.william_ping', 'home') else '#FFFFFF20' }};
+                                    }
+                            "ha-card>div>div:nth-child(2)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: {{ '#3182b7' if is_state('binary_sensor.william_bluetooth_state', 'on') else '#FFFFFF20' }};
+                                    }
+                            "ha-card>div>div:nth-child(3)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: {{ '#3182b7' if is_state('device_tracker.william', 'home') else '#FFFFFF20' }};
+                                    }
+                            "ha-card>div>div:nth-child(4)":
+                              $:
+                                "state-badge":
+                                  $: |
+                                    ha-icon {
+                                      color: '#3182b7'
+                                    }
                           entities:
 
-                            - entity: sensor.william_wifi_connection
+                            - entity: device_tracker.william_ping
                               name: Router
                               icon: mdi:wifi
 
-                            - entity: sensor.pixel_4_xl_bluetooth_connection
+                            - entity: binary_sensor.william_bluetooth_state
                               name: Bluetooth
                               icon: mdi:bluetooth
 
                             - entity: device_tracker.william
                               name: Position
-                              icon: mdi:cellphone-android
+                              icon: custom:iphone-modern
+                            
+                            - entity: sensor.pixel_4_xl_battery_level
+                              name: Pixel Battery
+                              icon: mdi:battery
+                        
+                        - type: custom:hui-element
+                          card_type: horizontal-stack
+                          style: |
+                            #root {
+                              justify-content: space-evenly;
+                              margin: -1em 0 0 0;
+                            }
+                          cards:
+
+                          - type: custom:button-card
+                            name: >
+                              <ha-icon icon="mdi:volume-high"></ha-icon> Find my Android
+                            tap_action:
+                              action: call-service
+                              service: notify.mobile_app_william
+                              service_data:
+                                title: Find my Phone
+                                message: Here I am!
+                                data:
+                                  channel: locate
+                                  importance: max
+                            template: name_action
+                            styles:
+                              card:
+                                [background: none, border-radius: none]
 
                     - type: custom:hui-element
                       card_type: map
-                      entities: 
-                        - device_tracker.william
-                        - zone.home
-                      default_zoom: 14
-                      style: |
-                        ha-card {
-                          height: 24.9em;
-                          border-top: 1px solid #FFFFFF !important;
-                          filter: invert(1) contrast(80%) hue-rotate(250deg);
-                        }
+                      class: map
+                      entities: [device_tracker.william]
+                      default_zoom: 15
+
