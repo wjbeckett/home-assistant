@@ -1,0 +1,29 @@
+          - action: none
+            entity: person.william
+            state_image:
+              home: /local/people/luke.png
+              not_home: /local/people/lukeGone.png
+            style:
+              background-color: 'rgba(255, 255, 255, 0.0)'
+              border-radius: 10vw
+              height: 4.5vw
+              left: 5.8%
+              top: 72%
+              width: 4.5vw
+            tap_action: !include lovelace/views/popup/home_william.yaml
+            type: image
+              
+          - action: none
+            entity: person.emily
+            state_image:
+              home: /local/people/santa.png
+              not_home: /local/people/santaGone.png
+            style:
+              background-color: 'rgba(255, 255, 255, 0.0)'
+              border-radius: 10vw
+              height: 4.5vw
+              left: 10.8%
+              top: 72%
+              width: 4.5vw
+            tap_action: !include lovelace/views/popup/home_emily.yaml
+            type: image
