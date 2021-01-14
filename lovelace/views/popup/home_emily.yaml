@@ -6,10 +6,12 @@
                 card:
                   type: custom:stack-in-card
                   cards:
-                    - type: entities
+                    - type: custom:hui-element
+                      card_type: entities
                       state_color: true
                       show_header_toggle: false
                       entities:
+                        - entity: input_boolean.
 
                         - entity: person.emily
                           secondary_info: last-changed

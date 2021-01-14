@@ -1,4 +1,4 @@
-          action: none
+       -  action: none
           entity: person.william
           state_image:
             home: /local/people/luke.png
@@ -10,10 +10,10 @@
             left: 5.8%
             top: 72%
             width: 4.5vw
-          #tap_action: !include lovelace/views/popup/home_william.yaml
+          tap_action: !include lovelace/views/popup/home_william.yaml
           type: image
               
-          action: none
+       -  action: none
           entity: person.emily
           state_image:
             home: /local/people/santa.png
@@ -25,5 +25,5 @@
             left: 10.8%
             top: 72%
             width: 4.5vw
-          #tap_action: !include lovelace/views/popup/home_emily.yaml
+          tap_action: !include lovelace/views/popup/home_emily.yaml
           type: image
