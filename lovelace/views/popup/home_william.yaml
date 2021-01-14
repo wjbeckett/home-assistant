@@ -27,7 +27,7 @@
 
                         - type: custom:hui-element
                           card_type: glance
-                          show_state: false
+                          show_state: true
                           style:
                             .: |
                               ha-card {
