@@ -60,7 +60,7 @@
                                 "state-badge":
                                   $: |
                                     ha-icon {
-                                      color: '#3182b7'
+                                      color: {{'#03a1fc'}}
                                     }
                           entities:
 

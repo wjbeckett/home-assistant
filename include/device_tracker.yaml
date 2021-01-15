@@ -3,7 +3,7 @@ device_tracker:
   - platform: ping
     hosts:
       william_ping: 172.30.1.107
-      emily_ping: 172.30.1.102
+      emily_ping: 172.30.1.112
       #deb_ping: 172.30.1.110
       #ses_ping: 172.30.1.103
       #timmy_ping: 172.30.1.126
