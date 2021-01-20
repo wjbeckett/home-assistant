@@ -2,8 +2,5 @@
 device_tracker:
   - platform: ping
     hosts:
-      william_ping: 172.30.1.138
-      emily_ping: 172.30.1.119
-      #deb_ping: 172.30.1.110
-      #ses_ping: 172.30.1.103
-      #timmy_ping: 172.30.1.126
+      william_ping: !secret william_ping
+      emily_ping: !secret emily_ping
