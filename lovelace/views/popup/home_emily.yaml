@@ -63,7 +63,7 @@
                               name: Router
                               icon: mdi:wifi
 
-                            - entity: sensor.emily_bluetooth_state
+                            - entity: binary_sensor.emily_bluetooth_state
                               name: Bluetooth
                               icon: mdi:bluetooth
 
