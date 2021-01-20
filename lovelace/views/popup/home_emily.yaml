@@ -59,7 +59,7 @@
                                     }
                           entities:
 
-                            - entity: sensor.emily_wifi_connection
+                            - entity: sensor.emily_ping
                               name: Router
                               icon: mdi:wifi
 
