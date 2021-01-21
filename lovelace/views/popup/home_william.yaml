@@ -9,7 +9,7 @@
                       height: 675px;
                     }
                 card:
-                  type: vertical-stack
+                  type: custom:stack-in-card
                   cards:
                     - type: entities
                       state_color: true

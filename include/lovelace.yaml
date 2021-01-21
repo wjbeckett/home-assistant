@@ -41,7 +41,7 @@ lovelace:
       type: module
     - url: /hacsfiles/text-element/text-element.js
       type: module
-    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
       type: module
       
     - url: '/local/custom_icons.js?v=25052001'
