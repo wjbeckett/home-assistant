@@ -4,7 +4,7 @@
                 title: Emily
                 deviceID: this
                 card:
-                  type: vertical-stack
+                  type: custom:vertical-stack-in-card
                   cards:
                     - type: custom:hui-element
                       card_type: entities
