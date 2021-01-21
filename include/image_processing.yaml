@@ -7,8 +7,8 @@ image_processing:
     save_file_folder: /config/www/deepstack
     save_timestamped_file: True
     targets:
-    - person
-    - car
+      - target: person
+      - target: car
     source:
-    - entity_id: camera.front_door_stream
-      name: deepstack_detector
+      - entity_id: camera.front_door_stream
+        name: deepstack_detector
