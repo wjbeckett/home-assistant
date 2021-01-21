@@ -1921,7 +1921,7 @@ views:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
             elements:
-              - type: custom:vertical-stack-in-card
+              - type: vertical-stack
                 style: | 
                   :host {
                       left: 79.5%; 
