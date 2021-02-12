@@ -98,7 +98,6 @@ sensor:
       - type: last_boot
 
   - platform: uptime
-    unit_of_measurement: minutes
 
   - platform: time_date
     display_options:
