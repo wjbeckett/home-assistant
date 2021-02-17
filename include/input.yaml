@@ -89,11 +89,6 @@ input_boolean:
   meds_reminder:
     name: Meds reminder enabled
     initial: 'on'
-    
-  garbage_general:
-    name: General Bin
-  garbage_recycling:
-    name: Recycling Bin
 
 input_number:
 
