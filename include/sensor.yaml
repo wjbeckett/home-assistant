@@ -12,8 +12,6 @@ binary_sensor:
     host: 8.8.8.8
     name: server_internet_access
   
-  - platform: wyzesense
-    device: "/dev/hidraw0"
 
   - platform: mqtt
     name: "Front Door Motion"
