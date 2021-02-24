@@ -87,6 +87,8 @@
             cards:
               - type: custom:button-card
                 entity: sensor.pixel_4_xl_room_presence
+                name: William
+                entity_picture: '/local/people/william.png'
                 triggers_update:
                   ['person.william', 'sensor.time', 'sensor.pixel_4_xl_room_presence']
                 tap_action: !include popup/home_william.yaml
