@@ -969,18 +969,14 @@ automation:
       type: turn_off
     - service: input_boolean.turn_off
       entity_id: input_boolean.night_mode
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.sleep_mode
     - service: switch.turn_off
       data:
         entity_id: switch.adaptive_lighting_sleep_mode_ollie_s_room
     - service: switch.turn_off
       data:
         entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
-    - service: switch.turn_off
-      data:
-        entity_id: switch.area_presence_hold_ollie_s_room
-    - service: switch.turn_off
-      data:
-        entity_id: switch.area_presence_hold_teddy_s_room
   
   - id: '1593405189369'
     alias: Activate Birght Lights when coming home after sunset
@@ -1023,6 +1019,9 @@ automation:
     - condition: state
       entity_id: input_boolean.guest_mode
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
     action:
     - data:
         transition: 2.5
@@ -1039,6 +1038,9 @@ automation:
     condition:
     - condition: state
       entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.night_mode
       state: 'off'
     - after: 06:00:00
       before: 06:29:00
@@ -1062,6 +1064,9 @@ automation:
       entity_id: input_boolean.guest_mode
       state: 'off'
     - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: state
       entity_id: light.kitchen_pendant_lights
       state: 'on'
     action:
@@ -1081,6 +1086,9 @@ automation:
     condition:
     - condition: state
       entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.night_mode
       state: 'off'
     action:
     - data:
@@ -1102,6 +1110,9 @@ automation:
     condition:
     - condition: state
       entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
       entity_id: input_boolean.ollie_sleeping
@@ -1130,6 +1141,15 @@ automation:
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.night_mode
+      - service: light.turn_off
+        entity_id: light.kitchen_downlight
+        data:
+          transition: 2.5
+      - service: light.turn_off
+        entity_id: light.kitchen_pendant_lights
+        data:
+          transition: 2.5
+         
 
   - id: 'dim_boys_lights_at_730pm'
     alias: Dim the boys lights at 7:30pm
