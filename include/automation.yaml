@@ -977,6 +977,12 @@ automation:
     - service: switch.turn_off
       data:
         entity_id: switch.adaptive_lighting_sleep_mode_teddy_s_room
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_ollie_s_room
+    - service: switch.turn_off
+      data:
+        entity_id: switch.area_presence_hold_teddy_s_room
   
   - id: '1593405189369'
     alias: Activate Birght Lights when coming home after sunset

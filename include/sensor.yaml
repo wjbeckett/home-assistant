@@ -322,6 +322,12 @@ sensor:
 
       placeholder:
         value_template: ' '
+      
+      bedroom_presence:
+        unique_id: "bedroom-presence-template-sensor"
+        friendly_name: "Bedroom Presence"
+        device_class: "presence"
+        value_template: "{{ is_state('sensor.device_name', 'bedroom') }}"
 
       hass_version:
         #entity_id: sensor.hass_version_installed, sensor.hass_version_latest
