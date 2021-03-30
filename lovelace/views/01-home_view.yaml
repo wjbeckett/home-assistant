@@ -86,11 +86,11 @@
           - type: horizontal-stack
             cards:
               - type: custom:button-card
-                entity: sensor.pixel_4_xl_room_presence
+                entity: person.william
                 name: William
                 entity_picture: '/local/people/william.png'
                 triggers_update:
-                  ['person.william', 'sensor.time', 'sensor.pixel_4_xl_room_presence']
+                  ['person.william', 'sensor.time']
                 tap_action: !include popup/home_william.yaml
                 hold_action: !include popup/home_william.yaml
                 template: ['base', 'switch', 'person']

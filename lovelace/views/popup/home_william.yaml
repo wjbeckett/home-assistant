@@ -16,12 +16,12 @@
                       show_header_toggle: false
                       entities:
 
-                        - entity: sensor.pixel_4_xl_room_presence
+                        - entity: person.william
                           secondary_info: last-changed
 
                         - type: custom:hui-element
                           card_type: history-graph
-                          entities: [entity: sensor.pixel_4_xl_room_presence]
+                          entities: [entity: person.william]
                           hours_to_show: 24
                           refresh_interval: 0
 
