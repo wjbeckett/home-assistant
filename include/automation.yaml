@@ -1605,6 +1605,6 @@ automation:
       - service: device_tracker.see
         data_template:
           dev_id: pixel_4_xl_tracker
-          location_name: "{{ trigger.state }}"
+          location_name: "{{ states('sensor.pixel_4_xl_room_presence') }}"
 
     
