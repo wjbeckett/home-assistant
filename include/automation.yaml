@@ -1595,5 +1595,16 @@ automation:
     ####################################################
 
     # ...
+  - id: copy_ble_to_dt
+    alias: Convert BLE tracker to device tracker
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.pixel_4_xl_room_presence
+    action:
+      - service: device_tracker.see
+        data_template:
+          dev_id: pixel_4_xl_tracker
+          location_name: "{{ trigger.from_state.object_id }}"
 
     
