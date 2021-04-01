@@ -46,14 +46,14 @@
                                 "state-badge":
                                   $: |
                                     ha-icon {
-                                      color: {{ '#3182b7' if is_state('binary_sensor.william_bluetooth_state', 'on') else '#FFFFFF20' }};
+                                      color: '#3182b7'
                                     }
                             "ha-card>div>div:nth-child(3)":
                               $:
                                 "state-badge":
                                   $: |
                                     ha-icon {
-                                      color: {{ '#3182b7' if is_state('device_tracker.william', 'home') else '#FFFFFF20' }};
+                                      color: {{ '#3182b7' if is_state('device_tracker.william', 'home') or is_state('device_tracker.william', 'bedroom')  else '#FFFFFF20' }};
                                     }
                             "ha-card>div>div:nth-child(4)":
                               $:
@@ -68,12 +68,12 @@
                               name: Router
                               icon: mdi:wifi
 
-                            - entity: binary_sensor.william_bluetooth_state
-                              name: Bluetooth
-                              icon: mdi:bluetooth
+                            - entity: sensor.pixel_4_xl_steps_sensor
+                              name: Steps
+                              icon: mdi:walk
 
-                            - entity: device_tracker.william
-                              name: Position
+                            - entity: sensor.pixel_4_xl_room_presence
+                              name: Location
                               icon: custom:iphone-modern
                             
                             - entity: sensor.pixel_4_xl_battery_level
