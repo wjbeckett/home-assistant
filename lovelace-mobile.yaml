@@ -233,6 +233,17 @@ button_card_templates:
           custom_fields:
             info:
               - color: '#959698'
+      - value: 'bedroom'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          custom_fields:
+            info:
+              - color: '#959698'
     styles:
       entity_picture:
           [top: 7.5%, left: 11.2%, position: absolute]
