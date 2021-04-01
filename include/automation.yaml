@@ -1601,6 +1601,7 @@ automation:
       - platform: state
         entity_id:
           - sensor.pixel_4_xl_room_presence
+          - sensor.2f234454cf6d4a0fadf2f4911ba9ffa6_1_1_room_presence
     action:
       - service: device_tracker.see
         data_template:
