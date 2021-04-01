@@ -46,7 +46,7 @@
                                 "state-badge":
                                   $: |
                                     ha-icon {
-                                      color: '#3182b7'
+                                      color: #3182b7
                                     }
                             "ha-card>div>div:nth-child(3)":
                               $:
