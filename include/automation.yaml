@@ -329,7 +329,7 @@ automation:
         data_template:
           message: "ALARM! The alarm has been triggered"
           who: "parents"
-          channel: "Alarm"
+          channel: "alarm_stream"
           importance: "max"
           color: "red"
           priority: "high"
