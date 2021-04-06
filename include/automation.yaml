@@ -310,12 +310,6 @@ automation:
     - platform: state
       entity_id: binary_sensor.kitchen_sensor_motion
       to: 'on'
-    - platform: state
-      entity_id: binary_sensor.garage_door
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.back_door
-      to: 'on'
     action:
       service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
@@ -339,7 +333,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          #ttl: "0"
+          ttl: "0"
       - service: tts.google_cloud_say
         entity_id: media_player.kitchen_display
         data:
@@ -387,7 +381,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          #ttl: "0"  
+          ttl: "0"  
   
   - id: alarm_notify_armed_away
     alias: Send notification when alarm is Armed in Away mode
@@ -413,7 +407,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          #ttl: "0"
+          ttl: "0"
   
   - id: alarm_notify_armed_home
     alias: Send notification when alarm is Armed in Home mode
@@ -454,7 +448,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          #ttl: "0"
+          ttl: "0"
       - service: tts.google_cloud_say
         entity_id: media_player.kitchen_display
         data:
@@ -486,7 +480,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          #ttl: "0"
+          ttl: "0"
           tag: "alarm_prompt"
           action_1: "arm_alarm"
           action_1_title: "Arm Alarm"
@@ -525,7 +519,7 @@ automation:
           importance: "max"
           color: "red"
           priority: "high"
-          #ttl: "0"
+          ttl: "0"
           tag: alarm_prompt
 
     
