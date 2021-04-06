@@ -72,7 +72,7 @@
                               name: Steps
                               icon: mdi:walk
 
-                            - entity: sensor.pixel_4_xl_room_presence
+                            - entity: sensor.pixel_4xl_room_presence
                               name: Location
                               icon: custom:iphone-modern
                             
