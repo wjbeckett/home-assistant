@@ -1898,11 +1898,11 @@ views:
                   shuffle: false
                   icon_state: false
                 shortcuts:
-                columns: 1
-                buttons:
-                  - name: Super Mix
-                    type: playlist
-                    id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
+                  columns: 1
+                  buttons:
+                    - name: Super Mix
+                      type: playlist
+                      id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
                 style: |
                   :host {
                     left: 46% !important;
