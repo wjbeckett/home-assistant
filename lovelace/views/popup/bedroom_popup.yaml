@@ -18,10 +18,13 @@
                                 icon:
                                   - color: 'var(--paper-item-icon-active-color)'
                               value: 'on'
+                          style: |
+                            ha-card {
+                              margin: 2px;
                           styles:
                             card:
-                              - width: 120px
-                              - height: 120px
+                              - width: 100px
+                              - height: 100px
                               - border-radius: 15px
                               - background-color: var(--primary-background-color)
                             name:
@@ -43,10 +46,13 @@
                                 icon:
                                   - color: 'var(--paper-item-icon-active-color)'
                               value: 'playing'
+                          style: |
+                            ha-card {
+                              margin: 2px;
                           styles:
                             card:
-                              - width: 120px
-                              - height: 120px
+                              - width: 100px
+                              - height: 100px
                               - border-radius: 15px
                               - background-color: var(--primary-background-color)
                           tap_action:
@@ -67,10 +73,13 @@
                                 icon:
                                   - color: 'var(--paper-item-icon-active-color)'
                               value: 'playing'
+                          style: |
+                            ha-card {
+                              margin: 2px;
                           styles:
                             card:
-                              - width: 120px
-                              - height: 120px
+                              - width: 100px
+                              - height: 100px
                               - border-radius: 15px
                               - background-color: var(--primary-background-color)
                           tap_action:
@@ -99,10 +108,13 @@
                               styles:
                                 icon:
                                   - color: 'red'
+                          style: |
+                            ha-card {
+                            margin: 2px;
                           styles:
                             card:
-                              - width: 120px
-                              - height: 120px
+                              - width: 100px
+                              - height: 100px
                               - border-radius: 15px
                               - background-color: var(--primary-background-color)
                           #tap_action: !include bedroom_ac.yaml
@@ -134,10 +146,13 @@
                               show_icon: true
                               show_name: true
                               name: Night Light
+                              style: |
+                                ha-card {
+                                  margin: 2px;
                               styles:
                                 card:
-                                  - width: 120px
-                                  - height: 120px
+                                  - width: 100px
+                                  - height: 100px
                                   - border-radius: 15px
                                   - background-color: var(--primary-background-color)
                                 icon:
@@ -154,10 +169,13 @@
                               show_icon: true
                               show_name: true
                               name: Bright
+                              style: |
+                                ha-card {
+                                  margin: 2px;
                               styles:
                                 card:
-                                  - width: 120px
-                                  - height: 120px
+                                  - width: 100px
+                                  - height: 100px
                                   - border-radius: 15px
                                   - background-color: var(--primary-background-color)
                                 icon:
@@ -174,10 +192,13 @@
                               show_icon: true
                               show_name: true
                               name: TV Time!
+                              style: |
+                                ha-card {
+                                  margin: 2px;
                               styles:
                                 card:
-                                  - width: 120px
-                                  - height: 120px
+                                  - width: 100px
+                                  - height: 100px
                                   - border-radius: 15px
                                   - background-color: var(--primary-background-color)
                                 icon:
