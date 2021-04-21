@@ -1884,7 +1884,8 @@ views:
             #  Mini Media Player Card:
             #  https://github.com/kalkih/mini-media-player
                 
-          - conditions:
+          - type: conditional
+            conditions:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
             elements:
@@ -1918,7 +1919,6 @@ views:
                 entity: media_player.ollies_room
               - type: 'custom:mini-media-player'
                 entity: media_player.all_speakers
-                type: conditional
             
             # Spotify Playlists Card:
             # https://github.com/custom-cards/spotify-card
