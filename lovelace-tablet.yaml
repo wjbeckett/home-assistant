@@ -1978,15 +1978,6 @@ views:
                   :host #primaryProgress{
                     background: #474A52 !important; 
                   }
-              - type: 'custom:mini-media-player'
-                entity: media_player.bedroom_speaker
-                artwork: cover
-              - type: 'custom:mini-media-player'
-                entity: media_player.teddys_room
-              - type: 'custom:mini-media-player'
-                entity: media_player.ollies_room
-              - type: 'custom:mini-media-player'
-                entity: media_player.all_speakers
             
             # Spotify Playlists Card:
             # https://github.com/custom-cards/spotify-card

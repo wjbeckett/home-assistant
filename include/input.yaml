@@ -130,26 +130,26 @@ input_select:
       - Home
       - Away
   
-  will_ytube_music_player_source:
+  ytube_music_player_source:
     name: Source
     icon: mdi:music-box-multiple
     options: # don't change
       - "Playlist Radio"
       - "Playlist"
 
-  will_ytube_music_player_speakers:
+  ytube_music_player_speakers:
     name: Speakers
     icon: mdi:speaker
     options: # don't change
       - "loading"
 
-  will_ytube_music_player_playlist:
+  ytube_music_player_playlist:
     name: Playlist
     icon: mdi:playlist-music
     options: # don't change
       - "loading"
   
-  will_ytube_music_player_playmode:
+  ytube_music_player_playmode:
     name: Playmode
     icon: mdi:playlist-music
     options: ## Should be empty
