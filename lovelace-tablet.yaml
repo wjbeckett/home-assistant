@@ -1888,14 +1888,12 @@ views:
             conditions:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
-              - entity: media_player.emily_ytube_music
-                state_not: playing
               - entity: input_select.ytube_music_account
                 state: "William"
             elements:
               - type: 'custom:mini-media-player'
                 entity: media_player.will_ytube_music
-                artwork: full-cover
+                artwork: cover
                 hide:
                   shuffle: false
                   icon_state: false
@@ -1941,18 +1939,16 @@ views:
                   - type: entities
                     entities:
                       - entity: input_select.ytube_music_account
-                      - entity: input_select.will_ytube_music_player_playlist
-                      - entity: input_select.will_ytube_music_player_source
-                      - entity: input_select.will_ytube_music_player_speakers
-                      - entity: input_select.will_ytube_music_player_playmode
+                      - entity: input_select.ytube_music_player_playlist
+                      - entity: input_select.ytube_music_player_source
+                      - entity: input_select.ytube_music_player_speakers
+                      - entity: input_select.ytube_music_player_playmode
                     title: Select
             
           # Em YouTube Music
           - type: conditional
             conditions:
               - entity: media_player.plex_lounge_room_tv
-                state_not: playing
-              - entity: media_player.will_ytube_music
                 state_not: playing
               - entity: input_select.ytube_music_account
                 state: "Emily"
