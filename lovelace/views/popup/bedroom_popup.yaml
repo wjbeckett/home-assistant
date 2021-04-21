@@ -4,7 +4,7 @@
                 title: Bedroom
                 deviceID: this
                 card:
-                  - type: vertical-stack
+                  - type: custom:vertical-stack-in-card
                     cards:
                       - type: markdown
                         card_size: 2
@@ -28,4 +28,207 @@
                         content: |
                           [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
                           <h1>Bedroom</h1>
-                  
+                  - type: horizontal-stack
+                    cards:
+                      - type: 'custom:button-card'
+                        icon: 'mdi:lamp'
+                        entity: light.bedroom_lamps
+                        show_icon: true
+                        show_name: true
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)'
+                            value: 'on'
+                        style: |
+                          ha-card {
+                            margin: 10px;
+                        styles:
+                          card:
+                            - width: 120px
+                            - height: 120px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                          name:
+                            - font-size: 12px
+                        tap_action:
+                          action: toggle
+                          haptic: light
+                        hold_action:
+                          action: more-info
+                          haptic: light
+                      - type: custom:button-card
+                        icon: mdi:google-home
+                        name: Speaker
+                        entity: media_player.bedroom_speaker
+                        triggers_update:
+                          - media_player.bedroom_speaker
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)'
+                            value: 'playing'
+                        style: |
+                          ha-card {
+                            margin: 10px;
+                        styles:
+                          card:
+                            - width: 120px
+                            - height: 120px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                        tap_action:
+                          services: |
+                            [[[ if (entity.state === 'off') {
+                            hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                            if (entity.state === 'on') {
+                            hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+                        hold_action: more-info
+                      - type: custom:button-card
+                        icon: mdi:television
+                        name: TV
+                        entity: media_player.bedroom_tv
+                        triggers_update:
+                          - media_player.bedroom_tv
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)'
+                            value: 'playing'
+                        style: |
+                          ha-card {
+                            margin: 10px;
+                        styles:
+                          card:
+                            - width: 120px
+                            - height: 120px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                        tap_action:
+                          services: |
+                            [[[ if (entity.state === 'off') {
+                            hass.callService('media_player', 'turn_on', {entity_id: entity.entity_id}); }
+                            if (entity.state === 'on') {
+                            hass.callService('media_player', 'turn_off', {entity_id: entity.entity_id}); } ]]]
+                        hold_action: more-info
+                  - type: vertical-stack
+                    cards:
+                      - type: custom:button-card
+                        entity: climate.bedroom
+                        name: AC
+                        show_name: false
+                        show_state: true
+                        icon: mdi:air-conditioner
+                        triggers_update:
+                          ['climate.bedroom', 'input_boolean.climate_bedroom']
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)'
+                            value: 'cool'
+                          - value: 'heat'
+                            styles:
+                              icon:
+                                - color: 'red'
+                        style: |
+                          ha-card {
+                          margin: 10px;
+                        styles:
+                          card:
+                            - width: 120px
+                            - height: 120px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                        #tap_action: !include bedroom_ac.yaml
+                  - type: vertical-stack
+                    cards:
+                      - type: markdown
+                        content: |
+                          # Scenes
+                        style:
+                          .: |
+                            ha-card {                
+                              --ha-card-background: none !important;
+                              box-shadow: none !important;
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
+                  - type: vertical-stack
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: 'custom:button-card'
+                            icon: 'mdi:sleep'
+                            show_icon: true
+                            show_name: true
+                            name: Night Light
+                            style: |
+                              ha-card {
+                                margin: 10px;
+                            styles:
+                              card:
+                                - width: 120px
+                                - height: 120px
+                                - border-radius: 15px
+                                - background-color: var(--primary-background-color)
+                              icon:
+                                - color: var(--primary-text-color)
+                            tap_action:
+                              action: call-service
+                              service: scene.turn_on
+                              service_data:
+                                entity_id: scene.bedroom_night_light
+                                transition: 2
+                              haptic: light
+                          - type: 'custom:button-card'
+                            icon: 'mdi:white-balance-sunny'
+                            show_icon: true
+                            show_name: true
+                            name: Bright
+                            style: |
+                              ha-card {
+                                margin: 10px;
+                            styles:
+                              card:
+                                - width: 120px
+                                - height: 120px
+                                - border-radius: 15px
+                                - background-color: var(--primary-background-color)
+                              icon:
+                                - color: var(--primary-text-color)
+                            tap_action:
+                              action: call-service
+                              service: scene.turn_on
+                              service_data:
+                                entity_id: scene.bedroom_lamps_bright
+                                transition: 2
+                              haptic: light
+                          - type: 'custom:button-card'
+                            icon: 'mdi:television'
+                            show_icon: true
+                            show_name: true
+                            name: TV Time!
+                            style: |
+                              ha-card {
+                                margin: 10px;
+                            styles:
+                              card:
+                                - width: 120px
+                                - height: 120px
+                                - border-radius: 15px
+                                - background-color: var(--primary-background-color)
+                              icon:
+                                - color: var(--primary-text-color)
+                            tap_action:
+                              action: call-service
+                              service: scene.turn_on
+                              service_data:
+                                entity_id: scene.bedroom_tv_time
+                                transition: 2
+                              haptic: light
