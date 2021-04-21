@@ -1888,20 +1888,18 @@ views:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
             elements:
-              - artwork: full-cover
-                entity: media_player.kitchen_display
+              - type: 'custom:mini-media-player'
+                entity: media_player.will_ytube_music
+                artwork: full-cover
                 hide:
-                  power: true
-                  progress: false
-                  runtime: false
-                  volume: true
-                  controls: true
+                  shuffle: false
+                  icon_state: false
                 style: |
                   :host {
                     left: 46% !important;
-                    top: 39.8% !important;
+                    top: 32.8% !important;
                     width: 33% !important;
-                    height: 62.3% !important;
+                    height: 50.3% !important;
                   }
                   ha-card{
                     border-radius: 1vw !important;
@@ -1911,8 +1909,16 @@ views:
                   :host #primaryProgress{
                     background: #474A52 !important; 
                   }
-                type: 'custom:mini-media-player'
-            type: conditional
+              - type: 'custom:mini-media-player'
+                entity: media_player.bedroom_speaker
+                artwork: cover
+              - type: 'custom:mini-media-player'
+                entity: media_player.teddys_room
+              - type: 'custom:mini-media-player'
+                entity: media_player.ollies_room
+              - type: 'custom:mini-media-player'
+                entity: media_player.all_speakers
+                type: conditional
             
             # Spotify Playlists Card:
             # https://github.com/custom-cards/spotify-card
@@ -1925,9 +1931,9 @@ views:
                 style: | 
                   :host {
                       left: 79.5%; 
-                      top: 39.8%;
+                      top: 32.8%;
                       width: 31%;
-                      height: 62.3%;
+                      height: 50.3%;
                       border-radius: 1vw;
                   }
                   ha-card {
@@ -1935,107 +1941,13 @@ views:
                       box-shadow: none !important;
                   }
                 cards:
-                  - type: custom:mini-media-player
-                    entity: media_player.all_speakers
-                    group: true
-                    icon: mdi:speaker-multiple
-                    hide:
-                      controls: true
-                      volume: false
-                      power: true
-                      progress: true
-                      runtime: false
-                      info: true
-                  - type: custom:mini-media-player
-                    entity: media_player.kitchen_display
-                    group: true
-                    icon: mdi:television
-                    hide:
-                      controls: true
-                      volume: false
-                      power: true
-                      progress: true
-                      runtime: false
-                      info: true
-                  - type: custom:mini-media-player
-                    entity: media_player.bedroom_speaker
-                    group: true
-                    icon: mdi:google-home
-                    hide:
-                      controls: true
-                      volume: false
-                      power: true
-                      progress: true
-                      runtime: true
-                      info: true
-                  - type: custom:mini-media-player
-                    entity: media_player.teddy_s_speaker
-                    group: true
-                    icon: mdi:speaker
-                    hide:
-                      controls: true
-                      volume: false
-                      power: true
-                      progress: true
-                      runtime: true
-                      info: true
-                  - type: custom:mini-media-player
-                    entity: media_player.ollie_s_speaker
-                    group: true
-                    icon: mdi:speaker
-                    hide:
-                      controls: true
-                      volume: false
-                      power: true
-                      progress: true
-                      runtime: true
-                      info: true
-                  - type: custom:mini-media-player
-                    entity: media_player.front_room_speaker
-                    group: true
-                    icon: mdi:speaker
-                    hide:
-                      controls: true
-                      volume: false
-                      power: true
-                      progress: true
-                      runtime: true
-                      info: true
-            
-                #- type: 'custom:spotify-card'
-                #  limit: 10
-                #  always_play_random_song: true   
-                #  name:
-                #  style: | 
-                #    :host {
-                #        left: 79.5%; 
-                #        top: 39.8%;
-                #        width: 31%;
-                #        height: 62.3%;
-                #        border-radius: 1vw;
-                #    }
-                #    #header{
-                #        display:none !important;
-                #    }
-                #    #content{
-                #        border:none !important;
-                #    }
-                #    .playback-controls{
-                #        display:none !important;    
-                #    }
-                #    #header-track{
-                #        display:none;
-                #    }
-                #    .list-item > p{
-                #        white-space: nowrap; 
-                #            overflow: hidden;
-                #    }
-                #    .list-item{
-                #        border-radius: 0.2vw;
-                #        overflow:hidden;
-                #        border:none !important;
-                #        margin-bottom:2px;
-                #    }
+                  - type: entities
+                    entities:
+                      - entity: input_select.ytube_music_player_playlist
+                      - entity: input_select.ytube_music_player_source
+                      - entity: input_select.ytube_music_player_speakers
+                      - entity: input_select.ytube_music_player_playmode
+                    title: Select
             
             ###########################################################################
             #                                                                         #
