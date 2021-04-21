@@ -6,30 +6,6 @@
                 card:
                   type: vertical-stack
                   cards:
-                    - type: vertical-stack
-                      cards:
-                        - type: markdown
-                          card_size: 2
-                          style: >
-                            ha-card {
-                              --ha-card-background: none !important;
-                              box-shadow: none !important;
-                            }
-                            ha-card a, p {
-                              color: var(--primary-text-color) !important;
-                            }
-                            ha-markdown {
-                              padding: 0 16px !important;
-                            }
-                            h1 {
-                              font-size: 32px;
-                              font-weight: bold;
-                              font-family: Helvetica;
-                              letter-spacing: '-0.01em';
-                            }
-                          content: |
-                            [<ha-icon icon="mdi:arrow-left"></ha-icon>](/lovelace-mobile-yaml/default_view)
-                            <h1>Bedroom</h1>
                     - type: horizontal-stack
                       cards:
                         - type: 'custom:button-card'
@@ -44,7 +20,7 @@
                               value: 'on'
                           style: |
                             ha-card {
-                              margin: 10px;
+                              margin: 5px;
                           styles:
                             card:
                               - width: 120px
@@ -72,7 +48,7 @@
                               value: 'playing'
                           style: |
                             ha-card {
-                              margin: 10px;
+                              margin: 5px;
                           styles:
                             card:
                               - width: 120px
@@ -99,7 +75,7 @@
                               value: 'playing'
                           style: |
                             ha-card {
-                              margin: 10px;
+                              margin: 5px;
                           styles:
                             card:
                               - width: 120px
@@ -134,7 +110,7 @@
                                   - color: 'red'
                           style: |
                             ha-card {
-                            margin: 10px;
+                            margin: 5px;
                           styles:
                             card:
                               - width: 120px
@@ -172,7 +148,7 @@
                               name: Night Light
                               style: |
                                 ha-card {
-                                  margin: 10px;
+                                  margin: 5px;
                               styles:
                                 card:
                                   - width: 120px
@@ -195,7 +171,7 @@
                               name: Bright
                               style: |
                                 ha-card {
-                                  margin: 10px;
+                                  margin: 5px;
                               styles:
                                 card:
                                   - width: 120px
@@ -218,7 +194,7 @@
                               name: TV Time!
                               style: |
                                 ha-card {
-                                  margin: 10px;
+                                  margin: 5px;
                               styles:
                                 card:
                                   - width: 120px
