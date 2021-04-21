@@ -161,7 +161,7 @@
                             - height: 120px
                             - border-radius: 15px
                             - background-color: var(--primary-background-color)
-                        tap_action: !include popup/bedroom_ac.yaml
+                        tap_action: !include bedroom_ac.yaml
                   - type: vertical-stack
                     cards:
                       - type: markdown
