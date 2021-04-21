@@ -165,9 +165,7 @@
                     icon: mdi:heart-outline
                     entity: light.bedroom_lamps
                     show_state: false
-                    tap_action:
-                      action: navigate
-                      navigation_path: bedroom
+                    tap_action: !include popup/bedroom_popup.yaml
                     double_tap_action:
                       action: toggle
                       haptic: light
