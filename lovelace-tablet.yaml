@@ -1890,6 +1890,8 @@ views:
                 state_not: playing
               - entity: media_player.emily_ytube_music
                 state_not: playing
+              - entity: input_select.ytube_music_account
+                state: "William"
             elements:
               - type: 'custom:mini-media-player'
                 entity: media_player.will_ytube_music
@@ -1912,15 +1914,6 @@ views:
                   :host #primaryProgress{
                     background: #474A52 !important; 
                   }
-              - type: 'custom:mini-media-player'
-                entity: media_player.bedroom_speaker
-                artwork: cover
-              - type: 'custom:mini-media-player'
-                entity: media_player.teddys_room
-              - type: 'custom:mini-media-player'
-                entity: media_player.ollies_room
-              - type: 'custom:mini-media-player'
-                entity: media_player.all_speakers
             
             # Spotify Playlists Card:
             # https://github.com/custom-cards/spotify-card
@@ -1928,6 +1921,8 @@ views:
             conditions:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
+              - entity: input_select.ytube_music_account
+                state: "William"
             elements:
               - type: custom:stack-in-card
                 style: | 
@@ -1945,10 +1940,11 @@ views:
                 cards:
                   - type: entities
                     entities:
-                      - entity: input_select.ytube_music_player_playlist
-                      - entity: input_select.ytube_music_player_source
-                      - entity: input_select.ytube_music_player_speakers
-                      - entity: input_select.ytube_music_player_playmode
+                      - entity: input_select.ytube_music_account
+                      - entity: input_select.will_ytube_music_player_playlist
+                      - entity: input_select.will_ytube_music_player_source
+                      - entity: input_select.will_ytube_music_player_speakers
+                      - entity: input_select.will_ytube_music_player_playmode
                     title: Select
             
           # Em YouTube Music
@@ -1958,6 +1954,8 @@ views:
                 state_not: playing
               - entity: media_player.will_ytube_music
                 state_not: playing
+              - entity: input_select.ytube_music_account
+                state: "Emily"
             elements:
               - type: 'custom:mini-media-player'
                 entity: media_player.emily_ytube_music
@@ -1996,6 +1994,8 @@ views:
             conditions:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
+              - entity: input_select.ytube_music_account
+                state: "Emily"
             elements:
               - type: custom:stack-in-card
                 style: | 
@@ -2013,10 +2013,11 @@ views:
                 cards:
                   - type: entities
                     entities:
-                      - entity: input_select.ytube_music_player_playlist
-                      - entity: input_select.ytube_music_player_source
-                      - entity: input_select.ytube_music_player_speakers
-                      - entity: input_select.ytube_music_player_playmode
+                      - entity: input_select.ytube_music_account
+                      - entity: input_select.emily_ytube_music_player_playlist
+                      - entity: input_select.emily_ytube_music_player_source
+                      - entity: input_select.emily_ytube_music_player_speakers
+                      - entity: input_select.emily_ytube_music_player_playmode
                     title: Select
             
             ###########################################################################

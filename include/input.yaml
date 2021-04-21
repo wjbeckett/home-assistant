@@ -130,32 +130,67 @@ input_select:
       - Home
       - Away
   
-  ytube_music_player_source:
+  will_ytube_music_player_source:
     name: Source
     icon: mdi:music-box-multiple
     options: # don't change
       - "Playlist Radio"
       - "Playlist"
 
-  ytube_music_player_speakers:
+  will_ytube_music_player_speakers:
     name: Speakers
     icon: mdi:speaker
     options: # don't change
       - "loading"
 
-  ytube_music_player_playlist:
+  will_ytube_music_player_playlist:
     name: Playlist
     icon: mdi:playlist-music
     options: # don't change
       - "loading"
   
-  ytube_music_player_playmode:
+  will_ytube_music_player_playmode:
     name: Playmode
     icon: mdi:playlist-music
     options: ## Should be empty
-    - "Shuffle"
-    - "Random"
-    - "Shuffle Random"
-    - "Direct"
+      - "Shuffle"
+      - "Random"
+      - "Shuffle Random"
+      - "Direct"
+  
+  emily_ytube_music_player_source:
+    name: Source
+    icon: mdi:music-box-multiple
+    options: # don't change
+      - "Playlist Radio"
+      - "Playlist"
+
+  emily_ytube_music_player_speakers:
+    name: Speakers
+    icon: mdi:speaker
+    options: # don't change
+      - "loading"
+
+  emily_ytube_music_player_playlist:
+    name: Playlist
+    icon: mdi:playlist-music
+    options: # don't change
+      - "loading"
+  
+  emily_ytube_music_player_playmode:
+    name: Playmode
+    icon: mdi:playlist-music
+    options: ## Should be empty
+      - "Shuffle"
+      - "Random"
+      - "Shuffle Random"
+      - "Direct"
+  
+  ytube_music_account:
+    name: Account
+    icon: mdi:account
+    options:
+      - Emily
+      - William
 
 
