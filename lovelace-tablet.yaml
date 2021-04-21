@@ -1888,10 +1888,80 @@ views:
             conditions:
               - entity: media_player.plex_lounge_room_tv
                 state_not: playing
+              - entity: media_player.emily_ytube_music
+                state_not: playing
             elements:
               - type: 'custom:mini-media-player'
                 entity: media_player.will_ytube_music
                 artwork: full-cover
+                hide:
+                  shuffle: false
+                  icon_state: false
+                style: |
+                  :host {
+                    left: 46% !important;
+                    top: 32.8% !important;
+                    width: 33% !important;
+                    height: 50.3% !important;
+                  }
+                  ha-card{
+                    border-radius: 1vw !important;
+                    overflow: hidden !important;
+                    height: 100%;
+                  }
+                  :host #primaryProgress{
+                    background: #474A52 !important; 
+                  }
+              - type: 'custom:mini-media-player'
+                entity: media_player.bedroom_speaker
+                artwork: cover
+              - type: 'custom:mini-media-player'
+                entity: media_player.teddys_room
+              - type: 'custom:mini-media-player'
+                entity: media_player.ollies_room
+              - type: 'custom:mini-media-player'
+                entity: media_player.all_speakers
+            
+            # Spotify Playlists Card:
+            # https://github.com/custom-cards/spotify-card
+          - type: conditional
+            conditions:
+              - entity: media_player.plex_lounge_room_tv
+                state_not: playing
+            elements:
+              - type: custom:stack-in-card
+                style: | 
+                  :host {
+                      left: 79.5%; 
+                      top: 32.8%;
+                      width: 31%;
+                      height: 50.3%;
+                      border-radius: 1vw;
+                  }
+                  ha-card {
+                      background: none !important;
+                      box-shadow: none !important;
+                  }
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: input_select.ytube_music_player_playlist
+                      - entity: input_select.ytube_music_player_source
+                      - entity: input_select.ytube_music_player_speakers
+                      - entity: input_select.ytube_music_player_playmode
+                    title: Select
+            
+          # Em YouTube Music
+          - type: conditional
+            conditions:
+              - entity: media_player.plex_lounge_room_tv
+                state_not: playing
+              - entity: media_player.will_ytube_music
+                state_not: playing
+            elements:
+              - type: 'custom:mini-media-player'
+                entity: media_player.emily_ytube_music
+                artwork: cover
                 hide:
                   shuffle: false
                   icon_state: false
