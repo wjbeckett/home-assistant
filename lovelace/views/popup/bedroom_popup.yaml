@@ -4,7 +4,9 @@
                 title: Bedroom
                 deviceID: this
                 card:
-                  - type: custom:vertical-stack-in-card
+                  - type: markdown
+                    content: "Testing"
+                  - type: vertical-stack
                     cards:
                       - type: markdown
                         card_size: 2
