@@ -20,7 +20,7 @@
                               value: 'on'
                           style: |
                             ha-card {
-                              margin: 2px;
+                              margin: 10px;
                           styles:
                             card:
                               - width: 100px
@@ -48,7 +48,7 @@
                               value: 'playing'
                           style: |
                             ha-card {
-                              margin: 2px;
+                              margin: 10px;
                           styles:
                             card:
                               - width: 100px
@@ -75,7 +75,7 @@
                               value: 'playing'
                           style: |
                             ha-card {
-                              margin: 2px;
+                              margin: 10px;
                           styles:
                             card:
                               - width: 100px
@@ -110,7 +110,7 @@
                                   - color: 'red'
                           style: |
                             ha-card {
-                            margin: 2px;
+                            margin: 10px;
                           styles:
                             card:
                               - width: 100px
@@ -148,7 +148,7 @@
                               name: Night Light
                               style: |
                                 ha-card {
-                                  margin: 2px;
+                                  margin: 10px;
                               styles:
                                 card:
                                   - width: 100px
@@ -171,7 +171,7 @@
                               name: Bright
                               style: |
                                 ha-card {
-                                  margin: 2px;
+                                  margin: 10px;
                               styles:
                                 card:
                                   - width: 100px
@@ -194,7 +194,7 @@
                               name: TV Time!
                               style: |
                                 ha-card {
-                                  margin: 2px;
+                                  margin: 10px;
                               styles:
                                 card:
                                   - width: 100px
