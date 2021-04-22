@@ -59,48 +59,6 @@ lovelace:
     - type: module
       url: /local/js/buien-rain-card.js
     
-  sidebar:
-    title: null
-    digitalClock: true
-    twelveHourVersion: true
-    period: true
-    date: true
-    dateFormat: DD MMMM
-    hideTopMenu: true
-    hideHassSidebar: true
-    width:
-      mobile: 0
-      tablet: 25
-      desktop: 20
-    sidebarMenu:
-      - action: navigate
-        navigation_path: "/lovelace-tablet-yaml/rooms"
-        name: "Rooms"
-        active: true
-      - action: navigate
-        navigation_path: "/lovelace-tablet-yaml/all"
-        name: "All Devices"
-      - action: navigate
-        navigation_path: "/lovelace-tablet-yaml/security"
-        name: "Security"
-      - action: navigate
-        navigation_path: "/lovelace-tablet-yaml/media"
-        name: "Media"
-      - action: navigate
-        navigation_path: "/lovelace-tablet-yaml/weather"
-        name: "Weather"
-    template: |
-      <li>
-        {{ states('sensor.sidebar_greeting') }}
-      </li>
-      {{ states('sensor.sidebar_active') }}
-    bottomCard:
-      type: horizontal-stack
-      cardOptions:
-        cards:
-          - !include lovelace/views/sidebar/sidebar_william.yaml
-          - !include lovelace/views/sidebar/sidebar_emily.yaml
-
 
   dashboards:
     lovelace-tablet-yaml:
