@@ -59,7 +59,6 @@ lovelace:
     - type: module
       url: /local/js/buien-rain-card.js
     
-
   dashboards:
     lovelace-tablet-yaml:
       mode: yaml

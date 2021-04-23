@@ -534,7 +534,8 @@ views:
             entity: light.bedroom_lamps
             show_state: false
             show_icon: true
-            tap_action:
+            tap_action: !include popup/bedroom_popup.yaml
+            double_tap_action:
               action: toggle
               haptic: light
             style:
@@ -2369,7 +2370,7 @@ views:
             # when the media player is playing, this overlaps the "Media" menu button
 
           - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+            entity: media_player.will_ytube_music
             hide:
               controls: true
               name: true
