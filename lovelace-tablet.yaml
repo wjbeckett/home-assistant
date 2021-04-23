@@ -534,7 +534,7 @@ views:
             entity: light.bedroom_lamps
             show_state: false
             show_icon: true
-            tap_action: !include /lovelace/views/popup/bedroom_popup.yaml
+            tap_action: !include lovelace/views/popup/bedroom_popup.yaml
             double_tap_action:
               action: toggle
               haptic: light
