@@ -851,7 +851,7 @@ views:
             # when the media player is playing, this overlaps the "Media" menu button
 
           - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+            entity: media_player.will_ytube_music
             hide:
               controls: true
               name: true
@@ -1065,6 +1065,8 @@ views:
           - action: none
             image: /local/ui/sidebar/cleanUp_on.png
             style:
+              border-radius: 5vw
+              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 34%
               width: 20.5078125%
@@ -1075,8 +1077,6 @@ views:
           - action: none
             image: /local/ui/sidebar/all_off.png
             style:
-              border-radius: 5vw
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
               left: 11.7%
               top: 42%
               width: 20.5078125%
@@ -1278,7 +1278,7 @@ views:
             # when the media player is playing, this overlaps the "Media" menu button
 
           - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+            entity: media_player.will_ytube_music
             hide:
               controls: true
               name: true
@@ -1710,7 +1710,7 @@ views:
             # when the media player is playing, this overlaps the "Media" menu button
 
           - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+            entity: media_player.will_ytube_music
             hide:
               controls: true
               name: true
@@ -2890,7 +2890,7 @@ views:
             # when the media player is playing, this overlaps the "Media" menu button
 
           - type: 'custom:mini-media-player'
-            entity: media_player.kitchen_display
+            entity: media_player.will_ytube_music
             hide:
               controls: true
               name: true
