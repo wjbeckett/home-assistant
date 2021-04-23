@@ -2195,7 +2195,15 @@ views:
             tap_action:
               action: navigate
               navigation_path: /lovelace-tablet-yaml/weather
-            type: image  
+            type: image
+          - type: markdown
+            content: |
+              # Test
+            style:
+              border-radius: 5vw
+              left: 11.7%
+              top: 66%
+              width: 20.5078125%
 
             #########################    People at home    #########################
             
