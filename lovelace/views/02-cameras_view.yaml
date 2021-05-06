@@ -25,10 +25,11 @@
                   }
           - type: picture-glance
             title: Front Door
-            camera_image: camera.front_door_stream
-            camera_view: live
             entities:
-              - binary_sensor.front_door_motion
+              - entity: camera.front_door
+              - entity: binary_sensor.front_door_motion
+            camera_view: live
+            camera_image: camera.front_door
             style: |
               ha-card {
                 background-color: var(--primary-background-color);
