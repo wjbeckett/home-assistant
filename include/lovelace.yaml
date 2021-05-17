@@ -47,6 +47,8 @@ lovelace:
       type: module
     - url: /hacsfiles/sidebar-card/sidebar-card.js
       type: module
+    - url: /local/config-template-card.js
+      type: module
       
     - url: '/local/custom_icons.js?v=25052001'
       type: module
