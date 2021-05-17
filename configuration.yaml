@@ -31,12 +31,7 @@ logger:
 
 recorder:
   purge_keep_days: 7
-  include:
-    entities:
-      ['person.william', 'person.emily','sensor.speedtest_download', 'sensor.speedtest_upload', 
-      'sensor.speedtest_ping', 'sensor.kitchen_sensor_temperature', 'binary_sensor.front_door_motion', 'binary_sensor.front_door',
-      'binary_sensor.shinobi_fd_motion', 'sensor.outside_temp',]
-
+  
 hacs:
   token: !secret hacs_token
   options:

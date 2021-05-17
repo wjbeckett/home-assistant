@@ -33,8 +33,80 @@
                             action: toggle
                             haptic: light
                           hold_action:
-                            action: more-info
-                            haptic: light
+                            action: fire-dom-event
+                            browser_mod:
+                              command: popup
+                              deviceID:
+                                - this
+                              style:
+                                '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+                                border-radius: 0.8vw
+                                opacity: 0.9
+                              title: Living Room
+                              card:
+                                type: 'custom:vertical-stack-in-card'
+                                cards:
+                                  - type: entities
+                                    entities:
+                                      - entity: light.kitchen_pendant_lights
+                                        secondary_info: last-changed
+                                    style:
+                                      z-index: 5
+                                  - type: 'custom:layout-card'
+                                    column_num: 2
+                                    layout: horizontal
+                                    max_width:
+                                      - 60%
+                                      - 40%
+                                    cards:
+                                      - type: 'custom:layout-card'
+                                        column_height: 1
+                                        layout: vertical
+                                        cards:
+                                          - brightness: false
+                                            color_picker: false
+                                            effects_list: false
+                                            entity: light.kitchen_pendant_lights
+                                            full_width_sliders: true
+                                            hide_header: true
+                                            persist_features: true
+                                            show_slider_percent: false
+                                            smooth_color_wheel: true
+                                            type: 'custom:light-entity-card'
+                                            style: |
+                                              ha-card {
+                                                box-shadow: none !important;
+                                              }
+                                          - brightness: false
+                                            color_temp: false
+                                            entity: light.kitchen_pendant_lights
+                                            full_width_sliders: true
+                                            hide_header: true
+                                            persist_features: true
+                                            show_slider_percent: false
+                                            smooth_color_wheel: true
+                                            type: 'custom:light-entity-card'
+                                            style: |
+                                              ha-card {
+                                                box-shadow: none !important;
+                                              }
+                                      - type: entities
+                                        entities:
+                                          - color_temp: true
+                                            entity: kitchen_pendant_lights
+                                            hide_header: true
+                                            persist_features: true
+                                            type: 'custom:light-slider-card'
+                                        show_header_toggle: false
+                                        style: |
+                                          :host{
+                                            height: 100%;
+                                            z-index: 0;
+                                          }
+                                          ha-card {
+                                            box-shadow: none !important;
+                                          }
+                                    
                         - type: custom:button-card
                           icon: mdi:google-home
                           name: Speaker
