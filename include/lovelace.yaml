@@ -62,13 +62,25 @@ lovelace:
   dashboards:
     lovelace-tablet-yaml:
       mode: yaml
-      title: Tablet
+      title: Old Tablet
       icon: mdi:tablet
       show_in_sidebar: true
       filename: lovelace-tablet-old.yaml
     lovelace-mobile-yaml:
       mode: yaml
-      title: Mobile
+      title: Old Mobile
       icon: mdi:cellphone
       show_in_sidebar: true
       filename: lovelace-mobile.yaml
+    lovelace-tablet:
+      mode: yaml
+      title: Tablet
+      icon: mdi:tablet
+      show_in_sidebar: true
+      filename: ui-lovelace_tablet.yaml
+    lovelace-mobile:
+      mode: yaml
+      title: Mobile
+      icon: mdi:cellphone
+      show_in_sidebar: true
+      filename: ui-lovelace_mobile.yaml
