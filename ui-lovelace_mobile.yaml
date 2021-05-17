@@ -1148,9 +1148,4 @@ views:
                   left: 84.3%
                   top: 25.7%
                 template:
-                  - light
-                  
-      - type: 'custom:xiaomi-vacuum-map-card'
-        entity: vacuum.xiaomi_vacuum_cleaner
-        map_camera: camera.xiaomi_cloud_map_extractor
-        camera_calibration: true                  
+                  - light               
