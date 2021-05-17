@@ -65,7 +65,7 @@ lovelace:
       title: Tablet
       icon: mdi:home-circle-outline
       show_in_sidebar: true
-      filename: lovelace-tablet.yaml
+      filename: lovelace-tablet-old.yaml
     lovelace-mobile-yaml:
       mode: yaml
       title: Mobile
