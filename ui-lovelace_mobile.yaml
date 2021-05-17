@@ -7,32 +7,14 @@ views:
     badges: []
     cards:
       - type: 'custom:mini-media-player'
-        entity: media_player.surround_speakers
+        entity: media_player.will_ytube_music
         volume_stateless: false
-        toggle_power: false
       - type: 'custom:config-template-card'
         entities:
-          - light.roof_garden
-          - light.roof_plants
-          - light.kitchen_1
-          - light.kitchen_2
-          - light.kitchen_3
-          - light.kitchen_4
-          - light.couch
-          - light.table
-          - light.cabinet
-          - light.toilet_1
-          - light.toilet_2
-          - light.study
-          - light.bedroom_roof
-          - light.bed
-          - light.stairs
-          - light.door
-          - light.balcony
-          - light.kitchen_sink_lights
-          - light.kitchen_fridge_lights
+          - light.bedroom_lamps
           - light.kitchen_lights
-          - light.toilet_lights
+          - light.teddy_s_lamp
+          - light.ollie_s_lamp
           
         card:
             type: picture-elements       
@@ -60,7 +42,7 @@ views:
                   action: none
                 type: image
               - action: none
-                entity: weather.buienweather
+                entity: weather.home
                 hold_action:
                   action: none
                 image: /local/ui/floorplan/weather/rainstorm.gif
@@ -390,7 +372,7 @@ views:
                 tap_action:
                   action: none
                 type: image
-              - entity: light.living_room_lights
+              - entity: light.kitchen_pendant_lights
                 hold_action:
                   action: fire-dom-event
                   browser_mod:
@@ -398,7 +380,7 @@ views:
                     card:
                       cards:
                         - entities:
-                            - entity: light.living_room_lights
+                            - entity: light.kitchen_pendant_lights
                               secondary_info: last-changed
                           style:
                             z-index: 5
@@ -408,7 +390,7 @@ views:
                                 - brightness: false
                                   color_picker: false
                                   effects_list: false
-                                  entity: light.living_room_lights
+                                  entity: light.kitchen_pendant_lights
                                   full_width_sliders: true
                                   hide_header: true
                                   persist_features: true
@@ -421,7 +403,7 @@ views:
                                     }
                                 - brightness: false
                                   color_temp: false
-                                  entity: light.living_room_lights
+                                  entity: light.kitchen_pendant_lights
                                   full_width_sliders: true
                                   hide_header: true
                                   persist_features: true
@@ -437,7 +419,7 @@ views:
                               type: 'custom:layout-card'
                             - entities:
                                 - color_temp: true
-                                  entity: light.living_room_lights
+                                  entity: kitchen_pendant_lights
                                   hide_header: true
                                   persist_features: true
                                   type: 'custom:light-slider-card'
@@ -475,7 +457,7 @@ views:
                   action: call-service
                   service: homeassistant.toggle
                   service_data:
-                    entity_id: light.living_room_lights
+                    entity_id: light.kitchen_pendant_lights
                 type: image
               - entity: light.stairs_lights
                 double_tap_action:
