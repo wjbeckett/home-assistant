@@ -63,12 +63,12 @@ lovelace:
     lovelace-tablet-yaml:
       mode: yaml
       title: Tablet
-      icon: mdi:home-circle-outline
+      icon: mdi:tablet
       show_in_sidebar: true
       filename: lovelace-tablet-old.yaml
     lovelace-mobile-yaml:
       mode: yaml
       title: Mobile
-      icon: mdi:home-circle-outline
+      icon: mdi:cellphone
       show_in_sidebar: true
       filename: lovelace-mobile.yaml
