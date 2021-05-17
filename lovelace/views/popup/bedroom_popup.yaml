@@ -63,22 +63,9 @@
                                         column_height: 1
                                         layout: vertical
                                         cards:
-                                          - brightness: false
+                                          - brightness: true
                                             color_picker: false
                                             effects_list: false
-                                            entity: light.bedroom_lamps
-                                            full_width_sliders: true
-                                            hide_header: true
-                                            persist_features: true
-                                            show_slider_percent: false
-                                            smooth_color_wheel: true
-                                            type: 'custom:light-entity-card'
-                                            style: |
-                                              ha-card {
-                                                box-shadow: none !important;
-                                              }
-                                          - brightness: false
-                                            color_temp: false
                                             entity: light.bedroom_lamps
                                             full_width_sliders: true
                                             hide_header: true
