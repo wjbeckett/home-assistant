@@ -37,7 +37,7 @@
                 margin: 10px;
               }
           - type: 'custom:webrtc-camera'
-            entity: camera.front_door
+            entity: camera.front_door_onvif_main
             title: Front Door - WebRTC
             poster: https://home-assistant.io/images/cast/splash.png
             style: |
