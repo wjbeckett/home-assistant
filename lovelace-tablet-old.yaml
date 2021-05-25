@@ -66,9 +66,9 @@ button_card_templates:
       action: toggle
       haptic: light
     hold_action: &light_action
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         title: '[[[ return entity.attributes.friendly_name ]]]'
         deviceID: this
         card:
@@ -175,9 +175,9 @@ button_card_templates:
       ui_sound: *ui_sound
       haptic: light
     hold_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         title: '[[[ return entity.attributes.friendly_name ]]]'
         deviceID: this
         card:
@@ -317,9 +317,9 @@ button_card_templates:
     show_icon: false
     tap_action: *media_tap_action
     hold_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         title: '[[[ return entity.attributes.friendly_name ]]]'
         deviceID: this
         card:
