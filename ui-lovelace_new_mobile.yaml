@@ -229,13 +229,11 @@ views:
                     image: "/local/people/william.png"
                     tap_action: !include lovelace/views/popup/home_william.yaml
                     hold_action: !include lovelace/views/popup/home_william.yaml
-                    state: true
                   - entity: person.emily
                     name: Emily
                     image: "/local/people/emily.jpeg"
                     tap_action: !include lovelace/views/popup/home_emily.yaml
                     hold_action: !include lovelace/views/popup/home_emily.yaml
-                    state: true
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
                     icon: 'mdi:wall-sconce-round'
