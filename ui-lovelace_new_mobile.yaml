@@ -226,15 +226,10 @@ views:
                           - color: white
                   - entity: person.william
                     name: William
-                    image: '/local/people/william.png'
+                    image: "/local/people/william.png"
                     tap_action: !include lovelace/views/popup/home_william.yaml
                     hold_action: !include lovelace/views/popup/home_william.yaml
                     state: true
-                    offStates:
-                      - away
-                      - not_home
-                      - woolies_warner
-                    #template: ['base', 'switch', 'person']
                   - entity: person.emily
                     name: Emily
                     image: "/local/people/emily.jpeg"
