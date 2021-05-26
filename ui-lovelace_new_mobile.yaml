@@ -161,8 +161,6 @@ views:
                       show_name: false
                       show_state: false
                       show_label: false
-                      offStates:
-                        - disarmed
                       styles:
                         card:
                           - '-webkit-box-shadow': none
@@ -242,86 +240,173 @@ views:
                     double_tap_action:
                       action: popup
               - title: Lights
+                popup:
+                  type: custom:light-popup-card
+                  scenesInARow: 2
+                  brightnessWidth: 130px
+                  brightnessHeight: 350px
+                  switchWidth: 110px
+                  switchHeight: 300px
                 entities:
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
                     icon: 'mdi:wall-sconce-round'
-                    double_tap_action:
-                      action: popup
+                    popupExtend:
+                      actions:
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 153
+                          color: "#d8d9e1"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 326
+                          color: "#d5b08d"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 500
+                          color: "#ce944b"
+                        - service: browser_mod.popup
+                          service_data:
+                            title: 'Bedroom Lamps'
+                            deviceID: this
+                            card:
+                              type: entities
+                              show_header_toggle: false
+                              entities:
+                                - entity: 'light.bedroom_lamps'
+                                  secondary_info: last-changed
+                                - type: custom:light-entity-card
+                                  entity: 'light.bedroom_lamps'
+                                  brightness: false
+                                  color_temp: true
+                                  full_width_sliders: true
+                                  hide_header: true
+                                  show_slider_percent: true
+                                  smooth_color_wheel: true
+                                  consolidate_entities: true
                   - entity: light.kitchen_downlight
                     name: Kitchen Downlight
                     icon: 'mdi:wall-sconce-round'
-                    double_tap_action:
-                      action: popup
                   - entity: light.bedroom_lamps
                     name: Bedroom Lamps
                     icon: 'mdi:lamp'
-                    double_tap_action:
-                      action: fire-dom-event
-                      browser_mod:
-                        command: popup
-                        title: 'Bedroom Lamps'
-                        card:
-                          type: entities
-                          entities:
-                            - type: 'custom:light-popup-card'
-                              entity: 'light.bedroom_lamps'
-                              icon: none
-                              fullscreen: false
-                              brightnessWidth: 130px
-                              brightnessHeight: 360px
-                              borderRadius: 1.7em
-                              sliderColor: '#c7c7c7'
-                              sliderTrackColor: rgba(25, 25, 25, 0.9)
-                              actionSize: 4.5em
-                              actionsInARow: 2
-                              displayType: slider
-                              actions:
-                                - service: light.turn_on
-                                  service_data:
-                                    entity_id: 'light.bedroom_lamps'
-                                    color_temp: 153
-                                  color: "#d8d9e1"
-                                - service: light.turn_on
-                                  service_data:
-                                    entity_id: 'light.bedroom_lamps'
-                                    color_temp: 326
-                                  color: "#d5b08d"
-                                - service: light.turn_on
-                                  service_data:
-                                    entity_id: 'light.bedroom_lamps'
-                                    color_temp: 500
-                                  color: "#ce944b"
-                                - service: browser_mod.popup
-                                  service_data:
-                                    title: 'Bedroom Lamps'
-                                    deviceID: this
-                                    card:
-                                      type: entities
-                                      show_header_toggle: false
-                                      entities:
-                                        - entity: 'light.bedroom_lamps'
-                                          secondary_info: last-changed
-                                        - type: custom:light-entity-card
-                                          entity: 'light.bedroom_lamps'
-                                          brightness: false
-                                          color_temp: true
-                                          full_width_sliders: true
-                                          hide_header: true
-                                          show_slider_percent: true
-                                          smooth_color_wheel: true
-                                          consolidate_entities: true
-                    template: light
+                    popupExtend:
+                      actions:
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 153
+                          color: "#d8d9e1"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 326
+                          color: "#d5b08d"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 500
+                          color: "#ce944b"
+                        - service: browser_mod.popup
+                          service_data:
+                            title: 'Bedroom Lamps'
+                            deviceID: this
+                            card:
+                              type: entities
+                              show_header_toggle: false
+                              entities:
+                                - entity: 'light.bedroom_lamps'
+                                  secondary_info: last-changed
+                                - type: custom:light-entity-card
+                                  entity: 'light.bedroom_lamps'
+                                  brightness: false
+                                  color_temp: true
+                                  full_width_sliders: true
+                                  hide_header: true
+                                  show_slider_percent: true
+                                  smooth_color_wheel: true
+                                  consolidate_entities: true
                   - entity: light.ollie_s_lamp
                     name: Ollie's Lamp
                     icon: 'mdi:lamp'
-                    double_tap_action:
-                      action: popup
+                    popupExtend:
+                      actions:
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 153
+                          color: "#d8d9e1"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 326
+                          color: "#d5b08d"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 500
+                          color: "#ce944b"
+                        - service: browser_mod.popup
+                          service_data:
+                            title: 'Bedroom Lamps'
+                            deviceID: this
+                            card:
+                              type: entities
+                              show_header_toggle: false
+                              entities:
+                                - entity: 'light.bedroom_lamps'
+                                  secondary_info: last-changed
+                                - type: custom:light-entity-card
+                                  entity: 'light.bedroom_lamps'
+                                  brightness: false
+                                  color_temp: true
+                                  full_width_sliders: true
+                                  hide_header: true
+                                  show_slider_percent: true
+                                  smooth_color_wheel: true
+                                  consolidate_entities: true
                   - entity: light.teddy_s_lamp
                     name: Teddy's Lamp
                     icon: 'mdi:wall-sconce-round-variant'
-                    double_tap_action:
-                      action: popup
+                    popupExtend:
+                      actions:
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 153
+                          color: "#d8d9e1"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 326
+                          color: "#d5b08d"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 500
+                          color: "#ce944b"
+                        - service: browser_mod.popup
+                          service_data:
+                            title: 'Bedroom Lamps'
+                            deviceID: this
+                            card:
+                              type: entities
+                              show_header_toggle: false
+                              entities:
+                                - entity: 'light.bedroom_lamps'
+                                  secondary_info: last-changed
+                                - type: custom:light-entity-card
+                                  entity: 'light.bedroom_lamps'
+                                  brightness: false
+                                  color_temp: true
+                                  full_width_sliders: true
+                                  hide_header: true
+                                  show_slider_percent: true
+                                  smooth_color_wheel: true
+                                  consolidate_entities: true
               - title: Media
                 entities:
                   - entity: media_player.emily_ytube_music
@@ -352,31 +437,31 @@ views:
                   #  hold_action:
                   #    action: none
               - title: Climate
+                popup: 
+                  type: custom:thermostat-popup-card
+                  fullscreen: true
+                  stepSize: 0.5
                 entities:
                   - entity: climate.bedroom
                     name: A/C
                     icon: 'mdi:air-conditioner'
-                    offStates:
-                      - "off"
                     tap_action: !include lovelace/views/popup/bedroom_ac.yaml
                     hold_action:
                       action: popup
                   - entity: climate.teddy_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
-                    offStates:
-                      - "off"
                     tap_action: !include lovelace/views/popup/teddy_ac.yaml
                     hold_action:
                       action: popup
                   - entity: climate.ollie_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
-                    offStates:
-                      - "off"
                     tap_action: !include lovelace/views/popup/ollie_ac.yaml
                     hold_action:
                       action: popup
+              - title: Admin
+                entities:
                   - entity: input_boolean.dummy
                     name: Admin
                     icon: 'mdi:tools'

@@ -49,6 +49,8 @@ lovelace:
       type: module
     - url: /hacsfiles/Homekit-panel-card/homekit-panel-card.js
       type: module
+    - url: /hacsfiles/thermostat-popup-card/thermostat-popup-card.js
+      type: module
       
     - url: '/local/custom_icons.js?v=25052001'
       type: module
