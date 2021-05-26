@@ -28,7 +28,7 @@ input_boolean:
     initial: off
 
   dummy:
-    Name: Dummy Input
+    name: Dummy Input
 
   home_stats:
     name: Home Stats
