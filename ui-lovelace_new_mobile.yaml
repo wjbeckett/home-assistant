@@ -318,6 +318,12 @@ views:
                   - entity: light.bedroom_lamps
                     name: Bedroom Lamps
                     icon: 'mdi:lamp'
+                    tap_action:
+                      action: toggle
+                      haptic: light
+                    hold_action:
+                      action: more-info
+                      haptic: light
                     popupExtend:
                       displayType: slider
                       settingsCard:
