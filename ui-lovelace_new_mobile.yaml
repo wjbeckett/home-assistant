@@ -248,6 +248,22 @@ views:
                   switchWidth: 110px
                   switchHeight: 300px
                   settings: true
+                  settingsPosition: top
+                  settingsCard:
+                    type: entities
+                    cardOptions:
+                        entities:
+                          - entity: '[[[ return entity.entity_id ]]]'
+                            secondary_info: last-changed
+                          - type: custom:light-entity-card
+                            entity: '[[[ return entity.entity_id ]]]'
+                            brightness: false
+                            color_temp: true
+                            full_width_sliders: true
+                            hide_header: true
+                            show_slider_percent: true
+                            smooth_color_wheel: true
+                            consolidate_entities: true
                 entities:
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
