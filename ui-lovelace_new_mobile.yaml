@@ -1,3 +1,17 @@
+button_card_templates:
+  standard_button:
+    styles:
+      card:
+        - font-size: 10px
+      icon:
+        - width: 30%
+      name:
+        - font-size: 12px
+      state:
+        - justify-self: start
+        - font-size: 10px
+        - padding: 0px 5px
+
 background: center / cover no-repeat fixed  url('/local/bg_long.png?v=1')
 title: Home
 kiosk_mode:
@@ -290,7 +304,7 @@ views:
                       - "off"
                     tap_action: !include lovelace/views/popup/bedroom_ac.yaml
                     hold_action:
-                      action: none
+                      action: popup
                   - entity: climate.teddy_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
@@ -298,7 +312,7 @@ views:
                       - "off"
                     tap_action: !include lovelace/views/popup/teddy_ac.yaml
                     hold_action:
-                      action: none
+                      action: popup
                   - entity: climate.ollie_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
@@ -306,7 +320,7 @@ views:
                       - "off"
                     tap_action: !include lovelace/views/popup/ollie_ac.yaml
                     hold_action:
-                      action: none
+                      action: popup
                   - entity: input_boolean.dummy
                     name: Admin
                     icon: 'mdi:tools'

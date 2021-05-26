@@ -3,29 +3,29 @@
                 command: popup
                 title: Music
                 card:
-                  - type: vertical-stack
-                    cards:
-                      - type: 'custom:mini-media-player'
-                        entity: media_player.emily_ytube_music
-                        artwork: cover
-                        hide:
-                          shuffle: false
-                          icon_state: false
-                        shortcuts:
-                          columns: 3
-                          buttons:
-                            - name: Kitchen
-                              type: source
-                              id: kitchen_display
-                            - name: Bedroom
-                              type: source
-                              id: bedroom_speaker
-                            - name: All Speakers
-                              type: source
-                              id: all_speakers
-                            - name: Kitchen and Bedroom
-                              type: source
-                              id: kitchen_and_bedroom
-                            - name: Super Mix
-                              type: playlist
-                              id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
+                  type: vertical-stack
+                  cards:
+                    - type: 'custom:mini-media-player'
+                      entity: media_player.emily_ytube_music
+                      artwork: cover
+                      hide:
+                        shuffle: false
+                        icon_state: false
+                      shortcuts:
+                        columns: 3
+                        buttons:
+                          - name: Kitchen
+                            type: source
+                            id: kitchen_display
+                          - name: Bedroom
+                            type: source
+                            id: bedroom_speaker
+                          - name: All Speakers
+                            type: source
+                            id: all_speakers
+                          - name: Kitchen and Bedroom
+                            type: source
+                            id: kitchen_and_bedroom
+                          - name: Super Mix
+                            type: playlist
+                            id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
