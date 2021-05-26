@@ -255,8 +255,8 @@ views:
                     icon: 'mdi:wall-sconce-round'
                     popupExtend:
                       settingsCard:
-                      type: entities
-                      cardOptions:
+                        type: entities
+                        cardOptions:
                           entities:
                             - entity: 'light.kitchen_pendant_lights'
                               secondary_info: last-changed
