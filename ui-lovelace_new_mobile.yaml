@@ -247,6 +247,7 @@ views:
                   brightnessHeight: 350px
                   switchWidth: 110px
                   switchHeight: 300px
+                  settings:
                 entities:
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
@@ -293,7 +294,6 @@ views:
                   - entity: light.bedroom_lamps
                     name: Bedroom Lamps
                     icon: 'mdi:lamp'
-                    settings:
                     popupExtend:
                       actions:
                         - service: light.turn_on
