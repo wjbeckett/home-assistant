@@ -45,8 +45,6 @@ lovelace:
       type: module
     - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
       type: module
-    - url: /hacsfiles/sidebar-card/sidebar-card.js
-      type: module
     - url: /hacsfiles/config-template-card/config-template-card.js
       type: module
     - url: /hacsfiles/Homekit-panel-card/homekit-panel-card.js

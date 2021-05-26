@@ -181,13 +181,7 @@ views:
                           - box-shadow: none
                           - background-color: 'rgba(255, 255, 255, 0.0)'
                           - margin-top: 5px
-                        icon:
-                          - color: |
-                              [[[ 
-                                if (states['input_boolean.morning_meds_taken'].state == "on") and (states['input_boolean.evening_meds_taken'].state == "on") and (states['input_boolean.bedtime_meds_taken'].state == "on")
-                                  return "green";
-                                return "white";
-                              ]]]
+
                   - card: 'custom:button-card'
                     conditionalClass: |
                       [[[ 
