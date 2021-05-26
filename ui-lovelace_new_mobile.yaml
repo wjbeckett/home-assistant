@@ -225,4 +225,31 @@ views:
                     icon: 'mdi:wall-sconce-round-variant'
                     double_tap_action:
                       action: popup
+              - title: Lights
+                entities:
+                  - entity: light.kitchen_pendant_lights
+                    name: Kitchen Island
+                    icon: 'mdi:wall-sconce-round'
+                    double_tap_action:
+                      action: popup
+                  - entity: light.kitchen_downlight
+                    name: Kitchen Downlight
+                    icon: 'mdi:wall-sconce-round'
+                    double_tap_action:
+                      action: popup
+                  - entity: light.bedroom_lamps
+                    name: Bedroom Lamps
+                    icon: 'mdi:lamp'
+                    double_tap_action:
+                      action: popup
+                  - entity: light.ollie_s_lamp
+                    name: Ollie's Lamp
+                    icon: 'mdi:lamp'
+                    double_tap_action:
+                      action: popup
+                  - entity: light.teddy_s_lamp
+                    name: Teddy's Lamp
+                    icon: 'mdi:wall-sconce-round-variant'
+                    double_tap_action:
+                      action: popup
               
