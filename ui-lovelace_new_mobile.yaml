@@ -253,22 +253,13 @@ views:
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
                     icon: 'mdi:wall-sconce-round'
+                    tap_action:
+                      action: toggle
+                      haptic: light
+                    hold_action:
+                      action: popup
+                      haptic: light
                     popupExtend:
-                      settingsCard:
-                        type: entities
-                        cardOptions:
-                          entities:
-                            - type: custom:light-entity-card
-                              entity: 'light.kitchen_pendant_lights'
-                              brightness: false
-                              color_temp: true
-                              full_width_sliders: true
-                              hide_header: true
-                              show_slider_percent: true
-                              smooth_color_wheel: true
-                              consolidate_entities: true
-                        cardStyle: |
-                          background-color:#FFF;
                       actions:
                         - service: light.turn_on
                           service_data:
@@ -285,20 +276,8 @@ views:
                             entity_id: 'light.kitchen_pendant_lights'
                             color_temp: 500
                           color: "#ce944b"
-                        - action: fire-dom-event
-                          browser_mod:
-                            command: popup
-                            title: ''
-                            card:
-                              type: custom:light-entity-card
-                              entity: 'light.kitchen_pendant_lights'
-                              brightness: false
-                              color_temp: true
-                              full_width_sliders: true
-                              hide_header: true
-                              show_slider_percent: true
-                              smooth_color_wheel: true
-                              consolidate_entities: true
+                        - action: more-info
+                          haptic: light
                   - entity: light.kitchen_downlight
                     name: Kitchen Downlight
                     icon: 'mdi:wall-sconce-round'
