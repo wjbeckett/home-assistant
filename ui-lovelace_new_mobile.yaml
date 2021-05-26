@@ -320,9 +320,11 @@ views:
                     icon: 'mdi:lamp'
                     tap_action:
                       action: toggle
+                      entity: light.bedroom_lamps
                       haptic: light
                     hold_action:
-                      action: popup
+                      action: more-info
+                      entity: light.bedroom_lamps
                       haptic: light
                     popupExtend:
                       displayType: slider
