@@ -299,7 +299,7 @@ views:
                     tap_action: !include lovelace/views/popup/teddy_ac.yaml
                     hold_action:
                       action: none
-                  - entity: climate.olie_room
+                  - entity: climate.ollie_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
                     offStates:
@@ -307,3 +307,20 @@ views:
                     tap_action: !include lovelace/views/popup/ollie_ac.yaml
                     hold_action:
                       action: none
+                  - entity: input_boolean.dummy
+                    name: Admin
+                    icon: 'mdi:tools'
+                    tap_action: !include lovelace/views/popup/admin.yaml
+                    hold_action:
+                      action: none
+                    conditionalClass: |
+                      [[[ 
+                        return "hideState";
+                      ]]]
+                    hide: |
+                      [[[ 
+                        if (user.name == "William")
+                         return false;
+                        else
+                         return true;
+                      ]]]
