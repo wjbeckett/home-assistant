@@ -230,8 +230,8 @@ views:
                     entity_picture: '/local/people/william.png'
                     triggers_update:
                       ['person.william', 'sensor.time']
-                    tap_action: !include popup/home_william.yaml
-                    hold_action: !include popup/home_william.yaml
+                    tap_action: !include lovelace/views/popup/home_william.yaml
+                    hold_action: !include lovelace/views/popup/home_william.yaml
                     #template: ['base', 'switch', 'person']
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
