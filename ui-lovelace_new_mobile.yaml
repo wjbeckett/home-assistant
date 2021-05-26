@@ -252,4 +252,18 @@ views:
                     icon: 'mdi:wall-sconce-round-variant'
                     double_tap_action:
                       action: popup
+              - title: Media
+                entities:
+                  - entity: media_player.emily_ytube_music
+                    name: Em's Music
+                    icon: 'mdi:music-circle-outline'
+                    tap_action: !include lovelace/views/popup/em_music.yaml
+                    hold_action:
+                      action: none
+                  - entity: media_player.will_ytube_music
+                    name: Will's Music
+                    icon: 'mdi:music-circle-outline'
+                    tap_action: !include lovelace/views/popup/will_music.yaml
+                    hold_action:
+                      action: none
               
