@@ -198,7 +198,7 @@ views:
                         icon:
                           - color: |
                               [[[ 
-                                if (states['input_boolean.morning_meds_taken'].state == "on") && (states['input_boolean.evening_meds_taken'].state == "on") && (states['input_boolean.bedtime_meds_taken'].state == "on")
+                                if ((states['input_boolean.morning_meds_taken'].state == "on") && (states['input_boolean.evening_meds_taken'].state == "on") && (states['input_boolean.bedtime_meds_taken'].state == "on"))
                                   return "green";
                                 return "white";
                               ]]]
