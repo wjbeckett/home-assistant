@@ -242,7 +242,8 @@ views:
               - title: Lights
                 popup:
                   type: custom:light-popup-card
-                  scenesInARow: 2
+                  fullscreen: false
+                  actionsInARow: 2
                   brightnessWidth: 130px
                   brightnessHeight: 350px
                   switchWidth: 110px
