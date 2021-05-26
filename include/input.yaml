@@ -27,6 +27,9 @@ input_boolean:
   climate_ollie:
     initial: off
 
+  dummy:
+    Name: Dummy Input
+
   home_stats:
     name: Home Stats
     initial: off

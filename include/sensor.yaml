@@ -163,29 +163,28 @@ sensor:
     #                                                  #
     ####################################################
 
+  - platform: scrape
+    name: Dashboard Weather
+    resource: !secret darksky_forecast
+    select: "img"
+    attribute: "src"
+    index: 5
+    scan_interval: 900
+
+
   - platform: template
     sensors:
-      sidebar_greeting:
+      dashboard_greeting:
         #entity_id: sensor.time
         value_template: >
-          {% set time = strptime(states('sensor.time'), "%H:%M").hour %}
-          {% if time <= 1 %} Good evening {{'\U0001F611'}}
-          {% elif time <= 3 %} Good morning {{'\U0001F62A'}}
-          {% elif time <= 5 %} Good morning {{'\U0001F634'}}
-          {% elif time <= 7 %} Good morning {{'\u2615\uFE0F'}}
-          {% elif time <= 8 %} Good morning {{'\u2615\uFE0F'}}
-          {% elif time <= 9 %} Good morning {{'\u2615\uFE0F'}}
-          {% elif time <= 12 %} Good morning {{'\U0001F642'}}
-          {% elif time <= 13 %} Good afternoon {{'\U0001F60A'}}
-          {% elif time <= 15 %} Good afternoon {{'\U0001F60E'}}
-          {% elif time <= 17 %} Good afternoon {{'\U0001F44B\U0001F3FB'}}
-          {% elif time <= 19 %} Good evening {{'\U0001F44B\U0001F3FB'}}
-          {% elif time <= 22 %} Good evening {{'\U0001F60C'}}
-          {% elif time <= 23 %} Good evening {{'\U0001F974'}}
-          {% else %} Good evening {{'\U0001F974'}}
+          {% if as_timestamp(now()) | timestamp_custom('%H') | int < 12 %} 
+            Good morning
+          {% elif as_timestamp(now()) | timestamp_custom('%H') | int < 17 %}
+            Good afternoon
+          {% else %}
+            Good evening
           {% endif %}
-
-      sidebar_active:
+      dashboard_active:
         value_template: >
           {% set lights = [states.light.bedroom_lamps, states.light.kitchen_lights, states.light.ollie_s_lamp, states.light.teddy_s_lamp, 
           states.light.lounge_room_lamp] %}
@@ -285,6 +284,24 @@ sensor:
 
           {% else %} 
           <font color='#6a7377'>Everything is off</font> 
+          {% endif %}
+
+      dashboard_occupancy:
+        value_template: >
+          {% if is_state("group.family", "home") %}
+            Everyone is home
+          {% elif is_state("group.family", "not_home") %}
+            No one is home
+          {% else %}
+            {% set people = '' -%}
+          {% if states("person.emily") != "home" -%}
+            {% set people = people + "Annette, " -%}
+          {% endif %}
+          {% if states("person.william") != "home" -%}
+            {% set people = people + "Ariel, " -%}
+          {% endif %}
+            {% set people = people[:-2] -%}
+            Not at home: {{ people }}
           {% endif %}
 
       sidebar_weather:

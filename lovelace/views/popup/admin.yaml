@@ -1,0 +1,136 @@
+              action: fire-dom-event
+              browser_mod:
+                command: popup
+                title: Admin
+                deviceID: this
+                card:
+                  - type: vertical-stack
+                    cards:
+                      - type: 'custom:button-card'
+                        size: 25px
+                        icon: 'mdi:close'
+                        tap_action:
+                          action: navigate
+                          navigation_path: /lovelace-mobile-new/home_view
+                        styles:
+                          card:
+                            - width: 40px
+                            - height: 40px
+                            - background-color: 'rgba(255,255,255,0)'
+                            - box-shadow: none
+                          icon:
+                            - margin-left: px
+                      - type: markdown
+                        content: |
+                          # Network
+                        style:
+                          .: |
+                            ha-card {
+                              --ha-card-background: none !important;
+                              box-shadow: none !important;
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
+                      - type: custom:mini-graph-card
+                        name: Download/Upload
+                        entities:
+                          - entity: sensor.speedtest_download
+                            name: Download
+                            show_state: true
+                            state_adaptive_color: true
+                          - entity: sensor.speedtest_upload
+                            name: Upload
+                            show_state: true
+                            state_adaptive_color: true
+                        style: |
+                          ha-card {
+                            background-color: var(--primary-background-color);
+                            border-radius: 15px;
+                            margin: 10px;  
+                          }
+                  - type: vertical-stack
+                    cards:
+                      - type: markdown
+                        content: |
+                          # Sensors
+                        style:
+                          .: |
+                            ha-card {
+                              --ha-card-background: none !important;
+                              box-shadow: none !important;
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - binary_sensor.kitchen_sensor_motion
+                          - binary_sensor.bedroom_motion
+                          - binary_sensor.front_door_motion
+                        style: |
+                          ha-card {
+                            background-color: var(--primary-background-color);
+                            border-radius: 15px;
+                            margin: 10px;  
+                          }
+                  - type: vertical-stack
+                    cards:
+                      - type: markdown
+                        content: |
+                          # Switches
+                        style:
+                          .: |
+                            ha-card {
+                              --ha-card-background: none !important;
+                              box-shadow: none !important;
+                            }
+                          ha-markdown:
+                            $: |
+                              h1 {
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: Helvetica;
+                                letter-spacing: '-0.01em';
+                              }
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - input_boolean.alert_mode
+                          - input_boolean.text_notifications
+                          - input_boolean.meds_reminder
+                          - input_boolean.night_mode
+                          - input_boolean.sleep_mode
+                          - input_boolean.guest_mode
+                          - switch.adaptive_lighting_kitchen
+                          - switch.adaptive_lighting_bedroom
+                          - switch.adaptive_lighting_lounge_room
+                          - switch.adaptive_lighting_ollie_s_room
+                          - switch.adaptive_lighting_teddy_s_room
+                          - switch.adaptive_lighting_sleep_mode_bedroom
+                          - switch.adaptive_lighting_sleep_mode_kitchen
+                          - switch.adaptive_lighting_sleep_mode_lounge_room
+                          - switch.adaptive_lighting_sleep_mode_ollie_s_room
+                          - switch.adaptive_lighting_sleep_mode_teddy_s_room
+                          - switch.area_presence_hold_kitchen
+                          - switch.area_presence_hold_bedroom
+                          - switch.area_presence_hold_lounge_room
+                          - switch.area_presence_hold_ollie_s_room
+                          - switch.area_presence_hold_teddy_s_room
+                        style: |
+                          ha-card {
+                            background-color: var(--primary-background-color);
+                            border-radius: 15px;
+                            margin: 10px; 
+                          }

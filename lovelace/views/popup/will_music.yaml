@@ -1,0 +1,45 @@
+              action: fire-dom-event
+              browser_mod:
+                command: popup
+                title: Music
+                card:
+                  - type: vertical-stack
+                    cards:
+                      - type: 'custom:button-card'
+                        size: 25px
+                        icon: 'mdi:close'
+                        tap_action:
+                          action: navigate
+                          navigation_path: /lovelace-mobile-new/home_view
+                        styles:
+                          card:
+                            - width: 40px
+                            - height: 40px
+                            - background-color: 'rgba(255,255,255,0)'
+                            - box-shadow: none
+                          icon:
+                            - margin-left: px
+                      - type: 'custom:mini-media-player'
+                        entity: media_player.will_ytube_music
+                        artwork: cover
+                        hide:
+                          shuffle: false
+                          icon_state: false
+                        shortcuts:
+                          columns: 3
+                          buttons:
+                            - name: Kitchen
+                              type: source
+                              id: kitchen_display
+                            - name: Bedroom
+                              type: source
+                              id: bedroom_speaker
+                            - name: All Speakers
+                              type: source
+                              id: all_speakers
+                            - name: Kitchen and Bedroom
+                              type: source
+                              id: kitchen_and_bedroom
+                            - name: Super Mix
+                              type: playlist
+                              id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
