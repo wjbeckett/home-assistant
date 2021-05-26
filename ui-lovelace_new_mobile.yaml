@@ -273,7 +273,6 @@ views:
                               hide_header: true
                               show_slider_percent: true
                               smooth_color_wheel: true
-                              persist_features: true
                               consolidate_entities: true
                       actions:
                         - service: light.turn_on
