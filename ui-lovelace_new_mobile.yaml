@@ -247,7 +247,7 @@ views:
                   brightnessHeight: 350px
                   switchWidth: 110px
                   switchHeight: 300px
-                  settings:
+                  settings: true
                 entities:
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
