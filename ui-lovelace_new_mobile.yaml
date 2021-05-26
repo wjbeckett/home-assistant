@@ -314,6 +314,7 @@ views:
                     icon: 'mdi:lamp'
                     double_tap_action:
                       action: popup
+                    template: light
                   - entity: light.ollie_s_lamp
                     name: Ollie's Lamp
                     icon: 'mdi:lamp'
