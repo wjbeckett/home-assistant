@@ -120,8 +120,9 @@ button_card_templates:
                     entity_id: '[[[ return entity.entity_id ]]]'
                     color_temp: 500
                   color: "#ce944b"
-                - service: browser_mod.popup
-                  service_data:
+                - action: fire-dom-event
+                  browser_mod:
+                    command: popup
                     title: '[[[ return entity.attributes.friendly_name ]]]'
                     deviceID: this
                     card:
