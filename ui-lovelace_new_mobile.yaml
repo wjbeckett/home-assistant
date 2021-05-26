@@ -322,17 +322,10 @@ views:
                       action: toggle
                       haptic: light
                     hold_action:
-                      action: more-info
+                      action: popup
                       haptic: light
                     popupExtend:
                       displayType: slider
-                      settingsCard:
-                        type: entities
-                        cardOptions:
-                          entities:
-                            - light.bedroom_lamps
-                        cardStyle: |
-                          background-color:#FFF;
                       actions:
                         - action: call-service
                           service: light.turn_on
