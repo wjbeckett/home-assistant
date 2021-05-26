@@ -445,21 +445,12 @@ views:
                   - entity: climate.bedroom
                     name: A/C
                     icon: 'mdi:air-conditioner'
-                    tap_action: !include lovelace/views/popup/bedroom_ac.yaml
-                    hold_action:
-                      action: popup
                   - entity: climate.teddy_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
-                    tap_action: !include lovelace/views/popup/teddy_ac.yaml
-                    hold_action:
-                      action: popup
                   - entity: climate.ollie_room
                     name: A/C
                     icon: 'mdi:air-conditioner'
-                    tap_action: !include lovelace/views/popup/ollie_ac.yaml
-                    hold_action:
-                      action: popup
               - title: Admin
                 entities:
                   - entity: input_boolean.dummy
