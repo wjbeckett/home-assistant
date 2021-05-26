@@ -224,6 +224,15 @@ views:
                           - margin-top: '-5px'
                         icon:
                           - color: white
+                  - type: custom:button-card
+                    entity: person.william
+                    name: William
+                    entity_picture: '/local/people/william.png'
+                    triggers_update:
+                      ['person.william', 'sensor.time']
+                    tap_action: !include popup/home_william.yaml
+                    hold_action: !include popup/home_william.yaml
+                    #template: ['base', 'switch', 'person']
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
                     icon: 'mdi:wall-sconce-round'
@@ -266,9 +275,9 @@ views:
                           entities: 
                             - type: custom:light-entity-card
                               entity: light.kitchen_pendant_lights
-                              brightness: true
+                              brightness: false
                               color_temp: true
-                              full_width_sliders: false
+                              full_width_sliders: true
                               hide_header: true
                               show_slider_percent: true
                               smooth_color_wheel: true

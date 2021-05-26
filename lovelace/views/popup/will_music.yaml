@@ -23,10 +23,10 @@
                           - name: All Speakers
                             type: source
                             id: all_speakers
-                          - name: Kitchen and Bedroom
+                          - name: Kitchen & Bedroom
                             type: source
                             id: kitchen_and_bedroom
-                          - name: Super Mix
+                          - name: My Super Mix
                             type: playlist
                             id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
                       style: |
