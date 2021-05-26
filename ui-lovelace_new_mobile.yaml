@@ -439,7 +439,7 @@ views:
               - title: Climate
                 popup: 
                   type: custom:thermostat-popup-card
-                  fullscreen: true
+                  fullscreen: false
                   stepSize: 0.5
                 entities:
                   - entity: climate.bedroom
