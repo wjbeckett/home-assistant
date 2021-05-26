@@ -310,10 +310,10 @@ views:
                             entity_id: 'light.bedroom_lamps'
                             color_temp: 500
                           color: "#ce944b"
-                        - service: browser_mod.popup
-                          service_data:
-                            title: 'Bedroom Lamps'
-                            deviceID: this
+                        - action: fire-dom-event
+                          browser_mod:
+                            command: popup
+                            title: Bedroom Lamps
                             card:
                               type: entities
                               show_header_toggle: false
