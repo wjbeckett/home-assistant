@@ -100,6 +100,7 @@ views:
             title: Home
             useBrightness: true
             useTemperature: true
+            tileHoldAnimation: true
             titleColor: '#FFF'
             statePositionTop: true
             style: |
@@ -229,6 +230,7 @@ views:
                     image: "/local/people/william.png"
                     tap_action: !include lovelace/views/popup/home_william.yaml
                     hold_action: !include lovelace/views/popup/home_william.yaml
+                    state: device_tracker.william
                   - entity: person.emily
                     name: Emily
                     image: "/local/people/emily.jpeg"
