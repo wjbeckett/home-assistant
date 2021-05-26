@@ -288,7 +288,7 @@ views:
                     icon: 'mdi:air-conditioner'
                     offStates:
                       - "off"
-                    tap_action: !include lovelace/views/popup/bedrom_ac.yaml
+                    tap_action: !include lovelace/views/popup/bedroom_ac.yaml
                     hold_action:
                       action: none
                   - entity: climate.teddy_room
