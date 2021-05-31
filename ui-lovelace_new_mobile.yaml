@@ -107,6 +107,8 @@ views:
               :host {
                 --tile-background: rgba(255, 255, 255, 0.10);
                 --tile-border-radius: 12px;
+                --tile-width: 100px;
+                --tile-height: 100px;
                 --tile-on-background: rgba(255, 255, 255, 0.7);
 
                 --tile-name-text-color: rgba(255, 255, 255, 0.8);
