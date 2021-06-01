@@ -70,7 +70,6 @@ button_card_templates:
       browser_mod:
         command: popup
         title: '[[[ return entity.attributes.friendly_name ]]]'
-        deviceID: this
         card:
           type: entities
           entities:

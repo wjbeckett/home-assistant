@@ -151,6 +151,7 @@
               borderRadius: 1.7em
               sliderColor: '#c7c7c7'
               sliderTrackColor: rgba(25, 25, 25, 0.9)
+              displayType: slider
             - type: custom:hui-element
               card_type: horizontal-stack
               card_mod:
