@@ -345,6 +345,14 @@ sensor:
 
       placeholder:
         value_template: ' '
+        attribute_templates:
+          lounge: Lounge Room
+          kitchen: Kitchen
+          bedroom: Bedroom
+          teddy: Teddy
+          ollie: Ollie
+          media: Media
+          home: Home
 
       hass_version:
         #entity_id: sensor.hass_version_installed, sensor.hass_version_latest
