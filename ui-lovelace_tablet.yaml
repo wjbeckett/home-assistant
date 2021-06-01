@@ -58,7 +58,7 @@ views:
         elements:
           - type: state-label
             entity: sensor.placeholder
-            attribute: loungeroom
+            attribute: lounge
             style:
               top: 9.15%
               left: 25.4%
