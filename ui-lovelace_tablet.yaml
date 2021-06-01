@@ -58,7 +58,7 @@ views:
         elements:
           - type: state-label
             entity: sensor.placeholder
-            attribute: LoungeRoom
+            attribute: loungeroom
             style:
               top: 9.15%
               left: 25.4%
@@ -70,7 +70,7 @@ views:
           #################################################
 
           - type: custom:button-card
-            entity: light.lounge_room_lamp
+            entity: light.bedroom_lamps
             style:
               top: 20.35%
               left: 30.31%
@@ -86,7 +86,7 @@ views:
           #################################################
 
           - type: custom:button-card
-            entity: light.lounge_room_lamp
+            entity: light.bedroom_lamps
             style:
               top: 20.35%
               left: 41.31%

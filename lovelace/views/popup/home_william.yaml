@@ -2,7 +2,6 @@
               browser_mod:
                 command: popup
                 title: William
-                deviceID: this
                 style:
                   .: |
                     :host .content {
