@@ -270,24 +270,25 @@ views:
                     hold_action:
                       action: popup
                       haptic: light
-                    actions:
-                      - service: light.turn_on
-                        service_data:
-                          entity_id: 'light.kitchen_pendant_lights'
-                          color_temp: 153
-                        color: "#d8d9e1"
-                      - service: light.turn_on
-                        service_data:
-                          entity_id: 'light.kitchen_pendant_lights'
-                          color_temp: 326
-                        color: "#d5b08d"
-                      - service: light.turn_on
-                        service_data:
-                          entity_id: 'light.kitchen_pendant_lights'
-                          color_temp: 500
-                        color: "#ce944b"
-                      - action: more-info
-                        entity: light.kitchen_pendant_lights
+                    popupExtend:
+                      actions:
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.kitchen_pendant_lights'
+                            color_temp: 153
+                          color: "#d8d9e1"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.kitchen_pendant_lights'
+                            color_temp: 326
+                          color: "#d5b08d"
+                        - service: light.turn_on
+                          service_data:
+                            entity_id: 'light.kitchen_pendant_lights'
+                            color_temp: 500
+                          color: "#ce944b"
+                        - action: more-info
+                          entity: light.kitchen_pendant_lights
                   - entity: light.kitchen_downlight
                     name: Kitchen Downlight
                     icon: 'mdi:wall-sconce-round'
@@ -296,45 +297,44 @@ views:
                     icon: 'mdi:lamp'
                     tap_action:
                       action: toggle
-                      entity: light.bedroom_lamps
                       haptic: light
                     hold_action:
-                      action: more-info
-                      entity: light.bedroom_lamps
+                      action: popup
                       haptic: light
-                    actions:
-                      - action: call-service
-                        service: light.turn_on
-                        service_data:
-                          entity_id: 'light.bedroom_lamps'
-                          color_temp: 153
-                        color: "#d8d9e1"
-                      - action: call-service
-                        service: light.turn_on
-                        service_data:
-                          entity_id: 'light.bedroom_lamps'
-                          color_temp: 326
-                        color: "#d5b08d"
-                      - action: call-service
-                        service: light.turn_on
-                        service_data:
-                          entity_id: 'light.bedroom_lamps'
-                          color_temp: 500
-                        color: "#ce944b"
-                      - action: fire-dom-event
-                        browser_mod:
-                          command: popup
-                          title: 'Bedroom Lamps'
-                          card:
-                            type: custom:light-entity-card
-                            entity: 'light.bedroom_lamps'
-                            brightness: true
-                            color_temp: true
-                            full_width_sliders: true
-                            hide_header: true
-                            show_slider_percent: true
-                            smooth_color_wheel: true
-                            consolidate_entities: true
+                    popupExtend:
+                      actions:
+                        - action: call-service
+                          service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 153
+                          color: "#d8d9e1"
+                        - action: call-service
+                          service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 326
+                          color: "#d5b08d"
+                        - action: call-service
+                          service: light.turn_on
+                          service_data:
+                            entity_id: 'light.bedroom_lamps'
+                            color_temp: 500
+                          color: "#ce944b"
+                        - action: fire-dom-event
+                          browser_mod:
+                            command: popup
+                            title: 'Bedroom Lamps'
+                            card:
+                              type: custom:light-entity-card
+                              entity: 'light.bedroom_lamps'
+                              brightness: true
+                              color_temp: true
+                              full_width_sliders: true
+                              hide_header: true
+                              show_slider_percent: true
+                              smooth_color_wheel: true
+                              consolidate_entities: true
                           
                   - entity: light.ollie_s_lamp
                     name: Ollie's Lamp
