@@ -1470,7 +1470,8 @@ views:
               top: 20.35%
               left: 42.31%
               width: 10% 
-            custom_fields: *icon_hue
+            custom_fields: 
+              icon_hue: *icon_hue
             styles: *icon_hue_styles
             template:
               - base
