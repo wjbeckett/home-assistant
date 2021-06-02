@@ -86,7 +86,7 @@ views:
           #################################################
 
           - type: custom:button-card
-            entity: light.bedroom_lamps
+            entity: light.kitchen_pendant_lights
             style:
               top: 20.35%
               left: 41.31%
