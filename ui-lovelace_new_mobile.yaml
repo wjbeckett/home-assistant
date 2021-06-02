@@ -287,8 +287,22 @@ views:
                             entity_id: 'light.kitchen_pendant_lights'
                             color_temp: 500
                           color: "#ce944b"
-                        - action: more-info
-                          entity: light.kitchen_pendant_lights
+                        - action: fire-dom-event
+                          color: "#fc466b"
+                          browser_mod:
+                            command: popup
+                            title: 'Kitchen Pendants'
+                            card:
+                              type: custom:light-entity-card
+                              entity: light.kitchen_pendant_lights
+                              brightness: true
+                              color_temp: true
+                              full_width_sliders: false
+                              hide_header: true
+                              show_slider_percent: true
+                              smooth_color_wheel: true
+                              persist_features: true
+                              consolidate_entities: true
                   - entity: light.kitchen_downlight
                     name: Kitchen Downlight
                     icon: 'mdi:wall-sconce-round'
