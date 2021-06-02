@@ -259,8 +259,7 @@ views:
                   brightnessHeight: 350px
                   switchWidth: 110px
                   switchHeight: 300px
-                  settings: true
-                  settingsPosition: top
+                  displayType: slider
                 entities:
                   - entity: light.kitchen_pendant_lights
                     name: Kitchen Island
@@ -271,39 +270,24 @@ views:
                     hold_action:
                       action: popup
                       haptic: light
-                    popupExtend:
-                      settingsCard:
-                        type: entities
-                        cardOptions:
-                          entities: 
-                            - type: custom:light-entity-card
-                              entity: light.kitchen_pendant_lights
-                              brightness: false
-                              color_temp: true
-                              full_width_sliders: true
-                              hide_header: true
-                              show_slider_percent: true
-                              smooth_color_wheel: true
-                              persist_features: true
-                              consolidate_entities: true
-                      actions:
-                        - service: light.turn_on
-                          service_data:
-                            entity_id: 'light.kitchen_pendant_lights'
-                            color_temp: 153
-                          color: "#d8d9e1"
-                        - service: light.turn_on
-                          service_data:
-                            entity_id: 'light.kitchen_pendant_lights'
-                            color_temp: 326
-                          color: "#d5b08d"
-                        - service: light.turn_on
-                          service_data:
-                            entity_id: 'light.kitchen_pendant_lights'
-                            color_temp: 500
-                          color: "#ce944b"
-                        - action: more-info
-                          entity: light.kitchen_pendant_lights
+                    actions:
+                      - service: light.turn_on
+                        service_data:
+                          entity_id: 'light.kitchen_pendant_lights'
+                          color_temp: 153
+                        color: "#d8d9e1"
+                      - service: light.turn_on
+                        service_data:
+                          entity_id: 'light.kitchen_pendant_lights'
+                          color_temp: 326
+                        color: "#d5b08d"
+                      - service: light.turn_on
+                        service_data:
+                          entity_id: 'light.kitchen_pendant_lights'
+                          color_temp: 500
+                        color: "#ce944b"
+                      - action: more-info
+                        entity: light.kitchen_pendant_lights
                   - entity: light.kitchen_downlight
                     name: Kitchen Downlight
                     icon: 'mdi:wall-sconce-round'
@@ -318,42 +302,39 @@ views:
                       action: more-info
                       entity: light.bedroom_lamps
                       haptic: light
-                    popupExtend:
-                      displayType: slider
-                      actions:
-                        - action: call-service
-                          service: light.turn_on
-                          service_data:
-                            entity_id: 'light.bedroom_lamps'
-                            color_temp: 153
-                          color: "#d8d9e1"
-                        - action: call-service
-                          service: light.turn_on
-                          service_data:
-                            entity_id: 'light.bedroom_lamps'
-                            color_temp: 326
-                          color: "#d5b08d"
-                        - action: call-service
-                          service: light.turn_on
-                          service_data:
-                            entity_id: 'light.bedroom_lamps'
-                            color_temp: 500
-                          color: "#ce944b"
-                        - action: fire-dom-event
-                          browser_mod:
-                            command: popup
-                            title: ''
-                            card:
-                              type: custom:light-entity-card
-                              entity: 'light.kitchen_pendant_lights'
-                              brightness: false
-                              color_temp: true
-                              full_width_sliders: true
-                              hide_header: true
-                              show_slider_percent: true
-                              smooth_color_wheel: true
-                              consolidate_entities: true
-                          image: /local/people/luke.png
+                    actions:
+                      - action: call-service
+                        service: light.turn_on
+                        service_data:
+                          entity_id: 'light.bedroom_lamps'
+                          color_temp: 153
+                        color: "#d8d9e1"
+                      - action: call-service
+                        service: light.turn_on
+                        service_data:
+                          entity_id: 'light.bedroom_lamps'
+                          color_temp: 326
+                        color: "#d5b08d"
+                      - action: call-service
+                        service: light.turn_on
+                        service_data:
+                          entity_id: 'light.bedroom_lamps'
+                          color_temp: 500
+                        color: "#ce944b"
+                      - action: fire-dom-event
+                        browser_mod:
+                          command: popup
+                          title: 'Bedroom Lamps'
+                          card:
+                            type: custom:light-entity-card
+                            entity: 'light.bedroom_lamps'
+                            brightness: true
+                            color_temp: true
+                            full_width_sliders: true
+                            hide_header: true
+                            show_slider_percent: true
+                            smooth_color_wheel: true
+                            consolidate_entities: true
                           
                   - entity: light.ollie_s_lamp
                     name: Ollie's Lamp
