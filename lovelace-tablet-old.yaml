@@ -31,6 +31,14 @@ button_card_templates:
     show_state: true
     show_icon: false
 
+  color_light:
+    styles:
+      card:
+        - border-radius: 50%
+        - height: 4em
+        - width: 4em
+        - margin: 4px
+
   light:
     state: &button_state
       - value: 'on'
@@ -137,6 +145,7 @@ button_card_templates:
                       entity_id: >
                         [[[ return entity.entity_id ]]]
                       color_temp: 500
+                  template: color_light
                 - type: custom:button-card
                   styles:
                     card:
@@ -162,6 +171,7 @@ button_card_templates:
                         smooth_color_wheel: true
                         persist_features: true
                         consolidate_entities: true
+                  template: color_light
   climate:
     template: ['base']
     state:
@@ -1452,7 +1462,19 @@ views:
               custom_fields:
                 icon_hue:
                   [top: 11%, left: 4.5%, width: 3.05vw, position: absolute]
-            template: ['base','light']     
+            template: ['base','light']    
+
+          - type: custom:button-card
+            entity: light.kitchen_pendant_lights
+            style:
+              top: 20.35%
+              left: 42.31%
+              width: 10% 
+            custom_fields: *icon_hue
+            styles: *icon_hue_styles
+            template:
+              - base
+              - light
           
             
             #################################################################
