@@ -1,113 +1,107 @@
 button_card_templates: !include button_card_templates.yaml
 
-custom_header:
-  compact_mode: true
-  editor_warnings: false
-  exceptions:
-    - conditions:
-        user_agent: Lenovo
-      config:
-        disable_sidebar: true
-        hide_header: true
-        kiosk_mode: true
-    - conditions:
-        user: tablet
-      config:
-        disable_sidebar: true
-        kiosk_mode: true
-    - conditions:
-        device_id: e98effc3-b940ce40
-      config:
-        disable_sidebar: true
-        kiosk_mode: true
-
-
-
-
-title: Home
 views:
-
-    #############################################################################################################################################
-    #                                                                                                                                           #
-    #                                                              Floorplan View                                                               #
-    #                                                                                                                                           #
-    #############################################################################################################################################
-
-  - title: Home
-    icon: 'mdi:home'
-    panel: true
-    badges: []
+  - type: custom:grid-layout
+    path: 0
+    layout:
+      #default
+      grid-gap: var(--custom-layout-card-padding)
+      grid-template-columns: repeat(4, 1fr) 0
+      grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+      grid-template-areas: |
+        "sidebar  .           .         .       ."
+        "sidebar  loungeroom  kitchen   bedroom ."
+        "sidebar  media       teddy     home    ."
+      mediaquery:
+        #phone
+        "(max-width: 800px)":
+          grid-gap: calc(var(--custom-layout-card-padding) * 1.5)
+          grid-template-columns: 0 repeat(2, 1fr) 0
+          grid-template-rows: 0 repeat(5, fit-content(100%)) 0fr
+          grid-template-areas: |
+            ".  .           .        ."
+            ".  sidebar     sidebar  ."
+            ".  loungeroom  bedroom  ."
+            ".  kitchen     teddy    ."
+            ".  media       home     ."
+            ".  .           .        ."
+        #portrait
+        "(max-width: 1200px)":
+          grid-gap: var(--custom-layout-card-padding)
+          grid-template-columns: repeat(3, 1fr) 0
+          grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
+          grid-template-areas: |
+            "sidebar  .           .       ."
+            "sidebar  loungeroom  bedroom ."
+            "sidebar  kitchen     teddy   ."
+            "sidebar  media       home    ."
+            "sidebar  .           .       ."
     cards:
 
-        ###################   config-template-card    #####################
-        #########################   IMPORTANT!    #########################
+      #################################################
+      #                                               #
+      #                    SIDEBAR                    #
+      #                                               #
+      #################################################
 
-        # To use the styling templates for individual lights, I have used
-        # Config Template Card. Config template card passes the entities it
-        # uses into the card. Make sure you change these entities below to
-        # your own and include any light entities you use above.
+      - type: markdown
+        view_layout:
+          grid-area: sidebar
+        content: |
+          {% set attributes = states.sensor.template_sidebar.attributes | default %}
+          {% for template in attributes %}
+          {{ state_attr('sensor.template_sidebar', template) }}
+          {% endfor %}
 
-        # To understand why, check: https://github.com/iantrich/config-template-card
+      - type: grid
+        view_layout:
+          grid-area: sidebar
+        cards:
+          - type: button
+            icon: mdi:robot-vacuum
+            tap_action:
+              !include popup/sidebar_vacuum.yaml
 
-      - type: picture-elements
-        image: /local/ui/floorplan/blurredFloorplan.png
-        style: |
-          ha-card:first-child {
-            background: rgba(42, 46, 48, 1)
-          }
-        elements:
-          - type: state-label
-            entity: sensor.placeholder
-            attribute: lounge
-            style:
-              top: 9.15%
-              left: 25.4%
-          
-          #################################################
-          #                                               #
-          #                   BELYSNING                   #
-          #                                               #
-          #################################################
+          - type: button
+            icon: mdi:information-outline
+            tap_action:
+              !include popup/sidebar_information.yaml
+
+          - type: button
+            icon: mdi:arrow-up-bold-circle-outline
+            tap_action:
+              !include popup/sidebar_update.yaml
+
+      #################################################
+      #                                               #
+      #                  VARDAGSRUM                   #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Lounge Room
+        view_layout:
+          grid-area: loungeroom
+        columns: 2
+        cards:
 
           - type: custom:button-card
-            entity: light.bedroom_lamps
-            style:
-              top: 20.35%
-              left: 30.31%
-              width: 10%
+            entity: light.kitchen_pendants #hue_group
+            name: Pendants
             template:
               - light
               - icon_hue
 
-          #################################################
-          #                                               #
-          #                   SKRIVBORD                   #
-          #                                               #
-          #################################################
-
           - type: custom:button-card
-            entity: light.kitchen_pendant_lights
-            style:
-              top: 20.35%
-              left: 41.31%
-              width: 10%
+            entity: light.kitchen_downlight
+            name: Lamp
             template:
               - light
-              - icon_shade
-
-          #################################################
-          #                                               #
-          #                      TV                       #
-          #                                               #
-          #################################################
+              - icon_hue
 
           - type: custom:button-card
             entity: media_player.lounge_room_tv
-            triggers_update: input_boolean.lounge_room_tv
-            style:
-              top: 37.9%
-              left: 30.31%
-              width: 10%
+            name: Tv
             hold_action:
               !include lovelace/views/popup/lounge_room_tv.yaml
             template:
@@ -115,2923 +109,288 @@ views:
               - icon_tv
               - loader
 
+      #################################################
+      #                                               #
+      #                    Kitchen                    #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Kitchen
+        view_layout:
+          grid-area: kitchen
+        columns: 2
+        cards:
+
+          - type: custom:button-card
+            entity: light.kitchen_pendant_lights
+            name: Pendants
+            template:
+              - light
+              - icon_hue
+
+          - type: custom:button-card
+            entity: light.kitchen_downlight #hue_group
+            name: Downlight
+            template:
+              - light
+              - icon_spot
+
+          - type: custom:button-card
+            entity: media_player.kitchen_display
+            template:
+              - conditional_media
+              - icon_nest_mini
 
 
+      #################################################
+      #                                               #
+      #                    BEDROOM                    #
+      #                                               #
+      #################################################
 
-            #################################################################
-            #                                                               #
-            #                             SIDEBAR: Home                     #
-            #                                                               #
-            #################################################################
+      - type: grid
+        title: Bedroom
+        view_layout:
+          grid-area: bedroom
+        columns: 2
+        cards:
 
-            #########################    BG IMAGE    #########################
-          - action: none
+          - type: custom:button-card
+            entity: light.bedroom_lamps #hue_group
+            name: Lamps
+            template:
+              - light
+              - icon_lamp
+
+          - type: custom:button-card
+            entity: media_player.bedroom_speaker
+            template:
+              - conditional_media
+              - icon_nest_mini
+
+          - type: custom:button-card
+            entity: media_player.bedroom_tv
+            name: "TV"
+            hold_action:
+              !include lovelace/views/popup/bedroom_tv.yaml
+            template:
+              - base
+              - icon_tv
+              - loader
+
+      #################################################
+      #                                               #
+      #                     MEDIA                     #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Media
+        view_layout:
+          grid-area: media
+        columns: 1
+        cards:
+
+          - type: custom:swipe-card
+            start_card: 1
+            parameters:
+              roundLengths: true
+              effect: coverflow
+              speed: 650
+              spaceBetween: 20
+              threshold: 7
+              coverflowEffect:
+                rotate: 80
+                depth: 300
+            cards:
+
+              - type: vertical-stack
+                cards:
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Last downloaded
+                    card:
+                      type: custom:button-card
+                      entity: sensor.plex_recently_added
+                      tap_action:
+                        action: none
+                      template:
+                        - conditional_media
+                        - recently_downloaded
+                        - icon_plex
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Lounge Room
+                    card:
+                      type: custom:button-card
+                      entity: media_player.lounge_room_tv
+                      template:
+                        - conditional_media
+                        - icon_apple_tv
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Bedroom
+                    card:
+                      type: custom:button-card
+                      entity: media_player.bedroom_tv
+                      template:
+                        - conditional_media
+                        - icon_apple_tv
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Kitchen Display
+                    card:
+                      type: custom:button-card
+                      entity: media_player.kitchen_display
+                      template:
+                        - conditional_media
+                        - icon_nest_mini
+
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Bedroom Speaker
+                    card:
+                      type: custom:button-card
+                      entity: media_player.bedroom_speaker
+                      template:
+                        - conditional_media
+                        - icon_nest_mini
+                  
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Teddy Speaker
+                    card:
+                      type: custom:button-card
+                      entity: media_player.teddy_speaker
+                      template:
+                        - conditional_media
+                        - icon_nest_mini
+                  
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Ollie Speaker
+                    card:
+                      type: custom:button-card
+                      entity: media_player.ollie_speaker
+                      template:
+                        - conditional_media
+                        - icon_nest_mini
+
+              - type: grid
+                columns: 2
+                cards:
+
+                  - type: custom:button-card
+                    entity: media_player.lounge_room_tv
+                    name: Lounge Room
+                    template:
+                      - media
+                      - icon_apple_tv
+
+                  - type: custom:button-card
+                    name: Bedroom
+                    entity: media_player.bedroom
+                    template:
+                      - media
+                      - icon_apple_tv
+
+                  - type: custom:button-card
+                    entity: media_player.kitchen_display
+                    name: Kitchen Display
+                    template:
+                      - media
+                      - icon_spotify
+
+                  - type: custom:button-card
+                    entity: media_player.bedroom_speaker
+                    name: Bedroom Speaker
+                    template:
+                      - media
+                      - icon_nest_mini
+
+      #################################################
+      #                                               #
+      #                    TEDDY                      #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Teddy
+        view_layout:
+          grid-area: teddy
+        columns: 2
+        cards:
+
+          - type: custom:button-card
+            entity: light.teddy_s_lamp #hue_group
+            name: Lamp
+            template:
+              - light
+              - icon_hue
+
+          - type: custom:button-card
+            entity: media_player.teddy_speaker
+            template:
+              - conditional_media
+              - icon_nest_mini
+
+      #################################################
+      #                                               #
+      #                     HOME                      #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Home
+        view_layout:
+          grid-area: home
+        columns: 2
+        cards:
+
+          - type: custom:button-card
+            entity: person.william
+            name: William
+            tap_action:
+              !include lovelace/views/popup/home_william.yaml
             hold_action:
               action: none
-            image: /local/ui/sidebar/sidebarBG2.png
-            style:
-              height: 100%
-              left: 11.73828125%
-              top: 50%
-              width: 23.4765625%
-            tap_action:
-              action: none
-            type: image
+            template: person
 
-            #########################    TIME AND DATE    #########################
-          - entity: sensor.time
+          - type: custom:button-card
+            entity: person.emily
+            name: Emily
+            tap_action:
+              !include lovelace/views/popup/home_emily.yaml
             hold_action:
               action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.41vw
-              font-weight: 200
-              left: 2.7%
-              letter-spacing: '-0.05vw'
-              max-width: 1px
-              top: 10%
-            tap_action:
-              action: none
-            type: state-label
-          - entity: sensor.date_string
+            template: person
+
+          - type: custom:button-card
+            entity: script.home_leave
+            name: Stäng allt
             hold_action:
               action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.3)'
-              font-size: 1.3vw
-              font-weight: 300
-              left: 18.1%
-              letter-spacing: '-0.05vw'
-              text-align: left
-              top: 17%
-              width: 30%
-            tap_action:
-              action: none
-            type: state-label
+            template:
+              - base
+              - icon_away
 
-            #########################    MENU BUTTONS    #########################
-
-          - action: none
-            image: /local/ui/sidebar/rooms_on.png
-            style:
-              border-radius: 5vw
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
-              left: 11.7%
-              top: 26%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/0
-            type: image
-          - action: none
-            image: /local/ui/sidebar/cleanUp_off.png
-            style:
-              left: 11.7%
-              top: 34%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/1
-            type: image
-          - action: none
-            image: /local/ui/sidebar/media_off.png
-            style:
-              left: 11.7%
-              top: 42%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: image
-          - action: none
-            image: /local/ui/sidebar/health_off.png
-            style:
-              left: 11.7%
-              top: 50%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: image
-
-
-            #########################    People at home    #########################
-
-            #Optional label for people at Home (currently hidden with opacity: 0)
-
-          - style:
-              color: white
-              font-size: 1vw
-              font-weight: 300
-              left: 8.8%
-              opacity: 0
-              top: 66%
-              width: 10%
-            text: 'People at home:'
-            type: 'custom:text-element'
-
-          - action: none
-            entity: person.luke_vink
-            state_image:
-              home: /local/people/luke.png
-              not_home: /local/people/lukeGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 5.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-
-          - action: none
-            entity: person.santa_stibe
-            state_image:
-              home: /local/people/santa.png
-              not_home: /local/people/santaGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 10.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 15.9%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 21.1%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-
-            #########################    Minigraph to show temperature inside and out    #########################
-
-
-
-          - color_thresholds:
-              - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
-                value: 15
-              - color: '#ff1a1a'
-                value: 20
-            entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
-            icon: 'mdi:home-thermometer-outline'
-            show:
-              icon: true
-              legend: false
-              name: false
-            style: |
-              :host {
-                left: 11.6%;
-                top:  92.9%;
-                width: 23.5%;
-                overflow: hidden;
-                height: 15%;
-                background: none  !important;
-                box-shadow: none !important;
-              }
-              .header {
-                font-size: 1vw;
-                position: absolute !important;
-                width: 5% !important;
-                padding: 0 !important;
-                right: 20% !important;
-                top: 15% !important;
-              }
-              ha-card {
-                background: none  !important;
-                padding: 0 !important;
-              }
-              .icon > ha-icon {
-                width:1.8vw !important;
-                height:1.8vw !important;
-              }
-              .state__time{
-                font-size:0.9vw !important;
-                margin-top: 0.2vw;
-                font-weight: 300 !important;
-                opacity: 0.4 !important;
-              }
-              .states {
-                font-size: 0.5vw !important;
-                padding: 1vw 0vw 0vw 0vw  !important;
-                margin: auto !important;
-                width: 68%;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: 'custom:mini-graph-card'
-
-            #########################    Mini Weather card    #########################
-
-          - backdrop: false
-            entity: weather.buienweather
-            name: ' '
-            style: |
-              :host {
-                left: 11.4%;
-                top:  85.5%;
-                width: 17%;
-                height: 7% !important;
-                overflow: hidden;
-                height: 8.5vw;
-                background: none  !important;
-                box-shadow: none !important;
-                font-size: 1vw !important;
-              }
-              ha-card {
-                background: none  !important;
-                box-shadow: none !important;
-                flex-flow: row-reverse !important;
-                padding: 0 !important;
-              }
-              .weather__info--add{
-                display : none !important;
-              }
-              .weather__info{
-                flex-grow: 1;
-                min-height: 0 !important;
-                height: 2.4vw;
-                margin-left: 0.6vw;
-              }
-              .weather__icon{
-                margin-right:0.5% !important;
-                margin-top: -3%;
-                width: 2vw !important;
-                height: 2vw !important;
-                flex: 0 0 2vw !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/3
-            type: 'custom:simple-weather-card'
-
-            #########################    Overlay shadow images    #########################
-
-          - action: none
-            image: /local/ui/sidebar/sideShadow.png
-            style:
-              height: 35%
-              left: 18.45%
-              pointer-events: none
-              top: 83%
-              width: 10%
-            type: image
-          - action: none
-            image: /local/ui/sidebar/sidebarInnerShadow.png
-            style:
-              left: 22.83%
-              opacity: 0.7
-              pointer-events: none
-              top: 50%
-              width: 1.2109375%
-            type: image
-
-            #########################   Styled now playing Media Player    #########################
-
-            # when the media player is playing, this overlaps the "Media" menu button
-
-          - entity: media_player.spotify_luke_vink
-            hide:
-              controls: true
-              name: true
-              power: true
-              source: true
-              volume: true
-              progress: true
-            idle_view:
-              after: 0.1
-              when_idle: true
-              when_paused: true
-              when_standby: true
-            style: |
-              :host {
-                left: 11.7%;
-                top:  41.5%;
-                width: 20.5078125%;
-                border-radius: 5vw;
-                overflow: hidden;
-                height: 3.8vw;
-                box-shadow: none !important;
-              }
-              ha-card {
-                border-radius: 5vw;
-                overflow: hidden !important;
-                box-shadow: none !important;
-                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
-              }
-              ha-card.--inactive .mmp-player{
-                opacity: 0 !important;
-              }
-              #primaryProgress{
-                  background: #474A52 !important;
-              }
-              .entity__info{
-                height: 2.6vw;
-                width: 65% !important;
-                max-height: 20vw !important;
-                font-size: 0.9vw !important;
-                margin:0 0 0 1.04vw !important;
-                display: inline-block !important;
-              }
-              div.mmp__bg{
-                background: #1E2022;
-              }
-              ha-card.--inactive div.mmp__bg{
-                background: none;
-              }
-              div.mmp-player {
-                padding: 0vw;
-                height: 100%;
-              }
-              ha-card {
-                height: 100%;
-              }
-              mmp-powerstrip {
-                width: 100%;
-                display: block;
-                padding:0;
-              }
-              ha-icon{
-                display: block !important;
-                height: 2vw !important;
-                width: 2vw !important;
-                margin: 0.3vw 1.5vw 0 0vw !important;
-              }
-              .entity__icon{
-                float:right;
-                padding: 0.1vw;
-                width: 3vw !important;
-                height: 3vw !important;
-                min-width: 0 !important;
-                min-height: 0 !important;
-                margin:0 !important;
-                display: inline-block !important;
-              }
-
-              .mmp-player__core {
-                height: auto;
-                width: 100% !important;
-                margin-bottom: 0.1vw;
-                display: block !important;
-                position: absolute !important;
-                bottom: 0;
-              }
-
-              .entity__info__media{
-                max-height: 20vw !important;
-              }
-              .entity__info__media span::before{
-                content: none !important
-              }
-              .attr__media_title{
-                display:block;
-                color: white;
-                font-weight: 300;
-                font-size: 1.2vw !important;
-              }
-              .attr__media_artist{
-                font-size: 0.8vw !important;
-                font-weight: 200;
-                color: white;
-              }
-              .entity__artwork{
-                display:inline-block;
-                float: right;
-                margin-right: 0 !important;
-                display: inline-block;
-                float: right;
-                width: 2.2vw !important;
-                height: 2.2vw !important;
-                min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: 'custom:mini-media-player'
-
-
-
-
-    #############################################################################################################################################
-    #                                                                                                                                           #
-    #                                                            Xiaomi Clean Up View                                                           #
-    #                                                                                                                                           #
-    #############################################################################################################################################
-
-  - title: Clean Up
-    icon: 'mdi:robot-vacuum'
-    panel: true
-    cards:
-      - type: picture-elements
-        image: /local/ui/floorplan/floorplan_night_cu.png
-        style: |
-          ha-card {
-            background: rgba(42, 46, 48, 1)
-          }
-        elements:
-          - action: none
-            entity: sun.sun
+          - type: custom:button-card
+            entity: script.home_arrive
+            name: Hemma
             hold_action:
               action: none
-            state_image:
-              above_horizon: /local/ui/floorplan/floorplan_day_cu.png
-              below_horizon: /local/transparent.png
-            style:
-              height: 100%
-              left: 50%
-              mix-blend-mode: lighten
-              opacity: '${ states[''sensor.sunlight_opacity''].state }'
-              top: 50%
-              width: 100%
-            tap_action:
-              action: none
-            type: image
-
-
-            #######################################################################
-            #                                                                     #
-            #              Xiaomi Mi Robot : Zoned Cleanup Buttons                #
-            #                            Enabled by:                              #
-            #   https://www.home-assistant.io/integrations/vacuum.xiaomi_miio/    #
-            #                                                                     #
-            #######################################################################
-
-          - action: none
-            entity: input_text.room_cleaning
-            hold_action:
-              action: none
-            state_image:
-              bedroom: /local/transparent.png
-              charging: /local/ui/cleanUp/clean_livingroom.png
-              goinghome: /local/ui/cleanUp/clean_livingroom.png
-              kitchen: /local/transparent.png
-              livingroom: /local/ui/cleanUp/clean_livingroomSelected.png
-              study: /local/transparent.png
-            style:
-              left: 73.8%
-              top: 32.9%
-              width: 38.515625%
-            tap_action:
-              action: call-service
-              service: script.clean_livingroom
-            type: image
-          - action: none
-            entity: input_text.room_cleaning
-            hold_action:
-              action: none
-            state_image:
-              bedroom: /local/transparent.png
-              charging: /local/ui/cleanUp/clean_kitchen.png
-              goinghome: /local/ui/cleanUp/clean_kitchen.png
-              kitchen: /local/ui/cleanUp/clean_kitchenSelected.png
-              livingroom: /local/transparent.png
-              study: /local/transparent.png
-            style:
-              left: 74.9%
-              top: 24.7%
-              width: 14.960937499999998%
-            tap_action:
-              action: call-service
-              service: script.clean_kitchen
-            type: image
-          - action: none
-            entity: input_text.room_cleaning
-            hold_action:
-              action: none
-            state_image:
-              bedroom: /local/transparent.png
-              charging: /local/ui/cleanUp/clean_study.png
-              goinghome: /local/ui/cleanUp/clean_study.png
-              kitchen: /local/transparent.png
-              livingroom: /local/transparent.png
-              study: local/ui/cleanUp/clean_studySelected.png
-            style:
-              left: 72.45%
-              top: 71%
-              width: 12.812499999999998%
-            tap_action:
-              action: call-service
-              service: script.clean_study
-            type: image
-          - action: none
-            entity: input_text.room_cleaning
-            hold_action:
-              action: none
-            state_image:
-              bedroom: /local/ui/cleanUp/clean_bedroomSelected.png
-              charging: /local/ui/cleanUp/clean_bedroom.png
-              goinghome: /local/ui/cleanUp/clean_bedroom.png
-              kitchen: /local/transparent.png
-              livingroom: /local/transparent.png
-              study: /local/transparent.png
-            style:
-              left: 86.1%
-              top: 71%
-              width: 13.515625%
-            tap_action:
-              action: call-service
-              service: script.clean_bedroom
-            type: image
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/cleanUp/robotControlsBG.png
-            style:
-              left: 38.5%
-              top: 50%
-              width: 19.296875%
-            tap_action:
-              action: none
-            type: image
-          - action: none
-            entity: input_text.room_cleaning
-            hold_action:
-              action: none
-            state_image:
-              bedroom: /local/ui/cleanUp/cleaningStatusLive.png
-              charging: /local/ui/cleanUp/cleaningStatusWait.png
-              goinghome: /local/ui/cleanUp/cleaningStatusLive.png
-              kitchen: /local/ui/cleanUp/cleaningStatusLive.png
-              livingroom: /local/ui/cleanUp/cleaningStatusLive.png
-              study: /local/ui/cleanUp/cleaningStatusLive.png
-            style:
-              left: 38.5%
-              top: 46%
-              width: 16.796875%
-            type: image
-
-
-            ########### Vacuum Robot Control Panel buttons ###########
-
-            #   Note: uses input_text from configuration.yaml to show
-            #   the right text, EG: "Cleaning Kitchen" status text
-
-          - conditions:
-              - entity: input_text.room_cleaning
-                state_not: charging
-            elements:
-              - entity: sensor.vacuum_cleaning_status
-                style:
-                  color: 'rgba(255,255,255,1)'
-                  font-size: 1.1vw
-                  font-weight: 300
-                  left: 38.4%
-                  text-align: center
-                  top: 51.2%
-                  width: 15%
-                type: state-label
-            type: conditional
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/cleanUp/btns/ring.png
-            style:
-              left: 34.3%
-              top: 72.5%
-              width: 8.203125%
-            tap_action:
-              action: call-service
-              service: vacuum.locate
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-            type: image
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/cleanUp/btns/gohome.png
-            style:
-              left: 42.8%
-              top: 72.5%
-              width: 8.203125%
-            tap_action:
-              action: call-service
-              service: vacuum.return_to_base
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-            type: image
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/cleanUp/btns/start.png
-            style:
-              left: 34.3%
-              top: 86.5%
-              width: 8.203125%
-            tap_action:
-              action: call-service
-              service: vacuum.start
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-            type: image
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/cleanUp/btns/pause.png
-            style:
-              left: 42.8%
-              top: 86.5%
-              width: 8.203125%
-            tap_action:
-              action: call-service
-              service: vacuum.pause
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-            type: image
-          - action: none
-            entity: sensor.vacuum_fan
-            hold_action:
-              action: none
-            state_image:
-              Silent: local/ui/cleanUp/btns/fan_1.png
-              Standard: local/ui/cleanUp/btns/fan_1.png
-              Medium: local/ui/cleanUp/btns/fan_1_selected.png
-              Turbo: local/ui/cleanUp/btns/fan_1.png
-            style:
-              left: 32.22%
-              top: 60.5%
-              width: 4.1796875%
-            tap_action:
-              action: call-service
-              service: vacuum.set_fan_speed
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-                fan_speed: Quiet
-            type: image
-          - action: none
-            entity: sensor.vacuum_fan
-            hold_action:
-              action: none
-            state_image:
-              Silent: local/ui/cleanUp/btns/fan_2_selected.png
-              Standard: local/ui/cleanUp/btns/fan_2.png
-              Medium: local/ui/cleanUp/btns/fan_2.png
-              Turbo: local/ui/cleanUp/btns/fan_2.png
-            style:
-              left: 36.48%
-              top: 60.5%
-              width: 4.1796875%
-            tap_action:
-              action: call-service
-              service: vacuum.set_fan_speed
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-                fan_speed: Balanced
-            type: image
-          - action: none
-            entity: sensor.vacuum_fan
-            hold_action:
-              action: none
-            state_image:
-              Silent: local/ui/cleanUp/btns/fan_3.png
-              Standard: local/ui/cleanUp/btns/fan_3.png
-              Medium: local/ui/cleanUp/btns/fan_3.png
-              Turbo: local/ui/cleanUp/btns/fan_3_selected.png
-            style:
-              left: 40.74%
-              top: 60.5%
-              width: 4.1796875%
-            tap_action:
-              action: call-service
-              service: vacuum.set_fan_speed
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-                fan_speed: Turbo
-            type: image
-          - action: none
-            entity: sensor.vacuum_fan
-            hold_action:
-              action: none
-            state_image:
-              Silent: local/ui/cleanUp/btns/fan_4.png
-              Standard: local/ui/cleanUp/btns/fan_4_selected.png
-              Medium: local/ui/cleanUp/btns/fan_4.png
-              Turbo: local/ui/cleanUp/btns/fan_4.png
-            style:
-              left: 45%
-              top: 60.5%
-              width: 4.1796875%
-            tap_action:
-              action: call-service
-              service: vacuum.set_fan_speed
-              service_data:
-                entity_id: vacuum.xiaomi_vacuum_cleaner
-                fan_speed: Max
-            type: image
-          - entity: sensor.vacuum_battery_icon
-            style:
-              '--iron-icon-height': 1.5vw
-              '--iron-icon-width': 1.5vw
-              left: 38.5%
-              top: 20.5%
-            type: state-icon
-          - entity: sensor.vacuum_status
-            style:
-              color: 'rgba(255,255,255,0.6)'
-              font-size: 1.1vw
-              font-weight: 300
-              left: 38.4%
-              text-align: center
-              top: 32.5%
-              width: 15%
-            type: state-label
-
-
-            #################################################################
-            #                                                               #
-            #                      SIDEBAR : Cleanup                        #
-            #                                                               #
-            #################################################################
-
-
-            #########################    Background    #########################
-
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/sidebar/sidebarBG2.png
-            style:
-              height: 100%
-              left: 11.73828125%
-              top: 50%
-              width: 23.4765625%
-            tap_action:
-              action: none
-            type: image
-
-            #########################    TIME & DATE    #########################
-
-          - entity: sensor.time
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.41vw
-              font-weight: 200
-              left: 2.7%
-              letter-spacing: '-0.05vw'
-              max-width: 1px
-              top: 10%
-            tap_action:
-              action: none
-            type: state-label
-          - entity: sensor.date_string
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.3)'
-              font-size: 1.3vw
-              font-weight: 300
-              left: 18.1%
-              letter-spacing: '-0.05vw'
-              text-align: left
-              top: 17%
-              width: 30%
-            tap_action:
-              action: none
-            type: state-label
-
-
-            #########################   MENU BUTTONS   #########################
-
-          - action: none
-            image: /local/ui/sidebar/rooms_off.png
-            style:
-              border-radius: 5vw
-              left: 11.7%
-              top: 26%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/0
-            type: image
-          - action: none
-            image: /local/ui/sidebar/cleanUp_on.png
-            style:
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
-              left: 11.7%
-              top: 34%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/1
-            type: image
-          - action: none
-            image: /local/ui/sidebar/media_off.png
-            style:
-              left: 11.7%
-              top: 42%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: image
-          - action: none
-            image: /local/ui/sidebar/health_off.png
-            style:
-              left: 11.7%
-              top: 50%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: image
-
-            #########################   PEOPLE   #########################
-
-            #optional text label, currently invisible (make opacity:1) to show
-          - style:
-              color: white
-              font-size: 1vw
-              font-weight: 300
-              left: 8.8%
-              opacity: 0
-              top: 66%
-              width: 10%
-            text: 'People at home:'
-            type: 'custom:text-element'
-
-          - action: none
-            entity: person.luke_vink
-            state_image:
-              home: /local/people/luke.png
-              not_home: /local/people/lukeGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 5.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            entity: person.santa_stibe
-            state_image:
-              home: /local/people/santa.png
-              not_home: /local/people/santaGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 10.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 15.9%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 21.1%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-
-            #########################    TEMPERATURE MINI GRAPH (INSIDE vs OUTSIDE)    #########################
-
-          - color_thresholds:
-              - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
-                value: 15
-              - color: '#ff1a1a'
-                value: 20
-            entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
-            icon: 'mdi:home-thermometer-outline'
-            show:
-              icon: true
-              legend: false
-              name: false
-            style: |
-              :host {
-                left: 11.6%;
-                top:  92.9%;
-                width: 23.5%;
-                overflow: hidden;
-                height: 15%;
-                background: none  !important;
-                box-shadow: none !important;
-              }
-              .header {
-                font-size: 1vw;
-                position: absolute !important;
-                width: 5% !important;
-                padding: 0 !important;
-                right: 20% !important;
-                top: 15% !important;
-              }
-              ha-card {
-                background: none  !important;
-                padding: 0 !important;
-              }
-              .icon > ha-icon {
-                width:1.8vw !important;
-                height:1.8vw !important;
-              }
-              .state__time{
-                font-size:0.9vw !important;
-                margin-top: 0.2vw;
-                font-weight: 300 !important;
-                opacity: 0.4 !important;
-              }
-              .states {
-                font-size: 0.5vw !important;
-                padding: 1vw 0vw 0vw 0vw  !important;
-                margin: auto !important;
-                width: 68%;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: 'custom:mini-graph-card'
-
-            #########################    WEATHER SIDEBAR CARD    #########################
-
-          - backdrop: false
-            entity: weather.buienweather
-            name: ' '
-            style: |
-              :host {
-                left: 11.4%;
-                top:  85.5%;
-                width: 17%;
-                height: 7% !important;
-                overflow: hidden;
-                height: 8.5vw;
-                background: none  !important;
-                box-shadow: none !important;
-                font-size: 1vw !important;
-              }
-              ha-card {
-                background: none  !important;
-                box-shadow: none !important;
-                flex-flow: row-reverse !important;
-                padding: 0 !important;
-              }
-              .weather__info--add{
-                display : none !important;
-              }
-              .weather__info{
-                flex-grow: 1;
-                min-height: 0 !important;
-                height: 2.4vw;
-                margin-left: 0.6vw;
-              }
-              .weather__icon{
-                margin-right:0.5% !important;
-                margin-top: -3%;
-                width: 2vw !important;
-                height: 2vw !important;
-                flex: 0 0 2vw !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/3
-            type: 'custom:simple-weather-card'
-
-            #########################    VISUAL SHADOW OVERLAYS    #########################
-
-          - action: none
-            image: /local/ui/sidebar/sideShadow.png
-            style:
-              height: 35%
-              left: 18.45%
-              pointer-events: none
-              top: 83%
-              width: 10%
-            type: image
-          - action: none
-            image: /local/ui/sidebar/sidebarInnerShadow.png
-            style:
-              left: 22.83%
-              opacity: 0.7
-              pointer-events: none
-              top: 50%
-              width: 1.2109375%
-            type: image
-
-            #########################    NOW PLAYING SPOTIFY MENU BUTTON    #########################
-
-          - entity: media_player.spotify_luke_vink
-            hide:
-              controls: true
-              name: true
-              power: true
-              source: true
-              volume: true
-              progress: true
-            idle_view:
-              after: 0.1
-              when_idle: true
-              when_paused: true
-              when_standby: true
-            style: |
-              :host {
-                left: 11.7%;
-                top: 41.5%;
-                width: 20.5078125%;
-                border-radius: 5vw;
-                overflow: hidden;
-                height: 3.8vw;
-                box-shadow: none !important;
-              }
-              ha-card {
-                border-radius: 5vw;
-                overflow: hidden !important;
-                box-shadow: none !important;
-                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
-              }
-              ha-card.--inactive .mmp-player{
-                opacity: 0 !important;
-              }
-
-              #primaryProgress{
-                background: #474A52 !important;
-              }
-
-              .entity__info{
-                height: 2.6vw;
-                width: 65% !important;
-                max-height: 20vw !important;
-                font-size: 0.9vw !important;
-                margin:0 0 0 1.04vw !important;
-                display: inline-block !important;
-              }
-              div.mmp__bg{
-                background: #1E2022;
-              }
-              ha-card.--inactive div.mmp__bg{
-                background: none;
-              }
-              div.mmp-player {
-                padding: 0vw;
-                height: 100%;
-              }
-              ha-card {
-                height: 100%;
-              }
-              mmp-powerstrip {
-                width: 100%;
-                display: block;
-                padding:0;
-              }
-              ha-icon{
-                display: block !important;
-                height: 2vw !important;
-                width: 2vw !important;
-                margin: 0.3vw 1.5vw 0 0vw !important;
-              }
-              .entity__icon{
-                float:right;
-                padding: 0.1vw;
-                width: 3vw !important;
-                height: 3vw !important;
-                min-width: 0 !important;
-                min-height: 0 !important;
-                margin:0 !important;
-                display: inline-block !important;
-              }
-
-              .mmp-player__core {
-                height: auto;
-                width: 100% !important;
-                margin-bottom: 0.1vw;
-                display: block !important;
-                position: absolute !important;
-                bottom: 0;
-              }
-
-              .entity__info__media{
-                max-height: 20vw !important;
-              }
-              .entity__info__media span::before{
-                content: none !important
-              }
-              .attr__media_title{
-                display:block;
-                color: white;
-                font-weight: 300;
-                font-size: 1.2vw !important;
-              }
-              .attr__media_artist{
-                font-size: 0.8vw !important;
-                font-weight: 200;
-                color: white;
-              }
-              .entity__artwork{
-                display:inline-block;
-                float: right;
-                margin-right: 0 !important;
-                display: inline-block;
-                float: right;
-                width: 2.2vw !important;
-                height: 2.2vw !important;
-                min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: 'custom:mini-media-player'
-
-
-    #############################################################################################################################################
-    #                                                                                                                                           #
-    #                                                            Now Playing Media View                                                         #
-    #                                                                                                                                           #
-    #############################################################################################################################################
-
-  - title: Media
-    icon: 'mdi:play-circle'
-    panel: true
-    badges: []
-    cards:
-      - elements:
-
-            #########################    SPEAKER CONTROL BAR    #########################
-            # controls an IR blaster to control my 'not connected' surround sound speakers
-
-          - action: none
-            entity: switch.speakers
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_PowerOff.png
-              'on': /local/ui/btns/speakers_PowerOn.png
-            style:
-              left: 31.7%
-              top: 86.3%
-              width: 12.578125%
-            tap_action:
-              action: toggle
-            type: image
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/btns/speakers_volumeBG.png
-            style:
-              left: 81.5%
-              top: 86%
-              width: 25.820312499999996%
-            tap_action:
-              action: none
-            type: image
-          - action: none
-            entity: switch.speakers_up
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_volumeUp.png
-              'on': /local/ui/btns/speakers_volumeUp.png
-            style:
-              left: 87.8%
-              top: 86%
-              width: 15%
-            tap_action:
-              action: toggle
-            type: image
-          - action: none
-            entity: switch.speakers_down
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_volumeDown.png
-              'on': /local/ui/btns/speakers_volumeDown.png
-            style:
-              left: 75.3%
-              top: 86%
-              width: 15%
-            tap_action:
-              action: toggle
-            type: image
-          - action: none
-            entity: switch.projector_audio
-            hold_action:
-              action: none
-            state_image:
-              'off': /local/ui/btns/speakers_bluetooth.png
-              'on': /local/ui/btns/speakers_projector.png
-            style:
-              left: 51.5%
-              top: 86%
-              width: 27.890625%
-            tap_action:
-              action: toggle
-            type: image
-
-            ###########################################################################
-            #                                                                         #
-            #                 IF PROJECTOR NOT ON, SHOW SPOTIFY:                      #
-            #                                                                         #
-            ###########################################################################
-
-            #  Mini Media Player Card:
-            #  https://github.com/kalkih/mini-media-player
-
-          - conditions:
-              - entity: device_tracker.projector
-                state: not_home
-            elements:
-              - artwork: full-cover
-                entity: media_player.spotify_luke_vink
-                hide:
-                  power: true
-                  progress: false
-                  runtime: false
-                  volume: true
-                style: |
-                  :host {
-                    left: 46% !important;
-                    top: 39.8% !important;
-                    width: 33% !important;
-                    height: 62.3% !important;
-                  }
-                  ha-card{
-                    border-radius: 1vw !important;
-                    overflow: hidden !important;
-                    height: 100%;
-                  }
-                  :host #primaryProgress{
-                    background: #474A52 !important;
-                  }
-                type: 'custom:mini-media-player'
-            type: conditional
-
-            # Spotify Playlists Card:
-            # https://github.com/custom-cards/spotify-card
-          - type: conditional
-            conditions:
-            - entity: device_tracker.projector
-              state: not_home
-            elements:
-                - type: 'custom:spotify-card'
-                  limit: 10
-                  always_play_random_song: true
-                  name:
-                  style: |
-                    :host {
-                        left: 79.5%;
-                        top: 39.8%;
-                        width: 31%;
-                        height: 62.3%;
-                        border-radius: 1vw;
-                    }
-                    #header{
-                        display:none !important;
-                    }
-                    #content{
-                        border:none !important;
-                    }
-                    .playback-controls{
-                        display:none !important;
-                    }
-                    #header-track{
-                        display:none;
-                    }
-                    .list-item > p{
-                        white-space: nowrap;
-                            overflow: hidden;
-                    }
-                    .list-item{
-                        border-radius: 0.2vw;
-                        overflow:hidden;
-                        border:none !important;
-                        margin-bottom:2px;
-                    }
-
-
-
-
-            ###########################################################################
-            #                                                                         #
-            #          IF PROJECTOR IS ON, SHOW PLEX & RECENTLY ADDED:                #
-            #                                                                         #
-            ###########################################################################
-
-            # Mini Media Player Card:
-            # https://github.com/kalkih/mini-media-player
-
-            # Upcoming Media Card:
-            # https://github.com/custom-cards/upcoming-media-card
-
-            # Enabled by, Plex Recently Added Sensor:
-            # https://github.com/custom-components/sensor.plex_recently_added
-
-          - type: conditional
-            conditions:
-              - entity: device_tracker.projector
-                state_not: not_home
-              - entity: media_player.spotify_luke_vink
-                state_not: playing
-              - entity: media_player.plex_projector
-                state_not: stopped
-              - entity: media_player.plex_projector
-                state_not: unavailable
-              - entity: media_player.plex_projector
-                state_not: idle
-            elements:
-              - entity: sensor.recently_added_tv
-                style:
-                  left: 84%
-                  top: 25%
-                  width: 18%
-                title: Recently Added Tv
-                type: 'custom:upcoming-media-card'
-              - entity: sensor.recently_added_movies
-                style:
-                  left: 84%
-                  top: 59.5%
-                  width: 18%
-                title: Recently Added Movies
-                type: 'custom:upcoming-media-card'
-              - artwork: cover
-                entity: media_player.plex_projector
-                hide:
-                  icon: true
-                  mute: false
-                  power: true
-                  power_state: true
-                info: short
-                style: |
-                  :host {
-                    border-radius: 1vw;
-                    overflow: hidden;
-                    height: 300px;
-                    box-shadow: none !important;
-                    left: 50% !important;
-                    top: 43% !important;
-                    width: 42.3% !important;
-                    height: 66%
-                  }
-                  ha-card {
-                    border-radius: 1vw;
-                    height: 100%;
-                    overflow: hidden !important;
-                    box-shadow: none !important;
-                  }
-                type: 'custom:mini-media-player'
-            style: |
-                  ha-card {
-                    background: rgba(42, 46, 48, 1)
-                  }
-                  upcoming-media-card ha-card{
-                      background: none;
-                      box-shadow: none !important;
-                    }
-                    upcoming-media-card ha-card div:nth-child(2) {
-                      padding:0 !important;
-                    }
-                    .rece_poster{
-                      width: 31% !important;
-                      display: inline-block !important;
-                      margin: 0% 0.2% !important;
-                    }
-                    .rece_svg_poster{
-                      position: absolute !important;
-                      bottom:-5%;
-                      left:0;
-                      width: 100% !important;
-                    }
-                    .rece_container_poster{
-                      width:100% !important;
-                      outline: none !important;
-                      margin: 1% 1% !important;
-                      overflow: hidden;
-                    }
-
-                    .rece_svg_poster > rect{
-                     fill:none !important;
-                    }
-                    .card-header{
-                      font-size: 1vw;
-                      padding: 0;
-                    }
-
-
-          - type: conditional
-            conditions:
-              - entity: device_tracker.projector
-                state_not: not_home
-              - entity: media_player.spotify_luke_vink
-                state_not: playing
-              - entity: media_player.plex_projector
-                state_not: playing
-              - entity: media_player.plex_projector
-                state_not: paused
-            elements:
-
-              - entity: sensor.recently_added_movies
-                style:
-                  left: 62.3%
-                  top: 24%
-                  width: 67%
-                  height: 36.5%
-                title: Recently Added Movies
-                type: 'custom:upcoming-media-card'
-
-              - entity: sensor.recently_added_tv
-                style:
-                  left: 62.3%
-                  top: 60%
-                  width: 67%
-                  height: 36.5%
-                title: Recently Added Tv
-                type: 'custom:upcoming-media-card'
-
-            card_mod:
-              style: |
-                    upcoming-media-card ha-card{
-                      background: none;
-                      box-shadow: none !important;
-                    }
-                    upcoming-media-card ha-card div:nth-child(2) {
-                      padding:0 !important;
-                    }
-                    .rece_poster{
-                        width: 17.6% !important;
-                        display: inline-block !important;
-                        margin: 0% 0.8% !important;
-                        border-radius: 0.9vw;
-                    }
-                    .rece_svg_poster{
-                      position: absolute !important;
-                      bottom:-8%;
-                      left:0;
-                      width: 100% !important;
-                      background: rgb(0,0,0);
-                      background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-                    }
-                    .rece_poster ha-icon{
-                        transform: scale(0.5)
-                    }
-                    .rece_flag_poster svg{
-                        filter:none;
-                    }
-                    .rece_container_poster{
-                      width:100% !important;
-                      outline: none !important;
-                      margin: 1% 1% !important;
-                      overflow: hidden;
-                    }
-                    .rece_svg_poster > rect{
-                     fill:none !important;
-                    }
-                    .rece_line2_poster{
-                        display:none;
-                    }
-                    # .rece_line1_poster{
-                    #     font-size: 1.8vw;
-                    # }
-                    # .rece_line0_poster{
-                    #     font-size: 2.2vw;
-                    # }
-                    .rece_flag_poster{
-                        opacity: 0.5;
-                    }
-                    .card-header{
-                      font-size: 1vw;
-                      padding: 0 0.5vw;
-                      height: 4vh;
-                    }
-
-
-            #################################################################
-            #                                                               #
-            #                             SIDEBAR                           #
-            #                                                               #
-            #################################################################
-
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/sidebar/sidebarBG2.png
-            style:
-              height: 100%
-              left: 11.73828125%
-              top: 50%
-              width: 23.4765625%
-            tap_action:
-              action: none
-            type: image
-          - entity: sensor.time
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.41vw
-              font-weight: 200
-              left: 2.7%
-              letter-spacing: '-0.05vw'
-              max-width: 1px
-              top: 10%
-            tap_action:
-              action: none
-            type: state-label
-          - entity: sensor.date_string
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.3)'
-              font-size: 1.3vw
-              font-weight: 300
-              left: 18.1%
-              letter-spacing: '-0.05vw'
-              text-align: left
-              top: 17%
-              width: 30%
-            tap_action:
-              action: none
-            type: state-label
-          - action: none
-            image: /local/ui/sidebar/rooms_off.png
-            style:
-              border-radius: 5vw
-              left: 11.7%
-              top: 26%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/0
-            type: image
-          - action: none
-            image: /local/ui/sidebar/cleanUp_off.png
-            style:
-              left: 11.7%
-              top: 34%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/1
-            type: image
-          - action: none
-            image: /local/ui/sidebar/media_on.png
-            style:
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
-              left: 11.7%
-              top: 42%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: image
-          - action: none
-            image: /local/ui/sidebar/health_off.png
-            style:
-              left: 11.7%
-              top: 50%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: image
-
-            #########################    PEOPLE    #########################
-
-            # optional label for people (currently hidden, to show, change to opacity:1)
-          - style:
-              color: white
-              font-size: 1vw
-              font-weight: 300
-              left: 8.8%
-              opacity: 0
-              top: 66%
-              width: 10%
-            text: 'People at home:'
-            type: 'custom:text-element'
-
-
-          - action: none
-            entity: person.luke_vink
-            state_image:
-              home: /local/people/luke.png
-              not_home: /local/people/lukeGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 5.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            entity: person.santa_stibe
-            state_image:
-              home: /local/people/santa.png
-              not_home: /local/people/santaGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 10.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 15.9%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 21.1%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - color_thresholds:
-              - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
-                value: 15
-              - color: '#ff1a1a'
-                value: 20
-            entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
-            icon: 'mdi:home-thermometer-outline'
-            show:
-              icon: true
-              legend: false
-              name: false
-            style: |
-              :host {
-                left: 11.6%;
-                top:  92.9%;
-                width: 23.5%;
-                overflow: hidden;
-                height: 15%;
-                background: none  !important;
-                box-shadow: none !important;
-              }
-              .header {
-                font-size: 1vw;
-                position: absolute !important;
-                width: 5% !important;
-                padding: 0 !important;
-                right: 20% !important;
-                top: 15% !important;
-              }
-              ha-card {
-                background: none  !important;
-                padding: 0 !important;
-              }
-              .icon > ha-icon {
-                width:1.8vw !important;
-                height:1.8vw !important;
-              }
-              .state__time{
-                font-size:0.9vw !important;
-                margin-top: 0.2vw;
-                font-weight: 300 !important;
-                opacity: 0.4 !important;
-              }
-              .states {
-                font-size: 0.5vw !important;
-                padding: 1vw 0vw 0vw 0vw  !important;
-                margin: auto !important;
-                width: 68%;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: 'custom:mini-graph-card'
-          - backdrop: false
-            entity: weather.buienweather
-            name: ' '
-            style: |
-              :host {
-                left: 11.4%;
-                top:  85.5%;
-                width: 17%;
-                height: 7% !important;
-                overflow: hidden;
-                height: 8.5vw;
-                background: none  !important;
-                box-shadow: none !important;
-                font-size: 1vw !important;
-              }
-              ha-card {
-                background: none  !important;
-                box-shadow: none !important;
-                flex-flow: row-reverse !important;
-                padding: 0 !important;
-              }
-              .weather__info--add{
-                display : none !important;
-              }
-              .weather__info{
-                flex-grow: 1;
-                min-height: 0 !important;
-                height: 2.4vw;
-                margin-left: 0.6vw;
-              }
-              .weather__icon{
-                margin-right:0.5% !important;
-                margin-top: -3%;
-                width: 2vw !important;
-                height: 2vw !important;
-                flex: 0 0 2vw !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/3
-            type: 'custom:simple-weather-card'
-          - action: none
-            image: /local/ui/sidebar/sideShadow.png
-            style:
-              height: 35%
-              left: 18.45%
-              pointer-events: none
-              top: 83%
-              width: 10%
-            type: image
-          - action: none
-            image: /local/ui/sidebar/sidebarInnerShadow.png
-            style:
-              left: 22.83%
-              opacity: 0.7
-              pointer-events: none
-              top: 50%
-              width: 1.2109375%
-            type: image
-          - entity: media_player.spotify_luke_vink
-            hide:
-              controls: true
-              name: true
-              power: true
-              source: true
-              volume: true
-              progress: true
-            idle_view:
-              after: 0.1
-              when_idle: true
-              when_paused: true
-              when_standby: true
-            show_progress: true
-            style: |
-              :host {
-                left: 11.7%;
-                top:  41.5%;
-                width: 20.5078125%;
-                border-radius: 5vw;
-                overflow: hidden;
-                height: 3.8vw;
-                box-shadow: none !important;
-              }
-              ha-card {
-                border-radius: 5vw;
-                overflow: hidden !important;
-                box-shadow: none !important;
-                    padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
-              }
-              ha-card.--inactive .mmp-player{
-                opacity: 0 !important;
-              }
-              #primaryProgress{
-                background: #474A52 !important;
-              }
-              .entity__info{
-                height: 2.6vw;
-                width: 65% !important;
-                max-height: 20vw !important;
-                font-size: 0.9vw !important;
-                margin:0 0 0 1.04vw !important;
-                display: inline-block !important;
-              }
-              div.mmp__bg{
-                background: #2B2E30;
-              }
-              ha-card.--inactive div.mmp__bg{
-                background: none;
-              }
-              div.mmp-player {
-                padding: 0vw;
-                height: 100%;
-              }
-              ha-card {
-                height: 100%;
-              }
-              mmp-powerstrip {
-                width: 100%;
-                display: block;
-                padding:0;
-              }
-              ha-icon{
-                display: block !important;
-                height: 2vw !important;
-                width: 2vw !important;
-                margin: 0.3vw 1.5vw 0 0vw !important;
-              }
-              .entity__icon{
-                float:right;
-                padding: 0.1vw;
-                width: 3vw !important;
-                height: 3vw !important;
-                min-width: 0 !important;
-                min-height: 0 !important;
-                margin:0 !important;
-                display: inline-block !important;
-              }
-
-              .mmp-player__core {
-                height: auto;
-                width: 100% !important;
-                margin-bottom: 0.1vw;
-                display: block !important;
-                position: absolute !important;
-                bottom: 0;
-              }
-
-              .entity__info__media{
-                max-height: 20vw !important;
-              }
-              .entity__info__media span::before{
-                content: none !important
-              }
-              .attr__media_title{
-                display:block;
-                color: white;
-                font-weight: 300;
-                font-size: 1.2vw !important;
-              }
-              .attr__media_artist{
-                font-size: 0.8vw !important;
-                font-weight: 200;
-                color: white;
-              }
-              .entity__artwork{
-                display:inline-block;
-                float: right;
-                margin-right: 0 !important;
-                display: inline-block;
-                float: right;
-                width: 2.2vw !important;
-                height: 2.2vw !important;
-                min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
-              }
-            tap_action:
-              action: null
-            type: 'custom:mini-media-player'
-        image: /local/ui/floorplan/blurredFloorplan.png
-        type: picture-elements
-
-
-
-    #############################################################################################################################################
-    #                                                                                                                                           #
-    #                                                               Weather View                                                                #
-    #                                                                                                                                           #
-    #############################################################################################################################################
-
-  - title: Weather
-    icon: 'mdi:white-balance-sunny'
-    panel: true
-    badges: []
-    cards:
-      - elements:
-          - fillColor: 'rgba(89, 160, 238, 0.2)'
-            lat: 53.361455
-            lineColor: 'rgba(89, 160, 238, 1)'
-            update_interval: 20
-            long: 6.866892
-            style: |
-              :host {
-                left: 60.5%;
-                top:  80%;
-                width: 68%;
-                overflow: hidden;
-                height: 28%;
-                background: none !important;
-                box-shadow: none !important;
-              }
-              ha-card {
-                height: 100%;
-                background: none  !important;
-                box-shadow: none !important;
-                border-radius: 1vw;
-                position: relative;
-                font-size: 1vw !important;
-              }
-              .chart-container {
-                  height:100%;
-                  width:100%
-              }
-              #container {
-                  height:100%;
-                  width:100%;
-                  padding: 0 !important;
-                  margin: 0 !important;
-              }
-            type: 'custom:buien-rain-forecast'
-          - current: true
-            details: true
-            entity: weather.buienweather
-            forecast: true
-            name: Weather
-            style: |
-              :host {
-                left: 61.5%;
-                top:  38%;
-                width: 70%;
-                overflow: hidden;
-                height: 63%;
-                background: none !important;
-                box-shadow: none !important;
-              }
-              .current {
-                margin-bottom: 7vw;
-              }
-              .variations {
-                margin-bottom: 4vw;
-              }
-              ha-card {
-                height: 100%;
-                background: none  !important;
-                box-shadow: none !important;
-                border-radius: 1vw;
-                font-size: 1.2vw !important;
-              }
-              .forecast{
-                padding: 0 2.5%;
-                width: 95%;
-              }
-              .forecast .day:first-child{
-                border-left: 0.1em solid #d9d9d9;
-              }
-              .forecast .day:last-child{
-                border-right: 0.1em solid #d9d9d9;
-              }
-            type: 'custom:weather-card'
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/sidebar/sidebarBG2.png
-            style:
-              height: 100%
-              left: 11.73828125%
-              top: 50%
-              width: 23.4765625%
-            tap_action:
-              action: none
-            type: image
-          - entity: sensor.time
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.41vw
-              font-weight: 200
-              left: 2.7%
-              letter-spacing: '-0.05vw'
-              max-width: 1px
-              top: 10%
-            tap_action:
-              action: none
-            type: state-label
-          - entity: sensor.date_string
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.3)'
-              font-size: 1.3vw
-              font-weight: 300
-              left: 18.1%
-              letter-spacing: '-0.05vw'
-              text-align: left
-              top: 17%
-              width: 30%
-            tap_action:
-              action: none
-            type: state-label
-          - action: none
-            image: /local/ui/sidebar/rooms_off.png
-            style:
-              border-radius: 5vw
-              left: 11.7%
-              top: 26%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/0
-            type: image
-          - action: none
-            image: /local/ui/sidebar/cleanUp_off.png
-            style:
-              left: 11.7%
-              top: 34%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/1
-            type: image
-          - action: none
-            image: /local/ui/sidebar/media_off.png
-            style:
-              left: 11.7%
-              top: 42%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: image
-          - action: none
-            image: /local/ui/sidebar/health_off.png
-            style:
-              left: 11.7%
-              top: 50%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: image
-
-            #########################    PEOPLE    #########################
-
-            # optional label for people (currently hidden, to show, change to opacity:1)
-          - style:
-              color: white
-              font-size: 1vw
-              font-weight: 300
-              left: 8.8%
-              opacity: 0
-              top: 66%
-              width: 10%
-            text: 'People at home:'
-            type: 'custom:text-element'
-
-
-          - action: none
-            entity: person.luke_vink
-            state_image:
-              home: /local/people/luke.png
-              not_home: /local/people/lukeGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 5.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            entity: person.santa_stibe
-            state_image:
-              home: /local/people/santa.png
-              not_home: /local/people/santaGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 10.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 15.9%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 21.1%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - color_thresholds:
-              - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
-                value: 15
-              - color: '#ff1a1a'
-                value: 20
-            entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
-            icon: 'mdi:home-thermometer-outline'
-            show:
-              icon: true
-              legend: false
-              name: false
-            style: |
-              :host {
-                left: 11.6%;
-                top:  92.9%;
-                width: 23.5%;
-                overflow: hidden;
-                height: 15%;
-                background: none  !important;
-                box-shadow: none !important;
-              }
-              .header {
-                font-size: 1vw;
-                position: absolute !important;
-                width: 5% !important;
-                padding: 0 !important;
-                right: 20% !important;
-                top: 15% !important;
-              }
-              ha-card {
-                background: none  !important;
-                padding: 0 !important;
-              }
-              .icon > ha-icon {
-                width:1.8vw !important;
-                height:1.8vw !important;
-              }
-              .state__time{
-                font-size:0.9vw !important;
-                margin-top: 0.2vw;
-                font-weight: 300 !important;
-                opacity: 0.4 !important;
-              }
-              .states {
-                font-size: 0.5vw !important;
-                padding: 1vw 0vw 0vw 0vw  !important;
-                margin: auto !important;
-                width: 68%;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: 'custom:mini-graph-card'
-          - backdrop: false
-            entity: weather.buienweather
-            name: ' '
-            style: |
-              :host {
-                left: 11.4%;
-                top:  85.5%;
-                width: 17%;
-                height: 7% !important;
-                overflow: hidden;
-                height: 8.5vw;
-                background: none  !important;
-                box-shadow: none !important;
-                font-size: 1vw !important;
-              }
-              ha-card {
-                background: none  !important;
-                box-shadow: none !important;
-                flex-flow: row-reverse !important;
-                padding: 0 !important;
-              }
-              .weather__info--add{
-                display : none !important;
-              }
-              .weather__info{
-                flex-grow: 1;
-                min-height: 0 !important;
-                height: 2.4vw;
-                margin-left: 0.6vw;
-              }
-              .weather__icon{
-                margin-right:0.5% !important;
-                margin-top: -3%;
-                width: 2vw !important;
-                height: 2vw !important;
-                flex: 0 0 2vw !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/3
-            type: 'custom:simple-weather-card'
-          - action: none
-            image: /local/ui/sidebar/sideShadow.png
-            style:
-              height: 35%
-              left: 18.45%
-              pointer-events: none
-              top: 83%
-              width: 10%
-            type: image
-          - action: none
-            image: /local/ui/sidebar/sidebarInnerShadow.png
-            style:
-              left: 22.83%
-              opacity: 0.7
-              pointer-events: none
-              top: 50%
-              width: 1.2109375%
-            type: image
-          - entity: media_player.spotify_luke_vink
-            hide:
-              controls: true
-              name: true
-              power: true
-              source: true
-              volume: true
-              progress: true
-            idle_view:
-              after: 0.1
-              when_idle: true
-              when_paused: true
-              when_standby: true
-            style: |
-              :host {
-                left: 11.7%;
-                top: 41.5%;
-                width: 20.5078125%;
-                border-radius: 5vw;
-                overflow: hidden;
-                height: 3.8vw;
-                box-shadow: none !important;
-              }
-              ha-card {
-                border-radius: 5vw;
-                overflow: hidden !important;
-                box-shadow: none !important;
-                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
-              }
-              ha-card.--inactive .mmp-player{
-                opacity: 0 !important;
-              }
-              #primaryProgress{
-                background: #474A52 !important;
-              }
-              .entity__info{
-                height: 2.6vw;
-                width: 65% !important;
-                max-height: 20vw !important;
-                font-size: 0.9vw !important;
-                margin:0 0 0 1.04vw !important;
-                display: inline-block !important;
-              }
-              div.mmp__bg{
-                background: #1E2022;
-              }
-              ha-card.--inactive div.mmp__bg{
-                background: none;
-              }
-              div.mmp-player {
-                padding: 0vw;
-                height: 100%;
-              }
-              ha-card {
-                height: 100%;
-              }
-              mmp-powerstrip {
-                width: 100%;
-                display: block;
-                padding:0;
-              }
-              ha-icon{
-                display: block !important;
-                height: 2vw !important;
-                width: 2vw !important;
-                margin: 0.3vw 1.5vw 0 0vw !important;
-              }
-              .entity__icon{
-                float:right;
-                padding: 0.1vw;
-                width: 3vw !important;
-                height: 3vw !important;
-                min-width: 0 !important;
-                min-height: 0 !important;
-                margin:0 !important;
-                display: inline-block !important;
-              }
-
-              .mmp-player__core {
-                height: auto;
-                width: 100% !important;
-                margin-bottom: 0.1vw;
-                display: block !important;
-                position: absolute !important;
-                bottom: 0;
-              }
-
-              .entity__info__media{
-                max-height: 20vw !important;
-              }
-              .entity__info__media span::before{
-                content: none !important
-              }
-              .attr__media_title{
-                display:block;
-                color: white;
-                font-weight: 300;
-                font-size: 1.2vw !important;
-              }
-              .attr__media_artist{
-                font-size: 0.8vw !important;
-                font-weight: 200;
-                color: white;
-              }
-              .entity__artwork{
-                display:inline-block;
-                float: right;
-                margin-right: 0 !important;
-                display: inline-block;
-                float: right;
-                width: 2.2vw !important;
-                height: 2.2vw !important;
-                min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: 'custom:mini-media-player'
-        image: /local/ui/floorplan/blurredFloorplan.png
-        style: |
-          ha-card {
-            background: rgba(42, 46, 48, 1)
-          }
-        type: picture-elements
-
-
-
-    #############################################################################################################################################
-    #                                                                                                                                           #
-    #                                                               Health View                                                                 #
-    #                                                                                                                                           #
-    #############################################################################################################################################
-
-  - title: Health
-    icon: 'mdi:water-outline'
-    panel: true
-    badges: []
-    cards:
-      - elements:
-          - type: 'custom:nightscout-card'
-            url: 'https://lajv-ichor.herokuapp.com/'
-            style:
-             left: 61.8%
-             top:  50%
-             width: 67.5%
-             height: 80%
-
-        #   - color_thresholds:
-        #       - color: '#FF004C'
-        #         value: 3
-        #       - color: '#03B4FF'
-        #         value: 5
-        #       - color: '#03B4FF'
-        #         value: 8
-        #       - color: '#B51BE4'
-        #         value: 9
-        #     line_width: 2
-        #     points_per_hour: 6
-        #     hours_to_show: 25
-        #     height: 130
-        #     update_interval: 30
-        #     entities:
-        #       - entity: sensor.luke_cgm_sgv_mmol
-        #       - entity: binary_sensor.night
-        #         color: rgba(255,255,255,.25)
-        #         y_axis: secondary
-        #         smoothing: false
-        #         aggregate_func: min
-        #         show_state: false
-        #         show_line: false
-        #         show_points: false
-        #       - entity: input_number.range_high
-        #         color: rgba(255,255,255,.1)
-        #         smoothing: false
-        #         line_width: 1
-        #         aggregate_func: max
-        #         show_state: false
-        #         show_line: true
-        #         show_points: false
-        #       - entity: input_number.range_low
-        #         color: rgba(255,255,255,.1)
-        #         smoothing: false
-        #         line_width: 1
-        #         aggregate_func: max
-        #         show_state: false
-        #         show_line: true
-        #         show_points: false
-        #     state_map:
-        #       - value: "off"
-        #         label: "Day"
-        #       - value: "on"
-        #         label: "Night"
-        #     icon: 'mdi:water-outline'
-        #     align_state: right
-        #     name_adaptive_color: true
-        #     icon_adaptive_color: true
-        #     show:
-        #       icon: true
-        #       legend: false
-        #       name: false
-        #       fill: false
-        #       points: hover
-        #     style: |
-        #       :host {
-        #         left: 61.8%;
-        #         top:  32%;
-        #         width: 67.5%;
-        #         height: 43%;
-        #         background: none  !important;
-        #         box-shadow: none !important;
-        #       }
-        #       .state{
-        #         flex-direction: column;
-        #         margin-right: 4%;
-        #       }
-        #       .state__value{
-        #         font-size:  3.5vw !important;
-        #       }
-        #       .header{
-        #           height:0px !important;
-        #           padding:0px !important;
-        #       }
-        #       .icon {
-        #           position: absolute;
-        #           top: -1%;
-        #           left:  3%;
-        #       }
-        #       .icon > ha-icon {
-        #         width:2.4vw !important;
-        #         height:2.4vw !important;
-        #       }
-        #       .graph{
-        #           flex-grow: 1;
-        #       }
-        #       .graph__container{
-        #           flex-grow: 1;
-        #       }
-
-        #       mask:nth-child(3) .line, mask:nth-child(4) .line{
-        #             stroke-width: 1;
-        #             stroke-dasharray: 2 2;
-        #       }
-        #       ha-card {
-        #         background: none  !important;
-        #         padding: 0 !important;
-        #         box-shadow: none !important;
-        #       }
-        #     type: 'custom:mini-graph-card'
-
-
-
-
-
-          - action: none
-            hold_action:
-              action: none
-            image: /local/ui/sidebar/sidebarBG2.png
-            style:
-              height: 100%
-              left: 11.73828125%
-              top: 50%
-              width: 23.4765625%
-            tap_action:
-              action: none
-            type: image
-          - entity: sensor.time
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.7)'
-              font-size: 5.41vw
-              font-weight: 200
-              left: 2.7%
-              letter-spacing: '-0.05vw'
-              max-width: 1px
-              top: 10%
-            tap_action:
-              action: none
-            type: state-label
-          - entity: sensor.date_string
-            hold_action:
-              action: none
-            style:
-              color: 'rgba(255, 255, 255, 0.3)'
-              font-size: 1.3vw
-              font-weight: 300
-              left: 18.1%
-              letter-spacing: '-0.05vw'
-              text-align: left
-              top: 17%
-              width: 30%
-            tap_action:
-              action: none
-            type: state-label
-          - action: none
-            image: /local/ui/sidebar/rooms_off.png
-            style:
-              border-radius: 5vw
-              left: 11.7%
-              top: 26%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/0
-            type: image
-          - action: none
-            image: /local/ui/sidebar/cleanUp_off.png
-            style:
-              left: 11.7%
-              top: 34%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/1
-            type: image
-          - action: none
-            image: /local/ui/sidebar/media_off.png
-            style:
-              left: 11.7%
-              top: 42%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: image
-          - action: none
-            image: /local/ui/sidebar/health_on.png
-            style:
-              border-radius: 5vw
-              box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
-              left: 11.7%
-              top: 50%
-              width: 20.5078125%
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: image
-
-            #########################    PEOPLE    #########################
-
-            # optional label for people (currently hidden, to show, change to opacity:1)
-          - style:
-              color: white
-              font-size: 1vw
-              font-weight: 300
-              left: 8.8%
-              opacity: 0
-              top: 66%
-              width: 10%
-            text: 'People at home:'
-            type: 'custom:text-element'
-
-
-          - action: none
-            entity: person.luke_vink
-            state_image:
-              home: /local/people/luke.png
-              not_home: /local/people/lukeGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 5.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            entity: person.santa_stibe
-            state_image:
-              home: /local/people/santa.png
-              not_home: /local/people/santaGone.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border-radius: 10vw
-              height: 4.5vw
-              left: 10.8%
-              top: 72%
-              width: 4.5vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 15.9%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - action: none
-            image: /local/transparent.png
-            style:
-              background-color: 'rgba(255, 255, 255, 0.0)'
-              border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
-              border-radius: 10vw
-              height: 4.2vw
-              left: 21.1%
-              top: 72.2%
-              width: 4.2vw
-            tap_action: none
-            type: image
-          - color_thresholds:
-              - color: '#4dd2ff'
-                value: 10
-              - color: '#ffa31a'
-                value: 15
-              - color: '#ff1a1a'
-                value: 20
-            entities:
-              - sensor.stairs_detector_temperature
-              - sensor.buienradar_ground_temperature
-            icon: 'mdi:home-thermometer-outline'
-            show:
-              icon: true
-              legend: false
-              name: false
-            style: |
-              :host {
-                left: 11.6%;
-                top:  92.9%;
-                width: 23.5%;
-                overflow: hidden;
-                height: 15%;
-                background: none  !important;
-                box-shadow: none !important;
-              }
-              .header {
-                font-size: 1vw;
-                position: absolute !important;
-                width: 5% !important;
-                padding: 0 !important;
-                right: 20% !important;
-                top: 15% !important;
-              }
-              ha-card {
-                background: none  !important;
-                padding: 0 !important;
-              }
-              .icon > ha-icon {
-                width:1.8vw !important;
-                height:1.8vw !important;
-              }
-              .state__time{
-                font-size:0.9vw !important;
-                margin-top: 0.2vw;
-                font-weight: 300 !important;
-                opacity: 0.4 !important;
-              }
-              .states {
-                font-size: 0.5vw !important;
-                padding: 1vw 0vw 0vw 0vw  !important;
-                margin: auto !important;
-                width: 68%;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/4
-            type: 'custom:mini-graph-card'
-          - backdrop: false
-            entity: weather.buienweather
-            name: ' '
-            style: |
-              :host {
-                left: 11.4%;
-                top:  85.5%;
-                width: 17%;
-                height: 7% !important;
-                overflow: hidden;
-                height: 8.5vw;
-                background: none  !important;
-                box-shadow: none !important;
-                font-size: 1vw !important;
-              }
-              ha-card {
-                background: none  !important;
-                box-shadow: none !important;
-                flex-flow: row-reverse !important;
-                padding: 0 !important;
-              }
-              .weather__info--add{
-                display : none !important;
-              }
-              .weather__info{
-                flex-grow: 1;
-                min-height: 0 !important;
-                height: 2.4vw;
-                margin-left: 0.6vw;
-              }
-              .weather__icon{
-                margin-right:0.5% !important;
-                margin-top: -3%;
-                width: 2vw !important;
-                height: 2vw !important;
-                flex: 0 0 2vw !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/3
-            type: 'custom:simple-weather-card'
-          - action: none
-            image: /local/ui/sidebar/sideShadow.png
-            style:
-              height: 35%
-              left: 18.45%
-              pointer-events: none
-              top: 83%
-              width: 10%
-            type: image
-          - action: none
-            image: /local/ui/sidebar/sidebarInnerShadow.png
-            style:
-              left: 22.83%
-              opacity: 0.7
-              pointer-events: none
-              top: 50%
-              width: 1.2109375%
-            type: image
-          - entity: media_player.spotify_luke_vink
-            hide:
-              controls: true
-              name: true
-              power: true
-              source: true
-              volume: true
-              progress: true
-            idle_view:
-              after: 0.1
-              when_idle: true
-              when_paused: true
-              when_standby: true
-            style: |
-              :host {
-                left: 11.7%;
-                top: 41.5%;
-                width: 20.5078125%;
-                border-radius: 5vw;
-                overflow: hidden;
-                height: 3.8vw;
-                box-shadow: none !important;
-              }
-              ha-card {
-                border-radius: 5vw;
-                overflow: hidden !important;
-                box-shadow: none !important;
-                padding: 0.1vw 0.9vw 0.7vw 1.05vw !important;
-              }
-              ha-card.--inactive .mmp-player{
-                opacity: 0 !important;
-              }
-              #primaryProgress{
-                background: #474A52 !important;
-              }
-              .entity__info{
-                height: 2.6vw;
-                width: 65% !important;
-                max-height: 20vw !important;
-                font-size: 0.9vw !important;
-                margin:0 0 0 1.04vw !important;
-                display: inline-block !important;
-              }
-              div.mmp__bg{
-                background: #1E2022;
-              }
-              ha-card.--inactive div.mmp__bg{
-                background: none;
-              }
-              div.mmp-player {
-                padding: 0vw;
-                height: 100%;
-              }
-              ha-card {
-                height: 100%;
-              }
-              mmp-powerstrip {
-                width: 100%;
-                display: block;
-                padding:0;
-              }
-              ha-icon{
-                display: block !important;
-                height: 2vw !important;
-                width: 2vw !important;
-                margin: 0.3vw 1.5vw 0 0vw !important;
-              }
-              .entity__icon{
-                float:right;
-                padding: 0.1vw;
-                width: 3vw !important;
-                height: 3vw !important;
-                min-width: 0 !important;
-                min-height: 0 !important;
-                margin:0 !important;
-                display: inline-block !important;
-              }
-
-              .mmp-player__core {
-                height: auto;
-                width: 100% !important;
-                margin-bottom: 0.1vw;
-                display: block !important;
-                position: absolute !important;
-                bottom: 0;
-              }
-
-              .entity__info__media{
-                max-height: 20vw !important;
-              }
-              .entity__info__media span::before{
-                content: none !important
-              }
-              .attr__media_title{
-                display:block;
-                color: white;
-                font-weight: 300;
-                font-size: 1.2vw !important;
-              }
-              .attr__media_artist{
-                font-size: 0.8vw !important;
-                font-weight: 200;
-                color: white;
-              }
-              .entity__artwork{
-                display:inline-block;
-                float: right;
-                margin-right: 0 !important;
-                display: inline-block;
-                float: right;
-                width: 2.2vw !important;
-                height: 2.2vw !important;
-                min-width: 0 !important;
-                margin: 0.2vw 1vw 0 0 !important;
-              }
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/2
-            type: 'custom:mini-media-player'
-        image: /local/ui/floorplan/blurredFloorplan.png
-        style: |
-          ha-card {
-            background: rgba(42, 46, 48, 1)
-          }
-        type: picture-elements
+            template:
+              - base
+              - icon_home
