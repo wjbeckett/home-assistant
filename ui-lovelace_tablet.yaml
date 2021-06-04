@@ -60,17 +60,15 @@ views:
           - type: button
             icon: mdi:robot-vacuum
             tap_action:
-              !include popup/sidebar_vacuum.yaml
 
           - type: button
             icon: mdi:information-outline
             tap_action:
-              !include popup/sidebar_information.yaml
+              !include lovelace/views/popup/admin.yaml
 
           - type: button
             icon: mdi:arrow-up-bold-circle-outline
             tap_action:
-              !include popup/sidebar_update.yaml
 
       #################################################
       #                                               #
