@@ -54,7 +54,7 @@ views:
       - type: grid
         view_layout:
           grid-area: sidebar
-        columns: 1
+        #columns: 1
         cards:
           - type: 'custom:button-card'
             name: Home
