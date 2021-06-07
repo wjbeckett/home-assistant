@@ -44,31 +44,48 @@ views:
       #                                               #
       #################################################
 
+      - sidebar:
+        view_layout:
+          grid-area: sidebar
+        sidebarMenu:
+          - action: navigate
+            navigation_path: "/lovelace/home"
+            name: "Home"
+            active: true
+          - action: navigate
+            navigation_path: "/lovelace/music"
+            name: "Security"
+            active: true
+          - action: navigate
+            navigation_path: "/lovelace/lampen"
+            name: "Cleaning"
+            active: true
+          - action: navigate
+            navigation_path: "/lovelace/music"
+            name: "Music"
+            active: true
+          - action: navigate
+            navigation_path: "/lovelace/4"
+            name: "Weather"
+            active: true
+        bottomCard:
+          type: horizontal-stack
+          cardOptions:
+            cards:
+              - type: "custom:button-card"
+                icon: mdi:robot-vacuum
+              - type: "custom:button-card"
+                icon: mdi:information-outline
+                tap_action:
+                  !include lovelace/views/popup/admin.yaml
+              - type: button
+                icon: mdi:arrow-up-bold-circle-outline
+      
       - type: markdown
         view_layout:
           grid-area: sidebar
         content: |
-          {% set attributes = states.sensor.template_sidebar.attributes | default %}
-          {% for template in attributes %}
-          {{ state_attr('sensor.template_sidebar', template) }}
-          {% endfor %}
-
-      - type: grid
-        view_layout:
-          grid-area: sidebar
-        cards:
-          - type: button
-            icon: mdi:robot-vacuum
-            tap_action:
-
-          - type: button
-            icon: mdi:information-outline
-            tap_action:
-              !include lovelace/views/popup/admin.yaml
-
-          - type: button
-            icon: mdi:arrow-up-bold-circle-outline
-            tap_action:
+          {{ states('sensor.dashboard_greeting') }}
 
       #################################################
       #                                               #
