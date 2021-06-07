@@ -173,6 +173,27 @@
 
   #################################################
   #                                               #
+  #                    Navigation                 #
+  #                                               #
+  #################################################
+  navigation:
+    aspect_ratio: 4/1
+    show_state: false
+    show_label: false
+    show_name: true
+    tap_action:
+      action: navigate
+      navigation_path: '{{entity.name}}'
+    styles:
+      card:
+        border-radius: 30px
+      grid:
+        - grid-template-areas: '"n i" "n i" "n i"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+
+  #################################################
+  #                                               #
   #                    LOADER                     #
   #                                               #
   #################################################

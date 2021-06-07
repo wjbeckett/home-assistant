@@ -1,43 +1,5 @@
 button_card_templates: !include button_card_templates.yaml
 
-sidebar:
-  date: true
-  digitalClock: true
-  twelveHourVersion: true
-  sidebarMenu:
-    - action: navigate
-      navigation_path: "/lovelace/home"
-      name: "Home"
-      active: true
-    - action: navigate
-      navigation_path: "/lovelace/music"
-      name: "Security"
-      active: true
-    - action: navigate
-      navigation_path: "/lovelace/lampen"
-      name: "Cleaning"
-      active: true
-    - action: navigate
-      navigation_path: "/lovelace/music"
-      name: "Music"
-      active: true
-    - action: navigate
-      navigation_path: "/lovelace/4"
-      name: "Weather"
-      active: true
-  bottomCard:
-    type: horizontal-stack
-    cardOptions:
-      cards:
-        - type: "custom:button-card"
-          icon: mdi:robot-vacuum
-        - type: "custom:button-card"
-          icon: mdi:information-outline
-          tap_action:
-            !include lovelace/views/popup/admin.yaml
-        - type: button
-          icon: mdi:arrow-up-bold-circle-outline
-
 views:
   - type: custom:grid-layout
     path: 0
@@ -50,6 +12,7 @@ views:
         "sidebar  .           .         .       ."
         "sidebar  loungeroom  kitchen   bedroom ."
         "sidebar  media       teddy     home    ."
+        "sidebar  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -59,8 +22,8 @@ views:
           grid-template-areas: |
             ".  .           .        ."
             ".  sidebar     sidebar  ."
-            ".  loungeroom  bedroom  ."
-            ".  kitchen     teddy    ."
+            ".  loungeroom  kitchen  ."
+            ".  bedroom     teddy    ."
             ".  media       home     ."
             ".  .           .        ."
         #portrait
@@ -86,7 +49,46 @@ views:
         view_layout:
           grid-area: sidebar
         content: |
-          {{ states('sensor.dashboard_greeting') }}
+          {{ state(sensor.dashboard_greeting) }}
+
+      - type: 'custom:button-card'
+        view_layout:
+          grid_area: sidebar
+        name: Home
+        icon: mdi:home
+        template:
+          - navigation
+      - type: 'custom:button-card'
+        view_layout:
+          grid_area: sidebar
+        name: Security
+        icon: mdi:shield-home
+        template:
+          - navigation
+      - type: 'custom:button-card'
+        view_layout:
+          grid_area: sidebar
+        name: Music
+        icon: mdi:play-circle
+        template:
+          - navigation
+        
+      - type: grid
+        view_layout:
+          grid-area: sidebar
+        cards:
+          - type: button
+            icon: mdi:robot-vacuum
+            tap_action:
+
+          - type: button
+            icon: mdi:information-outline
+            tap_action:
+              !include lovelace/views/popup/admin.yaml
+
+          - type: button
+            icon: mdi:arrow-up-bold-circle-outline
+            tap_action:
 
       #################################################
       #                                               #
