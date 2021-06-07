@@ -54,7 +54,7 @@ views:
       - type: grid
         view_layout:
           grid-area: sidebar
-        #columns: 1
+        columns: 1
         cards:
           - type: 'custom:button-card'
             name: Home
@@ -62,8 +62,8 @@ views:
             tap_action:
               action: navigate
               navigation_path: home
-            #template:
-            #  - navigation
+            template:
+              - navigation
 
           - type: 'custom:button-card'
             name: Security
@@ -71,8 +71,8 @@ views:
             tap_action:
               action: navigate
               navigation_path: security
-            #template:
-            #  - navigation
+            template:
+              - navigation
 
           - type: 'custom:button-card'
             name: Media
@@ -80,8 +80,8 @@ views:
             tap_action:
               action: navigate
               navigation_path: media
-            #template:
-            #  - navigation
+            template:
+              - navigation
         
       - type: grid
         view_layout:
