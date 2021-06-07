@@ -478,10 +478,6 @@
         [[[
           if (entity.attributes.entity_picture !== undefined) return '<div></div>';
         ]]]
-      overlay: >
-        [[[ 
-          if (entity.state !== 'idle' && entity.state !== 'unavailable') return '<div></div>';
-        ]]]
       media_image: >
         <div></div>
       play_pause: >
