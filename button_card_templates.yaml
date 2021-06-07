@@ -181,9 +181,6 @@
     show_state: false
     show_label: false
     show_name: true
-    styles:
-      card:
-        - border-radius: '30px'
       
 
   #################################################
