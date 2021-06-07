@@ -49,7 +49,7 @@ views:
         view_layout:
           grid-area: sidebar
         content: |
-          {{ state(sensor.dashboard_greeting) }}
+          {{ states('sensor.dashboard_greeting') }}
 
       - type: vertical-stack
         view_layout:
