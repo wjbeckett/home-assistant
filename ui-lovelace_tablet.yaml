@@ -59,8 +59,8 @@ views:
         tap_action:
           action: navigate
           navigation_path: home
-        template:
-          - navigation
+        #template:
+        #  - navigation
       - type: 'custom:button-card'
         view_layout:
           grid_area: sidebar
@@ -69,8 +69,8 @@ views:
         tap_action:
           action: navigate
           navigation_path: security
-        template:
-          - navigation
+        #template:
+        #  - navigation
       - type: 'custom:button-card'
         view_layout:
           grid_area: sidebar
@@ -79,8 +79,8 @@ views:
         tap_action:
           action: navigate
           navigation_path: media
-        template:
-          - navigation
+        #template:
+        #  - navigation
         
       - type: grid
         view_layout:
