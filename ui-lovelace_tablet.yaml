@@ -272,11 +272,26 @@ views:
                       - entity: input_select.conditional_media
                         state: Bedroom Speaker
                     card:
-                      type: custom:button-card
+                      type: custom:mini-media-player
                       entity: media_player.bedroom_speaker
-                      template:
-                        - conditional_media
-                        - icon_nest_mini
+                      hide:
+                        icon: true
+                        mute: false
+                        power: true
+                        power_state: true
+                      info: scroll
+                      artwork: cover
+                      style: |
+                        :host {
+                          border-radius: 1vw;
+                          overflow: hidden;
+                          box-shadow: none !important;
+                        }
+                        ha-card {
+                          border-radius: 1vw;
+                          overflow: hidden !important;
+                          box-shadow: none !important;
+                        }
                   
                   - type: conditional
                     conditions:
