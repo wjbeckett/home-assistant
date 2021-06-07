@@ -593,7 +593,7 @@
   #################################################
 
   recently_downloaded:
-    name: Senast nedladdat
+    name: Recently Added
     state_display: >
       [[[
         if (entity != undefined) {
@@ -601,7 +601,7 @@
           const number = data[1].number == undefined ? '(' + data[1].aired.split('-')[0] + ')' : data[1].number;
           return `${data[1].title} ${number}`;
         }
-        return 'Okänd';
+        return 'Unknown';
       ]]]
     custom_fields:
       blur: >

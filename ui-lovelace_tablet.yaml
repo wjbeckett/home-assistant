@@ -212,7 +212,7 @@ views:
                         state: Last downloaded
                     card:
                       type: custom:button-card
-                      entity: sensor.plex_recently_added
+                      entity: sensor.recently_added
                       tap_action:
                         action: none
                       template:
@@ -339,7 +339,7 @@ views:
               - icon_hue
 
           - type: custom:button-card
-            entity: media_player.teddy_speaker
+            entity: media_player.teddy_s_room_speaker
             template:
               - conditional_media
               - icon_nest_mini

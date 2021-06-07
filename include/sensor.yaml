@@ -147,6 +147,14 @@ sensor:
     port: 32400
     section_types:
     - show
+  
+  - platform: plex_recently_added
+    name: Recently Added
+    token: !secret plex_token
+    host: !secret plex_host
+    port: 32400
+    max: 1
+    image_resolution: 500
 
 
     ####################################################
