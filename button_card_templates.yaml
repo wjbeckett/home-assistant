@@ -181,7 +181,7 @@
     show_state: false
     show_label: false
     show_name: true
-    size: 80%
+    size: 50%
     styles:
       card:
         - background-color: "grey"
