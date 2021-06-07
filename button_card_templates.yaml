@@ -333,7 +333,7 @@
       - base
       - circle
     state_display: >
-      [[[ return variables.state === 'home' ? 'Ja' : 'Nej'; ]]]
+      [[[ return variables.state === 'home' ? 'Yes' : 'No'; ]]]
     triggers_update: sensor.time
     styles:
       custom_fields:
@@ -480,7 +480,7 @@
         ]]]
       overlay: >
         [[[ 
-          if (entity.attributes.entity_picture === undefined && entity.state !== 'idle' && entity.state !== 'unavailable') return '<div></div>';
+          if (entity.state !== 'idle' && entity.state !== 'unavailable') return '<div></div>';
         ]]]
       media_image: >
         <div></div>
