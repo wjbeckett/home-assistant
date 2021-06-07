@@ -51,36 +51,7 @@ views:
         content: |
           {{ states('sensor.dashboard_greeting') }}
 
-      - type: vertical-stack
-        view_layout:
-          grid-area: sidebar
-        cards:
-          - type: 'custom:button-card'
-            name: Home
-            icon: mdi:home
-            tap_action:
-              action: navigate
-              navigation_path: home
-            template:
-              - navigation
-
-          - type: 'custom:button-card'
-            name: Security
-            icon: mdi:shield-home
-            tap_action:
-              action: navigate
-              navigation_path: security
-            template:
-              - navigation
-
-          - type: 'custom:button-card'
-            name: Media
-            icon: mdi:play-circle
-            tap_action:
-              action: navigate
-              navigation_path: media
-            template:
-              - navigation
+      
         
       - type: grid
         view_layout:
