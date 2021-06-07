@@ -88,7 +88,7 @@ views:
         cards:
           - type: button
             icon: mdi:robot-vacuum
-            tap_action:
+            #tap_action:
 
           - type: button
             icon: mdi:information-outline
@@ -97,7 +97,7 @@ views:
 
           - type: button
             icon: mdi:arrow-up-bold-circle-outline
-            tap_action:
+            #tap_action:
 
       #################################################
       #                                               #
