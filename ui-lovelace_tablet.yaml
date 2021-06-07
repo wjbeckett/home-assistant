@@ -223,13 +223,27 @@ views:
                   - type: conditional
                     conditions:
                       - entity: input_select.conditional_media
-                        state: Lounge Room
+                        state: Lounge Room TV
                     card:
-                      type: custom:button-card
-                      entity: media_player.lounge_room_tv
-                      template:
-                        - conditional_media
-                        - icon_apple_tv
+                      type: custom:mini-media-player
+                      entity: media_player.plex_lounge_room_tv
+                      hide:
+                        icon: true
+                        mute: false
+                        power: true
+                        power_state: true
+                      info: short
+                      style: |
+                        :host {
+                          border-radius: 1vw;
+                          overflow: hidden;
+                          box-shadow: none !important;
+                        }
+                        ha-card {
+                          border-radius: 1vw;
+                          overflow: hidden !important;
+                          box-shadow: none !important;
+                        }
 
                   - type: conditional
                     conditions:
