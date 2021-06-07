@@ -181,13 +181,13 @@
     show_state: false
     show_label: false
     show_name: true
-    size: 15%
+    size: 20%
     styles:
       card:
         - background-color: "grey"
         - border-radius: 50px
         - padding: 0px
-        - height: 100px
+        - height: 60px
       grid:
         - grid-template-areas: '"n i" "n i" "n i"'
         - grid-template-columns: 1fr 1fr
