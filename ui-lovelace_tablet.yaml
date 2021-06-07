@@ -56,6 +56,9 @@ views:
           grid_area: sidebar
         name: Home
         icon: mdi:home
+        tap_action:
+          action: navigate
+          navigation_path: home
         template:
           - navigation
       - type: 'custom:button-card'
@@ -63,13 +66,19 @@ views:
           grid_area: sidebar
         name: Security
         icon: mdi:shield-home
+        tap_action:
+          action: navigate
+          navigation_path: security
         template:
           - navigation
       - type: 'custom:button-card'
         view_layout:
           grid_area: sidebar
-        name: Music
+        name: Media
         icon: mdi:play-circle
+        tap_action:
+          action: navigate
+          navigation_path: media
         template:
           - navigation
         

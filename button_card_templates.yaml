@@ -181,9 +181,6 @@
     show_state: false
     show_label: false
     show_name: true
-    tap_action:
-      action: navigate
-      navigation_path: '{{entity.name}}'
     styles:
       card:
         border-radius: 30px
