@@ -184,6 +184,8 @@
     styles:
       card:
         - background-color: "grey"
+        - border-radius: 50px
+        - padding: 0px
       grid:
         - grid-template-areas: '"n i" "n i" "n i"'
         - grid-template-columns: 1fr 1fr
