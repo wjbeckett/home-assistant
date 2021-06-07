@@ -55,7 +55,6 @@ views:
         view_layout:
           grid-area: sidebar
         columns: 1
-        square: false
         cards:
           - type: 'custom:button-card'
             view_layout:
@@ -67,6 +66,7 @@ views:
               navigation_path: home
             template:
               - navigation
+              
           - type: 'custom:button-card'
             view_layout:
               grid-area: sidebar
@@ -77,6 +77,7 @@ views:
               navigation_path: security
             template:
               - navigation
+
           - type: 'custom:button-card'
             view_layout:
               grid-area: sidebar
