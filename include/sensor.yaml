@@ -181,34 +181,78 @@ sensor:
 
 
   - platform: template
-    sensors:
-      dashboard_greeting:
-        #entity_id: sensor.time
-        value_template: >
-          {% if as_timestamp(now()) | timestamp_custom('%H') | int < 12 %} 
-            Good morning
-          {% elif as_timestamp(now()) | timestamp_custom('%H') | int < 17 %}
-            Good afternoon
-          {% else %}
-            Good evening
-          {% endif %}
-      dashboard_active:
-        value_template: >
-          {% set lights = [states.light.bedroom_lamps, states.light.kitchen_lights, states.light.ollie_s_lamp, states.light.teddy_s_lamp, 
-          states.light.lounge_room_lamp] %}
+    sensor:
+      - unique_id: sidebar
+      state: template
+      attributes:
+        time: |
+          {%- set hours = '<span>' + now().strftime('%H') + '<span>' %}
+          {%- set minutes = '</span>' + now().strftime('%M') + '</span>' %}
+          {{ hours }}:{{ minutes }}
+        date: |
+          <font color='#6a7377'><b>
+          {%- if strptime(states('sensor.date'), '%Y-%m-%d').day != null %}
+          {%- set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+          {%- set months = ['January', 'February', 'March', 'April', 'May', 'June', 
+          'July', 'August', 'September', 'October', 'November', 'December'] %}
+            {{- days[now().weekday()] }}<br>
+            {{- strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
+          {%- endif -%}
+          </b></font>
+        greet: |
+          <b>
+          {%- set time = now().hour %}
+          {%- if time <= 1 -%} Good Night {{'\U0001F611'}}
+          {%- elif time <= 3 -%} Good Night {{'\U0001F62A'}}
+          {%- elif time <= 5 -%} Good Night {{'\U0001F634'}}
+          {%- elif time <= 7 -%} Good Morning {{'\U0001F4A9'}}
+          {%- elif time <= 9 -%} Good Morning {{'\u2615\uFE0F'}}
+          {%- elif time <= 10 -%} Good Morning {{'\U0001F642'}}
+          {%- elif time <= 13 -%} Good Afternoon {{'\U0001F60A'}}
+          {%- elif time <= 15 -%} Good Afternoon {{'\U0001F60E'}}
+          {%- elif time <= 17 -%} Good Afternoon {{'\U0001F44B\U0001F3FB'}}
+          {%- elif time <= 19 -%} Good Evening {{'\U0001F44B\U0001F3FB'}}
+          {%- elif time <= 22 -%} Good Evening {{'\U0001F60C'}}
+          {%- elif time <= 23 -%} Good Evening {{'\U0001F974'}}
+          {%- else %} Good Evening {{'\U0001F974'}}
+          {%- endif -%}
+          </b>
+        active: |
+          <b>
+          {% set lights = [
+            states.light.bedroom_lamps,
+            states.light.kitchen_lights,
+            states.light.ollie_s_lamp,
+            states.light.teddy_s_lamp, 
+            states.light.lounge_room_lamp
+          ] %}
+
+          {% set switches = [
+            states.media_player.bedroom_tv,
+            states.media_player.lounge_room_tv
+          ] %}
+
+          {% set speakers = [
+            states.media_player.bedroom_speaker,
+            states.media_player.kitchen_display,
+            states.media_player.teddy_s_speaker,
+            states.media_player.ollie_s_speaker
+          ] %}
+
+          {% set doors = [
+            states.binary_sensor.back_door,
+            states.binary_sensor.garage_door
+          ] %}
+
           {% set lights_on = lights | selectattr('state','eq','on') | list %}
           {% set lights_name = lights | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-          {% set switches = [states.media_player.bedroom_tv, states.media_player.lounge_room_tv] %}
           {% set switches_on = switches | selectattr('state','eq','on') | list %} 
           {% set switches_name = switches | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-          {% set speakers = [states.media_player.bedroom_speaker, states.media_player.kitchen_display, states.media_player.teddy_s_speaker,
-          states.media_player.ollie_s_speaker] %}
           {% set speakers_on = speakers | selectattr('state','eq','playing') | list %} 
           {% set speakers_name = speakers | selectattr('state','eq','playing') | map(attribute='name') | join(', ') %}
 
-          {% set doors = [states.binary_sensor.back_door, states.binary_sensor.garage_door] %}
           {% set doors_on = doors | selectattr('state','eq','on') | list %} 
           {% set doors_name = doors | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
@@ -293,6 +337,37 @@ sensor:
           {% else %} 
           <font color='#6a7377'>Everything is off</font> 
           {% endif %}
+          </b>
+        occupancy: |
+          <b>
+          {% if is_state("person.emily", "home") and is_state("person.william", "home") %}
+            <strong>Everyone is home</strong>
+          {% elif is_state("person.emily", "not_home") and is_state("person.william", "not_home") %}
+            <strong>No one is home</strong>
+          {% else %}
+            {% set people = '' -%}
+          {% if states("person.emily") != "home" -%}
+            {% set people = people + "Emily, " -%}
+          {% endif %}
+          {% if states("person.william") != "home" -%}
+            {% set people = people + "William, " -%}
+          {% endif %}
+            {% set people = people[:-2] -%}
+            <strong>Not at home:</strong> {{ people }}
+          {% endif %}
+          </b>
+        weather: |
+          {% set temperature = states('sensor.dark_sky_temperature') %}
+          {% set type = states('weather.dark_sky') %}
+          {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
+          {% set precip = states('sensor.dark_sky_precip_probability') | round %}
+
+          {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
+              It's' {{ apparent}}° and {{ type }}
+          {% else %}
+            Unable to load weather information...
+          {% endif %}
+
 
       dashboard_occupancy:
         value_template: >
