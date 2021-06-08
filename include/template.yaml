@@ -179,35 +179,6 @@ template:
           <font color='#6a7377'>Everything is off</font> 
           {% endif %}
           </b>
-        occupancy: |
-          <b>
-          {% if is_state("person.emily", "home") and is_state("person.william", "home") %}
-            <strong>Everyone is home</strong>
-          {% elif is_state("person.emily", "not_home") and is_state("person.william", "not_home") %}
-            <strong>No one is home</strong>
-          {% else %}
-            {% set people = '' -%}
-          {% if states("person.emily") != "home" -%}
-            {% set people = people + "Emily, " -%}
-          {% endif %}
-          {% if states("person.william") != "home" -%}
-            {% set people = people + "William, " -%}
-          {% endif %}
-            {% set people = people[:-2] -%}
-            <strong>Not at home:</strong> {{ people }}
-          {% endif %}
-          </b>
-        weather: |
-          {% set temperature = states('sensor.dark_sky_temperature') %}
-          {% set type = states('weather.dark_sky') %}
-          {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
-          {% set precip = states('sensor.dark_sky_precip_probability') | round %}
-
-          {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
-              It's' {{ apparent}}° and {{ type }}
-          {% else %}
-            Unable to load weather information...
-          {% endif %}
 
 #legacy
 sensor:
