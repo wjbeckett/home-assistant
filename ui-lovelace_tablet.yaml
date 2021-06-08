@@ -235,6 +235,7 @@ views:
                       info: short
                       style: |
                         :host {
+                          height: 100%;
                           border-radius: 1vw;
                           overflow: hidden;
                           box-shadow: none !important;
@@ -284,6 +285,7 @@ views:
                       artwork: cover
                       style: |
                         :host {
+                          height: 100%;
                           border-radius: 1vw;
                           overflow: hidden;
                           box-shadow: none !important;
