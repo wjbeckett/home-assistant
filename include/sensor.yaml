@@ -181,7 +181,7 @@ sensor:
 
 
   - platform: template
-    sensor:
+    sensors:
       - unique_id: sidebar
         state: template
         attributes:
