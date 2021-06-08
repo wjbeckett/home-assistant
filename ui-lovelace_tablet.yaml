@@ -49,7 +49,10 @@ views:
         view_layout:
           grid-area: sidebar
         content: |
-          {{ states('sensor.dashboard_greeting') }}
+          {% set attributes = states.sensor.template_sidebar.attributes | default %}
+          {% for template in attributes %}
+          {{ state_attr('sensor.template_sidebar', template) }}
+          {% endfor %}
 
       
         
