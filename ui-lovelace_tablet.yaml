@@ -1,5 +1,10 @@
 button_card_templates: !include button_card_templates.yaml
-
+kiosk_mode:
+  user_settings:
+    - users:
+        - "tablet"
+      kiosk: true
+      
 views:
   - type: custom:grid-layout
     path: 0
