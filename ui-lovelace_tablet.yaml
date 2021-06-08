@@ -4,7 +4,7 @@ kiosk_mode:
     - users:
         - "tablet"
       kiosk: true
-      
+
 views:
   - type: custom:grid-layout
     path: 0
@@ -17,7 +17,7 @@ views:
         "sidebar  .           .         .       ."
         "sidebar  loungeroom  kitchen   bedroom ."
         "sidebar  media       teddy     home    ."
-        "sidebar  .           .         .       ."
+        "sidebar  footer      footer    footer  ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -54,12 +54,36 @@ views:
         view_layout:
           grid-area: sidebar
         content: |
-          {% set attributes = states.sensor.template_sidebar.attributes | default %}
-          {% for template in attributes %}
-          {{ state_attr('sensor.template_sidebar', template) }}
-          {% endfor %}
+          <table> <tr><td width="200px"><h3>{{
+          states('sensor.dashboard_greeting') }}, {{ user
+          }}</h3><strong>Current Temperature:</strong>
+          {{state_attr('weather.home','temperature') |
+          round}}&deg;C</br> {% if is_state("sun.sun",
+          "above_horizon") -%}
+              <strong>Next Sunset:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_setting"), '')) | timestamp_custom("%-I:%M %p")}}
+          {%- else -%}
+              <strong>Next Sunrise:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_rising"), '')) | timestamp_custom("%-I:%M %p")}}
+          {%- endif %}</br></br><strong>SmartHome Mode:</strong> {{
+          states('input_select.home_mode') }}</br>
+          <strong>Active Devices:</strong> {{
+          states('sensor.dashboard_active') }}
+          </td><td></br><img
+          src="https://darksky.net/{{states('sensor.dashboard_weather')}}"
+          width="190px" /></td></tr> <tr><td colspan="2">{{
+          states('sensor.dashboard_occupancy')
+          }}</td></tr></table></br>
 
-      
+      - type: conditional
+        view_layout:
+          grid-area: sidebar
+        conditions:
+          - entity: input_boolean.night_mode
+            state: 'on'
+        card:
+          type: custom:button-card
+          name: placeholder
+          #entity: timer.laundry
+          template: laundry
         
       - type: grid
         view_layout:
