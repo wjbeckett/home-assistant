@@ -369,82 +369,82 @@ sensor:
             {% endif %}
 
 
-      dashboard_occupancy:
-        value_template: >
-          {% if is_state("person.emily", "home") and is_state("person.william", "home") %}
-            <strong>Everyone is home</strong>
-          {% elif is_state("person.emily", "not_home") and is_state("person.william", "not_home") %}
-            <strong>No one is home</strong>
-          {% else %}
-            {% set people = '' -%}
-          {% if states("person.emily") != "home" -%}
-            {% set people = people + "Emily, " -%}
-          {% endif %}
-          {% if states("person.william") != "home" -%}
-            {% set people = people + "William, " -%}
-          {% endif %}
-            {% set people = people[:-2] -%}
-            <strong>Not at home:</strong> {{ people }}
-          {% endif %}
+      - dashboard_occupancy:
+          value_template: >
+            {% if is_state("person.emily", "home") and is_state("person.william", "home") %}
+              <strong>Everyone is home</strong>
+            {% elif is_state("person.emily", "not_home") and is_state("person.william", "not_home") %}
+              <strong>No one is home</strong>
+            {% else %}
+              {% set people = '' -%}
+            {% if states("person.emily") != "home" -%}
+              {% set people = people + "Emily, " -%}
+            {% endif %}
+            {% if states("person.william") != "home" -%}
+              {% set people = people + "William, " -%}
+            {% endif %}
+              {% set people = people[:-2] -%}
+              <strong>Not at home:</strong> {{ people }}
+            {% endif %}
 
-      sidebar_weather:
-        #entity_id: sensor.dark_sky_temperature, sensor.dark_sky_apparent_temperature, sensor.dark_sky_precip_probability
-        value_template: >
-          {% set temperature = states('sensor.dark_sky_temperature') %}
-          {% set type = states('weather.dark_sky') %}
-          {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
-          {% set precip = states('sensor.dark_sky_precip_probability') | round %}
+      - sidebar_weather:
+          #entity_id: sensor.dark_sky_temperature, sensor.dark_sky_apparent_temperature, sensor.dark_sky_precip_probability
+          value_template: >
+            {% set temperature = states('sensor.dark_sky_temperature') %}
+            {% set type = states('weather.dark_sky') %}
+            {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
+            {% set precip = states('sensor.dark_sky_precip_probability') | round %}
 
-          {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
-              It's' {{ apparent}}° and {{ type }}
-          {% else %}
-            Unable to load weather information...
-          {% endif %}
+            {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
+                It's' {{ apparent}}° and {{ type }}
+            {% else %}
+              Unable to load weather information...
+            {% endif %}
 
-      day:
-        value_template: >
-          {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
-          {{ strptime(states('sensor.date'), '%Y-%m-%dd').day }}
-          {{ days[now().weekday()] }}
-      month:
-        value_template: >
-          {% set months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
-          {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
-          {{ months[now().month-1] }}
-      date_string:
-        friendly_name: "Full Date"
-        value_template: "{{ states('sensor.day') }}, {{ states('sensor.month') }} {{ now().year }}"
+      - day:
+          value_template: >
+            {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+            {{ strptime(states('sensor.date'), '%Y-%m-%dd').day }}
+            {{ days[now().weekday()] }}
+      - month:
+          value_template: >
+            {% set months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+            {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
+            {{ months[now().month-1] }}
+      - date_string:
+          friendly_name: "Full Date"
+          value_template: "{{ states('sensor.day') }}, {{ states('sensor.month') }} {{ now().year }}"
 
-      12hr_time:
-        friendly_name: '12hr Time'
-        value_template: >
-          {% set time = states('sensor.time') %}
-          {% set hour = time[:2]|int %}
-          {{ '{:02d}:{}{}'.format(hour if hour == 12 else hour % 12, time[3:5], 'pm' if hour>11 else 'am') }}
+      - 12hr_time:
+          friendly_name: '12hr Time'
+          value_template: >
+            {% set time = states('sensor.time') %}
+            {% set hour = time[:2]|int %}
+            {{ '{:02d}:{}{}'.format(hour if hour == 12 else hour % 12, time[3:5], 'pm' if hour>11 else 'am') }}
 
-      outside_temp:
-        friendly_name: "Outside Temp"
-        value_template: "{{ state_attr('weather.warner','temperature') }}"
+      - outside_temp:
+          friendly_name: "Outside Temp"
+          value_template: "{{ state_attr('weather.warner','temperature') }}"
 
-      placeholder:
-        value_template: ' '
-        attribute_templates:
-          lounge: Lounge Room
-          kitchen: Kitchen
-          bedroom: Bedroom
-          teddy: Teddy
-          ollie: Ollie
-          media: Media
-          home: Home
+      - placeholder:
+          value_template: ' '
+          attribute_templates:
+            lounge: Lounge Room
+            kitchen: Kitchen
+            bedroom: Bedroom
+            teddy: Teddy
+            ollie: Ollie
+            media: Media
+            home: Home
 
-      hass_version:
-        #entity_id: sensor.hass_version_installed, sensor.hass_version_latest
-        icon_template: mdi:home-assistant
-        friendly_name_template: >
-          Installed {{ states('sensor.hass_version_installed') }}
-        value_template: >
-          {{ 'Latest' if states('sensor.hass_version_installed') == 
-          states('sensor.hass_version_latest') else states('sensor.hass_version_latest') }}
+      - hass_version:
+          #entity_id: sensor.hass_version_installed, sensor.hass_version_latest
+          icon_template: mdi:home-assistant
+          friendly_name_template: >
+            Installed {{ states('sensor.hass_version_installed') }}
+          value_template: >
+            {{ 'Latest' if states('sensor.hass_version_installed') == 
+            states('sensor.hass_version_latest') else states('sensor.hass_version_latest') }}
 
     ####################################################
     #                                                  #
@@ -452,50 +452,50 @@ sensor:
     #                                                  #
     ####################################################
 
-      fullykiosk_plugged:
-        #entity_id: sensor.fullykiosk
-        friendly_name: Strömsladd ansluten
-        value_template: >
-          {{ 'Ja' if is_state_attr('sensor.fullykiosk', 'plugged', true) else 'Nej' }}
-        icon_template: >
-          mdi:power-plug{{ '-off' if is_state_attr('sensor.fullykiosk', 'plugged', false) }}
+      - fullykiosk_plugged:
+          #entity_id: sensor.fullykiosk
+          friendly_name: Strömsladd ansluten
+          value_template: >
+            {{ 'Ja' if is_state_attr('sensor.fullykiosk', 'plugged', true) else 'Nej' }}
+          icon_template: >
+            mdi:power-plug{{ '-off' if is_state_attr('sensor.fullykiosk', 'plugged', false) }}
 
-      fullykiosk_storage:
-        #entity_id: sensor.fullykiosk
-        friendly_name: Storage
-        icon_template: mdi:sd
-        unit_of_measurement: '%'
-        value_template: >
-          {% set entity_id = 'sensor.fullykiosk' %}
-          {% set FreeSpace = state_attr(entity_id, 'internalStorageFreeSpace') %}
-          {% set TotalSpace = state_attr(entity_id, 'internalStorageTotalSpace') %}
-          {% if not (FreeSpace == None or TotalSpace == None) %}
-            {{ 100 - (FreeSpace / TotalSpace * 100) | int }}
-          {% endif %}
+      - fullykiosk_storage:
+          #entity_id: sensor.fullykiosk
+          friendly_name: Storage
+          icon_template: mdi:sd
+          unit_of_measurement: '%'
+          value_template: >
+            {% set entity_id = 'sensor.fullykiosk' %}
+            {% set FreeSpace = state_attr(entity_id, 'internalStorageFreeSpace') %}
+            {% set TotalSpace = state_attr(entity_id, 'internalStorageTotalSpace') %}
+            {% if not (FreeSpace == None or TotalSpace == None) %}
+              {{ 100 - (FreeSpace / TotalSpace * 100) | int }}
+            {% endif %}
 
-      fullykiosk_memory:
-        #entity_id: sensor.fullykiosk
-        friendly_name: Memory
-        icon_template: mdi:memory
-        unit_of_measurement: '%'
-        value_template: >
-          {% set entity_id = 'sensor.fullykiosk' %}
-          {% set FreeMemory = state_attr(entity_id, 'ramFreeMemory') %}
-          {% set TotalMemory = state_attr(entity_id, 'ramTotalMemory') %}
-          {% if not (FreeMemory == None or TotalMemory == None) %}
-            {{ 100 - (FreeMemory / TotalMemory * 100) | int }}
-          {% endif %}
+      - fullykiosk_memory:
+          #entity_id: sensor.fullykiosk
+          friendly_name: Memory
+          icon_template: mdi:memory
+          unit_of_measurement: '%'
+          value_template: >
+            {% set entity_id = 'sensor.fullykiosk' %}
+            {% set FreeMemory = state_attr(entity_id, 'ramFreeMemory') %}
+            {% set TotalMemory = state_attr(entity_id, 'ramTotalMemory') %}
+            {% if not (FreeMemory == None or TotalMemory == None) %}
+              {{ 100 - (FreeMemory / TotalMemory * 100) | int }}
+            {% endif %}
 
-      fullykiosk_battery:
-        #entity_id: sensor.fullykiosk
-        friendly_name: Battery
-        unit_of_measurement: '%'
-        value_template: >
-          {{ state_attr('sensor.fullykiosk', 'batteryLevel') }}
-        icon_template: >
-          {% set battery = (state_attr('sensor.fullykiosk', 'batteryLevel') | int / 10) | int * 10 | default(0) %}
-            mdi:battery{% if battery == 100 %}{% elif battery > 0 %}-{{ battery }}{% else %}-alert
-          {% endif %}
+      - fullykiosk_battery:
+          #entity_id: sensor.fullykiosk
+          friendly_name: Battery
+          unit_of_measurement: '%'
+          value_template: >
+            {{ state_attr('sensor.fullykiosk', 'batteryLevel') }}
+          icon_template: >
+            {% set battery = (state_attr('sensor.fullykiosk', 'batteryLevel') | int / 10) | int * 10 | default(0) %}
+              mdi:battery{% if battery == 100 %}{% elif battery > 0 %}-{{ battery }}{% else %}-alert
+            {% endif %}
 
     ####################################################
     #                                                  #
@@ -503,32 +503,32 @@ sensor:
     #                                                  #
     ####################################################
 
-      sidebar_day:
-        #entity_id: sensor.date
-        icon_template: mdi:calendar
-        value_template: "{{ ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] }}"
+      - sidebar_day:
+          #entity_id: sensor.date
+          icon_template: mdi:calendar
+          value_template: "{{ ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] }}"
 
-      sidebar_date:
-        #entity_id: sensor.date
-        icon_template: mdi:calendar
-        value_template: >
-          {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 
-          'July', 'august', 'September', 'October', 'November', 'December'] %}
-          {{ strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
+      - sidebar_date:
+          #entity_id: sensor.date
+          icon_template: mdi:calendar
+          value_template: >
+            {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 
+            'July', 'august', 'September', 'October', 'November', 'December'] %}
+            {{ strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
 
-      hass_uptime:
-        #entity_id: sensor.time, sensor.uptime
-        friendly_name: Last Restart
-        icon_template: mdi:update
-        value_template: >
-          {% set uptime = states('sensor.uptime') | float %}
-          {% if uptime < 1 %} {{ (uptime * 60) | int }} seconds ago
-          {% elif uptime | int == 1 %} 1 minute ago
-          {% elif uptime | int > 1 %}
-            {% if uptime | int < 60 %} {{ uptime | int }} minutes ago
-            {% elif uptime | int / 60 == 24 %} {{ (uptime | int / 60 / 24) | int }} day ago
-            {% elif uptime | int / 60 >= 24 %} {{ (uptime | int / 60 / 24) | int }} days ago
-            {% elif uptime | int >= 60 and uptime | int < 120 %} {{ (uptime | int / 60) | int }} an hour ago
-            {% elif uptime | int >= 120 %} {{ (uptime | int / 60) | int }} hours ago
+      - hass_uptime:
+          #entity_id: sensor.time, sensor.uptime
+          friendly_name: Last Restart
+          icon_template: mdi:update
+          value_template: >
+            {% set uptime = states('sensor.uptime') | float %}
+            {% if uptime < 1 %} {{ (uptime * 60) | int }} seconds ago
+            {% elif uptime | int == 1 %} 1 minute ago
+            {% elif uptime | int > 1 %}
+              {% if uptime | int < 60 %} {{ uptime | int }} minutes ago
+              {% elif uptime | int / 60 == 24 %} {{ (uptime | int / 60 / 24) | int }} day ago
+              {% elif uptime | int / 60 >= 24 %} {{ (uptime | int / 60 / 24) | int }} days ago
+              {% elif uptime | int >= 60 and uptime | int < 120 %} {{ (uptime | int / 60) | int }} an hour ago
+              {% elif uptime | int >= 120 %} {{ (uptime | int / 60) | int }} hours ago
+              {% endif %}
             {% endif %}
-          {% endif %}
