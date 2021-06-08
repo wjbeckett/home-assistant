@@ -8,190 +8,190 @@ template:
 
   sensor:
     - unique_id: sidebar
-        state: template
-        attributes:
-          time: |
-            {%- set hours = '<span>' + now().strftime('%H') + '<span>' %}
-            {%- set minutes = '</span>' + now().strftime('%M') + '</span>' %}
-            {{ hours }}:{{ minutes }}
-          date: |
-            <font color='#6a7377'><b>
-            {%- if strptime(states('sensor.date'), '%Y-%m-%d').day != null %}
-            {%- set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
-            {%- set months = ['January', 'February', 'March', 'April', 'May', 'June', 
-            'July', 'August', 'September', 'October', 'November', 'December'] %}
-              {{- days[now().weekday()] }}<br>
-              {{- strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
-            {%- endif -%}
-            </b></font>
-          greet: |
-            <b>
-            {%- set time = now().hour %}
-            {%- if time <= 1 -%} Good Night {{'\U0001F611'}}
-            {%- elif time <= 3 -%} Good Night {{'\U0001F62A'}}
-            {%- elif time <= 5 -%} Good Night {{'\U0001F634'}}
-            {%- elif time <= 7 -%} Good Morning {{'\U0001F4A9'}}
-            {%- elif time <= 9 -%} Good Morning {{'\u2615\uFE0F'}}
-            {%- elif time <= 10 -%} Good Morning {{'\U0001F642'}}
-            {%- elif time <= 13 -%} Good Afternoon {{'\U0001F60A'}}
-            {%- elif time <= 15 -%} Good Afternoon {{'\U0001F60E'}}
-            {%- elif time <= 17 -%} Good Afternoon {{'\U0001F44B\U0001F3FB'}}
-            {%- elif time <= 19 -%} Good Evening {{'\U0001F44B\U0001F3FB'}}
-            {%- elif time <= 22 -%} Good Evening {{'\U0001F60C'}}
-            {%- elif time <= 23 -%} Good Evening {{'\U0001F974'}}
-            {%- else %} Good Evening {{'\U0001F974'}}
-            {%- endif -%}
-            </b>
-          active: |
-            <b>
-            {% set lights = [
-              states.light.bedroom_lamps,
-              states.light.kitchen_lights,
-              states.light.ollie_s_lamp,
-              states.light.teddy_s_lamp, 
-              states.light.lounge_room_lamp
-            ] %}
+      state: template
+      attributes:
+        time: |
+          {%- set hours = '<span>' + now().strftime('%H') + '<span>' %}
+          {%- set minutes = '</span>' + now().strftime('%M') + '</span>' %}
+          {{ hours }}:{{ minutes }}
+        date: |
+          <font color='#6a7377'><b>
+          {%- if strptime(states('sensor.date'), '%Y-%m-%d').day != null %}
+          {%- set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+          {%- set months = ['January', 'February', 'March', 'April', 'May', 'June', 
+          'July', 'August', 'September', 'October', 'November', 'December'] %}
+            {{- days[now().weekday()] }}<br>
+            {{- strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
+          {%- endif -%}
+          </b></font>
+        greet: |
+          <b>
+          {%- set time = now().hour %}
+          {%- if time <= 1 -%} Good Night {{'\U0001F611'}}
+          {%- elif time <= 3 -%} Good Night {{'\U0001F62A'}}
+          {%- elif time <= 5 -%} Good Night {{'\U0001F634'}}
+          {%- elif time <= 7 -%} Good Morning {{'\U0001F4A9'}}
+          {%- elif time <= 9 -%} Good Morning {{'\u2615\uFE0F'}}
+          {%- elif time <= 10 -%} Good Morning {{'\U0001F642'}}
+          {%- elif time <= 13 -%} Good Afternoon {{'\U0001F60A'}}
+          {%- elif time <= 15 -%} Good Afternoon {{'\U0001F60E'}}
+          {%- elif time <= 17 -%} Good Afternoon {{'\U0001F44B\U0001F3FB'}}
+          {%- elif time <= 19 -%} Good Evening {{'\U0001F44B\U0001F3FB'}}
+          {%- elif time <= 22 -%} Good Evening {{'\U0001F60C'}}
+          {%- elif time <= 23 -%} Good Evening {{'\U0001F974'}}
+          {%- else %} Good Evening {{'\U0001F974'}}
+          {%- endif -%}
+          </b>
+        active: |
+          <b>
+          {% set lights = [
+            states.light.bedroom_lamps,
+            states.light.kitchen_lights,
+            states.light.ollie_s_lamp,
+            states.light.teddy_s_lamp, 
+            states.light.lounge_room_lamp
+          ] %}
 
-            {% set switches = [
-              states.media_player.bedroom_tv,
-              states.media_player.lounge_room_tv
-            ] %}
+          {% set switches = [
+            states.media_player.bedroom_tv,
+            states.media_player.lounge_room_tv
+          ] %}
 
-            {% set speakers = [
-              states.media_player.bedroom_speaker,
-              states.media_player.kitchen_display,
-              states.media_player.teddy_s_speaker,
-              states.media_player.ollie_s_speaker
-            ] %}
+          {% set speakers = [
+            states.media_player.bedroom_speaker,
+            states.media_player.kitchen_display,
+            states.media_player.teddy_s_speaker,
+            states.media_player.ollie_s_speaker
+          ] %}
 
-            {% set doors = [
-              states.binary_sensor.back_door,
-              states.binary_sensor.garage_door
-            ] %}
+          {% set doors = [
+            states.binary_sensor.back_door,
+            states.binary_sensor.garage_door
+          ] %}
 
-            {% set lights_on = lights | selectattr('state','eq','on') | list %}
-            {% set lights_name = lights | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
+          {% set lights_on = lights | selectattr('state','eq','on') | list %}
+          {% set lights_name = lights | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-            {% set switches_on = switches | selectattr('state','eq','on') | list %} 
-            {% set switches_name = switches | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
+          {% set switches_on = switches | selectattr('state','eq','on') | list %} 
+          {% set switches_name = switches | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-            {% set speakers_on = speakers | selectattr('state','eq','playing') | list %} 
-            {% set speakers_name = speakers | selectattr('state','eq','playing') | map(attribute='name') | join(', ') %}
+          {% set speakers_on = speakers | selectattr('state','eq','playing') | list %} 
+          {% set speakers_name = speakers | selectattr('state','eq','playing') | map(attribute='name') | join(', ') %}
 
-            {% set doors_on = doors | selectattr('state','eq','on') | list %} 
-            {% set doors_name = doors | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
+          {% set doors_on = doors | selectattr('state','eq','on') | list %} 
+          {% set doors_name = doors | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
 
-            {% if (lights_on | length == 0 ) and (speakers_on | length == 0 ) and (doors_on | length == 0) and (switches_on | length > 0) %} 
-            The {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
+          {% if (lights_on | length == 0 ) and (speakers_on | length == 0 ) and (doors_on | length == 0) and (switches_on | length > 0) %} 
+          The {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on
 
-            {% elif (lights_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) and (speakers_on | length == 1)%}
-            The {{ speakers_name }} is playing
+          {% elif (lights_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) and (speakers_on | length == 1)%}
+          The {{ speakers_name }} is playing
 
-            {% elif (lights_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) and (speakers_on | length == 0)%}
-            The {{ doors_name }} is open
+          {% elif (lights_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) and (speakers_on | length == 0)%}
+          The {{ doors_name }} is open
 
-            {% elif (lights_on | length == 1) and (switches_on | length == 1) and (speakers_on | length == 1) and (doors_on | length == 1) %}
-            The {{ lights_name }} and {{switches_name }} are on. The {{ doors_name }} is open. The{{ speakers_name }} is playing
+          {% elif (lights_on | length == 1) and (switches_on | length == 1) and (speakers_on | length == 1) and (doors_on | length == 1) %}
+          The {{ lights_name }} and {{switches_name }} are on. The {{ doors_name }} is open. The{{ speakers_name }} is playing
 
-            {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (doors_on | length == 1) and (switches_on | length > 1) %}
-            The {{ lights_name }}, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on. The {{ doors_name }} is open. The{{ speakers_name }} is playing.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (doors_on | length == 1) and (switches_on | length > 1) %}
+          The {{ lights_name }}, {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on. The {{ doors_name }} is open. The{{ speakers_name }} is playing.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 1) and (doors_on | length == 1) %}
-            There are {{ lights_on | length }} lights and the {{ switches_name }} are on. The {{ doors_name }} is open. The {{ speakers_name }} is playing.
+          {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 1) and (doors_on | length == 1) %}
+          There are {{ lights_on | length }} lights and the {{ switches_name }} are on. The {{ doors_name }} is open. The {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (doors_on | length > 1) and (switches_on | length == 1) %}
-            The {{ lights_name }} and {{ switches_name }} are on. The {{ doors_name | regex_replace(',([^,]*)$',' and\\1') }} are open. The {{ speakers_name }} is playing.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (doors_on | length > 1) and (switches_on | length == 1) %}
+          The {{ lights_name }} and {{ switches_name }} are on. The {{ doors_name | regex_replace(',([^,]*)$',' and\\1') }} are open. The {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length > 1 ) and (speakers_on | length > 1) and (switches_on | length > 1) and (doors_on | length > 1) %}
-            There are {{ lights_on | length }} lights on, the {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on, {{ doors_on | length }} doors open, and there are {{ speakers_on | length}} speakers playing.
+          {% elif (lights_on | length > 1 ) and (speakers_on | length > 1) and (switches_on | length > 1) and (doors_on | length > 1) %}
+          There are {{ lights_on | length }} lights on, the {{ switches_name | regex_replace(',([^,]*)$',' and\\1') }} are on, {{ doors_on | length }} doors open, and there are {{ speakers_on | length}} speakers playing.
 
-            {% elif (lights_on | length == 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            {{ lights_name }} is on.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          {{ lights_name }} is on.
 
-            {% elif (lights_on | length > 1 ) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            There are {{ lights_on | length}} lights on.
+          {% elif (lights_on | length > 1 ) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          There are {{ lights_on | length}} lights on.
 
-            {% elif (lights_on | length > 1 ) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            There are {{ lights_on | length}} lights on and the {{ speakers_name }} is playing.
+          {% elif (lights_on | length > 1 ) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          There are {{ lights_on | length}} lights on and the {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length > 1 ) and (speakers_on | length == 1) and (switches_on | length == 1) and (doors_on | length == 0) %}
-            There are {{ lights_on | length}} lights on, and the {{ switches_name }} is on. The {{ speakers_name }} is playing.
+          {% elif (lights_on | length > 1 ) and (speakers_on | length == 1) and (switches_on | length == 1) and (doors_on | length == 0) %}
+          There are {{ lights_on | length}} lights on, and the {{ switches_name }} is on. The {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length == 1 ) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
-            {{ lights_name }} is on, and the {{ switches_name }} is on.
+          {% elif (lights_on | length == 1 ) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
+          {{ lights_name }} is on, and the {{ switches_name }} is on.
 
-            {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            {{ lights_name }} is on and the {{ speakers_name }} is playing.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          {{ lights_name }} is on and the {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length == 0) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            The {{ speakers_name }} is playing and the {{ doors_name }} is open.
+          {% elif (lights_on | length == 0) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          The {{ speakers_name }} is playing and the {{ doors_name }} is open.
 
-            {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            {{ lights_name }} is on, the {{ doors_on }} is open, and the {{ speakers_name }} is playing.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          {{ lights_name }} is on, the {{ doors_on }} is open, and the {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length == 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            {{ lights_name }} is on, and the {{ doors_name }} is open.
+          {% elif (lights_on | length == 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          {{ lights_name }} is on, and the {{ doors_name }} is open.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            There are {{ lights_on | length}} lights on, the {{ doors_on }} is open, and the {{ speakers_name }} is playing.
+          {% elif (lights_on | length > 1) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          There are {{ lights_on | length}} lights on, the {{ doors_on }} is open, and the {{ speakers_name }} is playing.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length > 1) %}
-            There are {{ lights_on | length}} lights on and the {{ doors_name | regex_replace(',([^,]*)$',' and\\1') }} are open.
+          {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length > 1) %}
+          There are {{ lights_on | length}} lights on and the {{ doors_name | regex_replace(',([^,]*)$',' and\\1') }} are open.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            There are {{ lights_on | length}} lights on, the {{ doors_name }} is open and there are {{ speakers_on | length }} speakers playing.
+          {% elif (lights_on | length > 1) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          There are {{ lights_on | length}} lights on, the {{ doors_name }} is open and there are {{ speakers_on | length }} speakers playing.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            There are {{ lights_on | length}} lights on, and {{ speakers_on | length }} speakers playing.
+          {% elif (lights_on | length > 1) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          There are {{ lights_on | length}} lights on, and {{ speakers_on | length }} speakers playing.
 
-            {% elif (lights_on | length == 0) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            There are {{ speakers_on | length }} speakers playing.
+          {% elif (lights_on | length == 0) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          There are {{ speakers_on | length }} speakers playing.
 
-            {% elif (lights_on | length == 1) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
-            The {{ lights_name }} is on and {{ speakers_on | length }} speakers playing.
+          {% elif (lights_on | length == 1) and (speakers_on | length > 1) and (switches_on | length == 0) and (doors_on | length == 0) %}
+          The {{ lights_name }} is on and {{ speakers_on | length }} speakers playing.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
-            There are {{ lights_on | length}} lights on, and {{ switches_name }} is on.
+          {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 1) and (doors_on | length == 0) %}
+          There are {{ lights_on | length}} lights on, and {{ switches_name }} is on.
 
-            {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            There are {{ lights_on | length}} lights on and the {{ doors_on }} is open.
+          {% elif (lights_on | length > 1) and (speakers_on | length == 0) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          There are {{ lights_on | length}} lights on and the {{ doors_on }} is open.
 
-            {% elif (lights_on | length == 0) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
-            The {{ doors_name }} is open and the {{ speakers_name }} is playing.
+          {% elif (lights_on | length == 0) and (speakers_on | length == 1) and (switches_on | length == 0) and (doors_on | length == 1) %}
+          The {{ doors_name }} is open and the {{ speakers_name }} is playing.
 
-            {% else %} 
-            <font color='#6a7377'>Everything is off</font> 
-            {% endif %}
-            </b>
-          occupancy: |
-            <b>
-            {% if is_state("person.emily", "home") and is_state("person.william", "home") %}
-              <strong>Everyone is home</strong>
-            {% elif is_state("person.emily", "not_home") and is_state("person.william", "not_home") %}
-              <strong>No one is home</strong>
-            {% else %}
-              {% set people = '' -%}
-            {% if states("person.emily") != "home" -%}
-              {% set people = people + "Emily, " -%}
-            {% endif %}
-            {% if states("person.william") != "home" -%}
-              {% set people = people + "William, " -%}
-            {% endif %}
-              {% set people = people[:-2] -%}
-              <strong>Not at home:</strong> {{ people }}
-            {% endif %}
-            </b>
-          weather: |
-            {% set temperature = states('sensor.dark_sky_temperature') %}
-            {% set type = states('weather.dark_sky') %}
-            {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
-            {% set precip = states('sensor.dark_sky_precip_probability') | round %}
+          {% else %} 
+          <font color='#6a7377'>Everything is off</font> 
+          {% endif %}
+          </b>
+        occupancy: |
+          <b>
+          {% if is_state("person.emily", "home") and is_state("person.william", "home") %}
+            <strong>Everyone is home</strong>
+          {% elif is_state("person.emily", "not_home") and is_state("person.william", "not_home") %}
+            <strong>No one is home</strong>
+          {% else %}
+            {% set people = '' -%}
+          {% if states("person.emily") != "home" -%}
+            {% set people = people + "Emily, " -%}
+          {% endif %}
+          {% if states("person.william") != "home" -%}
+            {% set people = people + "William, " -%}
+          {% endif %}
+            {% set people = people[:-2] -%}
+            <strong>Not at home:</strong> {{ people }}
+          {% endif %}
+          </b>
+        weather: |
+          {% set temperature = states('sensor.dark_sky_temperature') %}
+          {% set type = states('weather.dark_sky') %}
+          {% set apparent = states('sensor.dark_sky_apparent_temperature') | round %}
+          {% set precip = states('sensor.dark_sky_precip_probability') | round %}
 
-            {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
-                It's' {{ apparent}}° and {{ type }}
-            {% else %}
-              Unable to load weather information...
-            {% endif %}
+          {% if not is_state('sensor.dark_sky_temperature', 'unknown') %}
+              It's' {{ apparent}}° and {{ type }}
+          {% else %}
+            Unable to load weather information...
+          {% endif %}
 
 #legacy
 sensor:
