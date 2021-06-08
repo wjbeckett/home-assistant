@@ -263,11 +263,27 @@ views:
                       - entity: input_select.conditional_media
                         state: Kitchen Display
                     card:
-                      type: custom:button-card
+                      type: custom:mini-media-player
                       entity: media_player.kitchen_display
-                      template:
-                        - conditional_media
-                        - icon_nest_mini
+                      hide:
+                        icon: true
+                        mute: false
+                        power: true
+                        power_state: true
+                      info: short
+                      style: |
+                        :host {
+                          height: 100%;
+                          border-radius: 1vw;
+                          overflow: hidden;
+                          box-shadow: none !important;
+                        }
+                        ha-card {
+                          height: 100%;
+                          border-radius: 1vw;
+                          overflow: hidden !important;
+                          box-shadow: none !important;
+                        }
 
                   - type: conditional
                     conditions:
