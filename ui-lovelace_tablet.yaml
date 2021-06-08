@@ -14,10 +14,10 @@ views:
       grid-template-columns: repeat(4, 1fr) 0
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
-        "sidebar  .           .       .       ."
-        "sidebar  vardagsrum  studio  sovrum  ."
-        "sidebar  media       övrigt  hemma   ."
-        "sidebar  footer      footer  footer  ."
+        "sidebar  .           .         .       ."
+        "sidebar  loungeroom  kitchen   bedroom ."
+        "sidebar  media       teddy     home    ."
+        "sidebar  footer      footer    footer  ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -27,9 +27,9 @@ views:
           grid-template-areas: |
             ".  .           .        ."
             ".  sidebar     sidebar  ."
-            ".  vardagsrum  sovrum   ."
-            ".  studio      övrigt   ."
-            ".  media       hemma    ."
+            ".  loungeroom  kitchen  ."
+            ".  bedroom     teddy    ."
+            ".  media       home     ."
             ".  footer      footer   ."
             ".  .           .        ."
         #portrait
@@ -39,9 +39,9 @@ views:
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
             "sidebar  .           .       ."
-            "sidebar  vardagsrum  sovrum  ."
-            "sidebar  studio      övrigt  ."
-            "sidebar  media       hemma   ."
+            "sidebar  loungeroom  bedroom ."
+            "sidebar  kitchen     teddy   ."
+            "sidebar  media       home    ."
             "sidebar  footer      footer  ."
             "sidebar  .           .       ."
     cards:
@@ -71,7 +71,7 @@ views:
           type: custom:button-card
           name: placeholder
           #entity: timer.laundry
-          template: laundry
+          #template: laundry
         
       - type: grid
         view_layout:
