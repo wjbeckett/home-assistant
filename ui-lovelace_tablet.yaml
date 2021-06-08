@@ -54,24 +54,10 @@ views:
         view_layout:
           grid-area: sidebar
         content: |
-          <table> <tr><td width="200px"><h3>{{
-          states('sensor.dashboard_greeting') }}, {{ user
-          }}</h3><strong>Current Temperature:</strong>
-          {{state_attr('weather.home','temperature') |
-          round}}&deg;C</br> {% if is_state("sun.sun",
-          "above_horizon") -%}
-              <strong>Next Sunset:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_setting"), '')) | timestamp_custom("%-I:%M %p")}}
-          {%- else -%}
-              <strong>Next Sunrise:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_rising"), '')) | timestamp_custom("%-I:%M %p")}}
-          {%- endif %}</br></br><strong>SmartHome Mode:</strong> {{
-          states('input_select.home_mode') }}</br>
-          <strong>Active Devices:</strong> {{
-          states('sensor.dashboard_active') }}
-          </td><td></br><img
-          src="https://darksky.net/{{states('sensor.dashboard_weather')}}"
-          width="190px" /></td></tr> <tr><td colspan="2">{{
-          states('sensor.dashboard_occupancy')
-          }}</td></tr></table></br>
+          {% set attributes = states.sensor.template_sidebar.attributes | default %}
+          {% for template in attributes %}
+          {{ state_attr('sensor.template_sidebar', template) }}
+          {% endfor %}
 
       - type: conditional
         view_layout:
