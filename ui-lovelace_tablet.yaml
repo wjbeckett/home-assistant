@@ -240,7 +240,7 @@ views:
                           box-shadow: none !important;
                         }
                         ha-card {
-                          height: 100%
+                          height: 100%;
                           border-radius: 1vw;
                           overflow: hidden !important;
                           box-shadow: none !important;
@@ -289,7 +289,7 @@ views:
                           box-shadow: none !important;
                         }
                         ha-card {
-                          height: 100%
+                          height: 100%;
                           border-radius: 1vw;
                           overflow: hidden !important;
                           box-shadow: none !important;
