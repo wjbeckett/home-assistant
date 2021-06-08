@@ -62,8 +62,6 @@ lovelace:
       url: /local/js/now-playing-card.js
     - type: module
       url: /local/js/weather-card.js
-    - type: module
-      url: /local/js/buien-rain-card.js
     
   dashboards:
     lovelace-tablet-yaml:
