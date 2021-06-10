@@ -444,7 +444,7 @@ views:
 
           - type: custom:button-card
             entity: script.home_leave
-            name: Stäng allt
+            name: Leaving
             hold_action:
               action: none
             template:
@@ -453,7 +453,7 @@ views:
 
           - type: custom:button-card
             entity: script.home_arrive
-            name: Hemma
+            name: Home
             hold_action:
               action: none
             template:

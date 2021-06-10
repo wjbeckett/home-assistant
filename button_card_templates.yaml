@@ -352,8 +352,7 @@
     template:
       - base
       - circle
-    state_display: >
-      [[[ return variables.state === 'home' ? 'Yes' : 'No'; ]]]
+    show_state: true
     triggers_update: sensor.time
     styles:
       custom_fields:
