@@ -17,7 +17,7 @@ views:
         "sidebar  .           .         .       ."
         "sidebar  loungeroom  kitchen   bedroom ."
         "sidebar  media       teddy     home    ."
-        "sidebar  footer      footer    footer  ."
+        "sidebar  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -30,7 +30,6 @@ views:
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
             ".  media       home     ."
-            ".  footer      footer   ."
             ".  .           .        ."
         #portrait
         "(max-width: 1200px)":
@@ -42,7 +41,6 @@ views:
             "sidebar  loungeroom  bedroom ."
             "sidebar  kitchen     teddy   ."
             "sidebar  media       home    ."
-            "sidebar  footer      footer  ."
             "sidebar  .           .       ."
     cards:
 

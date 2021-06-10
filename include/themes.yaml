@@ -320,8 +320,6 @@ frontend:
                 }
               }
 
-        
-
       card-mod-card: |
         .card-content {
           padding: 1.8em 2em 1.8em 2em;
