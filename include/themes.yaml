@@ -42,7 +42,7 @@ frontend:
       #custom variables
       ha-card-background-color: rgba(34,38,39,0.9)
       ha-card-header-background-color: rgba(48,52,52,0.8)
-      custom-layout-card-padding: 3.3vw
+      custom-layout-card-padding: 3.2vw
       custom-button-card-border-radius: 8%
       markdown-sidebar-clock-font-size: 5vw
       markdown-sidebar-clock-line-height: 4vw
@@ -321,48 +321,7 @@ frontend:
                 }
               }
 
-        #################################################
-        #                                               #
-        #           CORONAVIRUS MARKDOWN CARD           #
-        #                                               #
-        #################################################
-
-        "grid-layout$hui-markdown-card:last-of-type$":
-          .: |
-            ha-card, ha-markdown {
-              background: none;
-              padding: 0 !important;
-              pointer-events: none;
-              margin-top: -1vw;
-            }
-
-            ha-markdown {
-              overflow: hidden;
-            }
-
-          ha-card>ha-markdown$: |
-            ha-markdown-element {
-              opacity: 0.6;
-              font-size: 1.26vw;
-              font-weight: 400;
-              --mdc-icon-size: 1.2vw;
-              font-family: SF Display;
-              letter-spacing: 0.05vw;
-              line-height: 0px;
-              white-space: nowrap;
-            }
-
-            ha-icon {
-              vertical-align: 3%;
-              opacity: 0.4;
-            }
-
-            /* phone */
-            @media screen and (max-width: 800px) {
-              ha-markdown-element {
-                display: none;
-              }
-            }
+        
 
       card-mod-card: |
         .card-content {
