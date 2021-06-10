@@ -16,30 +16,24 @@ template:
           {{ hours }}:{{ minutes }}
         date: |
           <font color='#6a7377'><b>
-          {%- if strptime(states('sensor.date'), '%Y-%m-%d').day != null %}
-          {%- set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
-          {%- set months = ['January', 'February', 'March', 'April', 'May', 'June', 
-          'July', 'August', 'September', 'October', 'November', 'December'] %}
-            {{- days[now().weekday()] }}<br>
-            {{- strptime(states('sensor.date'), '%Y-%m-%d').day }} {{ months[now().month-1] }}
-          {%- endif -%}
+          {{ states('sensor.date_string') }}
           </b></font>
         greet: |
           <b>
           {%- set time = now().hour %}
-          {%- if time <= 1 -%} Good Night {{'\U0001F611'}}
-          {%- elif time <= 3 -%} Good Night {{'\U0001F62A'}}
-          {%- elif time <= 5 -%} Good Night {{'\U0001F634'}}
-          {%- elif time <= 7 -%} Good Morning {{'\U0001F4A9'}}
-          {%- elif time <= 9 -%} Good Morning {{'\u2615\uFE0F'}}
-          {%- elif time <= 10 -%} Good Morning {{'\U0001F642'}}
-          {%- elif time <= 13 -%} Good Afternoon {{'\U0001F60A'}}
-          {%- elif time <= 15 -%} Good Afternoon {{'\U0001F60E'}}
-          {%- elif time <= 17 -%} Good Afternoon {{'\U0001F44B\U0001F3FB'}}
-          {%- elif time <= 19 -%} Good Evening {{'\U0001F44B\U0001F3FB'}}
-          {%- elif time <= 22 -%} Good Evening {{'\U0001F60C'}}
-          {%- elif time <= 23 -%} Good Evening {{'\U0001F974'}}
-          {%- else %} Good Evening {{'\U0001F974'}}
+          {%- if time <= 1 -%} Good Night {{'\U0001F611'}}, {{ user }}
+          {%- elif time <= 3 -%} Good Night {{'\U0001F62A'}}, {{ user }}
+          {%- elif time <= 5 -%} Good Night {{'\U0001F634'}}, {{ user }}
+          {%- elif time <= 7 -%} Good Morning {{'\U0001F4A9'}}, {{ user }}
+          {%- elif time <= 9 -%} Good Morning {{'\u2615\uFE0F'}}, {{ user }}
+          {%- elif time <= 10 -%} Good Morning {{'\U0001F642'}}, {{ user }}
+          {%- elif time <= 13 -%} Good Afternoon {{'\U0001F60A'}}, {{ user }}
+          {%- elif time <= 15 -%} Good Afternoon {{'\U0001F60E'}}, {{ user }}
+          {%- elif time <= 17 -%} Good Afternoon {{'\U0001F44B\U0001F3FB'}}, {{ user }}
+          {%- elif time <= 19 -%} Good Evening {{'\U0001F44B\U0001F3FB'}}, {{ user }}
+          {%- elif time <= 22 -%} Good Evening {{'\U0001F60C'}}, {{ user }}
+          {%- elif time <= 23 -%} Good Evening {{'\U0001F974'}}, {{ user }}
+          {%- else %} Good Evening {{'\U0001F974'}}, {{ user }}
           {%- endif -%}
           </b>
         active: |
