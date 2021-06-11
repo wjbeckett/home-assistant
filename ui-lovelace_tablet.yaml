@@ -68,6 +68,7 @@ views:
         card:
           type: custom:button-card
           name: test
+          template: laundry
       
         
       - type: grid
