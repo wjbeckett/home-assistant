@@ -15,9 +15,9 @@ views:
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
         "info     .           .         .       ."
-        "info     loungeroom  kitchen   bedroom ."
+        "buttons  loungeroom  kitchen   bedroom ."
         "buttons  media       teddy     home    ."
-        ".        .           .         .       ."
+        "buttons  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -26,7 +26,7 @@ views:
           grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
-            ".  info        buttons  ."
+            ".  info        info     ."
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
             ".  media       home     ."
@@ -39,7 +39,7 @@ views:
           grid-template-areas: |
             "info     .           .       ."
             "info     loungeroom  bedroom ."
-            "info     kitchen     teddy   ."
+            "buttons  kitchen     teddy   ."
             "buttons  media       home    ."
             ".        .           .       ."
     cards:
