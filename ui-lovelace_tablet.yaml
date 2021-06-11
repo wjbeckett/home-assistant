@@ -15,7 +15,7 @@ views:
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
         "info     .           .         .       ."
-        "info     loungeroom  kitchen   bedroom ."
+        "weather  loungeroom  kitchen   bedroom ."
         "buttons  media       teddy     home    ."
         "buttons  .           .         .       ."
       mediaquery:
@@ -26,7 +26,7 @@ views:
           grid-template-rows: 0 repeat(5, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
-            ".  info        buttons  ."
+            ".  info        weather  ."
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
             ".  media       home     ."
@@ -38,7 +38,7 @@ views:
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
             "info     .           .       ."
-            "info     loungeroom  bedroom ."
+            "weather     loungeroom  bedroom ."
             "buttons  kitchen     teddy   ."
             "buttons  media       home    ."
             "buttons  .           .       ."
@@ -58,18 +58,16 @@ views:
           {% for template in attributes %}
           {{ state_attr('sensor.template_sidebar', template) }}
           {% endfor %}
-
-      - type: conditional
+      
+      - type: markdown
         view_layout:
-          grid-area: sidebar
-        conditions:
-          - entity: input_boolean.night_mode
-            state: 'on'
-        card:
-          type: custom:button-card
-          name: placeholder
-          #entity: timer.laundry
-          #template: laundry
+          grid-area: weather
+        content: >
+          <table> <tr><td><strong>Current Temperature:</strong>
+          {{state_attr('weather.home','temperature') |
+          round}}&deg;C</td><td></br><img
+          src="https://darksky.net/{{states('sensor.dashboard_weather')}}"
+          width="190px" /></td></tr></table></br>
         
       - type: grid
         view_layout:
