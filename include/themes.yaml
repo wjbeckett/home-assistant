@@ -223,10 +223,10 @@ frontend:
 
             /* phone */
             @media screen and (max-width: 800px) {
-              hui-conditional-card {
+              ha-markdown {
                 align-items: flex-start;
                 justify-content: flex-end;
-                padding: 15vw 0 0 0;
+                padding: 0 !important;
               }
             }
 
