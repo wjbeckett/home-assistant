@@ -279,9 +279,9 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card":
+        "grid-layout$hui-grid-card:last-of-type":
           .: |
-            hui-grid-card {
+            hui-grid-card:last-of-type {
               display: flex;
               align-items: flex-end;
               animation: fade 0.3s ease-out;
@@ -296,7 +296,7 @@ frontend:
             }
             /* phone */
             @media screen and (max-width: 800px) {
-              hui-grid-card {
+              hui-grid-card:last-of-type {
                 display: none;
               }
             }
