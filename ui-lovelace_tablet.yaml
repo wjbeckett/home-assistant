@@ -15,9 +15,9 @@ views:
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
         "info     .           .         .       ."
-        "info     loungeroom  kitchen   bedroom ."
-        "weather  media       teddy     home    ."
-        "buttons  .           .         .       ."
+        "weather  loungeroom  kitchen   bedroom ."
+        "buttons  media       teddy     home    ."
+        ".        .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -38,10 +38,10 @@ views:
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
             "info     .           .       ."
-            "info     loungeroom  bedroom ."
+            "weather  loungeroom  bedroom ."
             "weather  kitchen     teddy   ."
             "buttons  media       home    ."
-            "buttons  .           .       ."
+            ".        .           .       ."
     cards:
 
       #################################################
