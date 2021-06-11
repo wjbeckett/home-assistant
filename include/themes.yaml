@@ -213,33 +213,33 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:first-of-type":
-          .: |
-            hui-grid-card:first-of-type {
-              align-items: center;
-              animation: fade 0.3s ease-out;
-            }
-            @keyframes fade {
-              0%, 30% {
-                opacity: 0;
-              }
-              100% {
-                opacity: 1;
-              }
-            }
-            /* phone */
-            @media screen and (max-width: 800px) {
-              hui-grid-card:first-of-type {
-                display: none;
-              }
-            }
-          $: |
-            /* phone */
-            @media screen and (max-width: 800px) {
-              #root {
-                display: none;
-              }
-            }
+        #"grid-layout$hui-grid-card:first-of-type":
+        #  .: |
+        #    hui-grid-card:first-of-type {
+        #      align-items: center;
+        #      animation: fade 0.3s ease-out;
+        #    }
+        #    @keyframes fade {
+        #      0%, 30% {
+        #        opacity: 0;
+        #      }
+        #      100% {
+        #        opacity: 1;
+        #      }
+        #    }
+        #    /* phone */
+        #    @media screen and (max-width: 800px) {
+        #      hui-grid-card:first-of-type {
+        #        display: none;
+        #      }
+        #    }
+        #  $: |
+        #    /* phone */
+        #    @media screen and (max-width: 800px) {
+        #      #root {
+        #        display: none;
+        #      }
+        #    }
 
 
         #################################################
@@ -279,9 +279,9 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:nth-of-type(2)":
+        "grid-layout$hui-grid-card:first-of-type":
           .: |
-            hui-grid-card:nth-of-type(2) {
+            hui-grid-card:first-of-type {
               display: flex;
               align-items: flex-end;
               animation: fade 0.3s ease-out;
@@ -296,7 +296,7 @@ frontend:
             }
             /* phone */
             @media screen and (max-width: 800px) {
-              hui-grid-card:nth-of-type(2) {
+              hui-grid-card:first-of-type {
                 display: none;
               }
             }
