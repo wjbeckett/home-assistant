@@ -65,29 +65,29 @@ views:
         columns: 1
         cards: 
           - type: custom:button-card
-              view_layout:
-                grid-area: sidebar
-                name: Home
-                icon: mdi:home
-                template: navigation
+            view_layout:
+              grid-area: sidebar
+            name: Home
+            icon: mdi:home
+            template: navigation
           - type: custom:button-card
-              view_layout:
-                grid-area: sidebar
-                name: Security
-                icon: mdi:shield-home
-                template: navigation
+            view_layout:
+              grid-area: sidebar
+            name: Security
+            icon: mdi:shield-home
+            template: navigation
           - type: custom:button-card
-              view_layout:
-                grid-area: sidebar
-                name: Media
-                icon: mdi:play-circle
-                template: navigation
+            view_layout:
+              grid-area: sidebar
+            name: Media
+            icon: mdi:play-circle
+            template: navigation
           - type: custom:button-card
-              view_layout:
-                grid-area: sidebar
-                name: Weather
-                icon: mdi:cloud
-                template: navigation
+            view_layout:
+              grid-area: sidebar
+            name: Weather
+            icon: mdi:cloud
+            template: navigation
       
         
       - type: grid
