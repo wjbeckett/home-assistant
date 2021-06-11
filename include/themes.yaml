@@ -213,21 +213,20 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-markdown-card:last-of-type":
+        "grid-layout$$hui-markdown-card:last-of-type":
           .: |
-            ha-markdown {
+            ha-card {
               display: flex;
               align-items: flex-end;
               justify-content: center;
+              padding: 0 0 45% 0;
             }
-
             /* phone */
             @media screen and (max-width: 800px) {
               ha-markdown {
                 align-items: flex-start;
-              }
-              #root {
-                padding: 0 0 0 60%;
+                justify-content: flex-end;
+                padding: 0 !important;
               }
             }
 
@@ -244,7 +243,6 @@ frontend:
               align-items: flex-end;
               animation: fade 0.3s ease-out;
             }
-
             @keyframes fade {
               0%, 30% {
                 opacity: 0;
@@ -253,24 +251,20 @@ frontend:
                 opacity: 1;
               }
             }
-
             /* phone */
             @media screen and (max-width: 800px) {
               hui-grid-card:first-of-type {
-                display: none;
+                align-items: flex-start;
               }
             }
-
           $: |
             #root {
               padding: 0 13% 13% 13%;
               gap: 8% !important;
             }
-
             /* phone */
             @media screen and (max-width: 800px) {
               #root {
-                display: none;
                 padding: 0 0 0 60%;
               }
             }
