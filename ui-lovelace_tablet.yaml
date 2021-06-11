@@ -16,8 +16,8 @@ views:
       grid-template-areas: |
         "info     .           .         .       ."
         "info     loungeroom  kitchen   bedroom ."
-        "info     media       teddy     home    ."
-        "buttons  .           .         .       ."
+        "buttons  media       teddy     home    ."
+        ".        .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -40,8 +40,8 @@ views:
             "info     .           .       ."
             "info     loungeroom  bedroom ."
             "info     kitchen     teddy   ."
-            "info     media       home    ."
-            "buttons  .           .       ."
+            "buttons  media       home    ."
+            ".        .           .       ."
     cards:
 
       #################################################
