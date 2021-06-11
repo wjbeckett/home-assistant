@@ -213,20 +213,28 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$$hui-markdown-card:last-of-type":
+        "grid-layout$hui-conditional-card":
           .: |
-            ha-card {
+            hui-conditional-card {
               display: flex;
               align-items: flex-end;
               justify-content: center;
               padding: 0 0 45% 0;
             }
+            button-card {
+              width: 65%;
+            }
             /* phone */
             @media screen and (max-width: 800px) {
-              ha-markdown {
+              hui-conditional-card {
                 align-items: flex-start;
                 justify-content: flex-end;
-                padding: 0 !important;
+                padding: 15vw 0 0 0;
+              }
+              button-card {
+                width: 40%;
+                zoom: 250%;
+                filter: contrast(75%)
               }
             }
 

@@ -59,15 +59,16 @@ views:
           {{ state_attr('sensor.template_sidebar', template) }}
           {% endfor %}
       
-      - type: markdown
+      - type: conditional
         view_layout:
           grid-area: sidebar
-        content: >
-          <table> <tr><td><strong>Current Temperature:</strong>
-          {{state_attr('weather.home','temperature') |
-          round}}&deg;C</td><td></br><img
-          src="https://darksky.net/{{states('sensor.dashboard_weather')}}"
-          width="100px" /></td></tr></table></br>
+        conditions:
+          - entity: input_boolean.text_notifications
+            state: 'on'
+        card:
+          type: custom:button-card
+          name: test
+      
         
       - type: grid
         view_layout:
