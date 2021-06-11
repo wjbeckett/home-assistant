@@ -59,22 +59,25 @@ views:
           {{ state_attr('sensor.template_sidebar', template) }}
           {% endfor %}
       
-      - type: custom:button-card
-        name: Home
-        icon: mdi:home
-        template: navigation
-      - type: custom:button-card
-        name: Security
-        icon: mdi:shield-home
-        template: navigation
-      - type: custom:button-card
-        name: Media
-        icon: mdi:play-circle
-        template: navigation
-      - type: custom:button-card
-        name: Weather
-        icon: mdi:cloud
-        template: navigation
+      #- type: custom:button-card
+      #  name: Home
+      #  icon: mdi:home
+      #  template: navigation
+      
+      #- type: custom:button-card
+      #  name: Security
+      #  icon: mdi:shield-home
+      #  template: navigation
+      
+      #- type: custom:button-card
+      #  name: Media
+      #  icon: mdi:play-circle
+      #  template: navigation
+      
+      #- type: custom:button-card
+      #  name: Weather
+      #  icon: mdi:cloud
+      #  template: navigation
       
         
       - type: grid
@@ -449,19 +452,23 @@ views:
             template: person
 
           - type: custom:button-card
-            entity: script.home_leave
-            name: Leaving
-            hold_action:
-              action: none
-            template:
-              - base
-              - icon_away
+            name: cameras
+            tap_action: !include lovelace/views/popup/cameras.yaml
+          
+          #- type: custom:button-card
+          #  entity: script.home_leave
+          #  name: Leaving
+          #  hold_action:
+          #    action: none
+          #  template:
+          #    - base
+          #    - icon_away
 
-          - type: custom:button-card
-            entity: script.home_arrive
-            name: Home
-            hold_action:
-              action: none
-            template:
-              - base
-              - icon_home
+          #- type: custom:button-card
+          #  entity: script.home_arrive
+          #  name: Home
+          #  hold_action:
+          #    action: none
+          #  template:
+          #    - base
+          #    - icon_home
