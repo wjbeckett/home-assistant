@@ -217,7 +217,7 @@ frontend:
           .: |
             hui-grid-card:first-of-type {
               display: flex;
-              align-items: center;
+              align-items: flex-start;
               animation: fade 0.3s ease-out;
             }
             @keyframes fade {
