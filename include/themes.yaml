@@ -215,7 +215,7 @@ frontend:
 
         "grid-layout$hui-markdown-card:last-of-type":
           .: |
-            hui-conditional-card {
+            ha-markdown {
               display: flex;
               align-items: flex-end;
               justify-content: center;
@@ -225,8 +225,9 @@ frontend:
             @media screen and (max-width: 800px) {
               ha-markdown {
                 align-items: flex-start;
-                justify-content: flex-end;
-                padding: 0 !important;
+              }
+              #root {
+                padding: 0 0 0 60%;
               }
             }
 
@@ -269,6 +270,7 @@ frontend:
             /* phone */
             @media screen and (max-width: 800px) {
               #root {
+                display: none;
                 padding: 0 0 0 60%;
               }
             }
