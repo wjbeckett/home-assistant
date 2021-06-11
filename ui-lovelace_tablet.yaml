@@ -14,10 +14,10 @@ views:
       grid-template-columns: repeat(4, 1fr) 0
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
-        "info     .           .         .       ."
-        "buttons  loungeroom  kitchen   bedroom ."
-        "buttons  media       teddy     home    ."
-        "buttons  .           .         .       ."
+        "sidebar  .           .         .       ."
+        "sidebar  loungeroom  kitchen   bedroom ."
+        "sidebar  media       teddy     home    ."
+        "sidebar  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -26,7 +26,7 @@ views:
           grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
-            ".  info        info     ."
+            ".  sidebar     sidebar  ."
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
             ".  media       home     ."
@@ -37,11 +37,11 @@ views:
           grid-template-columns: repeat(3, 1fr) 0fr
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
-            "info     .           .       ."
-            "info     loungeroom  bedroom ."
-            "buttons  kitchen     teddy   ."
-            "buttons  media       home    ."
-            ".        .           .       ."
+            "sidebar  .           .       ."
+            "sidebar  loungeroom  bedroom ."
+            "sidebar  kitchen     teddy   ."
+            "sidebar  media       home    ."
+            "sidebar  .           .       ."
     cards:
 
       #################################################
@@ -52,7 +52,7 @@ views:
 
       - type: markdown
         view_layout:
-          grid-area: info
+          grid-area: sidebar
         content: |
           {% set attributes = states.sensor.template_sidebar.attributes | default %}
           {% for template in attributes %}
@@ -61,7 +61,7 @@ views:
       
       - type: markdown
         view_layout:
-          grid-area: info
+          grid-area: sidebar
         content: >
           <table> <tr><td><strong>Current Temperature:</strong>
           {{state_attr('weather.home','temperature') |
@@ -71,7 +71,7 @@ views:
         
       - type: grid
         view_layout:
-          grid-area: buttons
+          grid-area: sidebar
         cards:
           - type: button
             icon: mdi:robot-vacuum
