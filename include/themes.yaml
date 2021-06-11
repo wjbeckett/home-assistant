@@ -216,8 +216,7 @@ frontend:
         "grid-layout$hui-grid-card:first-of-type":
           .: |
             hui-grid-card:first-of-type {
-              display: flex;
-              align-items: flex-start;
+              align-items: conter;
               animation: fade 0.3s ease-out;
             }
             @keyframes fade {
@@ -235,10 +234,6 @@ frontend:
               }
             }
           $: |
-            #root {
-              padding: 0 13% 13% 13%;
-              gap: 8% !important;
-            }
             /* phone */
             @media screen and (max-width: 800px) {
               #root {
@@ -284,9 +279,9 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:last-of-type":
+        "grid-layout$hui-grid-card":
           .: |
-            hui-grid-card:last-of-type {
+            hui-grid-card {
               display: flex;
               align-items: flex-end;
               animation: fade 0.3s ease-out;
@@ -301,7 +296,7 @@ frontend:
             }
             /* phone */
             @media screen and (max-width: 800px) {
-              hui-grid-card:last-of-type {
+              hui-grid-card {
                 display: none;
               }
             }
