@@ -209,6 +209,46 @@ frontend:
 
         #################################################
         #                                               #
+        #             SIDEBAR NAVIGATION                #
+        #                                               #
+        #################################################
+
+        "grid-layout$hui-grid-card:first-of-type":
+          .: |
+            hui-grid-card:first-of-type {
+              display: flex;
+              align-items: center;
+              animation: fade 0.3s ease-out;
+            }
+            @keyframes fade {
+              0%, 30% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+            /* phone */
+            @media screen and (max-width: 800px) {
+              hui-grid-card:first-of-type {
+                display: none;
+              }
+            }
+          $: |
+            #root {
+              padding: 0 13% 13% 13%;
+              gap: 8% !important;
+            }
+            /* phone */
+            @media screen and (max-width: 800px) {
+              #root {
+                display: none;
+              }
+            }
+
+
+        #################################################
+        #                                               #
         #             SIDEBAR WEATHER INFO              #
         #                                               #
         #################################################
@@ -244,7 +284,7 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:first-of-type":
+        "grid-layout$hui-grid-card:last-of-type":
           .: |
             hui-grid-card:first-of-type {
               display: flex;
@@ -261,8 +301,8 @@ frontend:
             }
             /* phone */
             @media screen and (max-width: 800px) {
-              hui-grid-card:first-of-type {
-                align-items: flex-start;
+              hui-grid-card:last-of-type {
+                display: none;
               }
             }
           $: |
@@ -273,7 +313,7 @@ frontend:
             /* phone */
             @media screen and (max-width: 800px) {
               #root {
-                padding: 0 0 0 60%;
+                display: none;
               }
             }
 
