@@ -15,9 +15,9 @@ views:
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
         "info     .           .         .       ."
-        "sidebar  loungeroom  kitchen   bedroom ."
-        "sidebar  media       teddy     home    ."
-        "buttona  .           .         .       ."
+        "info     loungeroom  kitchen   bedroom ."
+        "info     media       teddy     home    ."
+        "buttons  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -39,8 +39,8 @@ views:
           grid-template-areas: |
             "info     .           .       ."
             "info     loungeroom  bedroom ."
-            "sidebar  kitchen     teddy   ."
-            "sidebar  media       home    ."
+            "info     kitchen     teddy   ."
+            "info     media       home    ."
             "buttons  .           .       ."
     cards:
 
