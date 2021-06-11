@@ -216,7 +216,7 @@ frontend:
         "grid-layout$hui-grid-card:first-of-type":
           .: |
             hui-grid-card:first-of-type {
-              align-items: conter;
+              align-items: center;
               animation: fade 0.3s ease-out;
             }
             @keyframes fade {
