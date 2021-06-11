@@ -17,7 +17,7 @@ views:
         "info     .           .         .       ."
         "info     loungeroom  kitchen   bedroom ."
         "buttons  media       teddy     home    ."
-        ".        .           .         .       ."
+        "buttons  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -41,7 +41,7 @@ views:
             "info     loungeroom  bedroom ."
             "info     kitchen     teddy   ."
             "buttons  media       home    ."
-            ".        .           .       ."
+            "buttons  .           .       ."
     cards:
 
       #################################################
