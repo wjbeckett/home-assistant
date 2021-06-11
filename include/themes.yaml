@@ -114,7 +114,7 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-markdown-card:first-of-type":
+        "grid-layout$hui-markdown-card":
           $: |
             ha-card {
               background-color: #00000010;
