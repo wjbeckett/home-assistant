@@ -256,7 +256,7 @@ frontend:
             /* phone */
             @media screen and (max-width: 800px) {
               hui-grid-card:first-of-type {
-                align-items: flex-start;
+                display: none;
               }
             }
 
