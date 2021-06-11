@@ -14,10 +14,10 @@ views:
       grid-template-columns: repeat(4, 1fr) 0
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
-        "sidebar  .           .         .       ."
+        "info     .           .         .       ."
         "sidebar  loungeroom  kitchen   bedroom ."
         "sidebar  media       teddy     home    ."
-        "sidebar  .           .         .       ."
+        "buttona  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -26,7 +26,7 @@ views:
           grid-template-rows: 0 repeat(5, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
-            ".  sidebar     sidebar  ."
+            ".  info        buttons  ."
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
             ".  media       home     ."
@@ -37,11 +37,11 @@ views:
           grid-template-columns: repeat(3, 1fr) 0
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
-            "sidebar  .           .       ."
-            "sidebar  loungeroom  bedroom ."
+            "info     .           .       ."
+            "info     loungeroom  bedroom ."
             "sidebar  kitchen     teddy   ."
             "sidebar  media       home    ."
-            "sidebar  .           .       ."
+            "buttons  .           .       ."
     cards:
 
       #################################################
@@ -52,7 +52,7 @@ views:
 
       - type: markdown
         view_layout:
-          grid-area: sidebar
+          grid-area: info
         content: |
           {% set attributes = states.sensor.template_sidebar.attributes | default %}
           {% for template in attributes %}
@@ -73,7 +73,7 @@ views:
         
       - type: grid
         view_layout:
-          grid-area: sidebar
+          grid-area: buttons
         cards:
           - type: button
             icon: mdi:robot-vacuum
