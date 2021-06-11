@@ -39,7 +39,7 @@ views:
           grid-template-areas: |
             "info     .           .       ."
             "info     loungeroom  bedroom ."
-            "info     kitchen     teddy   ."
+            "buttons  kitchen     teddy   ."
             "buttons  media       home    ."
             "buttons  .           .       ."
     cards:
