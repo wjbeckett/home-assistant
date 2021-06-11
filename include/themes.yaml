@@ -114,7 +114,7 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-markdown-card":
+        "grid-layout$hui-markdown-card:first-of-type":
           $: |
             ha-card {
               background-color: #00000010;
@@ -209,20 +209,16 @@ frontend:
 
         #################################################
         #                                               #
-        #             SIDEBAR LAUNDRY TIMER             #
+        #             SIDEBAR WEATHER INFO              #
         #                                               #
         #################################################
 
-        "grid-layout$hui-conditional-card":
+        "grid-layout$hui-markdown-card:last-of-type":
           .: |
             hui-conditional-card {
               display: flex;
               align-items: flex-end;
               justify-content: center;
-              padding: 0 0 45% 0;
-            }
-            button-card {
-              width: 65%;
             }
 
             /* phone */
@@ -231,11 +227,6 @@ frontend:
                 align-items: flex-start;
                 justify-content: flex-end;
                 padding: 15vw 0 0 0;
-              }
-              button-card {
-                width: 40%;
-                zoom: 250%;
-                filter: contrast(75%)
               }
             }
 
