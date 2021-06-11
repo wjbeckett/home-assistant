@@ -286,7 +286,7 @@ frontend:
 
         "grid-layout$hui-grid-card:last-of-type":
           .: |
-            hui-grid-card:first-of-type {
+            hui-grid-card:last-of-type {
               display: flex;
               align-items: flex-end;
               animation: fade 0.3s ease-out;
