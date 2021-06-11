@@ -279,9 +279,9 @@ frontend:
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:second-of-type":
+        "grid-layout$hui-grid-card:nth-of-type(2)":
           .: |
-            hui-grid-card:second-of-type {
+            hui-grid-card:nth-of-type(2) {
               display: flex;
               align-items: flex-end;
               animation: fade 0.3s ease-out;
@@ -296,7 +296,7 @@ frontend:
             }
             /* phone */
             @media screen and (max-width: 800px) {
-              hui-grid-card:second-of-type {
+              hui-grid-card:nth-of-type(2) {
                 display: none;
               }
             }
