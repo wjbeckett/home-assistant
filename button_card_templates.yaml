@@ -717,6 +717,52 @@
 
   #################################################
   #                                               #
+  #                    CLIMATE                    #
+  #                                               #
+  #################################################
+
+  climate:
+    template: base
+    icon: mdi:air-conditioner
+    state:
+      - value: 'cool'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          icon:
+            - color: var(--paper-item-icon-active-color)
+          custom_fields:
+            info:
+              - color: '#959698'
+      - value: 'heat'
+        styles:
+          card:
+            - background-color: rgba(255, 255, 255, 0.8)
+          name:
+            - color: rgba(0, 0, 0, 0.6)
+          state:
+            - color: rgba(0, 0, 0, 0.6)
+          icon:
+            - color: '#ef0000'
+          custom_fields:
+            info:
+              - color: '#959698'
+    hold_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: '[[[ return entity.attributes.friendly_name ]]]'
+        deviceID: this
+        card:
+          type: thermostat
+          entity: '[[[ return entity.entity_id ]]]'
+
+  #################################################
+  #                                               #
   #                    LAUNDRY                    #
   #                                               #
   #################################################
