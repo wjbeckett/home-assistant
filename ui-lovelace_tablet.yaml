@@ -300,19 +300,17 @@ views:
 
           - type: custom:button-card
             name: cameras
-            show_icon: true
             icon: mdi:cctv
             show_state: false
             tap_action: !include lovelace/views/popup/cameras.yaml
-            template: base
+            #template: base
 
           - type: custom:button-card
             name: Security
-            show_icon: true
             icon: mdi:shield-home
             show_state: false
             tap_action: !include lovelace/views/popup/alarm_panel.yaml
-            template: base
+            #template: base
           
           #- type: custom:button-card
           #  entity: script.home_leave
