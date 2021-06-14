@@ -230,7 +230,7 @@ views:
               - conditional_media
               - icon_nest_mini
           
-          - type: custom:button_card
+          - type: custom:button-card
             entity: climate.ollie_room
             name: AC
             template: climate
@@ -261,7 +261,7 @@ views:
               - conditional_media
               - icon_nest_mini
           
-          - type: custom:button_card
+          - type: custom:button-card
             entity: climate.teddy_room
             name: AC
             template: climate
