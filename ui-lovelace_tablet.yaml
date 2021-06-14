@@ -16,7 +16,7 @@ views:
       grid-template-areas: |
         "sidebar  .           .         .       ."
         "sidebar  loungeroom  kitchen   bedroom ."
-        "sidebar  media       teddy     home    ."
+        "sidebar  ollie       teddy     home    ."
         "sidebar  .           .         .       ."
       mediaquery:
         #phone
@@ -29,7 +29,7 @@ views:
             ".  sidebar     sidebar  ."
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
-            ".  media       home     ."
+            ".  ollie       home     ."
             ".  .           .        ."
         #portrait
         "(max-width: 1200px)":
@@ -40,7 +40,7 @@ views:
             "sidebar  .           .       ."
             "sidebar  loungeroom  bedroom ."
             "sidebar  kitchen     teddy   ."
-            "sidebar  media       home    ."
+            "sidebar  ollie       home    ."
             "sidebar  .           .       ."
     cards:
 
@@ -206,193 +206,29 @@ views:
 
       #################################################
       #                                               #
-      #                     MEDIA                     #
+      #                    OLLIE                      #
       #                                               #
       #################################################
 
       - type: grid
-        title: Media
+        title: Ollie
         view_layout:
-          grid-area: media
-        columns: 1
+          grid-area: ollie
+        columns: 2
         cards:
 
-          - type: custom:swipe-card
-            start_card: 1
-            parameters:
-              roundLengths: true
-              effect: coverflow
-              speed: 650
-              spaceBetween: 20
-              threshold: 7
-              coverflowEffect:
-                rotate: 80
-                depth: 300
-            cards:
+          - type: custom:button-card
+            entity: light.ollie_s_lamp #hue_group
+            name: Lamp
+            template:
+              - light
+              - icon_hue
 
-              - type: vertical-stack
-                cards:
-
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Last downloaded
-                    card:
-                      type: custom:button-card
-                      entity: sensor.recently_added
-                      tap_action:
-                        action: none
-                      template:
-                        - conditional_media
-                        - recently_downloaded
-                        - icon_plex
-
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Lounge Room TV
-                    card:
-                      type: custom:mini-media-player
-                      entity: media_player.plex_lounge_room_tv
-                      hide:
-                        icon: true
-                        mute: false
-                        power: true
-                        power_state: true
-                      info: short
-                      style: |
-                        :host {
-                          height: 100%;
-                          border-radius: 1vw;
-                          overflow: hidden;
-                          box-shadow: none !important;
-                        }
-                        ha-card {
-                          height: 100%;
-                          border-radius: 1vw;
-                          overflow: hidden !important;
-                          box-shadow: none !important;
-                        }
-
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Bedroom
-                    card:
-                      type: custom:button-card
-                      entity: media_player.bedroom_tv
-                      template:
-                        - conditional_media
-                        - icon_apple_tv
-
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Kitchen Display
-                    card:
-                      type: custom:mini-media-player
-                      entity: media_player.kitchen_display
-                      hide:
-                        icon: true
-                        mute: false
-                        power: true
-                        power_state: true
-                      info: short
-                      style: |
-                        :host {
-                          height: 100%;
-                          border-radius: 1vw;
-                          overflow: hidden;
-                          box-shadow: none !important;
-                        }
-                        ha-card {
-                          height: 100%;
-                          border-radius: 1vw;
-                          overflow: hidden !important;
-                          box-shadow: none !important;
-                        }
-
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Bedroom Speaker
-                    card:
-                      type: custom:mini-media-player
-                      entity: media_player.bedroom_speaker
-                      hide:
-                        icon: true
-                        mute: false
-                        power: true
-                        power_state: true
-                      info: scroll
-                      artwork: cover
-                      style: |
-                        :host {
-                          height: 100%;
-                          border-radius: 1vw;
-                          overflow: hidden;
-                          box-shadow: none !important;
-                        }
-                        ha-card {
-                          height: 100%;
-                          border-radius: 1vw;
-                          overflow: hidden !important;
-                          box-shadow: none !important;
-                        }
-                  
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Teddy Speaker
-                    card:
-                      type: custom:button-card
-                      entity: media_player.teddy_speaker
-                      template:
-                        - conditional_media
-                        - icon_nest_mini
-                  
-                  - type: conditional
-                    conditions:
-                      - entity: input_select.conditional_media
-                        state: Ollie Speaker
-                    card:
-                      type: custom:button-card
-                      entity: media_player.ollie_speaker
-                      template:
-                        - conditional_media
-                        - icon_nest_mini
-
-              - type: grid
-                columns: 2
-                cards:
-
-                  - type: custom:button-card
-                    entity: media_player.lounge_room_tv
-                    name: Lounge Room
-                    template:
-                      - media
-                      - icon_apple_tv
-
-                  - type: custom:button-card
-                    name: Bedroom
-                    entity: media_player.bedroom
-                    template:
-                      - media
-                      - icon_apple_tv
-
-                  - type: custom:button-card
-                    entity: media_player.kitchen_display
-                    name: Kitchen Display
-                    template:
-                      - media
-                      - icon_spotify
-
-                  - type: custom:button-card
-                    entity: media_player.bedroom_speaker
-                    name: Bedroom Speaker
-                    template:
-                      - media
-                      - icon_nest_mini
+          - type: custom:button-card
+            entity: media_player.ollie_s_room_speaker
+            template:
+              - conditional_media
+              - icon_nest_mini
 
       #################################################
       #                                               #
@@ -454,6 +290,7 @@ views:
           - type: custom:button-card
             name: cameras
             tap_action: !include lovelace/views/popup/cameras.yaml
+            template: base
           
           #- type: custom:button-card
           #  entity: script.home_leave

@@ -207,71 +207,7 @@ frontend:
                 }
               }
 
-        #################################################
-        #                                               #
-        #             SIDEBAR NAVIGATION                #
-        #                                               #
-        #################################################
-
-        #"grid-layout$hui-grid-card:first-of-type":
-        #  .: |
-        #    hui-grid-card:first-of-type {
-        #      align-items: center;
-        #      animation: fade 0.3s ease-out;
-        #    }
-        #    @keyframes fade {
-        #      0%, 30% {
-        #        opacity: 0;
-        #      }
-        #      100% {
-        #        opacity: 1;
-        #      }
-        #    }
-        #    /* phone */
-        #    @media screen and (max-width: 800px) {
-        #      hui-grid-card:first-of-type {
-        #        display: none;
-        #      }
-        #    }
-        #  $: |
-        #    /* phone */
-        #    @media screen and (max-width: 800px) {
-        #      #root {
-        #        display: none;
-        #      }
-        #    }
-
-
-        #################################################
-        #                                               #
-        #             SIDEBAR WEATHER INFO              #
-        #                                               #
-        #################################################
-
-        "grid-layout$hui-conditional-card":
-          .: |
-            hui-conditional-card {
-              display: flex;
-              align-items: flex-end;
-              justify-content: center;
-              padding: 0 0 45% 0;
-            }
-            button-card {
-              width: 65%;
-            }
-            /* phone */
-            @media screen and (max-width: 800px) {
-              hui-conditional-card {
-                align-items: flex-start;
-                justify-content: flex-end;
-                padding: 15vw 0 0 0;
-              }
-              button-card {
-                width: 40%;
-                zoom: 250%;
-                filter: contrast(75%)
-              }
-            }
+        
 
         #################################################
         #                                               #
