@@ -263,6 +263,7 @@ views:
           
           - type: custom:button-card
             entity: climate.teddy_room
+            show_icon: true
             name: AC
             template: climate
 
@@ -299,6 +300,7 @@ views:
 
           - type: custom:button-card
             name: cameras
+            show_icon: true
             icon: mdi:cctv
             show_state: false
             tap_action: !include lovelace/views/popup/cameras.yaml
@@ -306,6 +308,7 @@ views:
 
           - type: custom:button-card
             name: Security
+            show_icon: true
             icon: mdi:shield-home
             show_state: false
             tap_action: !include lovelace/views/popup/alarm_panel.yaml
