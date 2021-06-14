@@ -308,7 +308,7 @@ views:
             name: Security
             icon: mdi:shield-home
             show_state: false
-            tap_action: !include locelace/views/popup/alarm_panel.yaml
+            tap_action: !include lovelace/views/popup/alarm_panel.yaml
             template: base
           
           #- type: custom:button-card
