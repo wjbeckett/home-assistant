@@ -299,7 +299,16 @@ views:
 
           - type: custom:button-card
             name: cameras
+            icon: mdi:cctv
+            show_state: false
             tap_action: !include lovelace/views/popup/cameras.yaml
+            template: base
+
+          - type: custom:button-card
+            name: Security
+            icon: mdi:shield-home
+            show_state: false
+            tap_action: !include locelace/views/popup/alarm_panel.yaml
             template: base
           
           #- type: custom:button-card
