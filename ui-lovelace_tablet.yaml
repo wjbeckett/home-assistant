@@ -69,11 +69,8 @@ sidebar:
             }
   style: |
     :host {
-        --sidebar-background: rgba(34,38,39,0.9);
         --sidebar-text-color: #fff;
-        --face-color: #21353E;
-        --face-border-color: #21353E;
-        box-shadow: inset -11px 0px 6px 1px #1d1f1f;
+        box-shadow: inset -11px 0px 6px 1px #00000010;
     }
     #customSidebar {
 
@@ -84,13 +81,17 @@ sidebar:
     }
     .sidebarMenu li {
         line-height: 35px !important;
-        color: rgba(255, 255, 255, 0.8)!important;
+        color: #838486!important;
      }
+    .sidebarMenu li ha-icon {
+      color: #838486!important;
+    }
 
     .sidebarMenu li.active {
         background-color:transparent;!important;
         border-radius: 40px!important;
         font-weight: bold!important;
+        color: white!important;
      }
     .sidebarMenu li.active ha-icon {
         color: white!important;
