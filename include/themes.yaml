@@ -109,44 +109,7 @@ frontend:
               }
 
         
-          #conditional color
-          "$hui-button-card:last-of-type$": |
-            {% if is_state('binary_sensor.sidebar_update_color', 'on') %}
-
-              ha-card, ha-icon {
-                color: rgb(35, 78 ,106) !important;
-                opacity: 1 !important;
-                animation: update 1.5s ease-out infinite;
-              }
-
-              ha-card:hover {
-                filter: brightness(130%);
-                animation-play-state: paused;
-              }
-
-            {% endif %}
-
-              @keyframes update {
-                0% {
-                  transform: scale(1);
-                }
-                40% {
-                  transform: scale(1.08);
-                }
-                50% {
-                  transform: scale(0.98);
-                }
-                55% {
-                  transform: scale(1.02);
-                }
-                60% {
-                  transform: scale(0.98);
-                }
-                100% {
-                  transform: scale(1);
-                }
-              }
-
+          
       card-mod-card: |
         .card-content {
           padding: 1.8em 2em 1.8em 2em;
