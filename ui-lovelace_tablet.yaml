@@ -13,7 +13,7 @@ sidebar:
   date: true
   dateFormat: 'dddd, DD MMMM YYYY'
   twelveHourVersion: true
-  period: true
+  period: false
   hideHassSideBar: true
   sidebarMenu:
     - action: navigate
