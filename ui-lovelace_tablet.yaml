@@ -6,7 +6,7 @@ kiosk_mode:
       kiosk: true
 
 sidebar:
-  title: Sidebar
+  title: null
   clock: false
   digitalClock: true
   digitalClockWithSeconds: false
@@ -20,10 +20,45 @@ sidebar:
     - action: navigate
       navigation_path: /lovelace-tablet/0
       name: Home
+      icon: mdi:home
+      active: true
+    - action: navigate
+      navigation_path: /lovelace-tablet/1
+      name: Security
+      icon: mdi:shield-home
+      active: true
+    - action: navigate
+      navigation_path: /lovelace-tablet/2
+      name: Music
+      icon: mdi:play-circle
+      active: true
+    - action: navigate
+      navigation_path: /lovelave-tablet/3
+      name: Garden
+      icon: mdi:sprinkler
+      active: true
+    - action: navigate
+      navigation_path: /lovelace-tablet/4
+      name: Weather
+      icon: mdi:cloud
+      active: true
   width:
     mobile: 0
     tablet: 25
     desktop: 20
+  bottomCard:
+    type: 'custom:stack-in-card'
+    mode: vertical
+    cardOptions:
+      cards:
+        - type: markdown
+          content: >-
+            {% set attributes = states.sensor.template_sidebar.attributes | default %}
+            {% for template in attributes %}
+            {{ state_attr('sensor.template_sidebar', template) }}
+            {% endfor %}
+        - !include lovelace/views/sidebar/sidebar_william.yaml
+        - !include lovelace/views/sidebar/sidebar_emily.yaml
   style: |
     :host {
         --sidebar-background: #2f3233;
