@@ -114,12 +114,14 @@ sidebar:
     }
     .digitalClock {
         color: rgba(255, 255, 255, 0.7)!important;
+        font-family: SF Text;
         font-size: 5vw!important;
         font-weight: 200!important;
         letter-spacing: -0.05vw!important;
         text-align: center;
     }
     .date {
+        font-family: SF Text;
         padding-bottom: 10px;
         color: rgba(255, 255, 255, 0.3);
         font-size: 1.3vw;
