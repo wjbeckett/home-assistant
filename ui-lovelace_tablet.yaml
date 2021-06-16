@@ -45,10 +45,10 @@ views:
       grid-template-columns: repeat(4, 1fr) 0
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
-        "sidebar  .           .         .       ."
-        "sidebar  loungeroom  kitchen   bedroom ."
-        "sidebar  ollie       teddy     home    ."
-        "sidebar  .           .         .       ."
+        ".           .         .       ."
+        "loungeroom  kitchen   bedroom ."
+        "ollie       teddy     home    ."
+        ".           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -57,7 +57,6 @@ views:
           grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
-            ".  sidebar     sidebar  ."
             ".  loungeroom  kitchen  ."
             ".  bedroom     teddy    ."
             ".  ollie       home     ."
@@ -68,11 +67,11 @@ views:
           grid-template-columns: repeat(3, 1fr) 0fr
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
-            "sidebar  .           .       ."
-            "sidebar  loungeroom  bedroom ."
-            "sidebar  kitchen     teddy   ."
-            "sidebar  ollie       home    ."
-            "sidebar  .           .       ."
+            ".           .       ."
+            "loungeroom  bedroom ."
+            "kitchen     teddy   ."
+            "ollie       home    ."
+            ".           .       ."
     cards:
 
       #################################################
