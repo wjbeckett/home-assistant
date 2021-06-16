@@ -76,61 +76,6 @@ views:
 
       #################################################
       #                                               #
-      #                    SIDEBAR                    #
-      #                                               #
-      #################################################
-
-      - type: markdown
-        view_layout:
-          grid-area: sidebar
-        content: |
-          {% set attributes = states.sensor.template_sidebar.attributes | default %}
-          {% for template in attributes %}
-          {{ state_attr('sensor.template_sidebar', template) }}
-          {% endfor %}
-      
-      - type: vertical-stack
-        cards:
-          - type: custom:button-card
-            name: Home
-            icon: mdi:home
-            template: navigation
-          
-          - type: custom:button-card
-            name: Security
-            icon: mdi:shield-home
-            template: navigation
-          
-          - type: custom:button-card
-            name: Media
-            icon: mdi:play-circle
-            template: navigation
-          
-          - type: custom:button-card
-            name: Weather
-            icon: mdi:cloud
-            template: navigation
-      
-        
-      - type: grid
-        view_layout:
-          grid-area: sidebar
-        cards:
-          - type: button
-            icon: mdi:robot-vacuum
-            #tap_action:
-
-          - type: button
-            icon: mdi:information-outline
-            tap_action:
-              !include lovelace/views/popup/admin.yaml
-
-          - type: button
-            icon: mdi:arrow-up-bold-circle-outline
-            #tap_action:
-
-      #################################################
-      #                                               #
       #                  LOUNGE ROOM                  #
       #                                               #
       #################################################
