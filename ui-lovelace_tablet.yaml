@@ -14,7 +14,6 @@ sidebar:
   dateFormat: 'dddd, DD MMMM YYYY'
   twelveHourVersion: true
   period: true
-  hideTopMenu: true
   hideHassSideBar: true
   sidebarMenu:
     - action: navigate
@@ -70,40 +69,24 @@ sidebar:
             }
   style: |
     :host {
-        --sidebar-background: #2f3233;
+        --sidebar-background: rgba(34,38,39,0.9);
         --sidebar-text-color: #fff;
         --face-color: #21353E;
         --face-border-color: #21353E;
-        --clock-hands-color: #fff;
-        --clock-seconds-hand-color: #fff;
-        --clock-middle-background: #21353E;
-        --clock-middle-border: #21353E;
         box-shadow: inset -11px 0px 6px 1px #1d1f1f;
     }
     #customSidebar {
-     
 
-      
      }
 
     .bottom {
         width: 100% !important;
-
     }
-
-
-    .sidebarMenu {
-        border: #210443!important;
-        
-     }
-
     .sidebarMenu li {
         line-height: 35px !important;
         color: rgba(255, 255, 255, 0.8)!important;
      }
-    .sidebarMenu li ha-icon {
-        color: #210443!important;
-     }
+
     .sidebarMenu li.active {
         background-color:transparent;!important;
         border-radius: 40px!important;
@@ -118,7 +101,7 @@ sidebar:
     }
     .digitalClock {
         color: rgba(255, 255, 255, 0.7)!important;
-        font-size: 5.41vw!important;
+        font-size: 5vw!important;
         font-weight: 200!important;
         letter-spacing: -0.05vw!important;
         text-align: center;
