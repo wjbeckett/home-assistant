@@ -5,6 +5,37 @@ kiosk_mode:
         - "tablet"
       kiosk: true
 
+sidebar:
+  title: Sidebar
+  clock: false
+  digitalClock: true
+  digitalClockWithSeconds: false
+  date: true
+  dateFormat: 'dddd, DD MMMM YYYY'
+  twelveHourVersion: true
+  period: true
+  hideTopMenu: true
+  hideHassSideBar: true
+  sidebarMenu:
+    - action: navigate
+      navigation_path: /lovelace-tablet/0
+      name: Home
+  style: |
+    :host {
+        --sidebar-background: #2f3233;
+        --sidebar-text-color: #fff;
+        --face-color: #21353E;
+        --face-border-color: #21353E;
+        --clock-hands-color: #fff;
+        --clock-seconds-hand-color: #fff;
+        --clock-middle-background: #21353E;
+        --clock-middle-border: #21353E;
+        box-shadow: inset -11px 0px 6px 1px #1d1f1f;
+    }
+    .sidebarMenu li.active {
+     background-color: #6A808D!important;
+     }
+
 views:
   - type: custom:grid-layout
     path: 0
