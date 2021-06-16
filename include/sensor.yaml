@@ -119,6 +119,7 @@ sensor:
   - platform: darksky
     api_key: !secret darksky_key
     language: en
+    mode: daily
     monitored_conditions:
       ['precip_probability', 'temperature', 'apparent_temperature']
 
