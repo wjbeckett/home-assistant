@@ -20,6 +20,10 @@ sidebar:
     - action: navigate
       navigation_path: /lovelace-tablet/0
       name: Home
+  width:
+    mobile: 0
+    tablet: 25
+    desktop: 20
   style: |
     :host {
         --sidebar-background: #2f3233;
@@ -42,13 +46,13 @@ views:
     layout:
       #default
       grid-gap: var(--custom-layout-card-padding)
-      grid-template-columns: repeat(4, 1fr) 0
+      grid-template-columns: 0 repeat(3, 1fr) 0
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
-        ".           .         .       ."
-        "loungeroom  kitchen   bedroom ."
-        "ollie       teddy     home    ."
-        ".           .         .       ."
+        ".  .           .         .       ."
+        ".  loungeroom  kitchen   bedroom ."
+        ".  ollie       teddy     home    ."
+        ".  .           .         .       ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -64,14 +68,14 @@ views:
         #portrait
         "(max-width: 1200px)":
           grid-gap: var(--custom-layout-card-padding)
-          grid-template-columns: repeat(3, 1fr) 0fr
+          grid-template-columns: 0 repeat(2, 1fr) 0fr
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
-            ".           .       ."
-            "loungeroom  bedroom ."
-            "kitchen     teddy   ."
-            "ollie       home    ."
-            ".           .       ."
+            ".  .           .       ."
+            ".  loungeroom  bedroom ."
+            ".  kitchen     teddy   ."
+            ".  ollie       home    ."
+            ".  .           .       ."
     cards:
 
       #################################################
