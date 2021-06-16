@@ -207,7 +207,33 @@ frontend:
                 }
               }
 
+        #################################################
+        #                                               #
+        #             NAVIGATION BUTTON CARDS           #
+        #                                               #
+        #################################################
         
+        "grid-layout$hui-vertical-stack-card:first-of-type":
+          .: |
+            hui-vertical-stack-card:first-of-type {
+              padding: var(--custom-layout-card-padding) 2vw 0 var(--custom-layout-card-padding) !important;
+                pointer-events: none;
+              }
+            }
+            @keyframes fade {
+              0%, 30% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+            /* phone */
+            @media screen and (max-width: 800px) {
+              hui-vertical-stack-card:first-of-type {
+                display: none;
+              }
+            }
 
         #################################################
         #                                               #
