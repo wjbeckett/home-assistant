@@ -67,10 +67,21 @@ sidebar:
                   text-align: center;
                   letter-spacing: -0.05vw;
             }
+        - type: 'custom:weather-card'
+          entity: weather.home
+          current: true
+          details: true
+          forecast: false
+          hourly_forecast: false
+          style: |
+            ha-card {
+               background-color:transparent;
+               box-shadow: none;
+            }
   style: |
     :host {
         --sidebar-text-color: #fff;
-        background-color: #fff0;
+        background-color: #fff0!important;
         box-shadow: inset -11px 0px 6px 1px #00000010;
     }
     #customSidebar {
