@@ -59,25 +59,27 @@ views:
           {{ state_attr('sensor.template_sidebar', template) }}
           {% endfor %}
       
-      #- type: custom:button-card
-      #  name: Home
-      #  icon: mdi:home
-      #  template: navigation
-      
-      #- type: custom:button-card
-      #  name: Security
-      #  icon: mdi:shield-home
-      #  template: navigation
-      
-      #- type: custom:button-card
-      #  name: Media
-      #  icon: mdi:play-circle
-      #  template: navigation
-      
-      #- type: custom:button-card
-      #  name: Weather
-      #  icon: mdi:cloud
-      #  template: navigation
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            name: Home
+            icon: mdi:home
+            template: navigation
+          
+          - type: custom:button-card
+            name: Security
+            icon: mdi:shield-home
+            template: navigation
+          
+          - type: custom:button-card
+            name: Media
+            icon: mdi:play-circle
+            template: navigation
+          
+          - type: custom:button-card
+            name: Weather
+            icon: mdi:cloud
+            template: navigation
       
         
       - type: grid
