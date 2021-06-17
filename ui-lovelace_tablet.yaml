@@ -418,7 +418,7 @@ views:
       grid-template-areas: |
         ".  .           .         .       ."
         ".  alarm       cameras   cameras ."
-        ".  sensors     cameras   cameras ."
+        ".  sensors     sensors   cameras ."
         ".  .           .         .       ."
       mediaquery:
         #phone
@@ -462,32 +462,19 @@ views:
         columns: 2
         cards:
           - type: picture-glance
-            aspect_ratio: '16:9'
             camera_image: camera.front_door
             camera_view: live
             entities: []
             name: Front Door
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-              }
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;
-              }
       
       - type: grid
         title: Sensors
         view_layout:
           grid-area: sensors
-        columns: 2
+        columns: 1
         cards:
           - type: entities
             show_header_toggle: false
@@ -495,9 +482,3 @@ views:
               - binary_sensor.kitchen_sensor_motion
               - binary_sensor.bedroom_motion
               - binary_sensor.front_door_motion
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                border-radius: 15px;
-                margin: 10px;  
-              }
