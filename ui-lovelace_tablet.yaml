@@ -150,7 +150,7 @@ views:
         "(max-width: 800px)":
           grid-gap: calc(var(--custom-layout-card-padding) * 1.5)
           grid-template-columns: 0 repeat(2, 1fr) 0fr
-          grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
+          grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
             ".  loungeroom  kitchen  ."
@@ -425,12 +425,12 @@ views:
         "(max-width: 800px)":
           grid-gap: calc(var(--custom-layout-card-padding) * 1.5)
           grid-template-columns: 0 repeat(2, 1fr) 0fr
-          grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
+          grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
             ".  .           .        ."
-            ".  alarm       alarm    ."
+            ".  alarm       .        ."
             ".  cameras     cameras  ."
-            ".  sensors     sensors  ."
+            ".  sensors     .        ."
             ".  .           .        ."
         #portrait
         "(max-width: 1200px)":
@@ -450,7 +450,6 @@ views:
           grid-area: alarm
         columns: 1
         cards:
-
           - type: custom:alarmo-card
             entity: alarm_control_panel.alarmo
             name: Home Alarm
@@ -459,14 +458,18 @@ views:
         title: Cameras
         view_layout:
           grid-area: cameras
-        columns: 3
+        columns: 2
         cards:
           - type: picture-glance
-            aspect-ratio: '16:9'
             camera_image: camera.front_door
             camera_view: live
             entities: []
             title: Front Door
+            style: |
+              ha-card {
+                border-radius: 15px;
+                margin: 10px;
+              }
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection
