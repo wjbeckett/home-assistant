@@ -219,25 +219,7 @@ frontend:
               }
             }
 
-        #################################################
-        #                                               #
-        #             Special Dates Card                #
-        #                                               #
-        #################################################
-
-        "grid-layout$hui-entities-card":
-          $: |
-            ha-card {
-              height: 33vh !important;
-              padding: 10% 5% 0 0 !important;
-            }
-
-            /* phone */
-            @media screen and (max-width: 800px) {
-              ha-card {
-                padding: 0 0 0 0 !important;
-              }
-            }
+        
 
         #################################################
         #                                               #
