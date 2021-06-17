@@ -219,46 +219,27 @@ frontend:
               }
             }
 
-        
-
         #################################################
         #                                               #
-        #             SIDEBAR BUTTON CARDS              #
+        #             Special Dates Card                #
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:first-of-type":
-          .: |
-            hui-grid-card:first-of-type {
-              display: flex;
-              align-items: flex-end;
-              animation: fade 0.3s ease-out;
-            }
-            @keyframes fade {
-              0%, 30% {
-                opacity: 0;
-              }
-              100% {
-                opacity: 1;
-              }
-            }
-            /* phone */
-            @media screen and (max-width: 800px) {
-              hui-grid-card:first-of-type {
-                align-items: flex-start;
-              }
-            }
+        "grid-layout$hui-entities-card":
           $: |
-            #root {
-              padding: 0 13% 13% 13%;
-              gap: 8% !important;
+            ha-card {
+              height: 33vh !important;
+              padding: 10% 5% 0 0 !important;
             }
+
             /* phone */
             @media screen and (max-width: 800px) {
-              #root {
-                padding: 0 0 0 60%;
+              ha-card {
+                padding: 0 0 0 0 !important;
               }
             }
+
+       
         
 
       card-mod-card: |
