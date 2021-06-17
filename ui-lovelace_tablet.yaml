@@ -87,23 +87,21 @@ views:
           #  sort:
           #    method: state
           #    numeric: true
-      - type: grid
-        view_layout:
-          grid-area: sidebar
-        columns: 4
-        cards:
-          - type: button
-            icon: mdi:shield-home
-            tap_action: !include lovelace/views/popup/alarm_panel.yaml
-          - type: button
-            icon: mdi:robot-vacuum
-            #tap_action: !include popup/sidebar_vacuum.yaml
-          - type: button
-            icon: mdi:cctv
-            tap_action: !include lovelace/views/popup/cameras.yaml
-          - type: button
-            icon: mdi:tune-vertical
-            tap_action: !include lovelace/views/popup/admin.yaml
+          - type: grid
+            columns: 4
+            cards:
+              - type: button
+                icon: mdi:shield-home
+                tap_action: !include lovelace/views/popup/alarm_panel.yaml
+              - type: button
+                icon: mdi:robot-vacuum
+                #tap_action: !include popup/sidebar_vacuum.yaml
+              - type: button
+                icon: mdi:cctv
+                tap_action: !include lovelace/views/popup/cameras.yaml
+              - type: button
+                icon: mdi:tune-vertical
+                tap_action: !include lovelace/views/popup/admin.yaml
 
       #################################################
       #                                               #
