@@ -152,8 +152,10 @@ frontend:
                 font-weight: 300;
                 letter-spacing: 0.06vw;
                 color: #6a7377;
+                margin-bottom: 0px;
+                margin-top: 0px;
               }
-              
+
               p > font > b {
                 font-family: SF Display;
                 font-size: var(--markdown-sidebar-font-size);
@@ -161,7 +163,6 @@ frontend:
                 font-weight: 300;
                 letter-spacing: 0.06vw;
                 color: #6a7377;
-                margin: 0 0 0 0;
               }
               
               p > b {
