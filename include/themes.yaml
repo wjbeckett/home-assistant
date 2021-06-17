@@ -159,7 +159,6 @@ frontend:
               p > font > b {
                 font-family: SF Display;
                 font-size: var(--markdown-sidebar-font-size);
-                line-height: var(--markdown-sidebar-line-height);
                 font-weight: 300;
                 letter-spacing: 0.06vw;
                 color: #6a7377;
@@ -180,11 +179,24 @@ frontend:
                   font-size: calc(var(--markdown-sidebar-clock-font-size) * 2.6 );
                   line-height: calc(var(--markdown-sidebar-clock-line-height) * 2.6 );
                 }
+                p > font > b {
+                  font-family: SF Display;
+                  font-weight: 300;
+                  letter-spacing: 0.06vw;
+                  color: #6a7377;
+                }
                 p {
                   font-size: calc(var(--markdown-sidebar-font-size) * 2.6 );
                   line-height: calc(var(--markdown-sidebar-line-height) * 2.6 );
                   letter-spacing: 0.16vw;
                 }
+                p > b {
+                  font-family: SF Display;
+                  line-height: var(--markdown-sidebar-line-height);
+                  font-weight: 300;
+                  letter-spacing: 0.06vw;
+                  color: var(--ha-card-header-color);
+              }
               }
 
         #################################################
