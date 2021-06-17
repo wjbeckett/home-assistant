@@ -145,6 +145,14 @@ frontend:
               }
 
               /* text */
+              p {
+                font-family: SF Display;
+                font-size: var(--markdown-sidebar-font-size);
+                line-height: var(--markdown-sidebar-line-height);
+                font-weight: 300;
+                letter-spacing: 0.06vw;
+                color: #6a7377;
+              }
               p > font > b {
                 font-family: SF Display;
                 font-size: var(--markdown-sidebar-font-size);
@@ -225,6 +233,9 @@ frontend:
         "grid-layout$hui-grid-card:first-of-type":
           .: |
             hui-grid-card:first-of-type {
+              display: flex;
+              align-items: flex-end;
+              animation: fade 0.3s ease-out;
 
             }
 
