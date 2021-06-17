@@ -4,5 +4,5 @@
                 title: Alarm Panel
                 deviceID: this
                 card:
-                  type: 'custom:alarmo-card'
+                  type: custom:alarmo-card
                   entity: alarm_control_panel.alarmo

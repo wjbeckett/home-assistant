@@ -402,3 +402,55 @@ views:
           #  template:
           #    - base
           #    - icon_home
+  
+    #########################################
+    #                                       #
+    #           SECURITY VIEW               #
+    #                                       #
+    #########################################
+  - type: custom:grid-layout
+    path: 1
+    layout:
+      #default
+      grid-gap: var(--custom-layout-card-padding)
+      grid-template-columns: 0 repeat(3, 1fr) 0
+      grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+      grid-template-areas: |
+        ".  .           .         .       ."
+        ".  alarm       cameras   sensors ."
+        ".  alarm       cameras   sensors ."
+        ".  .           .         .       ."
+      mediaquery:
+        #phone
+        "(max-width: 800px)":
+          grid-gap: calc(var(--custom-layout-card-padding) * 1.5)
+          grid-template-columns: 0 repeat(2, 1fr) 0fr
+          grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
+          grid-template-areas: |
+            ".  .           .        ."
+            ".  alarm       alarm    ."
+            ".  cameras     cameras  ."
+            ".  sensors     sensors  ."
+            ".  .           .        ."
+        #portrait
+        "(max-width: 1200px)":
+          grid-gap: var(--custom-layout-card-padding)
+          grid-template-columns: 0 repeat(2, 1fr) 0fr
+          grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
+          grid-template-areas: |
+            ".  .           .       ."
+            ".  alarm       alarm   ."
+            ".  cameras     cameras ."
+            ".  sensors     sensors ."
+            ".  .           .       ."
+    cards:
+      - type: grid
+        title: Alarm Panel
+        view_layout:
+          grid-area: alarm
+        columns: 1
+        cards:
+
+          - type: custom:alarmo-card
+            entity: alarm_control_panel.alarmo
+            name: Home Alarm
