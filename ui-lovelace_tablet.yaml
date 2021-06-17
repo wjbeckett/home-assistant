@@ -417,8 +417,8 @@ views:
       grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
       grid-template-areas: |
         ".  .           .         .       ."
-        ".  alarm       cameras   sensors ."
-        ".  alarm       cameras   sensors ."
+        ".  alarm       cameras   cameras ."
+        ".  sensors     cameras   cameras ."
         ".  .           .         .       ."
       mediaquery:
         #phone
@@ -459,7 +459,7 @@ views:
         title: Cameras
         view_layout:
           grid-area: cameras
-        columns: 1
+        columns: 2
         cards:
           - type: picture-glance
             aspect_ratio: '16:9'
@@ -481,4 +481,23 @@ views:
                 background-color: var(--primary-background-color);
                 border-radius: 15px;
                 margin: 10px;
+              }
+      
+      - type: grid
+        title: Sensors
+        view_layout:
+          grid-area: sensors
+        columns: 2
+        cards:
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - binary_sensor.kitchen_sensor_motion
+              - binary_sensor.bedroom_motion
+              - binary_sensor.front_door_motion
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;  
               }
