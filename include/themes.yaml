@@ -192,11 +192,10 @@ frontend:
                 p > span {
                   font-size: calc(var(--markdown-sidebar-clock-font-size) * 1.4 );
                   line-height: calc(var(--markdown-sidebar-clock-line-height) * 1.4 );
-                  margin-bottom: 0px;
                 }
                 p {
                   font-size: calc(var(--markdown-sidebar-font-size) * 1.4 );
-                  margin-top: 0px;
+                  line-height: calc(var(--markdown-sidebar-line-height) * 1.4 );
                 }
               }
 
