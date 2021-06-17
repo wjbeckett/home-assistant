@@ -51,7 +51,7 @@ views:
       #################################################
       - type: markdown
         view_layout:
-          grid_area: sidebar
+          grid-area: sidebar
         content: |
           {% set attributes = states.sensor.template_sidebar.attributes | default %}
           {% for template in attributes %}
