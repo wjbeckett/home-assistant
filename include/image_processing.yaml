@@ -10,5 +10,5 @@ image_processing:
       - target: person
       - target: car
     source:
-      - entity_id: camera.front_door_stream
+      - entity_id: camera.front_door
         name: deepstack_detector
