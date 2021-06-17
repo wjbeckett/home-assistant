@@ -49,61 +49,56 @@ views:
       #                  SIDEBAR                      #
       #                                               #
       #################################################
-      - type: custom:vertical-stack-in-card
+      - type: markdown
+        content: |
+          {% set attributes = states.sensor.template_sidebar.attributes | default %}
+          {% for template in attributes %}
+          {{ state_attr('sensor.template_sidebar', template) }}
+          {% endfor %}
+      #- type: "custom:hui-element"
+      #  card_type: custom:weather-card
+      #  entity: weather.home
+      #  current: true
+      #  details: true
+      #  forecast: false
+      #  hourly_forecast: false
+      #- type: "custom:hui-element"
+      #  card_type: "custom:auto-entities"
+      #  card:
+      #    type: entities
+      #  filter:
+      #    include:
+      #      - entity_id: sensor.anniversary_xyzs_birthday
+      #        state: <30
+      #      - entity_id: sensor.anniversary_xyzs_birthday
+      #        state: <30
+      #      - entity_id: sensor.anniversary_first_day_of_summer
+      #        state: <30
+      #      - entity_id: sensor.anniversary_first_day_of_fall
+      #        state: <30
+      #      - entity_id: sensor.anniversary_first_day_of_spring
+      #        state: <30
+      #  show_empty: false
+      #  sort:
+      #    method: state
+      #    numeric: true
+      - type: grid
         view_layout:
           grid-area: sidebar
-        mode: vertical
+        columns: 4
         cards:
-          - type: markdown
-            content: |
-              {% set attributes = states.sensor.template_sidebar.attributes | default %}
-              {% for template in attributes %}
-              {{ state_attr('sensor.template_sidebar', template) }}
-              {% endfor %}
-          #- type: "custom:hui-element"
-          #  card_type: custom:weather-card
-          #  entity: weather.home
-          #  current: true
-          #  details: true
-          #  forecast: false
-          #  hourly_forecast: false
-          #- type: "custom:hui-element"
-          #  card_type: "custom:auto-entities"
-          #  card:
-          #    type: entities
-          #  filter:
-          #    include:
-          #      - entity_id: sensor.anniversary_xyzs_birthday
-          #        state: <30
-          #      - entity_id: sensor.anniversary_xyzs_birthday
-          #        state: <30
-          #      - entity_id: sensor.anniversary_first_day_of_summer
-          #        state: <30
-          #      - entity_id: sensor.anniversary_first_day_of_fall
-          #        state: <30
-          #      - entity_id: sensor.anniversary_first_day_of_spring
-          #        state: <30
-          #  show_empty: false
-          #  sort:
-          #    method: state
-          #    numeric: true
-          - type: grid
-            view_layout:
-              grid-area: sidebar
-            columns: 4
-            cards:
-              - type: button
-                icon: mdi:shield-home
-                tap_action: !include lovelace/views/popup/alarm_panel.yaml
-              - type: button
-                icon: mdi:robot-vacuum
-                #tap_action: !include popup/sidebar_vacuum.yaml
-              - type: button
-                icon: mdi:cctv
-                tap_action: !include lovelace/views/popup/cameras.yaml
-              - type: button
-                icon: mdi:tune-vertical
-                tap_action: !include lovelace/views/popup/admin.yaml
+          - type: button
+            icon: mdi:shield-home
+            tap_action: !include lovelace/views/popup/alarm_panel.yaml
+          - type: button
+            icon: mdi:robot-vacuum
+            #tap_action: !include popup/sidebar_vacuum.yaml
+          - type: button
+            icon: mdi:cctv
+            tap_action: !include lovelace/views/popup/cameras.yaml
+          - type: button
+            icon: mdi:tune-vertical
+            tap_action: !include lovelace/views/popup/admin.yaml
 
       #################################################
       #                                               #
