@@ -454,3 +454,31 @@ views:
           - type: custom:alarmo-card
             entity: alarm_control_panel.alarmo
             name: Home Alarm
+
+      - type: grid
+        title: Cameras
+        view_layout:
+          grid-area: cameras
+        columns: 1
+        cards:
+          - type: picture-glance
+            aspect_ratio: '16:9'
+            camera_image: camera.front_door
+            camera_view: live
+            entities: []
+            name: Front Door
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+              }
+          - type: picture-entity
+            entity: camera.deepstack_latest_image
+            title: Latest Detection
+            style: |
+              ha-card {
+                background-color: var(--primary-background-color);
+                border-radius: 15px;
+                margin: 10px;
+              }
