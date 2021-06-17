@@ -60,13 +60,13 @@ views:
               {% for template in attributes %}
               {{ state_attr('sensor.template_sidebar', template) }}
               {% endfor %}
-          - type: "custom:hui-element"
-            card_type: custom:weather-card
-            entity: weather.home
-            current: true
-            details: true
-            forecast: false
-            hourly_forecast: false
+          #- type: "custom:hui-element"
+          #  card_type: custom:weather-card
+          #  entity: weather.home
+          #  current: true
+          #  details: true
+          #  forecast: false
+          #  hourly_forecast: false
           #- type: "custom:hui-element"
           #  card_type: "custom:auto-entities"
           #  card:

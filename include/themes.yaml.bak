@@ -107,7 +107,6 @@ frontend:
                   margin: 2vw 0 0 0 !important;
                 }
               }
-
         #################################################
         #                                               #
         #             SIDEBAR MARKDOWN CARD             #
@@ -122,13 +121,11 @@ frontend:
               min-height: 100vh;
               animation: ha-card 1s forwards;
             }
-
             @keyframes ha-card {
               0%, 100% {
                 border-right: 0.1vw solid rgba(58, 69, 73, 0.2);
               }
             }
-
             /* phone */
             @media screen and (max-width: 800px) {
               ha-card {
@@ -136,20 +133,17 @@ frontend:
                 min-height: 100%;
                 animation: none;
               }
-
           "$ha-card>ha-markdown":
             .: |
               ha-markdown {
                 padding: var(--custom-layout-card-padding) 2vw 0 var(--custom-layout-card-padding) !important;
                 pointer-events: none;
               }
-
               /* phone */
               @media screen and (max-width: 800px) {
                 ha-markdown {
                   padding: 0 !important;
                 }
-
             $: |
               /* clock */
               p > span {
@@ -193,7 +187,6 @@ frontend:
                   line-height: calc(var(--markdown-sidebar-line-height) * 1.4 );
                 }
               }
-
               /* phone */
               @media screen and (max-width: 800px) {
                 p > span {
@@ -209,84 +202,45 @@ frontend:
 
         #################################################
         #                                               #
-        #             SIDEBAR BUTTON CARDS              #
+        #             Weather Card                      #
         #                                               #
         #################################################
 
-        "grid-layout$hui-grid-card:first-of-type":
-          .: |
-            hui-grid-card:first-of-type {
-              display: flex;
-              align-items: flex-end;
-              animation: fade 0.3s ease-out;
-            }
-
-            @keyframes fade {
-              0%, 30% {
-                opacity: 0;
-              }
-              100% {
-                opacity: 1;
-              }
-            }
-
-            /* phone */
-            @media screen and (max-width: 800px) {
-              hui-grid-card:first-of-type {
-                align-items: flex-start;
-              }
-            }
-
+        "grid-layout$hui-element:first-of-type":
           $: |
-            #root {
-              padding: 0 13% 13% 13%;
-              gap: 8% !important;
+            ha-card {
+              padding: 15% 10% 0 7% !important;
             }
 
             /* phone */
             @media screen and (max-width: 800px) {
-              #root {
-                padding: 0 0 0 60%;
+              ha-card {
+                padding: 0 0 0 0 !important;
               }
             }
 
-          #conditional color
-          "$hui-button-card:last-of-type$": |
-            {% if is_state('binary_sensor.sidebar_update_color', 'on') %}
+        #################################################
+        #                                               #
+        #             Special Dates Card                #
+        #                                               #
+        #################################################
 
-              ha-card, ha-icon {
-                color: rgb(35, 78 ,106) !important;
-                opacity: 1 !important;
-                animation: update 1.5s ease-out infinite;
+        "grid-layout$hui-entities-card":
+          $: |
+            ha-card {
+              height: 33vh !important;
+              padding: 10% 5% 0 0 !important;
+            }
+
+            /* phone */
+            @media screen and (max-width: 800px) {
+              ha-card {
+                padding: 0 0 0 0 !important;
               }
+            }
 
-              ha-card:hover {
-                filter: brightness(130%);
-                animation-play-state: paused;
-              }
-
-            {% endif %}
-
-              @keyframes update {
-                0% {
-                  transform: scale(1);
-                }
-                40% {
-                  transform: scale(1.08);
-                }
-                50% {
-                  transform: scale(0.98);
-                }
-                55% {
-                  transform: scale(1.02);
-                }
-                60% {
-                  transform: scale(0.98);
-                }
-                100% {
-                  transform: scale(1);
-                }
-              }
+       
+        
 
       card-mod-card: |
         .card-content {
