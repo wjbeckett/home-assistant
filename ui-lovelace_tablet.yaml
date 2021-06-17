@@ -493,11 +493,11 @@ views:
       #default
       grid-gap: var(--custom-layout-card-padding)
       grid-template-columns: 0 repeat(3, 1fr) 0
-      grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+      grid-template-rows: 0 repeat(1, fit-content(100%)) 0fr 0fr
       grid-template-areas: |
         ".  .           .         .         ."
         ".  media       media     settings  ."
-        ".  media       media     settings  ."
+        ".  .           .         .         ."
         ".  .           .         .         ."
       mediaquery:
         #phone
@@ -508,7 +508,7 @@ views:
           grid-template-areas: |
             ".  .           .        ."
             ".  media       media    ."
-            ".  media       media    ."
+            ".  .           .        ."
             ".  settings    settings ."
             ".  .           .        ."
         #portrait
@@ -517,11 +517,11 @@ views:
           grid-template-columns: 0 repeat(2, 1fr) 0fr
           grid-template-rows: 0 repeat(3, fit-content(100%)) 0fr
           grid-template-areas: |
-            ".  .           .       ."
+            ".  .           .        ."
             ".  media       media    ."
-            ".  media       media    ."
+            ".  .           .        ."
             ".  settings    settings ."
-            ".  .           .       ."
+            ".  .           .        ."
     cards:
       - type: grid
         title: Media
