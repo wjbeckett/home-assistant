@@ -107,7 +107,159 @@ frontend:
                   margin: 2vw 0 0 0 !important;
                 }
               }
+        #################################################
+        #                                               #
+        #             SIDEBAR MARKDOWN CARD             #
+        #                                               #
+        #################################################
 
+        "grid-layout$hui-markdown-card:first-of-type":
+          "$ha-card>ha-markdown":
+            .: |
+              ha-markdown {
+                padding: var(--custom-layout-card-padding) 2vw 0 var(--custom-layout-card-padding) !important;
+                pointer-events: none;
+              }
+              /* phone */
+              @media screen and (max-width: 800px) {
+                ha-markdown {
+                  padding: 0 !important;
+                }
+            $: |
+              /* clock */
+              p {
+                font-family: SF Text;
+                font-size: var(--markdown-sidebar-clock-font-size);
+                font-weight: 200;
+                line-height: var(--markdown-sidebar-clock-line-height);
+                letter-spacing: -0.05vw;
+                color: var(--ha-card-header-color);
+                margin: 0 0 0 0;
+              }
+              /* colon */
+              p > span > span {
+                position: relative;
+                top: -.09em;
+              }
+              /* text */
+              p > font > b {
+                font-family: SF Display;
+                font-size: var(--markdown-sidebar-font-size);
+                line-height: var(--markdown-sidebar-line-height);
+                font-weight: 300;
+                letter-spacing: 0.06vw;
+                color: #6a7377;
+                margin: 0 0 0 0;
+              }
+              
+              b > p {
+                font-family: SF Display;
+                font-size: var(--markdown-sidebar-font-size);
+                line-height: var(--markdown-sidebar-line-height);
+                font-weight: 300;
+                letter-spacing: 0.06vw;
+                color: var(--ha-card-header-color);
+              }
+
+              /* phone */
+              @media screen and (max-width: 800px) {
+                p {
+                  font-size: calc(var(--markdown-sidebar-clock-font-size) * 2.6 );
+                  line-height: calc(var(--markdown-sidebar-clock-line-height) * 2.6 );
+                }
+
+                p > font > b {
+                  font-size: calc(var(--markdown-sidebar-font-size) * 2.6 );
+                  line-height: calc(var(--markdown-sidebar-line-height) * 2.6 );
+                  letter-spacing: 0.16vw;
+                }
+
+                b > p {
+                  font-size: calc(var(--markdown-sidebar-font-size) * 2.6 );
+                  line-height: calc(var(--markdown-sidebar-line-height) * 2.6 );
+                  letter-spacing: 0.16vw;
+                }
+              }
+
+        #################################################
+        #                                               #
+        #             Weather Card                      #
+        #                                               #
+        #################################################
+
+        "grid-layout$hui-element:first-of-type":
+          $: |
+            ha-card {
+              padding: 15% 10% 0 7% !important;
+            }
+
+            /* phone */
+            @media screen and (max-width: 800px) {
+              ha-card {
+                padding: 0 0 0 0 !important;
+              }
+            }
+
+        #################################################
+        #                                               #
+        #             Special Dates Card                #
+        #                                               #
+        #################################################
+
+        "grid-layout$hui-entities-card":
+          $: |
+            ha-card {
+              height: 33vh !important;
+              padding: 10% 5% 0 0 !important;
+            }
+
+            /* phone */
+            @media screen and (max-width: 800px) {
+              ha-card {
+                padding: 0 0 0 0 !important;
+              }
+            }
+
+        #################################################
+        #                                               #
+        #             SIDEBAR BUTTON CARDS              #
+        #                                               #
+        #################################################
+
+        "grid-layout$hui-grid-card:first-of-type":
+          .: |
+            hui-grid-card:first-of-type {
+
+            }
+
+            @keyframes fade {
+              0%, 30% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+
+            /* phone */
+            @media screen and (max-width: 800px) {
+              hui-grid-card:first-of-type {
+                align-items: flex-start;
+              }
+            }
+
+          $: |
+            #root {
+              padding: 30% 13% 13% 13%;
+              gap: 8% !important;
+            }
+
+            /* phone */
+            @media screen and (max-width: 800px) {
+              #root {
+                padding: 0 0 0 60%;
+              }
+            }
         
 
       card-mod-card: |
