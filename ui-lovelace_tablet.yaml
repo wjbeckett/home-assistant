@@ -462,10 +462,11 @@ views:
         columns: 3
         cards:
           - type: picture-glance
+            aspect-ratio: '16:9'
             camera_image: camera.front_door
             camera_view: live
             entities: []
-            name: Front Door
+            title: Front Door
           - type: picture-entity
             entity: camera.deepstack_latest_image
             title: Latest Detection
@@ -474,7 +475,7 @@ views:
         title: Sensors
         view_layout:
           grid-area: sensors
-        columns: 2
+        columns: 1
         cards:
           - type: entities
             show_header_toggle: false
