@@ -209,6 +209,25 @@ frontend:
 
         #################################################
         #                                               #
+        #             Weather Card                      #
+        #                                               #
+        #################################################
+
+        "grid-layout$hui-element:first-of-type":
+          $: |
+            ha-card {
+              padding: 15% 10% 0 7% !important;
+            }
+
+            /* phone */
+            @media screen and (max-width: 800px) {
+              ha-card {
+                padding: 0 0 0 0 !important;
+              }
+            }
+
+        #################################################
+        #                                               #
         #             SIDEBAR BUTTON CARDS              #
         #                                               #
         #################################################
