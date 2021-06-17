@@ -523,58 +523,53 @@ views:
             ".  settings    settings ."
             ".  .           .       ."
     cards:
-      - type: 'custom:mini-media-player'
+      - type: grid
+        title: Media
         view_layout:
-          grid_area: media
-        entity: media_player.will_ytube_music
-        artwork: cover
-        hide:
-          shuffle: false
-          icon_state: false
-        shortcuts:
-          columns: 1
-          buttons:
-            - name: Super Mix
-              type: playlist
-              id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
-        style: |
-          :host {
-            left: 46% !important;
-            top: 32.8% !important;
-            width: 33% !important;
-            height: 50.3% !important;
-          }
-          ha-card{
-            border-radius: 1vw !important;
-            overflow: hidden !important;
-            height: 100%;
-          }
-          :host #primaryProgress{
-            background: #474A52 !important; 
-          }
-        
-        # Spotify Playlists Card:
-        # https://github.com/custom-cards/spotify-card
-      - type: custom:stack-in-card
-        style: | 
-          :host {
-              left: 79.5%; 
-              top: 32.8%;
-              width: 31%;
-              height: 50.3%;
-              border-radius: 1vw;
-          }
-          ha-card {
-              background: none !important;
-              box-shadow: none !important;
-          }
+          grid-area: media
+        columns: 1
         cards:
-          - type: entities
-            entities:
-              - entity: input_select.ytube_music_account
-              - entity: input_select.ytube_music_player_playlist
-              - entity: input_select.ytube_music_player_source
-              - entity: input_select.ytube_music_player_speakers
-              - entity: input_select.ytube_music_player_playmode
-            title: Select
+          - type: 'custom:mini-media-player'
+            entity: media_player.will_ytube_music
+            artwork: cover
+            hide:
+              shuffle: false
+              icon_state: false
+            shortcuts:
+              columns: 1
+              buttons:
+                - name: Super Mix
+                  type: playlist
+                  id: RDTMAK5uy_kset8DisdE7LSD4TNjEVvrKRTmG7a56sY
+            style: |
+              ha-card{
+                border-radius: 1vw !important;
+                overflow: hidden !important;
+                height: 100%;
+              }
+              :host #primaryProgress{
+                background: #474A52 !important; 
+              }
+        
+      - type: grid
+        title: Playlists
+        view_layout:
+          grid-area: settings
+        columns: 1
+        cards:
+          - type: custom:stack-in-card
+            style: | 
+              ha-card {
+                  background: none !important;
+                  box-shadow: none !important;
+              }
+            cards:
+              - type: entities
+                entities:
+                  - entity: input_select.ytube_music_account
+                  - entity: input_select.ytube_music_player_playlist
+                  - entity: input_select.ytube_music_player_source
+                  - entity: input_select.ytube_music_player_speakers
+                  - entity: input_select.ytube_music_player_playmode
+                title: Select
         
