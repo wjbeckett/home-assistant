@@ -49,43 +49,44 @@ views:
       #                  SIDEBAR                      #
       #                                               #
       #################################################
-      - type: markdown
+      - type: custom:vertical-stack-in-card
         view_layout:
           grid-area: sidebar
-        content: |
-          {% set attributes = states.sensor.template_sidebar.attributes | default %}
-          {% for template in attributes %}
-          {{ state_attr('sensor.template_sidebar', template) }}
-          {% endfor %}
-      - type: "custom:hui-element"
-        view_layout:
-          grid-area: sidebar
-        card_type: custom:weather-card
-        entity: weather.home
-        current: true
-        details: true
-        forecast: false
-        hourly_forecast: false
-      #- type: "custom:hui-element"
-      #  card_type: "custom:auto-entities"
-      #  card:
-      #    type: entities
-      #  filter:
-      #    include:
-      #      - entity_id: sensor.anniversary_xyzs_birthday
-      #        state: <30
-      #      - entity_id: sensor.anniversary_xyzs_birthday
-      #        state: <30
-      #      - entity_id: sensor.anniversary_first_day_of_summer
-      #        state: <30
-      #      - entity_id: sensor.anniversary_first_day_of_fall
-      #        state: <30
-      #      - entity_id: sensor.anniversary_first_day_of_spring
-      #        state: <30
-      #  show_empty: false
-      #  sort:
-      #    method: state
-      #    numeric: true
+        mode: vertical
+        cards:
+          - type: markdown
+            content: |
+              {% set attributes = states.sensor.template_sidebar.attributes | default %}
+              {% for template in attributes %}
+              {{ state_attr('sensor.template_sidebar', template) }}
+              {% endfor %}
+          - type: "custom:hui-element"
+            card_type: custom:weather-card
+            entity: weather.home
+            current: true
+            details: true
+            forecast: false
+            hourly_forecast: false
+          #- type: "custom:hui-element"
+          #  card_type: "custom:auto-entities"
+          #  card:
+          #    type: entities
+          #  filter:
+          #    include:
+          #      - entity_id: sensor.anniversary_xyzs_birthday
+          #        state: <30
+          #      - entity_id: sensor.anniversary_xyzs_birthday
+          #        state: <30
+          #      - entity_id: sensor.anniversary_first_day_of_summer
+          #        state: <30
+          #      - entity_id: sensor.anniversary_first_day_of_fall
+          #        state: <30
+          #      - entity_id: sensor.anniversary_first_day_of_spring
+          #        state: <30
+          #  show_empty: false
+          #  sort:
+          #    method: state
+          #    numeric: true
       - type: grid
         view_layout:
           grid-area: sidebar
