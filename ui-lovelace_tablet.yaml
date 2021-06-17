@@ -100,10 +100,10 @@ views:
                 #tap_action: !include popup/sidebar_vacuum.yaml
               - type: button
                 icon: mdi:cctv
-                tap-action: !include lovelace/views/popup/cameras.yaml
+                tap_action: !include lovelace/views/popup/cameras.yaml
               - type: button
                 icon: mdi:tune-vertical
-                tap-action: !include lovelace/views/popup/admin.yaml
+                tap_action: !include lovelace/views/popup/admin.yaml
 
       #################################################
       #                                               #
