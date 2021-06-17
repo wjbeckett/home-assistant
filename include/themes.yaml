@@ -137,11 +137,13 @@ frontend:
                 color: var(--ha-card-header-color);
                 margin: 0 0 0 0;
               }
+
               /* colon */
               p > span > span {
                 position: relative;
                 top: -.09em;
               }
+
               /* text */
               p > font > b {
                 font-family: SF Display;
