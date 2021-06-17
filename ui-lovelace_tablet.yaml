@@ -88,6 +88,8 @@ views:
           #    method: state
           #    numeric: true
           - type: grid
+            view_layout:
+              grid-area: sidebar
             columns: 4
             cards:
               - type: button
