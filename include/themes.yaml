@@ -155,7 +155,7 @@ frontend:
                 margin: 0 0 0 0;
               }
               
-              b > p {
+              p > b {
                 font-family: SF Display;
                 font-size: var(--markdown-sidebar-font-size);
                 line-height: var(--markdown-sidebar-line-height);
@@ -166,18 +166,11 @@ frontend:
 
               /* phone */
               @media screen and (max-width: 800px) {
-                p {
+                p > span {
                   font-size: calc(var(--markdown-sidebar-clock-font-size) * 2.6 );
                   line-height: calc(var(--markdown-sidebar-clock-line-height) * 2.6 );
                 }
-
-                p > font > b {
-                  font-size: calc(var(--markdown-sidebar-font-size) * 2.6 );
-                  line-height: calc(var(--markdown-sidebar-line-height) * 2.6 );
-                  letter-spacing: 0.16vw;
-                }
-
-                b > p {
+                p {
                   font-size: calc(var(--markdown-sidebar-font-size) * 2.6 );
                   line-height: calc(var(--markdown-sidebar-line-height) * 2.6 );
                   letter-spacing: 0.16vw;
