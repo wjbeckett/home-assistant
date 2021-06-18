@@ -181,7 +181,9 @@ frontend:
                 }
                 p > font > b {
                   font-family: SF Display;
+                  font-size: 20px;
                   font-weight: 300;
+                  line-height: 15px;
                   letter-spacing: 0.06vw;
                   color: #6a7377;
                 }
@@ -192,7 +194,7 @@ frontend:
                 }
                 p > b {
                   font-family: SF Display;
-                  line-height: var(--markdown-sidebar-line-height);
+                  line-height: 50px;
                   font-weight: 300;
                   letter-spacing: 0.06vw;
                   color: var(--ha-card-header-color);
